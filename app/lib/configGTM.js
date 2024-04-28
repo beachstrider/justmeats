@@ -24,6 +24,21 @@ export const configGTM = () => {
       window.dataLayer.push({ event: 'add_to_cart' })
     }
 
+    // Hub Events
+    if (
+      target.matches(
+        '#search-kb-card .rmzfa-search, #search-kb-card .rmzfa-search *',
+      )
+    ) {
+      window.dataLayer.push({ event: 'Hub: FAQ Search' })
+    }
+
+    if (
+      target.matches('#orders-card .card-body a, #orders-card .card-body a *')
+    ) {
+      window.dataLayer.push({ event: 'Hub: Orders Order Clicked' })
+    }
+
     if (target.matches('.btn-checkout, .btn-checkout *')) {
       window.dataLayer.push({ event: 'begin_checkout' })
     }
@@ -40,8 +55,48 @@ export const configGTM = () => {
     // }
   })
 
-  window.document.addEventListener('submit', () => {
+  window.document.addEventListener('submit', ({ target }) => {
     window.dataLayer.push({ event: 'form_submit' })
+
+    if (target.matches('#messages-list .message.staff form')) {
+      window.dataLayer.push({
+        event: 'Conversation Staff First Response Receiv',
+      })
+      window.dataLayer.push({ event: 'Message Appreciated' })
+    }
+
+    if (target.matches('#orders-card .card-body form')) {
+      window.dataLayer.push({ event: 'Hub: Orders Search' })
+    }
+  })
+
+  window.document.addEventListener('storage', (event) => {
+    if (event.key === 'rmz.chat.minimized') {
+      if (!window.localStorage.getItem('rmz.chat.minimized')) {
+        window.dataLayer.push({ event: 'Shoutbox Trigger Clicked' })
+      } else {
+        window.dataLayer.push({ event: 'Shoutbox Closed' })
+      }
+    }
+    if (event.key === 'rmz.route') {
+      const route = window.localStorage.getItem('rmz.chat.minimized')
+      if (route === 'hub:index') {
+        window.dataLayer.push({ event: 'Hub Shown' })
+      }
+      if (route === 'conversations:show') {
+        window.dataLayer.push({ event: 'Conversation Started' })
+      }
+      if (route === 'kb:index') {
+        window.dataLayer.push({ event: 'KB Shown' })
+      }
+    }
+
+    if (event.key === 'rmz._vd' && window.localStorage.getItem('rmz._vd')) {
+      const rmzInfo = JSON.parse(window.localStorage.getItem('rmz._vd'))
+      if (rmzInfo?.email) {
+        window.dataLayer.push({ event: 'detect_user' })
+      }
+    }
   })
 
   window.document.addEventListener('input', ({ target }) => {
