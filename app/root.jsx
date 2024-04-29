@@ -40,6 +40,7 @@ import { addScriptToHead } from '~/lib/utils'
 import appStyles from '~/styles/app.css'
 import tailwindStyles from '~/styles/tailwind.css'
 
+import { CUSTOMER_DETAILS_QUERY } from './graphql/customer-account/CustomerDetailsQuery'
 import { configAspireIQ } from './lib/configAspireIQ'
 import { configChatJS } from './lib/configChatJS'
 import { configGTM } from './lib/configGTM'
@@ -94,6 +95,10 @@ export async function loader({ context }) {
   const publicStoreDomain = env.PUBLIC_STORE_DOMAIN
 
   const isLoggedInPromise = customerAccount.isLoggedIn()
+  const customerData = await context.customerAccount.query(
+    CUSTOMER_DETAILS_QUERY,
+  )
+
   const cartPromise = cart.get()
   // defer the footer query (below the fold)
   const footerPromise = storefront.query(FOOTER_QUERY, {
@@ -124,6 +129,7 @@ export async function loader({ context }) {
       footer: footerPromise,
       header: await headerPromise,
       isLoggedIn: isLoggedInPromise,
+      customerData,
       publicStoreDomain,
       externalScripts,
 
@@ -149,6 +155,8 @@ const newLayoutRoutes = ['mayhem-madness', 'rich-froning', 'gym-launch']
 export default function App() {
   const nonce = useNonce()
   const data = useLoaderData()
+  const customer = data.customerData?.data?.customer
+  console.log('🚀 - customer:', customer)
 
   // Quick PATCH
   const matches = useMatches()
