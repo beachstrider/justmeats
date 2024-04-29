@@ -112,9 +112,10 @@ export async function loader({ context }) {
   })
 
   const externalScripts = [
-    env.PUBLIC_KLAVIYO_SCRIPT,
-    env.PUBLIC_LOOX_SCRIPT,
-    env.PUBLIC_REAMAZE_SCRIPT,
+    'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=UMcvkS',
+    '//loox.io/widget/loox.js?shop=healthius-store.myshopify.com',
+    'https://cdn.reamaze.com/assets/reamaze.js',
+    'https://tools.luckyorange.com/core/lo.js?site-id=a781b4c9',
   ]
 
   return defer(
