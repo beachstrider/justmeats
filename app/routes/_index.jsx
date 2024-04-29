@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import OrderButton from 'app/components/OrderButton'
+import {Image} from '@shopify/hydrogen-react';
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -126,11 +127,11 @@ export default function Homepage() {
           prefetch="intent"
           to="/products/custom-bundle"
         >
-         <img
-            src={isMobile ? subscriptionBannerMobileImage : subscriptionBannerImage}
-            width="100%"
-            height={330}
-            alt=""
+        <Image
+          src={isMobile ? subscriptionBannerMobileImage : subscriptionBannerImage}
+          sizes="(min-width: 45em) 5vw, 10vw"
+          width={"100%"}
+          height={"330"}
         />
         </NavLink>
       </section>
@@ -251,7 +252,11 @@ export default function Homepage() {
         </div>
       </section>
       <section>
-        <img src={mosaicImage} width="100%" height={650} alt="" />
+        <Image
+          src={mosaicImage}
+          sizes="(min-width: 45em) 50vw, 100vw"
+          height="650"
+        />
       </section>
       <section className="w-full px-2 py-10 bg-white border md:px-20 ">
         <div>
@@ -264,7 +269,12 @@ export default function Homepage() {
       <section className="bg-[#eeeeee] flex justify-center items-center ">
         <div className="max-w-[1440px] w-[100%] flex justify-start gap-20 px-5 xl:px-10 sm:py-20 py-10 ">
           <div className="flex-col items-center hidden w-4/12 gap-10 ml-10 xl:flex">
-            <img className="" src={carneAsasaImage} width={450} height={340} alt="" />
+              <Image
+                src={carneAsasaImage}
+                sizes="(min-width: 45em) 50vw, 100vw"
+                width={450}
+                height={340}
+              />
             <div>
               <OrderButton />
             </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import { NavLink } from '@remix-run/react'
+import {Image} from '@shopify/hydrogen-react';
 
 const ProductsSlider = () => {
   var settings = {
@@ -53,52 +54,52 @@ const ProductsSlider = () => {
     <Slider {...settings}>
       <div>
         <NavLink end prefetch="intent" to="/products/custom-bundle">
-            <img className=""
-              src="https://cdn.shopify.com/s/files/1/0672/4776/7778/files/chicken_thigh.webp"
-              alt=""
-              width={300}
-              height={450}
-            />
-          </NavLink>{' '}
+          <Image
+            src={"https://cdn.shopify.com/s/files/1/0672/4776/7778/files/chicken_thigh.webp"}
+            sizes="(min-width: 45em) 50vw, 100vw"
+            width={300}
+            height={450}
+          />
+        </NavLink>{' '}
       </div>
       <div>
       <NavLink end prefetch="intent" to="/products/custom-bundle">
-      <img className=""
-              src="https://cdn.shopify.com/s/files/1/0672/4776/7778/files/pulled_pork.webp"
-              alt=""
-              width={300}
-              height={450}
-            />
-          </NavLink>
+        <Image
+          src={"https://cdn.shopify.com/s/files/1/0672/4776/7778/files/pulled_pork.webp"}
+          sizes="(min-width: 45em) 50vw, 100vw"
+          width={300}
+          height={450}
+        />
+      </NavLink>
       </div>
       <div>
       <NavLink end prefetch="intent" to="/products/custom-bundle">
-      <img className=""
-              src="https://cdn.shopify.com/s/files/1/0672/4776/7778/files/texas_brisket.webp"
-              alt=""
-              width={300}
-              height={450}
-            />
-          </NavLink>
+        <Image
+          src={"https://cdn.shopify.com/s/files/1/0672/4776/7778/files/texas_brisket.webp"}
+          sizes="(min-width: 45em) 50vw, 100vw"
+          width={300}
+          height={450}
+        />
+      </NavLink>
       </div>
       <div>
       <NavLink end prefetch="intent" to="/products/custom-bundle">
-      <img className=""
-              src="https://cdn.shopify.com/s/files/1/0672/4776/7778/files/chicken_breast.webp"
-              alt=""
-              width={300}
-              height={450}
-            />
-          </NavLink>
+        <Image
+          src={"https://cdn.shopify.com/s/files/1/0672/4776/7778/files/chicken_breast.webp"}
+          sizes="(min-width: 45em) 50vw, 100vw"
+          width={300}
+          height={450}
+        />
+      </NavLink>
       </div>
       <div>
       <NavLink end prefetch="intent" to="/products/custom-bundle">
-      <img className=""
-              src="https://cdn.shopify.com/s/files/1/0672/4776/7778/files/beef_tritip.webp"
-              alt=""
-              width={300}
-              height={450}
-            />
+        <Image
+          src={"https://cdn.shopify.com/s/files/1/0672/4776/7778/files/beef_tritip.webp"}
+          sizes="(min-width: 45em) 50vw, 100vw"
+          width={300}
+          height={450}
+        />
           </NavLink>
       </div>
     </Slider>
