@@ -56,6 +56,8 @@ const ProductsSlider = () => {
             <img className=""
               src="https://cdn.shopify.com/s/files/1/0672/4776/7778/files/chicken_thigh.webp"
               alt=""
+              width={300}
+              height={450}
             />
           </NavLink>{' '}
       </div>
@@ -64,6 +66,8 @@ const ProductsSlider = () => {
       <img className=""
               src="https://cdn.shopify.com/s/files/1/0672/4776/7778/files/pulled_pork.webp"
               alt=""
+              width={300}
+              height={450}
             />
           </NavLink>
       </div>
@@ -72,6 +76,8 @@ const ProductsSlider = () => {
       <img className=""
               src="https://cdn.shopify.com/s/files/1/0672/4776/7778/files/texas_brisket.webp"
               alt=""
+              width={300}
+              height={450}
             />
           </NavLink>
       </div>
@@ -80,6 +86,8 @@ const ProductsSlider = () => {
       <img className=""
               src="https://cdn.shopify.com/s/files/1/0672/4776/7778/files/chicken_breast.webp"
               alt=""
+              width={300}
+              height={450}
             />
           </NavLink>
       </div>
@@ -88,6 +96,8 @@ const ProductsSlider = () => {
       <img className=""
               src="https://cdn.shopify.com/s/files/1/0672/4776/7778/files/beef_tritip.webp"
               alt=""
+              width={300}
+              height={450}
             />
           </NavLink>
       </div>

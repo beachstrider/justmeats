@@ -19,7 +19,7 @@ export function Footer({ menu, shop }) {
           <div className="flex flex-wrap items-start justify-between gap-10 py-10 lg:flex-nowrap lg:gap-10 sm:py-20 ">
             <div className="flex items-center justify-center footerLogo sm:w-5/12 lg:w-1/4 ">
               <NavLink end prefetch="intent" to="/">
-                <img src={logo} className="object-contain pt-3" alt="" />
+                <img src={logo} width={300} height={220} className="object-contain pt-3" alt="" />
               </NavLink>
             </div>
             <div className="flex items-start justify-between w-full gap-10 navLinks sm:w-5/12 lg:w-1/4">

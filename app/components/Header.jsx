@@ -95,6 +95,8 @@ export function Header() {
             src={logo}
             className="object-cover h-16 w-30 sm:h-24"
             alt=""
+            width={120}
+            height={100}
             style={{ height: 'revert-layer' }}
           />
         </NavLink>
