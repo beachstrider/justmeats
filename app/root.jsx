@@ -44,6 +44,7 @@ import { CUSTOMER_DETAILS_QUERY } from './graphql/customer-account/CustomerDetai
 import { configAspireIQ } from './lib/configAspireIQ'
 import { configChatJS } from './lib/configChatJS'
 import { configGTM } from './lib/configGTM'
+import { configLuckyOrange } from './lib/configLuckyOrange'
 import { configMetaPixel } from './lib/configMetaPixel'
 import { configTwitterPixel } from './lib/configTwitterPixel'
 
@@ -95,9 +96,14 @@ export async function loader({ context }) {
   const publicStoreDomain = env.PUBLIC_STORE_DOMAIN
 
   const isLoggedInPromise = customerAccount.isLoggedIn()
-  const customerData = await context.customerAccount.query(
-    CUSTOMER_DETAILS_QUERY,
-  )
+
+  let customer = null
+  if (await isLoggedInPromise) {
+    const customerData = await context.customerAccount.query(
+      CUSTOMER_DETAILS_QUERY,
+    )
+    customer = customerData.data.customer
+  }
 
   const cartPromise = cart.get()
   // defer the footer query (below the fold)
@@ -126,10 +132,10 @@ export async function loader({ context }) {
   return defer(
     {
       cart: cartPromise,
+      customer,
       footer: footerPromise,
       header: await headerPromise,
       isLoggedIn: isLoggedInPromise,
-      customerData,
       publicStoreDomain,
       externalScripts,
 
@@ -155,8 +161,6 @@ const newLayoutRoutes = ['mayhem-madness', 'rich-froning', 'gym-launch']
 export default function App() {
   const nonce = useNonce()
   const data = useLoaderData()
-  const customer = data.customerData?.data?.customer
-  console.log('🚀 - customer:', customer)
 
   // Quick PATCH
   const matches = useMatches()
@@ -237,6 +241,7 @@ export default function App() {
     configMetaPixel()
     configGTM()
     configAspireIQ()
+    configLuckyOrange(data.customer)
   }, [])
 
   const setCartSellingPlan = (value) => {
