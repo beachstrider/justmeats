@@ -57,8 +57,8 @@ export const ContactForm = ({ formName }) => {
       )}
       <div className="w-full">
         <input
-          {...register('name', { required: 'Name is required' })}
-          placeholder="Enter your name"
+          {...register('name', { required: 'Full Name is required' })}
+          placeholder="Enter your full name"
           className={
             formName === 'first'
               ? 'bg-[#DDDDDD] text-[#222] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
@@ -102,6 +102,29 @@ export const ContactForm = ({ formName }) => {
       </div>
       <div className="w-full">
         <input
+          {...register('gym_name', { required: 'Gym name is required' })}
+          placeholder="Enter your Gym name"
+          type="text"
+          className={
+            formName === 'first'
+              ? 'bg-[#DDDDDD] text-[#222]  rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
+              : 'bg-[#efeeed] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
+          }
+        />
+        {errors.gym_name && (
+          <p
+            className={
+              formName === 'first'
+                ? 'text-white uppercase text-[12px]'
+                : 'text-black uppercase text-[12px]'
+            }
+          >
+            {errors.gym_name.message}
+          </p>
+        )}
+      </div>
+      <div className="w-full">
+        <input
           {...register('phone', { required: 'Phone number is required' })}
           placeholder="Enter your phone"
           type="tel"
@@ -125,15 +148,15 @@ export const ContactForm = ({ formName }) => {
       </div>
       <div className="w-full">
         <textarea
-          {...register('message')}
-          placeholder="Enter your message"
+          {...register('gym_address', { required: 'Gym address is required' })}
+          placeholder="Enter your Gym address"
           className={
             formName === 'first'
               ? 'bg-[#DDDDDD] text-[#222] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
               : 'bg-[#efeeed] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
           }
         />
-        {errors.message && (
+        {errors.gym_address && (
           <p
             className={
               formName === 'first'
@@ -141,7 +164,7 @@ export const ContactForm = ({ formName }) => {
                 : 'text-black uppercase text-[12px]'
             }
           >
-            {errors.message.message}
+            {errors.gym_address.message}
           </p>
         )}
       </div>
