@@ -61,7 +61,10 @@ export const loader = async ({ request, context }) =>
     const bundleProductId = getPureId(bundleProduct.id, 'Product')
     // Filter only bundle subscriptions
     const subscriptions = allSubscriptions.filter(
-      (el) => el.external_product_id.ecommerce === bundleProductId,
+      (el) =>
+        el.external_product_id.ecommerce === bundleProductId ||
+        // TODO: This should be deleted after removing the old fresh bundle subscription
+        el.external_product_id.ecommerce === '8619519803673',
     )
 
     return json({
