@@ -70,7 +70,7 @@ export const configGTM = () => {
     }
   })
 
-  window.addEventListener('storage', (event) => {
+  window.document.addEventListener('storage', (event) => {
     if (event.key === 'rmz.chat.minimized') {
       if (!window.localStorage.getItem('rmz.chat.minimized')) {
         window.dataLayer.push({ event: 'Shoutbox Trigger Clicked' })
