@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 
 import OrderButton from 'app/components/OrderButton'
 import {Image} from '@shopify/hydrogen-react';
-import Video from './Video'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -85,14 +84,18 @@ export default function Homepage() {
       </div>
       <section className="relative flex items-center justify-center overflow-hidden heroSection">
         <div className="bg-video absolute top-0 left-0 w-[100%] h-[100%]">
-          <Video
-            url={video1}
-            playsInline
+          <video
+            className="object-cover w-full h-full"
             autoPlay
-            loop
             muted
-            preload={"auto"}
-          />
+            playsInline
+            loop
+            preload="auto"
+            loading="lazy"
+          >
+            <source src={video1} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
         <div className="flex flex-col z-10 justify-center items-center p-5 gap-6 w-max-[1440px] before:content-[''] before:absolute before:top-[0] before:left-[0] before:w-full before:h-full before:bg-[rgba(0,_0,_0,_0.4)]">
           <div className="flex flex-col justify-center items-center gap-4 py-16 sm:py-44 mt-[-30px] w-full sm:w-8/12 z-20">
