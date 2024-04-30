@@ -39,7 +39,7 @@ const Easydelicious = () => {
           <div className="flex items-center justify-center">
             <Image
                 src={"https://cdn.shopify.com/s/files/1/0555/1751/1961/files/Group_4657.png?v=1697487376"}
-                sizes="(min-width: 45em) 5vw, 10vw"
+                sizes="(min-width: 45em) 50vw, 100vw"
                 className="w-[212px] h-auto"
                 width={"165"}
                 height={"165"}

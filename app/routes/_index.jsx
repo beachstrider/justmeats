@@ -129,7 +129,7 @@ export default function Homepage() {
         >
         <Image
           src={isMobile ? subscriptionBannerMobileImage : subscriptionBannerImage}
-          sizes="(min-width: 45em) 5vw, 10vw"
+          sizes="(min-width: 45em) 50vw, 100vw"
           width={"100%"}
           height={"330"}
         />
@@ -174,12 +174,13 @@ export default function Homepage() {
             <div className="md:grid hidden md:grid-cols-3 gap-[16px] xl:gap-[30px]">
               {tutorialImages.map((item, index) => {
                 return (
-                  <img
-                    src={item}
-                    width="274px"
-                    height="447"
-                    key={index}
+                  <Image
                     className="w-full sm:w-[274px]"
+                    src={item}
+                    key={index}
+                    sizes="(min-width: 45em) 50vw, 100vw"
+                    width={"274px"}
+                    height={"447"}
                   />
                 )
               })}
@@ -203,6 +204,14 @@ export default function Homepage() {
                       src={item}
                       key={index}
                       className="object-cover w-full h-full"
+                    />
+                    <Image
+                      className="object-cover w-full h-full"
+                      src={item}
+                      key={index}
+                      sizes="(min-width: 45em) 50vw, 100vw"
+                      width={"100%"}
+                      height={""}
                     />
                   </div>
                 </SwiperSlide>
