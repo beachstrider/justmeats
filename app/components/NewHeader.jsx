@@ -50,7 +50,7 @@ export function Header() {
     }
 
     return (
-      <li className="navLink py-4 px-5 hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-medium	text-base ">
+      <li className={`navLink py-4 px-5 hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-medium	 ${isSpecialsPage ? 'text-[14px]' :'text-base' }`}>
         <NavLink
           end
           prefetch="intent"
@@ -108,7 +108,7 @@ export function Header() {
     return !isMobile ? (
       <header className="container relative h-[88px] sm:h-[120px] flex items-center justify-between py-4">
         <div className="w-full flex items-center justify-between gap-10 navBar">
-          <ul className={`hidden navLinks lg:flex w-full max-w-[40%] custom-padding-header ${isSpecialsPage ? '' : 'invisible'}`}>
+          <ul className={`hidden navLinks lg:flex w-full  max-w-[40%] custom-padding-header ${isSpecialsPage && 'font-dunbar text-[14px]' } ${isSpecialsPage ? '' : 'invisible'}`}>
             {HoverUnderNavLink('/products/custom-bundle', 'Menu')}
             {HoverUnderNavLink('/about', 'About Us')}
             {HoverUnderNavLink('/recipes', 'Recipes')}
