@@ -94,7 +94,7 @@ export default function Homepage() {
             loading="lazy"
           >
             <source src={video1} type="video/mp4" />
-            Your browser does not support the video tag.
+            Your browser does not support the video tag. 
           </video>
         </div>
         <div className="flex flex-col z-10 justify-center items-center p-5 gap-6 w-max-[1440px] before:content-[''] before:absolute before:top-[0] before:left-[0] before:w-full before:h-full before:bg-[rgba(0,_0,_0,_0.4)]">
