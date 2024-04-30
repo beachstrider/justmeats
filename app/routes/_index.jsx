@@ -200,11 +200,6 @@ export default function Homepage() {
               {tutorialImages.map((item, index) => (
                 <SwiperSlide key={index}>
                   <div className="relative w-full overflow-hidden">
-                    <img
-                      src={item}
-                      key={index}
-                      className="object-cover w-full h-full"
-                    />
                     <Image
                       className="object-cover w-full h-full"
                       src={item}
