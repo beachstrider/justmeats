@@ -21,7 +21,7 @@ export const MobileCart = () => {
       <Button
         onClick={() => setCartOpen(true)}
         className={cn(
-          'lg:hidden fixed bottom-[12px] left-[50%] transform translate-x-[-50%] w-[96%] rounded-xl py-[12px] text-white font-semibold',
+          'lg:hidden fixed bottom-[12px] left-[50%] z-50 transform translate-x-[-50%] w-[96%] rounded-xl py-[12px] text-white font-semibold',
           isCheckoutable ? 'bg-[#425b34]' : 'bg-[#AAAAAA]',
         )}
       >
@@ -68,7 +68,7 @@ export const MobileCart = () => {
             onClick={handleSubmit}
             className={cn(
               isCartPage && isCheckoutable ? 'btn-checkout' : '',
-              'rounded-xl text-white font-semibold text-center py-[12px]',
+              'rounded-xl text-white font-semibold text-center py-[12px] z-50',
               isCheckoutable ? 'bg-[#425b34]' : 'bg-[#AAAAAA]',
             )}
           >
