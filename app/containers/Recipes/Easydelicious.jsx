@@ -1,4 +1,5 @@
 import React from 'react'
+import {Image} from '@shopify/hydrogen-react';
 
 import { NavLink } from '@remix-run/react'
 
@@ -36,11 +37,13 @@ const Easydelicious = () => {
             </NavLink>
           </div>
           <div className="flex items-center justify-center">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0555/1751/1961/files/Group_4657.png?v=1697487376"
-              className="w-[212px] h-auto"
-              alt=""
-            />
+            <Image
+                src={"https://cdn.shopify.com/s/files/1/0555/1751/1961/files/Group_4657.png?v=1697487376"}
+                sizes="(min-width: 45em) 50vw, 100vw"
+                className="w-[212px] h-auto"
+                width={"165"}
+                height={"165"}
+              />
           </div>
         </div>
         <div className="my-8 bg-[#fff] text-[#141517] p-5">
@@ -78,6 +81,10 @@ const Easydelicious = () => {
                 videoId="videoId1"
                 url="https://cdn.shopify.com/videos/c/o/v/ee592ed8c3f44de6a78ad3fd619433b0.mp4"
                 poster="https://cdn.shopify.com/s/files/1/0672/4776/7778/files/poster-1.png?v=1710347717"
+                playsInline
+                loop
+                preload={"auto"}
+                loading={"eager"}
               />
             </div>
           </div>
