@@ -28,6 +28,7 @@ export default async function handleRequest(
     styleSrc: ['*', 'data:'],
     scriptSrc: ['*', "'sha256-SsImNIm56IVCqDixAHT0XOpBWZnoqAi3UiCYQ8QbXM8='"],
     fontSrc: ['*', 'data:'],
+    workerSrc: ['blob:'],
   })
 
   const body = await renderToReadableStream(

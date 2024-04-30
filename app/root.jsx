@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import { ClientOnly } from 'remix-utils/client-only'
 import slickCarouselTheme from 'slick-carousel/slick/slick-theme.css'
 import slickCarousel from 'slick-carousel/slick/slick.css'
 import sliderStyles from 'swiper/css'
@@ -231,10 +232,11 @@ export default function App() {
       '//loox.io/widget/loox.js?shop=healthius-store.myshopify.com',
     )
     addScriptToHead('https://cdn.reamaze.com/assets/reamaze.js')
-    addScriptToHead(
-      'https://tools.luckyorange.com/core/lo.js?site-id=a781b4c9',
-      () => configLuckyOrange(data.customer),
-    )
+    // addScriptToHead(
+    //   'https://tools.luckyorange.com/core/lo.js?site-id=a781b4c9',
+    //   () => configLuckyOrange(data.customer),
+    // )
+    // configLuckyOrange(data.customer)
 
     configChatJS()
     configTwitterPixel()
@@ -305,6 +307,10 @@ export default function App() {
         <Meta />
         <Links />
         <MetaNoScript />
+        <script
+          src="https://tools.luckyorange.com/core/lo.js?site-id=a781b4c9"
+          async
+        ></script>
       </head>
       <body>
         <GTMNoScript />
@@ -350,6 +356,8 @@ export default function App() {
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
         <LiveReload nonce={nonce} />
+
+        <ClientOnly>{() => <script>console.log(`asdf`)</script>}</ClientOnly>
       </body>
     </html>
   )
