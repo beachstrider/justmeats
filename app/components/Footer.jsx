@@ -23,8 +23,8 @@ export function Footer({ menu, shop }) {
                   src={logo}
                   className="object-contain pt-3"
                   sizes="(min-width: 45em) 50vw, 100vw"
-                  width={300}
-                  height={220}
+                  width={280}
+                  height={210}
                 />
               </NavLink>
             </div>
