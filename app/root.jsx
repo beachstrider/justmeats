@@ -122,13 +122,6 @@ export async function loader({ context }) {
     },
   })
 
-  const externalScripts = [
-    'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=UMcvkS',
-    '//loox.io/widget/loox.js?shop=healthius-store.myshopify.com',
-    'https://cdn.reamaze.com/assets/reamaze.js',
-    'https://tools.luckyorange.com/core/lo.js?site-id=a781b4c9',
-  ]
-
   return defer(
     {
       cart: cartPromise,
@@ -137,7 +130,6 @@ export async function loader({ context }) {
       header: await headerPromise,
       isLoggedIn: isLoggedInPromise,
       publicStoreDomain,
-      externalScripts,
 
       shop: getShopAnalytics({
         storefront,
@@ -232,16 +224,23 @@ export default function App() {
     }
 
     // HACK: for react hydration error due to direct external script tag imports in head
-    for (const script of data.externalScripts) {
-      addScriptToHead(script)
-    }
+    addScriptToHead(
+      'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=UMcvkS',
+    )
+    addScriptToHead(
+      '//loox.io/widget/loox.js?shop=healthius-store.myshopify.com',
+    )
+    addScriptToHead('https://cdn.reamaze.com/assets/reamaze.js')
+    addScriptToHead(
+      'https://tools.luckyorange.com/core/lo.js?site-id=a781b4c9',
+      () => configLuckyOrange(data.customer),
+    )
 
     configChatJS()
     configTwitterPixel()
     configMetaPixel()
     configGTM()
     configAspireIQ()
-    configLuckyOrange(data.customer)
   }, [])
 
   const setCartSellingPlan = (value) => {

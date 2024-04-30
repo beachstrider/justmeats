@@ -1,19 +1,20 @@
 export const configLuckyOrange = (customer) => {
-  if (customer) {
-    const email = customer?.emailAddress?.emailAddress
-    const name = `${customer?.firstName} ${customer?.lastName}`
-    console.log('==', name, window.LOQ)
-    window.LOQ = window.LOQ || []
-    window.LOQ.push([
-      'ready',
-      function (LO) {
-        LO.$internal.ready('visitor').then(function () {
-          LO.visitor.identify({
-            email,
-            name,
-          })
-        })
-      },
-    ])
-  }
+  const email = customer?.emailAddress?.emailAddress
+  const name = `${customer?.firstName} ${customer?.lastName}`
+
+  window.LOQ = window.LOQ || []
+  window.LOQ.push([
+    'ready',
+    async (LO) => {
+      // Track an event
+      console.log('==', name)
+
+      // Or, identify a visitor
+      await LO.$internal.ready('visitor')
+      LO.visitor.identify({
+        email,
+        name,
+      })
+    },
+  ])
 }
