@@ -125,11 +125,11 @@ export const SubscriptionEditLayout = ({ children }) => {
         {children}
         <div className="my-5">
           {subscription.status === 'active' && (
-            <div className="mb-10 z-30">
+            <div className="mb-10">
               <Button
                 loading={canceling}
                 onClick={handleCancel}
-                className="inline-block py-[5px] px-[30px] border-2 z-0 border-[#425B34] border-solid bg-white"
+                className="static block py-[5px] px-[30px] border-2 border-[#425B34] border-solid bg-white"
               >
                 Cancel Subscription
               </Button>
