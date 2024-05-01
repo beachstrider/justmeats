@@ -15,6 +15,7 @@ export const MobileCart = () => {
   const [cartOpen, setCartOpen] = useState(false)
 
   const isCheckoutable = costForOneTime >= 75
+ 
 
   return (
     <div className="mobile-cart">
@@ -47,7 +48,7 @@ export const MobileCart = () => {
       >
         <div>
           <div className="px-[20px] py-[5px] flex justify-between bg-[#eeeded] font-bold">
-            <div className="flex items-center">Add $75 to Unlock Order</div>
+            <div className={cn('flex items-center',!isCheckoutable ? '' :'invisible',)}>Add $75 to Unlock Order</div>
             <Button
               onClick={() => setCartOpen(false)}
               className="rounded-full px-[10px] py-[2px] border-solid border-[2px] border-[#425b34]"
