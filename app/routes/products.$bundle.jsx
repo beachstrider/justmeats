@@ -28,10 +28,13 @@ export async function loader({ request, context }) {
 }
 
 export async function action({ request, context }) {
-  const _cart = context.cart
+  const cart = context.cart
   const discountCode = context.session.get('discountCode')
 
-  const { collection, bundleProduct } = await getBundle({ request, context })
+  const { collection, bundleProduct, freeProduct } = await getBundle({
+    request,
+    context,
+  })
 
   const form = await request.formData()
   const data = JSON.parse(form.get('body'))
@@ -102,15 +105,26 @@ export async function action({ request, context }) {
     }))
   }
 
-  const { cart } = await _cart.addLines(cartData)
+  let cartResult
+  let checkoutUrl
 
-  _cart.setCartId(cart.id)
+  cartResult = await cart.addLines([
+    { merchandiseId: freeProduct.variants.nodes[0].id },
+  ])
+  cart.setCartId(cartResult.cart.id)
+  checkoutUrl = cartResult.cart.checkoutUrl ?? checkoutUrl
+
+  cartResult = await cart.addLines(cartData)
+  cart.setCartId(cartResult.cart.id)
+  checkoutUrl = cartResult.cart.checkoutUrl ?? checkoutUrl
 
   if (discountCode) {
-    await _cart.updateDiscountCodes([discountCode], { cartId: cart.id })
+    cartResult = await cart.updateDiscountCodes([discountCode])
+    cart.setCartId(cartResult.cart.id)
+    checkoutUrl = cartResult.cart.checkoutUrl ?? checkoutUrl
   }
 
-  return json({ cart, msg: 'ok' })
+  return json({ checkoutUrl, msg: 'ok' })
 }
 
 export default function Product() {
