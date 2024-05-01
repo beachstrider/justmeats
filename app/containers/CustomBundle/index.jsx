@@ -134,6 +134,14 @@ export const CustomBundle = () => {
       )
 
       if (res.msg === 'ok') {
+        // HACK: this makes a checkout page stay on the same site - justmeats
+        if (res.checkoutUrl.includes('healthius-store.myshopify.com')) {
+          res.checkoutUrl = res.checkoutUrl.replace(
+            'healthius-store.myshopify.com/cart/c/',
+            'justmeats.com/checkouts/cn/',
+          )
+        }
+
         location.href = res.checkoutUrl
       }
     } else {
