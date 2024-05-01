@@ -38,7 +38,7 @@ export function CartLineItem({ line, lineType = 'paid' }) {
     <div
       className={cn(
         'rounded-t-xl sm:border-none border-solid overflow-hidden gap-4 relative',
-        lineType === 'bonus' ? 'sm:hidden block' : 'sm:flex block',
+        lineType === 'bonus' ? 'lg:hidden sm:flex block' : 'sm:flex block',
         lineType === 'free' ? 'border-[#1b7084]' : 'border-[#425b34]',
         lineType === 'locked'
           ? 'border-[#EEEDED1b7084] lg:hidden'
@@ -50,16 +50,18 @@ export function CartLineItem({ line, lineType = 'paid' }) {
         src={desktopImage}
         height={100}
         loading="lazy"
-        className={`hidden sm:block w-full sm:w-[72px] ${
-          lineType === 'locked' ? 'opacity-[.22]' : 'opacity-[1]'
+        className={`w-full sm:w-[72px] ${
+          lineType === 'locked' ? 'opacity-[.22]' : 'opacity-[1]',
+          lineType === 'bonus' ? 'hidden lg:block' : 'hidden sm:block'
         }`}
       />
       <img
         src={mobileImage}
         height={100}
         loading="lazy"
-        className={`block sm:hidden w-full h-[169px] mb-3 sm:w-[72px] ${
-          lineType === 'locked' ? 'opacity-[.22]' : 'opacity-[1] object-contain'
+        className={`w-full h-[169px] mb-3 sm:w-[72px] ${
+          lineType === 'locked' ? 'opacity-[.22]' : 'opacity-[1] object-contain',
+          lineType === 'bonus' ? 'block lg:hidden sm:h-auto' : 'block sm:hidden'
         }`}
       />
 
