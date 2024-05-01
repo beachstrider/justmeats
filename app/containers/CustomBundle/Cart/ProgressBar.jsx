@@ -34,20 +34,25 @@ export function ProgressBar() {
           </Milestone>
         </div>
       </div>
-      <div className="relative justify-end hidden gap-1 px-2 sm:flex flex-column">
-        <p className="flex flex-col mr-3 text-base text-center">
-          <span className="text-[16px] uppercase leading-normal">$75 </span>
-          <span className="text-[11px] uppercase leading-normal">
-            Unlock Order{' '}
-          </span>
-        </p>
-        <p className="relative flex flex-col mr-5 text-base text-center">
-          <span className="text-[16px] leading-normal">$125 </span>
-          <span className="text-[11px] uppercase leading-normal">
-            Free Meat{' '}
-          </span>
-          <span className="text-[11px] leading-normal">(UNLOCKED AT $125)</span>
-        </p>
+      <div className="relative sm:block mx-8 my-4 hidden sm:mx-10">
+        <div className="absolute text-[12px] translate-x-[-50%] top-[100%] left-[50%]">
+          <p className="flex flex-col mr-3 text-base text-center">
+            <span className="text-[16px] uppercase leading-normal">$75 </span>
+            <span className="text-[11px] uppercase leading-normal">
+              Unlock Order{' '}
+            </span>
+          </p>
+        </div>
+        <div className="absolute text-[12px] translate-x-[-50%] top-[100%] left-[85%] min-w-[130px]">
+          <p className="relative flex flex-col mr-5 text-base text-center">
+            <span className="text-[16px] leading-normal">$125 </span>
+            <span className="text-[11px] uppercase leading-normal">
+              Free Meat{' '}
+            </span>
+            <span className="text-[11px] leading-normal">(UNLOCKED AT $125)</span>
+          </p>
+        </div>
+
       </div>
       <div className="relative block mx-8 my-4 sm:hidden sm:mx-10">
         <div className="absolute text-[12px] translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%]">
