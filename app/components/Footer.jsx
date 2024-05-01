@@ -1,5 +1,5 @@
 import { NavLink, useMatches } from '@remix-run/react'
-
+import {Image} from '@shopify/hydrogen-react';
 import logo from '~/assets/footer_logo.webp'
 import { useRootLoaderData } from '~/root'
 
@@ -19,7 +19,13 @@ export function Footer({ menu, shop }) {
           <div className="flex flex-wrap items-start justify-between gap-10 py-10 lg:flex-nowrap lg:gap-10 sm:py-20 ">
             <div className="flex items-center justify-center footerLogo sm:w-5/12 lg:w-1/4 ">
               <NavLink end prefetch="intent" to="/">
-                <img src={logo} className="object-contain pt-3" alt="" />
+                <Image
+                  src={logo}
+                  className="object-contain pt-3"
+                  sizes="(min-width: 45em) 50vw, 100vw"
+                  width={280}
+                  height={210}
+                />
               </NavLink>
             </div>
             <div className="flex items-start justify-between w-full gap-10 navLinks sm:w-5/12 lg:w-1/4">

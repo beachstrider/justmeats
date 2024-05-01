@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react'
-
+import {Image} from '@shopify/hydrogen-react';
 import { NavLink, useMatches } from '@remix-run/react'
 
 import logo from '~/assets/logo.png'
@@ -91,12 +91,14 @@ export function Header() {
     return (
       <div className="container flex items-center justify-between py-4 mainheader">
         <NavLink end prefetch="intent" to="/">
-          <img
-            src={logo}
-            className="object-cover h-16 w-30 sm:h-24"
-            alt=""
-            style={{ height: 'revert-layer' }}
-          />
+        <Image
+          src={logo}
+          className="object-cover h-16 w-30 sm:h-24"
+          sizes="(min-width: 45em) 50vw, 100vw"
+          width={120}
+          height={100}
+          style={{ height: 'revert-layer' }}
+        />
         </NavLink>
         <div className="flex items-center justify-between gap-10 navBar">
           <ul className="hidden navLinks lg:flex">

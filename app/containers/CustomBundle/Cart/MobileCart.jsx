@@ -68,7 +68,7 @@ export const MobileCart = () => {
             onClick={handleSubmit}
             className={cn(
               isCartPage && isCheckoutable ? 'btn-checkout' : '',
-              'rounded-xl text-white font-semibold text-center py-[12px]',
+              'rounded-xl text-white font-semibold text-center py-[12px] z-50',
               isCheckoutable ? 'bg-[#425b34]' : 'bg-[#AAAAAA]',
             )}
           >

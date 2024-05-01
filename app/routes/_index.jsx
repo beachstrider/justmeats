@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import OrderButton from 'app/components/OrderButton'
+import {Image} from '@shopify/hydrogen-react';
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -15,8 +16,8 @@ import tutorialImage2 from '~/assets/images/Hannah_Tall2.webp'
 import tutorialImage3 from '~/assets/images/Hannah_Zoomed3.webp'
 import tutorialImage1 from '~/assets/images/Hannah_Zoomed.webp'
 import mosaicImage from '~/assets/images/Mosaic.webp'
-import subscriptionBannerImage from '~/assets/images/april_banner_Desktop.jpg'
-import subscriptionBannerMobileImage from '~/assets/images/april_banner_Mobile.jpg'
+import subscriptionBannerImage from '~/assets/images/april_banner_Desktop.webp'
+import subscriptionBannerMobileImage from '~/assets/images/april_banner_Mobile.webp'
 import video1 from '~/assets/videos/32c027bc585340199844575c5e85cf42.mp4'
 import FaqAccordion from '~/components/FaqAccordion'
 import ProductsSlider from '~/components/ProductsSlider'
@@ -58,6 +59,22 @@ export default function Homepage() {
     },
   }
 
+  const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 540);
+        };
+
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
   return (
     <div className="relative home">
       <div className=" p-[20px] xl:hidden hidden md:block text-center bg-[#c5972d] ">
@@ -73,6 +90,8 @@ export default function Homepage() {
             muted
             playsInline
             loop
+            preload="auto"
+            loading="lazy"
           >
             <source src={video1} type="video/mp4" />
             Your browser does not support the video tag.
@@ -108,18 +127,12 @@ export default function Homepage() {
           prefetch="intent"
           to="/products/custom-bundle"
         >
-          <img
-            src={subscriptionBannerImage}
-            className="hidden sm:block"
-            width="100%"
-            alt=""
-          />
-          <img
-            src={subscriptionBannerMobileImage}
-            className="block sm:hidden"
-            width="100%"
-            alt=""
-          />
+        <Image
+          src={isMobile ? subscriptionBannerMobileImage : subscriptionBannerImage}
+          sizes="(min-width: 45em) 50vw, 100vw"
+          width={"100%"}
+          height={"330"}
+        />
         </NavLink>
       </section>
 
@@ -161,12 +174,13 @@ export default function Homepage() {
             <div className="md:grid hidden md:grid-cols-3 gap-[16px] xl:gap-[30px]">
               {tutorialImages.map((item, index) => {
                 return (
-                  <img
-                    src={item}
-                    width="274px"
-                    height="447"
-                    key={index}
+                  <Image
                     className="w-full sm:w-[274px]"
+                    src={item}
+                    key={index}
+                    sizes="(min-width: 45em) 50vw, 100vw"
+                    width={"274px"}
+                    height={"447"}
                   />
                 )
               })}
@@ -186,10 +200,13 @@ export default function Homepage() {
               {tutorialImages.map((item, index) => (
                 <SwiperSlide key={index}>
                   <div className="relative w-full overflow-hidden">
-                    <img
+                    <Image
+                      className="object-cover w-full h-full"
                       src={item}
                       key={index}
-                      className="object-cover w-full h-full"
+                      sizes="(min-width: 45em) 50vw, 100vw"
+                      width={"100%"}
+                      height={""}
                     />
                   </div>
                 </SwiperSlide>
@@ -239,7 +256,11 @@ export default function Homepage() {
         </div>
       </section>
       <section>
-        <img src={mosaicImage} width="100%" alt="" />
+        <Image
+          src={mosaicImage}
+          sizes="(min-width: 45em) 50vw, 100vw"
+          height="650"
+        />
       </section>
       <section className="w-full px-2 py-10 bg-white border md:px-20 ">
         <div>
@@ -252,7 +273,12 @@ export default function Homepage() {
       <section className="bg-[#eeeeee] flex justify-center items-center ">
         <div className="max-w-[1440px] w-[100%] flex justify-start gap-20 px-5 xl:px-10 sm:py-20 py-10 ">
           <div className="flex-col items-center hidden w-4/12 gap-10 ml-10 xl:flex">
-            <img className="" src={carneAsasaImage} alt="" />
+              <Image
+                src={carneAsasaImage}
+                sizes="(min-width: 45em) 50vw, 100vw"
+                width={450}
+                height={340}
+              />
             <div>
               <OrderButton />
             </div>
