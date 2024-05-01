@@ -134,7 +134,7 @@ export const CustomBundle = () => {
       )
 
       if (res.msg === 'ok') {
-        location.href = res.cart.checkoutUrl
+        location.href = res.checkoutUrl
       }
     } else {
       const res = await submit(
