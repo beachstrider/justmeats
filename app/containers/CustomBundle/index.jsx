@@ -141,7 +141,7 @@ export const CustomBundle = () => {
             'justmeats.com/checkouts/cn/',
           )
         }
-        console.log('==', res.checkoutUrl)
+
         location.href = res.checkoutUrl
       }
     } else {
