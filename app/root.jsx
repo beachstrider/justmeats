@@ -311,6 +311,7 @@ export default function App() {
           src="https://tools.luckyorange.com/core/lo.js?site-id=a781b4c9"
           async
         ></script>
+        <script src="/test.js" async></script>
       </head>
       <body>
         <GTMNoScript />
