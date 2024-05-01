@@ -25,10 +25,11 @@ export function formatPriceWithRoundOf(price) {
   }
 }
 
-export function addScriptToHead(src) {
+export function addScriptToHead(src, callback = () => false) {
   const script = document.createElement('script')
   script.async = true
   script.src = src
+  script.onload = callback
   document.head.appendChild(script)
 }
 
