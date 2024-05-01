@@ -232,11 +232,10 @@ export default function App() {
       '//loox.io/widget/loox.js?shop=healthius-store.myshopify.com',
     )
     addScriptToHead('https://cdn.reamaze.com/assets/reamaze.js')
-    // addScriptToHead(
-    //   'https://tools.luckyorange.com/core/lo.js?site-id=a781b4c9',
-    //   () => configLuckyOrange(data.customer),
-    // )
-    // configLuckyOrange(data.customer)
+    addScriptToHead(
+      'https://tools.luckyorange.com/core/lo.js?site-id=a781b4c9',
+      () => configLuckyOrange(data.customer),
+    )
 
     configChatJS()
     configTwitterPixel()
@@ -307,11 +306,6 @@ export default function App() {
         <Meta />
         <Links />
         <MetaNoScript />
-        <script
-          src="https://tools.luckyorange.com/core/lo.js?site-id=a781b4c9"
-          async
-        ></script>
-        <script src="/test.js" async></script>
       </head>
       <body>
         <GTMNoScript />

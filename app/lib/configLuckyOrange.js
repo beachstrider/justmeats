@@ -1,13 +1,13 @@
 export const configLuckyOrange = (customer) => {
-  const email = customer?.emailAddress?.emailAddress
-  const name = `${customer?.firstName} ${customer?.lastName}`
+  const customerEmail = customer?.emailAddress?.emailAddress
+  const customerName = `${customer?.firstName} ${customer?.lastName}`
 
-  console.log('LO started')
-  window.LO.$internal.ready('visitor').then(() => {
-    window.LO.visitor.identify({
-      email,
-      name,
+  if (customerEmail && customerName) {
+    window.LO.$internal.ready('visitor').then(() => {
+      window.LO.visitor.identify({
+        Email: customerEmail,
+        Name: customerName,
+      })
     })
-    console.log('LO ended')
-  })
+  }
 }
