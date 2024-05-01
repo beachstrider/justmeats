@@ -3,12 +3,13 @@ export const configLuckyOrange = (customer) => {
   const customerName = `${customer?.firstName} ${customer?.lastName}`
 
   if (customerEmail && customerName) {
+    console.log('LO started')
     window.LO.$internal.ready('visitor').then(() => {
       window.LO.visitor.identify({
         Email: customerEmail,
         Name: customerName,
       })
-      console.debug(customerName, 'joined')
+      console.log('LO ended', customerEmail)
     })
   }
 }
