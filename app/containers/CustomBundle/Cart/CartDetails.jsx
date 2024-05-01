@@ -13,7 +13,7 @@ export function CartDetails({ layout, onCheckout }) {
   const cartHasItems = selectedProducts.length > 0
 
   return (
-    <div className="flex flex-col justify-between cart-details">
+    <div className="flex flex-col justify-between cart-details mt-[100px]">
       <CartLines />
       {cartHasItems && (
         <>
