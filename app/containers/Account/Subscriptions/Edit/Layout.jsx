@@ -91,16 +91,16 @@ export const SubscriptionEditLayout = ({ children }) => {
   return (
     <div className="w-full flex flex-col justify-center items-center bg-[#eeeeee]">
       <div className="container mb-10 custom-collection-wrap">
-        <div className="relative flex sm:flex-row flex-col sm:gap-0 gap-2 sm:justify-center sm:items-center items-start mt-[36px] mb-[30px]">
+        <div className="relative flex sm:flex-row flex-col lg:gap-x-2 gap-y-2 sm:justify-start sm:items-center items-start mt-[36px] mb-[30px] flex-wrap gap-x-[35px]">
           <NavLink
             end
             prefetch="intent"
-            className="sm:absolute sm:left-0 py-[5px] px-[30px] border-2 border-[#425B34] border-solid bg-white"
+            className="sm:left-0 py-[5px] px-[30px] border-2 border-[#425B34] border-solid bg-white"
             to="/account/subscriptions"
           >
             Back to Account
           </NavLink>
-          <h3 className="text-2xl font-bold sm:text-4xl">
+          <h3 className="text-2xl font-bold sm:text-4xl static [transform:inherit] lg:absolute lg:left-2/4 top-2/4 lg:-translate-x-1/2 lg:-translate-y-1/2">
             Customize Your Order
           </h3>
         </div>
@@ -110,14 +110,14 @@ export const SubscriptionEditLayout = ({ children }) => {
           <Button
             loading={processing}
             onClick={handleProcess}
-            className="py-[5px] px-[30px] border-2 border-[#425B34] border-solid bg-white"
+            className="py-[5px] px-[15px] sm:px-[30px] border-2 border-[#425B34] border-solid bg-white sm:w-auto w-full"
           >
             Process Now
           </Button>
           <Button
             loading={delaying}
             onClick={handleDelay}
-            className="py-[5px] px-[30px] border-2 border-[#425B34] border-solid bg-white"
+            className="py-[5px] px-[15px] sm:px-[30px] border-2 border-[#425B34] border-solid bg-white sm:w-auto w-full"
           >
             1 Week Delay
           </Button>
