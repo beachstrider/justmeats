@@ -21,7 +21,6 @@ import {
 } from '@remix-run/react'
 import {
   UNSTABLE_Analytics as Analytics,
-  Script,
   getShopAnalytics,
   useNonce,
 } from '@shopify/hydrogen'
@@ -40,9 +39,11 @@ import { addScriptToHead } from '~/lib/utils'
 import appStyles from '~/styles/app.css'
 import tailwindStyles from '~/styles/tailwind.css'
 
+import { CUSTOMER_DETAILS_QUERY } from './graphql/customer-account/CustomerDetailsQuery'
 import { configAspireIQ } from './lib/configAspireIQ'
 import { configChatJS } from './lib/configChatJS'
 import { configGTM } from './lib/configGTM'
+import { configLuckyOrange } from './lib/configLuckyOrange'
 import { configMetaPixel } from './lib/configMetaPixel'
 import { configTwitterPixel } from './lib/configTwitterPixel'
 
@@ -94,6 +95,15 @@ export async function loader({ context }) {
   const publicStoreDomain = env.PUBLIC_STORE_DOMAIN
 
   const isLoggedInPromise = customerAccount.isLoggedIn()
+
+  let customer = null
+  if (await isLoggedInPromise) {
+    const customerData = await context.customerAccount.query(
+      CUSTOMER_DETAILS_QUERY,
+    )
+    customer = customerData.data.customer
+  }
+
   const cartPromise = cart.get()
   // defer the footer query (below the fold)
   const footerPromise = storefront.query(FOOTER_QUERY, {
@@ -111,21 +121,14 @@ export async function loader({ context }) {
     },
   })
 
-  const externalScripts = [
-    'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=UMcvkS',
-    '//loox.io/widget/loox.js?shop=healthius-store.myshopify.com',
-    'https://cdn.reamaze.com/assets/reamaze.js',
-    'https://tools.luckyorange.com/core/lo.js?site-id=a781b4c9',
-  ]
-
   return defer(
     {
       cart: cartPromise,
+      customer,
       footer: footerPromise,
       header: await headerPromise,
       isLoggedIn: isLoggedInPromise,
       publicStoreDomain,
-      externalScripts,
 
       shop: getShopAnalytics({
         storefront,
@@ -220,9 +223,17 @@ export default function App() {
     }
 
     // HACK: for react hydration error due to direct external script tag imports in head
-    for (const script of data.externalScripts) {
-      addScriptToHead(script)
-    }
+    addScriptToHead(
+      'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=UMcvkS',
+    )
+    addScriptToHead(
+      '//loox.io/widget/loox.js?shop=healthius-store.myshopify.com',
+    )
+    addScriptToHead('https://cdn.reamaze.com/assets/reamaze.js')
+    addScriptToHead(
+      'https://tools.luckyorange.com/core/lo.js?site-id=a781b4c9',
+      () => configLuckyOrange(data.customer),
+    )
 
     configChatJS()
     configTwitterPixel()

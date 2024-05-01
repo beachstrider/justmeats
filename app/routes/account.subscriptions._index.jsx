@@ -61,7 +61,10 @@ export const loader = async ({ request, context }) =>
     const bundleProductId = getPureId(bundleProduct.id, 'Product')
     // Filter only bundle subscriptions
     const subscriptions = allSubscriptions.filter(
-      (el) => el.external_product_id.ecommerce === bundleProductId,
+      (el) =>
+        el.external_product_id.ecommerce === bundleProductId ||
+        // TODO: This should be deleted after removing the old fresh bundle subscription
+        el.external_product_id.ecommerce === '8619519803673',
     )
 
     return json({
@@ -296,7 +299,7 @@ function Subscriptions({ subscriptions, currentcustomer }) {
       <div
         className={
           isNavOpen
-            ? 'block  w-full  md:w-[20%] border-[#B2B2B2] border-l fixed overflow-y-auto md:overflow-y-hidden h-screen top-0 right-0 bg-white z-10 flex flex-col'
+            ? 'block  w-full  md:w-[30%] xl:w-[22%] border-[#B2B2B2] border-l fixed overflow-y-auto md:overflow-y-hidden h-screen top-0 right-0 bg-white z-10 flex flex-col'
             : 'hidden'
         }
       >

@@ -102,15 +102,8 @@ export const CustomBundle = () => {
 
   const originalCost = costForOneTime + freeProductPrice
 
-  console.debug('originalCost:', originalCost)
-  console.debug('costForOneTime:', costForOneTime)
-  console.debug('costForSubscription:', costForSubscription)
-  console.debug('cost:', cost)
-  console.debug('firstSavingPercentage:', firstSavingPercentage)
-  console.debug('freeProductPrice:', freeProductPrice)
-
   async function handleSubmit() {
-    const products = [...selectedProducts, { ...freeProduct, quantity: 1 }]
+    const products = [...selectedProducts]
 
     if (costForOneTime > 125) {
       products.push({
@@ -141,7 +134,7 @@ export const CustomBundle = () => {
       )
 
       if (res.msg === 'ok') {
-        location.href = res.cart.checkoutUrl
+        location.href = res.checkoutUrl
       }
     } else {
       const res = await submit(

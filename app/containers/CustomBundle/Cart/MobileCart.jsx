@@ -29,7 +29,8 @@ export const MobileCart = () => {
       header.style.display = 'none';
     }
   };
-  
+   
+
   return (
     <div className="mobile-cart">
       <Button
@@ -61,7 +62,7 @@ export const MobileCart = () => {
       >
         <div>
           <div className="px-[20px] py-[5px] flex justify-between bg-[#eeeded] font-bold">
-            <div className="flex items-center">Add $75 to Unlock Order</div>
+            <div className={cn('flex items-center',!isCheckoutable ? '' :'invisible',)}>Add $75 to Unlock Order</div>
             <Button
               onClick={() => {setCartOpen(false); showHeader();}}
               className="rounded-full px-[10px] py-[2px] border-solid border-[2px] border-[#425b34]"
@@ -82,7 +83,7 @@ export const MobileCart = () => {
             onClick={handleSubmit}
             className={cn(
               isCartPage && isCheckoutable ? 'btn-checkout' : '',
-              'rounded-xl text-white font-semibold text-center py-[12px]',
+              'rounded-xl text-white font-semibold text-center py-[12px] z-50',
               isCheckoutable ? 'bg-[#425b34]' : 'bg-[#AAAAAA]',
             )}
           >

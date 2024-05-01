@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import { NavLink, useMatches } from '@remix-run/react'
-
+import { cn } from '~/lib/utils'
 import logo from '~/assets/logo.png'
 import { LayoutContext } from '~/contexts'
 import { Account as AccountIcon } from '~/icons/Account'
@@ -50,7 +50,7 @@ export function Header() {
     }
 
     return (
-      <li className="navLink py-4 px-5 hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-medium	text-base ">
+      <li className={cn('navLink py-4 px-5 hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-medium'	, isSpecialsPage ? 'text-[14px]' :'text-base', )}>
         <NavLink
           end
           prefetch="intent"
@@ -108,7 +108,7 @@ export function Header() {
     return !isMobile ? (
       <header className="container relative h-[88px] sm:h-[120px] flex items-center justify-between py-4">
         <div className="w-full flex items-center justify-between gap-10 navBar">
-          <ul className={`hidden navLinks lg:flex w-full max-w-[40%] custom-padding-header ${isSpecialsPage ? '' : 'invisible'}`}>
+          <ul className={cn('hidden navLinks lg:flex w-full  max-w-[40%] custom-padding-header' , isSpecialsPage && 'font-dunbar text-[14px]' ,isSpecialsPage ? '' : 'invisible',)}>
             {HoverUnderNavLink('/products/custom-bundle', 'Menu')}
             {HoverUnderNavLink('/about', 'About Us')}
             {HoverUnderNavLink('/recipes', 'Recipes')}
@@ -119,7 +119,7 @@ export function Header() {
               <Logo />
             </div>
           </a>
-        <div className={`w-full max-w-[40%] flex justify-end ${isSpecialsPage ? '' : 'invisible'}`}>
+        <div className={cn('w-full max-w-[40%] flex justify-end' , isSpecialsPage ? '' : 'invisible',)}>
           <div className="flex items-center justify-between gap-4 headerIcons sm:gap-10 w-[fit-content]">
             <NavLink end prefetch="intent" to="/account">
               <span className="hidden w-[32px] cursor-pointer loginIcon lg:flex">
@@ -145,7 +145,7 @@ export function Header() {
       </header>
     ) : (
       <div
-      className={`container-small relative h-[88px] sm:h-[120px] flex items-center justify-between py-4 mainheader sm:pl-[20px] sm:pr-[20px] pl-[10px] pr-[20px] ${headerClass}`}
+      className={cn('container-small relative h-[88px] sm:h-[120px] flex items-center justify-between py-4 mainheader sm:pl-[20px] sm:pr-[20px] pl-[10px] pr-[20px]' , headerClass, )}
     >
         <div className="flex items-center justify-between gap-10 navBar">
           <div className="flex items-center justify-between headerIcons sm:gap-10">

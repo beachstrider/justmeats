@@ -1,5 +1,5 @@
 export const configGTM = () => {
-  ;(function (w, d, s, l, i) {
+  ; (function (w, d, s, l, i) {
     w[l] = w[l] || []
     w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
     var f = d.getElementsByTagName(s)[0],
@@ -12,6 +12,7 @@ export const configGTM = () => {
 
   window.dataLayer = window.dataLayer || []
 
+  window.prevLocalStorage = {}
   if (!window.localStorage.getItem('_already_visited')) {
     window.dataLayer.push({ event: 'first_visit' })
     window.localStorage.setItem('_already_visited', JSON.stringify(true))
@@ -22,15 +23,6 @@ export const configGTM = () => {
 
     if (target.matches('.btn-add-to-cart, .btn-add-to-cart *')) {
       window.dataLayer.push({ event: 'add_to_cart' })
-    }
-
-    // Hub Events
-    if (
-      target.matches(
-        '#search-kb-card .rmzfa-search, #search-kb-card .rmzfa-search *',
-      )
-    ) {
-      window.dataLayer.push({ event: 'Hub: FAQ Search' })
     }
 
     if (
@@ -57,20 +49,32 @@ export const configGTM = () => {
 
   window.document.addEventListener('submit', ({ target }) => {
     window.dataLayer.push({ event: 'form_submit' })
-
-    if (target.matches('#messages-list .message.staff form')) {
-      window.dataLayer.push({
-        event: 'Conversation Staff First Response Receiv',
-      })
-      window.dataLayer.push({ event: 'Message Appreciated' })
-    }
-
-    if (target.matches('#orders-card .card-body form')) {
-      window.dataLayer.push({ event: 'Hub: Orders Search' })
-    }
   })
 
-  window.document.addEventListener('storage', (event) => {
+  setTimeout(() => {
+    var originalSetItem = window.localStorage.setItem;
+    var originalRemoveItem = window.localStorage.removeItem;
+    window.localStorage.setItem = function (key, value) {
+      const event = new Event('itemInserted', { bubbles: true, cancelable: true });
+
+      event.value = value;
+      event.key = key;
+      document.dispatchEvent(event);
+      originalSetItem.apply(this, arguments);
+    }
+
+    window.localStorage.removeItem = function (key, value) {
+      const event = new Event('itemRemoved', { bubbles: true, cancelable: true });
+      event.value = value;
+      event.key = key;
+      document.dispatchEvent(event);
+      originalRemoveItem.apply(this, arguments);
+    }
+
+  }, 2000)
+
+  const handleLocalStorageChange = (event) => {
+    if (window.prevLocalStorage[event.key] === event.value) return;
     if (event.key === 'rmz.chat.minimized') {
       if (!window.localStorage.getItem('rmz.chat.minimized')) {
         window.dataLayer.push({ event: 'Shoutbox Trigger Clicked' })
@@ -79,15 +83,30 @@ export const configGTM = () => {
       }
     }
     if (event.key === 'rmz.route') {
-      const route = window.localStorage.getItem('rmz.chat.minimized')
+      const route = window.localStorage.getItem('rmz.route')
       if (route === 'hub:index') {
         window.dataLayer.push({ event: 'Hub Shown' })
       }
-      if (route === 'conversations:show') {
+      if (route === 'conversations:new') {
         window.dataLayer.push({ event: 'Conversation Started' })
+      }
+      if (route === 'conversations:show' && window.prevLocalStorage[event.key] === 'conversations:new') {
+        window.dataLayer.push({
+          event: 'Conversation Staff First Response Receiv',
+        })
+        window.dataLayer.push({ event: 'Message Appreciated' })
       }
       if (route === 'kb:index') {
         window.dataLayer.push({ event: 'KB Shown' })
+      }
+      if (route === 'status:index') {
+        window.dataLayer.push({ event: 'Hub: Orders Search' })
+      }
+    }
+    if (event.key === 'rmz.routeParams') {
+      const params = JSON.parse(window.localStorage.getItem('rmz.routeParams'))
+      if (params['path']) {
+        window.dataLayer.push({ event: 'Hub: FAQ Search' })
       }
     }
 
@@ -97,7 +116,10 @@ export const configGTM = () => {
         window.dataLayer.push({ event: 'detect_user' })
       }
     }
-  })
+    window.prevLocalStorage[event.key] = event.value;
+  }
+  window.document.addEventListener('itemInserted', handleLocalStorageChange)
+  window.document.addEventListener('itemRemoved', handleLocalStorageChange)
 
   window.document.addEventListener('input', ({ target }) => {
     if (target.matches('input')) {
