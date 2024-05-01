@@ -8,6 +8,7 @@ export const configLuckyOrange = (customer) => {
         Email: customerEmail,
         Name: customerName,
       })
+      console.debug(customerName, 'joined')
     })
   }
 }
