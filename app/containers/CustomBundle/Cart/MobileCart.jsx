@@ -14,9 +14,8 @@ export const MobileCart = () => {
 
   const [cartOpen, setCartOpen] = useState(false)
 
-  const isCheckoutable = costForOneTime >= 75
- 
-
+  const isCheckoutable = costForOneTime >= 75;
+   
   return (
     <div className="mobile-cart">
       <Button
@@ -42,7 +41,7 @@ export const MobileCart = () => {
 
       <div
         className={cn(
-          'fixed flex flex-col justify-between w-full h-screen lg:hidden transition-transform duration-300 left-0 top-0 bg-white',
+          'fixed flex flex-col justify-between w-full h-screen lg:hidden transition-transform duration-300 left-0 top-0 bg-white z-50',
           cartOpen ? 'translate-y-0' : 'translate-y-full',
         )}
       >

@@ -307,11 +307,6 @@ button.free-gift-label {
   top: -100%;
 }
 
-.header--sticky {
-  position: sticky;
-  top: 0;
-  z-index: 99;
-}
 
 @media screen and (min-width: 640px) {
   span.free-text-label,
@@ -373,7 +368,7 @@ button.free-gift-label {
 .header--sticky {
   position: sticky;
   top: 0;
-  z-index: 99;
+  z-index: 40;
 }
 
 @media screen and (min-width: 640px) {
