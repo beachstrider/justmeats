@@ -6,14 +6,14 @@ import { QualitySeal } from '~/icons/QualitySeal'
 export const HowItWorks = () => {
   return (
     <section
-      className="relative bg-[#efeeed] sm:py-[110px] py-[70px] sm:py-[0px]  bg-no-repeat md:bg-[url(https://cdn.shopify.com/s/files/1/0672/4776/7778/files/richs-photo.png?v=1713377936)] bg-none overflow-hidden"
+      className="relative bg-[#efeeed] sm:py-[110px] py-[70px] bg-no-repeat md:bg-[url(https://cdn.shopify.com/s/files/1/0672/4776/7778/files/richs-photo.png?v=1713377936)] bg-none overflow-hidden"
       style={{
         backgroundSize: '32%',
         backgroundPositionY: '-175px',
       }}
     >
-      <div className="relative w-full max-w-[1120px] mx-auto my-0 md:px-[20px] py-0">
-        <div className="w-[133px] absolute top-[60px] right-[-20px] z-10 md:block hidden">
+      <div className="relative w-full md:w-[93%] xl:w-[80%] mx-auto my-0 md:px-[20px] py-0">
+        <div className="md:w-[88px] lg:w-[120px] xl:w-[133px] absolute top-[60px] right-[-20px] z-10 md:block hidden">
           <QualitySeal />
         </div>
         <div
@@ -40,7 +40,7 @@ export const HowItWorks = () => {
           </div>
           <div className="flex justify-center sm:gap-[20px] gap-[8px] text-[#EFEEED] px-[25px] py-[0]">
             <NavLink end prefetch="intent" to="/about">
-              <button className="px-[24px] py-[12px] rounded-[4px] bg-[#7A392D] tracking-[1px]">
+              <button className="px-[18px] md:px-[24px] py-[12px] rounded-[4px] bg-[#7A392D] tracking-[1px]">
                 HOW IT WORKS
               </button>
             </NavLink>
@@ -48,7 +48,7 @@ export const HowItWorks = () => {
               end
               prefetch="intent"
               to="/products/custom-bundle"
-              className="btn-order px-[24px] py-[12px] rounded-[4px] bg-[#637160] tracking-[1px]"
+              className="btn-order px-[18px] md:px-[24px] py-[12px] rounded-[4px] bg-[#637160] tracking-[1px]"
             >
               ORDER NOW
             </NavLink>
