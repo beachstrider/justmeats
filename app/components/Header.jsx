@@ -93,11 +93,10 @@ export function Header() {
         <NavLink end prefetch="intent" to="/">
         <Image
           src={logo}
-          className="object-cover h-16 w-30 sm:h-24"
+          className="object-cover w-30 h-auto max-w-[80%] sm:max-w-full"
           sizes="(min-width: 45em) 50vw, 100vw"
           width={120}
           height={100}
-          style={{ height: 'revert-layer' }}
         />
         </NavLink>
         <div className="flex items-center justify-between gap-10 navBar">
