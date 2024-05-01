@@ -15,26 +15,11 @@ export const MobileCart = () => {
   const [cartOpen, setCartOpen] = useState(false)
 
   const isCheckoutable = costForOneTime >= 75;
-  
-  const showHeader = () => {
-    const header = document.querySelector('header');
-    if (header) {
-      header.style.display = 'block';
-    }
-  };
-
-  const hideHeader = () => {
-    const header = document.querySelector('header');
-    if (header) {
-      header.style.display = 'none';
-    }
-  };
    
-
   return (
     <div className="mobile-cart">
       <Button
-        onClick={() => {setCartOpen(true); hideHeader();}}
+        onClick={() => setCartOpen(true)}
         className={cn(
           'lg:hidden fixed bottom-[12px] left-[50%] transform translate-x-[-50%] w-[96%] rounded-xl py-[12px] text-white font-semibold',
           isCheckoutable ? 'bg-[#425b34]' : 'bg-[#AAAAAA]',
@@ -56,7 +41,7 @@ export const MobileCart = () => {
 
       <div
         className={cn(
-          'fixed flex flex-col justify-between w-full h-screen lg:hidden transition-transform duration-300 left-0 top-0 bg-white',
+          'fixed flex flex-col justify-between w-full h-screen lg:hidden transition-transform duration-300 left-0 top-0 bg-white z-50',
           cartOpen ? 'translate-y-0' : 'translate-y-full',
         )}
       >
@@ -64,7 +49,7 @@ export const MobileCart = () => {
           <div className="px-[20px] py-[5px] flex justify-between bg-[#eeeded] font-bold">
             <div className={cn('flex items-center',!isCheckoutable ? '' :'invisible',)}>Add $75 to Unlock Order</div>
             <Button
-              onClick={() => {setCartOpen(false); showHeader();}}
+              onClick={() => setCartOpen(false)}
               className="rounded-full px-[10px] py-[2px] border-solid border-[2px] border-[#425b34]"
             >
               Hide {isCartPage && 'Cart'}
