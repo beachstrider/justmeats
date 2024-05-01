@@ -58,8 +58,8 @@ export function CartLineItem({ line, lineType = 'paid' }) {
         src={mobileImage}
         height={100}
         loading="lazy"
-        className={`block sm:hidden w-[111px] h-[169px] mb-3 sm:w-[72px] ${
-          lineType === 'locked' ? 'opacity-[.22]' : 'opacity-[1]'
+        className={`block sm:hidden w-full h-[169px] mb-3 sm:w-[72px] ${
+          lineType === 'locked' ? 'opacity-[.22]' : 'opacity-[1] object-contain'
         }`}
       />
 
