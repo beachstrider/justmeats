@@ -26,7 +26,7 @@ export const LearnMore = () => {
   ]
   return (
     <section className="grid md:grid-cols-2 grid-cols-1 md:h-auto relative font-dunbar">
-      <div className="bg-rich-froning-learn-more bg-cover bg-center md:h-full h-[407px] md:order-first order-last"></div>
+      <div className="bg-rich-froning-learn-more bg-cover bg-center md:h-full h-[612px] md:order-first order-last"></div>
       <div className="bg-rich-froning-learn-more-lightPattern1 bg-cover">
         <div className="md:pt-[110px] md:pb-[110px] pt-[62px] pb-[40px] text-[#231B19] md:pr-0 md:pl-0 md:max-w-[72.5%] m-auto max-w-full pl-[30px] pr-[20px]">
           <div className="md:text-[36px] text-[24px] md:tracking-[1.8px] tracking-[1.2px] font-bold md:mb-[26px] mb-[17px]">
