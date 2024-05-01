@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import { ClientOnly } from 'remix-utils/client-only'
 import slickCarouselTheme from 'slick-carousel/slick/slick-theme.css'
 import slickCarousel from 'slick-carousel/slick/slick.css'
 import sliderStyles from 'swiper/css'
@@ -22,7 +21,6 @@ import {
 } from '@remix-run/react'
 import {
   UNSTABLE_Analytics as Analytics,
-  Script,
   getShopAnalytics,
   useNonce,
 } from '@shopify/hydrogen'
@@ -351,8 +349,6 @@ export default function App() {
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
         <LiveReload nonce={nonce} />
-
-        <ClientOnly>{() => <script>console.log(`asdf`)</script>}</ClientOnly>
       </body>
     </html>
   )
