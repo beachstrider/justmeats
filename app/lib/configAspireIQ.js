@@ -28,9 +28,10 @@ export const configAspireIQ = () => {
       }
     }
   })()
+
   window.tdl.init({
     aspireiq: 'https://aspireiq.go2cloud.org',
-    bengroup: 'bengroup.go2cloud.org',
+    bengroup: 'https://bengroup.go2cloud.org',
   })
   window.tdl.identify()
 }
