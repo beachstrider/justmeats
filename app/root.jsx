@@ -189,6 +189,11 @@ export default function App() {
   )
 
   useEffect(() => {
+    loadCart()
+    loadScripts()
+  }, [])
+
+  const loadCart = () => {
     // HACK: in order to avoid using old local storage data and errors
     const _new_local_storage_enabled = window.localStorage.getItem(
       '_new_local_storage_enabled',
@@ -221,7 +226,9 @@ export default function App() {
     if (_cartBonusVariant) {
       setCartBonusVariant(JSON.parse(_cartBonusVariant))
     }
+  }
 
+  const loadScripts = async () => {
     // HACK: for react hydration error due to direct external script tag imports in head
     addScriptToHead(
       'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=UMcvkS',
@@ -234,13 +241,24 @@ export default function App() {
       'https://tools.luckyorange.com/core/lo.js?site-id=a781b4c9',
       () => configLuckyOrange(data.customer),
     )
+    addScriptToHead(
+      'https://www.googletagmanager.com/gtag/destination?id=MC-K2V1J6S3SN&l=dataLayer&cx=c',
+    )
+    addScriptToHead(
+      'https://www.googletagmanager.com/gtag/js?id=G-3NLNCB6JD1&l=dataLayer&cx=c',
+    )
+    addScriptToHead('https://www.googletagmanager.com/gtm.js?id=GTM-53HM3TQ7')
+    addScriptToHead(
+      'https://www.googletagmanager.com/gtag/js?id=AW-11317384601',
+    )
+    addScriptToHead('https://www.googletagmanager.com/gtag/js?id=G-3NLNCB6JD1')
 
     configChatJS()
     configTwitterPixel()
     configMetaPixel()
     configGTM()
     configAspireIQ()
-  }, [])
+  }
 
   const setCartSellingPlan = (value) => {
     _setCartSellingPlan(value)

@@ -1,5 +1,5 @@
 export const configGTM = () => {
-  ; (function (w, d, s, l, i) {
+  ;(function (w, d, s, l, i) {
     w[l] = w[l] || []
     w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
     var f = d.getElementsByTagName(s)[0],
@@ -11,6 +11,12 @@ export const configGTM = () => {
   })(window, document, 'script', 'dataLayer', 'GTM-53HM3TQ7')
 
   window.dataLayer = window.dataLayer || []
+
+  function gtag() {
+    window.dataLayer.push(arguments)
+  }
+  gtag('js', new Date())
+  gtag('config', 'AW-11317384601')
 
   window.prevLocalStorage = {}
   if (!window.localStorage.getItem('_already_visited')) {
@@ -40,11 +46,6 @@ export const configGTM = () => {
     ) {
       window.dataLayer.push({ event: 'view_item' })
     }
-
-    // if (target.matches('')) {
-    //   console.debug('clicked')
-    //   window.dataLayer.push({ event: '' })
-    // }
   })
 
   window.document.addEventListener('submit', ({ target }) => {
@@ -52,29 +53,34 @@ export const configGTM = () => {
   })
 
   setTimeout(() => {
-    var originalSetItem = window.localStorage.setItem;
-    var originalRemoveItem = window.localStorage.removeItem;
+    var originalSetItem = window.localStorage.setItem
+    var originalRemoveItem = window.localStorage.removeItem
     window.localStorage.setItem = function (key, value) {
-      const event = new Event('itemInserted', { bubbles: true, cancelable: true });
+      const event = new Event('itemInserted', {
+        bubbles: true,
+        cancelable: true,
+      })
 
-      event.value = value;
-      event.key = key;
-      document.dispatchEvent(event);
-      originalSetItem.apply(this, arguments);
+      event.value = value
+      event.key = key
+      document.dispatchEvent(event)
+      originalSetItem.apply(this, arguments)
     }
 
     window.localStorage.removeItem = function (key, value) {
-      const event = new Event('itemRemoved', { bubbles: true, cancelable: true });
-      event.value = value;
-      event.key = key;
-      document.dispatchEvent(event);
-      originalRemoveItem.apply(this, arguments);
+      const event = new Event('itemRemoved', {
+        bubbles: true,
+        cancelable: true,
+      })
+      event.value = value
+      event.key = key
+      document.dispatchEvent(event)
+      originalRemoveItem.apply(this, arguments)
     }
-
   }, 2000)
 
   const handleLocalStorageChange = (event) => {
-    if (window.prevLocalStorage[event.key] === event.value) return;
+    if (window.prevLocalStorage[event.key] === event.value) return
     if (event.key === 'rmz.chat.minimized') {
       if (!window.localStorage.getItem('rmz.chat.minimized')) {
         window.dataLayer.push({ event: 'Shoutbox Trigger Clicked' })
@@ -90,7 +96,10 @@ export const configGTM = () => {
       if (route === 'conversations:new') {
         window.dataLayer.push({ event: 'Conversation Started' })
       }
-      if (route === 'conversations:show' && window.prevLocalStorage[event.key] === 'conversations:new') {
+      if (
+        route === 'conversations:show' &&
+        window.prevLocalStorage[event.key] === 'conversations:new'
+      ) {
         window.dataLayer.push({
           event: 'Conversation Staff First Response Receiv',
         })
@@ -116,7 +125,7 @@ export const configGTM = () => {
         window.dataLayer.push({ event: 'detect_user' })
       }
     }
-    window.prevLocalStorage[event.key] = event.value;
+    window.prevLocalStorage[event.key] = event.value
   }
   window.document.addEventListener('itemInserted', handleLocalStorageChange)
   window.document.addEventListener('itemRemoved', handleLocalStorageChange)

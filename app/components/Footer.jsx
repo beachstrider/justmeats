@@ -1,5 +1,6 @@
 import { NavLink, useMatches } from '@remix-run/react'
-import {Image} from '@shopify/hydrogen-react';
+import { Image } from '@shopify/hydrogen-react'
+
 import logo from '~/assets/footer_logo.webp'
 import { useRootLoaderData } from '~/root'
 
