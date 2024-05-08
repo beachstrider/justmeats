@@ -32,10 +32,10 @@ export const meta = ({ data }) => {
   ]
 }
 
-export const loader = async ({ request, context, params }) =>
-  await rechargeQueryWrapper(async (rechargeSession) => {
-    await context.customerAccount.handleAuthStatus()
+export const loader = async ({ request, context, params }) => {
+  await context.customerAccount.handleAuthStatus()
 
+  await rechargeQueryWrapper(async (rechargeSession) => {
     if (!params.id) {
       return redirect(params?.locale ? `${params.locale}/account` : '/account')
     }
@@ -170,6 +170,7 @@ export const loader = async ({ request, context, params }) =>
       },
     )
   }, context)
+}
 
 export const action = async ({ request, context, params }) =>
   await rechargeQueryWrapper(async (rechargeSession) => {
