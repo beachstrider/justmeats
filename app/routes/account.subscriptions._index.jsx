@@ -25,7 +25,9 @@ export const meta = () => {
   return [{ title: 'Subscriptions - Just Meats' }]
 }
 
-export const loader = async ({ request, context }) =>
+export const loader = async ({ request, context }) => {
+  await context.customerAccount.handleAuthStatus()
+
   await rechargeQueryWrapper(async (rechargeSession) => {
     const customerData = context.customerAccount.query(CUSTOMER_DETAILS_QUERY)
 
@@ -76,6 +78,7 @@ export const loader = async ({ request, context }) =>
       subscriptions,
     })
   }, context)
+}
 
 export async function action({ request, context }) {
   const { customerAccount } = context
