@@ -131,7 +131,7 @@ export function Footer({ menu, shop }) {
         <div className="copyRight">
           <div className="container py-6 mx-auto">
             <p className="text-lg font-normal text-white">
-              &copy; {currentYear} JUST MEATS DEV, All Rights Reserved
+              &copy; {currentYear} JUST MEATS, All Rights Reserved
             </p>
           </div>
         </div>
