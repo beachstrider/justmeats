@@ -28,7 +28,7 @@ export const meta = () => {
 export const loader = async ({ request, context }) => {
   await context.customerAccount.handleAuthStatus()
 
-  await rechargeQueryWrapper(async (rechargeSession) => {
+  return await rechargeQueryWrapper(async (rechargeSession) => {
     const customerData = context.customerAccount.query(CUSTOMER_DETAILS_QUERY)
 
     const bundleProductData = getBundle({
