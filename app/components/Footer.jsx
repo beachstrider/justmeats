@@ -1,5 +1,6 @@
 import { NavLink, useMatches } from '@remix-run/react'
-import {Image} from '@shopify/hydrogen-react';
+import { Image } from '@shopify/hydrogen-react'
+
 import logo from '~/assets/footer_logo.webp'
 import { useRootLoaderData } from '~/root'
 
@@ -130,7 +131,7 @@ export function Footer({ menu, shop }) {
         <div className="copyRight">
           <div className="container py-6 mx-auto">
             <p className="text-lg font-normal text-white">
-              &copy; {currentYear} JUST MEATS, All Rights Reserved
+              &copy; {currentYear} JUST MEATS DEV, All Rights Reserved
             </p>
           </div>
         </div>
