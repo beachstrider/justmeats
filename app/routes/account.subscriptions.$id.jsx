@@ -34,6 +34,8 @@ export const meta = ({ data }) => {
 
 export const loader = async ({ request, context, params }) =>
   await rechargeQueryWrapper(async (rechargeSession) => {
+    await context.customerAccount.handleAuthStatus()
+
     if (!params.id) {
       return redirect(params?.locale ? `${params.locale}/account` : '/account')
     }
