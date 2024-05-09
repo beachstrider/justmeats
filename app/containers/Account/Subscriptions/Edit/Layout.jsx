@@ -17,6 +17,10 @@ export const SubscriptionEditLayout = ({ children }) => {
   const [processing, setProcessing] = useState(false)
   const [dialogOpen, setDialogOpen] = useState(false);
   const [isProcessDialogOpen, setProcessDialogOpen] = useState(false);
+  const [dialogContent, setDialogContent] = useState({
+    title: '',
+    description: ''
+  });
   const [delaying, setDelaying] = useState(false)
   const [canceling, setCanceling] = useState(false)
 
@@ -37,7 +41,16 @@ export const SubscriptionEditLayout = ({ children }) => {
     )
 
     if (res.msg === 'ok') {
-      console.debug('ok')
+      console.debug('ok');
+      setDialogContent({
+        title: 'Congrats!',
+        description: 'Your order is being processed immediately.'
+      });
+    } else {
+      setDialogContent({
+        title: 'Error!',
+        description: 'There was a problem processing your order.'
+      });
     }
 
     setProcessing(false)
@@ -177,9 +190,9 @@ export const SubscriptionEditLayout = ({ children }) => {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/30" />
           <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
-            <Dialog.Title className="text-lg font-bold">Congrats!</Dialog.Title>
+            <Dialog.Title className="text-lg font-bold">{dialogContent.title}</Dialog.Title>
             <Dialog.Description className="mt-2">
-              Your order is being processed immediately.
+            {dialogContent.description}
             </Dialog.Description>
             <div className="flex justify-end mt-4">
               <Button 
