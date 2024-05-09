@@ -16,6 +16,7 @@ export const SubscriptionEditLayout = ({ children }) => {
 
   const [processing, setProcessing] = useState(false)
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [isProcessDialogOpen, setProcessDialogOpen] = useState(false);
   const [delaying, setDelaying] = useState(false)
   const [canceling, setCanceling] = useState(false)
 
@@ -41,7 +42,8 @@ export const SubscriptionEditLayout = ({ children }) => {
 
     setProcessing(false)
     setDialogOpen(false);
-    navigate('..')
+    setProcessDialogOpen(true);
+    //navigate('..')
   }
 
   const handleDelay = async () => {
@@ -170,6 +172,26 @@ export const SubscriptionEditLayout = ({ children }) => {
             </div>
           </Dialog.Content>
         </Dialog.Portal>
+
+        <Dialog.Root open={isProcessDialogOpen} onOpenChange={setProcessDialogOpen}>
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 bg-black/30" />
+          <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
+            <Dialog.Title className="text-lg font-bold">Congrats!</Dialog.Title>
+            <Dialog.Description className="mt-2">
+              Your order is being processed immediately.
+            </Dialog.Description>
+            <div className="flex justify-end mt-4">
+              <Button 
+              className="px-6 py-2 text-white rounded-md shadow hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+              style={{ backgroundColor: '#862e1b', borderColor: '#862e1b' }}
+              onClick={() => setProcessDialogOpen(false)}>
+                Close
+              </Button>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
       </Dialog.Root>
 
     </div>
