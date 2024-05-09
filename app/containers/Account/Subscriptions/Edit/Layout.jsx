@@ -6,6 +6,7 @@ import { NavLink, useLoaderData, useNavigate } from '@remix-run/react'
 
 import { Button } from '~/components/Button'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
+import * as Dialog from '@radix-ui/react-dialog';
 
 export const SubscriptionEditLayout = ({ children }) => {
   const submit = useSubmitPromise()
@@ -14,6 +15,7 @@ export const SubscriptionEditLayout = ({ children }) => {
   const { id, subscription, upcomingChargeId } = useLoaderData()
 
   const [processing, setProcessing] = useState(false)
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [delaying, setDelaying] = useState(false)
   const [canceling, setCanceling] = useState(false)
 
@@ -38,6 +40,7 @@ export const SubscriptionEditLayout = ({ children }) => {
     }
 
     setProcessing(false)
+    setDialogOpen(false);
     navigate('..')
   }
 
@@ -108,8 +111,7 @@ export const SubscriptionEditLayout = ({ children }) => {
 
         <div className="flex gap-2 mt-6 mb-3 sm:mt-10 sm:mb-5">
           <Button
-            loading={processing}
-            onClick={handleProcess}
+            onClick={() => setDialogOpen(true)}
             className="py-[5px] px-[15px] sm:px-[30px] border-2 border-[#425B34] border-solid bg-white sm:w-auto w-full"
           >
             Process Now
@@ -137,6 +139,39 @@ export const SubscriptionEditLayout = ({ children }) => {
           )}
         </div>
       </div>
+
+      <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 bg-black/30" />
+          <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
+            <Dialog.Title className="text-lg font-bold">WAIT!</Dialog.Title>
+            <Dialog.Description className="mt-2">
+            <p>If you click Process Now, your credit card or PayPall will be charged immediately, and the order will be placed today. Each time the button is clicked, it will place a new order, so please be sure to press it only once, even if it appears that it did not go through.
+            </p>
+            <p>If you don’t want to be charged today with a new order, press back now. The changes to your order have automatically been saved.
+            </p>
+            </Dialog.Description>
+            <div className="flex justify-end mt-4 space-x-2">
+            <Button
+              onClick={() => setDialogOpen(false)}
+              className="bg-red-500 text-white hover:bg-red-700 px-6 py-2 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-opacity-50"
+            >
+              Back Now
+            </Button>
+            <Button
+              loading={processing}
+              onClick={() => {
+                  handleProcess();
+              }}
+              className="bg-green-500 text-white hover:bg-green-700 px-6 py-2 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-opacity-50"
+            >
+              Process Now
+            </Button>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+
     </div>
   )
 }
