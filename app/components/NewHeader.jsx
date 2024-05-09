@@ -1,12 +1,13 @@
 import { useContext, useEffect, useRef, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
+
 import { NavLink, useMatches } from '@remix-run/react'
-import { cn } from '~/lib/utils'
+
 import logo from '~/assets/logo.png'
 import { LayoutContext } from '~/contexts'
-import { Account as AccountIcon } from '~/icons/Account'
 import { HamburgerOpen } from '~/icons/HamburgerOpen'
 import { Logo } from '~/icons/Logo'
+import { cn } from '~/lib/utils'
 import { useRootLoaderData } from '~/root'
 
 import { Button } from './Button'
@@ -50,7 +51,12 @@ export function Header() {
     }
 
     return (
-      <li className={cn('navLink py-4 px-5 hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-medium'	, isSpecialsPage ? 'text-[14px]' :'text-base', )}>
+      <li
+        className={cn(
+          'navLink py-4 px-5 hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-medium',
+          isSpecialsPage ? 'text-[14px]' : 'text-base',
+        )}
+      >
         <NavLink
           end
           prefetch="intent"
@@ -76,77 +82,109 @@ export function Header() {
       </li>
     )
   }
-  const navLinks = [
-    ['/products/custom-bundle', 'Menu'],
-    ['/about', 'About Us'],
-    ['/recipes', 'Recipes'],
-    ['/special', 'Special'],
-  ]
-  
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true)
+  const [prevScrollPos, setPrevScrollPos] = useState(0)
+
   const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
-    const scrolledPastHeader = prevScrollPos > currentScrollPos && currentScrollPos > 0;
-    setIsHeaderVisible(!scrolledPastHeader);
-    setPrevScrollPos(currentScrollPos);
-  };
+    const currentScrollPos =
+      window.pageYOffset || document.documentElement.scrollTop
+    const scrolledPastHeader =
+      prevScrollPos > currentScrollPos && currentScrollPos > 0
+    setIsHeaderVisible(!scrolledPastHeader)
+    setPrevScrollPos(currentScrollPos)
+  }
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [prevScrollPos]);
-  const headerClass = isHeaderVisible
-    ? ""
-    : "sticky-header";
-    const location = useLocation();
-    const isSpecialsPage = location.pathname === '/rich-froning';
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [prevScrollPos])
+
+  const headerClass = isHeaderVisible ? '' : 'sticky-header'
+  const location = useLocation()
+  const isSpecialsPage = location.pathname === '/rich-froning'
 
   const Mainheader = () => {
     return !isMobile ? (
       <header className="container relative h-[88px] sm:h-[120px] flex items-center justify-between py-4">
-        <div className="w-full flex items-center justify-between gap-10 navBar">
-          <ul className={cn('hidden navLinks lg:flex w-full  max-w-[40%] custom-padding-header' , isSpecialsPage && 'font-dunbar text-[14px]' ,isSpecialsPage ? '' : 'invisible',)}>
+        <div className="flex items-center justify-between w-full gap-10 navBar">
+          <ul
+            className={cn(
+              'hidden navLinks lg:flex w-full  max-w-[40%] custom-padding-header',
+              isSpecialsPage && 'font-dunbar text-[14px]',
+              isSpecialsPage ? '' : 'invisible',
+            )}
+          >
             {HoverUnderNavLink('/products/custom-bundle', 'Menu')}
             {HoverUnderNavLink('/about', 'About Us')}
             {HoverUnderNavLink('/recipes', 'Recipes')}
             {HoverUnderNavLink('/', 'Specials')}
           </ul>
-          <a href="/" target="_blank" className='w-full max-w-[20%] flex justify-center'>
+          <a
+            href="/"
+            target="_blank"
+            className="w-full max-w-[20%] flex justify-center"
+          >
             <div className="w-[148px] sm:w-[214px]">
               <Logo />
             </div>
           </a>
-        <div className={cn('w-full max-w-[40%] flex justify-end' , isSpecialsPage ? '' : 'invisible',)}>
-          <div className="flex items-center justify-between gap-4 headerIcons sm:gap-10 w-[fit-content]">
-            <NavLink end prefetch="intent" to="/account">
-              <span className="hidden w-[32px] cursor-pointer loginIcon lg:flex">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <path d="M23.3333 24.5V22.1667C23.3333 20.929 22.8416 19.742 21.9665 18.8668C21.0913 17.9917 19.9043 17.5 18.6666 17.5H9.33329C8.09562 17.5 6.90863 17.9917 6.03346 18.8668C5.15829 19.742 4.66663 20.929 4.66663 22.1667V24.5" stroke="#231B19" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M14 12.8333C16.5774 12.8333 18.6667 10.744 18.6667 8.16667C18.6667 5.58934 16.5774 3.5 14 3.5C11.4227 3.5 9.33337 5.58934 9.33337 8.16667C9.33337 10.744 11.4227 12.8333 14 12.8333Z" stroke="#231B19" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              </span>
-            </NavLink>
-            <Button
-              className="block lg:hidden"
-              onClick={() => setMenuToggle(true)}
-            >
-              <HamburgerOpen />
-            </Button>
-            <CartButton />
-            <div className="hidden lg:block">
-              <OrderButton />
+          <div
+            className={cn(
+              'w-full max-w-[40%] flex justify-end',
+              isSpecialsPage ? '' : 'invisible',
+            )}
+          >
+            <div className="flex items-center justify-between gap-4 headerIcons sm:gap-10 w-[fit-content]">
+              <NavLink end prefetch="intent" to="/account">
+                <span className="hidden w-[32px] cursor-pointer loginIcon lg:flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="28"
+                    height="28"
+                    viewBox="0 0 28 28"
+                    fill="none"
+                  >
+                    <path
+                      d="M23.3333 24.5V22.1667C23.3333 20.929 22.8416 19.742 21.9665 18.8668C21.0913 17.9917 19.9043 17.5 18.6666 17.5H9.33329C8.09562 17.5 6.90863 17.9917 6.03346 18.8668C5.15829 19.742 4.66663 20.929 4.66663 22.1667V24.5"
+                      stroke="#231B19"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M14 12.8333C16.5774 12.8333 18.6667 10.744 18.6667 8.16667C18.6667 5.58934 16.5774 3.5 14 3.5C11.4227 3.5 9.33337 5.58934 9.33337 8.16667C9.33337 10.744 11.4227 12.8333 14 12.8333Z"
+                      stroke="#231B19"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </NavLink>
+              <Button
+                className="block lg:hidden"
+                onClick={() => setMenuToggle(true)}
+              >
+                <HamburgerOpen />
+              </Button>
+              <CartButton />
+              <div className="hidden lg:block">
+                <OrderButton />
+              </div>
             </div>
           </div>
-          </div>
-      </div>
+        </div>
       </header>
     ) : (
       <div
-      className={cn('container-small relative h-[88px] sm:h-[120px] flex items-center justify-between py-4 mainheader sm:pl-[20px] sm:pr-[20px] pl-[10px] pr-[20px]' , headerClass, )}
-    >
+        className={cn(
+          'container-small relative h-[88px] sm:h-[120px] flex items-center justify-between py-4 mainheader sm:pl-[20px] sm:pr-[20px] pl-[10px] pr-[20px]',
+          headerClass,
+        )}
+      >
         <div className="flex items-center justify-between gap-10 navBar">
           <div className="flex items-center justify-between headerIcons sm:gap-10">
             <Button
@@ -166,26 +204,37 @@ export function Header() {
           </a>
         </div>
         <div className="flex items-center justify-between gap-[5px] headerIcons sm:gap-10">
-            <NavLink end prefetch="intent" to="/account">
-              <span className="w-5 cursor-pointer loginIcon lg:flex">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <path d="M23.3333 24.5V22.1667C23.3333 20.929 22.8416 19.742 21.9665 18.8668C21.0913 17.9917 19.9043 17.5 18.6666 17.5H9.33329C8.09562 17.5 6.90863 17.9917 6.03346 18.8668C5.15829 19.742 4.66663 20.929 4.66663 22.1667V24.5" stroke="#231B19" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M14 12.8333C16.5774 12.8333 18.6667 10.744 18.6667 8.16667C18.6667 5.58934 16.5774 3.5 14 3.5C11.4227 3.5 9.33337 5.58934 9.33337 8.16667C9.33337 10.744 11.4227 12.8333 14 12.8333Z" stroke="#231B19" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <NavLink end prefetch="intent" to="/account">
+            <span className="w-5 cursor-pointer loginIcon lg:flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
+                fill="none"
+              >
+                <path
+                  d="M23.3333 24.5V22.1667C23.3333 20.929 22.8416 19.742 21.9665 18.8668C21.0913 17.9917 19.9043 17.5 18.6666 17.5H9.33329C8.09562 17.5 6.90863 17.9917 6.03346 18.8668C5.15829 19.742 4.66663 20.929 4.66663 22.1667V24.5"
+                  stroke="#231B19"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M14 12.8333C16.5774 12.8333 18.6667 10.744 18.6667 8.16667C18.6667 5.58934 16.5774 3.5 14 3.5C11.4227 3.5 9.33337 5.58934 9.33337 8.16667C9.33337 10.744 11.4227 12.8333 14 12.8333Z"
+                  stroke="#231B19"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
-              </span>
-            </NavLink>
-            <CartButton />
-          </div>
+            </span>
+          </NavLink>
+          <CartButton />
+        </div>
       </div>
     )
   }
-  const NavLinkItem = ({ to, text }) => (
-    <NavLink end prefetch="intent" to={to}>
-      <div className="text-xs font-medium uppercase transition cursor-pointer hover:text-primary text-primary-dark">
-        {text}
-      </div>
-    </NavLink>
-  )
 
   const Landingheader = () => {
     return (

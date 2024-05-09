@@ -1,6 +1,4 @@
-import { Suspense, useContext, useState } from 'react'
-
-import { Await } from '@remix-run/react'
+import { useContext, useState } from 'react'
 
 import { Footer } from '~/components/Footer'
 import { Header } from '~/components/Header'
@@ -11,28 +9,18 @@ import { LayoutContext, RootContext } from '~/contexts'
 import { MobileMenuAside } from './MobileMenuAside'
 import OrderHeader from './OrderHeader'
 
-export function Layout({
-  cart,
-  children = null,
-  footer,
-  header,
-  isLoggedIn,
-  isProductPage,
-}) {
+export function Layout({ children = null, isProductPage }) {
   const [menuToggle, setMenuToggle] = useState(false)
   const { isNewLayout } = useContext(RootContext)
+
   if (isNewLayout)
     return (
       <LayoutContext.Provider value={{ menuToggle, setMenuToggle }}>
-        <NewHeader header={header} cart={cart} isLoggedIn={isLoggedIn} />
+        <NewHeader />
 
-        <MobileMenuAside menu={header?.menu} shop={header?.shop} />
+        <MobileMenuAside />
         {children}
-        <Suspense>
-          <Await resolve={footer}>
-            {(footer) => <NewFooter menu={footer?.menu} shop={header?.shop} />}
-          </Await>
-        </Suspense>
+        <NewFooter />
       </LayoutContext.Provider>
     )
 
@@ -42,19 +30,13 @@ export function Layout({
         <OrderHeader />
       ) : (
         <>
-          {header && (
-            <Header header={header} cart={cart} isLoggedIn={isLoggedIn} />
-          )}
+          <Header />
           <div>{isProductPage}</div>
         </>
       )}
-      <MobileMenuAside menu={header?.menu} shop={header?.shop} />
+      <MobileMenuAside />
       <main>{children}</main>
-      <Suspense>
-        <Await resolve={footer}>
-          {(footer) => <Footer menu={footer?.menu} shop={header?.shop} />}
-        </Await>
-      </Suspense>
+      <Footer />
     </LayoutContext.Provider>
   )
 }
