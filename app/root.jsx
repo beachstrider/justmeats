@@ -34,7 +34,6 @@ import { MetaNoScript } from '~/components/MetaNoScript'
 import { SubscriptionCard } from '~/components/SubscriptionCard'
 import { DELIVERY_EVERY_15_DAYS } from '~/consts'
 import { RootContext } from '~/contexts'
-import { FOOTER_QUERY, HEADER_QUERY } from '~/graphql/HeaderMenuFooter'
 import { addScriptToHead } from '~/lib/utils'
 import appStyles from '~/styles/app.css'
 import tailwindStyles from '~/styles/tailwind.css'
@@ -90,44 +89,31 @@ export const useRootLoaderData = () => {
 }
 
 export async function loader({ context }) {
-  const { storefront, customerAccount, cart, env } = context
+  const { storefront, customerAccount, env } = context
 
   const publicStoreDomain = env.PUBLIC_STORE_DOMAIN
 
-  const isLoggedInPromise = customerAccount.isLoggedIn()
+  const isLoggedIn = await customerAccount.isLoggedIn()
 
   let customer = null
-  if (await isLoggedInPromise) {
-    const customerData = await context.customerAccount.query(
-      CUSTOMER_DETAILS_QUERY,
-    )
-    customer = customerData.data.customer
+
+  if (isLoggedIn) {
+    try {
+      const { data, errors } = await context.customerAccount.query(
+        CUSTOMER_DETAILS_QUERY,
+      )
+
+      if (!errors?.length && data?.customer) {
+        customer = data.customer
+      }
+    } catch (err) {
+      console.log(err)
+    }
   }
-
-  const cartPromise = cart.get()
-  // defer the footer query (below the fold)
-  const footerPromise = storefront.query(FOOTER_QUERY, {
-    cache: storefront.CacheLong(),
-    variables: {
-      footerMenuHandle: 'footer', // Adjust to your footer menu handle
-    },
-  })
-
-  // await the header query (above the fold)
-  const headerPromise = storefront.query(HEADER_QUERY, {
-    cache: storefront.CacheLong(),
-    variables: {
-      headerMenuHandle: 'main-menu', // Adjust to your header menu handle
-    },
-  })
 
   return defer(
     {
-      cart: cartPromise,
       customer,
-      footer: footerPromise,
-      header: await headerPromise,
-      isLoggedIn: isLoggedInPromise,
       publicStoreDomain,
 
       shop: getShopAnalytics({

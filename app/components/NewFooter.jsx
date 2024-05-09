@@ -1,11 +1,14 @@
+import { useLocation } from 'react-router-dom'
+
 import { NavLink, useMatches } from '@remix-run/react'
-import { useLocation } from 'react-router-dom';
+
 import { LogoWhite } from '~/icons/LogoWhite'
 
 export const Footer = () => {
   const matches = useMatches()
-  const location = useLocation();
-  const isSpecialsPage = location.pathname === '/gym-launch';
+  const location = useLocation()
+  const isSpecialsPage = location.pathname === '/gym-launch'
+
   return (
     <footer className={`${isSpecialsPage ? 'bg-[#7A392D]' : 'bg-[#231b19]'}`}>
       <div className="container-small relative h-[88px] sm:h-[128px] flex items-center justify-between py-4">

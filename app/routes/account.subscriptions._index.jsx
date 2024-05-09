@@ -47,12 +47,7 @@ export const loader = async ({ request, context }) => {
       { data, errors },
       { bundleProduct },
       { subscriptions: allSubscriptions },
-    ] = await Promise.all([
-      customerData,
-      bundleProductData,
-      subscriptionsData,
-      context.customerAccount.handleAuthStatus(),
-    ])
+    ] = await Promise.all([customerData, bundleProductData, subscriptionsData])
 
     if (errors?.length || !data?.customer) {
       throw new Error('Customer not found')
