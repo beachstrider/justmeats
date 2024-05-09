@@ -170,7 +170,7 @@ export const PlanPicker = () => {
                   }
                 />
               </span>
-              Save 10% Off on Future Orders
+              Save 10% on Future Orders
             </li>
             <li className="items-center text-[11px] sm:text-[12px] font-normal sm:font-bold m-0 hidden md:flex lg:flex">
               <span className="text-[#425B34] sm:text-black">
