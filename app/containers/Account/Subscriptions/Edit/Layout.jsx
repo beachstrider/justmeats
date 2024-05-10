@@ -161,18 +161,14 @@ export const SubscriptionEditLayout = ({ children }) => {
           <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
             <Dialog.Title className="text-lg font-bold">WAIT!</Dialog.Title>
             <Dialog.Description className="mt-2">
-              <p>
-                If you click Process Now, your credit card or PayPall will be
-                charged immediately, and the order will be placed today. Each
-                time the button is clicked, it will place a new order, so please
-                be sure to press it only once, even if it appears that it did
-                not go through.
-              </p>
-              <p>
-                If you don’t want to be charged today with a new order, press
-                back now. The changes to your order have automatically been
-                saved.
-              </p>
+              If you click Process Now, your credit card or PayPall will be
+              charged immediately, and the order will be placed today. Each time
+              the button is clicked, it will place a new order, so please be
+              sure to press it only once, even if it appears that it did not go
+              through.
+              <br />
+              If you don’t want to be charged today with a new order, press back
+              now. The changes to your order have automatically been saved.
             </Dialog.Description>
             <div className="flex justify-end mt-4 space-x-2">
               <Button
