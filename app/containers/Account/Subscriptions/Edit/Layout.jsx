@@ -21,6 +21,14 @@ export const SubscriptionEditLayout = ({ children }) => {
     title: '',
     description: '',
   })
+
+  const [delayDialogOpen, setDelayDialogOpen] = useState(false)
+  const [delayResultDialogOpen, setDelayResultDialogOpen] = useState(false)
+  const [delayDialogContent, setDelayDialogContent] = useState({
+    title: '',
+    description: '',
+  })
+
   const [delaying, setDelaying] = useState(false)
   const [canceling, setCanceling] = useState(false)
 
@@ -79,10 +87,21 @@ export const SubscriptionEditLayout = ({ children }) => {
 
     if (res.msg === 'ok') {
       console.debug('ok')
+      setDelayDialogContent({
+        title: 'Success!',
+        description: 'Your order is now delayed 1 week.',
+      })
+    } else {
+      setDelayDialogContent({
+        title: 'Error!',
+        description: 'There was a problem delaying your order.',
+      })
     }
 
     setDelaying(false)
-    navigate('..')
+    setDelayDialogOpen(false)
+    setDelayResultDialogOpen(true)
+    //navigate('..')
   }
 
   const handleCancel = async () => {
@@ -132,8 +151,7 @@ export const SubscriptionEditLayout = ({ children }) => {
             Process Now
           </Button>
           <Button
-            loading={delaying}
-            onClick={handleDelay}
+            onClick={() => setDelayDialogOpen(true)}
             className="py-[5px] px-[15px] sm:px-[30px] border-2 border-[#425B34] border-solid bg-white sm:w-auto w-full"
           >
             1 Week Delay
@@ -189,32 +207,98 @@ export const SubscriptionEditLayout = ({ children }) => {
             </div>
           </Dialog.Content>
         </Dialog.Portal>
+      </Dialog.Root>
+      <Dialog.Root
+        open={isProcessDialogOpen}
+        onOpenChange={setProcessDialogOpen}
+      >
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 bg-black/30" />
+          <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
+            <Dialog.Title className="text-lg font-bold">
+              {dialogContent.title}
+            </Dialog.Title>
+            <Dialog.Description className="mt-2">
+              {dialogContent.description}
+            </Dialog.Description>
+            <div className="flex justify-end mt-4">
+              <Button
+                className="px-6 py-2 text-white rounded-md shadow hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+                style={{ backgroundColor: '#862e1b', borderColor: '#862e1b' }}
+                onClick={() => setProcessDialogOpen(false)}
+              >
+                Close
+              </Button>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
 
-        <Dialog.Root
-          open={isProcessDialogOpen}
-          onOpenChange={setProcessDialogOpen}
-        >
-          <Dialog.Portal>
-            <Dialog.Overlay className="fixed inset-0 bg-black/30" />
-            <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
-              <Dialog.Title className="text-lg font-bold">
-                {dialogContent.title}
-              </Dialog.Title>
-              <Dialog.Description className="mt-2">
-                {dialogContent.description}
-              </Dialog.Description>
-              <div className="flex justify-end mt-4">
-                <Button
-                  className="px-6 py-2 text-white rounded-md shadow hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-opacity-50"
-                  style={{ backgroundColor: '#862e1b', borderColor: '#862e1b' }}
-                  onClick={() => setProcessDialogOpen(false)}
-                >
-                  Close
-                </Button>
-              </div>
-            </Dialog.Content>
-          </Dialog.Portal>
-        </Dialog.Root>
+      <Dialog.Root open={delayDialogOpen} onOpenChange={setDelayDialogOpen}>
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 bg-black/30" />
+          <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
+            <Dialog.Title className="text-lg font-bold">
+              Are you Sure?
+            </Dialog.Title>
+            <Dialog.Description className="mt-2">
+              If you press this button you will push your next schedule order
+              out by 1 week. If you would like to push out your order for a
+              longer period, you can also repeatedly press this button to push
+              it out an additional week each time. You can also contact{' '}
+              <a
+                href="mailto:support@justmeats.com"
+                style={{ color: '#0000EE' }}
+              >
+                support@justmeats.com
+              </a>{' '}
+              for assistance in pushing out your order, or updating your
+              subscription frequency
+            </Dialog.Description>
+            <div className="flex justify-end mt-4 space-x-2">
+              <Button
+                onClick={() => setDelayDialogOpen(false)}
+                className="bg-red-500 text-white hover:bg-red-700 px-6 py-2 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-opacity-50"
+              >
+                Back Now
+              </Button>
+              <Button
+                loading={delaying}
+                onClick={() => {
+                  handleDelay()
+                }}
+                className="bg-green-500 text-white hover:bg-green-700 px-6 py-2 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-opacity-50"
+              >
+                Confirm
+              </Button>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+      <Dialog.Root
+        open={delayResultDialogOpen}
+        onOpenChange={setDelayResultDialogOpen}
+      >
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 bg-black/30" />
+          <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
+            <Dialog.Title className="text-lg font-bold">
+              {delayDialogContent.title}
+            </Dialog.Title>
+            <Dialog.Description className="mt-2">
+              {delayDialogContent.description}
+            </Dialog.Description>
+            <div className="flex justify-end mt-4">
+              <Button
+                className="px-6 py-2 text-white rounded-md shadow hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+                style={{ backgroundColor: '#862e1b', borderColor: '#862e1b' }}
+                onClick={() => setDelayResultDialogOpen(false)}
+              >
+                Close
+              </Button>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
       </Dialog.Root>
     </div>
   )
