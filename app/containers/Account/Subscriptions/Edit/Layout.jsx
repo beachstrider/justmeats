@@ -2,11 +2,11 @@ import { useState } from 'react'
 
 import { addDays, format } from 'date-fns'
 
+import * as Dialog from '@radix-ui/react-dialog'
 import { NavLink, useLoaderData, useNavigate } from '@remix-run/react'
 
 import { Button } from '~/components/Button'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
-import * as Dialog from '@radix-ui/react-dialog';
 
 export const SubscriptionEditLayout = ({ children }) => {
   const submit = useSubmitPromise()
@@ -15,12 +15,12 @@ export const SubscriptionEditLayout = ({ children }) => {
   const { id, subscription, upcomingChargeId } = useLoaderData()
 
   const [processing, setProcessing] = useState(false)
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [isProcessDialogOpen, setProcessDialogOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false)
+  const [isProcessDialogOpen, setProcessDialogOpen] = useState(false)
   const [dialogContent, setDialogContent] = useState({
     title: '',
-    description: ''
-  });
+    description: '',
+  })
   const [delaying, setDelaying] = useState(false)
   const [canceling, setCanceling] = useState(false)
 
@@ -41,21 +41,21 @@ export const SubscriptionEditLayout = ({ children }) => {
     )
 
     if (res.msg === 'ok') {
-      console.debug('ok');
+      console.debug('ok')
       setDialogContent({
         title: 'Congrats!',
-        description: 'Your order is being processed immediately.'
-      });
+        description: 'Your order is being processed immediately.',
+      })
     } else {
       setDialogContent({
         title: 'Error!',
-        description: 'There was a problem processing your order.'
-      });
+        description: 'There was a problem processing your order.',
+      })
     }
 
     setProcessing(false)
-    setDialogOpen(false);
-    setProcessDialogOpen(true);
+    setDialogOpen(false)
+    setProcessDialogOpen(true)
     //navigate('..')
   }
 
@@ -161,52 +161,65 @@ export const SubscriptionEditLayout = ({ children }) => {
           <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
             <Dialog.Title className="text-lg font-bold">WAIT!</Dialog.Title>
             <Dialog.Description className="mt-2">
-            <p>If you click Process Now, your credit card or PayPall will be charged immediately, and the order will be placed today. Each time the button is clicked, it will place a new order, so please be sure to press it only once, even if it appears that it did not go through.
-            </p>
-            <p>If you don’t want to be charged today with a new order, press back now. The changes to your order have automatically been saved.
-            </p>
+              <p>
+                If you click Process Now, your credit card or PayPall will be
+                charged immediately, and the order will be placed today. Each
+                time the button is clicked, it will place a new order, so please
+                be sure to press it only once, even if it appears that it did
+                not go through.
+              </p>
+              <p>
+                If you don’t want to be charged today with a new order, press
+                back now. The changes to your order have automatically been
+                saved.
+              </p>
             </Dialog.Description>
             <div className="flex justify-end mt-4 space-x-2">
-            <Button
-              onClick={() => setDialogOpen(false)}
-              className="bg-red-500 text-white hover:bg-red-700 px-6 py-2 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-opacity-50"
-            >
-              Back Now
-            </Button>
-            <Button
-              loading={processing}
-              onClick={() => {
-                  handleProcess();
-              }}
-              className="bg-green-500 text-white hover:bg-green-700 px-6 py-2 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-opacity-50"
-            >
-              Process Now
-            </Button>
-            </div>
-          </Dialog.Content>
-        </Dialog.Portal>
-
-        <Dialog.Root open={isProcessDialogOpen} onOpenChange={setProcessDialogOpen}>
-        <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/30" />
-          <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
-            <Dialog.Title className="text-lg font-bold">{dialogContent.title}</Dialog.Title>
-            <Dialog.Description className="mt-2">
-            {dialogContent.description}
-            </Dialog.Description>
-            <div className="flex justify-end mt-4">
-              <Button 
-              className="px-6 py-2 text-white rounded-md shadow hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-opacity-50"
-              style={{ backgroundColor: '#862e1b', borderColor: '#862e1b' }}
-              onClick={() => setProcessDialogOpen(false)}>
-                Close
+              <Button
+                onClick={() => setDialogOpen(false)}
+                className="bg-red-500 text-white hover:bg-red-700 px-6 py-2 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-opacity-50"
+              >
+                Back Now
+              </Button>
+              <Button
+                loading={processing}
+                onClick={() => {
+                  handleProcess()
+                }}
+                className="bg-green-500 text-white hover:bg-green-700 px-6 py-2 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-opacity-50"
+              >
+                Process Now
               </Button>
             </div>
           </Dialog.Content>
         </Dialog.Portal>
-      </Dialog.Root>
-      </Dialog.Root>
 
+        <Dialog.Root
+          open={isProcessDialogOpen}
+          onOpenChange={setProcessDialogOpen}
+        >
+          <Dialog.Portal>
+            <Dialog.Overlay className="fixed inset-0 bg-black/30" />
+            <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
+              <Dialog.Title className="text-lg font-bold">
+                {dialogContent.title}
+              </Dialog.Title>
+              <Dialog.Description className="mt-2">
+                {dialogContent.description}
+              </Dialog.Description>
+              <div className="flex justify-end mt-4">
+                <Button
+                  className="px-6 py-2 text-white rounded-md shadow hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+                  style={{ backgroundColor: '#862e1b', borderColor: '#862e1b' }}
+                  onClick={() => setProcessDialogOpen(false)}
+                >
+                  Close
+                </Button>
+              </div>
+            </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
+      </Dialog.Root>
     </div>
   )
 }
