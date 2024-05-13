@@ -1,5 +1,4 @@
 import { loginWithShopifyCustomerAccount } from '@rechargeapps/storefront-client'
-import { json } from '@shopify/remix-oxygen'
 
 const RECHARGE_SESSION_KEY = 'rechargeSession'
 
@@ -13,7 +12,7 @@ async function loginRecharge(context) {
     context.rechargeSession.set(RECHARGE_SESSION_KEY, rechargeSession)
   } else {
     // this should match your catch boundary
-    throw json('No session created', { status: 400 })
+    throw new Error('No session created')
   }
 
   return rechargeSession
@@ -36,10 +35,10 @@ export async function rechargeQueryWrapper(rechargeFn, context) {
         return await rechargeFn(rechargeSession)
       }
       // this should match your catch boundary
-      throw json(`Recharge Error - ${e.message}`, { status: e?.status })
+      throw new Error(`Recharge Error - ${e.message}`)
     } catch (error) {
       // this should match your catch boundary
-      throw json(`Recharge Error - ${e.message}`, { status: e?.status })
+      throw new Error(`Recharge Error - ${e.message}`)
     }
   }
 }

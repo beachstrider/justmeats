@@ -124,7 +124,7 @@ export async function action({ request, context }) {
     checkoutUrl = cartResult.cart.checkoutUrl ?? checkoutUrl
   }
 
-  return json({ checkoutUrl, msg: 'ok' })
+  return json({ checkoutUrl, success: true })
 }
 
 export default function Product() {
