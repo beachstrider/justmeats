@@ -1,7 +1,5 @@
 import { useState } from 'react'
 
-import { addDays, format } from 'date-fns'
-
 import * as Dialog from '@radix-ui/react-dialog'
 import { NavLink, useLoaderData, useNavigate } from '@remix-run/react'
 
@@ -48,8 +46,7 @@ export const SubscriptionEditLayout = ({ children }) => {
       },
     )
 
-    if (res.msg === 'ok') {
-      console.debug('ok')
+    if (res.success) {
       setDialogContent({
         title: 'Congrats!',
         description: 'Your order is being processed immediately.',
@@ -64,29 +61,22 @@ export const SubscriptionEditLayout = ({ children }) => {
     setProcessing(false)
     setDialogOpen(false)
     setProcessDialogOpen(true)
-    //navigate('..')
   }
 
   const handleDelay = async () => {
     setDelaying(true)
 
-    const date = format(
-      addDays(subscription.next_charge_scheduled_at, 7),
-      'yyyy-MM-dd',
-    )
-
     const res = await submit(
       {
         body: JSON.stringify({
           api: 'delay-subscription',
-          date,
+          next_charge_scheduled_at: subscription.next_charge_scheduled_at,
         }),
       },
       { method: 'post', action: `/account/subscriptions/${id}` },
     )
 
-    if (res.msg === 'ok') {
-      console.debug('ok')
+    if (res.success) {
       setDelayDialogContent({
         title: 'Success!',
         description: 'Your order is now delayed 1 week.',
@@ -101,7 +91,6 @@ export const SubscriptionEditLayout = ({ children }) => {
     setDelaying(false)
     setDelayDialogOpen(false)
     setDelayResultDialogOpen(true)
-    //navigate('..')
   }
 
   const handleCancel = async () => {
@@ -116,13 +105,11 @@ export const SubscriptionEditLayout = ({ children }) => {
       { method: 'post', action: `/account/subscriptions/${id}` },
     )
 
-    if (res.msg === 'ok') {
-      console.debug('ok')
+    if (res.success) {
       navigate('..', { replace: true })
     }
 
     setCanceling(false)
-    navigate('..')
   }
 
   return (

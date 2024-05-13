@@ -67,14 +67,17 @@ export async function action({ request, context }) {
       )
 
       if (errors?.length) {
-        throw new Error(errors[0].message)
+        return json({ success: false, message: errors[0].message })
       }
 
       if (!res?.customerUpdate?.customer) {
-        throw new Error('Customer profile update failed.')
+        return json({
+          success: false,
+          message: 'Customer profile update failed.',
+        })
       }
 
-      return json({ msg: 'ok' })
+      return json({ success: true })
 
     case 'send-update-payment-email':
       await rechargeQueryWrapper(
@@ -85,7 +88,7 @@ export async function action({ request, context }) {
         context,
       )
 
-      return json({ msg: 'ok' })
+      return json({ success: true })
 
     default:
       break

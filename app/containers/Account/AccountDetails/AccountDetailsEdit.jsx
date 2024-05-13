@@ -34,8 +34,10 @@ export const AccountDetailsEdit = ({ customer }) => {
         },
       )
 
-      if (res.msg === 'ok') {
+      if (res.success) {
         console.debug('ok')
+      } else {
+        throw new Error(res.message)
       }
     } catch (error) {
       console.error('Error:', error)

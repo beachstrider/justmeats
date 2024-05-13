@@ -1,5 +1,7 @@
 import { useContext, useEffect } from 'react'
 
+import { addDays, format } from 'date-fns'
+
 import {
   cancelSubscription,
   getSubscription,
@@ -200,52 +202,75 @@ export const action = async ({ request, context, params }) =>
           quantity: product.quantity,
         }))
 
-        await updateBundleSelection(rechargeSession, bundleId, {
-          purchase_item_id,
-          items,
-        })
+        try {
+          await updateBundleSelection(rechargeSession, bundleId, {
+            purchase_item_id,
+            items,
+          })
 
-        return json({ msg: 'ok' })
+          return json({ success: true })
+        } catch (err) {
+          return json({ success: false, message: err.message ?? err })
+        }
 
       case 'process-charge':
         const chargeId = data.chargeId
 
-        await processCharge(rechargeSession, chargeId)
+        try {
+          await processCharge(rechargeSession, chargeId)
 
-        return json({ msg: 'ok' })
+          return json({ success: true })
+        } catch (err) {
+          return json({ success: false, message: err.message ?? err })
+        }
 
       case 'delay-subscription':
-        const date = data.date
-
-        await updateSubscriptionChargeDate(
-          rechargeSession,
-          Number(params.id),
-          date,
+        const date = format(
+          addDays(data.next_charge_scheduled_at, 7),
+          'yyyy-MM-dd',
         )
 
-        return json({ msg: 'ok' })
+        try {
+          await updateSubscriptionChargeDate(
+            rechargeSession,
+            Number(params.id),
+            date,
+          )
+
+          return json({ success: true })
+        } catch (err) {
+          return json({ success: false, message: err.message ?? err })
+        }
 
       case 'cancel-subscription':
-        await cancelSubscription(rechargeSession, Number(params.id), {
-          cancellation_reason: 'Do not want it anymore.',
-          send_email: true,
-        })
+        try {
+          await cancelSubscription(rechargeSession, Number(params.id), {
+            cancellation_reason: 'Do not want it anymore.',
+            send_email: true,
+          })
 
-        return json({ msg: 'ok' })
+          return json({ success: true })
+        } catch (err) {
+          return json({ success: false, message: err.message ?? err })
+        }
 
       case 'send-update-payment-email':
         const { address_id, payment_method_id } = data
 
-        await sendCustomerNotification(
-          rechargeSession,
-          'SHOPIFY_UPDATE_PAYMENT_INFO',
-          {
-            address_id,
-            payment_method_id,
-          },
-        )
+        try {
+          await sendCustomerNotification(
+            rechargeSession,
+            'SHOPIFY_UPDATE_PAYMENT_INFO',
+            {
+              address_id,
+              payment_method_id,
+            },
+          )
 
-        return json({ msg: 'ok' })
+          return json({ success: true })
+        } catch (err) {
+          return json({ success: false, message: err.message ?? err })
+        }
 
       default:
         break
