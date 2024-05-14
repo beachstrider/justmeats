@@ -163,22 +163,23 @@ export const SubscriptionEditLayout = ({ children }) => {
       <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/30" />
-          <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
+          <Dialog.Content className="fixed p-8 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
             <Dialog.Title className="text-lg font-bold">WAIT!</Dialog.Title>
             <Dialog.Description className="mt-2">
-              If you click Process Now, your credit card or PayPall will be
+              If you click Process Now, your credit card or PayPal will be
               charged immediately, and the order will be placed today. Each time
               the button is clicked, it will place a new order, so please be
               sure to press it only once, even if it appears that it did not go
               through.
               <br />
               If you don’t want to be charged today with a new order, press back
-              now. The changes to your order have automatically been saved.
+              now. If you want to update your order, go back and click
+              &quot;Update Now&quot; instead.
             </Dialog.Description>
             <div className="flex justify-end mt-4 space-x-2">
               <Button
                 onClick={() => setDialogOpen(false)}
-                className="bg-red-500 text-white hover:bg-red-700 px-6 py-2 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-opacity-50"
+                className="px-6 py-2 text-white transition duration-150 ease-in-out bg-red-500 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-opacity-50"
               >
                 Back Now
               </Button>
@@ -187,7 +188,7 @@ export const SubscriptionEditLayout = ({ children }) => {
                 onClick={() => {
                   handleProcess()
                 }}
-                className="bg-green-500 text-white hover:bg-green-700 px-6 py-2 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-opacity-50"
+                className="px-6 py-2 text-white transition duration-150 ease-in-out bg-green-500 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-opacity-50"
               >
                 Process Now
               </Button>
@@ -201,7 +202,7 @@ export const SubscriptionEditLayout = ({ children }) => {
       >
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/30" />
-          <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
+          <Dialog.Content className="fixed p-8 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
             <Dialog.Title className="text-lg font-bold">
               {dialogContent.title}
             </Dialog.Title>
@@ -224,7 +225,7 @@ export const SubscriptionEditLayout = ({ children }) => {
       <Dialog.Root open={delayDialogOpen} onOpenChange={setDelayDialogOpen}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/30" />
-          <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
+          <Dialog.Content className="fixed p-8 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
             <Dialog.Title className="text-lg font-bold">
               Are you Sure?
             </Dialog.Title>
@@ -245,7 +246,7 @@ export const SubscriptionEditLayout = ({ children }) => {
             <div className="flex justify-end mt-4 space-x-2">
               <Button
                 onClick={() => setDelayDialogOpen(false)}
-                className="bg-red-500 text-white hover:bg-red-700 px-6 py-2 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-opacity-50"
+                className="px-6 py-2 text-white transition duration-150 ease-in-out bg-red-500 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-opacity-50"
               >
                 Back Now
               </Button>
@@ -254,7 +255,7 @@ export const SubscriptionEditLayout = ({ children }) => {
                 onClick={() => {
                   handleDelay()
                 }}
-                className="bg-green-500 text-white hover:bg-green-700 px-6 py-2 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-opacity-50"
+                className="px-6 py-2 text-white transition duration-150 ease-in-out bg-green-500 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-opacity-50"
               >
                 Confirm
               </Button>
@@ -268,7 +269,7 @@ export const SubscriptionEditLayout = ({ children }) => {
       >
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/30" />
-          <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-8 bg-white shadow-lg">
+          <Dialog.Content className="fixed p-8 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
             <Dialog.Title className="text-lg font-bold">
               {delayDialogContent.title}
             </Dialog.Title>
