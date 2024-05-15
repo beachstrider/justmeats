@@ -1,8 +1,11 @@
-import { Form, NavLink, Outlet, useLoaderData } from '@remix-run/react'
+import React from 'react'
+
+import { getCustomer } from '@rechargeapps/storefront-client'
+import { Outlet, useLoaderData } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
-import ToggleMenu from '~/containers/Account/AccountMenu/ToggleMenu'
-import { CUSTOMER_DETAILS_QUERY } from '~/graphql/customer-account/CustomerDetailsQuery'
+import { Menu } from '~/containers/Account/Menu'
+import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 
 export function shouldRevalidate() {
   return true
@@ -12,74 +15,30 @@ export function shouldRevalidate() {
  * @param {LoaderFunctionArgs}
  */
 export async function loader({ context }) {
-  const { data, errors } = await context.customerAccount.query(
-    CUSTOMER_DETAILS_QUERY,
-  )
+  return await rechargeQueryWrapper(async (rechargeSession) => {
+    const customer = await getCustomer(rechargeSession)
 
-  if (errors?.length || !data?.customer) {
-    throw new Error('Customer not found')
-  }
-  return json({
-    headers: {
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-      'Set-Cookie': await context.session.commit(),
-    },
-    customer: data.customer,
-  })
+    return json(
+      {
+        customer,
+      },
+      {
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Set-Cookie': await context.session.commit(),
+        },
+      },
+    )
+  }, context)
 }
 
-export default function AccountLayout() {
-  /** @type {LoaderReturnData} */
+export default function Layout() {
   const { customer } = useLoaderData()
+
   return (
     <div className="account">
-      <AccountMenu />
+      <Menu />
       <Outlet context={{ customer }} />
     </div>
   )
 }
-function AccountMenu() {
-  function isActiveStyle({ isActive, isPending }) {
-    return {
-      fontWeight: isActive ? 'bold' : undefined,
-      color: isPending ? 'grey' : 'black',
-    }
-  }
-
-  return (
-    <div className="py-3">
-      <nav
-        role="navigation"
-        className="hidden font-Roboto text-lg font-normal md:flex flex-col sm:flex-row justify-center text-center gap-0 sm:gap-2 lg:gap-[8.5rem]"
-      >
-        <NavLink to="/account/subscriptions" style={isActiveStyle}>
-          Subscriptions &nbsp;
-        </NavLink>
-
-        <NavLink to="/account/order-history" style={isActiveStyle}>
-          &nbsp; Order History &nbsp;
-        </NavLink>
-
-        <NavLink to="/account/account-details" style={isActiveStyle}>
-          &nbsp; Account Details &nbsp;
-        </NavLink>
-
-        <Logout />
-      </nav>
-      <div className="block md:hidden">
-        <ToggleMenu />
-      </div>
-    </div>
-  )
-}
-
-function Logout() {
-  return (
-    <Form className="account-logout" method="POST" action="/account/logout">
-      &nbsp;<button type="submit">Logout</button>
-    </Form>
-  )
-}
-
-/** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
-/** @typedef {import('@shopify/remix-oxygen').SerializeFrom<typeof loader>} LoaderReturnData */

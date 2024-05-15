@@ -1,177 +1,67 @@
-import { InstagramLogoIcon } from '@radix-ui/react-icons'
-import { Link, useLoaderData } from '@remix-run/react'
-import {
-  Money,
-  Pagination,
-  flattenConnection,
-  getPaginationVariables,
-} from '@shopify/hydrogen'
+import React from 'react'
+
+import { listOrders } from '@rechargeapps/storefront-client'
+import { NavLink, useLoaderData } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
-import { CUSTOMER_ORDERS_QUERY } from '~/graphql/customer-account/CustomerOrdersQuery'
+import { Order } from '~/containers/Account/Orders/Order'
+import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 
-/**
- * @type {MetaFunction}
- */
 export const meta = () => {
-  return [{ title: 'Orders' }]
+  return [{ title: 'Orders – Just Meats' }]
 }
 
-/**
- * @param {LoaderFunctionArgs}
- */
-export async function loader({ request, context }) {
-  const paginationVariables = getPaginationVariables(request, {
-    pageBy: 20,
+export async function loader({ context }) {
+  const listOrdersResponse = await rechargeQueryWrapper((session) => {
+    if (session.customerId) {
+      return listOrders(session, {
+        limit: 25,
+        sort_by: 'id-asc',
+      })
+    }
+    return { orders: [] }
+  }, context)
+
+  return json({
+    headers: {
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Set-Cookie': await context.session.commit(),
+    },
+    listOrdersResponse,
   })
-
-  const { data, errors } = await context.customerAccount.query(
-    CUSTOMER_ORDERS_QUERY,
-    {
-      variables: {
-        ...paginationVariables,
-      },
-    },
-  )
-
-  if (errors?.length || !data?.customer) {
-    throw Error('Customer orders not found')
-  }
-
-  return json(
-    { customer: data.customer },
-    {
-      headers: {
-        'Set-Cookie': await context.session.commit(),
-      },
-    },
-  )
 }
 
 export default function Orders() {
-  /** @type {LoaderReturnData} */
-  const { customer } = useLoaderData()
-  const { orders } = customer
+  const {
+    listOrdersResponse: { orders },
+  } = useLoaderData()
+
   return (
-    <div className="w-[95%] md:w-[80%] mx-auto">
-      <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-[30px] w-full mb-28">
-        <div className="basis-8/12 border border-gray p-0 rounded-[13px] ">
-          {orders.nodes.length ? (
-            <OrdersTable orders={orders} />
+    <div className="py-0 bg-sublistbgGray md:py-8">
+      <div className="container">
+        <div className="flex flex-col items-center py-4 my-4 border-b-2 border-gray-500 md:flex-row">
+          <NavLink
+            to="/account/subscriptions"
+            className="capitalize bg-[#fff] border-solid border-2 border-gray-500 px-8 text-[22px] py-1"
+          >
+            Back to Account
+          </NavLink>
+          <h3 className="text-[28px] md:text-[36px] font-bold ml-0 md:ml-[30%]">
+            Your Order History
+          </h3>
+        </div>
+        <div className="bg-[#fff] rounded-md py-8 px-6 mb-8">
+          {orders?.length ? (
+            <>
+              {orders.map((order) => (
+                <Order order={order} key={order.id} />
+              ))}
+            </>
           ) : (
-            <EmptyOrders />
+            <h3>No order found.</h3>
           )}
         </div>
-        <div className="basis-4/12  rounded-[13px]">
-          <CustomerDetails />
-        </div>
       </div>
     </div>
   )
 }
-
-/**
- * @param {Pick<CustomerOrdersFragment, 'orders'>}
- */
-function OrdersTable({ orders }) {
-  return (
-    <div className="acccount-orders w-full">
-      {orders?.nodes.length ? (
-        <Pagination connection={orders}>
-          {({ nodes, isLoading, PreviousLink, NextLink }) => {
-            return (
-              <>
-                <PreviousLink>
-                  {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
-                </PreviousLink>
-                <table className="w-full flex flex-col ">
-                  <thead className="pb-2 ">
-                    <tr className="w-full flex px-9 rounded-t-xl text-center bg-gray-200 py-3 border-b-2 text-start ">
-                      <th className="w-1/5 text-center">Order</th>
-                      <th className="w-1/5 text-center">Date</th>
-                      <th className="w-1/5 text-center">Payment Status</th>
-                      <th className="w-1/5 text-center">Fullfillment status</th>
-                      <th className="w-1/5 text-center">Total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {nodes.map((order) => {
-                      return <OrderItem key={order.id} order={order} />
-                    })}
-                  </tbody>
-                </table>
-
-                <NextLink>
-                  {isLoading ? 'Loading...' : <span>Load more ↓</span>}
-                </NextLink>
-              </>
-            )
-          }}
-        </Pagination>
-      ) : (
-        <EmptyOrders />
-      )}
-    </div>
-  )
-}
-
-function EmptyOrders() {
-  return (
-    <div>
-      <p>You haven&apos;t placed any orders yet.</p>
-      <br />
-      <p>
-        <Link to="/collections">Start Shopping →</Link>
-      </p>
-    </div>
-  )
-}
-
-/**
- * @param {{order: OrderItemFragment}}
- */
-function OrderItem({ order }) {
-  const fulfillmentStatus = flattenConnection(order.fulfillments)[0]?.status
-  return (
-    <>
-      <tr className="w-full flex text-start  items-center px-8 py-3 text-center">
-        <td className="w-1/5 text-center">
-          {' '}
-          <Link to={`/account/orders/${order.id}`}>
-            <strong>#{order.number}</strong>
-          </Link>
-        </td>
-        <td className="w-1/5 text-center">
-          <p>{new Date(order.processedAt).toDateString()}</p>
-        </td>
-        <td className="w-1/5 text-center">
-          <p>{order.financialStatus}</p>
-        </td>
-        <td className="w-1/5 text-center">{fulfillmentStatus}</td>
-        <td className="w-1/5 text-center">
-          <Money data={order.totalPrice} />
-        </td>
-      </tr>
-    </>
-  )
-}
-const CustomerDetails = () => {
-  return (
-    <div className="w-full border border-gray p-0 rounded-[13px]  text-start text-black ">
-      <div className="bg-[#E5E7EB] rounded-t-xl  px-6 py-3">Brandn Barclay</div>
-      <div className="p-6">
-        <h2 className="mb-2 text-xl font-medium leading-tight ">
-          Brandn Barclay
-        </h2>
-        <p className="mb-4 text-base ">address</p>
-        <p className="mb-4 text-base ">address 2</p>
-      </div>
-    </div>
-  )
-}
-
-/** @template T @typedef {import('@remix-run/react').MetaFunction<T>} MetaFunction */
-/** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
-/** @typedef {import('customer-accountapi.generated').CustomerOrdersFragment} CustomerOrdersFragment */
-/** @typedef {import('customer-accountapi.generated').OrderItemFragment} OrderItemFragment */
-/** @typedef {import('@shopify/remix-oxygen').SerializeFrom<typeof loader>} LoaderReturnData */

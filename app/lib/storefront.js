@@ -37,6 +37,9 @@ export const getBundle = async ({ request, context }) => {
   const bundleProduct = allProducts.find(
     (product) => product.handle === bundleProductHandle,
   )
+  const shippingInsuranceProduct = allProducts.find(
+    (product) => product.handle === shippingInsuranceProductHandle,
+  )
 
   const products = allProducts
     .filter(
@@ -51,5 +54,6 @@ export const getBundle = async ({ request, context }) => {
     freeProduct,
     bonusProduct,
     bundleProduct,
+    shippingInsuranceProduct,
   }
 }

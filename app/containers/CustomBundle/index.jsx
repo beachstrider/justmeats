@@ -154,6 +154,8 @@ export const CustomBundle = () => {
 
       if (res.success) {
         console.debug('ok')
+      } else {
+        console.error(res.message)
       }
     }
 

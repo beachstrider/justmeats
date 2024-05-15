@@ -1,16 +1,14 @@
 import { redirect } from '@shopify/remix-oxygen'
 
-// if we dont implement this, /account/logout will get caught by account.$.tsx to do login
-
-export async function loader() {
-  return redirect('/')
-}
-
 /**
  * @param {ActionFunctionArgs}
  */
 export async function action({ context }) {
-  return context.customerAccount.logout()
+  return redirect('/', {
+    headers: {
+      'Set-Cookie': await context.rechargeSession.destroy(),
+    },
+  })
 }
 
 /** @typedef {import('@shopify/remix-oxygen').ActionFunctionArgs} ActionFunctionArgs */

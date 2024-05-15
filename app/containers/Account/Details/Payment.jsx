@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Button } from '~/components/Button'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
 
-export const PaymentDetails = ({ paymentMethod }) => {
+export const Payment = ({ paymentMethod }) => {
   const submit = useSubmitPromise()
 
   const {
@@ -27,22 +27,22 @@ export const PaymentDetails = ({ paymentMethod }) => {
       },
       {
         method: 'post',
-        action: `/account/account-details`,
+        action: `/account/details`,
       },
     )
 
-    setSendingEmail(false)
-    setIsNavOpen(false)
-
-    if (res.msg === 'ok') {
+    if (res.success) {
       console.debug('ok')
     }
+
+    setSendingEmail(false)
+    setIsNavOpen(false)
   }
 
   return (
     <>
-      <div className="border border-black px-5 py-4 my-5">
-        <div className="border-gray-500 border-b py-4 mb-4">
+      <div className="px-5 py-4 my-5 border border-black">
+        <div className="py-4 mb-4 border-b border-gray-500">
           <h3 className="text-[24px] text-start font-normal uppercase">
             {payment_details.brand}
           </h3>
@@ -84,13 +84,13 @@ export const PaymentDetails = ({ paymentMethod }) => {
             : 'hidden'
         }
       >
-        <div className="w-full border-b border-gray-700 border-b-2 px-4 py-4 ">
+        <div className="w-full px-4 py-4 border-b border-b-2 border-gray-700 ">
           <div className="flex items-center justify-between ">
             <h1 className="text-[20px] font-bold py-1 px-5">
               Edit Payment Method
             </h1>
             <svg
-              className="h-8 w-8 text-gray cursor-pointer"
+              className="w-8 h-8 cursor-pointer text-gray"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
