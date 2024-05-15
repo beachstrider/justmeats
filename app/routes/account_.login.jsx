@@ -14,7 +14,11 @@ import { RECHARGE_SESSION_KEY } from '~/lib/rechargeUtils'
  * @param {LoaderFunctionArgs}
  */
 export async function loader({ request, context }) {
-  return null
+  return json(null, {
+    headers: {
+      'Set-Cookie': await context.rechargeSession.destroy(),
+    },
+  })
 }
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
