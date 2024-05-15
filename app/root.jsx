@@ -7,6 +7,7 @@ import sliderAutoplay from 'swiper/css/autoplay'
 import sliderNavigation from 'swiper/css/navigation'
 import sliderPagination from 'swiper/css/pagination'
 
+import { getCustomer } from '@rechargeapps/storefront-client'
 import {
   Links,
   LiveReload,
@@ -37,13 +38,13 @@ import { addScriptToHead } from '~/lib/utils'
 import appStyles from '~/styles/app.css'
 import tailwindStyles from '~/styles/tailwind.css'
 
-import { CUSTOMER_DETAILS_QUERY } from './graphql/customer-account/CustomerDetailsQuery'
 import { configAspireIQ } from './lib/configAspireIQ'
 import { configChatJS } from './lib/configChatJS'
 import { configGTM } from './lib/configGTM'
 import { configLuckyOrange } from './lib/configLuckyOrange'
 import { configMetaPixel } from './lib/configMetaPixel'
 import { configTwitterPixel } from './lib/configTwitterPixel'
+import { RECHARGE_SESSION_KEY } from './lib/rechargeUtils'
 
 export const shouldRevalidate = ({ formMethod, currentUrl, nextUrl }) => {
   // revalidate when a mutation is performed e.g add to cart, login...
@@ -88,25 +89,21 @@ export const useRootLoaderData = () => {
 }
 
 export async function loader({ context }) {
-  const { storefront, customerAccount, env } = context
+  const { storefront, env } = context
 
   const publicStoreDomain = env.PUBLIC_STORE_DOMAIN
 
-  const isLoggedIn = await customerAccount.isLoggedIn()
-
   let customer = null
 
-  if (isLoggedIn) {
-    try {
-      const { data, errors } = await context.customerAccount.query(
-        CUSTOMER_DETAILS_QUERY,
-      )
+  const rechargeSession = context.rechargeSession.get(RECHARGE_SESSION_KEY)
 
-      if (!errors?.length && data?.customer) {
-        customer = data.customer
+  if (rechargeSession) {
+    try {
+      customer = await getCustomer(rechargeSession)
+    } catch (e) {
+      if (e?.status === 401) {
+        console.debug('session expired')
       }
-    } catch (err) {
-      console.log(err)
     }
   }
 
