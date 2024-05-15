@@ -20,7 +20,7 @@ export function Menu() {
           Subscriptions &nbsp;
         </NavLink>
 
-        <NavLink to="/account/order-history" style={isActiveStyle}>
+        <NavLink to="/account/orders" style={isActiveStyle}>
           &nbsp; Order History &nbsp;
         </NavLink>
 

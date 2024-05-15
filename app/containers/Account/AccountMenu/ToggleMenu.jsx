@@ -13,10 +13,10 @@ const ToggleMenu = () => {
     <div className="sm:hidden">
       {' '}
       {/* Show only on small screens */}
-      <div className="flex justify-center items-center">
+      <div className="flex items-center justify-center">
         <button
           onClick={toggleMenu}
-          className="flex items-center mx-auto text-lg focus:outline-none uppercase font-semibold"
+          className="flex items-center mx-auto text-lg font-semibold uppercase focus:outline-none"
         >
           <span className="mr-1 font-Roboto text-[12px] leading-[14px] py-[10px]">
             Subscriptions
@@ -52,7 +52,7 @@ const ToggleMenu = () => {
         </button>
       </div>
       {showMenu && (
-        <nav className="font-Roboto text-lg font-normal flex flex-col items-center gap">
+        <nav className="flex flex-col items-center text-lg font-normal font-Roboto gap">
           <NavLink
             to="/account/subscriptions"
             className="text-center bg-black text-white font-Roboto font-semibold text-[12px] leading-[14px] w-full py-[10px] uppercase border-b border-b-white"
@@ -61,7 +61,7 @@ const ToggleMenu = () => {
             Subscriptions
           </NavLink>
           <NavLink
-            to="/account/order-history"
+            to="/account/orders"
             className="text-center bg-black text-white font-Roboto font-semibold text-[12px] leading-[14px] w-full py-[10px] uppercase border-b border-b-white"
             activeClassName="font-bold"
           >
