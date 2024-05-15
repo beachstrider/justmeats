@@ -10,6 +10,10 @@ import { RequestForm } from '~/containers/Account/Login/Request'
 import { ValidateForm } from '~/containers/Account/Login/Validate'
 import { RECHARGE_SESSION_KEY } from '~/lib/rechargeUtils'
 
+export function shouldRevalidate() {
+  return false
+}
+
 /**
  * @param {LoaderFunctionArgs}
  */

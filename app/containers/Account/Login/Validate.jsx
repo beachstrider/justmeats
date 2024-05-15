@@ -4,7 +4,6 @@ import OtpInput from 'react-otp-input'
 import { useNavigate } from '@remix-run/react'
 
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
-import { cn } from '~/lib/utils'
 
 export const ValidateForm = ({ email, sessionToken }) => {
   const submit = useSubmitPromise()
@@ -59,6 +58,7 @@ export const ValidateForm = ({ email, sessionToken }) => {
       <div>
         <div className="mb-1">Enter verification code</div>
         <OtpInput
+          shouldAutoFocus
           value={code}
           onChange={setCode}
           numInputs={4}
@@ -75,6 +75,7 @@ export const ValidateForm = ({ email, sessionToken }) => {
             borderColor: isError ? 'rgb(244,67,54)' : '',
           }}
         />
+        {submitting && <div className="mt-1">Validating...</div>}
         {isError && <div className="mt-1 text-red-500">Invalid code</div>}
       </div>
     </div>
