@@ -35,13 +35,7 @@ export const meta = ({ data }) => {
 }
 
 export const loader = async ({ request, context, params }) => {
-  await context.customerAccount.handleAuthStatus()
-
   return await rechargeQueryWrapper(async (rechargeSession) => {
-    if (!params.id) {
-      return redirect(params?.locale ? `${params.locale}/account` : '/account')
-    }
-
     const discountCode = context.session.get('discountCode')
     const discountCodes = discountCode ? [discountCode] : []
 
