@@ -1,28 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import { Link } from '@remix-run/react'
-import { json } from '@shopify/remix-oxygen'
+import { Link, useOutletContext } from '@remix-run/react'
 
-export async function loader({ context }) {
-  await context.customerAccount.handleAuthStatus()
+export function Card({ setIsNavOpen, subscription }) {
+  const { customer } = useOutletContext()
 
-  return json(
-    {},
-    {
-      headers: {
-        'Set-Cookie': await context.session.commit(),
-      },
-    },
-  )
-}
-
-export function SubscriptionCard({
-  addressId,
-  setIsNavOpen,
-  subscription,
-  currentcustomer,
-  shopCurrency = 'USD',
-}) {
   if (!subscription?.id) return null
   const handleClick = (id) => {
     setIsNavOpen((prev) => !prev, id)
@@ -36,13 +18,13 @@ export function SubscriptionCard({
         </div>
         <div className="">
           <h2>
-            {currentcustomer.firstName} {currentcustomer.lastName}
+            {customer.first_name} {customer.last_name}
           </h2>
-          <h2>{currentcustomer.defaultAddress.address1}</h2>
+          <h2>XXX YYY</h2>
         </div>
         <div className="text-center md:text-right">
           <a
-            onClick={() => handleClick(currentcustomer.defaultAddress.id)}
+            onClick={() => handleClick(1)}
             className="px-4 py-3 text-white rounded cursor-pointer bg-custombgGreen"
           >
             EDIT

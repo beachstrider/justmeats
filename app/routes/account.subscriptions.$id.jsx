@@ -15,7 +15,7 @@ import {
 import { useLoaderData } from '@remix-run/react'
 import { json, redirect } from '@shopify/remix-oxygen'
 
-import { SubscriptionEditLayout } from '~/containers/Account/Subscriptions/Edit/Layout'
+import { SubscriptionEditLayout } from '~/containers/Account/Subscriptions/EditLayout'
 import { CustomBundle } from '~/containers/CustomBundle'
 import { RootContext } from '~/contexts'
 import { rechargeQueryWrapper } from '~/lib/rechargeUtils'

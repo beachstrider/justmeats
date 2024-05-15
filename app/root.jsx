@@ -31,7 +31,6 @@ import { CustomAnalytics } from '~/components/CustomAnalytics'
 import { GTMNoScript } from '~/components/GTMNoScript'
 import { Layout } from '~/components/Layout'
 import { MetaNoScript } from '~/components/MetaNoScript'
-import { SubscriptionCard } from '~/components/SubscriptionCard'
 import { DELIVERY_EVERY_15_DAYS } from '~/consts'
 import { RootContext } from '~/contexts'
 import { addScriptToHead } from '~/lib/utils'
@@ -341,7 +340,6 @@ export default function App() {
               isNewLayout,
             }}
           >
-            <SubscriptionCard></SubscriptionCard>
             <Layout {...data}>
               <Outlet />
             </Layout>
