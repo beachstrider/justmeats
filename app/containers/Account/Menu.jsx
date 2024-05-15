@@ -24,7 +24,7 @@ export function Menu() {
           &nbsp; Order History &nbsp;
         </NavLink>
 
-        <NavLink to="/account/account-details" style={isActiveStyle}>
+        <NavLink to="/account/details" style={isActiveStyle}>
           &nbsp; Account Details &nbsp;
         </NavLink>
 

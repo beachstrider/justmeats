@@ -56,21 +56,18 @@ const ToggleMenu = () => {
           <NavLink
             to="/account/subscriptions"
             className="text-center bg-black text-white font-Roboto font-semibold text-[12px] leading-[14px] w-full py-[10px] uppercase border-b border-b-white"
-            activeClassName="font-bold"
           >
             Subscriptions
           </NavLink>
           <NavLink
             to="/account/orders"
             className="text-center bg-black text-white font-Roboto font-semibold text-[12px] leading-[14px] w-full py-[10px] uppercase border-b border-b-white"
-            activeClassName="font-bold"
           >
             Order History
           </NavLink>
           <NavLink
-            to="/account/account-details"
+            to="/account/details"
             className="text-center bg-black text-white font-Roboto font-semibold text-[12px] leading-[14px] w-full py-[10px] uppercase border-b border-b-white"
-            activeClassName="font-bold"
           >
             Account Details
           </NavLink>
