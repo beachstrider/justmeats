@@ -31,12 +31,12 @@ export const Payment = ({ paymentMethod }) => {
       },
     )
 
-    setSendingEmail(false)
-    setIsNavOpen(false)
-
-    if (res.msg === 'ok') {
+    if (res.success) {
       console.debug('ok')
     }
+
+    setSendingEmail(false)
+    setIsNavOpen(false)
   }
 
   return (
