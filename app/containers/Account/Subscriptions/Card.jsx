@@ -1,15 +1,8 @@
 import React from 'react'
 
-import { Link, useOutletContext } from '@remix-run/react'
+import { Link } from '@remix-run/react'
 
-export function Card({ setIsNavOpen, subscription }) {
-  const { customer } = useOutletContext()
-
-  if (!subscription?.id) return null
-  const handleClick = (id) => {
-    setIsNavOpen((prev) => !prev, id)
-  }
-
+export function Card({ setAddress, subscription }) {
   return (
     <li className="grid text-center border rounded">
       <div className="grid items-center gap-4 p-4 md:gap-6 md:p-6 md:grid-cols-3">
@@ -18,13 +11,14 @@ export function Card({ setIsNavOpen, subscription }) {
         </div>
         <div className="">
           <h2>
-            {customer.first_name} {customer.last_name}
+            {subscription.include.address.first_name}{' '}
+            {subscription.include.address.last_name}
           </h2>
-          <h2>XXX YYY</h2>
+          <h2>{subscription.include.address.address1}</h2>
         </div>
         <div className="text-center md:text-right">
           <a
-            onClick={() => handleClick(1)}
+            onClick={() => setAddress(subscription.include.address)}
             className="px-4 py-3 text-white rounded cursor-pointer bg-custombgGreen"
           >
             EDIT

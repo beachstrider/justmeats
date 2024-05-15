@@ -10,14 +10,13 @@ export const ContactForm = ({ formName }) => {
   const [submitting, setSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  // Initialize useForm hook
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm()
-  // Function to run on form submit that sends data to Zapier
+
   const onSubmit = async (data) => {
     setSubmitting(true)
 

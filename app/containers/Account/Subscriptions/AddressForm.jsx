@@ -1,35 +1,76 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
 
-import { Form, useActionData, useNavigation } from '@remix-run/react'
+import { Button } from '~/components/Button'
+import { useSubmitPromise } from '~/hooks/useSubmitPromise'
 
-export function AddressForm({ addressId, address, children }) {
-  const { state, formMethod } = useNavigation()
+export function AddressForm({ address, onSubmit }) {
+  const submit = useSubmitPromise()
 
-  /** @type {ActionReturnData} */
-  const action = useActionData()
-  const error = action?.error?.[addressId]
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
+
+  const defaultValues = {
+    id: address.id,
+    first_name: address.first_name,
+    last_name: address.last_name,
+    address1: address.address1,
+    address2: address.address2,
+    company: address.company,
+    country_code: address.country_code,
+    city: address.city,
+    province: address.province,
+    zip: address.zip,
+    phone: address.phone,
+  }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ defaultValues })
+
+  const onFormSubmit = async (data) => {
+    setSubmitting(true)
+
+    const res = await submit(
+      {
+        body: JSON.stringify({
+          api: 'update-address',
+          ...data,
+        }),
+      },
+      { method: 'post', action: '/account/subscriptions' },
+    )
+
+    if (res.success) {
+      onSubmit()
+    } else {
+      setError('Failed. Please check your inputs.')
+    }
+
+    setSubmitting(false)
+  }
 
   return (
-    <Form id={addressId}>
+    <form onSubmit={handleSubmit(onFormSubmit)}>
       <div className="grid grid-cols-1 overflow-y-auto gap-x-3 gap-y-2 sm:grid-cols-6">
         <div className="sm:col-span-3">
-          <input type="hidden" name="addressId" defaultValue={addressId} />
           <label
-            htmlFor="firstName"
+            htmlFor="first_name"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
             First name
           </label>
           <div className="mt-2">
             <input
-              id="firstName"
-              name="firstName"
+              id="first_name"
+              {...register('first_name', {
+                required: 'First Name is required',
+              })}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               type="text"
-              defaultValue={address?.firstName ?? ''}
-              autoComplete="given-name"
               placeholder="First name"
-              aria-label="First name"
               minLength={2}
             />
           </div>
@@ -37,21 +78,20 @@ export function AddressForm({ addressId, address, children }) {
 
         <div className="sm:col-span-3">
           <label
-            htmlFor="lastName"
+            htmlFor="last_name"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
             Last name
           </label>
           <div className="mt-2">
             <input
-              id="lastName"
-              name="lastName"
+              id="last_name"
+              {...register('last_name', {
+                required: 'Last Name is required',
+              })}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               type="text"
-              defaultValue={address?.lastName ?? ''}
-              autoComplete="family-name"
               placeholder="Last name"
-              aria-label="Last name"
               minLength={2}
             />
           </div>
@@ -66,10 +106,11 @@ export function AddressForm({ addressId, address, children }) {
           <div className="mt-2">
             <input
               id="address1"
-              name="address1"
+              {...register('address1', {
+                required: 'Address1 is required',
+              })}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               type="text"
-              defaultValue={address?.address1 ?? ''}
               placeholder="Address1"
               minLength={5}
             />
@@ -85,10 +126,9 @@ export function AddressForm({ addressId, address, children }) {
           <div className="mt-2">
             <input
               id="address2"
-              name="address2"
+              {...register('address2')}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               type="text"
-              defaultValue={address?.address2 ?? ''}
               placeholder="Address2"
             />
           </div>
@@ -103,31 +143,31 @@ export function AddressForm({ addressId, address, children }) {
           <div className="mt-2">
             <input
               id="company"
-              name="company"
+              {...register('company')}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               type="text"
-              defaultValue={address?.company ?? ''}
               placeholder="company"
             />
           </div>
         </div>
         <div className="sm:col-span-6">
           <label
-            htmlFor="territoryCode"
+            htmlFor="country_code"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
-            Country
+            Country Code
           </label>
           <div className="mt-2">
             <input
-              id="territoryCode"
-              name="territoryCode"
+              id="country_code"
+              {...register('country_code', {
+                required: 'Country code is required',
+              })}
+              min={2}
+              max={2}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               type="text"
-              defaultValue={address?.territoryCode ?? ''}
-              autoComplete="country"
               placeholder="country"
-              aria-label="country"
             />
           </div>
         </div>
@@ -141,28 +181,30 @@ export function AddressForm({ addressId, address, children }) {
           <div className="mt-2">
             <input
               id="city"
-              name="city"
+              {...register('city', {
+                required: 'City is required',
+              })}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               type="text"
-              defaultValue={address?.city ?? ''}
               placeholder="city"
             />
           </div>
         </div>
         <div className="sm:col-span-3">
           <label
-            htmlFor="zoneCode"
+            htmlFor="province"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
             Province/State
           </label>
           <div className="mt-2">
             <input
-              id="zoneCode"
-              name="zoneCode"
+              id="province"
+              {...register('province', {
+                required: 'State is required',
+              })}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               type="text"
-              defaultValue={address?.zoneCode ?? ''}
               placeholder="state"
             />
           </div>
@@ -177,10 +219,11 @@ export function AddressForm({ addressId, address, children }) {
           <div className="mt-2">
             <input
               id="zip"
-              name="zip"
+              {...register('zip', {
+                required: 'Zip is required',
+              })}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               type="text"
-              defaultValue={address?.zip ?? ''}
               placeholder="postalcode"
             />
           </div>
@@ -195,31 +238,27 @@ export function AddressForm({ addressId, address, children }) {
           <div className="mt-2">
             <input
               id="phoneNumber"
-              name="phoneNumber"
+              {...register('phone', {
+                required: 'Phone is required',
+              })}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               type="tel"
-              defaultValue={address?.phoneNumber ?? ''}
               placeholder="phone"
               pattern="^\+?[1-9]\d{3,14}$"
             />
           </div>
         </div>
-        <div className="sm:col-span-6">
-          {error ? (
-            <p>
-              <mark>
-                <small>{error}</small>
-              </mark>
-            </p>
-          ) : (
-            <br />
-          )}
-          {children({
-            stateForMethod: (method) =>
-              formMethod === method ? state : 'idle',
-          })}
+        {error && <div className="text-red-500 sm:col-span-6">{error}</div>}
+        <div className="mt-[30px] sm:col-span-6">
+          <Button
+            className="rounded-sm w-full bg-[#252525] px-6 py-2 mb-4 text-sm font-semibold text-white shadow-sm border-2 border-black"
+            loading={submitting}
+            type="submit"
+          >
+            Save
+          </Button>
         </div>
       </div>
-    </Form>
+    </form>
   )
 }
