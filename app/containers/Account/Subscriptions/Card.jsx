@@ -1,33 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { Link } from '@remix-run/react'
-import { json } from '@shopify/remix-oxygen'
 
-export async function loader({ context }) {
-  await context.customerAccount.handleAuthStatus()
-
-  return json(
-    {},
-    {
-      headers: {
-        'Set-Cookie': await context.session.commit(),
-      },
-    },
-  )
-}
-
-export function SubscriptionCard({
-  addressId,
-  setIsNavOpen,
-  subscription,
-  currentcustomer,
-  shopCurrency = 'USD',
-}) {
-  if (!subscription?.id) return null
-  const handleClick = (id) => {
-    setIsNavOpen((prev) => !prev, id)
-  }
-
+export function Card({ setAddress, subscription }) {
   return (
     <li className="grid text-center border rounded">
       <div className="grid items-center gap-4 p-4 md:gap-6 md:p-6 md:grid-cols-3">
@@ -36,13 +11,14 @@ export function SubscriptionCard({
         </div>
         <div className="">
           <h2>
-            {currentcustomer.firstName} {currentcustomer.lastName}
+            {subscription.include.address.first_name}{' '}
+            {subscription.include.address.last_name}
           </h2>
-          <h2>{currentcustomer.defaultAddress.address1}</h2>
+          <h2>{subscription.include.address.address1}</h2>
         </div>
         <div className="text-center md:text-right">
           <a
-            onClick={() => handleClick(currentcustomer.defaultAddress.id)}
+            onClick={() => setAddress(subscription.include.address)}
             className="px-4 py-3 text-white rounded cursor-pointer bg-custombgGreen"
           >
             EDIT

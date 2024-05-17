@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Image } from '@shopify/hydrogen'
 
-const OrderHistory = ({ order }) => {
+export const Order = ({ order }) => {
   const {
     shipping_address,
     line_items,
@@ -78,7 +78,7 @@ const OrderHistory = ({ order }) => {
           </p>
         </div>
       </div>
-      <div className="flex flex-col justify-center md:items-end md:justify-end pr-5">
+      <div className="flex flex-col justify-center pr-5 md:items-end md:justify-end">
         <p className="capitalize text-[14px] font-bold leading-3 tracking-[0.47px] my-2 pl-5 md:pl-0">
           Subtotal:
           <span className="ml-1">{subtotal_price}</span>
@@ -101,5 +101,3 @@ const OrderHistory = ({ order }) => {
     </div>
   )
 }
-
-export default OrderHistory

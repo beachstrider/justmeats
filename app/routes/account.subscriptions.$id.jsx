@@ -15,7 +15,7 @@ import {
 import { useLoaderData } from '@remix-run/react'
 import { json, redirect } from '@shopify/remix-oxygen'
 
-import { SubscriptionEditLayout } from '~/containers/Account/Subscriptions/Edit/Layout'
+import { SubscriptionEditLayout } from '~/containers/Account/Subscriptions/EditLayout'
 import { CustomBundle } from '~/containers/CustomBundle'
 import { RootContext } from '~/contexts'
 import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
@@ -35,13 +35,7 @@ export const meta = ({ data }) => {
 }
 
 export const loader = async ({ request, context, params }) => {
-  await context.customerAccount.handleAuthStatus()
-
   return await rechargeQueryWrapper(async (rechargeSession) => {
-    if (!params.id) {
-      return redirect(params?.locale ? `${params.locale}/account` : '/account')
-    }
-
     const discountCode = context.session.get('discountCode')
     const discountCodes = discountCode ? [discountCode] : []
 
@@ -64,7 +58,13 @@ export const loader = async ({ request, context, params }) => {
     )
 
     const [
-      { products, allProducts, freeProduct, bonusProduct },
+      {
+        products,
+        allProducts,
+        freeProduct,
+        bonusProduct,
+        shippingInsuranceProduct,
+      },
       subscription,
       { bundle_selections },
     ] = await Promise.all([
@@ -144,8 +144,12 @@ export const loader = async ({ request, context, params }) => {
       ? bonusProduct.variants.nodes.find((el) => el.id === bonusItemVariantId)
       : null
 
+    // Exclude free & shipping product
     subscriptionProducts = subscriptionProducts.filter(
       (product) => Number(product.priceRange.minVariantPrice.amount) !== 0,
+    )
+    subscriptionProducts = subscriptionProducts.filter(
+      (product) => product.id !== shippingInsuranceProduct.id,
     )
 
     return json(
@@ -185,9 +189,16 @@ export const action = async ({ request, context, params }) =>
       case 'update-bundle':
         const bundleId = data.bundleId
         const purchase_item_id = data.purchase_item_id
-        const products = data.products
 
-        const { collection } = await getBundle({ request, context })
+        const { collection, shippingInsuranceProduct } = await getBundle({
+          request,
+          context,
+        })
+
+        const products = [
+          ...data.products,
+          { ...shippingInsuranceProduct, quantity: 1 },
+        ]
 
         const bundleCollectionId = getPureId(collection.id, 'Collection')
 
