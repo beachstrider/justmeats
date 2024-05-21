@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { phone as formatPhone } from 'phone'
+
 import {
   sendPasswordlessCode,
   validatePasswordlessCode,
@@ -50,11 +52,21 @@ export async function action({ request, context }) {
 
         if (customer !== null) {
           if (customer.phone === null) {
-            let phone = await getCustomerFirstAddressPhone(customer.id, context)
+            const addressPhone = await getCustomerFirstAddressPhone(
+              customer.id,
+              context,
+            )
 
-            if (phone) {
-              phone = phone.replaceAll(' ', '')
-              await updateCustomer(customer.id, { phone }, context)
+            if (addressPhone) {
+              const phoneData = formatPhone(addressPhone)
+
+              if (phoneData.isValid) {
+                await updateCustomer(
+                  customer.id,
+                  { phone: phoneData.phoneNumber },
+                  context,
+                )
+              }
             }
           }
         }
