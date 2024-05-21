@@ -88,8 +88,8 @@ export const PlanPickerBlock = () => {
   )
 
   return (
-    <section className="w-[100%] sm:border-b-2 border-solid border-[#0003] mb-[0px] sm:mb-[30px]">
-      <div className="flex flex-col items-center justify-center pt-[10px] pb-5 sm:py-14">
+    <div className="w-[100%] sm:border-b-2 border-solid border-[#0003] mb-[0px] sm:mb-[30px]">
+      <div className="flex flex-col">
         <div className="block sm:hidden">
           <h2 className="font-bold text-[28px] hidden lg:block">
             GET YOUR MEATS NOW
@@ -102,22 +102,18 @@ export const PlanPickerBlock = () => {
           </div>
         </div>
 
-        <div className="flex gap-2">
-          <div className="w-[35px] h-[35px] lg:w-[60px] lg:h-[60px] rounded-[100%] border-2 border-[#425C35] sm:border-none sm:bg-black flex justify-center items-center  ">
-            <span className=" text-[22px] lg:text-[40px] font-bold text-black sm:text-white ">
-              1
-            </span>
+        <div className="sm:px-[30px] px-[20px] font-dunbar">
+          <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px]">
+            1
           </div>
-          <div className="h-fit sm:border-b-4  sm:border-[#425B3499] sm:pb-1">
-            <h3 className="font-semibold leading-7 text-[20px] lg:text-[22px] text-[#1d1d1d] sm:uppercase ">
-              Select Your <br className="hidden lg:block" /> Frequency
-            </h3>
-          </div>
+          <h3 className="font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase">
+            Select Your Frequency
+          </h3>
         </div>
         <div className="flex justify-start flex-col lg:flex-row gap-[12px] lg:gap-[40px] pt-5 w-[100%]">
           <PlanPicker />
         </div>
       </div>
-    </section>
+    </div>
   )
 }

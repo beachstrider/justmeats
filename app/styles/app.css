@@ -307,7 +307,6 @@ button.free-gift-label {
   top: -100%;
 }
 
-
 @media screen and (min-width: 640px) {
   span.free-text-label,
   button.free-gift-label {
@@ -409,17 +408,16 @@ button.free-gift-label {
 /* Custom scrollbar styles for cart_lines_scrollbar */
 .cart_lines_scrollbar::-webkit-scrollbar {
   width: 8px;
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
 .cart_lines_scrollbar::-webkit-scrollbar-track {
   border: 1px solid #707070;
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
 .cart_lines_scrollbar::-webkit-scrollbar-thumb {
   background-color: #1c7084;
-  
 }
 
 .bg-rich-froning-banner {
@@ -445,20 +443,26 @@ button.free-gift-label {
 .bg-lower-footer {
   background-image: url('../assets/images/lower-footer1.png');
 }
-.howjustmeatSlider .slick-track{
+
+.bg-rec-96 {
+  background-image: url('../assets/images/Rectangle96.png');
+}
+
+.howjustmeatSlider .slick-track {
   display: flex !important;
   gap: 22px !important;
 }
-.howjustmeatSlider .slick-dots li button{
+.howjustmeatSlider .slick-dots li button {
   background-color: transparent !important;
   border: 2px solid #fff !important;
   border-radius: 50% !important;
 }
-.howjustmeatSlider .slick-dots li.slick-active button:before{
+.howjustmeatSlider .slick-dots li.slick-active button:before {
   color: rgba(241, 8, 8, 0.548) !important;
   font-size: 10px !important;
 }
-.howjustmeatSlider .slick-slider .slick-track, .slick-slider .slick-list{
+.howjustmeatSlider .slick-slider .slick-track,
+.slick-slider .slick-list {
   text-align: center !important;
 }
 .howjustmeatSlider .slick-dots {
@@ -470,23 +474,23 @@ button.free-gift-label {
 .featuredSlider .slick-list {
   margin: 0 -10px;
 }
-.featuredSlider .slick-dots li button{
+.featuredSlider .slick-dots li button {
   background-color: #151515 !important;
   border: 4px solid #222222 !important;
   border-radius: 50% !important;
 }
 .featuredSlider .slick-dots {
   bottom: 0px !important;
-} 
-.featuredSlider .slick-dots li.slick-active button:before{
-  color: #7A392D !important;
-  
 }
-.productsSlider .slick-track{
+.featuredSlider .slick-dots li.slick-active button:before {
+  color: #7a392d !important;
+}
+.productsSlider .slick-track {
   display: flex !important;
   gap: 22px !important;
 }
-.productsSlider .slick-prev:before, .slick-next:before {
+.productsSlider .slick-prev:before,
+.slick-next:before {
   font-size: 41px !important;
   color: #908f8e !important;
   background: white;
@@ -497,16 +501,17 @@ button.free-gift-label {
   width: 29px;
   height: 29px;
 }
-.slick-dots li button{
+.slick-dots li button {
   background-color: transparent !important;
   border: 2px solid #fff !important;
   border-radius: 50% !important;
 }
-.slick-dots li.slick-active button:before{
+.slick-dots li.slick-active button:before {
   color: #fff !important;
   font-size: 10px !important;
 }
-.slick-slider .slick-track, .slick-slider .slick-list{
+.slick-slider .slick-track,
+.slick-slider .slick-list {
   text-align: center !important;
 }
 .slick-dots {
@@ -527,13 +532,11 @@ section.product-list-slider button.slick-arrow.slick-next {
 
 .bg-white.select-hover select {
   @apply bg-[url(https://cdn.shopify.com/s/files/1/0672/4776/7778/files/icon-select.svg?v=1713469358)];
-
 }
 
 .slider-container.productsSlider ul.slick-dots button {
   @apply w-4 h-4;
 }
-
 
 .slider-container.productsSlider ul.slick-dots li.slick-active button:before {
   @apply w-2 h-2 top-[-1.5px] left-[3.25px];
@@ -581,7 +584,7 @@ section.product-list-slider button.slick-arrow.slick-next {
 @media screen and (max-width: 1190px) {
   .custom-padding-header li {
     @apply px-2;
-  }  
+  }
 }
 
 .how-it-works-slider .swiper-pagination {
@@ -600,13 +603,13 @@ section.product-list-slider button.slick-arrow.slick-next {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y))
     rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y))
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  --tw-content: "";
+  --tw-content: '';
   background: white;
 }
 
 .sticky-header {
   @apply visible opacity-100 translate-y-0 transition-transform duration-[0.2s] ease-linear shadow-[0_2px_10px_2px_#0000000f] fixed z-[99] border-b-[rgba(29,29,29,0.1)] border-b border-solid left-0 top-0;
-  background: #EEEEEE !important;
+  background: #eeeeee !important;
   position: fixed !important;
 }
 
@@ -618,7 +621,7 @@ section.product-list-slider button.slick-arrow.slick-next {
   .font-mobile {
     font-size: 20px !important;
     line-height: 1.75rem !important;
-  } 
+  }
 }
 
 .filteration-ul li:first-child button {
