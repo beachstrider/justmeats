@@ -52,20 +52,19 @@ export async function action({ request, context }) {
 
         if (customer !== null) {
           if (customer.phone === null) {
-            const addressPhone = await getCustomerFirstAddressPhone(
-              customer.id,
-              context,
-            )
+            if (customer.include.addresses.length > 0) {
+              const addressPhone = customer.include.addresses[0].phone
 
-            if (addressPhone) {
-              const phoneData = formatPhone(addressPhone)
+              if (addressPhone) {
+                const phoneData = formatPhone(addressPhone)
 
-              if (phoneData.isValid) {
-                await updateCustomer(
-                  customer.id,
-                  { phone: phoneData.phoneNumber },
-                  context,
-                )
+                if (phoneData.isValid) {
+                  await updateCustomer(
+                    customer.id,
+                    { phone: phoneData.phoneNumber },
+                    context,
+                  )
+                }
               }
             }
           }
