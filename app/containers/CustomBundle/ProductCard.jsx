@@ -1,7 +1,13 @@
+import { getPureId } from '~/lib/utils'
+
 import { ProductActions } from './ProductActions'
 
 export const ProductCard = ({ product, onClick }) => {
   const image = product.featuredImage.url
+  const pureId = getPureId(product.id, 'Product')
+  if (pureId === '8717535838489') {
+    return <></>
+  }
 
   return (
     <div className="product-grid" data-product-id={product.id}>
