@@ -1,49 +1,34 @@
 import React from 'react'
 
-import { Link } from '@remix-run/react'
+import { NavLink } from '@remix-run/react'
 
-import logo from '~/assets/logo.svg'
+import { Back } from '~/icons/Back'
+import { Logo } from '~/icons/Logo'
+import { NewAccount } from '~/icons/NewAccount'
+import { cn } from '~/lib/utils'
 
-const OrderHeader = () => {
+export const OrderHeader = () => {
   return (
-    <header className="flex flex-col items-center justify-center OrderHeader">
-      <div className="container flex items-center py-3">
-        <div>
-          <Link to="/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-8 h-8 m-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 19l-7-7 7-7"
-              ></path>
-            </svg>
-          </Link>
+    <header className="container relative h-[80px] sm:h-[90px] sm:px-[22px] px-[13px] navBar flex justify-between items-center">
+      <NavLink prefetch="intent" to="/" className="w-[48px]">
+        <Back />
+      </NavLink>
+      <a
+        href="/"
+        target="_blank"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block w-[148px] sm:w-[178px] sm:mr-[11px] mr-[1px]"
+      >
+        <Logo />
+      </a>
+      <div className={cn('w-full max-w-[40%] flex justify-end')}>
+        <div className="flex items-center justify-between gap-4 headerIcons sm:gap-10 w-[fit-content]">
+          <NavLink end prefetch="intent" to="/account">
+            <span className="hidden w-[32px] cursor-pointer loginIcon lg:flex">
+              <NewAccount />
+            </span>
+          </NavLink>
         </div>
-        <div className="w-[100%] flex justify-center">
-          <Link to="/">
-            <img
-              className="object-cover h-20 w-30"
-              src={logo}
-              alt=""
-              loading="lazy"
-            />
-          </Link>
-        </div>
-      </div>
-      <div className="flex w-[100%] items-center justify-center bg-[#1c7084] py-1 ">
-        <p className="text-lg font-medium text-white uppercase ">
-          LIMITED TIME: GET FREE RASPBERRY BBQ CHICKEN
-        </p>
       </div>
     </header>
   )
 }
-
-export default OrderHeader
