@@ -8,7 +8,7 @@ import { NewAccount } from '~/icons/NewAccount'
 
 export const OrderHeader = () => {
   return (
-    <header className="container relative h-[80px] sm:h-[90px] sm:px-[22px] px-[13px] navBar flex justify-between items-center [filter:drop-shadow(0px_0px_15px_rgba(0,0,0,0.15))] bg-white">
+    <header className="relative h-[80px] sm:h-[90px] sm:px-[22px] px-[13px] navBar flex justify-between items-center [filter:drop-shadow(0px_0px_15px_rgba(0,0,0,0.15))] bg-white">
       <NavLink prefetch="intent" to="/" className="w-[48px]">
         <Back />
       </NavLink>

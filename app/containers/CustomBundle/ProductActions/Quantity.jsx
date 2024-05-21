@@ -1,8 +1,9 @@
 import { useContext } from 'react'
 
 import { CustomBundleContext } from '~/contexts'
+import { cn } from '~/lib/utils'
 
-export const Quantity = ({ line, isViewingCart = false }) => {
+export const Quantity = ({ line, type }) => {
   const { selectedProducts, setSelectedProducts } =
     useContext(CustomBundleContext)
   const { id, quantity, priceRange } = line
@@ -31,42 +32,29 @@ export const Quantity = ({ line, isViewingCart = false }) => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center w-full cart-line-quantity">
-      <div
-        className={`flex gap-[5px] items-center justify-between ${
-          isViewingCart
-            ? 'bg-[#425b34] sm:bg-[#862e1b] pl-[5px] pr-[5px] sm:p-[5px]'
-            : 'bg-[#862e1b] p-[5px]'
-        }`}
-      >
+    <div
+      className={cn(
+        'flex flex-col items-center justify-center w-full cart-line-quantity',
+        type === 'modal' ? 'sm:w-[134px] sm:h-[50px] w-[166px] h-[51px]' : '',
+      )}
+    >
+      <div className={`flex gap-[5px] items-center justify-between`}>
         <button
           onClick={() => updateQuantity(quantity - 1)}
           aria-label="Decrease quantity"
           name="decrease-quantity"
-          className={`w-[25px] flex justify-center items-center h-[25px] rounded-[5px] p-[3px] ${
-            isViewingCart
-              ? 'bg-[#425b34] text-[#fff] sm:text-[#862e1b] sm:bg-white'
-              : 'bg-white text-[#862e1b]'
-          }`}
+          className={`w-[25px] flex justify-center items-center h-[25px] rounded-[5px] p-[3px] text-[#862e1b] font-bold text-[26px]`}
         >
           <span>&#8722; </span>
         </button>
         <small
-          className={`flex-1 text-[#000] font-bold text-[14px] text-center  flex justify-center items-center w-[32px] p-[3px] ${
-            isViewingCart
-              ? 'bg-[#F3F4F6] h-[35px] sm:h-[25px] sm:bg-white'
-              : 'bg-white h-[25px]'
-          }`}
+          className={`flex-1 font-medium sm:text-[20px] text-[18px] text-center flex justify-center items-center w-[32px] p-[3px]`}
         >
           {quantity}
         </small>
         <button
           onClick={() => updateQuantity(quantity + 1)}
-          className={`flex justify-center items-center rounded-[5px] p-[3px] w-[25px] h-[25px] ${
-            isViewingCart
-              ? 'text-[#fff] bg-[#425b34] sm:text-[#862e1b] sm:bg-white'
-              : 'bg-white text-[#862e1b]'
-          }`}
+          className={`flex justify-center items-center rounded-[5px] p-[3px] w-[25px] h-[25px] text-[#862e1b] font-bold text-[26px]`}
           aria-label="Increase quantity"
           name="increase-quantity"
         >

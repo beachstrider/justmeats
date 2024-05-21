@@ -181,39 +181,37 @@ export const CustomBundle = () => {
         setSellingPlan,
         setSellingPlanFrequency,
         setBonusVariant,
-
         setSubmitting,
         handleSubmit,
       }}
     >
-      <section className="max-w-ful custom-collection-wrap">
-        <div className="flex flex-col flex-1 gap-2 bg-white border-gray-400 border-solid main-section sm:border">
-          {isCartPage && (
-            <div className="flex items-center w-full gap-2 py-3 sm:py-0">
-              <div className="w-[35px] h-[35px] ml-3 lg:hidden lg:w-[60px] lg:h-[60px] rounded-[100%] sm:border-none border-2 border-[#425C35] sm:bg-black flex justify-center items-center  ">
-                <span className=" text-[22px] lg:text-[40px] font-bold text-black sm:text-white ">
-                  2
-                </span>
+      <div className="max-w-ful custom-collection-wrap">
+        <div className="flex flex-col flex-1 gap-2 border-gray-400 border-solid main-section sm:border">
+          <div className="relative flex product-and-cart mb-[62px] md:mb-0">
+            <section className="container-small sm:pt-[52px] pt-[16px]">
+              {isCartPage && (
+                <div className="flex items-center w-full gap-2 sm:mb-[56px] mb-[24px]">
+                  <div className="w-[35px] h-[35px] ml-3 lg:hidden lg:w-[60px] lg:h-[60px] rounded-[100%] sm:border-none border-2 border-[#425C35] sm:bg-black flex justify-center items-center  ">
+                    <span className=" text-[22px] lg:text-[40px] font-bold text-black sm:text-white ">
+                      2
+                    </span>
+                  </div>
+                  <h2 className="font-semibold leading-7 text-[20px] sm:text-[24px] font-dunbar sm:uppercase">
+                    SELECT YOUR MEATS
+                  </h2>
+                </div>
+              )}
+              <div className="grid grid-cols-2 product-grid md:grid-cols-3 xl:grid-cols-4 gap-x-[20px] gap-y-[62px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]">
+                {productsBasedOnSellingPlan.map((product, key) => (
+                  <ProductCard
+                    key={key}
+                    product={product}
+                    onClick={() => setClickedProduct(product)}
+                  />
+                ))}
               </div>
-              <div className="h-fit sm:border-b-4 w-fit sm:border-[#425B34] sm:m-3 ">
-                <h2 className="font-semibold leading-7 text-[20px] sm:text-[22px] text-[#1d1d1d] sm:uppercase  ">
-                  Select Your Meats
-                </h2>
-              </div>
-            </div>
-          )}
-
-          <div className="xl:grid xl:grid-cols-12 product-and-cart mb-[62px] md:mb-0">
-            <div className="grid grid-cols-2 product-grid md:grid-cols-3 gap-x-5 sm:p-3 xl:pr-5 xl:col-span-8 xl:mb-[0px] mb-[50px]">
-              {productsBasedOnSellingPlan.map((product, key) => (
-                <ProductCard
-                  key={key}
-                  product={product}
-                  onClick={() => setClickedProduct(product)}
-                />
-              ))}
-            </div>
-            <div className="cart-wrapper sticky top-[10px] h-fit mb-[10px] hidden lg:block xl:col-span-4">
+            </section>
+            <aside className="cart-wrapper sticky top-[0] h-fit hidden lg:block sm:max-w-[480px] w-full bg-white">
               {isCartPage && <PlanPickerBlock />}
               <div className="h-full border">
                 <div className="py-5 text-center text-white bg-black top-section">
@@ -238,7 +236,7 @@ export const CustomBundle = () => {
                   <Cart layout="aside" />
                 </div>
               </div>
-            </div>
+            </aside>
           </div>
         </div>
         <MobileCart />
@@ -247,7 +245,7 @@ export const CustomBundle = () => {
           product={clickedProduct}
           onClose={() => setClickedProduct(null)}
         />
-      </section>
+      </div>
     </CustomBundleContext.Provider>
   )
 }

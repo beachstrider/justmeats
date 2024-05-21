@@ -51,8 +51,8 @@ export function CartLineItem({ line, lineType = 'paid' }) {
         height={100}
         loading="lazy"
         className={`w-full sm:w-[72px] ${
-          lineType === 'locked' ? 'opacity-[.22]' : 'opacity-[1]',
-          lineType === 'bonus' ? 'hidden lg:block' : 'hidden sm:block'
+          (lineType === 'locked' ? 'opacity-[.22]' : 'opacity-[1]',
+          lineType === 'bonus' ? 'hidden lg:block' : 'hidden sm:block')
         }`}
       />
       <img
@@ -60,8 +60,12 @@ export function CartLineItem({ line, lineType = 'paid' }) {
         height={100}
         loading="lazy"
         className={`w-full h-[169px] mb-3 sm:w-[72px] ${
-          lineType === 'locked' ? 'opacity-[.22]' : 'opacity-[1] object-contain',
-          lineType === 'bonus' ? 'block lg:hidden sm:h-auto' : 'block sm:hidden'
+          (lineType === 'locked'
+            ? 'opacity-[.22]'
+            : 'opacity-[1] object-contain',
+          lineType === 'bonus'
+            ? 'block lg:hidden sm:h-auto'
+            : 'block sm:hidden')
         }`}
       />
 
@@ -108,7 +112,7 @@ export function CartLineItem({ line, lineType = 'paid' }) {
             lineType === 'bonus' ? ' -mt-[11px]' : ' -mt-[13px]',
           )}
         >
-          {lineType === 'paid' && <Quantity isViewingCart={true} line={line} />}
+          {lineType === 'paid' && <Quantity line={line} />}
           {lineType === 'bonus' && <LockedItem />}
           {lineType === 'free' && (
             <>
