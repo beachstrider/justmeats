@@ -8,6 +8,11 @@ import { json } from '@shopify/remix-oxygen'
 
 import { RequestForm } from '~/containers/Account/Login/Request'
 import { ValidateForm } from '~/containers/Account/Login/Validate'
+import {
+  getCustomerByEmail,
+  getCustomerFirstAddressPhone,
+  updateCustomer,
+} from '~/lib/rechargeAdmin'
 import { RECHARGE_SESSION_KEY } from '~/lib/rechargeUtils'
 
 export function shouldRevalidate() {
@@ -40,6 +45,21 @@ export async function action({ request, context }) {
   switch (api) {
     case 'request':
       try {
+        // WORKAROUND: for Login sms issue
+        const customer = await getCustomerByEmail(email, context)
+
+        if (customer !== null) {
+          if (customer.phone === null) {
+            let phone = await getCustomerFirstAddressPhone(customer.id, context)
+
+            if (phone) {
+              phone = phone.replaceAll(' ', '')
+              await updateCustomer(customer.id, { phone }, context)
+            }
+          }
+        }
+        // END WORKAROUND
+
         const sessionToken = await sendPasswordlessCode(email, {
           send_email: true,
           send_sms: true,
