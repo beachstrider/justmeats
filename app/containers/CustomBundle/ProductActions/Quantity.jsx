@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 
 import { CustomBundleContext } from '~/contexts'
+import { cn, getPureId } from '~/lib/utils'
 
 export const Quantity = ({ line, isViewingCart = false }) => {
   const { selectedProducts, setSelectedProducts } =
@@ -8,6 +9,9 @@ export const Quantity = ({ line, isViewingCart = false }) => {
   const { id, quantity, priceRange } = line
 
   const price = priceRange?.maxVariantPrice?.amount
+
+  // PATCH: temporily
+  const isUnavailable = getPureId(line.id, 'Product') === '8717535838489'
 
   const updateQuantity = (value) => {
     if (value === 0) {
@@ -43,16 +47,17 @@ export const Quantity = ({ line, isViewingCart = false }) => {
           onClick={() => updateQuantity(quantity - 1)}
           aria-label="Decrease quantity"
           name="decrease-quantity"
-          className={`w-[25px] flex justify-center items-center h-[25px] rounded-[5px] p-[3px] ${
+          className={cn(
+            'w-[25px] flex justify-center items-center h-[25px] rounded-[5px] p-[3px]',
             isViewingCart
               ? 'bg-[#425b34] text-[#fff] sm:text-[#862e1b] sm:bg-white'
-              : 'bg-white text-[#862e1b]'
-          }`}
+              : 'bg-white text-[#862e1b]',
+          )}
         >
           <span>&#8722; </span>
         </button>
         <small
-          className={`flex-1 text-[#000] font-bold text-[14px] text-center  flex justify-center items-center w-[32px] p-[3px] ${
+          className={`flex-1 text-[#000] font-bold text-[14px] text-center flex justify-center items-center w-[32px] p-[3px] ${
             isViewingCart
               ? 'bg-[#F3F4F6] h-[35px] sm:h-[25px] sm:bg-white'
               : 'bg-white h-[25px]'
@@ -62,11 +67,14 @@ export const Quantity = ({ line, isViewingCart = false }) => {
         </small>
         <button
           onClick={() => updateQuantity(quantity + 1)}
-          className={`flex justify-center items-center rounded-[5px] p-[3px] w-[25px] h-[25px] ${
+          // PATCH: temporily
+          disabled={isUnavailable}
+          className={cn(
+            'flex justify-center items-center rounded-[5px] p-[3px] w-[25px] h-[25px] disabled:opacity-70 disabled:cursor-not-allowed',
             isViewingCart
               ? 'text-[#fff] bg-[#425b34] sm:text-[#862e1b] sm:bg-white'
-              : 'bg-white text-[#862e1b]'
-          }`}
+              : 'bg-white text-[#862e1b]',
+          )}
           aria-label="Increase quantity"
           name="increase-quantity"
         >
