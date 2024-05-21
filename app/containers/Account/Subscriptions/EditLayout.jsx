@@ -1,7 +1,12 @@
 import { useState } from 'react'
 
 import * as Dialog from '@radix-ui/react-dialog'
-import { NavLink, useLoaderData, useNavigate } from '@remix-run/react'
+import {
+  NavLink,
+  useLoaderData,
+  useNavigate,
+  useRevalidator,
+} from '@remix-run/react'
 
 import { Button } from '~/components/Button'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
@@ -9,8 +14,10 @@ import { useSubmitPromise } from '~/hooks/useSubmitPromise'
 export const SubscriptionEditLayout = ({ children }) => {
   const submit = useSubmitPromise()
   const navigate = useNavigate()
+  const revalidator = useRevalidator()
 
   const { id, subscription, upcomingChargeId } = useLoaderData()
+  const { next_charge_scheduled_at } = subscription
 
   const [processing, setProcessing] = useState(false)
   const [dialogOpen, setDialogOpen] = useState(false)
@@ -58,6 +65,8 @@ export const SubscriptionEditLayout = ({ children }) => {
       })
     }
 
+    setTimeout(revalidator.revalidate, 5000)
+
     setProcessing(false)
     setDialogOpen(false)
     setProcessDialogOpen(true)
@@ -70,7 +79,7 @@ export const SubscriptionEditLayout = ({ children }) => {
       {
         body: JSON.stringify({
           api: 'delay-subscription',
-          next_charge_scheduled_at: subscription.next_charge_scheduled_at,
+          next_charge_scheduled_at,
         }),
       },
       { method: 'post', action: `/account/subscriptions/${id}` },
@@ -138,6 +147,7 @@ export const SubscriptionEditLayout = ({ children }) => {
             Process Now
           </Button>
           <Button
+            disabled={!next_charge_scheduled_at}
             onClick={() => setDelayDialogOpen(true)}
             className="py-[5px] px-[15px] sm:px-[30px] border-2 border-[#425B34] border-solid bg-white sm:w-auto w-full"
           >
