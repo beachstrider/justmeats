@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
 import { CustomBundleContext } from '~/contexts'
-import { cn } from '~/lib/utils'
+import { cn, getPureId } from '~/lib/utils'
 
 export const Quantity = ({ line, type }) => {
   const { selectedProducts, setSelectedProducts } =
@@ -9,6 +9,9 @@ export const Quantity = ({ line, type }) => {
   const { id, quantity, priceRange } = line
 
   const price = priceRange?.maxVariantPrice?.amount
+
+  // PATCH: temporily
+  const isUnavailable = getPureId(line.id, 'Product') === '8717535838489'
 
   const updateQuantity = (value) => {
     if (value === 0) {
@@ -41,8 +44,6 @@ export const Quantity = ({ line, type }) => {
       <div className={`flex gap-[5px] items-center justify-between`}>
         <button
           onClick={() => updateQuantity(quantity - 1)}
-          aria-label="Decrease quantity"
-          name="decrease-quantity"
           className={`w-[25px] flex justify-center items-center h-[25px] rounded-[5px] p-[3px] text-[#862e1b] font-bold text-[26px]`}
         >
           <span>&#8722; </span>
@@ -55,8 +56,8 @@ export const Quantity = ({ line, type }) => {
         <button
           onClick={() => updateQuantity(quantity + 1)}
           className={`flex justify-center items-center rounded-[5px] p-[3px] w-[25px] h-[25px] text-[#862e1b] font-bold text-[26px]`}
-          aria-label="Increase quantity"
-          name="increase-quantity"
+          // PATCH: temporily
+          disabled={isUnavailable}
         >
           <span>&#43;</span>
         </button>
