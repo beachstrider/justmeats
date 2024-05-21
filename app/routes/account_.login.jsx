@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { phone as formatPhone } from 'phone'
+
 import {
   sendPasswordlessCode,
   validatePasswordlessCode,
@@ -8,6 +10,11 @@ import { json } from '@shopify/remix-oxygen'
 
 import { RequestForm } from '~/containers/Account/Login/Request'
 import { ValidateForm } from '~/containers/Account/Login/Validate'
+import {
+  getCustomerByEmail,
+  getCustomerFirstAddressPhone,
+  updateCustomer,
+} from '~/lib/rechargeAdmin'
 import { RECHARGE_SESSION_KEY } from '~/lib/rechargeUtils'
 
 export function shouldRevalidate() {
@@ -40,6 +47,31 @@ export async function action({ request, context }) {
   switch (api) {
     case 'request':
       try {
+        // WORKAROUND: for Login sms issue
+        const customer = await getCustomerByEmail(email, context)
+
+        if (customer !== null) {
+          if (customer.phone === null) {
+            const addressPhone = await getCustomerFirstAddressPhone(
+              customer.id,
+              context,
+            )
+
+            if (addressPhone) {
+              const phoneData = formatPhone(addressPhone)
+
+              if (phoneData.isValid) {
+                await updateCustomer(
+                  customer.id,
+                  { phone: phoneData.phoneNumber },
+                  context,
+                )
+              }
+            }
+          }
+        }
+        // END WORKAROUND
+
         const sessionToken = await sendPasswordlessCode(email, {
           send_email: true,
           send_sms: true,
