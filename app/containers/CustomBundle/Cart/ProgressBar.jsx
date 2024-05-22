@@ -1,76 +1,75 @@
 import { useContext } from 'react'
 
-import { Progress } from '~/components/Progress'
 import { CustomBundleContext } from '~/contexts'
 import { cn } from '~/lib/utils'
 
-export function ProgressBar() {
+export const ProgressBar = () => {
   const { costForOneTime } = useContext(CustomBundleContext)
 
-  const progressValue = (costForOneTime / 150) * 100 // Calculate the progress value based on the total and the target amount
+  const minP = (costForOneTime / 75) * 100
+  const bonusP = ((costForOneTime - 75) / 50) * 100
+
+  const minPercentage = minP > 0 ? minP : 0
+  const bonusPercentage = bonusP > 0 ? bonusP : 0
 
   return (
-    <>
-      <div className="relative mx-8 my-4 sm:mx-10">
-        <Progress
-          value={progressValue >= 100 ? 100 : progressValue}
-          className="w-[100%] border border-[#000]"
-          totalCartPrice={costForOneTime}
-        />
-        <div className="absolute top-0 left-0 w-full h-full">
-          <Milestone
-            cartTotal={costForOneTime}
-            milestonePrice={75}
-            className="left-[50%]"
-          >
-            <div className="block sm:hidden">$75</div>
-          </Milestone>
-          <Milestone
-            cartTotal={costForOneTime}
-            milestonePrice={125}
-            className="left-[83%]"
-          >
-            <div className="block sm:hidden">$125</div>
-          </Milestone>
+    <div className="sm:px-[40px] px-[20px] sm:pt-[20px] sm:pb-[36px] pb-[24px] border-b border-[#efeeed]">
+      <div className="py-[12px]">
+        <div className="relative h-[22px]">
+          <div className="absolute font-bold font-nunito text-[16px] left-0">
+            Add $75 to Unlock
+          </div>
+          <div className="absolute font-bold font-nunito sm:text-[14px] text-[12px] translate-x-[-50%] left-[60%]">
+            Min
+          </div>
+          <div className="absolute font-bold font-nunito sm:text-[14px] text-[12px] translate-x-[-50%] left-[100%]">
+            Bonus
+          </div>
         </div>
       </div>
-      <div className="relative sm:block mx-8 my-4 hidden sm:mx-10">
-        <div className="absolute text-[12px] translate-x-[-50%] top-[100%] left-[50%]">
-          <p className="flex flex-col mr-3 text-base text-center">
-            <span className="text-[16px] uppercase leading-normal">$75 </span>
-            <span className="text-[11px] uppercase leading-normal">
-              Unlock Order{' '}
-            </span>
-          </p>
-        </div>
-        <div className="absolute text-[12px] translate-x-[-50%] top-[100%] left-[85%] min-w-[130px]">
-          <p className="relative flex flex-col mr-5 text-base text-center">
-            <span className="text-[16px] leading-normal">$125 </span>
-            <span className="text-[11px] uppercase leading-normal">
-              Free Meat{' '}
-            </span>
-            <span className="text-[11px] leading-normal">(UNLOCKED AT $125)</span>
-          </p>
+      <div className="relative">
+        <div className="flex sm:h-[16px] h-[14px]">
+          <div className="border-l-2 border-y-2 border-[#7A392D] rounded-l-[20px] w-3/5 overflow-x-hidden">
+            <div
+              className={cn('bg-[#7A392D] w-[20%] h-full')}
+              style={{ width: `${minPercentage}%` }}
+            ></div>
+          </div>
+          <div className="border-r-2 border-y-2 border-[#637160] rounded-r-[20px] w-2/5 overflow-x-hidden">
+            <div
+              className={cn('bg-[#637160] w-[20%] h-full')}
+              style={{ width: `${bonusPercentage}%` }}
+            ></div>
+          </div>
         </div>
 
-      </div>
-      <div className="relative block mx-8 my-4 sm:hidden sm:mx-10">
-        <div className="absolute text-[12px] translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%]">
-          Minimum
+        <div className="absolute top-0 left-0 w-full h-full">
+          <Milestone
+            className={cn(
+              'left-[60%] border-[#7A392D]',
+              minPercentage >= 100 ? 'bg-[#7A392D] text-white' : 'bg-white',
+            )}
+          >
+            <div>$75</div>
+          </Milestone>
+          <Milestone
+            className={cn(
+              'left-full border-[#637160]',
+              bonusPercentage >= 100 ? 'bg-[#637160] text-white' : 'bg-white',
+            )}
+          >
+            <div>$125</div>
+          </Milestone>
         </div>
-        <div className="absolute text-[12px] translate-x-[-50%] translate-y-[-50%] top-[50%] left-[83%] w-[66px]">
-          Bonus Meat
-        </div>
       </div>
-    </>
+    </div>
   )
 }
 
-const Milestone = ({ className, children, cartTotal, milestonePrice }) => (
+const Milestone = ({ className, children }) => (
   <div
     className={cn(
-      'absolute rounded-full flex justify-center items-center sm:bg-[#1b6f84] w-[28px] h-[28px] sm:w-[20px] sm:h-[20px] translate-x-[-50%] translate-y-[-50%] top-[50%] text-xs text-white border border-solid border-black',
-      cartTotal >= milestonePrice ? 'bg-[#425b34]' : 'bg-[#862E1B]',
+      'absolute rounded-full flex justify-center items-center sm:w-[36px] w-[32px] sm:h-[36px] h-[32px] translate-x-[-50%] translate-y-[-50%] top-[50%] border-2 font-nunito sm:text-[12px] text-[10px] font-extrabold sm:tracking-normal tracking-[-0.5px]',
       className,
     )}
   >

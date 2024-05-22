@@ -246,28 +246,26 @@ export const CustomBundle = () => {
             </section>
             <aside className="cart-wrapper sticky top-[0] h-fit hidden lg:block sm:max-w-[480px] w-full bg-white sm:pt-[54px] pt-[16px]">
               {isCartPage && <PlanPickerBlock />}
-              <div className="h-full border">
-                <div className="py-5 text-center text-white bg-black top-section">
-                  <div className="py-2 text-wrapper">
+              <div className="h-full">
+                <div className="sm:px-[40px] px-[20px] py-[30px] text-center top-section border-y border-[#EFEEED]">
+                  <div className="text-wrapper">
                     {isCartPage ? (
                       <>
-                        <h1 className="font-roboto_medium text-[17px] leading-none">
+                        <h1 className="font-nunito text-[20px] font-bold leading-none">
                           Subscribers Save {firstSavingPercentage}% on Orders
                         </h1>
-                        <p className="text-[14px] leading-none font-roboto_medium mt-3">
+                        <p className="text-[16px] leading-none font-nunito mt-[8px]">
                           Applied at checkout
                         </p>
                       </>
                     ) : (
-                      <h1 className="font-roboto_medium text-[17px] leading-none">
+                      <h1 className="font-nunito text-[17px] leading-none">
                         YOUR SUBSCRIPTION
                       </h1>
                     )}
                   </div>
                 </div>
-                <div className="cart">
-                  <Cart layout="aside" />
-                </div>
+                <Cart layout="aside" />
               </div>
             </aside>
           </div>
