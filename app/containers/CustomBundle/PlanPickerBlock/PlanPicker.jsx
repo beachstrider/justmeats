@@ -2,10 +2,11 @@ import React, { useContext } from 'react'
 
 import { DELIVERY_EVERY_15_DAYS, DELIVERY_EVERY_30_DAYS } from '~/consts'
 import { CustomBundleContext } from '~/contexts'
-import { CheckBox } from '~/icons/CheckBox'
+import { Calendar } from '~/icons/Calendar'
+import { GreenCheck } from '~/icons/GreenCheck'
 import { cn } from '~/lib/utils'
 
-export const PlanPicker = () => {
+export const PlanPicker = ({ type = 'normal' }) => {
   const {
     costForOneTime,
     costForSubscription,
@@ -18,214 +19,150 @@ export const PlanPicker = () => {
   } = useContext(CustomBundleContext)
 
   return (
-    <div className="flex gap-2 flex-col lg:flex-row w-[100%] lg:!max-w-[760px]">
-      <div className="flex-1 w-full lg:w-6/12 xl:w-4/12">
-        <p
-          className={`${
-            sellingPlan
-              ? 'text-[#fff] sm:bg-[#000] bg-[#425B34]'
-              : 'sm:text-black sm:bg-[#ebeae9] bg-[#aaa] text-white'
-          } min-h-[24px] flex justify-center items-center px-[15px] pt-[3px] text-[11px] font-normal rounded-full mx-auto sm:ml-0 sm:rounded-[0px] sm:font-semibold sm:text-[14px] sm:min-h-[28px] w-fit`}
-        >
-          SAVE {firstSavingPercentage}% ON YOUR FIRST ORDER
-        </p>
-        <div
-          className={`${
-            sellingPlan
-              ? 'bg-white sm:bg-[#862E1B] text-black sm:text-[#fff]'
-              : 'border-[#eaeaea] text-[#1d1d1d] sm:hover:text-[#fff]'
-          } p-[7px] sm:p-[10px] border-[3px] border-solid flex gap-6 border-[#425B34] sm:border-[#862E1B] sm:hover:bg-[#862E1B] cursor-pointer rounded-[14px] sm:rounded-[0px] select-hover`}
-          onClick={() => {
-            setSellingPlan(sellingPlanFrequency)
-          }}
-        >
+    <>
+      <p
+        className={cn(
+          'font-nunito sm:text-[13px] text-[12px] font-extrabold text-[#637160] mb-[2px] sm:pl-[20px] pl-[10px]',
+        )}
+      >
+        SAVE {firstSavingPercentage}% ON YOUR FIRST ORDER
+      </p>
+      <div className="bg-white border border-[#EFEEED] rounded-[8px] overflow-hidden [box-shadow:_0px_20px_50px_-10px_rgba(0,0,0,0.15)]">
+        <div className="flex font-medium font-dunbar sm:tracking-[0.8px] tracking-[0.9px]">
           <div
-            className={`leading-[100%] flex-1 text-[18px] sm:text-[20px] text-center sm:text-left font-bold`}
-          >
-            <span className="sm:hidden line-through decoration-[#919191] decoration-[3px] text-[#919191] mr-2">
-              ${originalCost}
-            </span>
-
-            <span className="sm:hidden">
-              ${costForSubscription} Subscribe & Save
-            </span>
-            <span className={`hidden sm:inline sm:hover:text-[#fff]`}>
-              Subscribe & Save
-            </span>
-          </div>
-
-          <select
-            name=""
-            className={`${
-              sellingPlan ? 'brightness-0 invert' : ''
-            } sm:hover:text-[#fff] max-w-[142px] hidden sm:block text-[12px] pl-[10px] py-0 pr-0 w-full bg-transparent bg-auto bg-[url('https://cdn.shopify.com/s/files/1/0672/4776/7778/files/select_svg.svg')]
-            outline-none border-none focus:shadow-none shadow-none focus:outline-none focus:border-none webkit-box-shadow-none 
-            `}
-            value={sellingPlanFrequency}
-            onChange={(e) => {
-              setSellingPlanFrequency(e.target.value)
+            className={cn(
+              'px-[30px] py-[10px] flex-1 rounded-l-[8px] border-2 border-[#7A392D] text-center',
+              sellingPlan
+                ? 'bg-[#7A392D] text-white cursor-default'
+                : 'text-[#7A392D] cursor-pointer',
+            )}
+            onClick={() => {
+              setSellingPlan(sellingPlanFrequency)
             }}
           >
-            <option className="text-[#000]" value={DELIVERY_EVERY_15_DAYS}>
-              Every 15 days
-            </option>
-            <option className="text-[#000]" value={DELIVERY_EVERY_30_DAYS}>
-              Every 30 days
-            </option>
-          </select>
+            SUBSCRIBE & SAVE
+          </div>
+          <div
+            className={cn(
+              'sm:px-[30px] px-[22px] py-[10px] rounded-r-[8px] border-2 border-[#7A392D]',
+              !sellingPlan
+                ? 'bg-[#7A392D] text-white cursor-default'
+                : 'text-[#7A392D] cursor-pointer',
+            )}
+            onClick={() => {
+              setSellingPlan('')
+            }}
+          >
+            ONE TIME
+          </div>
         </div>
-        <div
-          className={cn(
-            'rounded-[12px] sm:bg-[#ebeae9] sm:rounded-[0px] px-[12px] py-[5px]',
-            sellingPlan ? 'bg-[#e7eae5]' : 'bg-[#f4f4f4]',
-          )}
-        >
-          <div className="mt-[4px] flex justify-between items-center sm:hidden">
-            <p className="hidden lg:block text-black font-semibold text-[14px]">
-              Select Frequency
-            </p>
-            <p className="lg:hidden block text-black font-semibold text-[14px]">
-              Select Frequency
-            </p>
-            <div className="flex gap-2">
+        <div className={cn(sellingPlan ? '' : 'text-[#999]')}>
+          <div className="flex justify-between sm:px-[24px] px-[20px] sm:py-[24px] py-[20px]">
+            <div className="flex items-center">
               <div
                 className={cn(
-                  'rounded-full border border-solid  text-center text-[11px] font-semibold min-h-[24px] flex justify-center items-center px-[12px] leading-[100%]',
-                  sellingPlanFrequency === DELIVERY_EVERY_15_DAYS
-                    ? sellingPlan
-                      ? 'bg-[#425B34] text-white'
-                      : 'bg-[#aaaaaa] text-white'
-                    : 'bg-white',
-                  sellingPlan ? 'border-[#425B34]' : 'border-[#aaa]',
+                  'w-[22px]',
+                  sellingPlan ? 'fill-[#7A392D]' : 'fill-[#999]',
+                )}
+              >
+                <Calendar />
+              </div>
+              <div className="font-nunito text-[16px] font-extrabold leading-none">
+                Deliver <br className="block sm:hidden" />
+                every
+              </div>
+            </div>
+            <div className="flex font-medium font-dunbar sm:text-[16px] text-[14px] tracking-[0.7px]">
+              <div
+                className={cn(
+                  'sm:px-[20px] px-[20px] py-[6px] flex-1 rounded-l-[8px] border-2 text-center',
+                  sellingPlan
+                    ? `border-[#7A392D] ${
+                        sellingPlanFrequency === DELIVERY_EVERY_15_DAYS
+                          ? 'cursor-default bg-[#7A392D] text-white'
+                          : 'cursor-pointer bg-white text-[#7A392D]'
+                      }`
+                    : `border-[#999] ${
+                        sellingPlanFrequency === DELIVERY_EVERY_15_DAYS
+                          ? 'cursor-default bg-[#999] text-white'
+                          : 'cursor-pointer bg-white text-[#999]'
+                      }`,
                 )}
                 onClick={() => {
                   setSellingPlanFrequency(DELIVERY_EVERY_15_DAYS)
                 }}
               >
-                Every 15 Days
+                15 DAYS
               </div>
               <div
                 className={cn(
-                  'rounded-full border border-solid  text-center text-[11px] font-semibold min-h-[24px] flex justify-center items-center px-[12px] leading-[100%]',
-                  sellingPlanFrequency === DELIVERY_EVERY_30_DAYS
-                    ? sellingPlan
-                      ? 'bg-[#425B34] text-white'
-                      : 'bg-[#aaaaaa] text-white'
-                    : 'bg-white',
-                  sellingPlan ? 'border-[#425B34]' : 'border-[#aaa]',
+                  'sm:px-[20px] px-[20px] py-[6px] rounded-r-[8px] border-2',
+                  sellingPlan
+                    ? `border-[#7A392D] ${
+                        sellingPlanFrequency === DELIVERY_EVERY_30_DAYS
+                          ? 'cursor-default bg-[#7A392D] text-white'
+                          : 'cursor-pointer bg-white text-[#7A392D]'
+                      }`
+                    : `border-[#999] ${
+                        sellingPlanFrequency === DELIVERY_EVERY_30_DAYS
+                          ? 'cursor-default bg-[#999] text-white'
+                          : 'cursor-pointer bg-white text-[#999]'
+                      }`,
                 )}
                 onClick={() => {
                   setSellingPlanFrequency(DELIVERY_EVERY_30_DAYS)
                 }}
               >
-                Every 30 Days
+                30 DAYS
               </div>
             </div>
           </div>
-          <ul className="mt-[12px] sm:mt-0 grid grid-cols-2 sm:grid-cols-1">
-            <li className="flex items-center text-[11px] sm:text-[12px] font-normal sm:font-bold m-0 sm:flex md:hidden lg:hidden">
-              <span className="text-[#425B34] sm:text-black">
-                <CheckBox
-                  className={
-                    sellingPlan
-                      ? 'fill-[#425b34] sm:fill-black'
-                      : 'fill-[#aaaaaa]'
-                  }
-                />
-              </span>{' '}
-              25% Off First Order
-            </li>
-            <li className="flex items-center text-[10px] sm:text-[12px] font-medium sm:font-bold m-0 sm:flex md:hidden lg:hidden">
-              <span className="text-[#425B34] sm:text-black">
-                <CheckBox
-                  className={
-                    sellingPlan
-                      ? 'fill-[#425b34] sm:fill-black'
-                      : 'fill-[#aaaaaa]'
-                  }
-                />
-              </span>{' '}
-              Subscriber-Only Monthly Flavors
-            </li>
-            <li className="flex items-center text-[11px] sm:text-[12px] font-normal sm:font-bold m-0 sm:flex md:hidden lg:hidden">
-              <span className="text-[#425B34] sm:text-black">
-                <CheckBox
-                  className={
-                    sellingPlan
-                      ? 'fill-[#425b34] sm:fill-black'
-                      : 'fill-[#aaaaaa]'
-                  }
-                />
-              </span>{' '}
-              10% Off Future Orders
-            </li>
-
-            <li className="items-center text-[11px] sm:text-[12px] font-normal sm:font-bold m-0 hidden md:flex lg:flex">
-              <span className="text-[#425B34] sm:text-black">
-                <CheckBox
-                  className={
-                    sellingPlan
-                      ? 'fill-[#425b34] sm:fill-black'
-                      : 'fill-[#aaaaaa]'
-                  }
-                />
-              </span>
-              Save 10% on Future Orders
-            </li>
-            <li className="items-center text-[11px] sm:text-[12px] font-normal sm:font-bold m-0 hidden md:flex lg:flex">
-              <span className="text-[#425B34] sm:text-black">
-                <CheckBox
-                  className={
-                    sellingPlan
-                      ? 'fill-[#425b34] sm:fill-black'
-                      : 'fill-[#aaaaaa]'
-                  }
-                />
-              </span>{' '}
-              Exclusive Meat Options
-            </li>
-            <li className="flex items-center text-[10px] sm:text-[12px] font-medium sm:font-bold m-0">
-              <span className="text-[#425B34] sm:text-black">
-                <CheckBox
-                  className={
-                    sellingPlan
-                      ? 'fill-[#425b34] sm:fill-black'
-                      : 'fill-[#aaaaaa]'
-                  }
-                />
-              </span>{' '}
-              Customize or Cancel Anytime
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="flex-1 w-full lg:w-5/12 xl:w-4/12">
-        <div
-          className={`${
-            !sellingPlan
-              ? 'bg-white sm:bg-[#862E1B] border-[#425B34]'
-              : 'border-[#eaeaea]'
-          }  border-[3px] border-solid flex justify-center sm:justify-start gap-6 sm:border-[#862E1B] cursor-pointer rounded-[14px] sm:rounded-[0px] subscriptionlabel sm:mt-[28px] mt-0 plan-change-button`}
-          onClick={() => {
-            setSellingPlan('')
-          }}
-        >
+          <hr className="sm:block hidden bg-[#EFEEED]" />
           <div
-            className={`${
-              sellingPlan ? 'text-[#1d1d1d]' : 'text-black sm:text-[#fff]'
-            } sm:hover:bg-[#862E1B] sm:hover:text-[#fff] text-[18px] sm:text-[20px] p-[7px] sm:p-[10px] w-full font-bold text-center sm:text-left leading-[100%] sm:leading-[24px]`}
+            className={cn(
+              'grid grid-cols-2 sm:gap-y-[18px] gap-y-[8px] sm:pt-[16px] pt-0 sm:pb-[20px] pb-[16px] sm:px-[20px] px-[12px] font-nunito sm:text-[14px] text-[12px] font-bold',
+              sellingPlan ? 'fill-[#637160]' : 'fill-[#999]',
+            )}
           >
-            <span className="sm:hidden line-through decoration-[#919191] decoration-[3px] text-[#919191] mr-2">
-              ${originalCost}
-            </span>
-            <span className="hidden sm:inline-block">One Time</span>
-            <span className="inline-block sm:hidden">
-              ${costForOneTime} One Time
-            </span>
+            <div className="flex justify-start items-start text-[12px] sm:text-[14px] font-bold">
+              <div className="shrink-0 w-[32px] text-[#425B34] -mt-[4px]">
+                <GreenCheck />
+              </div>{' '}
+              <div>
+                {firstSavingPercentage}% Off <br className="hidden sm:block" />
+                First Order
+              </div>
+            </div>
+            <div className="flex justify-start items-start text-[12px] sm:text-[14px] font-bold">
+              <div className="shrink-0 w-[32px] text-[#425B34] -mt-[4px]">
+                <GreenCheck />
+              </div>{' '}
+              <div>
+                10% Off <br className="hidden sm:block" />
+                Future Orders
+              </div>
+            </div>
+            <div className="flex justify-start items-start text-[12px] sm:text-[14px] font-bold">
+              <div className="shrink-0 w-[32px] text-[#425B34] -mt-[4px]">
+                <GreenCheck />
+              </div>{' '}
+              <div>
+                Subscriber-Only <br className="hidden sm:block" />
+                Monthly Flavors
+              </div>
+            </div>
+            <div className="flex justify-start items-start text-[12px] sm:text-[14px] font-bold">
+              <div className="shrink-0 w-[32px] text-[#425B34] -mt-[4px]">
+                <GreenCheck />
+              </div>{' '}
+              <div>
+                Customize or <br className="hidden sm:block" />
+                Cancel Anytime
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

@@ -223,7 +223,7 @@ export const CustomBundle = () => {
                         </div>
                         <h2 className="font-dunbar">SELECT YOUR FREQUENCY</h2>
                       </div>
-                      <PlanPicker />
+                      <PlanPicker type="mobile" />
                     </div>
                   </div>
                   <div className="flex items-center w-full gap-[14px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[1px]">
