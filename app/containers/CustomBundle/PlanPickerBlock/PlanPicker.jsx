@@ -27,11 +27,11 @@ export const PlanPicker = ({ type = 'normal' }) => {
       >
         SAVE {firstSavingPercentage}% ON YOUR FIRST ORDER
       </p>
-      <div className="bg-white border border-[#EFEEED] rounded-[8px] overflow-hidden [box-shadow:_0px_20px_50px_-10px_rgba(0,0,0,0.15)]">
-        <div className="flex font-medium font-dunbar sm:tracking-[0.8px] tracking-[0.9px]">
+      <div className="bg-white sm:border border-[#EFEEED] rounded-[8px] overflow-hidden sm:[box-shadow:_0px_20px_50px_-10px_rgba(0,0,0,0.15)]">
+        <div className="flex sm:font-medium font-bold sm:font-dunbar font-nunito sm:tracking-[0.8px] tracking-[0.9px] sm:uppercase">
           <div
             className={cn(
-              'px-[30px] py-[10px] flex-1 rounded-l-[8px] border-2 border-[#7A392D] text-center',
+              'px-[30px] sm:py-[10px] py-[6px] flex-1 sm:rounded-l-[8px] sm:rounded-r-none rounded-l-[8px] rounded-r-[8px] border-2 border-[#7A392D] text-center',
               sellingPlan
                 ? 'bg-[#7A392D] text-white cursor-default'
                 : 'text-[#7A392D] cursor-pointer',
@@ -40,11 +40,11 @@ export const PlanPicker = ({ type = 'normal' }) => {
               setSellingPlan(sellingPlanFrequency)
             }}
           >
-            SUBSCRIBE & SAVE
+            Subscribe & Save
           </div>
           <div
             className={cn(
-              'sm:px-[30px] px-[22px] py-[10px] rounded-r-[8px] border-2 border-[#7A392D]',
+              'sm:block hidden sm:px-[30px] px-[22px] sm:py-[10px] py-[6px] rounded-r-[8px] border-2 border-[#7A392D]',
               !sellingPlan
                 ? 'bg-[#7A392D] text-white cursor-default'
                 : 'text-[#7A392D] cursor-pointer',
@@ -53,12 +53,12 @@ export const PlanPicker = ({ type = 'normal' }) => {
               setSellingPlan('')
             }}
           >
-            ONE TIME
+            One Time
           </div>
         </div>
         <div className={cn(sellingPlan ? '' : 'text-[#999]')}>
-          <div className="flex justify-between sm:px-[24px] px-[20px] sm:py-[24px] py-[20px]">
-            <div className="flex items-center">
+          <div className="flex justify-between sm:px-[24px] px-[16px] sm:pt-[24px] sm:pb-[24px] pt-[16px] pb-[12px] plan-picker-freq-div">
+            <div className="flex items-center flex-1">
               <div
                 className={cn(
                   'w-[22px]',
@@ -72,10 +72,10 @@ export const PlanPicker = ({ type = 'normal' }) => {
                 every
               </div>
             </div>
-            <div className="flex font-medium font-dunbar sm:text-[16px] text-[14px] tracking-[0.7px]">
+            <div className="flex font-medium font-dunbar sm:text-[16px] text-[12px] tracking-[0.7px]">
               <div
                 className={cn(
-                  'sm:px-[20px] px-[20px] py-[6px] flex-1 rounded-l-[8px] border-2 text-center',
+                  'sm:px-[20px] px-[16px] py-[6px] flex-1 rounded-l-[8px] border-2 text-center',
                   sellingPlan
                     ? `border-[#7A392D] ${
                         sellingPlanFrequency === DELIVERY_EVERY_15_DAYS
@@ -161,6 +161,19 @@ export const PlanPicker = ({ type = 'normal' }) => {
               </div>
             </div>
           </div>
+        </div>
+        <div
+          className={cn(
+            'sm:hidden block sm:px-[30px] px-[22px] sm:py-[10px] py-[6px] sm:rounded-r-[8px] rounded-[8px] border-2 border-[#7A392D] text-center font-nunito font-bold',
+            !sellingPlan
+              ? 'bg-[#7A392D] text-white cursor-default'
+              : 'text-[#7A392D] cursor-pointer',
+          )}
+          onClick={() => {
+            setSellingPlan('')
+          }}
+        >
+          One Time
         </div>
       </div>
     </>

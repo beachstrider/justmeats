@@ -13,7 +13,7 @@ export const ProgressBar = () => {
   const bonusPercentage = bonusP > 0 ? bonusP : 0
 
   return (
-    <div className="sm:px-[40px] px-[20px] sm:pt-[20px] sm:pb-[36px] pb-[24px] border-b border-[#efeeed]">
+    <div className="sm:pl-[40px] pl-[20px] sm:pr-[40px] pr-[36px] sm:pt-[20px] sm:pb-[36px] pb-[24px] border-b border-[#efeeed]">
       <div className="py-[12px]">
         <div className="relative h-[22px]">
           <div className="absolute font-bold font-nunito text-[16px] left-0">

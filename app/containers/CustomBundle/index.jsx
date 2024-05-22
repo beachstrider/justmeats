@@ -234,7 +234,7 @@ export const CustomBundle = () => {
                   </div>
                 </>
               )}
-              <div className="grid grid-cols-2 product-grid md:grid-cols-3 xl:grid-cols-4 gap-x-[20px] gap-y-[62px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]">
+              <div className="grid grid-cols-2 product-grid xl:grid-cols-3 2xl:grid-cols-4 gap-x-[20px] gap-y-[62px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]">
                 {productsBasedOnSellingPlan.map((product, key) => (
                   <ProductCard
                     key={key}

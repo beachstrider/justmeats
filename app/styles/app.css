@@ -640,3 +640,7 @@ section.product-list-slider button.slick-arrow.slick-next {
 .custom-select::-ms-expand {
   @apply !hidden;
 }
+
+.mobile-cart .plan-picker-freq-div {
+  @apply !px-0;
+}
