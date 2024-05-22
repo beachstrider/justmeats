@@ -9,30 +9,25 @@ export function CartCheckoutActions() {
     useContext(CustomBundleContext)
 
   return (
-    <>
-      {costForOneTime >= 75 ? (
-        <div className="flex justify-center items-center w-1/2 bg-[#425b34]">
-          <Button
-            loading={submitting}
-            onClick={handleSubmit}
-            className={cn(
-              isCartPage ? 'btn-checkout' : '',
-              'bg-[#425b34] text-[15px] py-[15px] font-semibold text-white px-1',
-            )}
-          >
-            {isCartPage ? 'Continue To Checkout' : 'Update Changes'}
-          </Button>
-        </div>
-      ) : (
-        <div className="flex justify-center items-center w-6/12 pointer-events-none select-none  bg-[#6e6e6e]">
-          <Button
-            disabled
-            className=" text-[15px] text-center py-[15px] font-semibold text-white"
-          >
-            Spend $75 To Continue
-          </Button>
-        </div>
-      )}
-    </>
+    <div className="sm:px-[40px] px-[20px] sm:pb-[26px] pb-[20px] text-center font-nunito sm:text-[20px] text-[18px] font-bold">
+      <Button
+        loading={submitting}
+        onClick={handleSubmit}
+        disabled={costForOneTime < 75}
+        className={cn(
+          'w-full text-[15px] text-center py-[15px] font-bold sm:rounded-[4px] rounded-[8px]',
+          isCartPage ? 'btn-checkout' : '',
+          costForOneTime >= 75
+            ? 'text-white bg-[#637160] hover:bg-[#848E81]'
+            : 'text-[#637160] bg-[#EFEEED]',
+        )}
+      >
+        {costForOneTime >= 75
+          ? isCartPage
+            ? 'Continue To Checkout'
+            : 'Update Changes'
+          : 'Spend $75 to Continue'}
+      </Button>
+    </div>
   )
 }
