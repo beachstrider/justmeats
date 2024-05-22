@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
+import { CustomBundleContext } from '~/contexts'
 import { cn } from '~/lib/utils'
 
 import { Quantity } from '../ProductActions/Quantity'
@@ -14,6 +15,7 @@ export function CartLineItem({ line, lineType = 'paid' }) {
     variants: { nodes },
     cart_drawer_img,
   } = line
+  const { costForOneTime } = useContext(CustomBundleContext)
 
   const [freeTag, setFreeTag] = useState('')
 
@@ -29,110 +31,71 @@ export function CartLineItem({ line, lineType = 'paid' }) {
     }
   }, [tags])
 
-  const desktopImage = featuredImage.url || nodes[0]?.image.url
-
-  const mobileImage =
-    cart_drawer_img?.reference.image.url || nodes[0]?.image.url
+  const image =
+    cart_drawer_img?.reference.image.url ??
+    nodes[0]?.image.url ??
+    featuredImage.url
 
   return (
     <div
       className={cn(
-        'rounded-t-xl sm:border-none border-solid overflow-hidden gap-4 relative',
-        lineType === 'bonus' ? 'lg:hidden sm:flex block' : 'sm:flex block',
+        'flex sm:flex-row flex-col gap-[34px] relative',
         lineType === 'free' ? 'border-[#1b7084]' : 'border-[#425b34]',
-        lineType === 'locked'
-          ? 'border-[#EEEDED1b7084] lg:hidden'
-          : 'border-[#425b34]',
-        lineType !== 'paid' ? 'border' : 'border-t border-l border-r',
       )}
     >
-      <img
-        src={desktopImage}
-        height={100}
-        loading="lazy"
-        className={`w-full sm:w-[72px] ${
-          (lineType === 'locked' ? 'opacity-[.22]' : 'opacity-[1]',
-          lineType === 'bonus' ? 'hidden lg:block' : 'hidden sm:block')
-        }`}
-      />
-      <img
-        src={mobileImage}
-        height={100}
-        loading="lazy"
-        className={`w-full h-[169px] mb-3 sm:w-[72px] ${
-          (lineType === 'locked'
-            ? 'opacity-[.22]'
-            : 'opacity-[1] object-contain',
-          lineType === 'bonus'
-            ? 'block lg:hidden sm:h-auto'
-            : 'block sm:hidden')
-        }`}
-      />
+      <div>
+        <img
+          src={image}
+          height={100}
+          loading="lazy"
+          className={cn(
+            'w-full sm:w-[85px]',
+            lineType === 'bonus'
+              ? costForOneTime >= 125
+                ? ''
+                : 'opacity-50'
+              : '',
+          )}
+        />
+      </div>
+      <div className="flex flex-col flex-1">
+        <div className="flex flex-col sm:flex-row pr-[0px] justify-between items-center font-nunito">
+          {lineType === 'free' && (
+            <div className="pt-[20px] for_mobile_range absolute right-[0] top-[20px] bg-[#1b7084] block left-[0] px-[5px] py-[2px] text-[11px] font-bold text-[white] w-[35.42px] max-w-max rounded-[3px]">
+              FREE
+            </div>
+          )}
+          {lineType === 'bonus' && <LockedItem />}
+          {lineType !== 'bonus' && (
+            <div className="pt-[20px] flex-1">
+              <p className="font-bold text-[14px] sm:text-[16px]">{title}</p>
+            </div>
+          )}
+        </div>
 
-      <div className="flex flex-1 flex-col sm:flex-row pr-[0px] justify-between items-center">
-        {lineType === 'bonus' && (
-          <div className="for_mobile_range absolute right-[0] top-[20px] bg-[#425B34] block left-[0] px-[5px] py-[2px] text-[11px] font-bold text-[white] w-[35.42px] max-w-max rounded-[3px]">
-            FREE
-          </div>
-        )}
-        {lineType === 'free' && (
-          <div className="for_mobile_range absolute right-[0] top-[20px] bg-[#1b7084] block left-[0] px-[5px] py-[2px] text-[11px] font-bold text-[white] w-[35.42px] max-w-max rounded-[3px]">
-            FREE
-          </div>
-        )}
-        {lineType === 'locked' && (
-          <div className="for_mobile_range absolute right-[0] top-[20px] bg-[#862E1B] block left-[0] px-[5px] py-[2px] text-[11px] font-bold text-[white] w-[50.73px] max-w-max rounded-[3px]">
-            LOCKED
-          </div>
-        )}
-        <div className="flex-1 hidden sm:block h-fit">
-          <p className="font-semibold text-[10px] sm:text-[14px] text-center">
-            <strong className="pr-[10px] flex justify-center">{title}</strong>
-          </p>
-
-          <div className="flex justify-center font-bold text-center text-[12px] sm:text-[25px]">
-            {lineType === 'free' && (
-              <div className="flex gap-1">
-                <div className="line-through text-[#929292]">{`$ ${freeTag}`}</div>
-                <div>FREE</div>
+        {lineType === 'paid' && (
+          <div className="flex flex-1 items-end py-[20px]">
+            <div className="flex items-center justify-between flex-1">
+              <div className="flex justify-start">
+                <Quantity line={line} />
               </div>
-            )}
-            {lineType === 'paid' && (
-              <div className="hidden sm:block">
+              <div className="font-nunito sm:text-[18px] text-[16px] font-semibold">
                 ${priceRange.maxVariantPrice.amount}
               </div>
-            )}
+            </div>
           </div>
-        </div>
+        )}
+        {lineType !== 'paid' && (
+          <div className="flex items-end flex-1 font-nunito">
+            <div className="">
+              <div className="line-through text-[#666] text-[14px] font-semibold leading-none">{`$ ${freeTag}`}</div>
+              <div className="font-bold text-[24px] text-[#CF2A2A] leading-none">
+                FREE
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-      {line && (
-        <div
-          className={cn(
-            'relative flex justify-center items-center sm:mt-0',
-            lineType === 'bonus' ? ' -mt-[11px]' : ' -mt-[13px]',
-          )}
-        >
-          {lineType === 'paid' && <Quantity line={line} />}
-          {lineType === 'bonus' && <LockedItem />}
-          {lineType === 'free' && (
-            <>
-              <span className="sm:hidden text-black text-sm -mt-15 pb-10 font-roboto font-semibold absolute -top-[24px]">
-                Free
-              </span>
-              <button className="sm:hidden w-full bg-[#1b7084] mt-[0px] text-white px-[10px] pt-[4px] min-h-[36px] text-[12px] font-['Roboto']">
-                First Order Gift
-              </button>
-            </>
-          )}
-          {lineType === 'locked' && (
-            <>
-              <button className="sm:hidden w-full bg-[#EEEDED] uppercase text-black px-[0px] py-[1.5px] text-[11px] font-['Roboto'] font-bold">
-                Free Bonus Meat (unlocked at $125)
-              </button>
-            </>
-          )}
-        </div>
-      )}
     </div>
   )
 }

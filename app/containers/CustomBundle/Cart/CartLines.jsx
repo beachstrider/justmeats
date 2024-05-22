@@ -8,8 +8,7 @@ import { CartLineItem } from './CartLineItem'
 
 export function CartLines() {
   const { bonusProduct, freeProduct } = useLoaderData()
-  const { bonusVariant, selectedProducts, costForOneTime } =
-    useContext(CustomBundleContext)
+  const { bonusVariant, selectedProducts } = useContext(CustomBundleContext)
 
   const bonusLine = {
     ...bonusProduct,
@@ -17,21 +16,15 @@ export function CartLines() {
   }
 
   return (
-    <div
-      aria-labelledby="cart-lines"
-      className="sm:h-[360px] sm:overflow-y-scroll sm:p-[40px] p-[20px] cart_lines_scrollbar"
-    >
-      <div className="grid grid-cols-3 gap-2 sm:grid-cols-1">
-        {costForOneTime > 125 && (
+    <div className="sm:pl-[40px] sm:pt-[40px] sm:pb-[24px] pl-[20px] pt-[20px] pb-[20px]">
+      <div className="sm:pr-[40px] pr-[20px] sm:h-[450px] sm:overflow-y-scroll cart_lines_scrollbar">
+        <div className="grid grid-cols-3 sm:gap-[32px] gap-[8px] sm:grid-cols-1">
+          <CartLineItem line={freeProduct} lineType="free" />
           <CartLineItem line={bonusLine} lineType="bonus" />
-        )}
-        {costForOneTime < 125 && (
-          <CartLineItem line={bonusLine} lineType="locked" />
-        )}
-        <CartLineItem line={freeProduct} lineType="free" />
-        {selectedProducts.map((product) => (
-          <CartLineItem key={product.id} line={product} />
-        ))}
+          {selectedProducts.map((product) => (
+            <CartLineItem key={product.id} line={product} />
+          ))}
+        </div>
       </div>
     </div>
   )

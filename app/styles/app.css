@@ -632,3 +632,11 @@ section.product-list-slider button.slick-arrow.slick-next {
 .filteration-ul li:last-child button {
   @apply rounded-tr rounded-br;
 }
+
+.custom-select {
+  @apply !bg-none;
+}
+
+.custom-select::-ms-expand {
+  @apply !hidden;
+}

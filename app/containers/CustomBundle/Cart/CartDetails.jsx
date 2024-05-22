@@ -1,27 +1,14 @@
-import { useContext } from 'react'
-
-import { CustomBundleContext } from '~/contexts'
-
 import { CartCheckoutActions } from './CartCheckoutActions'
 import { CartLines } from './CartLines'
 import { CartSummary } from './CartSummary'
-import { LockedItem } from './LockedItem'
 
 export function CartDetails({ layout, onCheckout }) {
-  const { selectedProducts } = useContext(CustomBundleContext)
-
-  const cartHasItems = selectedProducts.length > 0
-
   return (
-    <div className="flex flex-col justify-between cart-details">
+    <div className="flex flex-col justify-between cart-details ">
       <CartLines />
-      {cartHasItems && (
-        <>
-          <CartSummary layout={layout} />
-          <CartCheckoutActions onCheckout={onCheckout} />
-          {/* <LockedItem /> */}
-        </>
-      )}
+      <div className="w-full h-[16px] [background:linear-gradient(180deg,rgba(0,0,0,0.00)_0%,rgba(0,0,0,0.03)_66%,rgba(0,0,0,0.08)_100%)]"></div>
+      <CartSummary layout={layout} />
+      <CartCheckoutActions onCheckout={onCheckout} />
     </div>
   )
 }
