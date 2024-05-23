@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 
 import { useLoaderData, useMatches } from '@remix-run/react'
 
+import { FaqAccordion } from '~/components/NewFaqAccordion'
 import { PlanPickerBlock } from '~/containers/CustomBundle/PlanPickerBlock'
 import { CustomBundleContext, RootContext } from '~/contexts'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
@@ -191,59 +192,67 @@ export const CustomBundle = () => {
       <div className="max-w-ful custom-collection-wrap">
         <div className="flex flex-col flex-1 gap-2 border-gray-400 border-solid main-section sm:border">
           <div className="relative flex product-and-cart mb-[62px] md:mb-0">
-            <section className="container-small sm:pt-[52px] pt-[16px]">
-              {isCartPage && (
-                <>
-                  <div className="block sm:hidden">
-                    <div className="px-[27px] py-[22px] rounded-[8px] bg-rec-96 bg-cover overflow-hidden [box-shadow:_0px_20px_40px_-10px_rgba(0,0,0,0.20)] sm:mb-0 mb-[34px]">
-                      <div className="text-[18px] text-center font-semibold font-dunbar mb-[12px]">
-                        WE GUARANTEE YOU&apos;LL LOVE IT
-                        <br />
-                        OR YOUR MONEY BACK!
-                      </div>
-                      <div className="flex justify-center">
-                        <div className="flex gap-[14px]">
-                          <div className="flex gap-[1px]">
-                            <Star5 />
-                            <Star5 />
-                            <Star5 />
-                            <Star5 />
-                            <Star4 />
-                          </div>
-                          <div className="font-nunito text-[15px] font-semibold">
-                            1,134 Reviews
+            <div className="container-small sm:pt-[52px] pt-[16px]">
+              <section className="sm:mb-[80px] mb-[36px]">
+                {isCartPage && (
+                  <>
+                    <div className="block sm:hidden">
+                      <div className="px-[27px] py-[22px] rounded-[8px] bg-rec-96 bg-cover overflow-hidden [box-shadow:_0px_20px_40px_-10px_rgba(0,0,0,0.20)] sm:mb-0 mb-[34px]">
+                        <div className="text-[18px] text-center font-semibold font-dunbar mb-[12px]">
+                          WE GUARANTEE YOU&apos;LL LOVE IT
+                          <br />
+                          OR YOUR MONEY BACK!
+                        </div>
+                        <div className="flex justify-center">
+                          <div className="flex gap-[14px]">
+                            <div className="flex gap-[1px]">
+                              <Star5 />
+                              <Star5 />
+                              <Star5 />
+                              <Star5 />
+                              <Star4 />
+                            </div>
+                            <div className="font-nunito text-[15px] font-semibold">
+                              1,134 Reviews
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="sm:uppercase mb-[24px]">
-                      <div className="flex items-center w-full gap-[14px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:tracking-[1.2px] tracking-[1px]">
-                        <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px] font-nunito">
-                          1
+                      <div className="sm:uppercase mb-[24px]">
+                        <div className="flex items-center w-full gap-[14px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:tracking-[1.2px] tracking-[1px]">
+                          <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px] font-nunito">
+                            1
+                          </div>
+                          <h2 className="font-dunbar">SELECT YOUR FREQUENCY</h2>
                         </div>
-                        <h2 className="font-dunbar">SELECT YOUR FREQUENCY</h2>
+                        <PlanPicker type="mobile" />
                       </div>
-                      <PlanPicker type="mobile" />
                     </div>
-                  </div>
-                  <div className="flex items-center w-full gap-[14px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[1px]">
-                    <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px] font-nunito">
-                      2
+                    <div className="flex items-center w-full gap-[14px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[1px]">
+                      <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px] font-nunito">
+                        2
+                      </div>
+                      <h2 className="font-dunbar">SELECT YOUR MEATS</h2>
                     </div>
-                    <h2 className="font-dunbar">SELECT YOUR MEATS</h2>
-                  </div>
-                </>
-              )}
-              <div className="grid grid-cols-2 product-grid xl:grid-cols-3 2xl:grid-cols-4 gap-x-[20px] gap-y-[62px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]">
-                {productsBasedOnSellingPlan.map((product, key) => (
-                  <ProductCard
-                    key={key}
-                    product={product}
-                    onClick={() => setClickedProduct(product)}
-                  />
-                ))}
-              </div>
-            </section>
+                  </>
+                )}
+                <div className="grid grid-cols-2 product-grid xl:grid-cols-3 2xl:grid-cols-4 gap-x-[20px] gap-y-[62px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]">
+                  {productsBasedOnSellingPlan.map((product, key) => (
+                    <ProductCard
+                      key={key}
+                      product={product}
+                      onClick={() => setClickedProduct(product)}
+                    />
+                  ))}
+                </div>
+              </section>
+              <section className="relative z-50 max-w-[740px] w-full mx-auto pb-4 sm:pb-20">
+                <div className="text-center font-dunbar font-bold sm:text-[36px] sm:tracking-[1.6px] text-[24px] tracking-[1.2px] sm:mb-[40px] mb-[32px]">
+                  YOU ASK. WE ANSWER.
+                </div>
+                <FaqAccordion />
+              </section>
+            </div>
             <aside className="cart-wrapper sticky top-[0] h-fit hidden lg:block sm:max-w-[480px] w-full bg-white sm:pt-[54px] pt-[16px]">
               {isCartPage && <PlanPickerBlock />}
               <div className="h-full">

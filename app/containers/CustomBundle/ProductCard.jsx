@@ -3,7 +3,7 @@ import { getPureId } from '~/lib/utils'
 import { ProductActions } from './ProductActions'
 
 export const ProductCard = ({ product, onClick }) => {
-  const image = product.featuredImage.url
+  const image = product.product_icon_1.reference.image.url
 
   // PATCH: temporily
   const pureId = getPureId(product.id, 'Product')

@@ -116,6 +116,15 @@ export const PRODUCT_ITEM_FRAGMENT = `#graphql
         }
       }
     }
+    product_icon_1: metafield(namespace: "custom", key: "product_icon_1") {
+      reference {
+        ... on MediaImage {
+          image {
+            url
+          }
+        }
+      }
+    }
   }
 `
 
