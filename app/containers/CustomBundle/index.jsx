@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { useLoaderData, useMatches } from '@remix-run/react'
 
@@ -12,6 +12,7 @@ import { Star5 } from '~/icons/Star5'
 import { PROMO_CODES } from '../../promo-codes'
 import { Cart } from './Cart'
 import { MobileCart } from './Cart/MobileCart'
+import { Filters } from './Filters'
 import { PlanPicker } from './PlanPickerBlock/PlanPicker'
 import { ProductCard } from './ProductCard'
 import { ProductModal } from './ProductModal'
@@ -228,11 +229,14 @@ export const CustomBundle = () => {
                         <PlanPicker type="mobile" />
                       </div>
                     </div>
-                    <div className="flex items-center w-full gap-[14px] sm:mb-[36px] mb-[12px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[1px]">
-                      <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px] font-nunito">
-                        2
+                    <div className="flex justify-between sm:mb-[36px] mb-[12px]">
+                      <div className="flex items-center w-full gap-[14px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[1px]">
+                        <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px] font-nunito">
+                          2
+                        </div>
+                        <h2 className="font-dunbar">SELECT YOUR MEATS</h2>
                       </div>
-                      <h2 className="font-dunbar">SELECT YOUR MEATS</h2>
+                      <Filters />
                     </div>
                   </>
                 )}
