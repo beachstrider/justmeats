@@ -64,8 +64,8 @@ export const MobileCart = () => {
             </Button>
           </div>
           <ProgressBar />
+          <CartLines />
         </div>
-        <CartLines />
         <div className="sm:pt-0 pt-[10px] sm:px-0 px-[20px] sm:pb-0 pb-[16px] flex flex-col [box-shadow:0_-3px_15px_-5px_#333]">
           {isCartPage && <PlanPicker type="mobileCart" />}
           <Button
