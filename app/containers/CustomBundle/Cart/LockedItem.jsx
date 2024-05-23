@@ -21,13 +21,7 @@ export function LockedItem() {
   const disabled = costForOneTime < 125
 
   const ArrowDown = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
       <path
         d="M9.3335 13.3333L16.0002 20L22.6668 13.3333"
         stroke={disabled ? '#AAA' : '#7A392D'}
@@ -42,7 +36,7 @@ export function LockedItem() {
     <div className="relative flex-1">
       <select
         className={cn(
-          'custom-select font-nunito font-bold text-[12px] sm:text-[14px] py-[12px] pl-[16px] pr-[40px] w-full rounded-[4px] outline-none focus:outline-none bg-auto shadow-none focus:shadow-none border border-[#1d1d1d49]',
+          'custom-select font-nunito font-bold text-[10px] sm:text-[14px] sm:py-[15px] py-[3px] sm:pl-[16px] pl-[8px] sm:pr-[40px] pr-[26px] w-full sm:rounded-[4px] outline-none focus:outline-none bg-auto shadow-none focus:shadow-none border sm:!border-[#1d1d1d49] !border-transparent',
           disabled ? 'bg-[#EFEEED] border-[#EFEEED]' : 'border-[#1d1d1d49]',
         )}
         onChange={onBonusChange}
@@ -56,7 +50,9 @@ export function LockedItem() {
         ))}
       </select>
       <div className="absolute top-0 right-[5px] flex items-center h-full">
-        <ArrowDown />
+        <div className="sm:w-[32px] w-[24px]">
+          <ArrowDown />
+        </div>
       </div>
     </div>
   )

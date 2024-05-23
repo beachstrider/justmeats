@@ -17,26 +17,16 @@ export function CartLineItem({ line, lineType = 'paid' }) {
   } = line
   const { costForOneTime } = useContext(CustomBundleContext)
 
-  const [freeTag, setFreeTag] = useState('')
-
-  useEffect(() => {
-    if (tags && tags.length > 0) {
-      tags.forEach((tag) => {
-        if (tag.includes('free-')) {
-          let priceForFreeProduct = tag.split('-')
-          priceForFreeProduct = +priceForFreeProduct[1]
-          setFreeTag(priceForFreeProduct)
-        }
-      })
-    }
-  }, [tags])
+  const freeTag = tags.find((el) => el.includes('free-'))
+  const originalPriceOfFreeProduct = freeTag?.split('-')?.[1]
 
   const image =
+    line?.product_icon_1?.reference.image.url ??
     cart_drawer_img?.reference.image.url ??
     nodes[0]?.image.url ??
     featuredImage.url
 
-  return (
+  const desktop = (
     <div
       className={cn(
         'flex sm:flex-row flex-col gap-[34px] relative',
@@ -74,7 +64,7 @@ export function CartLineItem({ line, lineType = 'paid' }) {
         </div>
 
         {lineType === 'paid' && (
-          <div className="flex flex-1 items-end py-[20px]">
+          <div className="flex flex-1 items-end py-[16px]">
             <div className="flex items-center justify-between flex-1">
               <div className="flex justify-start">
                 <Quantity line={line} />
@@ -88,7 +78,7 @@ export function CartLineItem({ line, lineType = 'paid' }) {
         {lineType !== 'paid' && (
           <div className="flex items-end flex-1 font-nunito">
             <div className="">
-              <div className="line-through text-[#666] text-[14px] font-semibold leading-none">{`$ ${freeTag}`}</div>
+              <div className="line-through text-[#666] text-[14px] font-semibold leading-none sm:mb-[4px]">{`$ ${originalPriceOfFreeProduct}`}</div>
               <div className="font-bold text-[24px] text-[#CF2A2A] leading-none">
                 FREE
               </div>
@@ -97,5 +87,39 @@ export function CartLineItem({ line, lineType = 'paid' }) {
         )}
       </div>
     </div>
+  )
+
+  const mobile = (
+    <div className="flex flex-col flex-1 product-grid">
+      <div className="relative px-[25px] pt-[12%] pb-[5%] mt-[40%] rounded-t-[8px] aspect-[111/100] flex bg-[#572D2D] text-white">
+        <div className="flex items-end justify-center flex-1">
+          <div className="absolute w-[84%] top-[32%] -translate-y-1/2">
+            <img src={image} loading="lazy" className="cursor-pointer" />
+          </div>
+        </div>
+      </div>
+      <div className="flex-1 flex flex-col justify-between bg-white rounded-b-[8px] border-x border-b border-[#EFEEED] overflow-hidden [box-shadow:0px_8px_14px_-5px_rgba(0,0,0,0.15)]">
+        <div className="flex-1 flex flex-col justify-between px-[10px] pt-[12px] pb-[10px] font-nunito text-center">
+          <div className="font-extrabold leading-none text-[12px] mb-[8px]">
+            {line.title}
+          </div>
+          <div className="font-bold text-[12px]">
+            {lineType === 'paid' &&
+              `$${line.priceRange.minVariantPrice.amount}`}
+          </div>
+        </div>
+        <div className="flex h-[33px] justify-center items-center border-t border-[#efeeed]">
+          {lineType === 'paid' && <Quantity line={line} />}
+          {lineType === 'bonus' && <LockedItem />}
+        </div>
+      </div>
+    </div>
+  )
+
+  return (
+    <>
+      <div className="hidden sm:block">{desktop}</div>
+      <div className="flex flex-col sm:hidden">{mobile}</div>
+    </>
   )
 }

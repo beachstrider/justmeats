@@ -17,8 +17,8 @@ export function CartLines() {
 
   return (
     <div className="sm:pl-[40px] sm:pt-[40px] sm:pb-[24px] pl-[20px] pt-[20px] pb-[20px] overflow-x-hidden">
-      <div className="sm:pr-[40px] pr-[20px] sm:h-[450px] sm:overflow-y-scroll cart_lines_scrollbar">
-        <div className="grid grid-cols-3 sm:gap-[32px] gap-[8px] sm:grid-cols-1">
+      <div className="sm:pr-[40px] pr-[20px] sm:h-[524px] sm:overflow-y-scroll cart_lines_scrollbar">
+        <div className="grid grid-cols-3 sm:gap-[22px] gap-[8px] sm:grid-cols-1">
           <CartLineItem line={freeProduct} lineType="free" />
           <CartLineItem line={bonusLine} lineType="bonus" />
           {selectedProducts.map((product) => (

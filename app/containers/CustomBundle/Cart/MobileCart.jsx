@@ -19,7 +19,7 @@ export const MobileCart = () => {
   const isCheckoutable = costForOneTime >= 75
 
   return (
-    <div className="mobile-cart">
+    <div className="relative z-20 mobile-cart">
       <div className="fixed w-full sm:hidden block bottom-0 bg-white left-0 px-[20px] py-[16px] font-nunito font-bold text-[16px] [box-shadow:0px_0px_10px_0px_rgba(0,0,0,0.20)]">
         <Button
           onClick={() => setCartOpen(true)}

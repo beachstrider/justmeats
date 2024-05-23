@@ -246,7 +246,7 @@ export const CustomBundle = () => {
                   ))}
                 </div>
               </section>
-              <section className="relative z-50 max-w-[740px] w-full mx-auto pb-4 sm:pb-20">
+              <section className="relative z-10 max-w-[740px] w-full mx-auto pb-4 sm:pb-20">
                 <div className="text-center font-dunbar font-bold sm:text-[36px] sm:tracking-[1.6px] text-[24px] tracking-[1.2px] sm:mb-[40px] mb-[32px]">
                   YOU ASK. WE ANSWER.
                 </div>
