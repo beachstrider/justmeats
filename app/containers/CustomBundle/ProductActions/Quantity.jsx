@@ -11,7 +11,9 @@ export const Quantity = ({ line, type }) => {
   const price = priceRange?.maxVariantPrice?.amount
 
   // PATCH: temporily
-  const isUnavailable = getPureId(line.id, 'Product') === '8717535838489'
+  const isUnavailable =
+    getPureId(line.id, 'Product') === '8717535838489' ||
+    getPureId(line.id, 'Product') === '9078366634265'
 
   const updateQuantity = (value) => {
     if (value === 0) {

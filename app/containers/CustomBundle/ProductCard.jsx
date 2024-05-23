@@ -7,7 +7,7 @@ export const ProductCard = ({ product, onClick }) => {
 
   // PATCH: temporily
   const pureId = getPureId(product.id, 'Product')
-  if (pureId === '8717535838489') {
+  if (pureId === '8717535838489' || pureId === '9078366634265') {
     return <></>
   }
 
