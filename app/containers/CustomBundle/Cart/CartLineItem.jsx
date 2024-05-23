@@ -50,11 +50,6 @@ export function CartLineItem({ line, lineType = 'paid' }) {
       </div>
       <div className="flex flex-col flex-1">
         <div className="flex flex-col sm:flex-row pr-[0px] justify-between items-center font-nunito">
-          {lineType === 'free' && (
-            <div className="pt-[20px] for_mobile_range absolute right-[0] top-[20px] bg-[#1b7084] block left-[0] px-[5px] py-[2px] text-[11px] font-bold text-[white] w-[35.42px] max-w-max rounded-[3px]">
-              FREE
-            </div>
-          )}
           {lineType === 'bonus' && <LockedItem />}
           {lineType !== 'bonus' && (
             <div className="pt-[20px] flex-1">
