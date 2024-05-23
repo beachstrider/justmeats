@@ -228,7 +228,7 @@ export const CustomBundle = () => {
                         <PlanPicker type="mobile" />
                       </div>
                     </div>
-                    <div className="flex items-center w-full gap-[14px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[1px]">
+                    <div className="flex items-center w-full gap-[14px] sm:mb-[36px] mb-[12px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[1px]">
                       <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px] font-nunito">
                         2
                       </div>
@@ -236,7 +236,7 @@ export const CustomBundle = () => {
                     </div>
                   </>
                 )}
-                <div className="grid grid-cols-2 product-grid xl:grid-cols-3 2xl:grid-cols-4 gap-x-[20px] gap-y-[62px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]">
+                <div className="relative grid grid-cols-2 product-grid xl:grid-cols-3 2xl:grid-cols-4 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]">
                   {productsBasedOnSellingPlan.map((product, key) => (
                     <ProductCard
                       key={key}

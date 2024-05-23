@@ -26,15 +26,19 @@ export const Add = ({ product, type }) => {
     <button
       onClick={addToSelectedProducts}
       className={cn(
-        'btn-add-to-cart mx-auto flex justify-center items-center py-[8px] gap-[5px] px-[20px] leading-none font-medium text-white sm:text-[20px] text-[18px]',
-        type === 'normal' ? 'bg-[#862e1b] rounded-[4px]' : '',
+        'btn-add-to-cart mx-auto flex justify-center items-center py-[8px] gap-[5px] px-[20px] leading-none font-medium sm:text-[20px] text-[18px]',
+        type === 'normal' ? '' : '',
         type === 'modal'
-          ? 'bg-[#637160] sm:px-[38px] px-[26px] sm:py-[10px] py-[12px] sm:rounded-l-[4px] rounded-l-0 sm:rounded-r-[4px] rounded-r-[8px]'
+          ? 'bg-[#637160] text-white sm:px-[38px] px-[26px] sm:py-[10px] py-[12px] sm:rounded-l-[4px] rounded-l-0 sm:rounded-r-[4px] rounded-r-[8px]'
           : '',
       )}
     >
       ADD
-      {type === 'normal' && <span>&nbsp;+</span>}
+      {type === 'normal' && (
+        <span className={cn(type === 'normal' ? 'text-[#7a392d]' : '')}>
+          &nbsp;+
+        </span>
+      )}
       {type === 'modal' && (
         <>
           <span className="hidden sm:inline-block">&nbsp;+</span>
