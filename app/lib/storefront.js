@@ -12,6 +12,9 @@ export const getBundle = async ({ request, context }) => {
   const shippingInsuranceProductHandle =
     context.env.PUBLIC_SHIPPING_INSURANCE_PRODUCT_HANDLE
 
+  // PATCH: gift prodct
+  const giftProductHandle = 'memorial-day-free-gift'
+
   const variables = getPaginationVariables(request, { pageBy: 50 })
 
   const {
@@ -41,6 +44,11 @@ export const getBundle = async ({ request, context }) => {
     (product) => product.handle === shippingInsuranceProductHandle,
   )
 
+  // PATCH: gift product
+  const giftProduct = allProducts.find(
+    (product) => product.handle === giftProductHandle,
+  )
+
   const products = allProducts
     .filter(
       (product) => Number(product.priceRange.minVariantPrice.amount) !== 0,
@@ -53,6 +61,10 @@ export const getBundle = async ({ request, context }) => {
     allProducts,
     freeProduct,
     bonusProduct,
+
+    // PATCH: gift product
+    giftProduct,
+
     bundleProduct,
     shippingInsuranceProduct,
   }

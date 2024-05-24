@@ -7,7 +7,7 @@ import { CustomBundleContext } from '~/contexts'
 import { CartLineItem } from './CartLineItem'
 
 export function CartLines() {
-  const { bonusProduct, freeProduct } = useLoaderData()
+  const { bonusProduct, freeProduct, giftProduct } = useLoaderData()
   const { bonusVariant, selectedProducts, costForOneTime } =
     useContext(CustomBundleContext)
 
@@ -29,6 +29,10 @@ export function CartLines() {
           <CartLineItem line={bonusLine} lineType="locked" />
         )}
         <CartLineItem line={freeProduct} lineType="free" />
+
+        {/* PATCH */}
+        <CartLineItem line={giftProduct} lineType="gift" />
+
         {selectedProducts.map((product) => (
           <CartLineItem key={product.id} line={product} />
         ))}

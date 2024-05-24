@@ -1,5 +1,9 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
+import { Dialog, Transition } from '@headlessui/react'
+
+import memorialDay from '~/assets/images/image_2024-05-23_154607820.jpg'
+import { Close } from '~/icons/Close'
 import { cn } from '~/lib/utils'
 
 import { Quantity } from '../ProductActions/Quantity'
@@ -14,6 +18,8 @@ export function CartLineItem({ line, lineType = 'paid' }) {
     variants: { nodes },
     cart_drawer_img,
   } = line
+
+  const [isGiftModalOpen, setIsGiftModalOpen] = useState(false)
 
   const [freeTag, setFreeTag] = useState('')
 
@@ -51,18 +57,24 @@ export function CartLineItem({ line, lineType = 'paid' }) {
         height={100}
         loading="lazy"
         className={`w-full sm:w-[72px] ${
-          lineType === 'locked' ? 'opacity-[.22]' : 'opacity-[1]',
-          lineType === 'bonus' ? 'hidden lg:block' : 'hidden sm:block'
+          (lineType === 'locked' ? 'opacity-[.22]' : 'opacity-[1]',
+          lineType === 'bonus' ? 'hidden lg:block' : 'hidden sm:block')
         }`}
+        onClick={() => (lineType === 'gift' ? setIsGiftModalOpen(true) : false)}
       />
       <img
         src={mobileImage}
         height={100}
         loading="lazy"
         className={`w-full h-[169px] mb-3 sm:w-[72px] ${
-          lineType === 'locked' ? 'opacity-[.22]' : 'opacity-[1] object-contain',
-          lineType === 'bonus' ? 'block lg:hidden sm:h-auto' : 'block sm:hidden'
+          (lineType === 'locked'
+            ? 'opacity-[.22]'
+            : 'opacity-[1] object-contain',
+          lineType === 'bonus'
+            ? 'block lg:hidden sm:h-auto'
+            : 'block sm:hidden')
         }`}
+        onClick={() => (lineType === 'gift' ? setIsGiftModalOpen(true) : false)}
       />
 
       <div className="flex flex-1 flex-col sm:flex-row pr-[0px] justify-between items-center">
@@ -93,6 +105,14 @@ export function CartLineItem({ line, lineType = 'paid' }) {
                 <div>FREE</div>
               </div>
             )}
+            {lineType === 'gift' && (
+              <div
+                className="flex gap-1"
+                onClick={() => setIsGiftModalOpen(true)}
+              >
+                <div className="text-[18px] cursor-pointer">Click to see</div>
+              </div>
+            )}
             {lineType === 'paid' && (
               <div className="hidden sm:block">
                 ${priceRange.maxVariantPrice.amount}
@@ -120,6 +140,16 @@ export function CartLineItem({ line, lineType = 'paid' }) {
               </button>
             </>
           )}
+          {lineType === 'gift' && (
+            <>
+              <button
+                className="sm:hidden w-full bg-[#1b7084] mt-[0px] text-white px-[10px] pt-[4px] min-h-[36px] text-[12px] font-['Roboto'] relative"
+                onClick={() => setIsGiftModalOpen(true)}
+              >
+                Click to see
+              </button>
+            </>
+          )}
           {lineType === 'locked' && (
             <>
               <button className="sm:hidden w-full bg-[#EEEDED] uppercase text-black px-[0px] py-[1.5px] text-[11px] font-['Roboto'] font-bold">
@@ -129,6 +159,54 @@ export function CartLineItem({ line, lineType = 'paid' }) {
           )}
         </div>
       )}
+      <GiftModal
+        open={isGiftModalOpen}
+        onClose={() => setIsGiftModalOpen(false)}
+      />
     </div>
+  )
+}
+
+const GiftModal = ({ open, onClose }) => {
+  return (
+    <Transition appear show={open} as={Fragment}>
+      <Dialog as="div" className="relative z-50" onClose={onClose}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-black/70" />
+        </Transition.Child>
+
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex items-center justify-center min-h-full p-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <Dialog.Panel className="relative pt-[20px] w-full max-w-[400px] text-left align-middle transition-all transform bg-white text-[#1d1d1d] shadow-xl">
+                <img src={memorialDay} alt="" />
+                <button
+                  className="absolute top-[8px] right-[8px]"
+                  onClick={onClose}
+                >
+                  <Close />
+                </button>
+              </Dialog.Panel>
+            </Transition.Child>
+          </div>
+        </div>
+      </Dialog>
+    </Transition>
   )
 }

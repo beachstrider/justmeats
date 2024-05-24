@@ -14,7 +14,7 @@ export async function loader({ request, context }) {
   const discountCode = context.session.get('discountCode')
   const discountCodes = discountCode ? [discountCode] : []
 
-  const { products, freeProduct, bonusProduct } = await getBundle({
+  const { products, freeProduct, bonusProduct, giftProduct } = await getBundle({
     request,
     context,
   })
@@ -23,6 +23,7 @@ export async function loader({ request, context }) {
     products,
     freeProduct,
     bonusProduct,
+    giftProduct,
     discountCodes,
   })
 }
@@ -31,10 +32,11 @@ export async function action({ request, context }) {
   const cart = context.cart
   const discountCode = context.session.get('discountCode')
 
-  const { collection, bundleProduct, freeProduct } = await getBundle({
-    request,
-    context,
-  })
+  const { collection, bundleProduct, freeProduct, giftProduct } =
+    await getBundle({
+      request,
+      context,
+    })
 
   const form = await request.formData()
   const data = JSON.parse(form.get('body'))
@@ -110,6 +112,7 @@ export async function action({ request, context }) {
 
   cartResult = await cart.addLines([
     { merchandiseId: freeProduct.variants.nodes[0].id },
+    { merchandiseId: giftProduct.variants.nodes[0].id }, // PATCH
   ])
   cart.setCartId(cartResult.cart.id)
   checkoutUrl = cartResult.cart.checkoutUrl ?? checkoutUrl
