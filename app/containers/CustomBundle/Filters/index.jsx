@@ -7,7 +7,7 @@ import { RadioGroup, RadioGroupItem } from '~/components/Radio'
 
 import { Mobile } from './Mobile'
 
-export const Filters = () => {
+export const Filters = ({ products, onChange }) => {
   const servingSizes = ['All Meats', 'Everyday Meats', 'BBQ Meats']
   const meatTypes = ['Beef', 'Chicken', 'Bison', 'Pork', 'Turkey']
   const specials = ['Subscriber exclusives', 'Collaborations']

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import { useLoaderData, useMatches } from '@remix-run/react'
 
@@ -53,6 +53,7 @@ export const CustomBundle = () => {
   } = useContext(RootContext)
 
   const [clickedProduct, setClickedProduct] = useState(null)
+  const [filteredProducts, setFilteredProducts] = useState([])
   const [submitting, setSubmitting] = useState(false)
 
   const isCartPage = matches.at(-1).pathname.includes('/products/custom-bundle')
@@ -97,6 +98,10 @@ export const CustomBundle = () => {
   const freeTag = freeProduct.tags.find((el) => el.includes('free-'))
   const freeProductPrice = parseFloat(freeTag?.split('-')?.[1])
   const originalCost = costForOneTime + freeProductPrice
+
+  useEffect(() => {
+    setFilteredProducts(productsBasedOnSellingPlan)
+  }, [productsBasedOnSellingPlan])
 
   async function handleSubmit() {
     const products = [...selectedProducts]
@@ -227,12 +232,15 @@ export const CustomBundle = () => {
                         </div>
                         <h2 className="font-dunbar">SELECT YOUR MEATS</h2>
                       </div>
-                      <Filters />
+                      <Filters
+                        products={filteredProducts}
+                        onChange={(products) => setFilteredProducts(products)}
+                      />
                     </div>
                   </>
                 )}
                 <div className="relative grid grid-cols-2 product-grid xl:grid-cols-3 2xl:grid-cols-4 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]">
-                  {productsBasedOnSellingPlan.map((product, key) => (
+                  {filteredProducts.map((product, key) => (
                     <ProductCard
                       key={key}
                       product={product}
