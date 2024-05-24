@@ -1,9 +1,10 @@
-import { getPureId } from '~/lib/utils'
+import { cn, getPureId } from '~/lib/utils'
 
 import { ProductActions } from './ProductActions'
 
 export const ProductCard = ({ product, onClick }) => {
   const image = product.product_icon_1.reference.image.url
+  const bgColor = product.background_color?.value ?? '#FFF'
 
   // PATCH: temporily
   const pureId = getPureId(product.id, 'Product')
@@ -13,7 +14,12 @@ export const ProductCard = ({ product, onClick }) => {
 
   return (
     <div className="flex flex-col product-grid" data-product-id={product.id}>
-      <div className="relative px-[25px] pt-[12%] pb-[5%] mt-[40%] rounded-t-[8px] 2xl:aspect-[270/280] aspect-[270/272] flex bg-[#572D2D] text-white">
+      <div
+        className={cn(
+          'relative px-[25px] pt-[12%] pb-[5%] mt-[40%] rounded-t-[8px] 2xl:aspect-[270/280] aspect-[270/272] flex text-white bg-[#234234]',
+        )}
+        style={{ backgroundColor: bgColor }}
+      >
         <div className="flex items-end justify-center flex-1">
           <div className="absolute w-[84%] top-[18%] -translate-y-1/2">
             <img

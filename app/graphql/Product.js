@@ -125,6 +125,18 @@ export const PRODUCT_ITEM_FRAGMENT = `#graphql
         }
       }
     }
+    background_color: metafield(namespace: "custom", key: "background_color") {
+      type
+      value
+    }
+    meat_type: metafield(namespace: "custom", key: "meat_type") {
+      type
+      value
+    }
+    special_type: metafield(namespace: "custom", key: "special_type") {
+      type
+      value
+    }
   }
 `
 
