@@ -18,6 +18,24 @@ export const MobileCart = () => {
 
   const isCheckoutable = costForOneTime >= 75
 
+  const CartContent = () => (
+    <>
+      <div className="px-[20px] py-[18px] flex justify-between bg-white font-bold border-b border-[#EFEEED]">
+        <div className="flex gap-[12px]">
+          <CanvasLogo />
+          <div className="font-dunbar font-medium text-[20px] tracking-[1px]">
+            SHOPPING CART
+          </div>
+        </div>
+        <Button onClick={() => setCartOpen(false)}>
+          <NewClose />
+        </Button>
+      </div>
+      <ProgressBar />
+      <CartLines />
+    </>
+  )
+
   return (
     <div className="relative z-20 mobile-cart">
       <div className="fixed w-full sm:hidden block bottom-0 bg-white left-0 px-[20px] py-[16px] font-nunito font-bold text-[16px] [box-shadow:0px_0px_10px_0px_rgba(0,0,0,0.20)]">
@@ -51,19 +69,12 @@ export const MobileCart = () => {
           cartOpen ? 'translate-y-0' : 'translate-y-full',
         )}
       >
-        <div className="px-[20px] py-[18px] flex justify-between bg-white font-bold border-b border-[#EFEEED]">
-          <div className="flex gap-[12px]">
-            <CanvasLogo />
-            <div className="font-dunbar font-medium text-[20px] tracking-[1px]">
-              SHOPPING CART
-            </div>
+        {isCartPage && <CartContent />}
+        {!isCartPage && (
+          <div>
+            <CartContent />
           </div>
-          <Button onClick={() => setCartOpen(false)}>
-            <NewClose />
-          </Button>
-        </div>
-        <ProgressBar />
-        <CartLines />
+        )}
         <div className="sm:pt-0 pt-[10px] sm:px-0 px-[20px] sm:pb-0 pb-[16px] flex flex-col shrink-0 [box-shadow:0_-3px_15px_-5px_#333]">
           {isCartPage && <PlanPicker type="mobileCart" />}
           <Button
