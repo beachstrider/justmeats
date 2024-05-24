@@ -4,7 +4,8 @@ import { Check } from '~/components/Check'
 import { Dropdown } from '~/components/Dropdown'
 import { Label } from '~/components/Label'
 import { RadioGroup, RadioGroupItem } from '~/components/Radio'
-import { Filter } from '~/icons/Filter'
+
+import { Mobile } from './Mobile'
 
 export const Filters = () => {
   const servingSizes = ['All Meats', 'Everyday Meats', 'BBQ Meats']
@@ -63,10 +64,11 @@ export const Filters = () => {
         </Dropdown>
       </div>
       <div className="block sm:hidden">
-        <button className="flex justify-between items-center font-dunbar font-medium sm:text-[14px] py-[2px] pl-[8px] pr-[4px] rounded-[6px] border-2 border-[#7A392D] text-[#7A392D]">
-          <div>FILTERS</div>
-          <Filter />
-        </button>
+        <Mobile
+          servingSizes={servingSizes}
+          meatTypes={meatTypes}
+          specials={specials}
+        />
       </div>
     </>
   )
