@@ -1,10 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { DELIVERY_EVERY_15_DAYS, DELIVERY_EVERY_30_DAYS } from '~/consts'
 import { CustomBundleContext } from '~/contexts'
 import { Calendar } from '~/icons/Calendar'
 import { GreenCheck } from '~/icons/GreenCheck'
 import { cn } from '~/lib/utils'
+
+import { ConfirmDialog } from './ConfirmDialog'
 
 export const PlanPicker = ({ type = 'normal' }) => {
   const {
@@ -16,7 +18,68 @@ export const PlanPicker = ({ type = 'normal' }) => {
     setSellingPlan,
     sellingPlanFrequency,
     setSellingPlanFrequency,
+    selectedProducts,
   } = useContext(CustomBundleContext)
+
+  const [losingProducts, setLosingProducts] = useState([])
+
+  const onOneTimeClick = () => {
+    const newSelectedProducts = selectedProducts.filter(
+      (product) => !product.requiresSellingPlan,
+    )
+    const newSelectedProductIds = newSelectedProducts.map((el) => el.id)
+
+    const diff = selectedProducts.filter(
+      (el) => !newSelectedProductIds.includes(el.id),
+    )
+
+    if (diff.length > 0) {
+      setLosingProducts(diff)
+    } else {
+      onConfirm()
+    }
+  }
+
+  const onConfirm = () => {
+    setSellingPlan('')
+    setLosingProducts([])
+  }
+
+  const onDialogOpenChange = (v) => {
+    if (!v) {
+      setLosingProducts([])
+    }
+  }
+
+  const subscriptionButton = (
+    <div
+      className={cn(
+        'px-[30px] sm:py-[10px] py-[6px] flex-1 sm:rounded-l-[8px] sm:rounded-r-none rounded-l-[8px] rounded-r-[8px] border-2 border-[#7A392D] text-center',
+        sellingPlan
+          ? 'bg-[#7A392D] text-white cursor-default'
+          : 'text-[#7A392D] cursor-pointer',
+      )}
+      onClick={() => {
+        setSellingPlan(sellingPlanFrequency)
+      }}
+    >
+      Subscribe & Save
+    </div>
+  )
+
+  const oneTimeButton = (
+    <div
+      className={cn(
+        'sm:block hidden sm:px-[30px] px-[22px] sm:py-[10px] py-[6px] rounded-r-[8px] border-2 border-[#7A392D]',
+        !sellingPlan
+          ? 'bg-[#7A392D] text-white cursor-default'
+          : 'text-[#7A392D] cursor-pointer',
+      )}
+      onClick={onOneTimeClick}
+    >
+      One Time
+    </div>
+  )
 
   return (
     <>
@@ -29,32 +92,8 @@ export const PlanPicker = ({ type = 'normal' }) => {
       </p>
       <div className="bg-white sm:border border-[#EFEEED] rounded-[8px] overflow-hidden sm:[box-shadow:_0px_20px_50px_-10px_rgba(0,0,0,0.15)]">
         <div className="flex sm:font-medium font-bold sm:font-dunbar font-nunito sm:tracking-[0.8px] tracking-[0.9px] sm:uppercase">
-          <div
-            className={cn(
-              'px-[30px] sm:py-[10px] py-[6px] flex-1 sm:rounded-l-[8px] sm:rounded-r-none rounded-l-[8px] rounded-r-[8px] border-2 border-[#7A392D] text-center',
-              sellingPlan
-                ? 'bg-[#7A392D] text-white cursor-default'
-                : 'text-[#7A392D] cursor-pointer',
-            )}
-            onClick={() => {
-              setSellingPlan(sellingPlanFrequency)
-            }}
-          >
-            Subscribe & Save
-          </div>
-          <div
-            className={cn(
-              'sm:block hidden sm:px-[30px] px-[22px] sm:py-[10px] py-[6px] rounded-r-[8px] border-2 border-[#7A392D]',
-              !sellingPlan
-                ? 'bg-[#7A392D] text-white cursor-default'
-                : 'text-[#7A392D] cursor-pointer',
-            )}
-            onClick={() => {
-              setSellingPlan('')
-            }}
-          >
-            One Time
-          </div>
+          {subscriptionButton}
+          {oneTimeButton}
         </div>
         <div className={cn(sellingPlan ? '' : 'text-[#999]')}>
           <div className="flex justify-between sm:px-[24px] px-[16px] sm:pt-[24px] sm:pb-[24px] pt-[16px] pb-[12px] plan-picker-freq-div">
@@ -169,13 +208,16 @@ export const PlanPicker = ({ type = 'normal' }) => {
               ? 'bg-[#7A392D] text-white cursor-default'
               : 'text-[#7A392D] cursor-pointer',
           )}
-          onClick={() => {
-            setSellingPlan('')
-          }}
+          onClick={onOneTimeClick}
         >
           One Time
         </div>
       </div>
+      <ConfirmDialog
+        products={losingProducts}
+        onOpenChange={onDialogOpenChange}
+        onConfirm={onConfirm}
+      />
     </>
   )
 }
