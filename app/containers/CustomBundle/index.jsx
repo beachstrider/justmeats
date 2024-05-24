@@ -94,17 +94,8 @@ export const CustomBundle = () => {
 
   const cost = isCartPage && sellingPlan ? costForSubscription : costForOneTime
 
-  const tags = freeProduct.tags
-  let freeProductPrice
-
-  if (tags && tags.length > 0) {
-    tags.forEach((tag) => {
-      if (tag.includes('free-')) {
-        freeProductPrice = parseFloat(tag.split('-')[1])
-      }
-    })
-  }
-
+  const freeTag = freeProduct.tags.find((el) => el.includes('free-'))
+  const freeProductPrice = parseFloat(freeTag?.split('-')?.[1])
   const originalCost = costForOneTime + freeProductPrice
 
   async function handleSubmit() {
