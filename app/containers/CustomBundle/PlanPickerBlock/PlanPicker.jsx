@@ -54,7 +54,7 @@ export const PlanPicker = ({ type = 'normal' }) => {
   const subscriptionButton = (
     <div
       className={cn(
-        'px-[30px] sm:py-[10px] py-[6px] flex-1 sm:rounded-l-[8px] sm:rounded-r-none rounded-l-[8px] rounded-r-[8px] border-2 border-[#7A392D] text-center',
+        'flex justify-center sm:px-[30px] px-[20px] sm:py-[10px] py-[6px] flex-1 sm:rounded-l-[8px] sm:rounded-r-none rounded-l-[8px] rounded-r-[8px] border-2 border-[#7A392D] text-center',
         sellingPlan
           ? 'bg-[#7A392D] text-white cursor-default'
           : 'text-[#7A392D] cursor-pointer',
@@ -63,7 +63,17 @@ export const PlanPicker = ({ type = 'normal' }) => {
         setSellingPlan(sellingPlanFrequency)
       }}
     >
-      Subscribe & Save
+      <div className="flex">
+        {type === 'mobileCart' && (
+          <div className="">
+            <span className="text-[#CBCBCB] line-through">
+              ${originalCost}&nbsp;
+            </span>
+            ${costForSubscription}&nbsp;
+          </div>
+        )}
+        <div>Subscribe & Save</div>
+      </div>
     </div>
   )
 
@@ -78,6 +88,23 @@ export const PlanPicker = ({ type = 'normal' }) => {
       onClick={onOneTimeClick}
     >
       One Time
+    </div>
+  )
+
+  const mobileCartOnetimeButton = (
+    <div
+      className={cn(
+        'sm:hidden flex justify-center sm:px-[30px] px-[22px] sm:py-[10px] py-[6px] sm:rounded-r-[8px] rounded-[8px] border-2 border-[#7A392D] text-center font-nunito font-bold',
+        !sellingPlan
+          ? 'bg-[#7A392D] text-white cursor-default'
+          : 'text-[#7A392D] cursor-pointer',
+      )}
+      onClick={onOneTimeClick}
+    >
+      <div className="flex">
+        {type === 'mobileCart' && <span>${costForOneTime}&nbsp;</span>}
+        One Time
+      </div>
     </div>
   )
 
@@ -201,17 +228,7 @@ export const PlanPicker = ({ type = 'normal' }) => {
             </div>
           </div>
         </div>
-        <div
-          className={cn(
-            'sm:hidden block sm:px-[30px] px-[22px] sm:py-[10px] py-[6px] sm:rounded-r-[8px] rounded-[8px] border-2 border-[#7A392D] text-center font-nunito font-bold',
-            !sellingPlan
-              ? 'bg-[#7A392D] text-white cursor-default'
-              : 'text-[#7A392D] cursor-pointer',
-          )}
-          onClick={onOneTimeClick}
-        >
-          One Time
-        </div>
+        {mobileCartOnetimeButton}
       </div>
       <ConfirmDialog
         products={losingProducts}
