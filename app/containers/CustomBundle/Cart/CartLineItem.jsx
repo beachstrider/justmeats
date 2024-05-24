@@ -3,6 +3,7 @@ import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
 import memorialDay from '~/assets/images/image_2024-05-23_154607820.jpg'
+import { Close } from '~/icons/Close'
 import { cn } from '~/lib/utils'
 
 import { Quantity } from '../ProductActions/Quantity'
@@ -87,11 +88,6 @@ export function CartLineItem({ line, lineType = 'paid' }) {
             FREE
           </div>
         )}
-        {lineType === 'gift' && (
-          <div className="for_mobile_range absolute right-[0] top-[20px] bg-[#1b7084] block left-[0] px-[5px] py-[2px] text-[11px] font-bold text-[white] w-[35.42px] max-w-max rounded-[3px]">
-            GIFT
-          </div>
-        )}
         {lineType === 'locked' && (
           <div className="for_mobile_range absolute right-[0] top-[20px] bg-[#862E1B] block left-[0] px-[5px] py-[2px] text-[11px] font-bold text-[white] w-[50.73px] max-w-max rounded-[3px]">
             LOCKED
@@ -146,9 +142,6 @@ export function CartLineItem({ line, lineType = 'paid' }) {
           )}
           {lineType === 'gift' && (
             <>
-              <span className="sm:hidden text-black text-sm -mt-15 pb-10 font-roboto font-semibold absolute -top-[24px]">
-                Gift
-              </span>
               <button
                 className="sm:hidden w-full bg-[#1b7084] mt-[0px] text-white px-[10px] pt-[4px] min-h-[36px] text-[12px] font-['Roboto'] relative"
                 onClick={() => setIsGiftModalOpen(true)}
@@ -201,8 +194,14 @@ const GiftModal = ({ open, onClose }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-[400px] text-left align-middle transition-all transform bg-[#edeaea] text-[#1d1d1d] shadow-xl">
+              <Dialog.Panel className="relative pt-[20px] w-full max-w-[400px] text-left align-middle transition-all transform bg-white text-[#1d1d1d] shadow-xl">
                 <img src={memorialDay} alt="" />
+                <button
+                  className="absolute top-[8px] right-[8px]"
+                  onClick={onClose}
+                >
+                  <Close />
+                </button>
               </Dialog.Panel>
             </Transition.Child>
           </div>
