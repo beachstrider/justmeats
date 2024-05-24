@@ -32,7 +32,7 @@ export const MobileCart = () => {
         </Button>
       </div>
       <ProgressBar />
-      <CartLines />
+      <CartLines type="mobileCart" />
     </>
   )
 

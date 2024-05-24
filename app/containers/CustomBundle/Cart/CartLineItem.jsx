@@ -6,7 +6,7 @@ import { cn } from '~/lib/utils'
 import { Quantity } from '../ProductActions/Quantity'
 import { LockedItem } from './LockedItem'
 
-export function CartLineItem({ line, lineType = 'paid' }) {
+export function CartLineItem({ line, type, lineType = 'paid' }) {
   const {
     title,
     tags,
@@ -104,7 +104,7 @@ export function CartLineItem({ line, lineType = 'paid' }) {
           </div>
         </div>
         <div className="flex h-[33px] justify-center items-center border-t border-[#efeeed]">
-          {lineType === 'paid' && <Quantity line={line} />}
+          {lineType === 'paid' && <Quantity line={line} type={type} />}
           {lineType === 'bonus' && <LockedItem />}
         </div>
       </div>

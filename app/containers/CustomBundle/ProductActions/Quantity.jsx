@@ -43,6 +43,7 @@ export const Quantity = ({ line, type }) => {
         type === 'modal'
           ? 'sm:w-[134px] sm:h-[50px] w-[166px] h-[51px] sm:rounded-r-none rounded-r-[8px] sm:bg-transparent bg-[#637160]'
           : '',
+        type === 'mobileCart' ? 'px-[6px]' : '',
       )}
     >
       <div className={`flex gap-[5px] items-center justify-between`}>
@@ -59,8 +60,9 @@ export const Quantity = ({ line, type }) => {
         </button>
         <small
           className={cn(
-            `flex-1 font-medium sm:text-[20px] text-[18px] text-center flex justify-center items-center w-[32px] p-[3px]`,
+            `flex-1 font-medium font-dunbar sm:text-[20px] text-[18px] text-center flex justify-center items-center w-[32px] p-[3px]`,
             type === 'modal' ? 'sm:text-inherit text-white' : '',
+            type === 'mobileCart' ? '!text-[14px]' : '',
           )}
         >
           {quantity}
