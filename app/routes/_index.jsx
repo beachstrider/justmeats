@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 
 import OrderButton from 'app/components/OrderButton'
-import {Image} from '@shopify/hydrogen-react';
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -9,15 +8,16 @@ import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { NavLink } from '@remix-run/react'
+import { Image } from '@shopify/hydrogen-react'
 import { defer } from '@shopify/remix-oxygen'
 
+import subscriptionBannerImage from '~/assets/images/2405_memorial-day-homepage-banner-800x171.jpg'
+import subscriptionBannerMobileImage from '~/assets/images/2405_memorial-day-homepage-banner-800x655-02.jpg'
 import carneAsasaImage from '~/assets/images/BodyBulding_Recipie_CarneAsasa.webp'
 import tutorialImage2 from '~/assets/images/Hannah_Tall2.webp'
 import tutorialImage3 from '~/assets/images/Hannah_Zoomed3.webp'
 import tutorialImage1 from '~/assets/images/Hannah_Zoomed.webp'
 import mosaicImage from '~/assets/images/Mosaic.webp'
-import subscriptionBannerImage from '~/assets/images/april_banner_Desktop.webp'
-import subscriptionBannerMobileImage from '~/assets/images/april_banner_Mobile.webp'
 import video1 from '~/assets/videos/32c027bc585340199844575c5e85cf42.mp4'
 import FaqAccordion from '~/components/FaqAccordion'
 import ProductsSlider from '~/components/ProductsSlider'
@@ -59,21 +59,21 @@ export default function Homepage() {
     },
   }
 
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 540);
-        };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 540)
+    }
 
-        handleResize();
+    handleResize()
 
-        window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize)
 
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   return (
     <div className="relative home">
@@ -127,12 +127,14 @@ export default function Homepage() {
           prefetch="intent"
           to="/products/custom-bundle"
         >
-        <Image
-          src={isMobile ? subscriptionBannerMobileImage : subscriptionBannerImage}
-          sizes="(min-width: 45em) 50vw, 100vw"
-          width={"100%"}
-          height={"330"}
-        />
+          <Image
+            src={
+              isMobile ? subscriptionBannerMobileImage : subscriptionBannerImage
+            }
+            sizes="(min-width: 45em) 50vw, 100vw"
+            width={'100%'}
+            height={'330'}
+          />
         </NavLink>
       </section>
 
@@ -179,8 +181,8 @@ export default function Homepage() {
                     src={item}
                     key={index}
                     sizes="(min-width: 45em) 50vw, 100vw"
-                    width={"274px"}
-                    height={"447"}
+                    width={'274px'}
+                    height={'447'}
                   />
                 )
               })}
@@ -205,8 +207,8 @@ export default function Homepage() {
                       src={item}
                       key={index}
                       sizes="(min-width: 45em) 50vw, 100vw"
-                      width={"100%"}
-                      height={""}
+                      width={'100%'}
+                      height={''}
                     />
                   </div>
                 </SwiperSlide>
@@ -273,12 +275,12 @@ export default function Homepage() {
       <section className="bg-[#eeeeee] flex justify-center items-center ">
         <div className="max-w-[1440px] w-[100%] flex justify-start gap-20 px-5 xl:px-10 sm:py-20 py-10 ">
           <div className="flex-col items-center hidden w-4/12 gap-10 ml-10 xl:flex">
-              <Image
-                src={carneAsasaImage}
-                sizes="(min-width: 45em) 50vw, 100vw"
-                width={450}
-                height={340}
-              />
+            <Image
+              src={carneAsasaImage}
+              sizes="(min-width: 45em) 50vw, 100vw"
+              width={450}
+              height={340}
+            />
             <div>
               <OrderButton />
             </div>
