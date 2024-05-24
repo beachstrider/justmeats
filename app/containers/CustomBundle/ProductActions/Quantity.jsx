@@ -40,7 +40,9 @@ export const Quantity = ({ line, type }) => {
     <div
       className={cn(
         'flex flex-col items-center justify-center w-full cart-line-quantity',
-        type === 'modal' ? 'sm:w-[134px] sm:h-[50px] w-[166px] h-[51px]' : '',
+        type === 'modal'
+          ? 'sm:w-[134px] sm:h-[50px] w-[166px] h-[51px] rounded-r-[8px] border border-[#efeeed]'
+          : '',
       )}
     >
       <div className={`flex gap-[5px] items-center justify-between`}>

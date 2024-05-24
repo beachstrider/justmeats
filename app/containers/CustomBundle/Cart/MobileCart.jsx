@@ -51,22 +51,20 @@ export const MobileCart = () => {
           cartOpen ? 'translate-y-0' : 'translate-y-full',
         )}
       >
-        <div>
-          <div className="px-[20px] py-[18px] flex justify-between bg-white font-bold border-b border-[#EFEEED]">
-            <div className="flex gap-[12px]">
-              <CanvasLogo />
-              <div className="font-dunbar font-medium text-[20px] tracking-[1px]">
-                SHOPPING CART
-              </div>
+        <div className="px-[20px] py-[18px] flex justify-between bg-white font-bold border-b border-[#EFEEED]">
+          <div className="flex gap-[12px]">
+            <CanvasLogo />
+            <div className="font-dunbar font-medium text-[20px] tracking-[1px]">
+              SHOPPING CART
             </div>
-            <Button onClick={() => setCartOpen(false)}>
-              <NewClose />
-            </Button>
           </div>
-          <ProgressBar />
-          <CartLines />
+          <Button onClick={() => setCartOpen(false)}>
+            <NewClose />
+          </Button>
         </div>
-        <div className="sm:pt-0 pt-[10px] sm:px-0 px-[20px] sm:pb-0 pb-[16px] flex flex-col [box-shadow:0_-3px_15px_-5px_#333]">
+        <ProgressBar />
+        <CartLines />
+        <div className="sm:pt-0 pt-[10px] sm:px-0 px-[20px] sm:pb-0 pb-[16px] flex flex-col shrink-0 [box-shadow:0_-3px_15px_-5px_#333]">
           {isCartPage && <PlanPicker type="mobileCart" />}
           <Button
             loading={submitting}

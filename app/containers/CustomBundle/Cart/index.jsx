@@ -9,7 +9,7 @@ export function Cart({ layout, onCheckout }) {
       <ProgressBar />
       <div className="flex flex-col justify-between cart-details ">
         <CartLines />
-        <div className="w-full h-[16px] [background:linear-gradient(180deg,rgba(0,0,0,0.00)_0%,rgba(0,0,0,0.03)_66%,rgba(0,0,0,0.08)_100%)]"></div>
+        <div className="w-full h-[16px] [background:linear-gradient(180deg,rgba(0,0,0,0.00)_0%,rgba(0,0,0,0.03)_66%,rgba(0,0,0,0.08)_100%)]" />
         <CartSummary layout={layout} />
         <CartCheckoutActions onCheckout={onCheckout} />
       </div>
