@@ -41,25 +41,38 @@ export const Quantity = ({ line, type }) => {
       className={cn(
         'flex flex-col items-center justify-center w-full cart-line-quantity',
         type === 'modal'
-          ? 'sm:w-[134px] sm:h-[50px] w-[166px] h-[51px] rounded-r-[8px] border border-[#efeeed]'
+          ? 'sm:w-[134px] sm:h-[50px] w-[166px] h-[51px] sm:rounded-r-none rounded-r-[8px] sm:bg-transparent bg-[#637160]'
           : '',
       )}
     >
       <div className={`flex gap-[5px] items-center justify-between`}>
         <button
           onClick={() => updateQuantity(quantity - 1)}
-          className={`w-[25px] flex justify-center items-center h-[25px] rounded-[5px] p-[3px] text-[#862e1b] font-bold text-[26px]`}
+          className={cn(
+            `w-[25px] flex justify-center items-center h-[25px] rounded-[5px] p-[3px] font-bold text-[26px]`,
+            type === 'modal'
+              ? 'sm:text-[#862e1b] text-white'
+              : 'text-[#862e1b]',
+          )}
         >
           <span>&#8722; </span>
         </button>
         <small
-          className={`flex-1 font-medium sm:text-[20px] text-[18px] text-center flex justify-center items-center w-[32px] p-[3px]`}
+          className={cn(
+            `flex-1 font-medium sm:text-[20px] text-[18px] text-center flex justify-center items-center w-[32px] p-[3px]`,
+            type === 'modal' ? 'sm:text-inherit text-white' : '',
+          )}
         >
           {quantity}
         </small>
         <button
           onClick={() => updateQuantity(quantity + 1)}
-          className={`flex justify-center items-center rounded-[5px] p-[3px] w-[25px] h-[25px] text-[#862e1b] font-bold text-[26px]`}
+          className={cn(
+            `flex justify-center items-center rounded-[5px] p-[3px] w-[25px] h-[25px] font-bold text-[26px]`,
+            type === 'modal'
+              ? 'sm:text-[#862e1b] text-white'
+              : 'text-[#862e1b]',
+          )}
           // PATCH: temporily
           disabled={isUnavailable}
         >

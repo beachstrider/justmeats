@@ -28,7 +28,7 @@ export function ProductGallary({ media }) {
             <Slide className="slide" index={index} key={index}>
               <div className="w-[100%]">
                 <img
-                  className="mx-auto sm:max-h-[344px]"
+                  className="mx-auto sm:max-h-[344px] max-h-[240px]"
                   draggable="false"
                   src={slide.url}
                 />
