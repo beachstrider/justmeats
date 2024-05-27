@@ -12,7 +12,7 @@ import { Star5 } from '~/icons/Star5'
 import { PROMO_CODES } from '../../promo-codes'
 import { Cart } from './Cart'
 import { MobileCart } from './Cart/MobileCart'
-import { Filters } from './Filters'
+import { Filter } from './Filter'
 import { PlanPicker } from './PlanPickerBlock/PlanPicker'
 import { ProductCard } from './ProductCard'
 import { ProductModal } from './ProductModal'
@@ -53,8 +53,13 @@ export const CustomBundle = () => {
   } = useContext(RootContext)
 
   const [clickedProduct, setClickedProduct] = useState(null)
-  const [filteredProducts, setFilteredProducts] = useState([])
   const [submitting, setSubmitting] = useState(false)
+
+  const [filter, setFilter] = useState({
+    servingType: '',
+    meatTypes: [],
+    specialTypes: [],
+  })
 
   const isCartPage = matches.at(-1).pathname.includes('/products/custom-bundle')
 
@@ -99,11 +104,18 @@ export const CustomBundle = () => {
   const freeProductPrice = parseFloat(freeTag?.split('-')?.[1])
   const originalCost = costForOneTime + freeProductPrice
 
-  useEffect(() => {
-    setFilteredProducts(productsBasedOnSellingPlan)
-  }, [productsBasedOnSellingPlan])
+  const filters = {
+    servingTypes: getProductsMetaValues(products, 'serving_type'),
+    meatTypes: getProductsMetaValues(products, 'meat_type'),
+    specialTypes: getProductsMetaValues(products, 'special_type'),
+  }
 
-  async function handleSubmit() {
+  const filteredProducts = getFilteredProducts(
+    productsBasedOnSellingPlan,
+    filter,
+  )
+
+  const handleSubmit = async () => {
     const products = [...selectedProducts]
 
     if (costForOneTime > 125) {
@@ -161,6 +173,10 @@ export const CustomBundle = () => {
     }
 
     setSubmitting(false)
+  }
+
+  const onFilterChange = (newFilter) => {
+    setFilter(newFilter)
   }
 
   return (
@@ -232,9 +248,10 @@ export const CustomBundle = () => {
                         </div>
                         <h2 className="font-dunbar">SELECT YOUR MEATS</h2>
                       </div>
-                      <Filters
-                        products={filteredProducts}
-                        onChange={(products) => setFilteredProducts(products)}
+                      <Filter
+                        filters={filters}
+                        filter={filter}
+                        onChange={onFilterChange}
                       />
                     </div>
                   </>
@@ -291,4 +308,34 @@ export const CustomBundle = () => {
       </div>
     </CustomBundleContext.Provider>
   )
+}
+
+const getProductsMetaValues = (products, key) => {
+  return [...new Set(products.map((el) => el[key]?.value).filter((el) => el))]
+}
+
+const getFilteredProducts = (products, filter) => {
+  return products.filter((el) => {
+    let isServingTypeMatch = true
+    let isMeatTypeMatch = true
+    let isSpecialTypeMatch = true
+
+    const productServingType = el.serving_type?.value ?? ''
+    const productMeatType = el.meat_type?.value ?? ''
+    const productSpecialType = el.special_type?.value ?? ''
+
+    if (filter.servingType) {
+      isServingTypeMatch = filter.servingType === productServingType
+    }
+
+    if (filter.meatTypes.length) {
+      isMeatTypeMatch = filter.meatTypes.includes(productMeatType)
+    }
+
+    if (filter.specialTypes.length) {
+      isSpecialTypeMatch = filter.specialTypes.includes(productSpecialType)
+    }
+
+    return isServingTypeMatch && isMeatTypeMatch && isSpecialTypeMatch
+  })
 }
