@@ -6,6 +6,7 @@ import { ProductGallary } from './ProductGallery'
 export const DialogContent = ({ product, onClose }) => {
   const images = product.images
   const media = images.nodes
+  const servings = product.servings?.value ?? ''
 
   return (
     <>
@@ -34,7 +35,9 @@ export const DialogContent = ({ product, onClose }) => {
           <div className="rounded-[6px] border border-[#EFEEED] sm:px-[35px] px-[18px] font-nunito">
             <div className="sm:py-[18px] py-[11px] grid grid-cols-3">
               <div className="text-center">
-                <div className="sm:text-[20px] text-[18px] font-bold">10</div>
+                <div className="sm:text-[20px] text-[18px] font-bold">
+                  {servings}
+                </div>
                 <div className="text-[14px]">Servings</div>
               </div>
               <div className="text-center">

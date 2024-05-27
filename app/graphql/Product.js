@@ -77,6 +77,15 @@ export const PRODUCT_ITEM_FRAGMENT = `#graphql
     cardDescription: metafield(namespace: "custom", key: "card_description") {
       value
     }
+    servings: metafield(namespace: "custom", key: "_servings") {
+      value
+    }
+    weight: metafield(namespace: "custom", key: "weight") {
+      value
+    }
+    calories: metafield(namespace: "custom", key: "calories") {
+      value
+    }
     protein: metafield(namespace: "custom", key: "protein") {
       value
     }
@@ -84,9 +93,6 @@ export const PRODUCT_ITEM_FRAGMENT = `#graphql
       value
     }
     fat: metafield(namespace: "custom", key: "fat") {
-      value
-    }
-    servings: metafield(namespace: "custom", key: "servings") {
       value
     }
     ingredients: metafield(namespace: "custom", key: "ingredients") {

@@ -5,6 +5,8 @@ import { ProductActions } from './ProductActions'
 export const ProductCard = ({ product, onClick }) => {
   const image = product.product_icon_1.reference.image.url
   const bgColor = product.background_color?.value ?? '#FFF'
+  const servings = product.servings?.value ?? ''
+  const servingType = product.serving_type?.value ?? ''
 
   // PATCH: temporily
   const pureId = getPureId(product.id, 'Product')
@@ -16,7 +18,7 @@ export const ProductCard = ({ product, onClick }) => {
     <div className="flex flex-col product-grid" data-product-id={product.id}>
       <div
         className={cn(
-          'relative px-[25px] pt-[12%] pb-[5%] mt-[40%] rounded-t-[8px] 2xl:aspect-[270/280] aspect-[270/272] flex text-white bg-[#234234]',
+          'relative px-[25px] pt-[12%] pb-[5%] mt-[40%] rounded-t-[8px] 2xl:aspect-[270/280] xl:aspect-[270/282] aspect-[270/272] flex text-white bg-[#234234]',
         )}
         style={{ backgroundColor: bgColor }}
       >
@@ -31,9 +33,9 @@ export const ProductCard = ({ product, onClick }) => {
             />
           </div>
           <div className="xl:mb-[2%] font-nunito sm:text-[16px] text-[12px] text-center">
-            <div>Everyday Meats</div>
+            <div>{servingType}</div>
             <div>
-              <strong>10</strong> Servings, <strong>1</strong> lb
+              <strong>{servings}</strong> Servings, <strong>1</strong> lb
             </div>
           </div>
         </div>
