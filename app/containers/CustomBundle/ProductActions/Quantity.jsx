@@ -41,7 +41,7 @@ export const Quantity = ({ line, type }) => {
       className={cn(
         'flex flex-col items-center justify-center w-full cart-line-quantity',
         type === 'modal'
-          ? 'sm:w-[134px] sm:h-[50px] w-[166px] h-[51px] sm:rounded-r-none rounded-r-[8px] sm:bg-transparent bg-[#637160]'
+          ? 'sm:w-[139px] sm:h-[50px] w-[166px] h-[51px] sm:rounded-l-[4px] sm:rounded-r-[4px] rounded-l-none rounded-r-[8px] bg-[#637160]'
           : '',
         type === 'mobileCart' ? 'px-[6px]' : '',
       )}
@@ -51,9 +51,7 @@ export const Quantity = ({ line, type }) => {
           onClick={() => updateQuantity(quantity - 1)}
           className={cn(
             `w-[25px] flex justify-center items-center h-[25px] rounded-[5px] p-[3px] font-bold text-[26px]`,
-            type === 'modal'
-              ? 'sm:text-[#862e1b] text-white'
-              : 'text-[#862e1b]',
+            type === 'modal' ? 'text-white' : 'text-[#862e1b]',
           )}
         >
           <span>&#8722; </span>
@@ -61,7 +59,7 @@ export const Quantity = ({ line, type }) => {
         <small
           className={cn(
             `flex-1 font-medium font-dunbar sm:text-[20px] text-[18px] text-center flex justify-center items-center w-[32px] p-[3px]`,
-            type === 'modal' ? 'sm:text-inherit text-white' : '',
+            type === 'modal' ? 'text-white' : '',
             type === 'mobileCart' ? '!text-[14px]' : '',
           )}
         >
@@ -71,9 +69,7 @@ export const Quantity = ({ line, type }) => {
           onClick={() => updateQuantity(quantity + 1)}
           className={cn(
             `flex justify-center items-center rounded-[5px] p-[3px] w-[25px] h-[25px] font-bold text-[26px]`,
-            type === 'modal'
-              ? 'sm:text-[#862e1b] text-white'
-              : 'text-[#862e1b]',
+            type === 'modal' ? 'text-white' : 'text-[#862e1b]',
           )}
           // PATCH: temporily
           disabled={isUnavailable}
