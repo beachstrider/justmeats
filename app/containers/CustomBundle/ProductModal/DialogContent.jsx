@@ -6,7 +6,13 @@ import { ProductGallary } from './ProductGallery'
 export const DialogContent = ({ product, onClose }) => {
   const images = product.images
   const media = images.nodes
+
   const servings = product.servings?.value ?? ''
+  const weight = product.weight?.value ?? ''
+  const calories = product.calories?.value ?? ''
+  const protein = product.protein?.value ?? ''
+  const fat = product.fat?.value ?? ''
+  const carbs = product.carbs?.value ?? ''
 
   return (
     <>
@@ -41,11 +47,15 @@ export const DialogContent = ({ product, onClose }) => {
                 <div className="text-[14px]">Servings</div>
               </div>
               <div className="text-center">
-                <div className="sm:text-[20px] text-[18px] font-bold">1lb</div>
+                <div className="sm:text-[20px] text-[18px] font-bold">
+                  {weight}
+                </div>
                 <div className="text-[14px]">Weight</div>
               </div>
               <div className="text-center">
-                <div className="sm:text-[20px] text-[18px] font-bold">1000</div>
+                <div className="sm:text-[20px] text-[18px] font-bold">
+                  {calories}
+                </div>
                 <div className="text-[14px]">Calories</div>
               </div>
             </div>
@@ -53,19 +63,19 @@ export const DialogContent = ({ product, onClose }) => {
             <div className="sm:py-[18px] py-[11px] grid grid-cols-3">
               <div className="text-center">
                 <div className="sm:text-[20px] text-[18px] font-bold">
-                  {product.protein.value}
+                  {protein}
                 </div>
                 <div className="text-[14px]">Protein</div>
               </div>
               <div className="text-center">
                 <div className="sm:text-[20px] text-[18px] font-bold">
-                  {product.fat.value}
+                  {fat}
                 </div>
                 <div className="text-[14px]">Fat</div>
               </div>
               <div className="text-center">
                 <div className="sm:text-[20px] text-[18px] font-bold">
-                  {product.carbs.value}
+                  {carbs}
                 </div>
                 <div className="text-[14px]">Carbs</div>
               </div>
