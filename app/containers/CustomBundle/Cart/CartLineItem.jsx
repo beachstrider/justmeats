@@ -1,6 +1,10 @@
-import { useContext, useEffect, useState } from 'react'
+import { Fragment, useContext, useState } from 'react'
 
+import { Dialog, Transition } from '@headlessui/react'
+
+import memorialDay from '~/assets/images/image_2024-05-23_154607820.jpg'
 import { CustomBundleContext } from '~/contexts'
+import { Close } from '~/icons/Close'
 import { cn } from '~/lib/utils'
 
 import { Quantity } from '../ProductActions/Quantity'
@@ -16,6 +20,8 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
     cart_drawer_img,
   } = line
   const { costForOneTime } = useContext(CustomBundleContext)
+
+  const [isGiftModalOpen, setIsGiftModalOpen] = useState(false)
 
   const freeTag = tags.find((el) => el.includes('free-'))
   const originalPriceOfFreeProduct = freeTag?.split('-')?.[1]
@@ -46,6 +52,9 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
                 : 'opacity-50'
               : '',
           )}
+          onClick={() =>
+            lineType === 'gift' ? setIsGiftModalOpen(true) : false
+          }
         />
       </div>
       <div className="flex flex-col flex-1">
@@ -116,5 +125,49 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
       <div className="hidden sm:block">{desktop}</div>
       <div className="flex flex-col sm:hidden">{mobile}</div>
     </>
+  )
+}
+
+const GiftModal = ({ open, onClose }) => {
+  return (
+    <Transition appear show={open} as={Fragment}>
+      <Dialog as="div" className="relative z-50" onClose={onClose}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-black/70" />
+        </Transition.Child>
+
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex items-center justify-center min-h-full p-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <Dialog.Panel className="relative pt-[20px] w-full max-w-[400px] text-left align-middle transition-all transform bg-white text-[#1d1d1d] shadow-xl">
+                <img src={memorialDay} alt="" />
+                <button
+                  className="absolute top-[8px] right-[8px]"
+                  onClick={onClose}
+                >
+                  <Close />
+                </button>
+              </Dialog.Panel>
+            </Transition.Child>
+          </div>
+        </div>
+      </Dialog>
+    </Transition>
   )
 }

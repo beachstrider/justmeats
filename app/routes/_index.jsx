@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 
 import OrderButton from 'app/components/OrderButton'
-import {Image} from '@shopify/hydrogen-react';
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -9,6 +8,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { NavLink } from '@remix-run/react'
+import { Image } from '@shopify/hydrogen-react'
 import { defer } from '@shopify/remix-oxygen'
 
 import carneAsasaImage from '~/assets/images/BodyBulding_Recipie_CarneAsasa.webp'
@@ -59,21 +59,21 @@ export default function Homepage() {
     },
   }
 
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 540);
-        };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 540)
+    }
 
-        handleResize();
+    handleResize()
 
-        window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize)
 
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   return (
     <div className="relative home">
@@ -127,12 +127,14 @@ export default function Homepage() {
           prefetch="intent"
           to="/products/custom-bundle"
         >
-        <Image
-          src={isMobile ? subscriptionBannerMobileImage : subscriptionBannerImage}
-          sizes="(min-width: 45em) 50vw, 100vw"
-          width={"100%"}
-          height={"330"}
-        />
+          <Image
+            src={
+              isMobile ? subscriptionBannerMobileImage : subscriptionBannerImage
+            }
+            sizes="(min-width: 45em) 50vw, 100vw"
+            width={'100%'}
+            height={'330'}
+          />
         </NavLink>
       </section>
 
@@ -179,8 +181,8 @@ export default function Homepage() {
                     src={item}
                     key={index}
                     sizes="(min-width: 45em) 50vw, 100vw"
-                    width={"274px"}
-                    height={"447"}
+                    width={'274px'}
+                    height={'447'}
                   />
                 )
               })}
@@ -205,8 +207,8 @@ export default function Homepage() {
                       src={item}
                       key={index}
                       sizes="(min-width: 45em) 50vw, 100vw"
-                      width={"100%"}
-                      height={""}
+                      width={'100%'}
+                      height={''}
                     />
                   </div>
                 </SwiperSlide>
@@ -273,12 +275,12 @@ export default function Homepage() {
       <section className="bg-[#eeeeee] flex justify-center items-center ">
         <div className="max-w-[1440px] w-[100%] flex justify-start gap-20 px-5 xl:px-10 sm:py-20 py-10 ">
           <div className="flex-col items-center hidden w-4/12 gap-10 ml-10 xl:flex">
-              <Image
-                src={carneAsasaImage}
-                sizes="(min-width: 45em) 50vw, 100vw"
-                width={450}
-                height={340}
-              />
+            <Image
+              src={carneAsasaImage}
+              sizes="(min-width: 45em) 50vw, 100vw"
+              width={450}
+              height={340}
+            />
             <div>
               <OrderButton />
             </div>
