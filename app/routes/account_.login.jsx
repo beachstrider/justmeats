@@ -10,11 +10,7 @@ import { json } from '@shopify/remix-oxygen'
 
 import { RequestForm } from '~/containers/Account/Login/Request'
 import { ValidateForm } from '~/containers/Account/Login/Validate'
-import {
-  getCustomerByEmail,
-  getCustomerFirstAddressPhone,
-  updateCustomer,
-} from '~/lib/rechargeAdmin'
+import { getCustomerByEmail, updateCustomer } from '~/lib/rechargeAdmin'
 import { RECHARGE_SESSION_KEY } from '~/lib/rechargeUtils'
 
 export function shouldRevalidate() {
@@ -46,8 +42,8 @@ export async function action({ request, context }) {
 
   switch (api) {
     case 'request':
+      // WORKAROUND: for Login sms issue
       try {
-        // WORKAROUND: for Login sms issue
         const customer = await getCustomerByEmail(email, context)
 
         if (customer !== null) {
@@ -69,8 +65,12 @@ export async function action({ request, context }) {
             }
           }
         }
-        // END WORKAROUND
+      } catch (err) {
+        return json({ success: false, message: err.message ?? err })
+      }
+      // END WORKAROUND
 
+      try {
         const sessionToken = await sendPasswordlessCode(email, {
           send_email: true,
           send_sms: true,
@@ -78,7 +78,17 @@ export async function action({ request, context }) {
 
         return json({ success: true, sessionToken })
       } catch (err) {
-        return json({ success: false, message: err.message ?? err })
+        // NOTE: We use this because recharge sms for global number doesn't work for some reason
+        try {
+          const sessionToken = await sendPasswordlessCode(email, {
+            send_email: true,
+            send_sms: false,
+          })
+
+          return json({ success: true, sessionToken })
+        } catch (err) {
+          return json({ success: false, message: err.message ?? err })
+        }
       }
 
     case 'validate':
