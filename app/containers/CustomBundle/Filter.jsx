@@ -122,7 +122,12 @@ export const Filter = ({ filters, filter, onChange }) => {
   return (
     <>
       <div className="sm:flex hidden shrink-0 sm:gap-[18px]">
-        <Dropdown placeholder={'SERVING SIZE'} menuMinWidth={144}>
+        <Dropdown
+          placeholder={filter.servingType || 'All Meats'}
+          placeholderClassName="uppercase"
+          buttonClassName="min-w-[171px]"
+          menuMinWidth={144}
+        >
           {servingTypeSelect}
         </Dropdown>
         <Dropdown placeholder={'MEAT TYPES'} menuMinWidth={131}>

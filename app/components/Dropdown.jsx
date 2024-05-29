@@ -9,6 +9,8 @@ export const Dropdown = ({
   children,
   menuMinWidth = 100,
   align = 'start',
+  placeholderClassName = '',
+  buttonClassName = '',
 }) => {
   const [isOpened, setIsOpened] = useState(false)
 
@@ -31,9 +33,10 @@ export const Dropdown = ({
           className={cn(
             'flex justify-between items-center font-dunbar font-medium sm:text-[14px] py-[4px] pl-[14px] pr-[10px] rounded-[4px] border-2 border-[#7A392D] tracking-[0.7px]',
             isOpened ? 'bg-[#7A392D] text-white' : 'text-[#7A392D]',
+            buttonClassName,
           )}
         >
-          <div>{placeholder}</div>
+          <div className={placeholderClassName}>{placeholder}</div>
           <div className={'w-[22px]'}>
             <DownIcon />
           </div>
