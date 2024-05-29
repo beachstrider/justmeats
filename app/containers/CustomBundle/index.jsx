@@ -205,41 +205,39 @@ export const CustomBundle = () => {
       <div className="max-w-ful custom-collection-wrap">
         <div className="flex flex-col flex-1 gap-2 border-gray-400 border-solid main-section sm:border">
           <div className="relative flex product-and-cart mb-[62px] md:mb-0">
-            <div className="container-small sm:pt-[52px] pt-[16px]">
+            <div className="container-small sm:pt-[30px] pt-[16px]">
               <section className="sm:mb-[80px] mb-[36px]">
                 {isCartPage && (
                   <>
-                    <div className="block sm:hidden">
-                      <div className="px-[27px] py-[22px] rounded-[8px] bg-rec-96 bg-cover overflow-hidden [box-shadow:_0px_20px_40px_-10px_rgba(0,0,0,0.20)] sm:mb-0 mb-[34px]">
-                        <div className="text-[18px] text-center font-semibold font-dunbar mb-[12px]">
-                          WE GUARANTEE YOU&apos;LL LOVE IT
-                          <br />
-                          OR YOUR MONEY BACK!
-                        </div>
-                        <div className="flex justify-center">
-                          <div className="flex gap-[14px]">
-                            <div className="flex gap-[1px]">
-                              <Star5 />
-                              <Star5 />
-                              <Star5 />
-                              <Star5 />
-                              <Star4 />
-                            </div>
-                            <div className="font-nunito text-[15px] font-semibold">
-                              1,134 Reviews
-                            </div>
+                    <div className="px-[27px] py-[22px] rounded-[8px] bg-rec-96 bg-cover overflow-hidden sm:mb-[40px] mb-[34px] [box-shadow:_0px_20px_40px_-10px_rgba(0,0,0,0.20)]">
+                      <div className="text-[18px] text-center font-semibold font-dunbar mb-[12px]">
+                        WE GUARANTEE YOU&apos;LL LOVE IT&nbsp;
+                        <br className="block sm:hidden" />
+                        OR YOUR MONEY BACK!
+                      </div>
+                      <div className="flex justify-center">
+                        <div className="flex gap-[14px]">
+                          <div className="flex gap-[1px]">
+                            <Star5 />
+                            <Star5 />
+                            <Star5 />
+                            <Star5 />
+                            <Star4 />
+                          </div>
+                          <div className="font-nunito text-[15px] font-semibold">
+                            1,134 Reviews
                           </div>
                         </div>
                       </div>
-                      <div className="sm:uppercase mb-[24px]">
-                        <div className="flex items-center w-full gap-[14px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:tracking-[1.2px] tracking-[1px]">
-                          <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px] font-nunito">
-                            1
-                          </div>
-                          <h2 className="font-dunbar">SELECT YOUR FREQUENCY</h2>
+                    </div>
+                    <div className="sm:hidden block sm:uppercase mb-[24px]">
+                      <div className="flex items-center w-full gap-[14px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:tracking-[1.2px] tracking-[1px]">
+                        <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px] font-nunito">
+                          1
                         </div>
-                        <PlanPicker type="mobile" />
+                        <h2 className="font-dunbar">SELECT YOUR FREQUENCY</h2>
                       </div>
+                      <PlanPicker type="mobile" />
                     </div>
                     <div className="flex justify-between sm:mb-[36px] mb-[12px]">
                       <div className="flex items-center w-full gap-[14px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[1px]">
