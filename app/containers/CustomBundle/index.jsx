@@ -216,6 +216,11 @@ export const CustomBundle = () => {
                         OR YOUR MONEY BACK!
                       </div>
                       <div className="flex justify-center">
+                        <div
+                          id="looxReviews"
+                          className="loox-rating"
+                          data-fetch
+                        ></div>
                         <div className="flex gap-[14px]">
                           <div className="flex gap-[1px]">
                             <Star5 />
