@@ -19,7 +19,7 @@
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-progress": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
-    "@rechargeapps/storefront-client": "^1.17.3",
+    "@rechargeapps/storefront-client": "^1.18.2",
     "@remix-run/react": "^2.6.0",
     "@remix-run/server-runtime": "^2.6.0",
     "@shopify/cli": "3.52.0",
