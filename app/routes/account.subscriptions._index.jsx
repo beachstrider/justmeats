@@ -89,17 +89,12 @@ export default function SubscriptionsPage() {
     <div className="bg-sublistbgGray">
       <div className="container">
         {subscriptions.length > 0 ? (
-          <div className="grid w-full gap-4 py-8 md:gap-8">
+          <div className="sm:py-[40px] py-[30px]">
             <h2 className="font-bold text-lead text-[28px] text-center md:text-left">
               Your Subscriptions
             </h2>
-            <div className="bg-custombgGreen w-auto md:w-[300px] p-6 block text-white text-xl text-center md:text-left">
-              <span>Next Order Processing On</span>
-              <span> {subscriptions[0].next_charge_scheduled_at}</span>
-            </div>
             <hr className="border-t-2 border-gray-500"></hr>
-
-            <ul className="grid bg-white border-2 border-custombgGreen">
+            <div className="flex flex-col sm:gap-[30px] gap-[20px] sm:py-[40px] py-[30px]">
               {subscriptions.map((subscription) => (
                 <Card
                   setAddress={setAddress}
@@ -107,31 +102,31 @@ export default function SubscriptionsPage() {
                   key={subscription.id}
                 />
               ))}
-            </ul>
-            {address !== null && (
-              <div
-                className={
-                  'w-full md:w-[30%] xl:w-[22%] border-[#B2B2B2] border-l fixed overflow-y-auto md:overflow-y-hidden h-screen top-0 right-0 bg-white z-10 flex flex-col'
-                }
-              >
-                <div className="w-full border-[#B2B2B2] border-b px-4 pt-4 pb-2 sticky ">
-                  <div className="flex items-center justify-between ">
-                    <h1 className="text-[20px] font-bold">
-                      Edit Shipping Address
-                    </h1>
-                    <button onClick={() => setAddress(null)}>
-                      <Close />
-                    </button>
+              {address !== null && (
+                <div
+                  className={
+                    'w-full md:w-[30%] xl:w-[22%] border-[#B2B2B2] border-l fixed overflow-y-auto md:overflow-y-hidden h-screen top-0 right-0 bg-white z-10 flex flex-col'
+                  }
+                >
+                  <div className="w-full border-[#B2B2B2] border-b px-4 pt-4 pb-2 sticky ">
+                    <div className="flex items-center justify-between ">
+                      <h1 className="text-[20px] font-bold">
+                        Edit Shipping Address
+                      </h1>
+                      <button onClick={() => setAddress(null)}>
+                        <Close />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="px-4 py-4">
+                    <AddressForm
+                      address={address}
+                      onSubmit={() => setAddress(null)}
+                    />
                   </div>
                 </div>
-                <div className="px-4 py-4">
-                  <AddressForm
-                    address={address}
-                    onSubmit={() => setAddress(null)}
-                  />
-                </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         ) : (
           <div className="flex justify-center py-40 text-lg">
