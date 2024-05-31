@@ -102,7 +102,7 @@ export default function SubscriptionsPage() {
   return (
     <div className="bg-sublistbgGray">
       <div className="container">
-        <div className="flex justify-between items-center sm:pt-[30px] pt-[20px] sm:pb-[10px] pb-[8px]">
+        <div className="flex sm:flex-row flex-col gap-[20px] justify-between items-center sm:pt-[30px] pt-[20px] sm:pb-[10px] pb-[8px]">
           <h2 className="font-bold text-lead text-[28px] text-center md:text-left">
             Your Subscriptions
           </h2>
