@@ -12,6 +12,7 @@ export const ProductModal = ({ product, onClose }) => {
   useEffect(() => {
     if (product) {
       setOpen(true)
+      window.klaviyo.push(['track', 'Viewed Product'])
     } else {
       setOpen(false)
     }
