@@ -151,15 +151,10 @@ export const CustomBundle = () => {
           action: `/account/subscriptions/${id}`,
         },
       )
+      setSubmitting(false)
 
-      if (res.success) {
-        console.debug('ok')
-      } else {
-        console.error(res.message)
-      }
+      return res
     }
-
-    setSubmitting(false)
   }
 
   return (
