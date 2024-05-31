@@ -254,10 +254,12 @@ export const action = async ({ request, context, params }) =>
         }
 
       case 'cancel-subscription':
+        const feedback = body.feedback || 'Other reason'
+
         try {
           await cancelSubscription(rechargeSession, Number(params.id), {
-            cancellation_reason: 'Do not want it anymore.',
             send_email: true,
+            cancellation_reason: feedback,
           })
 
           return json({ success: true })
