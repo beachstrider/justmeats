@@ -13,7 +13,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '~/components/tooltip'
+} from '~/components/Tooltip'
 import { AddressForm } from '~/containers/Account/Subscriptions/AddressForm'
 import { Card } from '~/containers/Account/Subscriptions/Card'
 import { Close } from '~/icons/Close'
