@@ -77,11 +77,6 @@ export default function Homepage() {
 
   return (
     <div className="relative home">
-      <div className=" p-[20px] xl:hidden hidden md:block text-center bg-[#c5972d] ">
-        <h2 className="font-bold text-[35px]  text-[#f0f0f0] ">
-          Premium Meat, Expertly Cooked, Chilled, & Delivered{' '}
-        </h2>
-      </div>
       <section className="relative flex items-center justify-center overflow-hidden heroSection">
         <div className="bg-video absolute top-0 left-0 w-[100%] h-[100%]">
           <video

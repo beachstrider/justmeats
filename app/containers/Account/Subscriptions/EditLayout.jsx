@@ -1,19 +1,15 @@
 import { useState } from 'react'
 
 import * as Dialog from '@radix-ui/react-dialog'
-import {
-  NavLink,
-  useLoaderData,
-  useNavigate,
-  useRevalidator,
-} from '@remix-run/react'
+import { NavLink, useLoaderData, useRevalidator } from '@remix-run/react'
 
 import { Button } from '~/components/Button'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
 
+import { FeedbackAside } from './FeedbackAside'
+
 export const SubscriptionEditLayout = ({ children }) => {
   const submit = useSubmitPromise()
-  const navigate = useNavigate()
   const revalidator = useRevalidator()
 
   const { id, subscription, upcomingChargeId } = useLoaderData()
@@ -21,6 +17,7 @@ export const SubscriptionEditLayout = ({ children }) => {
 
   const [processing, setProcessing] = useState(false)
   const [dialogOpen, setDialogOpen] = useState(false)
+  const [feedbackAsideOpen, setFeedbackAsideOpen] = useState(false)
   const [isProcessDialogOpen, setProcessDialogOpen] = useState(false)
   const [dialogContent, setDialogContent] = useState({
     title: '',
@@ -35,7 +32,6 @@ export const SubscriptionEditLayout = ({ children }) => {
   })
 
   const [delaying, setDelaying] = useState(false)
-  const [canceling, setCanceling] = useState(false)
 
   const handleProcess = async () => {
     setProcessing(true)
@@ -102,25 +98,6 @@ export const SubscriptionEditLayout = ({ children }) => {
     setDelayResultDialogOpen(true)
   }
 
-  const handleCancel = async () => {
-    setCanceling(true)
-
-    const res = await submit(
-      {
-        body: JSON.stringify({
-          api: 'cancel-subscription',
-        }),
-      },
-      { method: 'post', action: `/account/subscriptions/${id}` },
-    )
-
-    if (res.success) {
-      navigate('..', { replace: true })
-    }
-
-    setCanceling(false)
-  }
-
   return (
     <div className="w-full flex flex-col justify-center items-center bg-[#eeeeee]">
       <div className="container mb-10 custom-collection-wrap">
@@ -159,16 +136,21 @@ export const SubscriptionEditLayout = ({ children }) => {
           {subscription.status === 'active' && (
             <div className="mb-10">
               <Button
-                loading={canceling}
-                onClick={handleCancel}
+                onClick={() => setFeedbackAsideOpen(true)}
                 className="static block py-[5px] px-[30px] border-2 border-[#425B34] border-solid bg-white"
               >
-                Cancel Subscription
+                <div>Cancel Subscription</div>
               </Button>
             </div>
           )}
         </div>
       </div>
+
+      <FeedbackAside
+        subscriptionId={id}
+        open={feedbackAsideOpen}
+        onClose={() => setFeedbackAsideOpen(false)}
+      />
 
       <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
         <Dialog.Portal>
@@ -208,6 +190,7 @@ export const SubscriptionEditLayout = ({ children }) => {
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
+
       <Dialog.Root
         open={isProcessDialogOpen}
         onOpenChange={setProcessDialogOpen}
@@ -275,6 +258,7 @@ export const SubscriptionEditLayout = ({ children }) => {
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
+
       <Dialog.Root
         open={delayResultDialogOpen}
         onOpenChange={setDelayResultDialogOpen}
