@@ -176,15 +176,17 @@ export const SubscriptionEditLayout = ({ children }) => {
           <Dialog.Content className="fixed p-8 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
             <Dialog.Title className="text-lg font-bold">WAIT!</Dialog.Title>
             <Dialog.Description className="mt-2">
-              If you click Process Now, your credit card or PayPal will be
-              charged immediately, and the order will be placed today. Each time
-              the button is clicked, it will place a new order, so please be
-              sure to press it only once, even if it appears that it did not go
-              through.
+              So you know, if you click the Process Now button, your order will
+              be placed and you will be charged immediately. Plus{' '}
+              <span className="font-semibold">
+                EACH TIME THE BUTTON IS CLICKED, YOU WILL PLACE A NEW ORDER
+              </span>
+              , so make sure to be patient and only press it once.
               <br />
-              If you don’t want to be charged today with a new order, press back
-              now. If you want to update your order, go back and click
-              &quot;Update Now&quot; instead.
+              <br />
+              If you don’t want to place an order or be charged today, simply
+              exit out of this message now. If you want to update your order,
+              exit out of this message and click &quot;Update Now.&quot;
             </Dialog.Description>
             <div className="flex justify-end mt-4 space-x-2">
               <Button
