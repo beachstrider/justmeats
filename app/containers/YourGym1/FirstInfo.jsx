@@ -109,7 +109,7 @@ export const FirstInfo = () => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3">
             <div className="sm:h-[225px] h-[260px] flex flex-col justify-end items-center">
-              <div className="flex-1 sm:mb-[15px] mb-[27px] flex justify-center items-center">
+              <div className="flex-1 sm:mb-[15px] mb-[0px] flex justify-center items-center">
                 <div className="w-[260px]">
                   <img src={yourGym} className="margin-0-auto" />
                 </div>
@@ -120,7 +120,7 @@ export const FirstInfo = () => {
               </div>
             </div>
             <div className="sm:h-[225px] h-[260px] flex flex-col justify-end items-center">
-              <div className="flex-1 sm:mb-[15px] mb-[27px] flex justify-center items-center">
+              <div className="flex-1 sm:mb-[15px] mb-[0px] flex justify-center items-center">
                 <div className="w-[260px]">
                   <img src={yourCommunity} />
                 </div>
@@ -133,7 +133,7 @@ export const FirstInfo = () => {
               </div>
             </div>
             <div className="sm:h-[225px] h-[260px] flex flex-col justify-end items-center">
-              <div className="flex-1 sm:mb-[15px] mb-[27px] flex justify-center items-center">
+              <div className="flex-1 sm:mb-[15px] mb-[0px] flex justify-center items-center">
                 <div className="w-[260px]">
                   <img src={justmeatsBlack} />
                 </div>
