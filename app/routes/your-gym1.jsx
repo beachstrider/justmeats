@@ -10,7 +10,7 @@ import { FirstInfo } from '~/containers/YourGym1/FirstInfo'
 import { HowItWorks } from '~/containers/MayhemMadness/HowItWorks'
 import { Reviews } from '~/containers/MayhemMadness/Reviews'
 import { SecondContact } from '~/containers/YourGym1/SecondContact'
-import { SecondInfo } from '~/containers/MayhemMadness/SecondInfo'
+import { SecondInfo } from '~/containers/YourGym1/SecondInfo'
 import { COLLECTIONS_QUERY } from '~/graphql/Collection'
 
 export const meta = () => {
