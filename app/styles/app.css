@@ -335,6 +335,13 @@ button.free-gift-label {
   background-image: url('../assets/images/bg-us-flag.png');
 }
 
+.bg-herb-roasted-chicken-breast {
+  background-image: url('../assets/images/herb-roasted-chicken-breast.png');
+  width: 25% !important;
+  height: 95% !important;
+  transform: rotate(180deg);
+}
+
 .container-small {
   @apply w-full max-w-[1120px] mx-auto my-0 px-[20px] py-0;
 }
@@ -626,4 +633,26 @@ section.product-list-slider button.slick-arrow.slick-next {
 }
 .filteration-ul li:last-child button {
   @apply rounded-tr rounded-br;
+}
+
+.your-gym .slick-dots li button:before,
+.your-gym .slick-dots li button {
+  width: 10px;
+  height: 10px;
+  padding: 2px;
+  line-height: 12px;
+}
+
+.your-gym .slick-dots li.slick-active button {
+  color: #7a392d !important;
+}
+
+.margin-0-auto{
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 540px) {
+  .bg-herb-roasted-chicken-breast{
+    display: none;
+  }
 }

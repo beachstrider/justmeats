@@ -104,7 +104,7 @@ export function Header() {
 
   const headerClass = isHeaderVisible ? '' : 'sticky-header'
   const location = useLocation()
-  const isSpecialsPage = location.pathname === '/rich-froning'
+  const isSpecialsPage = location.pathname === '/rich-froning' || location.pathname === '/your-gym1'
 
   const Mainheader = () => {
     return !isMobile ? (
@@ -302,8 +302,8 @@ export function HeaderMenu({ menu, primaryDomainUrl, viewport }) {
         // if the url is internal, we strip the domain
         const url =
           item.url.includes('myshopify.com') ||
-          item.url.includes(publicStoreDomain) ||
-          item.url.includes(primaryDomainUrl)
+            item.url.includes(publicStoreDomain) ||
+            item.url.includes(primaryDomainUrl)
             ? new URL(item.url).pathname
             : item.url
         return (
