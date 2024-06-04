@@ -2,6 +2,7 @@ import { getPaginationVariables } from '@shopify/hydrogen'
 import { json } from '@shopify/remix-oxygen'
 
 import { BannerHead } from '~/containers/YourGym1/BannerHead'
+import { NewBannerHead } from '~/containers/YourGym1/NewBannerHead'
 import { ChefCook } from '~/containers/YourGym1/ChefCook'
 import { EarnAnywhere } from '~/containers/YourGym1/EarnAnywhere'
 import { Featured } from '~/containers/YourGym1/Featured'
@@ -41,7 +42,7 @@ export async function loader({ request, context }) {
 export default function YourGym1() {
     return (
         <main className="relative font-dunbar tracking-[1px] leading-1 text-[#231B19] your-gym">
-            <BannerHead />
+            <NewBannerHead />
             <EarnAnywhere />
             <Featured />
             <FirstContact />
