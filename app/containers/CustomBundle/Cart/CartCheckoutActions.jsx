@@ -5,8 +5,8 @@ import { CustomBundleContext } from '~/contexts'
 import { cn } from '~/lib/utils'
 
 const UPDATE_CHANGES = 'Update Changes'
-const CHANGES_SAVED = 'Changes saved!'
-const SAVING_FAILD = 'Saving failed!'
+const CHANGES_SAVED = 'Changes Saved!'
+const SAVING_FAILD = 'Saving Failed'
 
 export function CartCheckoutActions() {
   const { isCartPage, costForOneTime, submitting, handleSubmit } =
