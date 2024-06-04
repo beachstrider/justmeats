@@ -156,7 +156,7 @@ const GiftModal = ({ open, onClose }) => {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="relative pt-[20px] w-full max-w-[400px] text-left align-middle transition-all transform bg-white text-[#1d1d1d] shadow-xl">
-                <img src={memorialDay} alt="" />
+<img src="https://res.cloudinary.com/meals/image/upload/v1716641993/image_2024-05-23_154607820.jpg" alt="" />
                 <button
                   className="absolute top-[8px] right-[8px]"
                   onClick={onClose}

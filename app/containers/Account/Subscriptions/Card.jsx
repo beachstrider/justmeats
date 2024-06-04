@@ -4,54 +4,62 @@ import { Link } from '@remix-run/react'
 
 export function Card({ setAddress, subscription }) {
   return (
-    <li className="grid text-center border rounded">
-      <div className="grid items-center gap-4 p-4 md:gap-6 md:p-6 md:grid-cols-3">
-        <div className="flex-col justify-center text-center md:text-left">
-          <h1 className="text-[22px] font-bold">Personal Information</h1>
-        </div>
-        <div className="">
-          <h2>
-            {subscription.include.address.first_name}{' '}
-            {subscription.include.address.last_name}
-          </h2>
-          <h2>{subscription.include.address.address1}</h2>
-        </div>
-        <div className="text-center md:text-right">
-          <a
-            onClick={() => setAddress(subscription.include.address)}
-            className="px-4 py-3 text-white rounded cursor-pointer bg-custombgGreen"
-          >
-            EDIT
-          </a>
+    <div>
+      <div className="bg-custombgGreen w-auto md:w-[300px] p-6 block text-white text-xl text-center md:text-left sm:mb-[20px] mb-[16px]">
+        <div>Next Order Processing On</div>
+        <div>{subscription.next_charge_scheduled_at}</div>
+      </div>
+      <div className="grid bg-white border-2 border-custombgGreen">
+        <div className="grid text-center border rounded">
+          <div className="grid items-center gap-4 p-4 md:gap-6 md:p-6 md:grid-cols-3">
+            <div className="flex-col justify-center text-center md:text-left">
+              <h1 className="text-[22px] font-bold">Personal Information</h1>
+            </div>
+            <div className="">
+              <h2>
+                {subscription.include.address.first_name}{' '}
+                {subscription.include.address.last_name}
+              </h2>
+              <h2>{subscription.include.address.address1}</h2>
+            </div>
+            <div className="text-center md:text-right">
+              <a
+                onClick={() => setAddress(subscription.include.address)}
+                className="px-4 py-3 text-white rounded cursor-pointer bg-custombgGreen"
+              >
+                EDIT
+              </a>
+            </div>
+          </div>
+          <div className="self-end border-t-2 border-custombgGreen">
+            <div className="block md:flex">
+              <div className="p-[25px] ">
+                <img
+                  className="mx-auto md:ml-0"
+                  src="https://cdn.shopify.com/s/files/1/0555/1751/1961/products/custom-bundle-623742_100x100.png?v=1697650046"
+                  alt="Custom Bundle"
+                />
+              </div>
+              <div className="p-[25px]">
+                <h2 className="font-bold text-lead text-[22px]">
+                  {subscription.product_title}
+                </h2>
+                <h2 className="text-lead text-[16px] mb-5 text-custombgGreen">
+                  Ships every {subscription.charge_interval_frequency}{' '}
+                  {subscription.order_interval_unit}
+                </h2>
+                <Link
+                  to={`/account/subscriptions/${subscription.id}`}
+                  className="border-2 font-bold text-lead text-[20px] border-custombgGreen px-4 py-2 text-lg block text-center"
+                  prefetch="intent"
+                >
+                  Edit Selection
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="self-end border-t-2 border-custombgGreen">
-        <div className="block md:flex">
-          <div className="p-[25px] ">
-            <img
-              className="mx-auto md:ml-0"
-              src="https://cdn.shopify.com/s/files/1/0555/1751/1961/products/custom-bundle-623742_100x100.png?v=1697650046"
-              alt="Custom Bundle"
-            />
-          </div>
-          <div className="p-[25px]">
-            <h2 className="font-bold text-lead text-[22px]">
-              {subscription.product_title}
-            </h2>
-            <h2 className="text-lead text-[16px] mb-5 text-custombgGreen">
-              Ships every {subscription.charge_interval_frequency}{' '}
-              {subscription.order_interval_unit}
-            </h2>
-            <Link
-              to={`/account/subscriptions/${subscription.id}`}
-              className="border-2 font-bold text-lead text-[20px] border-custombgGreen px-4 py-2 text-lg block text-center"
-              prefetch="intent"
-            >
-              Edit Selection
-            </Link>
-          </div>
-        </div>
-      </div>
-    </li>
+    </div>
   )
 }

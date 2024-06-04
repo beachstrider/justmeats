@@ -3,7 +3,7 @@ import React from 'react'
 import RefundPolicy from '~/containers/RefundPolicy'
 
 export const meta = () => {
-  return [{ title: 'Refund & Cancellation Policy - Just Meats' }]
+  return [{ title: 'Cancellation Policy - Just Meats' }]
 }
 
 const RefundPolicyPage = () => {

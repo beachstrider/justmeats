@@ -1,15 +1,24 @@
 import React, { useState } from 'react'
 
 import {
+  getCreditSummary,
   listSubscriptions,
   updateAddress,
 } from '@rechargeapps/storefront-client'
 import { useLoaderData } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '~/components/Tooltip'
 import { AddressForm } from '~/containers/Account/Subscriptions/AddressForm'
 import { Card } from '~/containers/Account/Subscriptions/Card'
 import { Close } from '~/icons/Close'
+import { CreditIcon } from '~/icons/CreditIcon'
+import { CreditInfo } from '~/icons/CreditInfo'
 import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 import { getBundle } from '~/lib/storefront'
 import { getPureId } from '~/lib/utils'
@@ -37,8 +46,12 @@ export const loader = async ({ request, context }) =>
         })
       : { subscriptions: [] }
 
-    const [{ bundleProduct }, { subscriptions: allSubscriptions }] =
-      await Promise.all([bundleProductData, subscriptionsData])
+    const creditData = getCreditSummary(rechargeSession, {
+      include: ['credit_details'],
+    })
+
+    const [{ bundleProduct }, { subscriptions: allSubscriptions }, credit] =
+      await Promise.all([bundleProductData, subscriptionsData, creditData])
 
     const bundleProductId = getPureId(bundleProduct.id, 'Product')
     // Filter only bundle subscriptions
@@ -52,6 +65,7 @@ export const loader = async ({ request, context }) =>
     return json(
       {
         subscriptions,
+        credit,
       },
       {
         headers: {
@@ -82,32 +96,45 @@ export const action = async ({ request, context }) =>
   }, context)
 
 export default function SubscriptionsPage() {
-  const { subscriptions } = useLoaderData()
+  const { subscriptions, credit } = useLoaderData()
   const [address, setAddress] = useState(null)
 
   return (
     <div className="bg-sublistbgGray">
       <div className="container">
-        {subscriptions.length > 0 ? (
-          <div className="grid w-full gap-4 py-8 md:gap-8">
-            <h2 className="font-bold text-lead text-[28px] text-center md:text-left">
-              Your Subscriptions
-            </h2>
-            <div className="bg-custombgGreen w-auto md:w-[300px] p-6 block text-white text-xl text-center md:text-left">
-              <span>Next Order Processing On</span>
-              <span> {subscriptions[0].next_charge_scheduled_at}</span>
+        <div className="flex sm:flex-row flex-col gap-[20px] justify-between items-center sm:pt-[30px] pt-[20px] sm:pb-[10px] pb-[8px]">
+          <h2 className="font-bold text-lead text-[28px] text-center md:text-left">
+            Your Subscriptions
+          </h2>
+          {credit?.total_available_balance && (
+            <div className="flex gap-[10px] items-center px-[12px] py-[8px] rounded-[4px] bg-white">
+              <CreditIcon />{' '}
+              <div className="text-[14px] font-semibold">
+                ${credit.total_available_balance} store credit
+              </div>
+              <TooltipProvider skipDelayDuration>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <CreditInfo />
+                  </TooltipTrigger>
+                  <TooltipContent className="mb-[10px]">
+                    <p>Automatically applied to your next payment</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
-            <hr className="border-t-2 border-gray-500"></hr>
-
-            <ul className="grid bg-white border-2 border-custombgGreen">
-              {subscriptions.map((subscription) => (
-                <Card
-                  setAddress={setAddress}
-                  subscription={subscription}
-                  key={subscription.id}
-                />
-              ))}
-            </ul>
+          )}
+        </div>
+        <hr className="border-t-2 border-gray-500"></hr>
+        {subscriptions.length > 0 ? (
+          <div className="flex flex-col sm:gap-[30px] gap-[20px] sm:py-[40px] py-[30px]">
+            {subscriptions.map((subscription) => (
+              <Card
+                setAddress={setAddress}
+                subscription={subscription}
+                key={subscription.id}
+              />
+            ))}
             {address !== null && (
               <div
                 className={
