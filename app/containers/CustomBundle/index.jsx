@@ -205,28 +205,18 @@ export const CustomBundle = () => {
                 {isCartPage && (
                   <>
                     <div className="px-[27px] py-[22px] rounded-[8px] bg-rec-96 bg-cover overflow-hidden sm:mb-[40px] mb-[34px] [box-shadow:_0px_20px_40px_-10px_rgba(0,0,0,0.20)]">
-                      <div className="text-[18px] text-center font-semibold font-dunbar mb-[12px]">
+                      <div className="2xl:text-[30px] sm:text-[26px] text-[18px] text-center font-semibold font-dunbar mb-[12px]">
                         WE GUARANTEE YOU&apos;LL LOVE IT&nbsp;
                         <br className="block sm:hidden" />
                         OR YOUR MONEY BACK!
                       </div>
                       <div className="flex justify-center">
-                        <div
-                          id="looxReviews"
-                          className="loox-rating"
-                          data-fetch
-                        ></div>
-                        <div className="flex gap-[14px]">
-                          <div className="flex gap-[1px]">
-                            <Star5 />
-                            <Star5 />
-                            <Star5 />
-                            <Star5 />
-                            <Star4 />
-                          </div>
-                          <div className="font-nunito text-[15px] font-semibold">
-                            1,134 Reviews
-                          </div>
+                        <div className="relative w-[230px] h-[20px] overflow-hidden">
+                          <div
+                            id="looxReviews"
+                            className="!absolute !w-[300px] !h-[50px] !mt-[-30px] overflow-hidden"
+                            data-loox-aggregate
+                          />
                         </div>
                       </div>
                     </div>
