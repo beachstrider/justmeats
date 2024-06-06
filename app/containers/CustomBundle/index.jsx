@@ -213,7 +213,7 @@ export const CustomBundle = () => {
                         <div className="relative w-[230px] h-[20px] overflow-hidden">
                           <div
                             id="looxReviews"
-                            className="!absolute !w-[300px] !h-[50px] !mt-[-30px] overflow-hidden"
+                            className="!absolute !w-[304px] !h-[50px] !mt-[-30px] overflow-hidden"
                             data-loox-aggregate
                           />
                         </div>
