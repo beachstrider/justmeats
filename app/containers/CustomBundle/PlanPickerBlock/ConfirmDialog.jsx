@@ -9,7 +9,7 @@ export const ConfirmDialog = ({ products, onOpenChange, onConfirm }) => {
     <Dialog.Root open={products.length > 0} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="bg-blackA6 data-[state=open]:animate-overlayShow fixed inset-0 z-30" />
-        <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[70vw] max-w-[590px] translate-x-[-50%] translate-y-[-50%] bg-white p-[36px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none z-40">
+        <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[590px] translate-x-[-50%] translate-y-[-50%] bg-white p-[36px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none z-40">
           <div>
             <div className="flex justify-center sm:mb-[26px] mb-[20px]">
               <div className="flex sm:gap-[10px] gap-[6px]">
