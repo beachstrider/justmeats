@@ -3,6 +3,7 @@ import { useContext, useState } from 'react'
 import { Button } from '~/components/Button'
 import { CustomBundleContext } from '~/contexts'
 import { CanvasLogo } from '~/icons/CanvasLogo'
+import { MobileChat } from '~/icons/MobileChat'
 import { NewClose } from '~/icons/NewClose'
 import { cn } from '~/lib/utils'
 
@@ -17,6 +18,11 @@ export const MobileCart = () => {
   const [cartOpen, setCartOpen] = useState(false)
 
   const isCheckoutable = costForOneTime >= 75
+
+  const onMobileReamazeChatClick = () => {
+    const button = document.querySelector('#reamaze-widget')
+    button.click()
+  }
 
   const CartContent = () => (
     <>
@@ -38,7 +44,13 @@ export const MobileCart = () => {
 
   return (
     <div className="relative z-20 mobile-cart">
-      <div className="fixed w-full sm:hidden block bottom-0 bg-white left-0 px-[20px] py-[16px] font-nunito font-bold text-[16px] [box-shadow:0px_0px_10px_0px_rgba(0,0,0,0.20)]">
+      <div className="fixed flex sm:gap-0 gap-[10px] w-full sm:hidden bottom-0 bg-white left-0 px-[20px] py-[16px] font-nunito font-bold text-[16px] [box-shadow:0px_0px_10px_0px_rgba(0,0,0,0.20)]">
+        <Button
+          className="flex justify-center items-center w-[48px] h-[48px] border-2 border-[#6B1626] rounded-[8px]"
+          onClick={onMobileReamazeChatClick}
+        >
+          <MobileChat />
+        </Button>
         <Button
           onClick={() => setCartOpen(true)}
           className={cn(
@@ -77,19 +89,27 @@ export const MobileCart = () => {
         )}
         <div className="sm:pt-0 pt-[10px] sm:px-0 px-[20px] sm:pb-0 pb-[16px] flex flex-col shrink-0 [box-shadow:0_-3px_15px_-5px_#333]">
           {isCartPage && <PlanPicker type="mobileCart" />}
-          <Button
-            loading={submitting}
-            disabled={!isCheckoutable}
-            onClick={handleSubmit}
-            className={cn(
-              isCartPage && isCheckoutable ? 'btn-checkout' : '',
-              'rounded-[8px] text-white font-bold font-nunito text-[18px] text-center py-[12px] z-50 mt-[16px]',
-              isCheckoutable ? 'bg-[#637160]' : 'bg-[#AAAAAA]',
-            )}
-          >
-            {isCartPage ? `Checkout` : 'Update Changes'}- ${cost}
-            {!isCheckoutable && ` (Add $75 to Unlock)`}
-          </Button>
+          <div className="flex sm:gap-0 gap-[10px] mt-[16px]">
+            <Button
+              className="flex justify-center items-center w-[48px] h-[48px] border-2 border-[#6B1626] rounded-[8px]"
+              onClick={onMobileReamazeChatClick}
+            >
+              <MobileChat />
+            </Button>
+            <Button
+              loading={submitting}
+              disabled={!isCheckoutable}
+              onClick={handleSubmit}
+              className={cn(
+                'flex-1 rounded-[8px] text-white font-bold font-nunito text-[18px] text-center py-[12px] z-50',
+                isCartPage && isCheckoutable ? 'btn-checkout' : '',
+                isCheckoutable ? 'bg-[#637160]' : 'bg-[#AAAAAA]',
+              )}
+            >
+              {isCartPage ? `Checkout` : 'Update Changes'}- ${cost}
+              {!isCheckoutable && ` (Add $75 to Unlock)`}
+            </Button>
+          </div>
         </div>
       </div>
     </div>

@@ -7,8 +7,6 @@ import { PlanPickerBlock } from '~/containers/CustomBundle/PlanPickerBlock'
 import { CustomBundleContext, RootContext } from '~/contexts'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
 import { QualitySeal } from '~/icons/QualitySeal'
-import { Star4 } from '~/icons/Star4'
-import { Star5 } from '~/icons/Star5'
 
 import { PROMO_CODES } from '../../promo-codes'
 import { Cart } from './Cart'

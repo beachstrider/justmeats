@@ -644,3 +644,7 @@ section.product-list-slider button.slick-arrow.slick-next {
 .mobile-cart .plan-picker-freq-div {
   @apply !px-0;
 }
+
+#reamaze-widget {
+  @apply sm:!visible !invisible;
+}
