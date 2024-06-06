@@ -15,7 +15,7 @@ export const OrderHeader = () => {
       <NavLink
         prefetch="intent"
         to="/"
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block w-[148px] sm:w-[178px] sm:mr-[11px] mr-[1px]"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block w-[132px] sm:w-[152px] sm:mr-[11px] mr-[1px]"
       >
         <Logo />
       </NavLink>

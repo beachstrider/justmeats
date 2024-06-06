@@ -54,10 +54,10 @@ export const PlanPicker = ({ type = 'normal' }) => {
   const subscriptionButton = (
     <div
       className={cn(
-        'flex justify-center sm:px-[30px] px-[20px] sm:py-[10px] py-[6px] flex-1 sm:rounded-l-[8px] sm:rounded-r-none rounded-l-[8px] rounded-r-[8px] border-2 border-[#7A392D] text-center',
+        'flex justify-center sm:px-[30px] px-[20px] sm:py-[10px] py-[6px] flex-1 border-2 border-[#6B1626] text-center',
         sellingPlan
-          ? 'bg-[#7A392D] text-white cursor-default'
-          : 'text-[#7A392D] cursor-pointer',
+          ? 'bg-[#6B1626] text-white cursor-default'
+          : 'text-[#6B1626] cursor-pointer',
       )}
       onClick={() => {
         setSellingPlan(sellingPlanFrequency)
@@ -80,10 +80,10 @@ export const PlanPicker = ({ type = 'normal' }) => {
   const oneTimeButton = (
     <div
       className={cn(
-        'sm:block hidden sm:px-[30px] px-[22px] sm:py-[10px] py-[6px] rounded-r-[8px] border-2 border-[#7A392D]',
+        'sm:block hidden sm:px-[30px] px-[22px] sm:py-[10px] py-[6px] border-2 border-[#6B1626]',
         !sellingPlan
-          ? 'bg-[#7A392D] text-white cursor-default'
-          : 'text-[#7A392D] cursor-pointer',
+          ? 'bg-[#6B1626] text-white cursor-default'
+          : 'text-[#6B1626] cursor-pointer',
       )}
       onClick={onOneTimeClick}
     >
@@ -94,10 +94,10 @@ export const PlanPicker = ({ type = 'normal' }) => {
   const mobileCartOnetimeButton = (
     <div
       className={cn(
-        'sm:hidden flex justify-center sm:px-[30px] px-[22px] sm:py-[10px] py-[6px] sm:rounded-r-[8px] rounded-[8px] border-2 border-[#7A392D] text-center font-nunito font-bold',
+        'sm:hidden flex justify-center sm:px-[30px] px-[22px] sm:py-[10px] py-[6px] border-2 border-[#6B1626] text-center font-barlow font-bold',
         !sellingPlan
-          ? 'bg-[#7A392D] text-white cursor-default'
-          : 'text-[#7A392D] cursor-pointer',
+          ? 'bg-[#6B1626] text-white cursor-default'
+          : 'text-[#6B1626] cursor-pointer',
       )}
       onClick={onOneTimeClick}
     >
@@ -112,13 +112,13 @@ export const PlanPicker = ({ type = 'normal' }) => {
     <>
       <p
         className={cn(
-          'font-nunito sm:text-[13px] text-[12px] font-extrabold text-[#637160] mb-[2px] sm:pl-[20px] pl-[10px]',
+          'font-barlow sm:text-[13px] text-[12px] font-bold mb-[2px] sm:pl-[20px] sm:text-left text-center',
         )}
       >
         SAVE {firstSavingPercentage}% ON YOUR FIRST ORDER
       </p>
-      <div className="bg-white sm:border border-[#EFEEED] rounded-[8px] overflow-hidden sm:[box-shadow:_0px_20px_50px_-10px_rgba(0,0,0,0.15)]">
-        <div className="flex sm:font-medium font-bold sm:font-dunbar font-nunito sm:tracking-[0.8px] tracking-[0.9px] sm:uppercase">
+      <div className="bg-white sm:border border-[#EFEEED] overflow-hidden sm:[box-shadow:_0px_20px_50px_-10px_rgba(0,0,0,0.15)]">
+        <div className="flex sm:font-medium font-bold font-barlow sm:tracking-[0.8px] tracking-[0.9px] sm:uppercase">
           {subscriptionButton}
           {oneTimeButton}
         </div>
@@ -128,25 +128,25 @@ export const PlanPicker = ({ type = 'normal' }) => {
               <div
                 className={cn(
                   'w-[22px]',
-                  sellingPlan ? 'fill-[#7A392D]' : 'fill-[#999]',
+                  sellingPlan ? 'fill-[#6B1626]' : 'fill-[#999]',
                 )}
               >
                 <Calendar />
               </div>
-              <div className="font-nunito text-[16px] font-extrabold leading-none">
+              <div className="font-barlow text-[16px] font-extrabold leading-none">
                 Deliver <br className="block sm:hidden" />
                 every
               </div>
             </div>
-            <div className="flex font-medium font-dunbar sm:text-[16px] text-[12px] tracking-[0.7px]">
+            <div className="flex font-medium font-barlow sm:text-[16px] text-[12px] tracking-[0.7px]">
               <div
                 className={cn(
-                  'sm:px-[20px] px-[16px] py-[6px] flex-1 rounded-l-[8px] border-2 text-center',
+                  'sm:px-[20px] px-[16px] py-[6px] flex-1 border-2 text-center',
                   sellingPlan
-                    ? `border-[#7A392D] ${
+                    ? `border-[#6B1626] ${
                         sellingPlanFrequency === DELIVERY_EVERY_15_DAYS
-                          ? 'cursor-default bg-[#7A392D] text-white'
-                          : 'cursor-pointer bg-white text-[#7A392D]'
+                          ? 'cursor-default bg-[#6B1626] text-white'
+                          : 'cursor-pointer bg-white text-[#6B1626]'
                       }`
                     : `border-[#999] ${
                         sellingPlanFrequency === DELIVERY_EVERY_15_DAYS
@@ -162,12 +162,12 @@ export const PlanPicker = ({ type = 'normal' }) => {
               </div>
               <div
                 className={cn(
-                  'sm:px-[20px] px-[20px] py-[6px] rounded-r-[8px] border-2',
+                  'sm:px-[20px] px-[20px] py-[6px] border-2',
                   sellingPlan
-                    ? `border-[#7A392D] ${
+                    ? `border-[#6B1626] ${
                         sellingPlanFrequency === DELIVERY_EVERY_30_DAYS
-                          ? 'cursor-default bg-[#7A392D] text-white'
-                          : 'cursor-pointer bg-white text-[#7A392D]'
+                          ? 'cursor-default bg-[#6B1626] text-white'
+                          : 'cursor-pointer bg-white text-[#6B1626]'
                       }`
                     : `border-[#999] ${
                         sellingPlanFrequency === DELIVERY_EVERY_30_DAYS
@@ -186,7 +186,7 @@ export const PlanPicker = ({ type = 'normal' }) => {
           <hr className="sm:block hidden bg-[#EFEEED]" />
           <div
             className={cn(
-              'grid grid-cols-2 sm:gap-y-[18px] gap-y-[8px] sm:pt-[16px] pt-0 sm:pb-[20px] pb-[16px] sm:px-[20px] px-[12px] font-nunito sm:text-[14px] text-[12px] font-bold',
+              'grid grid-cols-2 sm:gap-y-[18px] gap-y-[8px] sm:pt-[16px] pt-0 sm:pb-[20px] pb-[16px] sm:px-[20px] px-[12px] font-barlow sm:text-[14px] text-[12px] font-bold',
               sellingPlan ? 'fill-[#637160]' : 'fill-[#999]',
             )}
           >

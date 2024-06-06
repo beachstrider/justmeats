@@ -41,7 +41,7 @@ export const ProductModal = ({ product, onClose }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-[967px] rounded-[8px] text-left align-middle transition-all transform bg-white overflow-hidden shadow-xl">
+              <Dialog.Panel className="w-full max-w-[967px] text-left align-middle transition-all transform bg-white overflow-hidden shadow-xl">
                 {product && (
                   <DialogContent product={product} onClose={onClose} />
                 )}

@@ -12,7 +12,7 @@ export function CartSummary({ layout }) {
     <div
       className={`${className} relative sm:px-[40px] px-[20px] sm:pt-[32px] pt-[16px] pb-[8px]`}
     >
-      <div className="flex items-end justify-between font-nunito">
+      <div className="flex items-end justify-between font-barlow">
         <div className="font-bold text-[14px]">Total:</div>
         <div className="flex items-end gap-[6px]">
           <div className="font-semibold text-[14px] text-[#666] line-through mb-[4px]">

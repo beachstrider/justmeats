@@ -21,7 +21,7 @@ function Icon({ id, open }) {
       >
         <path
           d="M14.2917 20.4166L24.5 30.625L34.7083 20.4166"
-          stroke="#7A392D"
+          stroke="#6B1626"
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -40,12 +40,12 @@ export function FaqAccordion() {
       <Accordion
         open={open === 1}
         icon={<Icon id={1} open={open} />}
-        className="mb-2 rounded-lg border border-blue-gray-100 bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
+        className="mb-2 border bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
       >
         <AccordionHeader
           onClick={() => handleOpen(1)}
           className={`border-b-0 font-dunbar text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase  transition-colors ${
-            open === 1 ? 'text-[#7A392D] hover:!text-[#7A392D]' : ''
+            open === 1 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           What kind of meat can I buy?
@@ -58,12 +58,12 @@ export function FaqAccordion() {
       <Accordion
         open={open === 2}
         icon={<Icon id={2} open={open} />}
-        className="mb-2 rounded-lg border border-blue-gray-100 bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
+        className="mb-2 border bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
       >
         <AccordionHeader
           onClick={() => handleOpen(2)}
           className={`border-b-0 font-dunbar text-[#231B19]  sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
-            open === 2 ? 'text-[#7A392D] hover:!text-[#7A392D]' : ''
+            open === 2 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           Can I get meat delivery weekly?
@@ -75,12 +75,12 @@ export function FaqAccordion() {
       <Accordion
         open={open === 3}
         icon={<Icon id={3} open={open} />}
-        className="mb-2 rounded-lg border border-blue-gray-100 bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
+        className="mb-2 border bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
       >
         <AccordionHeader
           onClick={() => handleOpen(3)}
           className={`border-b-0 font-dunbar text-[#231B19]  sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
-            open === 3 ? 'text-[#7A392D] hover:!text-[#7A392D]' : ''
+            open === 3 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           How do I choose my meat?
@@ -94,12 +94,12 @@ export function FaqAccordion() {
       <Accordion
         open={open === 4}
         icon={<Icon id={4} open={open} />}
-        className="mb-2 rounded-lg border border-blue-gray-100 bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
+        className="mb-2 border bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
       >
         <AccordionHeader
           onClick={() => handleOpen(4)}
           className={`border-b-0 font-dunbar text-[#231B19]  sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
-            open === 4 ? 'text-[#7A392D] hover:!text-[#7A392D]' : ''
+            open === 4 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           When does my meat arrive?
@@ -111,12 +111,12 @@ export function FaqAccordion() {
       <Accordion
         open={open === 5}
         icon={<Icon id={5} open={open} />}
-        className="mb-2 rounded-lg border border-blue-gray-100 bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
+        className="mb-2 border bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
       >
         <AccordionHeader
           onClick={() => handleOpen(5)}
           className={`border-b-0 font-dunbar text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
-            open === 5 ? 'text-[#7A392D] hover:!text-[#7A392D]' : ''
+            open === 5 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           Is the meat precooked?
@@ -129,12 +129,12 @@ export function FaqAccordion() {
       <Accordion
         open={open === 6}
         icon={<Icon id={6} open={open} />}
-        className="mb-2 rounded-lg border border-blue-gray-100 bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
+        className="mb-2 border bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
       >
         <AccordionHeader
           onClick={() => handleOpen(6)}
           className={`border-b-0 font-dunbar text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
-            open === 6 ? 'text-[#7A392D] hover:!text-[#7A392D]' : ''
+            open === 6 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           how is the meat shipped?
@@ -148,12 +148,12 @@ export function FaqAccordion() {
       <Accordion
         open={open === 7}
         icon={<Icon id={7} open={open} />}
-        className="mb-2 rounded-lg border border-blue-gray-100 bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
+        className="mb-2 border bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
       >
         <AccordionHeader
           onClick={() => handleOpen(7)}
           className={`border-b-0 font-dunbar text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
-            open === 7 ? 'text-[#7A392D] hover:!text-[#7A392D]' : ''
+            open === 7 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           Where is the meat sourced?
@@ -167,12 +167,12 @@ export function FaqAccordion() {
       <Accordion
         open={open === 8}
         icon={<Icon id={8} open={open} />}
-        className="mb-2 rounded-lg border border-blue-gray-100 bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
+        className="mb-2 border bg-[#fff] sm:px-8 pl-[25px] pr-[15px]"
       >
         <AccordionHeader
           onClick={() => handleOpen(8)}
           className={`border-b-0 font-dunbar text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
-            open === 8 ? 'text-[#7A392D] hover:!text-[#7A392D]' : ''
+            open === 8 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           How should i store my meat?

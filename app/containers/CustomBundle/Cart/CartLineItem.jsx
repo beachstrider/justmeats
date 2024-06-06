@@ -58,7 +58,7 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
         />
       </div>
       <div className="flex flex-col flex-1">
-        <div className="flex flex-col sm:flex-row pr-[0px] justify-between items-center font-nunito">
+        <div className="flex flex-col sm:flex-row pr-[0px] justify-between items-center font-barlow">
           {lineType === 'bonus' && <LockedItem />}
           {lineType !== 'bonus' && (
             <div className="pt-[20px] flex-1">
@@ -73,14 +73,14 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
               <div className="flex justify-start">
                 <Quantity line={line} />
               </div>
-              <div className="font-nunito sm:text-[18px] text-[16px] font-semibold">
+              <div className="font-barlow sm:text-[18px] text-[16px] font-semibold">
                 ${priceRange.maxVariantPrice.amount}
               </div>
             </div>
           </div>
         )}
         {lineType !== 'paid' && (
-          <div className="flex items-end flex-1 font-nunito">
+          <div className="flex items-end flex-1 font-barlow">
             <div className="">
               <div className="line-through text-[#666] text-[14px] font-semibold leading-none sm:mb-[4px]">{`$ ${originalPriceOfFreeProduct}`}</div>
               <div className="font-bold text-[24px] text-[#CF2A2A] leading-none">
@@ -95,19 +95,24 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
 
   const mobile = (
     <div className="flex flex-col flex-1 product-grid">
-      <div className="relative px-[25px] pt-[12%] pb-[5%] mt-[40%] rounded-t-[8px] aspect-[111/100] flex bg-[#572D2D] text-white">
+      <div className="relative px-[25px] pt-[12%] pb-[5%] mt-[40%] aspect-[111/100] flex bg-[#572D2D] text-white">
         <div className="flex items-end justify-center flex-1">
           <div className="absolute w-[84%] top-[32%] -translate-y-1/2">
             <img src={image} loading="lazy" className="cursor-pointer" />
           </div>
         </div>
+        {lineType !== 'paid' && (
+          <div className="absolute -translate-x-1/2 left-1/2 bottom-[-10px] px-[8px] py-[4px] bg-[#5AAF17] text-[12px] font-bold text-white tracking-[0.6px] leading-none">
+            FREE
+          </div>
+        )}
       </div>
-      <div className="flex-1 flex flex-col justify-between bg-white rounded-b-[8px] border-x border-b border-[#EFEEED] overflow-hidden [box-shadow:0px_8px_14px_-5px_rgba(0,0,0,0.15)]">
-        <div className="flex-1 flex flex-col justify-between px-[10px] pt-[12px] pb-[10px] font-nunito text-center">
-          <div className="font-extrabold leading-none text-[12px] mb-[8px]">
+      <div className="flex-1 flex flex-col justify-between bg-white border-x border-b border-[#EFEEED] overflow-hidden [box-shadow:0px_8px_14px_-5px_rgba(0,0,0,0.15)]">
+        <div className="flex-1 flex flex-col justify-between px-[4px] pt-[12px] pb-[10px] text-center">
+          <div className="font-bold font-hudson leading-none text-[12px] mb-[8px]">
             {line.title}
           </div>
-          <div className="font-bold text-[12px]">
+          <div className="font-bold text-[12px] font-barlow">
             {lineType === 'paid' &&
               `$${line.priceRange.minVariantPrice.amount}`}
           </div>
@@ -156,7 +161,10 @@ const GiftModal = ({ open, onClose }) => {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="relative pt-[20px] w-full max-w-[400px] text-left align-middle transition-all transform bg-white text-[#1d1d1d] shadow-xl">
-<img src="https://res.cloudinary.com/meals/image/upload/v1716641993/image_2024-05-23_154607820.jpg" alt="" />
+                <img
+                  src="https://res.cloudinary.com/meals/image/upload/v1716641993/image_2024-05-23_154607820.jpg"
+                  alt=""
+                />
                 <button
                   className="absolute top-[8px] right-[8px]"
                   onClick={onClose}

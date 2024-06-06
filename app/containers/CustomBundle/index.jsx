@@ -203,8 +203,8 @@ export const CustomBundle = () => {
               <section className="sm:mb-[80px] mb-[36px]">
                 {isCartPage && (
                   <>
-                    <div className="relative px-[27px] py-[22px] rounded-[8px] bg-rec-96 bg-cover sm:mb-[40px] mb-[34px] [box-shadow:_0px_20px_40px_-10px_rgba(0,0,0,0.20)]">
-                      <div className="2xl:text-[26px] sm:text-[20px] text-[18px] text-center font-semibold font-dunbar mb-[12px]">
+                    <div className="relative px-[27px] py-[22px] rounded-[8px] bg-rec-96 sm:mb-[40px] mb-[34px] [box-shadow:_0px_20px_40px_-10px_rgba(0,0,0,0.20)]">
+                      <div className="2xl:text-[26px] sm:text-[20px] text-[18px] text-center font-semibold font-hudson mb-[12px]">
                         WE GUARANTEE YOU&apos;LL LOVE IT&nbsp;
                         <br className="block sm:hidden" />
                         OR YOUR MONEY BACK!
@@ -222,21 +222,21 @@ export const CustomBundle = () => {
                         <QualitySeal />
                       </div>
                     </div>
-                    <div className="sm:hidden block sm:uppercase mb-[24px]">
-                      <div className="flex items-center w-full gap-[14px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:tracking-[1.2px] tracking-[1px]">
-                        <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px] font-nunito">
+                    <div className="sm:hidden block sm:uppercase mb-[24px] font-hudson">
+                      <div className="flex items-center w-full gap-[8px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:tracking-[1.2px] tracking-[0.6px]">
+                        <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white">
                           1
                         </div>
-                        <h2 className="font-dunbar">SELECT YOUR FREQUENCY</h2>
+                        <h2 className="font-bold">SELECT YOUR FREQUENCY</h2>
                       </div>
                       <PlanPicker type="mobile" />
                     </div>
-                    <div className="flex justify-between sm:mb-[36px] mb-[12px]">
-                      <div className="flex items-center w-full gap-[14px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[1px]">
-                        <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px] font-nunito">
+                    <div className="flex justify-between sm:mb-[36px] mb-[12px] font-hudson">
+                      <div className="flex items-center w-full gap-[8px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[0.6px]">
+                        <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white">
                           2
                         </div>
-                        <h2 className="font-dunbar">SELECT YOUR MEATS</h2>
+                        <h2 className="font-bold">SELECT YOUR MEATS</h2>
                       </div>
                       <Filter
                         filters={filters}
@@ -247,9 +247,9 @@ export const CustomBundle = () => {
                   </>
                 )}
                 <div className="relative grid grid-cols-2 product-grid xl:grid-cols-3 2xl:grid-cols-4 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]">
-                  {filteredProducts.map((product, key) => (
+                  {filteredProducts.map((product, index) => (
                     <ProductCard
-                      key={key}
+                      key={index}
                       product={product}
                       onClick={() => setClickedProduct(product)}
                     />
@@ -257,7 +257,7 @@ export const CustomBundle = () => {
                 </div>
               </section>
               <section className="relative z-10 max-w-[740px] w-full mx-auto pb-4 sm:pb-20">
-                <div className="text-center font-dunbar font-bold sm:text-[36px] sm:tracking-[1.6px] text-[24px] tracking-[1.2px] sm:mb-[40px] mb-[32px]">
+                <div className="text-center font-barlow font-bold sm:text-[36px] sm:tracking-[1.6px] text-[24px] tracking-[1.2px] sm:mb-[40px] mb-[32px]">
                   YOU ASK. WE ANSWER.
                 </div>
                 <FaqAccordion />
@@ -270,15 +270,15 @@ export const CustomBundle = () => {
                   <div className="text-wrapper">
                     {isCartPage ? (
                       <>
-                        <h1 className="font-nunito text-[20px] font-bold leading-none">
+                        <h1 className="font-barlow text-[20px] font-bold leading-none">
                           Subscribers Save {firstSavingPercentage}% on Orders
                         </h1>
-                        <p className="text-[16px] leading-none font-nunito mt-[8px]">
+                        <p className="text-[16px] leading-none font-barlow mt-[8px]">
                           Applied at checkout
                         </p>
                       </>
                     ) : (
-                      <h1 className="font-nunito text-[17px] leading-none">
+                      <h1 className="font-barlow text-[17px] leading-none">
                         YOUR SUBSCRIPTION
                       </h1>
                     )}

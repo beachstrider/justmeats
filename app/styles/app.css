@@ -177,6 +177,102 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Barlow';
+  src: url('../assets/fonts/barlow - google/Barlow/Barlow-ExtraLight.ttf')
+    format('truetype');
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('../assets/fonts/barlow - google/Barlow/Barlow-Light.ttf')
+    format('truetype');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('../assets/fonts/barlow - google/Barlow/Barlow-Regular.ttf')
+    format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('../assets/fonts/barlow - google/Barlow/Barlow-Medium.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('../assets/fonts/barlow - google/Barlow/Barlow-SemiBold.ttf')
+    format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('../assets/fonts/barlow - google/Barlow/Barlow-Bold.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hudson';
+  src: url('../assets/fonts/Hudson NY Pro/HudsonNYProSerif-ExtraLt.ttf')
+    format('truetype');
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hudson';
+  src: url('../assets/fonts/Hudson NY Pro/HudsonNYProSerif-Light.ttf')
+    format('truetype');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hudson';
+  src: url('../assets/fonts/Hudson NY Pro/HudsonNYProSerif-Regular.ttf')
+    format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hudson';
+  src: url('../assets/fonts/Hudson NY Pro/HudsonNYProSerif-Regular.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hudson';
+  src: url('../assets/fonts/Hudson NY Pro/HudsonNYProSerif-SemiBld.ttf')
+    format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hudson';
+  src: url('../assets/fonts/Hudson NY Pro/HudsonNYProSerif-Bold.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
 .mainheader .flex.orderBton span {
   font-size: 19.125px;
 }
@@ -315,7 +411,7 @@ button.free-gift-label {
 }
 
 .swiper-pagination-bullet {
-  @apply !bg-[#7A392D];
+  @apply !bg-[#6B1626];
 }
 
 .how-it-works-slider .swiper-pagination.swiper-pagination-lock {
@@ -448,6 +544,7 @@ button.free-gift-label {
 
 .bg-rec-96 {
   background-image: url('../assets/images/Rectangle96.png');
+  background-size: cover;
 }
 
 .howjustmeatSlider .slick-track {
@@ -599,7 +696,7 @@ section.product-list-slider button.slick-arrow.slick-next {
 }
 .order-images-slider
   span.swiper-pagination-bullet.swiper-pagination-bullet-active:before {
-  @apply content-[""] absolute h-2 w-2 content-[var(--tw-content)] rounded-[50%] left-2/4 top-2/4;
+  @apply absolute h-2 w-2 content-[var(--tw-content)] rounded-[50%] left-2/4 top-2/4;
   --tw-translate-x: -50%;
   --tw-translate-y: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y))

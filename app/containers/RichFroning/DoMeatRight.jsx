@@ -26,7 +26,7 @@ export const DoMeatRight = () => {
             the frustration and while honoring your budget.
           </div>
           <div className="py-8 mt-3">
-            <OrderButton className="font-dunbar text-base font-medium leading-normal tracking-[0.8px] uppercase bg-[#EFEEED] hover:bg-[#f5f3f1] rounded-md text-[#7A392D] hover:text-[#8d3a2b]  " />
+            <OrderButton className="font-dunbar text-base font-medium leading-normal tracking-[0.8px] uppercase bg-[#EFEEED] hover:bg-[#f5f3f1] rounded-md text-[#6B1626] hover:text-[#8d3a2b]  " />
           </div>
         </div>
       </div>

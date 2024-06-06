@@ -102,11 +102,11 @@ export const PlanPickerBlock = () => {
           </div>
         </div>
 
-        <div className="sm:px-[40px] px-[20px] font-dunbar sm:mb-[46px] mb-[20px]">
+        <div className="sm:px-[40px] px-[20px] font-hudson sm:mb-[46px] mb-[20px]">
           <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px]">
             1
           </div>
-          <h3 className="font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[1px]">
+          <h3 className="font-bold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[0.8px]">
             SELECT YOUR FREQUENCY
           </h3>
         </div>

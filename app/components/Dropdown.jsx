@@ -18,7 +18,7 @@ export const Dropdown = ({
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
       <path
         d="M9.3335 13.3333L16.0002 20L22.6668 13.3333"
-        stroke={isOpened ? 'white' : '#7A392D'}
+        stroke={isOpened ? 'white' : '#6B1626'}
         strokeWidth={3}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -31,8 +31,8 @@ export const Dropdown = ({
       <DropdownMenu.Trigger asChild>
         <button
           className={cn(
-            'flex justify-between items-center font-dunbar font-medium sm:text-[14px] py-[4px] pl-[14px] pr-[10px] rounded-[4px] border-2 border-[#7A392D] tracking-[0.7px]',
-            isOpened ? 'bg-[#7A392D] text-white' : 'text-[#7A392D]',
+            'flex justify-between items-center font-barlow font-medium sm:text-[14px] py-[4px] pl-[14px] pr-[10px] border-2 border-[#6B1626] tracking-[0.7px]',
+            isOpened ? 'bg-[#6B1626] text-white' : 'text-[#6B1626]',
             buttonClassName,
           )}
         >
@@ -46,7 +46,7 @@ export const Dropdown = ({
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           className={cn(
-            'flex flex-col gap-[8px] bg-white border-2 border-[#7A392D] rounded-[4px] px-[10px] py-[12px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
+            'flex flex-col gap-[8px] bg-white border-2 border-[#6B1626] px-[10px] py-[12px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
           )}
           style={{ minWidth: menuMinWidth }}
           align={align}

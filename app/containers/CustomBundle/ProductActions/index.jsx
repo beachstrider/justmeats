@@ -12,7 +12,7 @@ export const ProductActions = ({ product, type = 'normal' }) => {
   )
 
   return (
-    <div className="font-dunbar">
+    <div className="font-barlow">
       {line ? (
         <Quantity line={line} type={type} />
       ) : (

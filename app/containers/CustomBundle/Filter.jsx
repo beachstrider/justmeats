@@ -53,7 +53,7 @@ export const Filter = ({ filters, filter, onChange }) => {
     <RadioGroup defaultValue="comfortable">
       <Label
         htmlFor={`serving-size-all-meats`}
-        className="flex items-center gap-[10px] font-nunito font-bold text-[16px] cursor-pointer"
+        className="flex items-center gap-[10px] font-barlow font-bold text-[16px] cursor-pointer"
         onClick={() => onServingTypeChange('')}
       >
         <RadioGroupItem
@@ -67,7 +67,7 @@ export const Filter = ({ filters, filter, onChange }) => {
         <Label
           key={index}
           htmlFor={`serving-size-${index}`}
-          className="flex items-center gap-[10px] font-nunito font-bold text-[16px] cursor-pointer"
+          className="flex items-center gap-[10px] font-barlow font-bold text-[16px] cursor-pointer"
           onClick={() => onServingTypeChange(el)}
         >
           <RadioGroupItem
@@ -87,7 +87,7 @@ export const Filter = ({ filters, filter, onChange }) => {
         <Label
           key={index}
           htmlFor={`meat-type-${index}`}
-          className="flex items-center gap-[10px] font-nunito font-bold text-[16px] cursor-pointer"
+          className="flex items-center gap-[10px] font-barlow font-bold text-[16px] cursor-pointer"
         >
           <Check
             id={`meat-type-${index}`}
@@ -106,7 +106,7 @@ export const Filter = ({ filters, filter, onChange }) => {
         <Label
           key={index}
           htmlFor={`special-${index}`}
-          className="flex items-center gap-[10px] font-nunito font-bold text-[16px] cursor-pointer"
+          className="flex items-center gap-[10px] font-barlow font-bold text-[16px] cursor-pointer"
         >
           <Check
             id={`special-${index}`}
@@ -122,14 +122,14 @@ export const Filter = ({ filters, filter, onChange }) => {
   return (
     <>
       <div className="sm:flex hidden shrink-0 sm:gap-[18px]">
-        <Dropdown
+        {/* <Dropdown
           placeholder={filter.servingType || 'All Meats'}
           placeholderClassName="uppercase"
           buttonClassName="min-w-[171px]"
           menuMinWidth={144}
         >
           {servingTypeSelect}
-        </Dropdown>
+        </Dropdown> */}
         <Dropdown placeholder={'MEAT TYPES'} menuMinWidth={131}>
           {meatTypesSelect}
         </Dropdown>
@@ -140,23 +140,23 @@ export const Filter = ({ filters, filter, onChange }) => {
       <div className="block sm:hidden">
         <Dialog.Root>
           <Dialog.Trigger asChild>
-            <button className="flex justify-between items-center font-dunbar font-medium sm:text-[14px] py-[2px] pl-[8px] pr-[4px] rounded-[6px] border-2 border-[#7A392D] text-[#7A392D]">
+            <button className="flex justify-between items-center font-barlow font-medium sm:text-[14px] py-[2px] pl-[8px] pr-[4px] border-2 border-[#6B1626] text-[#6B1626]">
               <div>FILTERS</div>
               <FilterIcon />
             </button>
           </Dialog.Trigger>
           <Dialog.Portal>
             <Dialog.Overlay className="bg-blackA6 data-[state=open]:animate-overlayShow fixed inset-0" />
-            <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[70vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[20px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
-              <Dialog.Title className="font-dunbar m-0 text-[16px] font-medium tracking-[0.8px]">
+            <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[70vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] bg-white p-[20px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
+              <Dialog.Title className="font-barlow m-0 text-[16px] font-medium tracking-[0.8px]">
                 FILTERS
               </Dialog.Title>
               <div className="flex flex-col gap-[25px] pt-[20px]">
-                <div className="flex flex-col gap-[10px]">
+                {/* <div className="flex flex-col gap-[10px]">
                   {servingTypeSelect}
-                </div>
+                </div> */}
                 <div className="flex flex-col gap-[12px]">
-                  <div className="font-dunbar m-0 text-[16px] font-medium tracking-[0.8px]">
+                  <div className="font-barlow m-0 text-[16px] font-medium tracking-[0.8px]">
                     MEAT TYPES
                   </div>
                   <div className="grid grid-cols-2 gap-[10px]">
@@ -164,7 +164,7 @@ export const Filter = ({ filters, filter, onChange }) => {
                   </div>
                 </div>
                 <div className="flex flex-col gap-[12px]">
-                  <div className="font-dunbar m-0 text-[16px] font-medium tracking-[0.8px]">
+                  <div className="font-barlow m-0 text-[16px] font-medium tracking-[0.8px]">
                     SPECIALS
                   </div>
                   <div className="grid grid-cols-1 gap-[10px]">

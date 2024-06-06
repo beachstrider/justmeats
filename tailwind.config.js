@@ -16,6 +16,8 @@ export default withMT({
       body: ['Dunbar', 'Roboto', 'sans-serif'],
       dunbar: 'Dunbar',
       nunito: 'Nunito Sans',
+      barlow: 'Barlow',
+      hudson: 'Hudson',
     },
     extend: {
       colors: {

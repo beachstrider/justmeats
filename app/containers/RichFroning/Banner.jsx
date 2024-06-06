@@ -44,24 +44,28 @@ export const Banner = () => {
                   className="h-full bg-cover sm:bg-top [background-position-x:920px]"
                   style={{ backgroundImage: `url(${slider.image})` }}
                 >
-                <div className='flex items-center h-full'>
-                  <div className="relative container-small pt-[100px] sm:text-center text-white tracking-[2px] sm:pb-0 pb-[156px] leading-normal">
-                    <div className="font-bold sm:text-[36px] text-[30px] cursor-default">
-                      ELITE FITNESS + <br className="block sm:hidden" />
-                      ELITE NUTRITION
+                  <div className="flex items-center h-full">
+                    <div className="relative container-small pt-[100px] sm:text-center text-white tracking-[2px] sm:pb-0 pb-[156px] leading-normal">
+                      <div className="font-bold sm:text-[36px] text-[30px] cursor-default">
+                        ELITE FITNESS + <br className="block sm:hidden" />
+                        ELITE NUTRITION
+                      </div>
+                      <div className="font-bold sm:text-[62px] text-[38px] sm:mb-[49px] mb-[45px] cursor-default">
+                        <span className="text-[#E47A0F]">25% </span>
+                        OFF <br className="block sm:hidden" />
+                        FIRST ORDER
+                        <span className="text-[#E47A0F]"> +$15</span>
+                      </div>
+                      <NavLink
+                        end
+                        prefetch="intent"
+                        to="/products/custom-bundle"
+                      >
+                        <button className="text-[18px] font-dunbar tracking-[1px] px-[28px] py-[14px] rounded-[4px] bg-[#637160]">
+                          GET MEAT
+                        </button>
+                      </NavLink>
                     </div>
-                    <div className="font-bold sm:text-[62px] text-[38px] sm:mb-[49px] mb-[45px] cursor-default">
-                      <span className="text-[#E47A0F]">25% </span>
-                      OFF <br className="block sm:hidden" />
-                      FIRST ORDER
-                      <span className="text-[#E47A0F]"> +$15</span>
-                    </div>
-                    <NavLink end prefetch="intent" to="/products/custom-bundle">
-                      <button className="text-[18px] font-dunbar tracking-[1px] px-[28px] py-[14px] rounded-[4px] bg-[#637160]">
-                        GET MEAT
-                      </button>
-                    </NavLink>
-                  </div>
                   </div>
                 </div>
               </SwiperSlide>
@@ -98,7 +102,7 @@ export const Banner = () => {
         </div>
       </div>
       <div
-        className="bg-[#7A392D] relative z-10"
+        className="bg-[#6B1626] relative z-10"
         style={{ boxShadow: '0px 30px 50px -10px rgba(0, 0, 0, 0.20)' }}
       >
         <div className="container-small sm:pt-[50px] sm:pb-[50px] pt-[44px] pb-[55px] grid md:grid-cols-3 grid-cols-1  md:gap-0 gap-[38px]">

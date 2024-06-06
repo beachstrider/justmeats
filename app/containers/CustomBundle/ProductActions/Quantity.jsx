@@ -41,7 +41,7 @@ export const Quantity = ({ line, type }) => {
       className={cn(
         'flex flex-col items-center justify-center w-full cart-line-quantity',
         type === 'modal'
-          ? 'sm:w-[139px] sm:h-[50px] w-[166px] h-[51px] sm:rounded-l-[4px] sm:rounded-r-[4px] rounded-l-none rounded-r-[8px] bg-[#637160]'
+          ? 'sm:w-[139px] sm:h-[50px] w-[166px] h-[51px] bg-[#BF4745]'
           : '',
         type === 'mobileCart' ? 'px-[6px]' : '',
       )}
@@ -58,7 +58,7 @@ export const Quantity = ({ line, type }) => {
         </button>
         <small
           className={cn(
-            `flex-1 font-medium font-dunbar sm:text-[20px] text-[18px] text-center flex justify-center items-center w-[32px] p-[3px]`,
+            `flex-1 font-medium font-barlow sm:text-[20px] text-[18px] text-center flex justify-center items-center w-[32px] p-[3px]`,
             type === 'modal' ? 'text-white' : '',
             type === 'mobileCart' ? '!text-[14px]' : '',
           )}
