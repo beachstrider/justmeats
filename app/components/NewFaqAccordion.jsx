@@ -44,13 +44,13 @@ export function FaqAccordion() {
       >
         <AccordionHeader
           onClick={() => handleOpen(1)}
-          className={`border-b-0 font-dunbar text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase  transition-colors ${
+          className={`border-b-0 font-barlow text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase  transition-colors ${
             open === 1 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           What kind of meat can I buy?
         </AccordionHeader>
-        <AccordionBody className="pt-0 font-nunito text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
+        <AccordionBody className="pt-0 font-barlow text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
           Each week, you can choose from chicken, pork, or beef options cooked
           in a variety of ways with unique spices and sauces.
         </AccordionBody>
@@ -62,13 +62,13 @@ export function FaqAccordion() {
       >
         <AccordionHeader
           onClick={() => handleOpen(2)}
-          className={`border-b-0 font-dunbar text-[#231B19]  sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
+          className={`border-b-0 font-barlow text-[#231B19]  sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
             open === 2 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           Can I get meat delivery weekly?
         </AccordionHeader>
-        <AccordionBody className="pt-0 font-nunito text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
+        <AccordionBody className="pt-0 font-barlow text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
           You can get your meat delivered every 15 or 30 days.
         </AccordionBody>
       </Accordion>
@@ -79,13 +79,13 @@ export function FaqAccordion() {
       >
         <AccordionHeader
           onClick={() => handleOpen(3)}
-          className={`border-b-0 font-dunbar text-[#231B19]  sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
+          className={`border-b-0 font-barlow text-[#231B19]  sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
             open === 3 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           How do I choose my meat?
         </AccordionHeader>
-        <AccordionBody className="pt-0 font-nunito text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9  pb-10">
+        <AccordionBody className="pt-0 font-barlow text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9  pb-10">
           When you go to the order page, you will choose between a subscription
           and a one time purchase and then see which meat options to choose
           from.
@@ -98,13 +98,13 @@ export function FaqAccordion() {
       >
         <AccordionHeader
           onClick={() => handleOpen(4)}
-          className={`border-b-0 font-dunbar text-[#231B19]  sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
+          className={`border-b-0 font-barlow text-[#231B19]  sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
             open === 4 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           When does my meat arrive?
         </AccordionHeader>
-        <AccordionBody className="pt-0 font-nunito text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
+        <AccordionBody className="pt-0 font-barlow text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
           Depending on the shipping option you choose, within 1-5 business days.
         </AccordionBody>
       </Accordion>
@@ -115,13 +115,13 @@ export function FaqAccordion() {
       >
         <AccordionHeader
           onClick={() => handleOpen(5)}
-          className={`border-b-0 font-dunbar text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
+          className={`border-b-0 font-barlow text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
             open === 5 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           Is the meat precooked?
         </AccordionHeader>
-        <AccordionBody className="pt-0 font-nunito text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
+        <AccordionBody className="pt-0 font-barlow text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
           Yes! All meat is precooked, chilled, and then shipped to you. All you
           have to do is reheat!
         </AccordionBody>
@@ -133,13 +133,13 @@ export function FaqAccordion() {
       >
         <AccordionHeader
           onClick={() => handleOpen(6)}
-          className={`border-b-0 font-dunbar text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
+          className={`border-b-0 font-barlow text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
             open === 6 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           how is the meat shipped?
         </AccordionHeader>
-        <AccordionBody className="pt-0 font-nunito text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
+        <AccordionBody className="pt-0 font-barlow text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
           All meat is sent chilled and packaged with an insulated liner
           surrounded by ice packets to ensure it will reach your door at a safe
           temperature.
@@ -152,13 +152,13 @@ export function FaqAccordion() {
       >
         <AccordionHeader
           onClick={() => handleOpen(7)}
-          className={`border-b-0 font-dunbar text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
+          className={`border-b-0 font-barlow text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
             open === 7 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           Where is the meat sourced?
         </AccordionHeader>
-        <AccordionBody className="pt-0 font-nunito text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
+        <AccordionBody className="pt-0 font-barlow text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
           We are a Utah company that sources 100% real meat from trusted local
           ranches. Selecting grass fed ranches, we prioritize that our meat is
           of the highest standards of taste and nutritional value.
@@ -171,13 +171,13 @@ export function FaqAccordion() {
       >
         <AccordionHeader
           onClick={() => handleOpen(8)}
-          className={`border-b-0 font-dunbar text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
+          className={`border-b-0 font-barlow text-[#231B19] sm:text-base text-[14px] font-bold leading-normal tracking-[0.8px] uppercase transition-colors ${
             open === 8 ? 'text-[#6B1626] hover:!text-[#6B1626]' : ''
           }`}
         >
           How should i store my meat?
         </AccordionHeader>
-        <AccordionBody className="pt-0 font-nunito text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
+        <AccordionBody className="pt-0 font-barlow text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
           All sealed meats can be stored in the refrigerator for 10-14 days upon
           arrival. Once the package is opened, we recommend consuming the
           refrigerated meat within 3-5 days. If this timeline will not work, all
