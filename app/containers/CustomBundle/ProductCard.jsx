@@ -7,6 +7,13 @@ export const ProductCard = ({ product, onClick }) => {
   const backgroundColor = product.background_color?.value ?? '#FFF'
   const servings = product.servings?.value ?? ''
   const servingType = product.serving_type?.value ?? ''
+  const _specialType = product.special_type?.value ?? ''
+  const specialType = _specialType.split(' ')[0]
+  const badgeColors = {
+    Default: '#5AAF17',
+    Popular: '#E39725',
+    Subscriber: '#C73515',
+  }
 
   // PATCH: temporily
   const pureId = getPureId(product.id, 'Product')
@@ -31,6 +38,19 @@ export const ProductCard = ({ product, onClick }) => {
               loading="lazy"
               className="cursor-pointer"
             />
+            {specialType && (
+              <div
+                className={cn(
+                  'absolute sm:left-[4px] left-[2px] top-[34px] px-[8px] py-[4px] text-white font-barlow sm:text-[14px] text-[12px] font-semibold sm:tracking-[0.7px] tracking-[0.6px] leading-none uppercase',
+                )}
+                style={{
+                  backgroundColor:
+                    badgeColors[specialType] ?? badgeColors.Default,
+                }}
+              >
+                {specialType}
+              </div>
+            )}
           </div>
           <div className="xl:mb-[2%] font-barlow sm:text-[16px] text-[12px] text-center">
             <div>{servingType}</div>
