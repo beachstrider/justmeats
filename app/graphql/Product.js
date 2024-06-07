@@ -210,7 +210,7 @@ export const PRODUCT_FRAGMENT = `#graphql
       name
       values
     }
-    variants(first: 1) {
+    variants(first: 10) {
       nodes {
         ...ProductVariant
       }
