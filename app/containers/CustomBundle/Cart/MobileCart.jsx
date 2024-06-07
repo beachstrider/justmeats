@@ -46,7 +46,7 @@ export const MobileCart = () => {
     <div className="relative z-20 mobile-cart">
       <div className="fixed flex sm:gap-0 gap-[10px] w-full sm:hidden bottom-0 bg-white left-0 px-[20px] py-[16px] font-barlow font-bold text-[16px] [box-shadow:0px_0px_10px_0px_rgba(0,0,0,0.20)]">
         <Button
-          className="flex justify-center items-center w-[48px] h-[48px] border-2 border-[#6B1626] rounded-[8px]"
+          className="flex justify-center shrink-0 items-center w-[48px] h-[48px] border-2 border-[#6B1626] rounded-[8px]"
           onClick={onMobileReamazeChatClick}
         >
           <MobileChat />
@@ -91,7 +91,7 @@ export const MobileCart = () => {
           {isCartPage && <PlanPicker type="mobileCart" />}
           <div className="flex sm:gap-0 gap-[10px] mt-[16px]">
             <Button
-              className="flex justify-center items-center w-[48px] h-[48px] border-2 border-[#6B1626] rounded-[8px]"
+              className="flex justify-center shrink-0 items-center w-[48px] h-[48px] border-2 border-[#6B1626] rounded-[8px]"
               onClick={onMobileReamazeChatClick}
             >
               <MobileChat />
