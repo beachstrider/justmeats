@@ -5,7 +5,7 @@ import BgBannerHead from '~/assets/images/your-gym-banner.png'
 
 export const BannerHead = () => {
     return (
-        <div class="relative flex-1">
+        <div className="relative flex-1">
             <div className="h-full w-full bg-cover sm:bg-top [background-position-x:920px]">
                 <img
                     className="w-full"

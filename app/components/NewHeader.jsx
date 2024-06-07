@@ -104,7 +104,7 @@ export function Header() {
 
   const headerClass = isHeaderVisible ? '' : 'sticky-header'
   const location = useLocation()
-  const isSpecialsPage = location.pathname === '/rich-froning' || location.pathname === '/your-gym1'
+  const isSpecialsPage = location.pathname === '/rich-froning' || location.pathname === '/gym'
 
   const Mainheader = () => {
     return !isMobile ? (

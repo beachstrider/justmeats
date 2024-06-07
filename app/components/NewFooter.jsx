@@ -7,7 +7,7 @@ import { LogoWhite } from '~/icons/LogoWhite'
 export const Footer = () => {
   const matches = useMatches()
   const location = useLocation()
-  const isSpecialsPage = location.pathname === '/gym-launch' || location.pathname === '/your-gym1'
+  const isSpecialsPage = location.pathname === '/gym-launch' || location.pathname === '/gym'
 
   return (
     <footer className={`${isSpecialsPage ? 'bg-[#7A392D]' : 'bg-[#231b19]'}`}>
