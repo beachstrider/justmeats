@@ -53,7 +53,7 @@ export function Header() {
     return (
       <li
         className={cn(
-          'navLink py-4 px-5 hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-medium',
+          'navLink py-4 px-[16px] hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-barlow font-medium tracking-[0.7px]',
           isSpecialsPage ? 'text-[14px]' : 'text-base',
         )}
       >
@@ -104,15 +104,16 @@ export function Header() {
 
   const headerClass = isHeaderVisible ? '' : 'sticky-header'
   const location = useLocation()
-  const isSpecialsPage = location.pathname === '/rich-froning' || location.pathname === '/gym'
+  const isSpecialsPage =
+    location.pathname === '/rich-froning' || location.pathname === '/gym'
 
   const Mainheader = () => {
     return !isMobile ? (
-      <header className="container relative h-[88px] sm:h-[120px] flex items-center justify-between py-4">
-        <div className="flex items-center justify-between w-full gap-10 navBar">
+      <div className="container-small relative h-[88px] sm:h-[120px] flex items-center justify-between py-4">
+        <div className="relative flex items-center justify-between w-full navBar">
           <ul
             className={cn(
-              'hidden navLinks lg:flex w-full  max-w-[40%] custom-padding-header',
+              'hidden navLinks lg:flex w-full max-w-[40%] custom-padding-header',
               isSpecialsPage && 'font-dunbar text-[14px]',
               isSpecialsPage ? '' : 'invisible',
             )}
@@ -125,9 +126,9 @@ export function Header() {
           <a
             href="/"
             target="_blank"
-            className="w-full max-w-[20%] flex justify-center"
+            className="w-full max-w-[20%] flex justify-center absolute -translate-x-1/2 left-1/2"
           >
-            <div className="w-[148px] sm:w-[214px]">
+            <div className="w-[120px] sm:w-[178px]">
               <Logo />
             </div>
           </a>
@@ -137,7 +138,7 @@ export function Header() {
               isSpecialsPage ? '' : 'invisible',
             )}
           >
-            <div className="flex items-center justify-between gap-4 headerIcons sm:gap-10 w-[fit-content]">
+            <div className="flex items-center justify-between gap-[10px] headerIcons sm:gap-[18px] w-[fit-content]">
               <NavLink end prefetch="intent" to="/account">
                 <span className="hidden w-[32px] cursor-pointer loginIcon lg:flex">
                   <svg
@@ -171,13 +172,13 @@ export function Header() {
                 <HamburgerOpen />
               </Button>
               <CartButton />
-              <div className="hidden lg:block">
+              <div className="hidden lg:block pl-[20px]">
                 <OrderButton />
               </div>
             </div>
           </div>
         </div>
-      </header>
+      </div>
     ) : (
       <div
         className={cn(
@@ -302,8 +303,8 @@ export function HeaderMenu({ menu, primaryDomainUrl, viewport }) {
         // if the url is internal, we strip the domain
         const url =
           item.url.includes('myshopify.com') ||
-            item.url.includes(publicStoreDomain) ||
-            item.url.includes(primaryDomainUrl)
+          item.url.includes(publicStoreDomain) ||
+          item.url.includes(primaryDomainUrl)
             ? new URL(item.url).pathname
             : item.url
         return (
