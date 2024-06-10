@@ -15,8 +15,8 @@ export const NewBannerHead = () => {
                                     <img className="" src={JustMeatsLogo} />
                                 </div>
                                 <div className="py-8">
-                                    <div className="font-nunito font-bold sm:text-[27px] text-[20px] text-[#CCBDB1]">
-                                        6 lbs of meat FOR FREE!
+                                    <div className="font-medium text-[14px] text-[#CCBDB1] tracking-[.2em]">
+                                        6 LBS OF FREE MEAT
                                     </div>
                                     <div className="text-white sm:text-[36px] font-bold sm:leading-tight md:pb-[100px] text-[26px] [word-spacing:4px] sm:[word-spacing:0] leading-[42px]">
                                         JUST MEATS GYM PARTNER <br />
