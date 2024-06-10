@@ -1,3 +1,5 @@
+import Marquee from 'react-fast-marquee'
+
 import skillet from '~/assets/images/Skillet.png'
 import justmeatsBlack from '~/assets/images/justmeats-black.png'
 import mayhemNation from '~/assets/images/mayhem-nation-1.png'
@@ -6,7 +8,7 @@ import { Cooking } from '~/icons/Cooking'
 import { MeatRecycle } from '~/icons/MeatRecycle'
 import { SmilingSun } from '~/icons/SmilingSun'
 import { Weighter } from '~/icons/Weighter'
-import Marquee from "react-fast-marquee";
+
 export const FirstInfo = () => {
   return (
     <section className="bg-[#efeeed] overflow-x-hidden">
@@ -45,7 +47,7 @@ export const FirstInfo = () => {
               <div className="sm:text-[36px] text-[18px] font-bold tracking-[2px] sm:mb-[22px] mb-[14px]">
                 1,006,928
               </div>
-              <div className="sm:text-[14px] text-[12px] text-[#7A392D] font-bold tracking-[3px]">
+              <div className="sm:text-[14px] text-[12px] text-[#6B1626] font-bold tracking-[3px]">
                 MEATS SOLD
               </div>
             </div>
@@ -61,7 +63,7 @@ export const FirstInfo = () => {
               <div className="sm:text-[36px] text-[18px] font-bold tracking-[2px] sm:mb-[22px] mb-[14px]">
                 84,097
               </div>
-              <div className="sm:text-[14px] text-[12px] text-[#7A392D] font-bold tracking-[3px]">
+              <div className="sm:text-[14px] text-[12px] text-[#6B1626] font-bold tracking-[3px]">
                 CUSTOMERS
               </div>
             </div>
@@ -77,7 +79,7 @@ export const FirstInfo = () => {
               <div className="sm:text-[36px] text-[18px] font-bold tracking-[2px] sm:mb-[22px] mb-[14px]">
                 345,431 LBS
               </div>
-              <div className="sm:text-[14px] text-[12px] text-[#7A392D] font-bold tracking-[3px]">
+              <div className="sm:text-[14px] text-[12px] text-[#6B1626] font-bold tracking-[3px]">
                 COOKED MEATS
               </div>
             </div>
@@ -93,7 +95,7 @@ export const FirstInfo = () => {
               <div className="sm:text-[36px] text-[18px] font-bold tracking-[2px] sm:mb-[22px] mb-[14px]">
                 14,000+
               </div>
-              <div className="sm:text-[14px] text-[12px] text-[#7A392D] font-bold tracking-[3px]">
+              <div className="sm:text-[14px] text-[12px] text-[#6B1626] font-bold tracking-[3px]">
                 SUBSCRIPTIONS
               </div>
             </div>
@@ -145,16 +147,16 @@ export const FirstInfo = () => {
       </div>
       <div className="sm:py-[104px] py-[64px] overflow-x-hidden relative">
         <div className="w-full ">
-        <Marquee 
-          pauseOnHover={false}
-          direction={'left'}
-          speed={150}
-          gradient={false}
-          pauseOnClick={true}
-          loop={100}
-        >
-        <img src={traningCommunityNutrition} />
-        </Marquee>
+          <Marquee
+            pauseOnHover={false}
+            direction={'left'}
+            speed={150}
+            gradient={false}
+            pauseOnClick={true}
+            loop={100}
+          >
+            <img src={traningCommunityNutrition} />
+          </Marquee>
         </div>
       </div>
     </section>

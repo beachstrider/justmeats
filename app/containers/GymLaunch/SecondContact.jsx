@@ -28,7 +28,7 @@ export const SecondContact = () => {
         <div className="grid md:grid-cols-2 grid-cols-1 sm:gap-[55px] gap-[70px] items-center justify-center">
           <div className="flex flex-col ">
             <div className="sm:mb-0 mb-[24px]">
-              <div className="xl:text-[14px] text-[12px] text-[#7A392D] font-normal text-center sm:mb-[6px] tracking-[3px]">
+              <div className="xl:text-[14px] text-[12px] text-[#6B1626] font-normal text-center sm:mb-[6px] tracking-[3px]">
                 CLAIM YOUR
               </div>
               <div className="xl:text-[36px] text-[24px] font-bold text-center mb-3">

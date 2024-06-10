@@ -2,13 +2,17 @@ import React, { useContext, useEffect, useState } from 'react'
 
 import { useLoaderData, useMatches } from '@remix-run/react'
 
+import { FaqAccordion } from '~/components/NewFaqAccordion'
 import { PlanPickerBlock } from '~/containers/CustomBundle/PlanPickerBlock'
 import { CustomBundleContext, RootContext } from '~/contexts'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
+import { QualitySeal } from '~/icons/QualitySeal'
 
 import { PROMO_CODES } from '../../promo-codes'
 import { Cart } from './Cart'
 import { MobileCart } from './Cart/MobileCart'
+import { Filter } from './Filter'
+import { PlanPicker } from './PlanPickerBlock/PlanPicker'
 import { ProductCard } from './ProductCard'
 import { ProductModal } from './ProductModal'
 
@@ -50,6 +54,12 @@ export const CustomBundle = () => {
   const [clickedProduct, setClickedProduct] = useState(null)
   const [submitting, setSubmitting] = useState(false)
 
+  const [filter, setFilter] = useState({
+    servingType: '',
+    meatTypes: [],
+    specialTypes: [],
+  })
+
   const isCartPage = matches.at(-1).pathname.includes('/products/custom-bundle')
 
   const selectedProducts = isCartPage ? cartProducts : subscriptionProducts
@@ -89,20 +99,22 @@ export const CustomBundle = () => {
 
   const cost = isCartPage && sellingPlan ? costForSubscription : costForOneTime
 
-  const tags = freeProduct.tags
-  let freeProductPrice
-
-  if (tags && tags.length > 0) {
-    tags.forEach((tag) => {
-      if (tag.includes('free-')) {
-        freeProductPrice = parseFloat(tag.split('-')[1])
-      }
-    })
-  }
-
+  const freeTag = freeProduct.tags.find((el) => el.includes('free-'))
+  const freeProductPrice = parseFloat(freeTag?.split('-')?.[1])
   const originalCost = costForOneTime + freeProductPrice
 
-  async function handleSubmit() {
+  const filters = {
+    servingTypes: getProductsMetaValues(products, 'serving_type'),
+    meatTypes: getProductsMetaValues(products, 'meat_type'),
+    specialTypes: getProductsMetaValues(products, 'special_type'),
+  }
+
+  const filteredProducts = getFilteredProducts(
+    productsBasedOnSellingPlan,
+    filter,
+  )
+
+  const handleSubmit = async () => {
     const products = [...selectedProducts]
 
     if (costForOneTime > 125) {
@@ -157,6 +169,10 @@ export const CustomBundle = () => {
     }
   }
 
+  const onFilterChange = (newFilter) => {
+    setFilter(newFilter)
+  }
+
   return (
     <CustomBundleContext.Provider
       value={{
@@ -176,73 +192,102 @@ export const CustomBundle = () => {
         setSellingPlan,
         setSellingPlanFrequency,
         setBonusVariant,
-
         setSubmitting,
         handleSubmit,
       }}
     >
-      {isCartPage && <PlanPickerBlock />}
-      <section className="max-w-ful custom-collection-wrap">
-        <div className="flex gap-3">
-          {isCartPage && (
-            <div className="w-[60px] h-[60px] hidden lg:flex rounded-[100%] bg-black justify-center items-center">
-              <span className="text-[40px] font-bold text-white">2</span>
-            </div>
-          )}
-
-          <main className="flex flex-col flex-1 gap-2 bg-white border-gray-400 border-solid main-section sm:border">
-            {isCartPage && (
-              <div className="flex items-center w-full gap-2 py-3 sm:py-0">
-                <div className="w-[35px] h-[35px] ml-3 lg:hidden lg:w-[60px] lg:h-[60px] rounded-[100%] sm:border-none border-2 border-[#425C35] sm:bg-black flex justify-center items-center  ">
-                  <span className=" text-[22px] lg:text-[40px] font-bold text-black sm:text-white ">
-                    2
-                  </span>
-                </div>
-                <div className="h-fit sm:border-b-4 w-fit sm:border-[#425B34] sm:m-3 ">
-                  <h2 className="font-semibold leading-7 text-[20px] sm:text-[22px] text-[#1d1d1d] sm:uppercase  ">
-                    Select Your Meats
-                  </h2>
-                </div>
-              </div>
-            )}
-
-            <div className="xl:grid xl:grid-cols-12 product-and-cart mb-[62px] md:mb-0">
-              <div className="grid grid-cols-2 product-grid md:grid-cols-3 gap-x-5 sm:p-3 xl:pr-5 xl:col-span-8 xl:mb-[0px] mb-[50px]">
-                {productsBasedOnSellingPlan.map((product, key) => (
-                  <ProductCard
-                    key={key}
-                    product={product}
-                    onClick={() => setClickedProduct(product)}
-                  />
-                ))}
-              </div>
-              <div className="cart-wrapper sticky top-[10px] h-fit mb-[10px] hidden lg:block xl:col-span-4">
-                <div className="h-full border">
-                  <div className="py-5 text-center text-white bg-black top-section">
-                    <div className="py-2 text-wrapper">
-                      {isCartPage ? (
-                        <>
-                          <h1 className="font-roboto_medium text-[17px] leading-none">
-                            Subscribers Save {firstSavingPercentage}% on Orders
-                          </h1>
-                          <p className="text-[14px] leading-none font-roboto_medium mt-3">
-                            Applied at checkout
-                          </p>
-                        </>
-                      ) : (
-                        <h1 className="font-roboto_medium text-[17px] leading-none">
-                          YOUR SUBSCRIPTION
-                        </h1>
-                      )}
+      <div className="max-w-ful custom-collection-wrap">
+        <div className="flex flex-col flex-1 gap-2 border-gray-400 border-solid main-section sm:border">
+          <div className="relative flex product-and-cart mb-[62px] md:mb-0">
+            <div className="container-small sm:pt-[30px] pt-[16px]">
+              <section className="sm:mb-[80px] mb-[36px]">
+                {isCartPage && (
+                  <>
+                    <div className="relative sm:px-[27px] px-[20px] py-[22px] rounded-[8px] bg-rec-96 sm:mb-[40px] mb-[34px] [box-shadow:_0px_20px_40px_-10px_rgba(0,0,0,0.20)]">
+                      <div className="2xl:text-[26px] sm:text-[20px] text-[18px] text-center font-semibold font-hudson mb-[12px]">
+                        WE GUARANTEE YOU&apos;LL LOVE IT&nbsp;
+                        <br className="block sm:hidden" />
+                        OR YOUR MONEY BACK!
+                      </div>
+                      <div className="flex justify-center">
+                        <div className="relative w-[230px] h-[20px] overflow-hidden">
+                          <div
+                            id="looxReviews"
+                            className="!absolute !w-[304px] !h-[50px] !mt-[-30px] overflow-hidden"
+                            data-loox-aggregate
+                          />
+                        </div>
+                      </div>
+                      <div className="absolute 2xl:block hidden top-[-10px] right-[30px] w-[112px] h-[112px]">
+                        <QualitySeal />
+                      </div>
                     </div>
-                  </div>
-                  <div className="cart">
-                    <Cart layout="aside" />
+                    <div className="sm:hidden block sm:uppercase mb-[24px] font-hudson">
+                      <div className="flex items-center w-full gap-[8px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:tracking-[1.2px] tracking-[0.6px]">
+                        <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white">
+                          1
+                        </div>
+                        <h2 className="font-bold">SELECT YOUR FREQUENCY</h2>
+                      </div>
+                      <PlanPicker type="mobile" />
+                    </div>
+                    <div className="flex justify-between sm:mb-[36px] mb-[12px] font-hudson">
+                      <div className="flex items-center w-full gap-[8px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[0.6px]">
+                        <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white">
+                          2
+                        </div>
+                        <h2 className="font-bold">SELECT YOUR MEATS</h2>
+                      </div>
+                      <Filter
+                        filters={filters}
+                        filter={filter}
+                        onChange={onFilterChange}
+                      />
+                    </div>
+                  </>
+                )}
+                <div className="relative grid grid-cols-2 product-grid xl:grid-cols-3 2xl:grid-cols-4 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]">
+                  {filteredProducts.map((product, index) => (
+                    <ProductCard
+                      key={index}
+                      product={product}
+                      onClick={() => setClickedProduct(product)}
+                    />
+                  ))}
+                </div>
+              </section>
+              <section className="relative z-10 max-w-[740px] w-full mx-auto pb-4 sm:pb-20">
+                <div className="text-center font-hudson font-bold sm:text-[36px] sm:tracking-[1.6px] text-[24px] tracking-[1.2px] sm:mb-[40px] mb-[32px]">
+                  YOU ASK. WE ANSWER.
+                </div>
+                <FaqAccordion />
+              </section>
+            </div>
+            <aside className="cart-wrapper sticky top-[0] h-fit hidden lg:block sm:max-w-[480px] w-full bg-white sm:pt-[54px] pt-[16px]">
+              {isCartPage && <PlanPickerBlock />}
+              <div className="h-full">
+                <div className="sm:px-[40px] px-[20px] py-[30px] text-center top-section border-y border-[#EFEEED]">
+                  <div className="text-wrapper">
+                    {isCartPage ? (
+                      <>
+                        <h1 className="font-barlow text-[20px] font-bold leading-none">
+                          Subscribers Save {firstSavingPercentage}% on Orders
+                        </h1>
+                        <p className="text-[16px] leading-none font-barlow mt-[8px]">
+                          Applied at checkout
+                        </p>
+                      </>
+                    ) : (
+                      <h1 className="font-barlow text-[17px] leading-none">
+                        YOUR SUBSCRIPTION
+                      </h1>
+                    )}
                   </div>
                 </div>
+                <Cart layout="aside" />
               </div>
-            </div>
-          </main>
+            </aside>
+          </div>
         </div>
         <MobileCart />
 
@@ -250,7 +295,37 @@ export const CustomBundle = () => {
           product={clickedProduct}
           onClose={() => setClickedProduct(null)}
         />
-      </section>
+      </div>
     </CustomBundleContext.Provider>
   )
+}
+
+const getProductsMetaValues = (products, key) => {
+  return [...new Set(products.map((el) => el[key]?.value).filter((el) => el))]
+}
+
+const getFilteredProducts = (products, filter) => {
+  return products.filter((el) => {
+    let isServingTypeMatch = true
+    let isMeatTypeMatch = true
+    let isSpecialTypeMatch = true
+
+    const productServingType = el.serving_type?.value ?? ''
+    const productMeatType = el.meat_type?.value ?? ''
+    const productSpecialType = el.special_type?.value ?? ''
+
+    if (filter.servingType) {
+      isServingTypeMatch = filter.servingType === productServingType
+    }
+
+    if (filter.meatTypes.length) {
+      isMeatTypeMatch = filter.meatTypes.includes(productMeatType)
+    }
+
+    if (filter.specialTypes.length) {
+      isSpecialTypeMatch = filter.specialTypes.includes(productSpecialType)
+    }
+
+    return isServingTypeMatch && isMeatTypeMatch && isSpecialTypeMatch
+  })
 }

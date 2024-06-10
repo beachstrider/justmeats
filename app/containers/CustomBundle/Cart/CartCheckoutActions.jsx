@@ -5,8 +5,8 @@ import { CustomBundleContext } from '~/contexts'
 import { cn } from '~/lib/utils'
 
 const UPDATE_CHANGES = 'Update Changes'
-const CHANGES_SAVED = 'Changes saved!'
-const SAVING_FAILD = 'Saving failed!'
+const CHANGES_SAVED = 'Changes Saved!'
+const SAVING_FAILD = 'Saving Failed'
 
 export function CartCheckoutActions() {
   const { isCartPage, costForOneTime, submitting, handleSubmit } =
@@ -27,30 +27,25 @@ export function CartCheckoutActions() {
   }
 
   return (
-    <>
-      {costForOneTime >= 75 ? (
-        <div className="flex justify-center items-center w-1/2 bg-[#425b34]">
-          <Button
-            loading={submitting}
-            onClick={onSubmit}
-            className={cn(
-              isCartPage ? 'btn-checkout' : '',
-              'bg-[#425b34] text-[15px] py-[15px] font-semibold text-white px-1',
-            )}
-          >
-            {isCartPage ? 'Continue To Checkout' : btnUpdateText}
-          </Button>
-        </div>
-      ) : (
-        <div className="flex justify-center items-center w-6/12 pointer-events-none select-none  bg-[#6e6e6e]">
-          <Button
-            disabled
-            className=" text-[15px] text-center py-[15px] font-semibold text-white"
-          >
-            Spend $75 To Continue
-          </Button>
-        </div>
-      )}
-    </>
+    <div className="sm:px-[40px] px-[20px] sm:pb-[26px] pb-[20px] text-center font-barlow sm:text-[20px] text-[18px] font-bold">
+      <Button
+        loading={submitting}
+        onClick={onSubmit}
+        disabled={costForOneTime < 75}
+        className={cn(
+          'w-full text-center py-[15px] font-bold',
+          isCartPage ? 'btn-checkout' : '',
+          costForOneTime >= 75
+            ? 'text-white bg-[#BF4745] hover:bg-[#6B1626]'
+            : 'text-[#BF4745] bg-[#EFEEED]',
+        )}
+      >
+        {costForOneTime >= 75
+          ? isCartPage
+            ? 'Continue To Checkout'
+            : btnUpdateText
+          : 'Spend $75 to Continue'}
+      </Button>
+    </div>
   )
 }

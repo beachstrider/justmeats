@@ -10,7 +10,7 @@ export const Footer = () => {
   const isSpecialsPage = location.pathname === '/gym-launch' || location.pathname === '/gym'
 
   return (
-    <footer className={`${isSpecialsPage ? 'bg-[#7A392D]' : 'bg-[#231b19]'}`}>
+    <footer className={`${isSpecialsPage ? 'bg-[#6B1626]' : 'bg-[#231b19]'}`}>
       <div className="container-small relative h-[88px] sm:h-[128px] flex items-center justify-between py-4">
         <div className="absolute-center">
           <NavLink to="/" end prefetch="intent">

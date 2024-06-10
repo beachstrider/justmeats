@@ -73,41 +73,59 @@ export const PRODUCT_ITEM_FRAGMENT = `#graphql
 
     nutration: metafield(namespace: "custom", key: "nutration") {
       value
-      type
     }
     cardDescription: metafield(namespace: "custom", key: "card_description") {
       value
-      type
+    }
+    servings: metafield(namespace: "custom", key: "_servings") {
+      value
+    }
+    weight: metafield(namespace: "custom", key: "weight") {
+      value
+    }
+    calories: metafield(namespace: "custom", key: "calories") {
+      value
     }
     protein: metafield(namespace: "custom", key: "protein") {
       value
-      type
     }
     carbs: metafield(namespace: "custom", key: "carbs") {
       value
-      type
     }
     fat: metafield(namespace: "custom", key: "fat") {
       value
-      type
-    }
-    servings: metafield(namespace: "custom", key: "servings") {
-      value
-      type
     }
     ingredients: metafield(namespace: "custom", key: "ingredients") {
       value
-      type
     }
     product_information: metafield(namespace: "custom", key: "product_information") {
       value
-      type
     }
     allergens: metafield(namespace: "custom", key: "allergens") {
       value
-      type
+    }
+    background_color: metafield(namespace: "custom", key: "background_color") {
+      value
+    }
+    serving_type: metafield(namespace: "custom", key: "serving_type") {
+      value
+    }
+    meat_type: metafield(namespace: "custom", key: "meat_type") {
+      value
+    }
+    special_type: metafield(namespace: "custom", key: "special_type") {
+      value
     }
     cart_drawer_img: metafield(namespace: "custom", key: "cart_drawer_img") {
+      reference {
+        ... on MediaImage {
+          image {
+            url
+          }
+        }
+      }
+    }
+    product_icon_1: metafield(namespace: "custom", key: "product_icon_1") {
       reference {
         ... on MediaImage {
           image {

@@ -22,7 +22,7 @@ export const HowItWorks = () => {
             boxShadow: '0px 49px 79.1px -32px rgba(0, 0, 0, 0.25)',
           }}
         >
-          <div className="sm:text-[14px] font-normal leading-[23px] sm:tracking-[2.8px] text-[12px] tracking-[2.8px] text-[#7A392D] text-center font-dunbar">
+          <div className="sm:text-[14px] font-normal leading-[23px] sm:tracking-[2.8px] text-[12px] tracking-[2.8px] text-[#6B1626] text-center font-dunbar">
             HOW JUST MEATS WORKS
           </div>
           <div className="text-center sm:text-[36px] text-[24px] font-bold leading-tight sm:tracking-[1.8px] tracking-[1.2px] sm:mb-[20px] mb-[17px] font-dunbar">
@@ -40,7 +40,7 @@ export const HowItWorks = () => {
           </div>
           <div className="flex justify-center sm:gap-[20px] gap-[8px] text-[#EFEEED] px-[25px] py-[0] sm:text-[16px] text-[12px] text-center">
             <NavLink end prefetch="intent" to="/about">
-              <button className="px-[18px] md:px-[24px] py-[12px] rounded-[4px] bg-[#7A392D] tracking-[1px]">
+              <button className="px-[18px] md:px-[24px] py-[12px] rounded-[4px] bg-[#6B1626] tracking-[1px]">
                 HOW IT WORKS
               </button>
             </NavLink>

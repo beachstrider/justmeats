@@ -175,7 +175,7 @@ export const ContactForm = ({ formName }) => {
           className={
             formName === 'first'
               ? 'text-[16px] font-normal px-[24px] py-[12px] rounded-[4px] text-white bg-[#223661]'
-              : 'text-[16px] font-normal px-[24px] py-[12px] rounded-[4px] text-white bg-[#7A392D]'
+              : 'text-[16px] font-normal px-[24px] py-[12px] rounded-[4px] text-white bg-[#6B1626]'
           }
         >
           SUBMIT
