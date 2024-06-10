@@ -76,7 +76,7 @@ export default function Homepage() {
   }, [])
 
   return (
-    <div className="relative home">
+    <main className="relative home">
       <section className="relative flex items-center justify-center overflow-hidden heroSection">
         <div className="bg-video absolute top-0 left-0 w-[100%] h-[100%]">
           <video
@@ -324,6 +324,6 @@ export default function Homepage() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   )
 }
