@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef, useState } from 'react'
-import { useLocation } from 'react-router-dom'
 
 import { NavLink, useMatches } from '@remix-run/react'
 
@@ -31,6 +30,7 @@ export function Header() {
     // Clean up event listener
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
   const HoverUnderNavLink = (to, text) => {
     const spanRef = useRef(null)
 
@@ -53,8 +53,7 @@ export function Header() {
     return (
       <li
         className={cn(
-          'navLink py-4 px-[16px] hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-barlow font-medium tracking-[0.7px]',
-          isSpecialsPage ? 'text-[14px]' : 'text-base',
+          'navLink py-4 px-[16px] hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-barlow text-[14px] font-medium tracking-[0.7px]',
         )}
       >
         <NavLink
@@ -103,9 +102,6 @@ export function Header() {
   }, [prevScrollPos])
 
   const headerClass = isHeaderVisible ? '' : 'sticky-header'
-  const location = useLocation()
-  const isSpecialsPage =
-    location.pathname === '/rich-froning' || location.pathname === '/gym'
 
   const Mainheader = () => {
     return !isMobile ? (
@@ -113,9 +109,7 @@ export function Header() {
         <div className="relative flex items-center justify-between w-full navBar">
           <ul
             className={cn(
-              'hidden navLinks lg:flex w-full max-w-[40%] custom-padding-header',
-              isSpecialsPage && 'font-dunbar text-[14px]',
-              isSpecialsPage ? '' : 'invisible',
+              'hidden navLinks lg:flex w-full max-w-[40%] custom-padding-header font-dunbar text-[14px]',
             )}
           >
             {HoverUnderNavLink('/products/custom-bundle', 'Menu')}
@@ -132,12 +126,7 @@ export function Header() {
               <Logo />
             </div>
           </a>
-          <div
-            className={cn(
-              'w-full max-w-[40%] flex justify-end',
-              isSpecialsPage ? '' : 'invisible',
-            )}
-          >
+          <div className={cn('w-full max-w-[40%] flex justify-end')}>
             <div className="flex items-center justify-between gap-[10px] headerIcons sm:gap-[18px] w-[fit-content]">
               <NavLink end prefetch="intent" to="/account">
                 <span className="hidden w-[32px] cursor-pointer loginIcon lg:flex">

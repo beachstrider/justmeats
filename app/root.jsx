@@ -129,7 +129,13 @@ export async function loader({ context }) {
   )
 }
 
-const newLayoutRoutes = ['mayhem-madness', 'rich-froning', 'gym-launch', 'gym']
+const newLayoutRoutes = [
+  '',
+  'mayhem-madness',
+  'rich-froning',
+  'gym-launch',
+  'gym',
+]
 
 export default function App() {
   const nonce = useNonce()
