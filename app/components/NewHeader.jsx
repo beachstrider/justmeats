@@ -117,15 +117,16 @@ export function Header() {
             {HoverUnderNavLink('/recipes', 'Recipes')}
             {HoverUnderNavLink('/', 'Specials')}
           </ul>
-          <a
-            href="/"
-            target="_blank"
+          <NavLink
+            end
+            prefetch="intent"
+            to="/"
             className="w-full max-w-[20%] flex justify-center absolute -translate-x-1/2 left-1/2"
           >
             <div className="w-[120px] sm:w-[178px]">
               <Logo />
             </div>
-          </a>
+          </NavLink>
           <div className={cn('w-full max-w-[40%] flex justify-end')}>
             <div className="flex items-center justify-between gap-[10px] headerIcons sm:gap-[18px] w-[fit-content]">
               <NavLink end prefetch="intent" to="/account">

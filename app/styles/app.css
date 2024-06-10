@@ -552,6 +552,13 @@ button.free-gift-label {
 .bg-rec-96 {
   background-image: url('../assets/images/Rectangle96.png');
   background-size: cover;
+  background-position: center;
+}
+
+.bg-justmeats-banner {
+  background-image: url('../assets/images/589d28c48bb6157821efa22596d9c0d9.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .howjustmeatSlider .slick-track {
