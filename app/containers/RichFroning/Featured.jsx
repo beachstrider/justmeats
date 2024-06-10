@@ -74,7 +74,7 @@ export const Featured = () => {
         className="absolute sm:right-0 sm:top-[-140px] right-[-40px] top-[-100px]"
       />
       <div className="container-small flex flex-col items-center sm:mb-[56px] mb-[41px] relative">
-        <div className="sm:text-[14px] font-normal leading-[23px] sm:tracking-[2.8px] text-[12px] tracking-[2.8px] text-[#7A392D] text-center">
+        <div className="sm:text-[14px] font-normal leading-[23px] sm:tracking-[2.8px] text-[12px] tracking-[2.8px] text-[#6B1626] text-center">
           STAY LEAN, EAT CLEAN, SAVE GREEN
         </div>
         <div className="text-center sm:text-[36px] text-[24px] font-bold leading-tight sm:tracking-[1.8px] tracking-[1.2px] sm:mb-[20px] mb-[17px] font-mobile">
@@ -168,7 +168,7 @@ export const Featured = () => {
       <div className="container-small text-[#EFEEED] sm:mb-[82px] mb-[62px] relative">
         <div className="flex justify-center sm:gap-[20px] gap-[8px]">
           <NavLink end prefetch="intent" to="/about">
-            <button className="px-[24px] py-[12px] rounded-[4px] bg-[#7A392D] tracking-[1px]">
+            <button className="px-[24px] py-[12px] rounded-[4px] bg-[#6B1626] tracking-[1px]">
               HOW IT WORKS
             </button>
           </NavLink>
