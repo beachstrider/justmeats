@@ -130,7 +130,7 @@ export const Filter = ({ filters, filter, onChange }) => {
         >
           {servingTypeSelect}
         </Dropdown> */}
-        <Dropdown placeholder={'MEAT TYPES'} menuMinWidth={131}>
+        <Dropdown placeholder={'MEAT TYPES'} menuMinWidth={135}>
           {meatTypesSelect}
         </Dropdown>
         <Dropdown align="end" placeholder={'SPECIALS'}>
