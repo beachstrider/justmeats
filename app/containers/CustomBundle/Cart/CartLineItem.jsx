@@ -36,6 +36,14 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
   const backgroundColor = background_color?.value ?? '#EFEEED'
   const borderColor = background_color?.value ?? '#EFEEED'
 
+  const toggleInactive = () => {
+    return lineType === 'bonus'
+      ? costForOneTime >= 125
+        ? ''
+        : 'opacity-50'
+      : ''
+  }
+
   const desktop = (
     <div
       className={cn(
@@ -48,14 +56,7 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
           src={image}
           height={100}
           loading="lazy"
-          className={cn(
-            'w-full sm:w-[85px]',
-            lineType === 'bonus'
-              ? costForOneTime >= 125
-                ? ''
-                : 'opacity-50'
-              : '',
-          )}
+          className={cn('w-full sm:w-[85px]', toggleInactive())}
           onClick={() =>
             lineType === 'gift' ? setIsGiftModalOpen(true) : false
           }
@@ -108,14 +109,7 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
             <img
               src={image}
               loading="lazy"
-              className={cn(
-                'cursor-pointer',
-                lineType === 'bonus'
-                  ? costForOneTime >= 125
-                    ? ''
-                    : 'opacity-50'
-                  : '',
-              )}
+              className={cn('cursor-pointer', toggleInactive())}
             />
           </div>
         </div>
@@ -123,11 +117,7 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
           <div
             className={cn(
               'absolute -translate-x-1/2 left-1/2 bottom-[-10px] px-[8px] py-[4px] bg-[#5AAF17] text-[12px] font-bold text-white tracking-[0.6px] leading-none',
-              lineType === 'bonus'
-                ? costForOneTime >= 125
-                  ? ''
-                  : 'opacity-50'
-                : '',
+              toggleInactive(),
             )}
           >
             FREE
@@ -139,19 +129,26 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
           <div
             className={cn(
               'font-bold font-hudson leading-none text-[12px] mb-[8px]',
-              lineType === 'bonus'
-                ? costForOneTime >= 125
-                  ? ''
-                  : 'opacity-50'
-                : '',
+              toggleInactive(),
             )}
           >
             {line.title}
           </div>
-          <div className="font-bold text-[12px] font-barlow">
-            {lineType === 'paid' &&
-              `$${line.priceRange.minVariantPrice.amount}`}
-          </div>
+          {lineType === 'paid' && (
+            <div className="font-bold text-[12px] font-barlow">
+              ${line.priceRange.minVariantPrice.amount}
+            </div>
+          )}
+          {lineType !== 'paid' && (
+            <div
+              className={cn(
+                'font-bold text-[12px] font-barlow line-through',
+                toggleInactive(),
+              )}
+            >
+              ${originalPriceOfFreeProduct}
+            </div>
+          )}
         </div>
         <div className="flex h-[33px] justify-center items-center border-t border-[#efeeed]">
           {lineType === 'paid' && <Quantity line={line} type={type} />}
