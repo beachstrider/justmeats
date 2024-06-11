@@ -105,18 +105,47 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
       >
         <div className="flex items-end justify-center flex-1">
           <div className="absolute w-[84%] top-[32%] -translate-y-1/2">
-            <img src={image} loading="lazy" className="cursor-pointer" />
+            <img
+              src={image}
+              loading="lazy"
+              className={cn(
+                'cursor-pointer',
+                lineType === 'bonus'
+                  ? costForOneTime >= 125
+                    ? ''
+                    : 'opacity-50'
+                  : '',
+              )}
+            />
           </div>
         </div>
         {lineType !== 'paid' && (
-          <div className="absolute -translate-x-1/2 left-1/2 bottom-[-10px] px-[8px] py-[4px] bg-[#5AAF17] text-[12px] font-bold text-white tracking-[0.6px] leading-none">
+          <div
+            className={cn(
+              'absolute -translate-x-1/2 left-1/2 bottom-[-10px] px-[8px] py-[4px] bg-[#5AAF17] text-[12px] font-bold text-white tracking-[0.6px] leading-none',
+              lineType === 'bonus'
+                ? costForOneTime >= 125
+                  ? ''
+                  : 'opacity-50'
+                : '',
+            )}
+          >
             FREE
           </div>
         )}
       </div>
       <div className="flex-1 flex flex-col justify-between bg-white border-x border-b border-[#EFEEED] overflow-hidden [box-shadow:0px_8px_14px_-5px_rgba(0,0,0,0.15)]">
         <div className="flex-1 flex flex-col justify-between px-[4px] pt-[12px] pb-[10px] text-center">
-          <div className="font-bold font-hudson leading-none text-[12px] mb-[8px]">
+          <div
+            className={cn(
+              'font-bold font-hudson leading-none text-[12px] mb-[8px]',
+              lineType === 'bonus'
+                ? costForOneTime >= 125
+                  ? ''
+                  : 'opacity-50'
+                : '',
+            )}
+          >
             {line.title}
           </div>
           <div className="font-bold text-[12px] font-barlow">
