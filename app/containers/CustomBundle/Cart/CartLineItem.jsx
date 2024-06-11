@@ -18,6 +18,7 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
     priceRange,
     variants: { nodes },
     cart_drawer_img,
+    background_color,
   } = line
   const { costForOneTime } = useContext(CustomBundleContext)
 
@@ -31,6 +32,9 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
     cart_drawer_img?.reference.image.url ??
     nodes[0]?.image.url ??
     featuredImage.url
+
+  const backgroundColor = background_color?.value ?? '#EFEEED'
+  const borderColor = background_color?.value ?? '#EFEEED'
 
   const desktop = (
     <div
@@ -95,7 +99,10 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
 
   const mobile = (
     <div className="flex flex-col flex-1 product-grid">
-      <div className="relative px-[25px] pt-[12%] pb-[5%] mt-[40%] aspect-[111/100] flex bg-[#572D2D] text-white">
+      <div
+        className="relative px-[25px] pt-[12%] pb-[5%] mt-[40%] aspect-[111/100] flex text-white"
+        style={{ backgroundColor, borderColor }}
+      >
         <div className="flex items-end justify-center flex-1">
           <div className="absolute w-[84%] top-[32%] -translate-y-1/2">
             <img src={image} loading="lazy" className="cursor-pointer" />
