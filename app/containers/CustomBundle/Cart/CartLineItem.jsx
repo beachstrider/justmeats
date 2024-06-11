@@ -156,6 +156,9 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
         <div className="flex h-[33px] justify-center items-center border-t border-[#efeeed]">
           {lineType === 'paid' && <Quantity line={line} type={type} />}
           {lineType === 'bonus' && <LockedItem />}
+          {lineType === 'free' && (
+            <div className="font-medium font-barlow text-[14px]">1</div>
+          )}
         </div>
       </div>
     </div>
