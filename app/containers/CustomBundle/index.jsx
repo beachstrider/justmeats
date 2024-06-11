@@ -218,9 +218,6 @@ export const CustomBundle = () => {
                           />
                         </div>
                       </div>
-                      <div className="absolute 2xl:block hidden top-[-10px] right-[30px] w-[112px] h-[112px]">
-                        <QualitySeal />
-                      </div>
                     </div>
                     <div className="sm:hidden block sm:uppercase mb-[24px] font-hudson">
                       <div className="flex items-center w-full gap-[8px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:tracking-[1.2px] tracking-[0.6px]">
