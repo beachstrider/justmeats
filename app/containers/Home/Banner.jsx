@@ -33,6 +33,22 @@ export const Banner = () => {
             <div className=""></div>
           </div>
         </div>
+        <div className="">
+          <div className="bg-[#891c31] sm:py-[24px] grid grid-cols-1 sm:grid-cols-3">
+            <div className="flex flex-1">
+              <div className="flex justify-center flex-1">
+                <div className="text-[#EFEEED]">
+                  <div className="font-bold leading-none">Meats delivered</div>
+                  <div className="text-[75px] tracking-[2.25px] leading-none">
+                    1,006,928
+                  </div>
+                </div>
+              </div>
+              <div className="shrink-0 w-[1.5px] rounded-full bg-white" />
+            </div>
+          </div>
+          <div className="h-[21px] bg-pattern1" />
+        </div>
       </div>
     </section>
   )
