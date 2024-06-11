@@ -522,7 +522,7 @@ button.free-gift-label {
 
 .cart_lines_scrollbar::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color: #637160;
+  background-color: #6b1626;
 }
 
 .bg-rich-froning-banner {
@@ -737,7 +737,6 @@ section.product-list-slider button.slick-arrow.slick-next {
   @apply rounded-tr rounded-br;
 }
 
-
 .your-gym .slick-dots li button:before,
 .your-gym .slick-dots li button {
   width: 10px;
@@ -750,12 +749,12 @@ section.product-list-slider button.slick-arrow.slick-next {
   color: #7a392d !important;
 }
 
-.margin-0-auto{
+.margin-0-auto {
   margin: 0 auto;
 }
 
 @media screen and (max-width: 540px) {
-  .bg-herb-roasted-chicken-breast{
+  .bg-herb-roasted-chicken-breast {
     display: none;
   }
 }
@@ -775,4 +774,3 @@ section.product-list-slider button.slick-arrow.slick-next {
 #reamaze-widget {
   @apply sm:!visible !invisible;
 }
-
