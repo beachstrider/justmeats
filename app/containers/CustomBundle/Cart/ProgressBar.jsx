@@ -13,18 +13,15 @@ export const ProgressBar = () => {
   const bonusPercentage = bonusP > 0 ? bonusP : 0
 
   return (
-    <div className="sm:pl-[40px] pl-[20px] sm:pr-[40px] pr-[36px] sm:pt-[20px] sm:pb-[36px] pb-[24px] border-b border-[#efeeed]">
+    <div className="sm:pl-[40px] pl-[20px] sm:pr-[58px] pr-[36px] sm:pt-[14px] sm:pb-[30px] pb-[24px] sm:border-none border-b border-[#efeeed]">
       <div className="py-[12px]">
-        <div className="relative h-[22px]">
-          <div className="absolute font-bold font-barlow text-[16px] left-0">
-            Add $75 to Unlock
+        <div className="relative h-[22px] font-bold font-barlow sm:text-[14px] text-[12px]">
+          <div className="absolute left-0">
+            <div className="block sm:hidden">Add $75 to Unlock</div>
+            <div className="hidden sm:block">$75 Minimum Order Required</div>
           </div>
-          <div className="absolute font-bold font-barlow sm:text-[14px] text-[12px] translate-x-[-50%] left-[60%]">
-            Min
-          </div>
-          <div className="absolute font-bold font-barlow sm:text-[14px] text-[12px] translate-x-[-50%] left-[100%]">
-            Bonus
-          </div>
+          <div className="absolute translate-x-[-50%] left-[60%]">Min</div>
+          <div className="absolute translate-x-[-50%] left-[100%]">Bonus</div>
         </div>
       </div>
       <div className="relative">

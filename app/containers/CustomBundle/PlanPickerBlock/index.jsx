@@ -88,7 +88,7 @@ export const PlanPickerBlock = () => {
   )
 
   return (
-    <div className="w-[100%] mb-[0px] sm:mb-[48px]">
+    <div className="w-[100%] pb-[0px] sm:pb-[25px] border-b border-[#EFEEED]">
       <div className="flex flex-col">
         <div className="block sm:hidden">
           <h2 className="font-bold text-[28px] hidden lg:block">
@@ -102,11 +102,11 @@ export const PlanPickerBlock = () => {
           </div>
         </div>
 
-        <div className="sm:px-[40px] px-[20px] font-hudson sm:mb-[46px] mb-[20px]">
+        <div className="sm:px-[40px] px-[20px] font-hudson sm:mb-[15px] mb-[20px]">
           <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px]">
             1
           </div>
-          <h3 className="font-bold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[0.8px]">
+          <h3 className="font-bold leading-7 text-[20px] sm:uppercase sm:tracking-[1px] tracking-[1px]">
             SELECT YOUR FREQUENCY
           </h3>
         </div>

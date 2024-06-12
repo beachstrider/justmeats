@@ -260,10 +260,10 @@ export const CustomBundle = () => {
                 <FaqAccordion />
               </section>
             </div>
-            <aside className="cart-wrapper hidden lg:block sm:max-w-[480px] w-full bg-white sm:pt-[54px] pt-[16px]">
+            <aside className="cart-wrapper hidden lg:block sm:max-w-[480px] w-full bg-white 2xl:pt-[54px] sm:pt-[30px] pt-[16px]">
               {isCartPage && <PlanPickerBlock />}
               <div className="h-full sm:h-auto">
-                <div className="sm:px-[40px] px-[20px] py-[30px] text-center top-section border-y border-[#EFEEED]">
+                <div className="sm:hidden sm:px-[40px] px-[20px] py-[30px] text-center top-section border-y border-[#EFEEED]">
                   <div className="text-wrapper">
                     {isCartPage ? (
                       <>

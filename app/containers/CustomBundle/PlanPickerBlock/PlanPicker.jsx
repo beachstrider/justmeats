@@ -54,7 +54,8 @@ export const PlanPicker = ({ type = 'normal' }) => {
   const subscriptionButton = (
     <div
       className={cn(
-        'flex justify-center sm:px-[30px] px-[20px] sm:py-[10px] py-[6px] flex-1 border-2 border-[#6B1626] text-center',
+        'flex justify-center sm:px-[30px] px-[20px] sm:py-[4px] py-[6px] flex-1 border-2 border-[#6B1626] text-center',
+        type !== 'mobileCart' ? 'uppercase' : '',
         sellingPlan
           ? 'bg-[#6B1626] text-white cursor-default'
           : 'text-[#6B1626] cursor-pointer',
@@ -66,10 +67,8 @@ export const PlanPicker = ({ type = 'normal' }) => {
       <div className="flex">
         {type === 'mobileCart' && (
           <div className="">
-            <span className="text-[#CBCBCB] line-through">
-              ${originalCost}&nbsp;
-            </span>
-            ${costForSubscription}&nbsp;
+            <span className="text-[#CBCBCB] line-through">${originalCost}</span>
+            &nbsp;${costForSubscription}&nbsp;
           </div>
         )}
         <div>Subscribe & Save</div>
@@ -80,7 +79,8 @@ export const PlanPicker = ({ type = 'normal' }) => {
   const oneTimeButton = (
     <div
       className={cn(
-        'sm:block hidden sm:px-[30px] px-[22px] sm:py-[10px] py-[6px] border-2 border-[#6B1626]',
+        'sm:block hidden sm:px-[30px] px-[22px] sm:py-[4px] py-[6px] border-2 border-[#6B1626]',
+        type !== 'mobileCart' ? 'uppercase' : '',
         !sellingPlan
           ? 'bg-[#6B1626] text-white cursor-default'
           : 'text-[#6B1626] cursor-pointer',
@@ -95,6 +95,7 @@ export const PlanPicker = ({ type = 'normal' }) => {
     <div
       className={cn(
         'sm:hidden flex justify-center sm:px-[30px] px-[22px] sm:py-[10px] py-[6px] border-2 border-[#6B1626] text-center font-barlow font-bold',
+        type !== 'mobileCart' ? 'uppercase' : '',
         !sellingPlan
           ? 'bg-[#6B1626] text-white cursor-default'
           : 'text-[#6B1626] cursor-pointer',
@@ -118,12 +119,16 @@ export const PlanPicker = ({ type = 'normal' }) => {
         SAVE {firstSavingPercentage}% ON YOUR FIRST ORDER
       </p>
       <div className="bg-white sm:border border-[#EFEEED] overflow-hidden sm:[box-shadow:_0px_20px_50px_-10px_rgba(0,0,0,0.15)]">
-        <div className="flex sm:font-medium font-bold font-barlow sm:tracking-[0.8px] tracking-[0.9px] sm:uppercase">
+        <div
+          className={cn(
+            'flex sm:font-medium font-bold font-barlow sm:tracking-[0.8px] tracking-[0.9px]',
+          )}
+        >
           {subscriptionButton}
           {oneTimeButton}
         </div>
         <div className={cn(sellingPlan ? '' : 'text-[#999]')}>
-          <div className="flex justify-between sm:px-[24px] px-[16px] sm:pt-[24px] sm:pb-[24px] pt-[16px] pb-[12px] plan-picker-freq-div">
+          <div className="flex justify-between sm:px-[24px] px-[16px] sm:pt-[13px] sm:pb-[13px] pt-[16px] pb-[12px] plan-picker-freq-div">
             <div className="flex items-center flex-1">
               <div
                 className={cn(
@@ -134,14 +139,13 @@ export const PlanPicker = ({ type = 'normal' }) => {
                 <Calendar />
               </div>
               <div className="font-barlow text-[16px] font-extrabold leading-none">
-                Deliver <br className="block sm:hidden" />
-                every
+                Deliver every
               </div>
             </div>
             <div className="flex font-medium font-barlow sm:text-[16px] text-[12px] tracking-[0.7px]">
               <div
                 className={cn(
-                  'sm:px-[20px] px-[16px] py-[6px] flex-1 border-2 text-center',
+                  'sm:px-[20px] px-[16px] py-[8px] sm:py-[5px] flex-1 border-2 text-center leading-none',
                   sellingPlan
                     ? `border-[#6B1626] ${
                         sellingPlanFrequency === DELIVERY_EVERY_15_DAYS
@@ -162,7 +166,7 @@ export const PlanPicker = ({ type = 'normal' }) => {
               </div>
               <div
                 className={cn(
-                  'sm:px-[20px] px-[20px] py-[6px] border-2',
+                  'sm:px-[20px] px-[20px] py-[8px] sm:py-[5px] border-2 leading-none',
                   sellingPlan
                     ? `border-[#6B1626] ${
                         sellingPlanFrequency === DELIVERY_EVERY_30_DAYS
@@ -186,44 +190,35 @@ export const PlanPicker = ({ type = 'normal' }) => {
           <hr className="sm:block hidden bg-[#EFEEED]" />
           <div
             className={cn(
-              'grid grid-cols-2 sm:gap-y-[18px] gap-y-[8px] sm:pt-[16px] pt-0 sm:pb-[20px] pb-[16px] sm:px-[20px] px-[12px] font-barlow sm:text-[14px] text-[12px] font-bold',
+              'flex flex-col sm:gap-y-[4px] gap-y-[8px] sm:pt-[8px] pt-0 sm:pb-[14px] pb-[16px] sm:px-[20px] px-[12px] font-barlow sm:text-[14px] text-[12px] font-bold',
               sellingPlan ? 'fill-[#637160]' : 'fill-[#999]',
             )}
           >
-            <div className="flex justify-start items-start text-[12px] sm:text-[14px] font-bold">
-              <div className="shrink-0 w-[32px] text-[#425B34] -mt-[4px]">
+            <div className="flex justify-start items-start text-[12px] font-bold">
+              <div className="sm:hidden block shrink-0 w-[32px] text-[#425B34] -mt-[4px]">
                 <GreenCheck />
-              </div>{' '}
-              <div>
-                {firstSavingPercentage}% Off <br className="hidden sm:block" />
-                First Order
+              </div>
+              <div className="flex">
+                <span className="hidden sm:block">&#8226; &nbsp; </span>
+                {firstSavingPercentage}% Off First Order + 10% Off Future Orders
               </div>
             </div>
-            <div className="flex justify-start items-start text-[12px] sm:text-[14px] font-bold">
-              <div className="shrink-0 w-[32px] text-[#425B34] -mt-[4px]">
+            <div className="flex justify-start items-start text-[12px] font-bold">
+              <div className="sm:hidden block shrink-0 w-[32px] text-[#425B34] -mt-[4px]">
                 <GreenCheck />
-              </div>{' '}
-              <div>
-                10% Off <br className="hidden sm:block" />
-                Future Orders
+              </div>
+              <div className="flex">
+                <span className="hidden sm:block">&#8226; &nbsp; </span>
+                Subscriber-Only Monthly Flavors
               </div>
             </div>
-            <div className="flex justify-start items-start text-[12px] sm:text-[14px] font-bold">
-              <div className="shrink-0 w-[32px] text-[#425B34] -mt-[4px]">
+            <div className="flex justify-start items-start text-[12px] font-bold">
+              <div className="sm:hidden block shrink-0 w-[32px] text-[#425B34] -mt-[4px]">
                 <GreenCheck />
-              </div>{' '}
-              <div>
-                Subscriber-Only <br className="hidden sm:block" />
-                Monthly Flavors
               </div>
-            </div>
-            <div className="flex justify-start items-start text-[12px] sm:text-[14px] font-bold">
-              <div className="shrink-0 w-[32px] text-[#425B34] -mt-[4px]">
-                <GreenCheck />
-              </div>{' '}
-              <div>
-                Customize or <br className="hidden sm:block" />
-                Cancel Anytime
+              <div className="flex">
+                <span className="hidden sm:block">&#8226; &nbsp; </span>
+                Customize or Cancel Anytime
               </div>
             </div>
           </div>
