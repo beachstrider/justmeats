@@ -8,7 +8,7 @@ export const Notification = () => {
           <Gift />
         </div>
         <div className="leading-none pt-[1px]">
-          Limited Time: Get 6 Free Meats
+          Limited Time: Get Free Raspberry BBQ Chicken
         </div>
       </div>
     </div>
