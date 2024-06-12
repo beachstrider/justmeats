@@ -61,6 +61,7 @@ export const Quantity = ({ line, type }) => {
             `flex-1 font-medium font-barlow sm:text-[20px] text-[18px] text-center flex justify-center items-center w-[32px] p-[3px]`,
             type === 'modal' ? 'text-white' : '',
             type === 'mobileCart' ? '!text-[14px]' : '',
+            type === 'side-cart' ? '!text-[16px]' : '',
           )}
         >
           {quantity}

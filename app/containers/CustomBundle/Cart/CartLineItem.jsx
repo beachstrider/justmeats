@@ -47,7 +47,7 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
   const desktop = (
     <div
       className={cn(
-        'flex sm:flex-row flex-col gap-[34px] relative',
+        'flex sm:flex-row flex-col gap-[18px] relative',
         lineType === 'free' ? 'border-[#1b7084]' : 'border-[#425b34]',
       )}
     >
@@ -56,7 +56,7 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
           src={image}
           height={100}
           loading="lazy"
-          className={cn('w-full sm:w-[85px]', toggleInactive())}
+          className={cn('w-full sm:w-[40px]', toggleInactive())}
           onClick={() =>
             lineType === 'gift' ? setIsGiftModalOpen(true) : false
           }
@@ -66,17 +66,17 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
         <div className="flex flex-col sm:flex-row pr-[0px] justify-between items-center font-barlow">
           {lineType === 'bonus' && <LockedItem />}
           {lineType !== 'bonus' && (
-            <div className="pt-[20px] flex-1">
+            <div className="flex-1">
               <p className="font-bold text-[14px] sm:text-[16px]">{title}</p>
             </div>
           )}
         </div>
 
         {lineType === 'paid' && (
-          <div className="flex flex-1 items-end py-[16px]">
+          <div className="flex items-end flex-1">
             <div className="flex items-center justify-between flex-1">
               <div className="flex justify-start">
-                <Quantity line={line} />
+                <Quantity line={line} type="side-cart" />
               </div>
               <div className="font-barlow sm:text-[18px] text-[16px] font-semibold">
                 ${priceRange.maxVariantPrice.amount}
@@ -85,13 +85,18 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
           </div>
         )}
         {lineType !== 'paid' && (
-          <div className="flex items-end flex-1 font-barlow">
-            <div className="">
-              <div className="line-through text-[#666] text-[14px] font-semibold leading-none sm:mb-[4px]">{`$ ${originalPriceOfFreeProduct}`}</div>
-              <div className="font-bold text-[24px] text-[#CF2A2A] leading-none">
+          <div className="flex items-end justify-between flex-1 font-barlow">
+            <div className="flex items-center gap-[8px]">
+              <div className="line-through text-[#666] text-[14px] font-semibold leading-none">{`$ ${originalPriceOfFreeProduct}`}</div>
+              <div className="font-bold text-[18px] text-[#CF2A2A] leading-none sm:mb-[4px]">
                 FREE
               </div>
             </div>
+            {lineType === 'bonus' && costForOneTime < 125 && (
+              <div className="font-bold text-[14px] text-[#231B19]">
+                Unlocked at $125
+              </div>
+            )}
           </div>
         )}
       </div>
