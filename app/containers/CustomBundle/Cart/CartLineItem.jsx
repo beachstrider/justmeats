@@ -36,12 +36,10 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
   const backgroundColor = background_color?.value ?? '#EFEEED'
   const borderColor = background_color?.value ?? '#EFEEED'
 
+  const isBonusActive = costForOneTime >= 125
+
   const toggleInactive = () => {
-    return lineType === 'bonus'
-      ? costForOneTime >= 125
-        ? ''
-        : 'opacity-50'
-      : ''
+    return lineType === 'bonus' ? (isBonusActive ? '' : 'opacity-50') : ''
   }
 
   const desktop = (
@@ -92,7 +90,7 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
                 FREE
               </div>
             </div>
-            {lineType === 'bonus' && costForOneTime < 125 && (
+            {lineType === 'bonus' && !isBonusActive && (
               <div className="font-bold text-[14px] text-[#231B19]">
                 Unlocked at $125
               </div>
@@ -121,11 +119,13 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
         {lineType !== 'paid' && (
           <div
             className={cn(
-              'absolute -translate-x-1/2 left-1/2 bottom-[-10px] px-[8px] py-[4px] bg-[#5AAF17] text-[12px] font-bold text-white tracking-[0.6px] leading-none',
-              toggleInactive(),
+              'absolute -translate-x-1/2 left-1/2 bottom-[-10px] px-[8px] py-[4px] text-[12px] font-bold text-white tracking-[0.6px] leading-none',
+              lineType === 'bonus' && !isBonusActive
+                ? 'bg-[#bf4745]'
+                : 'bg-[#5AAF17]',
             )}
           >
-            FREE
+            {lineType === 'free' ? 'FREE' : isBonusActive ? 'FREE' : 'LOCKED'}
           </div>
         )}
       </div>

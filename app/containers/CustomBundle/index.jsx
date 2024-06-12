@@ -145,6 +145,8 @@ export const CustomBundle = () => {
         },
       )
 
+      setSubmitting(false)
+
       if (res.success) {
         location.href = res.checkoutUrl
       }
@@ -163,8 +165,8 @@ export const CustomBundle = () => {
           action: `/account/subscriptions/${id}`,
         },
       )
-      setSubmitting(false)
 
+      setSubmitting(false)
       return res
     }
   }
