@@ -11,20 +11,18 @@ import { useLocation } from 'react-router-dom';
 export function MobileMenuAside() {
   const { menuToggle, setMenuToggle } = useContext(LayoutContext)
   const location = useLocation();
-  const isSpecialsPage = location.pathname === '/rich-froning';
+  const isSpecialsPage = location.pathname === '/rich-froning' || location.pathname === '/gym' || location.pathname === '/all-recipes';
 
 
   return (
     <>
       <div
-        className={`${
-          menuToggle ? 'block' : 'hidden'
-        } fixed top-0 bg-[#0000005c] z-20 w-[100vw] h-[100vh] transition-all duration-300 `}
+        className={`${menuToggle ? 'block' : 'hidden'
+          } fixed top-0 bg-[#0000005c] z-20 w-[100vw] h-[100vh] transition-all duration-300 `}
       ></div>
       <div
-        className={`${
-          menuToggle ? 'translate-x-0' : 'translate-x-[-4000px]'
-        } fixed top-0 max-w-[420px] w-full transition-all duration-500 z-[100] h-[100vh] bg-white`}
+        className={`${menuToggle ? 'translate-x-0' : 'translate-x-[-4000px]'
+          } fixed top-0 max-w-[420px] w-full transition-all duration-500 z-[100] h-[100vh] bg-white`}
       >
         <div className="flex justify-between items-center py-5 px-10 border-b border-[#1d1d1d26] ">
           <p className="text-[20px] text-black">Menu</p>
