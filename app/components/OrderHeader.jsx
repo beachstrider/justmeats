@@ -1,49 +1,32 @@
 import React from 'react'
 
-import { Link } from '@remix-run/react'
+import { NavLink } from '@remix-run/react'
 
-import logo from '~/assets/logo.svg'
+import { Back } from '~/icons/Back'
+import { Logo } from '~/icons/Logo'
+import { NewAccount } from '~/icons/NewAccount'
 
-const OrderHeader = () => {
+export const OrderHeader = () => {
   return (
-    <header className="flex flex-col items-center justify-center OrderHeader">
-      <div className="container flex items-center py-3">
-        <div>
-          <Link to="/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-8 h-8 m-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 19l-7-7 7-7"
-              ></path>
-            </svg>
-          </Link>
-        </div>
-        <div className="w-[100%] flex justify-center">
-          <Link to="/">
-            <img
-              className="object-cover h-20 w-30"
-              src={logo}
-              alt=""
-              loading="lazy"
-            />
-          </Link>
-        </div>
-      </div>
-      <div className="flex w-[100%] items-center justify-center bg-[#1c7084] py-1 ">
-        <p className="text-lg font-medium text-white uppercase ">
-          LIMITED TIME: GET FREE RASPBERRY BBQ CHICKEN
-        </p>
-      </div>
+    <header className="relative h-[80px] sm:h-[90px] sm:px-[22px] px-[13px] navBar flex justify-between items-center [filter:drop-shadow(0px_0px_15px_rgba(0,0,0,0.15))] bg-white">
+      <NavLink prefetch="intent" to="/" className="w-[48px]">
+        <Back />
+      </NavLink>
+      <NavLink
+        prefetch="intent"
+        to="/"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block w-[132px] sm:w-[152px] sm:mr-[11px] mr-[1px]"
+      >
+        <Logo />
+      </NavLink>
+      <NavLink
+        end
+        prefetch="intent"
+        to="/account"
+        className="hidden w-[32px] cursor-pointer loginIcon lg:flex sm:mr-[11px]"
+      >
+        <NewAccount />
+      </NavLink>
     </header>
   )
 }
-
-export default OrderHeader

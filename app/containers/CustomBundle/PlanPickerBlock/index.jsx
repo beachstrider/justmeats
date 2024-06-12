@@ -88,35 +88,32 @@ export const PlanPickerBlock = () => {
   )
 
   return (
-    <section className="w-[100%] sm:border-b-2 border-solid border-[#0003] mb-[0px] sm:mb-[30px]">
-      <div className="flex flex-col items-center justify-center pt-[10px] pb-5 sm:py-14">
-        <h2 className="font-bold text-[28px] hidden lg:block">
-          GET YOUR MEATS NOW
-        </h2>
-        <p className="italic text-center text-black text-[14px] sm:text-[20px] font-bold">
-          We guarantee you&apos;ll love it or your money back !
-        </p>
-        <div className="flex pt-2 min-h-[30px] sm:min-h-[auto] font-semibold">
-          {review}
+    <div className="w-[100%] pb-[0px] sm:pb-[25px] border-b border-[#EFEEED]">
+      <div className="flex flex-col">
+        <div className="block sm:hidden">
+          <h2 className="font-bold text-[28px] hidden lg:block">
+            GET YOUR MEATS NOW
+          </h2>
+          <p className="italic text-center text-black text-[14px] sm:text-[20px] font-bold">
+            We guarantee you&apos;ll love it or your money back !
+          </p>
+          <div className="flex pt-2 min-h-[30px] sm:min-h-[auto] font-semibold">
+            {review}
+          </div>
         </div>
 
-        <div className="flex justify-start flex-col lg:flex-row gap-[12px] lg:gap-[40px] pt-5 w-[100%]">
-          <div className="flex items-center w-full gap-2 lg:w-4/12 xl:w-3/12">
-            <div className="w-[35px] h-[35px] lg:w-[60px] lg:h-[60px] rounded-[100%] border-2 border-[#425C35] sm:border-none sm:bg-black flex justify-center items-center  ">
-              <span className=" text-[22px] lg:text-[40px] font-bold text-black sm:text-white ">
-                1
-              </span>
-            </div>
-            <div className="h-fit sm:border-b-4  sm:border-[#425B3499] sm:pb-1">
-              <h3 className="font-semibold leading-7 text-[20px] lg:text-[22px] text-[#1d1d1d] sm:uppercase ">
-                Select Your <br className="hidden lg:block" /> Frequency
-              </h3>
-            </div>
+        <div className="sm:px-[40px] px-[20px] font-hudson sm:mb-[15px] mb-[20px]">
+          <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px]">
+            1
           </div>
-
+          <h3 className="font-bold leading-7 text-[20px] sm:uppercase sm:tracking-[1px] tracking-[1px]">
+            SELECT YOUR FREQUENCY
+          </h3>
+        </div>
+        <div className="sm:px-[40px] px-[20px]">
           <PlanPicker />
         </div>
       </div>
-    </section>
+    </div>
   )
 }

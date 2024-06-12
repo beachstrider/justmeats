@@ -2,7 +2,7 @@ import { useContext } from 'react'
 
 import { CustomBundleContext } from '~/contexts'
 
-export function CartSummary({ layout, children = null }) {
+export function CartSummary({ layout }) {
   const { cost, originalCost } = useContext(CustomBundleContext)
 
   const className =
@@ -10,19 +10,17 @@ export function CartSummary({ layout, children = null }) {
 
   return (
     <div
-      aria-labelledby="cart-summary"
-      className={`${className} flex justify-between items-end `}
+      className={`${className} relative sm:px-[40px] px-[20px] sm:pt-[28px] pt-[16px]`}
     >
-      <dl className="flex text-base font-semibold cart-subtotal">
-        <dt>Total: </dt>
-        <span className="text-[16px] pr-1 line-through decoration-[#000] decoration-[3px] text-[#919191] ">
-          ${originalCost}
-        </span>
-        <dd>
-          <span className="text-[16px] font-semibold text-center">${cost}</span>
-        </dd>
-      </dl>
-      {children}
+      <div className="flex items-end justify-between font-barlow">
+        <div className="font-bold text-[14px]">Total:</div>
+        <div className="flex items-end gap-[6px]">
+          <div className="font-semibold text-[14px] text-[#666] line-through mb-[4px]">
+            ${originalCost}
+          </div>
+          <div className="font-bold text-[20px]">${cost}</div>
+        </div>
+      </div>
     </div>
   )
 }

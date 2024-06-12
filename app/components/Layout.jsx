@@ -1,5 +1,7 @@
 import { useContext, useState } from 'react'
 
+import { useMatches } from '@remix-run/react'
+
 import { Footer } from '~/components/Footer'
 import { Header } from '~/components/Header'
 import { Footer as NewFooter } from '~/components/NewFooter'
@@ -7,11 +9,13 @@ import { Header as NewHeader } from '~/components/NewHeader'
 import { LayoutContext, RootContext } from '~/contexts'
 
 import { MobileMenuAside } from './MobileMenuAside'
-import OrderHeader from './OrderHeader'
+import { OrderHeader } from './OrderHeader'
 
-export function Layout({ children = null, isProductPage }) {
-  const [menuToggle, setMenuToggle] = useState(false)
+export function Layout({ children = null }) {
+  const matches = useMatches()
   const { isNewLayout } = useContext(RootContext)
+  const [menuToggle, setMenuToggle] = useState(false)
+  const isProductPage = matches[1].params.bundle === 'custom-bundle'
 
   if (isNewLayout)
     return (
@@ -26,14 +30,7 @@ export function Layout({ children = null, isProductPage }) {
 
   return (
     <LayoutContext.Provider value={{ menuToggle, setMenuToggle }}>
-      {isProductPage ? (
-        <OrderHeader />
-      ) : (
-        <>
-          <Header />
-          <div>{isProductPage}</div>
-        </>
-      )}
+      {isProductPage ? <OrderHeader /> : <Header />}
       <MobileMenuAside />
       <main>{children}</main>
       <Footer />
