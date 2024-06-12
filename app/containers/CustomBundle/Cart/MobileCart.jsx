@@ -87,28 +87,30 @@ export const MobileCart = () => {
             <CartContent />
           </div>
         )}
-        <div className="sm:pt-0 pt-[10px] sm:px-0 px-[20px] sm:pb-0 pb-[16px] flex flex-col shrink-0 [box-shadow:0_-3px_15px_-5px_#333]">
-          {isCartPage && <PlanPicker type="mobileCart" />}
-          <div className="flex sm:gap-0 gap-[10px] mt-[16px]">
-            <Button
-              className="flex justify-center shrink-0 items-center w-[48px] h-[48px] border-2 border-[#6B1626] rounded-[8px]"
-              onClick={onMobileReamazeChatClick}
-            >
-              <MobileChat />
-            </Button>
-            <Button
-              loading={submitting}
-              disabled={!isCheckoutable}
-              onClick={handleSubmit}
-              className={cn(
-                'flex-1 text-white font-bold font-barlow text-[18px] text-center py-[10px] z-50',
-                isCartPage && isCheckoutable ? 'btn-checkout' : '',
-                isCheckoutable ? 'bg-[#BF4745]' : 'bg-[#AAAAAA]',
-              )}
-            >
-              {!isCheckoutable && `Spend $75 to `}
-              {isCartPage ? `Checkout` : 'Update Changes'} - ${cost}
-            </Button>
+        <div className="fixed bottom-0 left-0 w-full bg-white">
+          <div className="sm:pt-0 pt-[10px] sm:px-0 px-[20px] sm:pb-0 pb-[16px] flex flex-col shrink-0 [box-shadow:0_-3px_15px_-5px_#333]">
+            {isCartPage && <PlanPicker type="mobileCart" />}
+            <div className="flex sm:gap-0 gap-[10px] mt-[16px]">
+              <Button
+                className="flex justify-center shrink-0 items-center w-[48px] h-[48px] border-2 border-[#6B1626] rounded-[8px]"
+                onClick={onMobileReamazeChatClick}
+              >
+                <MobileChat />
+              </Button>
+              <Button
+                loading={submitting}
+                disabled={!isCheckoutable}
+                onClick={handleSubmit}
+                className={cn(
+                  'flex-1 text-white font-bold font-barlow text-[18px] text-center py-[10px] z-50',
+                  isCartPage && isCheckoutable ? 'btn-checkout' : '',
+                  isCheckoutable ? 'bg-[#BF4745]' : 'bg-[#AAAAAA]',
+                )}
+              >
+                {!isCheckoutable && `Spend $75 to `}
+                {isCartPage ? `Checkout` : 'Update Changes'} - ${cost}
+              </Button>
+            </div>
           </div>
         </div>
       </div>
