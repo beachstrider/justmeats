@@ -145,6 +145,8 @@ export const CustomBundle = () => {
         },
       )
 
+      setSubmitting(false)
+
       if (res.success) {
         location.href = res.checkoutUrl
       }
@@ -163,8 +165,8 @@ export const CustomBundle = () => {
           action: `/account/subscriptions/${id}`,
         },
       )
-      setSubmitting(false)
 
+      setSubmitting(false)
       return res
     }
   }
@@ -218,9 +220,6 @@ export const CustomBundle = () => {
                           />
                         </div>
                       </div>
-                      <div className="absolute 2xl:block hidden top-[-10px] right-[30px] w-[112px] h-[112px]">
-                        <QualitySeal />
-                      </div>
                     </div>
                     <div className="sm:hidden block sm:uppercase mb-[24px] font-hudson">
                       <div className="flex items-center w-full gap-[8px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:tracking-[1.2px] tracking-[0.6px]">
@@ -246,7 +245,7 @@ export const CustomBundle = () => {
                     </div>
                   </>
                 )}
-                <div className="relative grid grid-cols-2 product-grid xl:grid-cols-3 2xl:grid-cols-4 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]">
+                <div className="relative grid grid-cols-2 product-grid xl:grid-cols-3 2xl:grid-cols-4 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] xl:mb-[0px] mb-[50px]">
                   {filteredProducts.map((product, index) => (
                     <ProductCard
                       key={index}
@@ -263,10 +262,10 @@ export const CustomBundle = () => {
                 <FaqAccordion />
               </section>
             </div>
-            <aside className="cart-wrapper sticky top-[0] h-fit hidden lg:block sm:max-w-[480px] w-full bg-white sm:pt-[54px] pt-[16px]">
+            <aside className="cart-wrapper hidden lg:block sm:max-w-[480px] w-full bg-white 2xl:pt-[54px] sm:pt-[30px] pt-[16px]">
               {isCartPage && <PlanPickerBlock />}
-              <div className="h-full">
-                <div className="sm:px-[40px] px-[20px] py-[30px] text-center top-section border-y border-[#EFEEED]">
+              <div className="h-full sm:h-auto">
+                <div className="sm:hidden sm:px-[40px] px-[20px] py-[30px] text-center top-section border-y border-[#EFEEED]">
                   <div className="text-wrapper">
                     {isCartPage ? (
                       <>

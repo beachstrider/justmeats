@@ -18,6 +18,7 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
     priceRange,
     variants: { nodes },
     cart_drawer_img,
+    background_color,
   } = line
   const { costForOneTime } = useContext(CustomBundleContext)
 
@@ -32,10 +33,19 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
     nodes[0]?.image.url ??
     featuredImage.url
 
+  const backgroundColor = background_color?.value ?? '#EFEEED'
+  const borderColor = background_color?.value ?? '#EFEEED'
+
+  const isBonusActive = costForOneTime >= 125
+
+  const toggleInactive = () => {
+    return lineType === 'bonus' ? (isBonusActive ? '' : 'opacity-50') : ''
+  }
+
   const desktop = (
     <div
       className={cn(
-        'flex sm:flex-row flex-col gap-[34px] relative',
+        'flex sm:flex-row flex-col gap-[18px] relative',
         lineType === 'free' ? 'border-[#1b7084]' : 'border-[#425b34]',
       )}
     >
@@ -44,14 +54,7 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
           src={image}
           height={100}
           loading="lazy"
-          className={cn(
-            'w-full sm:w-[85px]',
-            lineType === 'bonus'
-              ? costForOneTime >= 125
-                ? ''
-                : 'opacity-50'
-              : '',
-          )}
+          className={cn('w-full sm:w-[40px]', toggleInactive())}
           onClick={() =>
             lineType === 'gift' ? setIsGiftModalOpen(true) : false
           }
@@ -61,17 +64,17 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
         <div className="flex flex-col sm:flex-row pr-[0px] justify-between items-center font-barlow">
           {lineType === 'bonus' && <LockedItem />}
           {lineType !== 'bonus' && (
-            <div className="pt-[20px] flex-1">
+            <div className="flex-1">
               <p className="font-bold text-[14px] sm:text-[16px]">{title}</p>
             </div>
           )}
         </div>
 
         {lineType === 'paid' && (
-          <div className="flex flex-1 items-end py-[16px]">
+          <div className="flex items-end flex-1">
             <div className="flex items-center justify-between flex-1">
               <div className="flex justify-start">
-                <Quantity line={line} />
+                <Quantity line={line} type="side-cart" />
               </div>
               <div className="font-barlow sm:text-[18px] text-[16px] font-semibold">
                 ${priceRange.maxVariantPrice.amount}
@@ -80,13 +83,18 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
           </div>
         )}
         {lineType !== 'paid' && (
-          <div className="flex items-end flex-1 font-barlow">
-            <div className="">
-              <div className="line-through text-[#666] text-[14px] font-semibold leading-none sm:mb-[4px]">{`$ ${originalPriceOfFreeProduct}`}</div>
-              <div className="font-bold text-[24px] text-[#CF2A2A] leading-none">
+          <div className="flex items-end justify-between flex-1 font-barlow">
+            <div className="flex items-center gap-[8px]">
+              <div className="line-through text-[#666] text-[14px] font-semibold leading-none">{`$ ${originalPriceOfFreeProduct}`}</div>
+              <div className="font-bold text-[18px] text-[#CF2A2A] leading-none sm:mb-[4px]">
                 FREE
               </div>
             </div>
+            {lineType === 'bonus' && !isBonusActive && (
+              <div className="font-bold text-[14px] text-[#231B19]">
+                Unlocked at $125
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -95,31 +103,64 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
 
   const mobile = (
     <div className="flex flex-col flex-1 product-grid">
-      <div className="relative px-[25px] pt-[12%] pb-[5%] mt-[40%] aspect-[111/100] flex bg-[#572D2D] text-white">
+      <div
+        className="relative px-[25px] pt-[12%] pb-[5%] mt-[40%] aspect-[111/100] flex text-white"
+        style={{ backgroundColor, borderColor }}
+      >
         <div className="flex items-end justify-center flex-1">
           <div className="absolute w-[84%] top-[32%] -translate-y-1/2">
-            <img src={image} loading="lazy" className="cursor-pointer" />
+            <img
+              src={image}
+              loading="lazy"
+              className={cn('cursor-pointer', toggleInactive())}
+            />
           </div>
         </div>
         {lineType !== 'paid' && (
-          <div className="absolute -translate-x-1/2 left-1/2 bottom-[-10px] px-[8px] py-[4px] bg-[#5AAF17] text-[12px] font-bold text-white tracking-[0.6px] leading-none">
-            FREE
+          <div
+            className={cn(
+              'absolute -translate-x-1/2 left-1/2 bottom-[-10px] px-[8px] py-[4px] text-[12px] font-bold text-white tracking-[0.6px] leading-none',
+              lineType === 'bonus' && !isBonusActive
+                ? 'bg-[#bf4745]'
+                : 'bg-[#5AAF17]',
+            )}
+          >
+            {lineType === 'free' ? 'FREE' : isBonusActive ? 'FREE' : 'LOCKED'}
           </div>
         )}
       </div>
       <div className="flex-1 flex flex-col justify-between bg-white border-x border-b border-[#EFEEED] overflow-hidden [box-shadow:0px_8px_14px_-5px_rgba(0,0,0,0.15)]">
         <div className="flex-1 flex flex-col justify-between px-[4px] pt-[12px] pb-[10px] text-center">
-          <div className="font-bold font-hudson leading-none text-[12px] mb-[8px]">
+          <div
+            className={cn(
+              'font-bold font-hudson leading-none text-[12px] mb-[8px]',
+              toggleInactive(),
+            )}
+          >
             {line.title}
           </div>
-          <div className="font-bold text-[12px] font-barlow">
-            {lineType === 'paid' &&
-              `$${line.priceRange.minVariantPrice.amount}`}
-          </div>
+          {lineType === 'paid' && (
+            <div className="font-bold text-[12px] font-barlow">
+              ${line.priceRange.minVariantPrice.amount}
+            </div>
+          )}
+          {lineType !== 'paid' && (
+            <div
+              className={cn(
+                'font-bold text-[12px] font-barlow line-through',
+                toggleInactive(),
+              )}
+            >
+              ${originalPriceOfFreeProduct}
+            </div>
+          )}
         </div>
         <div className="flex h-[33px] justify-center items-center border-t border-[#efeeed]">
           {lineType === 'paid' && <Quantity line={line} type={type} />}
           {lineType === 'bonus' && <LockedItem />}
+          {lineType === 'free' && (
+            <div className="font-medium font-barlow text-[14px]">1</div>
+          )}
         </div>
       </div>
     </div>

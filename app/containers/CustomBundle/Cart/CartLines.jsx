@@ -16,7 +16,7 @@ export function CartLines({ type }) {
   }
 
   return (
-    <div className="sm:pl-[40px] sm:pt-[40px] sm:pb-[24px] pl-[20px] pt-[20px] pb-[20px] overflow-x-hidden sm:overflow-y-scroll cart_lines_scrollbar sm:h-[590px]">
+    <div className="sm:pl-[40px] sm:pt-[30px] sm:pb-[14px] pl-[20px] pt-[20px] pb-[20px] overflow-x-hidden cart_lines_scrollbar sm:mb-0 mb-[374px]">
       <div className="sm:pr-[40px] pr-[20px]">
         <div className="grid grid-cols-3 sm:gap-[22px] gap-[8px] sm:grid-cols-1">
           <CartLineItem line={freeProduct} type={type} lineType="free" />
