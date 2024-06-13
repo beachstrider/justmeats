@@ -566,6 +566,14 @@ button.free-gift-label {
   background-position-y: -1px;
 }
 
+.bg-pattern2 {
+  background-image: url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1.png');
+  background-blend-mode: overlay;
+  background-color: #6b1626;
+  background-size: 100%;
+  background-position-y: 0;
+}
+
 .howjustmeatSlider .slick-track {
   display: flex !important;
   gap: 22px !important;

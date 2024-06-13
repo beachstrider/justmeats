@@ -34,7 +34,7 @@ export const Banner = () => {
           </div>
         </div>
         <div className="">
-          <div className="bg-[#891c31] sm:py-[24px] grid grid-cols-1 sm:grid-cols-3">
+          <div className="bg-pattern2 sm:py-[24px] grid grid-cols-1 sm:grid-cols-3">
             <div className="flex flex-1">
               <div className="flex justify-center flex-1">
                 <div className="text-[#EFEEED]">
