@@ -26,6 +26,7 @@ import { Banner } from '~/containers/Home/Banner'
 import { FarmToTable } from '~/containers/Home/FarmToTable'
 import { HowItWorks } from '~/containers/Home/HowItWorks'
 import { HowWeDoThis } from '~/containers/Home/HowWeDoThis'
+import { Review } from '~/containers/Home/Review'
 import { COLLECTIONS_QUERY } from '~/graphql/Collection'
 import { RECOMMENDED_PRODUCTS_QUERY } from '~/graphql/Product'
 
@@ -98,6 +99,7 @@ export default function Homepage() {
       <HowWeDoThis />
       <HowItWorks />
       <FarmToTable />
+      <Review />
     </main>
   )
 }
