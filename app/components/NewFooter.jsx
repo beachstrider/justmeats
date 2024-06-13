@@ -15,6 +15,7 @@ export const Footer = () => {
   const isSpecialsPage =
     location.pathname === '/gym-launch' || location.pathname === '/gym'
   const page = matches.at(-1).pathname
+  const currentYear = new Date().getFullYear()
 
   return (
     <footer className={`${isSpecialsPage ? 'bg-[#6B1626]' : 'bg-[#231b19]'}`}>

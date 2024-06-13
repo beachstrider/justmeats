@@ -783,6 +783,10 @@ section.product-list-slider button.slick-arrow.slick-next {
   margin: 0 auto;
 }
 
+.rounded-corner {
+  border-radius: 10px;
+}
+
 @media screen and (max-width: 540px) {
   .bg-herb-roasted-chicken-breast {
     display: none;
