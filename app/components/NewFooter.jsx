@@ -38,7 +38,7 @@ export const Footer = () => {
           </div>
         </div>
       )}
-      {matches.at(-1).pathname === '/all-recipes' && (
+      {matches.at(-1).pathname === '/all-recipes' || matches.at(-1).pathname === '/recipe' && (
         <div className="footer max-w-[100%] bg-[#6B1626]">
           <div className="container-small">
             <div className="flex flex-wrap items-start justify-between gap-10 py-10 lg:flex-nowrap lg:gap-10 sm:py-20 ">

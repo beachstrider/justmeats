@@ -2,10 +2,10 @@ import { Dropdown } from '~/components/Dropdown'
 import Recipe1 from '~/assets/images/Recipe1.png'
 import Recipe2 from '~/assets/images/Recipe2.png'
 
-export const AllRecipes = () => {
+export const RecipeItems = () => {
     return (
         <section className="bg-[#F5F5F5] text-[#231B19] pt-[62px] sm:pt-[103px] relative overflow-x-hidden pb-[50px]">
-            <div className="container flex flex-col items-center sm:mb-[56px] mb-[41px] relative">
+            <div className="container flex flex-col items-center sm:mb-[56px] relative">
                 <div className="text-center sm:text-[36px] text-[24px] font-hudson font-bold leading-tight sm:tracking-[1.8px] tracking-[1.2px] sm:mb-[20px] mb-[17px] font-mobile">
                     RECIPES
                 </div>
@@ -14,7 +14,7 @@ export const AllRecipes = () => {
                     erat, laoreet ut enim vitae, egestas fermentum dui. Integer cursus venenatis risus vel imperdiet.
                 </div>
             </div>
-            <div className="container flex flex-wrap justify-between items-center sm:mb-[56px] mb-[41px] relative">
+            <div className="container flex flex-wrap justify-between items-center sm:mb-[56px] mb-[41px] relative gap-[15px]">
                 <div className="md:w-96">
                     <div className="relative flex w-full items-stretch">
                         <input
