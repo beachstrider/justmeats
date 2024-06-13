@@ -579,6 +579,11 @@ button.free-gift-label {
   background-position-y: 0;
 }
 
+.bg-pattern3 {
+  background-image: url('../assets/images/5d5g5j54uj52t2d1s1d5rf7f56g3h2j.png');
+  background-position-y: -1px;
+}
+
 .howjustmeatSlider .slick-track {
   display: flex !important;
   gap: 22px !important;
