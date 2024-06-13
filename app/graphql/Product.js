@@ -77,7 +77,7 @@ export const PRODUCT_ITEM_FRAGMENT = `#graphql
     cardDescription: metafield(namespace: "custom", key: "card_description") {
       value
     }
-    servings: metafield(namespace: "custom", key: "_servings") {
+    servings: metafield(namespace: "custom", key: "servings") {
       value
     }
     weight: metafield(namespace: "custom", key: "weight") {

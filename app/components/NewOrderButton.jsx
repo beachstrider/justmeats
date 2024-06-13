@@ -11,7 +11,7 @@ export const OrderButton = ({ className }) => {
       prefetch="intent"
       to="/products/custom-bundle"
       className={cn(
-        'btn-order inline-block bg-primary cursor-pointer font-medium text-[#fff] hover:bg-primary-dark transition py-[10px] px-[20px] rounded-[4px] text-sm tracking-[0.7px]',
+        'btn-order inline-block bg-[#6B1626] cursor-pointer font-barlow font-medium leading-none text-[#fff] hover:bg-[#BF4745] transition py-[10px] px-[20px] text-sm tracking-[0.7px]',
         className,
       )}
     >

@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef, useState } from 'react'
-import { useLocation } from 'react-router-dom'
 
 import { NavLink, useMatches } from '@remix-run/react'
 
@@ -31,6 +30,7 @@ export function Header() {
     // Clean up event listener
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
   const HoverUnderNavLink = (to, text) => {
     const spanRef = useRef(null)
 
@@ -53,8 +53,7 @@ export function Header() {
     return (
       <li
         className={cn(
-          'navLink py-4 px-5 hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-medium',
-          isSpecialsPage ? 'text-[14px]' : 'text-base',
+          'navLink py-4 px-[16px] hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-barlow text-[14px] font-medium tracking-[0.7px]',
         )}
       >
         <NavLink
@@ -103,18 +102,14 @@ export function Header() {
   }, [prevScrollPos])
 
   const headerClass = isHeaderVisible ? '' : 'sticky-header'
-  const location = useLocation()
-  const isSpecialsPage = location.pathname === '/rich-froning' || location.pathname === '/gym' || location.pathname === '/all-recipes' || location.pathname === '/recipe'
 
   const Mainheader = () => {
     return !isMobile ? (
-      <header className="container relative h-[88px] sm:h-[120px] flex items-center justify-between py-4">
-        <div className="flex items-center justify-between w-full gap-10 navBar">
+      <div className="container-small relative h-[88px] sm:h-[120px] flex items-center justify-between py-4">
+        <div className="relative flex items-center justify-between w-full navBar">
           <ul
             className={cn(
-              'hidden navLinks lg:flex w-full  max-w-[40%] custom-padding-header',
-              isSpecialsPage && 'font-dunbar text-[14px]',
-              isSpecialsPage ? '' : 'invisible',
+              'hidden navLinks lg:flex w-full max-w-[40%] custom-padding-header font-dunbar text-[14px]',
             )}
           >
             {HoverUnderNavLink('/products/custom-bundle', 'Menu')}
@@ -122,22 +117,18 @@ export function Header() {
             {HoverUnderNavLink('/recipes', 'Recipes')}
             {HoverUnderNavLink('/', 'Specials')}
           </ul>
-          <a
-            href="/"
-            target="_blank"
-            className="w-full max-w-[20%] flex justify-center"
+          <NavLink
+            end
+            prefetch="intent"
+            to="/"
+            className="w-full max-w-[20%] flex justify-center absolute -translate-x-1/2 left-1/2"
           >
-            <div className="w-[148px] sm:w-[214px]">
+            <div className="w-[120px] sm:w-[178px]">
               <Logo />
             </div>
-          </a>
-          <div
-            className={cn(
-              'w-full max-w-[40%] flex justify-end',
-              isSpecialsPage ? '' : 'invisible',
-            )}
-          >
-            <div className="flex items-center justify-between gap-4 headerIcons sm:gap-10 w-[fit-content]">
+          </NavLink>
+          <div className={cn('w-full max-w-[40%] flex justify-end')}>
+            <div className="flex items-center justify-between gap-[10px] headerIcons sm:gap-[18px] w-[fit-content]">
               <NavLink end prefetch="intent" to="/account">
                 <span className="hidden w-[32px] cursor-pointer loginIcon lg:flex">
                   <svg
@@ -171,13 +162,13 @@ export function Header() {
                 <HamburgerOpen />
               </Button>
               <CartButton />
-              <div className="hidden lg:block">
+              <div className="hidden lg:block pl-[20px]">
                 <OrderButton />
               </div>
             </div>
           </div>
         </div>
-      </header>
+      </div>
     ) : (
       <div
         className={cn(
@@ -268,93 +259,10 @@ export function Header() {
   }
 
   return (
-    <header className="">{isRoute ? <Landingheader /> : <Mainheader />}</header>
+    <header className="[box-shadow:0px_0px_15px_0px_rgba(0,0,0,0.15)]">
+      {isRoute ? <Landingheader /> : <Mainheader />}
+    </header>
   )
-}
-
-export function HeaderMenu({ menu, primaryDomainUrl, viewport }) {
-  const { publicStoreDomain } = useRootLoaderData()
-  const className = `header-menu-${viewport}`
-
-  function closeAside(event) {
-    if (viewport === 'mobile') {
-      event.preventDefault()
-      window.location.href = event.currentTarget.href
-    }
-  }
-
-  return (
-    <nav className={className} role="navigation">
-      {viewport === 'mobile' && (
-        <NavLink
-          end
-          onClick={closeAside}
-          prefetch="intent"
-          style={activeLinkStyle}
-          to="/"
-        >
-          Home
-        </NavLink>
-      )}
-      {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
-        if (!item.url) return null
-
-        // if the url is internal, we strip the domain
-        const url =
-          item.url.includes('myshopify.com') ||
-            item.url.includes(publicStoreDomain) ||
-            item.url.includes(primaryDomainUrl)
-            ? new URL(item.url).pathname
-            : item.url
-        return (
-          <NavLink
-            className="header-menu-item"
-            end
-            key={item.id}
-            onClick={closeAside}
-            prefetch="intent"
-            style={activeLinkStyle}
-            to={url}
-          >
-            {item.title}
-          </NavLink>
-        )
-      })}
-    </nav>
-  )
-}
-
-const FALLBACK_HEADER_MENU = {
-  id: 'gid://shopify/Menu/199655587896',
-  items: [
-    {
-      id: 'gid://shopify/MenuItem/461609500728',
-      resourceId: null,
-      tags: [],
-      title: 'Collections',
-      type: 'HTTP',
-      url: '/collections',
-      items: [],
-    },
-    {
-      id: 'gid://shopify/MenuItem/461609566264',
-      resourceId: null,
-      tags: [],
-      title: 'Policies',
-      type: 'HTTP',
-      url: '/policies',
-      items: [],
-    },
-    {
-      id: 'gid://shopify/MenuItem/461609599032',
-      resourceId: 'gid://shopify/Page/92591030328',
-      tags: [],
-      title: 'About',
-      type: 'PAGE',
-      url: '/pages/about',
-      items: [],
-    },
-  ],
 }
 
 /**

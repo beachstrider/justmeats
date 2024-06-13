@@ -530,7 +530,11 @@ button.free-gift-label {
 }
 
 .bg-yellow-pattern {
-  background-image: url('../assets/images/7e0c002b6aef76e3311b714b92b70294.jpg');
+  background-image: url('../assets/images/black-horizontal-lines-wallpaper1.png');
+  background-repeat: no-repeat;
+  background-color: #f4e8d0;
+  background-size: cover;
+  background-position-y: 0;
 }
 
 .bg-JustMeatsPartnershipsWithRichFroningImage {
@@ -552,6 +556,32 @@ button.free-gift-label {
 .bg-rec-96 {
   background-image: url('../assets/images/Rectangle96.png');
   background-size: cover;
+  background-position: center;
+}
+
+.bg-justmeats-banner {
+  background-image: url('../assets/images/589d28c48bb6157821efa22596d9c0d9.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-pattern1 {
+  background-image: url('../assets/images/3as5d1f3a5sdf63asdf.png');
+  background-position-y: -1px;
+}
+
+.bg-pattern2 {
+  background-image: url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1.png');
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-color: #6b1626;
+  background-size: cover;
+  background-position-y: 0;
+}
+
+.bg-pattern3 {
+  background-image: url('../assets/images/5d5g5j54uj52t2d1s1d5rf7f56g3h2j.png');
+  background-position-y: -1px;
 }
 
 .howjustmeatSlider .slick-track {
@@ -775,6 +805,6 @@ section.product-list-slider button.slick-arrow.slick-next {
   @apply !px-0;
 }
 
-#reamaze-widget {
+.page-custom-bundle ~ #reamazejs-container {
   @apply sm:!visible !invisible;
 }
