@@ -22,7 +22,7 @@ export const HowItWorks = () => {
         <div className="text-[#EFEEED]">
           <HowItWorksStepsSlider />
         </div>
-        <div className="flex justify-center sm:gap-[20px] gap-[8px] text-[#EFEEED] px-[25px] py-[0] sm:text-[16px] text-[12px] text-center">
+        <div className="flex justify-center sm:gap-[20px] gap-[8px] text-[#EFEEED] px-[25px] py-[0] text-center">
           <NavLink
             end
             to="/about"
