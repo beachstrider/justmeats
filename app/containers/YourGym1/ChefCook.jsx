@@ -13,7 +13,7 @@ export const ChefCook = () => {
               src={ChefCooker}
             />
           </div>
-          <div className="flex items-end bg-[#222222]">
+          <div className="flex items-start bg-[#222222]">
             <div className="relative w-full sm:h-[87.5%] flex justify-center lg:block">
               <div className="lg:absolute max-w-[532px] w-full h-full lg:px-0 px-[20px] 2xl:pt-[53px] xl:pt-[30px] lg:pt-[30px] lg:pl-[64px] flex flex-col 2xl:gap-[26px] gap-[20px]">
                 <div className="sm:text-[36px] text-[24px] font-bold tracking-[2px]">
