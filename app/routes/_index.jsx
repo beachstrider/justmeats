@@ -8,6 +8,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { NavLink } from '@remix-run/react'
+import { getPaginationVariables } from '@shopify/hydrogen'
 import { Image } from '@shopify/hydrogen-react'
 import { defer } from '@shopify/remix-oxygen'
 
@@ -22,20 +23,33 @@ import video1 from '~/assets/videos/32c027bc585340199844575c5e85cf42.mp4'
 import FaqAccordion from '~/components/FaqAccordion'
 import ProductsSlider from '~/components/ProductsSlider'
 import { Banner } from '~/containers/Home/Banner'
-import { FEATURED_COLLECTION_QUERY } from '~/graphql/Collection'
+import { HowWeDoThis } from '~/containers/Home/HowWeDoThis'
+import { COLLECTIONS_QUERY } from '~/graphql/Collection'
 import { RECOMMENDED_PRODUCTS_QUERY } from '~/graphql/Product'
 
 export const meta = () => {
   return [{ title: 'Just Meats | No Fuss, All Flavor – Ready & Delivered!' }]
 }
 
-export async function loader({ context }) {
+export async function loader({ request, context }) {
   const { storefront } = context
-  const { collections } = await storefront.query(FEATURED_COLLECTION_QUERY)
-  const featuredCollection = collections.nodes[0]
-  const recommendedProducts = storefront.query(RECOMMENDED_PRODUCTS_QUERY)
 
-  return defer({ featuredCollection, recommendedProducts })
+  const variables = getPaginationVariables(request, { pageBy: 50 })
+  const collectionHandles = ['featured', 'most-popular', 'trending']
+  const query = collectionHandles.join(' OR ')
+
+  const {
+    collections: { nodes: collections },
+  } = await storefront.query(COLLECTIONS_QUERY, {
+    variables: {
+      ...variables,
+      query,
+      country: storefront.i18n.country,
+      language: storefront.i18n.language,
+    },
+  })
+
+  return defer({ collections })
 }
 
 export default function Homepage() {
@@ -79,6 +93,7 @@ export default function Homepage() {
   return (
     <main className="relative page-home">
       <Banner />
+      <HowWeDoThis />
     </main>
   )
 }

@@ -569,8 +569,9 @@ button.free-gift-label {
 .bg-pattern2 {
   background-image: url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1.png');
   background-blend-mode: overlay;
+  background-repeat: no-repeat;
   background-color: #6b1626;
-  background-size: 100%;
+  background-size: cover;
   background-position-y: 0;
 }
 

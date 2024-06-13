@@ -34,17 +34,44 @@ export const Banner = () => {
           </div>
         </div>
         <div className="">
-          <div className="bg-pattern2 sm:py-[24px] grid grid-cols-1 sm:grid-cols-3">
-            <div className="flex flex-1">
-              <div className="flex justify-center flex-1">
-                <div className="text-[#EFEEED]">
-                  <div className="font-bold leading-none">Meats delivered</div>
-                  <div className="text-[75px] tracking-[2.25px] leading-none">
-                    1,006,928
+          <div className="bg-pattern2">
+            <div className="container-small sm:py-[24px] grid grid-cols-1 sm:grid-cols-3">
+              <div className="flex sm:flex-row flex-col flex-1">
+                <div className="flex sm:flex-row flex-col justify-center flex-1">
+                  <div className="text-[#EFEEED]">
+                    <div className="font-bold leading-none">
+                      Meats delivered
+                    </div>
+                    <div className="text-[75px] tracking-[2.25px] leading-none">
+                      1,006,928
+                    </div>
+                  </div>
+                </div>
+                <div className="shrink-0 sm:w-[2px] w-full sm:h-full h-[2px] rounded-full bg-white" />
+              </div>
+              <div className="flex sm:flex-row flex-col flex-1">
+                <div className="flex sm:flex-row flex-col justify-center flex-1">
+                  <div className="text-[#EFEEED]">
+                    <div className="font-bold leading-none">Pounds Cooked</div>
+                    <div className="text-[75px] tracking-[2.25px] leading-none">
+                      345,431 lbs.
+                    </div>
+                  </div>
+                </div>
+                <div className="shrink-0 sm:w-[2px] w-full sm:h-full h-[2px] rounded-full bg-white" />
+              </div>
+              <div className="flex sm:flex-row flex-col flex-1">
+                <div className="flex sm:flex-row flex-col justify-center flex-1">
+                  <div className="text-[#EFEEED]">
+                    <div className="font-bold leading-none">
+                      Happy Customers
+                    </div>
+                    <div className="text-[75px] tracking-[2.25px] leading-none">
+                      84,097
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="shrink-0 w-[1.5px] rounded-full bg-white" />
             </div>
           </div>
           <div className="h-[21px] bg-pattern1" />
