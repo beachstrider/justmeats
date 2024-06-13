@@ -368,11 +368,6 @@ section.bg-\[url\(\'https\:\/\/cdn\.shopify\.com\/s\/files\/1\/0555\/1751\/1961\
   background-image: url('../assets/images/Banner.png');
 }
 
-.bg-brown-pattern {
-  background-image: url('../assets/images/Rectangle-brown-pattern.png');
-  background-size: cover;
-}
-
 span.free-text-label {
   color: black;
   margin-top: -15px;
@@ -535,6 +530,15 @@ button.free-gift-label {
   background-color: #f4e8d0;
   background-size: cover;
   background-position-y: 0;
+}
+
+.bg-brown-pattern {
+  background-image: url('../assets/images/s2d1f5h4u8u6u2g1j2o2j2gd6de.png');
+  background-repeat: no-repeat;
+  background-color: #6b1626;
+  background-size: cover;
+  background-position-y: 0;
+  background-blend-mode: overlay;
 }
 
 .bg-JustMeatsPartnershipsWithRichFroningImage {
