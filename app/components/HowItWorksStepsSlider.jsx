@@ -43,10 +43,9 @@ const steps = [
   },
 ]
 
-
 export const HowItWorksStepsSlider = () => {
   return (
-    <div className="relative flex justify-center overflow-x-hidden sm:mb-[56px] mb-[10px] sm:max-w-full max-w-[425px]">
+    <div className="relative flex justify-center sm:overflow-x-auto overflow-x-hidden sm:mb-[56px] mb-[10px] sm:max-w-full max-w-[425px]">
       <div className="w-full sm:w-[560px] md:w-[640px] lg:w-[870px] mx-auto">
         <Swiper
           loop
@@ -60,7 +59,7 @@ export const HowItWorksStepsSlider = () => {
           className="how-it-works-slider"
         >
           {steps.map((step, index) => (
-            <SwiperSlide key={index} className='pb-[30px]'>
+            <SwiperSlide key={index} className="pb-[30px]">
               <div
                 className="relative rounded-[8px] overflow-hidden sm:mb-0 mb-[50px] w-full"
                 style={{ boxShadow: '0px 30px 30px -9px rgba(0, 0, 0, 0.14)' }}
@@ -78,7 +77,7 @@ export const HowItWorksStepsSlider = () => {
             </SwiperSlide>
           ))}
           {steps.map((step, index) => (
-            <SwiperSlide key={index} className='pb-[30px]'>
+            <SwiperSlide key={index} className="pb-[30px]">
               <div
                 className="relative rounded-[8px] overflow-hidden sm:mb-0 mb-[50px] w-full"
                 style={{ boxShadow: '0px 30px 30px -9px rgba(0, 0, 0, 0.14)' }}

@@ -23,6 +23,7 @@ import video1 from '~/assets/videos/32c027bc585340199844575c5e85cf42.mp4'
 import FaqAccordion from '~/components/FaqAccordion'
 import ProductsSlider from '~/components/ProductsSlider'
 import { Banner } from '~/containers/Home/Banner'
+import { HowItWorks } from '~/containers/Home/HowItWorks'
 import { HowWeDoThis } from '~/containers/Home/HowWeDoThis'
 import { COLLECTIONS_QUERY } from '~/graphql/Collection'
 import { RECOMMENDED_PRODUCTS_QUERY } from '~/graphql/Product'
@@ -94,6 +95,7 @@ export default function Homepage() {
     <main className="relative page-home">
       <Banner />
       <HowWeDoThis />
+      <HowItWorks />
     </main>
   )
 }

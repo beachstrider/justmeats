@@ -530,7 +530,11 @@ button.free-gift-label {
 }
 
 .bg-yellow-pattern {
-  background-image: url('../assets/images/7e0c002b6aef76e3311b714b92b70294.jpg');
+  background-image: url('../assets/images/black-horizontal-lines-wallpaper1.png');
+  background-repeat: no-repeat;
+  background-color: #f4e8d0;
+  background-size: cover;
+  background-position-y: 0;
 }
 
 .bg-JustMeatsPartnershipsWithRichFroningImage {
