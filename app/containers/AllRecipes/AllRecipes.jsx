@@ -4,7 +4,7 @@ import Recipe2 from '~/assets/images/Recipe2.png'
 
 export const AllRecipes = () => {
     return (
-        <section className="bg-[#EFEEED] text-[#231B19] pt-[62px] sm:pt-[103px] relative overflow-x-hidden pb-[50px]">
+        <section className="bg-[#F5F5F5] text-[#231B19] pt-[62px] sm:pt-[103px] relative overflow-x-hidden pb-[50px]">
             <div className="container flex flex-col items-center sm:mb-[56px] mb-[41px] relative">
                 <div className="text-center sm:text-[36px] text-[24px] font-hudson font-bold leading-tight sm:tracking-[1.8px] tracking-[1.2px] sm:mb-[20px] mb-[17px] font-mobile">
                     RECIPES
@@ -15,11 +15,11 @@ export const AllRecipes = () => {
                 </div>
             </div>
             <div className="container flex flex-wrap justify-between items-center sm:mb-[56px] mb-[41px] relative">
-                <div className="mb-3 md:w-96">
-                    <div className="relative mb-4 flex w-full items-stretch">
+                <div className="md:w-96">
+                    <div className="relative flex w-full items-stretch">
                         <input
                             type="search"
-                            className="relative min-w-24 m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border-neutral-300 bg-[#FFF] shadow-xl bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                            className="relative min-w-72 m-0 -mr-0.5 block flex-auto rounded-l border-neutral-300 bg-[#FFF] shadow-xl bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
                             placeholder="Search"
                             aria-label="Search"
                             aria-describedby="button-addon1" />
@@ -42,7 +42,7 @@ export const AllRecipes = () => {
                         </div>
                     </div>
                 </div>
-                <div className="sm:flex shrink-0 sm:gap-[18px]">
+                <div className="flex shrink-0 gap-[18px]">
                     <Dropdown placeholder={'LATEST'} menuMinWidth={131}>
                         <label></label>
                     </Dropdown>
@@ -52,7 +52,7 @@ export const AllRecipes = () => {
                 </div>
             </div>
             <div className="container">
-                <div className='relative grid grid-cols-1 product-grid xl:grid-cols-3 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]'>
+                <div className='relative grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]'>
 
                     <div className="relative rounded-[8px] sm:mb-0 mb-[50px] w-full" style={{ boxShadow: '0px 30px 30px -9px rgba(0, 0, 0, 0.14)' }}>
                         <div className='absolute top-[-15px] right-[15px]'>
@@ -66,7 +66,7 @@ export const AllRecipes = () => {
                             <div className="text-[#231B19] text-center tracking-[1px] leading-[20px] font-bold font-hudson sm:mb-[20px] mb-[18px]">LOREM IPSUM DOLOR SIT AMET</div>
                             <div className="text-[#231B19] text-center font-barlow text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam finibus sapien non lobortis tincidunt. </div>
                         </div>
-                        <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-3 text-[14px]">
+                        <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-3 text-[14px] rounded-b-[8px]">
                             <div className='flex flex-col items-center'>
                                 <div className='text-center'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -114,7 +114,7 @@ export const AllRecipes = () => {
                             <div className="text-[#231B19] text-center tracking-[1px] leading-[20px] font-bold font-hudson sm:mb-[20px] mb-[18px]">LOREM IPSUM DOLOR SIT AMET</div>
                             <div className="text-[#231B19] text-center font-barlow text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam finibus sapien non lobortis tincidunt. </div>
                         </div>
-                        <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-3 text-[14px]">
+                        <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-3 text-[14px] rounded-b-[8px]">
                             <div className='flex flex-col items-center'>
                                 <div className='text-center'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -162,7 +162,7 @@ export const AllRecipes = () => {
                             <div className="text-[#231B19] text-center tracking-[1px] leading-[20px] font-bold font-hudson sm:mb-[20px] mb-[18px]">LOREM IPSUM DOLOR SIT AMET</div>
                             <div className="text-[#231B19] text-center font-barlow text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam finibus sapien non lobortis tincidunt. </div>
                         </div>
-                        <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-3 text-[14px]">
+                        <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-3 text-[14px] rounded-b-[8px]">
                             <div className='flex flex-col items-center'>
                                 <div className='text-center'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -210,7 +210,7 @@ export const AllRecipes = () => {
                             <div className="text-[#231B19] text-center tracking-[1px] leading-[20px] font-bold font-hudson sm:mb-[20px] mb-[18px]">LOREM IPSUM DOLOR SIT AMET</div>
                             <div className="text-[#231B19] text-center font-barlow text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam finibus sapien non lobortis tincidunt. </div>
                         </div>
-                        <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-3 text-[14px]">
+                        <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-3 text-[14px] rounded-b-[8px]">
                             <div className='flex flex-col items-center'>
                                 <div className='text-center'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -258,7 +258,7 @@ export const AllRecipes = () => {
                             <div className="text-[#231B19] text-center tracking-[1px] leading-[20px] font-bold font-hudson sm:mb-[20px] mb-[18px]">LOREM IPSUM DOLOR SIT AMET</div>
                             <div className="text-[#231B19] text-center font-barlow text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam finibus sapien non lobortis tincidunt. </div>
                         </div>
-                        <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-3 text-[14px]">
+                        <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-3 text-[14px] rounded-b-[8px]">
                             <div className='flex flex-col items-center'>
                                 <div className='text-center'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -306,7 +306,7 @@ export const AllRecipes = () => {
                             <div className="text-[#231B19] text-center tracking-[1px] leading-[20px] font-bold font-hudson sm:mb-[20px] mb-[18px]">LOREM IPSUM DOLOR SIT AMET</div>
                             <div className="text-[#231B19] text-center font-barlow text-[14px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam finibus sapien non lobortis tincidunt. </div>
                         </div>
-                        <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-3 text-[14px]">
+                        <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-3 text-[14px] rounded-b-[8px]">
                             <div className='flex flex-col items-center'>
                                 <div className='text-center'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -344,37 +344,37 @@ export const AllRecipes = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="flex items-center justify-center border-t border-gray-200 px-4 py-3 sm:px-6">
+                    <div className="flex items-center justify-center px-4 py-3 sm:px-6">
                         <div className="sm:flex sm:flex-1 sm:items-center sm:justify-center">
                             <div>
-                                <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                                <nav className="isolate inline-flex -space-x-px" aria-label="Pagination">
                                     <a
                                         href="#"
-                                        aria-current="page"
-                                        className="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                        className="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
                                     >1</a>
                                     <a
                                         href="#"
-                                        className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                                        className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                                     >2</a>
                                     <a
                                         href="#"
-                                        className="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
+                                        aria-current="page"
+                                        className="relative z-10 inline-flex items-center bg-[#6B1626] px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                     >3</a>
                                     <a
                                         href="#"
-                                        className="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
+                                        className="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
                                     >4</a>
                                     <a
                                         href="#"
-                                        className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                                        className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                                     >5</a>
-                                    <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">
+                                    <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 focus:outline-offset-0">
                                         ...
                                     </span>
                                     <a
                                         href="#"
-                                        className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                                        className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                                     >10</a>
 
                                 </nav>
