@@ -41,7 +41,7 @@ export const SecondContact = () => {
 
             <ContactForm formName="second" />
           </div>
-          <div className="relative flex aspect-square border-[3px] border-solid border-white">
+          <div className="relative flex aspect-square">
             <iframe
               src="https://player.vimeo.com/video/937966988?h=83f08bf634"
               className="w-full h-full"
