@@ -33,11 +33,11 @@ export const Banner = () => {
             <div className=""></div>
           </div>
         </div>
-        <div className="">
-          <div className="bg-pattern2">
-            <div className="container-small sm:py-[24px] grid grid-cols-1 sm:grid-cols-3">
-              <div className="flex sm:flex-row flex-col flex-1">
-                <div className="flex sm:flex-row flex-col justify-center flex-1">
+        <div className="sm:px-0 px-[20px] bg-[#F8F2E8]">
+          <div className="bg-pattern2 sm:pt-0 sm:pb-0 pt-[28px] pb-[22px] sm:mt-0 mt-[-90px]">
+            <div className="container-small sm:text-left text-center sm:py-[24px] grid grid-cols-1 sm:grid-cols-3">
+              <div className="flex flex-col items-center flex-1 sm:flex-row">
+                <div className="flex flex-col justify-center flex-1 sm:flex-row">
                   <div className="text-[#EFEEED]">
                     <div className="font-bold leading-none">
                       Meats delivered
@@ -47,10 +47,10 @@ export const Banner = () => {
                     </div>
                   </div>
                 </div>
-                <div className="shrink-0 sm:w-[2px] w-full sm:h-full h-[2px] rounded-full bg-white" />
+                <div className="shrink-0 sm:w-[3px] w-[110px] sm:h-full h-[3px] rounded-full bg-white sm:my-0 my-[20px]" />
               </div>
-              <div className="flex sm:flex-row flex-col flex-1">
-                <div className="flex sm:flex-row flex-col justify-center flex-1">
+              <div className="flex flex-col items-center flex-1 sm:flex-row">
+                <div className="flex flex-col justify-center flex-1 sm:flex-row">
                   <div className="text-[#EFEEED]">
                     <div className="font-bold leading-none">Pounds Cooked</div>
                     <div className="text-[75px] tracking-[2.25px] leading-none">
@@ -58,10 +58,10 @@ export const Banner = () => {
                     </div>
                   </div>
                 </div>
-                <div className="shrink-0 sm:w-[2px] w-full sm:h-full h-[2px] rounded-full bg-white" />
+                <div className="shrink-0 sm:w-[3px] w-[110px] sm:h-full h-[3px] rounded-full bg-white sm:my-0 my-[20px]" />
               </div>
-              <div className="flex sm:flex-row flex-col flex-1">
-                <div className="flex sm:flex-row flex-col justify-center flex-1">
+              <div className="flex flex-col flex-1 sm:flex-row">
+                <div className="flex flex-col justify-center flex-1 sm:flex-row">
                   <div className="text-[#EFEEED]">
                     <div className="font-bold leading-none">
                       Happy Customers
@@ -74,7 +74,7 @@ export const Banner = () => {
               </div>
             </div>
           </div>
-          <div className="h-[21px] bg-pattern1" />
+          <div className="sm:block hidden h-[21px] bg-pattern1" />
         </div>
       </div>
     </section>

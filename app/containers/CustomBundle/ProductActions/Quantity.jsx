@@ -54,7 +54,7 @@ export const Quantity = ({ line, type }) => {
             type === 'modal' ? 'text-white' : 'text-[#862e1b]',
           )}
         >
-          <span>&#8722; </span>
+          <span className="sm:pb-[2px] pb-[3px]">&#8722; </span>
         </button>
         <small
           className={cn(
@@ -75,7 +75,7 @@ export const Quantity = ({ line, type }) => {
           // PATCH: temporily
           disabled={isUnavailable}
         >
-          <span>&#43;</span>
+          <span className="sm:pb-[2px] pb-[3px]">&#43;</span>
         </button>
       </div>
     </div>

@@ -67,7 +67,12 @@ export const Featured = () => {
 
   for (const el of collections) {
     slides[el.id] = el.products.nodes.map((product, index) => (
-      <ProductCard key={index} product={product} className="mb-[60px]" />
+      <ProductCard
+        type="home"
+        key={index}
+        product={product}
+        className="mb-[60px]"
+      />
     ))
   }
 
