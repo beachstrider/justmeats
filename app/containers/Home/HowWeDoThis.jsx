@@ -64,7 +64,7 @@ export const HowWeDoThis = () => {
   }
 
   return (
-    <section className="bg-[#F8F2E8] text-[#231B19] pt-[62px] sm:pt-[103px] relative overflow-hidden">
+    <section className="relative z-[1] bg-[#F8F2E8] text-[#231B19] pt-[62px] sm:pt-[103px] sm:pb-[40px] pb-[44px]">
       <img
         src={JustMeatsBoxPart}
         className="absolute md:block hidden left-0 xl:top-[120px] top-[14%]"
@@ -161,7 +161,7 @@ export const HowWeDoThis = () => {
           </div>
         </div>
       </div>
-      <div className="container-small text-[#EFEEED] sm:mb-[82px] mb-[62px] relative">
+      <div className="container-small text-[#EFEEED] relative">
         <div className="flex justify-center sm:gap-[20px] gap-[8px]">
           <NavLink
             end

@@ -2,7 +2,7 @@ import { cn, getPureId } from '~/lib/utils'
 
 import { ProductActions } from './ProductActions'
 
-export const ProductCard = ({ product, onClick }) => {
+export const ProductCard = ({ product, onClick, className }) => {
   const image = product.product_icon_1.reference.image.url
   const backgroundColor = product.background_color?.value ?? '#FFF'
   const servings = product.servings?.value ?? ''
@@ -22,7 +22,10 @@ export const ProductCard = ({ product, onClick }) => {
   }
 
   return (
-    <div className="flex flex-col product-grid" data-product-id={product.id}>
+    <div
+      className={cn('flex flex-col product-grid', className)}
+      data-product-id={product.id}
+    >
       <div
         className={cn(
           'relative px-[25px] pt-[12%] pb-[5%] mt-[40%] 2xl:aspect-[270/280] xl:aspect-[270/282] aspect-[270/272] flex text-white bg-[#234234]',
@@ -41,7 +44,7 @@ export const ProductCard = ({ product, onClick }) => {
             {specialType && (
               <div
                 className={cn(
-                  'absolute sm:left-[4px] left-[2px] top-[34px] px-[8px] py-[4px] text-white font-barlow sm:text-[14px] text-[12px] font-semibold sm:tracking-[0.7px] tracking-[0.6px] leading-none uppercase',
+                  'absolute sm:left-[2px] left-[2px] top-[34px] px-[8px] py-[4px] text-white font-barlow sm:text-[14px] text-[12px] font-semibold sm:tracking-[0.7px] tracking-[0.6px] leading-none uppercase',
                 )}
                 style={{
                   backgroundColor:

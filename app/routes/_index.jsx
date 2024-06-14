@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import OrderButton from 'app/components/OrderButton'
 // Import Swiper styles
@@ -25,10 +25,12 @@ import ProductsSlider from '~/components/ProductsSlider'
 import { Banner } from '~/containers/Home/Banner'
 import { FaqSection } from '~/containers/Home/FaqSection'
 import { FarmToTable } from '~/containers/Home/FarmToTable'
+import { Featured } from '~/containers/Home/Featured'
 import { HowItWorks } from '~/containers/Home/HowItWorks'
 import { HowWeDoThis } from '~/containers/Home/HowWeDoThis'
 import { OrderNow } from '~/containers/Home/OrderNow'
 import { Review } from '~/containers/Home/Review'
+import { CustomBundleContext, RootContext } from '~/contexts'
 import { COLLECTIONS_QUERY } from '~/graphql/Collection'
 import { RECOMMENDED_PRODUCTS_QUERY } from '~/graphql/Product'
 
@@ -81,6 +83,11 @@ export default function Homepage() {
 
   const [isMobile, setIsMobile] = useState(false)
 
+  const { cartProducts, setCartProducts } = useContext(RootContext)
+
+  const setSelectedProducts = setCartProducts
+  const selectedProducts = cartProducts
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 540)
@@ -96,14 +103,22 @@ export default function Homepage() {
   }, [])
 
   return (
-    <main className="relative page-home">
-      <Banner />
-      <HowWeDoThis />
-      <HowItWorks />
-      <FarmToTable />
-      <Review />
-      <OrderNow />
-      <FaqSection />
-    </main>
+    <CustomBundleContext.Provider
+      value={{
+        selectedProducts,
+        setSelectedProducts,
+      }}
+    >
+      <main className="relative page-home">
+        <Banner />
+        <HowWeDoThis />
+        <Featured />
+        <HowItWorks />
+        <FarmToTable />
+        <Review />
+        <OrderNow />
+        <FaqSection />
+      </main>
+    </CustomBundleContext.Provider>
   )
 }

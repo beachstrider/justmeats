@@ -3,6 +3,8 @@ import Slider from 'react-slick'
 
 import { useLoaderData } from '@remix-run/react'
 
+import { ProductCard } from '../CustomBundle/ProductCard'
+
 const settings = {
   dots: true,
   autoplay: true,
@@ -65,34 +67,18 @@ export const Featured = () => {
 
   for (const el of collections) {
     slides[el.id] = el.products.nodes.map((product, index) => (
-      <div key={index}>
-        <div className="relative flex flex-col aspect-square mt-[24%] mb-[20%]">
-          <div
-            className="relative px-[25px] pt-[12%] pb-[8%] rounded-t-[8px] h-[69%] flex text-white"
-            style={{
-              backgroundColor: product.background_color.value ?? '#572d2d',
-            }}
-          >
-            <div className="relative flex items-end justify-center flex-1">
-              <div className="absolute w-[80%] top-0 -translate-y-1/2">
-                <img src={product.images.nodes[1].url} className="rotate-90" />
-              </div>
-              <div className="xl:mb-[2%]">Everyday Meats</div>
-            </div>
-          </div>
-          <div className="flex-1 bg-white py-[22px] px-[10px] flex justify-center items-center text-[20px] rounded-b-[8px] font-bold tracking-normal">
-            <div className="truncate">{product.title}</div>
-          </div>
-        </div>
-      </div>
+      <ProductCard key={index} product={product} className="mb-[60px]" />
     ))
   }
 
   return (
-    <section className="bg-[#121315] py-6 font-nunito">
+    <section className="relative z-0 sm:pt-[74px] sm:pb-[64px] pt-[35px] pb-[48px]">
       <div className="flex flex-col items-center overflow-hidden container-small sm:block">
+        <div className="text-center font-hudson sm:text-[36px] text-[24px] font-bold sm:tracking-[1.8px] tracking-[1.2px]">
+          NOW SERVING
+        </div>
         <div className="w-[360px] sm:w-auto pt-6">
-          <div className="slider-container featuredSlider">
+          <div className="slider-container homeFeaturedSlider">
             <Slider {...settings}>{slides[collection.id]}</Slider>
           </div>
         </div>
