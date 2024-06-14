@@ -87,12 +87,12 @@ export const HowWeDoThis = () => {
 
         <div className="w-full grid xl:grid-cols-4 grid-cols-2 sm:gap-[20px] gap-[12px]">
           <div
-            className="xl:aspect-[23/25] [aspect-ratio:auto] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
+            className="xl:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
             style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
           >
             <div className="flex items-center flex-1">
               <div className="sm:w-[112px] sm:h-[112px] w-[95px] h-[95px] flex justify-center items-center">
-                <div className="sm:w-[97px] w-[85px]">
+                <div className="sm:w-[74px] w-[74px]">
                   <RunningTruck />
                 </div>
               </div>
@@ -100,17 +100,17 @@ export const HowWeDoThis = () => {
             <div className="font-hudson sm:text-[24px] text-[16px] font-semibold sm:tracking-[1px] tracking-[0.8px] sm:mb-[22px] mb-[12px]">
               CONVENIENCE
             </div>
-            <div className="sm:text-[14px] text-[12px] leading-[15px] tracking-normal sm:px-[40px] px-[20px] text-center">
+            <div className="sm:text-[14px] text-[14px] leading-[15px] sm:px-[40px] px-[20px] text-center">
               Delivered to your home and ready to serve in minutes
             </div>
           </div>
           <div
-            className="xl:aspect-[23/25] [aspect-ratio:auto] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
+            className="xl:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
             style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
           >
             <div className="flex items-center flex-1">
               <div className="sm:w-[112px] sm:h-[112px] w-[95px] h-[95px] flex justify-center items-center">
-                <div className="sm:w-[112px] w-[95px]">
+                <div className="sm:w-[75px] w-[75px]">
                   <Cooking />
                 </div>
               </div>
@@ -118,17 +118,17 @@ export const HowWeDoThis = () => {
             <div className="font-hudson sm:text-[24px] text-[16px] font-semibold sm:tracking-[1px] tracking-[0.8px] sm:mb-[22px] mb-[12px]">
               TASTE
             </div>
-            <div className="sm:text-[14px] text-[12px] leading-[15px] tracking-normal sm:px-[40px] px-[20px] text-center">
+            <div className="sm:text-[14px] text-[14px] leading-[15px] sm:px-[40px] px-[20px] text-center">
               Delicately prepared and cooked by our master chefs
             </div>
           </div>
           <div
-            className="xl:aspect-[23/25] [aspect-ratio:auto] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
+            className="xl:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
             style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
           >
             <div className="flex items-center flex-1">
               <div className="sm:w-[112px] sm:h-[112px] w-[95px] h-[95px] flex justify-center items-center">
-                <div className="sm:w-[81px] w-[67px]">
+                <div className="sm:w-[126px] w-[92px]">
                   <Boutique />
                 </div>
               </div>
@@ -136,17 +136,17 @@ export const HowWeDoThis = () => {
             <div className="font-hudson sm:text-[24px] text-[16px] font-semibold sm:tracking-[1px] tracking-[0.8px] sm:mb-[22px] mb-[12px]">
               VARIETY
             </div>
-            <div className="sm:text-[14px] text-[12px] leading-[15px] tracking-normal sm:px-[20px] px-[12px] text-center">
+            <div className="sm:text-[14px] text-[14px] leading-[15px] sm:px-[20px] px-[12px] text-center">
               Choose from 12 delicious flavors with new ones added regularly
             </div>
           </div>
           <div
-            className="xl:aspect-[23/25] [aspect-ratio:auto] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
+            className="xl:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
             style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
           >
             <div className="flex items-center flex-1">
               <div className="sm:w-[112px] sm:h-[112px] w-[95px] h-[95px] flex justify-center items-center">
-                <div className="sm:w-[81px] w-[69px]">
+                <div className="sm:w-[67px] w-[67px]">
                   <Pig />
                 </div>
               </div>
@@ -154,7 +154,7 @@ export const HowWeDoThis = () => {
             <div className="font-hudson sm:text-[24px] text-[16px] font-semibold sm:tracking-[1px] tracking-[0.8px] sm:mb-[22px] mb-[12px]">
               PRICE
             </div>
-            <div className="sm:text-[14px] text-[12px] leading-[15px] tracking-normal sm:px-[40px] px-[20px] text-center">
+            <div className="sm:text-[14px] text-[14px] leading-[15px] sm:px-[40px] px-[20px] text-center">
               Restaurant quality taste at a fraction of the price{' '}
               <span className="block opacity-0 sm:hidden">--------</span>
             </div>

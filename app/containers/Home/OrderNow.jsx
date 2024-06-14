@@ -4,7 +4,7 @@ import TrayPhoto from '~/assets/images/TrayPhoto.png'
 
 export const OrderNow = () => {
   return (
-    <section className="relative sm:pt-[10px] sm:pb-[25px] pb-[32px]">
+    <section className="relative sm:pt-[10px] sm:pb-[25px] pb-[32px] z-[0]">
       <div className="container-small z-50 relative sm:w-[80%] mx-auto">
         <div
           className="flex flex-col items-center bg-brown-pattern z-50 text-white sm:pt-[66px] pt-[53px] sm:pb-[53px] pb-[36px]"
@@ -29,7 +29,7 @@ export const OrderNow = () => {
       <div className="absolute bottom-0 left-0 w-full h-[200px] bg-[#f5f5f5]"></div>
       <img
         src={TrayPhoto}
-        className="absolute z-10 sm:w-auto w-[250px] sm:top-[-122px] top-[-95px] sm:scale-100 sm:right-0 right-[0px] scale-125 "
+        className="absolute z-10 sm:w-auto w-[400px] sm:top-[-160px] top-[-270px] sm:scale-100 sm:right-0 right-[-160px] scale-125 "
       />
     </section>
   )
