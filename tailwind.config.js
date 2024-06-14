@@ -18,6 +18,7 @@ export default withMT({
       nunito: 'Nunito Sans',
       barlow: 'Barlow',
       hudson: 'Hudson',
+      espiritu: 'espiritu-condensed',
     },
     extend: {
       colors: {

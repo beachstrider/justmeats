@@ -39,10 +39,10 @@ export const Banner = () => {
               <div className="flex flex-col items-center flex-1 sm:flex-row">
                 <div className="flex flex-col justify-center flex-1 sm:flex-row">
                   <div className="text-[#EFEEED]">
-                    <div className="font-bold leading-none">
+                    <div className="font-bold leading-none mb-[20px]">
                       Meats delivered
                     </div>
-                    <div className="text-[75px] tracking-[2.25px] leading-none">
+                    <div className="font-espiritu text-[75px] tracking-[2.25px] leading-none">
                       1,006,928
                     </div>
                   </div>
@@ -52,9 +52,11 @@ export const Banner = () => {
               <div className="flex flex-col items-center flex-1 sm:flex-row">
                 <div className="flex flex-col justify-center flex-1 sm:flex-row">
                   <div className="text-[#EFEEED]">
-                    <div className="font-bold leading-none">Pounds Cooked</div>
-                    <div className="text-[75px] tracking-[2.25px] leading-none">
-                      345,431 lbs.
+                    <div className="font-bold leading-none mb-[20px]">
+                      Pounds Cooked
+                    </div>
+                    <div className="font-espiritu text-[75px] tracking-[2.25px] leading-none">
+                      345,431 <span className="text-[48px]">LBS.</span>
                     </div>
                   </div>
                 </div>
@@ -63,10 +65,10 @@ export const Banner = () => {
               <div className="flex flex-col flex-1 sm:flex-row">
                 <div className="flex flex-col justify-center flex-1 sm:flex-row">
                   <div className="text-[#EFEEED]">
-                    <div className="font-bold leading-none">
+                    <div className="font-bold leading-none mb-[20px]">
                       Happy Customers
                     </div>
-                    <div className="text-[75px] tracking-[2.25px] leading-none">
+                    <div className="font-espiritu text-[75px] tracking-[2.25px] leading-none">
                       84,097
                     </div>
                   </div>
