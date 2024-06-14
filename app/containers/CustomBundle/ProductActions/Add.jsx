@@ -37,7 +37,7 @@ export const Add = ({ product, type }) => {
       {type === 'normal' && (
         <span
           className={cn(
-            'font-bold text-[26px]',
+            'font-bold text-[26px] sm:pb-[2px] pb-[3px]',
             type === 'normal' ? 'text-[#6B1626]' : '',
           )}
         >
@@ -46,12 +46,10 @@ export const Add = ({ product, type }) => {
       )}
       {type === 'modal' && (
         <>
-          <span className="font-bold text-[26px] hidden sm:inline-block leading-none">
+          <span className="font-bold text-[26px] hidden sm:inline-block leading-none sm:pb-[2px] pb-[3px]">
             &nbsp;+
           </span>
-          <span className="inline-block sm:hidden font-barlow">
-            &nbsp;TO CART
-          </span>
+          <span className="inline-block sm:hidden">&nbsp;TO CART</span>
         </>
       )}
     </button>
