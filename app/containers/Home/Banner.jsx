@@ -5,7 +5,7 @@ import { BannerIcon } from '~/icons/BannerIcon'
 export const Banner = () => {
   return (
     <section className="relative">
-      <div className="sm:h-[calc(100vh-120px)] flex flex-col sm:pt-0">
+      <div className="sm:h-[calc(100vh-120px)] max-h-[770px] flex flex-col sm:pt-0">
         <div className="grid flex-1 grid-cols-1 sm:grid-cols-2">
           <div className="flex items-center justify-center flex-1 sm:px-0 px-[22px] sm:pb-0 pt-[40px] pb-[30px]">
             <div>
