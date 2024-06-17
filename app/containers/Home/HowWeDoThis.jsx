@@ -85,9 +85,9 @@ export const HowWeDoThis = () => {
           and chicken professionally flavored and pre-cooked to perfection.
         </div>
 
-        <div className="w-full grid xl:grid-cols-4 grid-cols-2 sm:gap-[20px] gap-[12px]">
+        <div className="w-full grid md:grid-cols-4 grid-cols-2 sm:gap-[20px] gap-[12px]">
           <div
-            className="xl:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
+            className="md:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
             style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
           >
             <div className="flex items-center flex-1">
