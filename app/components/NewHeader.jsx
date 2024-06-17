@@ -101,7 +101,7 @@ export function Header() {
     }
   }, [prevScrollPos])
 
-  const headerClass = isHeaderVisible ? '' : 'sticky-header'
+  const headerClass = isHeaderVisible ? '' : 'sticky-header w-[100vw]'
 
   const Mainheader = () => {
     return !isMobile ? (
@@ -259,7 +259,7 @@ export function Header() {
   }
 
   return (
-    <header className="[box-shadow:0px_0px_15px_0px_rgba(0,0,0,0.15)]">
+    <header className="relative [box-shadow:0px_0px_15px_0px_rgba(0,0,0,0.15)]">
       {isRoute ? <Landingheader /> : <Mainheader />}
     </header>
   )
