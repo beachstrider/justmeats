@@ -680,7 +680,8 @@ button.free-gift-label {
 }
 
 .bg-pattern2 {
-  background-image: url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1.png');
+  /* background-image: url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1.png'); */
+  @apply sm:bg-[url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1.png')] bg-[url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1-mobile.png')];
   background-blend-mode: overlay;
   background-repeat: no-repeat;
   background-color: #6b1626;

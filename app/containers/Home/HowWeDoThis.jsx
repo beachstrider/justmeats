@@ -69,7 +69,7 @@ export const HowWeDoThis = () => {
         src={JustMeatsBoxPart}
         className="absolute md:block hidden left-0 xl:top-[120px] top-[14%]"
       />
-      <div className="container-small flex flex-col items-center sm:mb-[56px] mb-[41px] relative">
+      <div className="container-small flex flex-col items-center sm:mt-0 mt-[280px] sm:mb-[56px] mb-[41px] relative">
         <div className="sm:text-[14px] font-bold leading-[23px] sm:tracking-[2.8px] text-[12px] tracking-[2.8px] text-[#6B1626] text-center sm:mb-[6px] mb-[4px]">
           STAY LEAN, EAT CLEAN, SAVE GREEN
         </div>
