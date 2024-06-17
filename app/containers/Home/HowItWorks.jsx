@@ -1,10 +1,16 @@
 import { NavLink } from '@remix-run/react'
 
+import cow from '~/assets/images/Cow.png'
 import { HowItWorksStepsSlider } from '~/components/HowItWorksStepsSlider'
 
 export const HowItWorks = () => {
   return (
-    <section className="relative flex flex-col items-center overflow-x-hidden bg-yellow-pattern">
+    <section className="relative flex flex-col items-center bg-yellow-pattern">
+      <img
+        src={cow}
+        alt=""
+        className="absolute top-[-46px] right-0 hidden sm:block"
+      />
       <div className="md:pt-[62px] pt-[54px] sm:pb-[60px] pb-[60px]">
         <div className="sm:text-[14px] font-bold leading-[23px] sm:tracking-[2.8px] text-[12px] tracking-[2.8px] text-[#231B19] text-center">
           HOW JUST MEATS WORKS
