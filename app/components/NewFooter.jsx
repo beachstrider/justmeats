@@ -69,7 +69,7 @@ export const Footer = () => {
                     NEED HELP?
                   </div>
                   <div className="flex flex-col sm:text-[14px] text-[16px] font-bold sm:leading-[170%] leading-[190%]">
-                    <NavLink to="#">FAQs</NavLink>
+                    {/* <NavLink to="#">FAQs</NavLink> */}
                     <NavLink end prefetch="intent" to="/term-services">
                       Terms of Service
                     </NavLink>
