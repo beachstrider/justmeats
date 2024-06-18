@@ -40,7 +40,7 @@ const settings = {
       },
     },
     {
-      breakpoint: 420,
+      breakpoint: 500,
       settings: {
         className: 'center',
         centerMode: true,
