@@ -3,7 +3,7 @@ import OrderButton from 'app/components/OrderButton'
 import BuffaloIllustration from '~/assets/images/BuffaloIllustration.png'
 import RichsPhoto1 from '~/assets/images/RichsPhoto1.png'
 import RichsPhoto from '~/assets/images/RichsPhoto.png'
-import TrayPhoto from '~/assets/images/TrayPhoto.png'
+import TrayPhoto from '~/assets/images/f88a5c9b84299854f69baf571077ef56.png'
 import { FaqAccordion } from '~/components/NewFaqAccordion'
 
 export const DoMeatRight = () => {
@@ -34,10 +34,12 @@ export const DoMeatRight = () => {
         src={BuffaloIllustration}
         className="absolute top-[30%] scale-150 -left-[50px] sm:scale-100 z-10 sm:w-auto w-2/5 sm:top-[-427px]  sm:left-0 "
       />
-      <img
-        src={TrayPhoto}
-        className="absolute z-10 sm:w-auto w-[250px] sm:top-[-122px] top-[-95px] sm:scale-100 sm:right-0 right-[0px] scale-125 "
-      />
+      <div className="absolute z-10 sm:w-auto sm:top-[-80px] top-[-240px] sm:right-[-54px] right-[-290px]">
+        <img
+          src={TrayPhoto}
+          className="w-[420px] sm:w-[440px] rotate-[22deg]"
+        />
+      </div>
       <div className="relative z-50 pt-12">
         <div className="font-hudson uppercase sm:mt-8 mt-2 pb-8 text-[24px] sm:text-[36px] text-center  font-bold sm:mb-[4px] mb-[3px] leading-normal tracking-[1.8px]">
           YOU ASK. WE ANSWER.
