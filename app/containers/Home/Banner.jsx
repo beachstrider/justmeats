@@ -14,7 +14,7 @@ export const Banner = () => {
         <div className="grid flex-1 grid-cols-1 sm:grid-cols-2">
           <div className="flex items-center justify-center flex-1 sm:px-0 px-[22px] sm:pb-0 pt-[40px] pb-[30px]">
             <div>
-              <div className="sm:w-[492px] w-[344px] sm:mb-[32px] mb-[14px]">
+              <div className="xl:w-[492px] md:w-[400px] w-[344px] sm:mb-[32px] mb-[14px]">
                 <BannerIcon />
               </div>
               <div className="sm:text-[18px] text-[#231B19] sm:mb-[36px] mb-[23px] sm:pl-[22px] pl-[18px]">

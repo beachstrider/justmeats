@@ -5,7 +5,7 @@ import { HowItWorksStepsSlider } from '~/components/HowItWorksStepsSlider'
 
 export const HowItWorks = () => {
   return (
-    <section className="relative flex flex-col items-center overflow-x-hidden bg-yellow-pattern">
+    <section className="relative flex flex-col items-center bg-yellow-pattern">
       <img
         src={cow}
         alt=""
