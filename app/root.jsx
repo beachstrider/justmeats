@@ -27,7 +27,7 @@ import {
 } from '@shopify/hydrogen'
 import { defer } from '@shopify/remix-oxygen'
 
-import favicon from '~/assets/logo.svg'
+import favicon from '~/assets/favicon.svg'
 import { CustomAnalytics } from '~/components/CustomAnalytics'
 import { GTMNoScript } from '~/components/GTMNoScript'
 import { Layout } from '~/components/Layout'
