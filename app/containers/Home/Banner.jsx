@@ -1,8 +1,13 @@
-import { NavLink } from '@remix-run/react'
+import { NavLink, useLoaderData } from '@remix-run/react'
 
 import { BannerIcon } from '~/icons/BannerIcon'
+import { getSeparatedNumberString } from '~/lib/utils'
 
 export const Banner = () => {
+  const { customerCount, deliveryCount } = useLoaderData()
+
+  const customerCountString = getSeparatedNumberString(customerCount)
+
   return (
     <section className="relative">
       <div className="sm:h-[calc(100vh-120px)] max-h-[770px] flex flex-col sm:pt-0">
@@ -69,7 +74,7 @@ export const Banner = () => {
                       Happy Customers
                     </div>
                     <div className="font-espiritu text-[75px] tracking-[2.25px] leading-none">
-                      84,097
+                      {customerCountString}
                     </div>
                   </div>
                 </div>

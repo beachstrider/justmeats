@@ -46,3 +46,6 @@ export const DEFAULT_LOCALE = Object.freeze({
   ...countries.default,
   pathPrefix: '',
 })
+
+export const getSeparatedNumberString = (number) =>
+  number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')

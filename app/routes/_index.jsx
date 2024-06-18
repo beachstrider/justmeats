@@ -33,6 +33,7 @@ import { Review } from '~/containers/Home/Review'
 import { CustomBundleContext, RootContext } from '~/contexts'
 import { COLLECTIONS_QUERY } from '~/graphql/Collection'
 import { RECOMMENDED_PRODUCTS_QUERY } from '~/graphql/Product'
+import { getShopSuccessInfo } from '~/lib/restAdmin'
 
 export const meta = () => {
   return [{ title: 'Just Meats | No Fuss, All Flavor – Ready & Delivered!' }]
@@ -45,6 +46,8 @@ export async function loader({ request, context }) {
   const collectionHandles = ['featured', 'most-popular', 'trending']
   const query = collectionHandles.join(' OR ')
 
+  const { customerCount, deliveryCount } = await getShopSuccessInfo(context)
+
   const {
     collections: { nodes: collections },
   } = await storefront.query(COLLECTIONS_QUERY, {
@@ -56,7 +59,16 @@ export async function loader({ request, context }) {
     },
   })
 
-  return defer({ collections })
+  getShopSuccessInfo()
+
+  return defer(
+    { collections, customerCount, deliveryCount },
+    {
+      headers: {
+        'Set-Cookie': await context.session.commit(),
+      },
+    },
+  )
 }
 
 export default function Homepage() {
