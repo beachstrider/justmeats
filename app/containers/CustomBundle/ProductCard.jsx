@@ -59,7 +59,7 @@ export const ProductCard = ({ product, onClick, className, type }) => {
             className={cn(
               'xl:mb-[2%] text-center',
               type === 'home'
-                ? 'sm:text-[16px] text-[15px]'
+                ? 'sm:text-[16px] text-[20px]'
                 : 'sm:text-[16px] text-[12px]',
             )}
           >
