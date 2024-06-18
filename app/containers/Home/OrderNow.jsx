@@ -1,6 +1,7 @@
 import OrderButton from 'app/components/OrderButton'
 
-import TrayPhoto from '~/assets/images/f88a5c9b84299854f69baf571077ef56.png'
+import trayDesktop from '~/assets/images/tray-desktop.png'
+import trayMobile from '~/assets/images/tray-mobile.png'
 
 export const OrderNow = () => {
   return (
@@ -27,11 +28,9 @@ export const OrderNow = () => {
         </div>
       </div>
       <div className="absolute bottom-0 left-0 w-full h-[200px] bg-[#f5f5f5]"></div>
-      <div className="absolute z-10 sm:w-auto sm:top-[-80px] top-[-240px] sm:right-[-54px] right-[-290px]">
-        <img
-          src={TrayPhoto}
-          className="w-[420px] sm:w-[440px] rotate-[22deg]"
-        />
+      <div className="absolute z-10 sm:w-auto sm:top-[-110px] top-[-320px] right-0">
+        <img src={trayDesktop} className="hidden sm:block" />
+        <img src={trayMobile} className="block sm:hidden" />
       </div>
     </section>
   )
