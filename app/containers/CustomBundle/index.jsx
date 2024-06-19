@@ -262,7 +262,7 @@ export const CustomBundle = () => {
                 <FaqAccordion />
               </section>
             </div>
-            <aside className="cart-wrapper hidden lg:block lg:max-w-[480px] w-full bg-white 2xl:pt-[54px] lg:pt-[30px] pt-[16px]">
+            <aside className="cart-wrapper sticky top-[-300px] h-[calc(100vh+300px)] hidden lg:block lg:max-w-[480px] w-full bg-white 2xl:pt-[54px] lg:pt-[30px] pt-[16px]">
               {isCartPage && <PlanPickerBlock />}
               <div className="h-full lg:h-auto">
                 <div className="lg:hidden lg:px-[40px] px-[20px] py-[30px] text-center top-section border-y border-[#EFEEED]">
