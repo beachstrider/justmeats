@@ -27,7 +27,7 @@ import {
 } from '@shopify/hydrogen'
 import { defer } from '@shopify/remix-oxygen'
 
-import favicon from '~/assets/logo.svg'
+import favicon from '~/assets/favicon.svg'
 import { CustomAnalytics } from '~/components/CustomAnalytics'
 import { GTMNoScript } from '~/components/GTMNoScript'
 import { Layout } from '~/components/Layout'
@@ -129,7 +129,15 @@ export async function loader({ context }) {
   )
 }
 
-const newLayoutRoutes = ['mayhem-madness', 'rich-froning', 'gym-launch', 'gym', 'all-recipes', 'recipe']
+const newLayoutRoutes = [
+  '',
+  'mayhem-madness',
+  'rich-froning',
+  'gym-launch',
+  'gym',
+  'all-recipes',
+  'recipe',
+]
 
 export default function App() {
   const nonce = useNonce()
@@ -300,7 +308,10 @@ export default function App() {
     <html lang="EN">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,user-scalable=0"
+        />
         <Meta />
         <Links />
         <MetaNoScript />

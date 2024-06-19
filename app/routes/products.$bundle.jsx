@@ -133,9 +133,9 @@ export async function action({ request, context }) {
 
 export default function Product() {
   return (
-    <div className="bg-[#EFEEED]">
+    <main className="bg-[#EFEEED] page-custom-bundle">
       <Notification />
       <CustomBundle />
-    </div>
+    </main>
   )
 }

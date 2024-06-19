@@ -13,11 +13,12 @@ export default withMT({
   plugins: [formsPlugin, typographyPlugin],
   theme: {
     fontFamily: {
-      body: ['Dunbar', 'Roboto', 'sans-serif'],
+      body: ['Barlow', 'Roboto', 'sans-serif'],
       dunbar: 'Dunbar',
       nunito: 'Nunito Sans',
       barlow: 'Barlow',
       hudson: 'Hudson',
+      espiritu: 'espiritu-condensed',
     },
     extend: {
       colors: {

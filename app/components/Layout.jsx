@@ -32,7 +32,7 @@ export function Layout({ children = null }) {
     <LayoutContext.Provider value={{ menuToggle, setMenuToggle }}>
       {isProductPage ? <OrderHeader /> : <Header />}
       <MobileMenuAside />
-      <main>{children}</main>
+      {children}
       <Footer />
     </LayoutContext.Provider>
   )

@@ -7,8 +7,11 @@
 
 @layer base {
   html {
-    font-family: 'Roboto', sans-serif;
-    @apply text-[#231B19];
+    @apply font-body text-[#231B19];
+  }
+
+  body {
+    @apply overflow-x-hidden !w-[100vw];
   }
 
   * {

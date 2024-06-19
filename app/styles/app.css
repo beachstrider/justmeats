@@ -1,5 +1,4 @@
 .swiper .swiper-button-prev {
-  /* content: "<"; */
   height: 40px;
   width: 40px;
   border-radius: 100%;
@@ -273,6 +272,111 @@
   font-display: swap;
 }
 
+@import url('https://p.typekit.net/p.css?s=1&k=txs4qth&ht=tk&f=29953.50479.50480.50481.50482.50483&a=4612518&app=typekit&e=css');
+
+@font-face {
+  font-family: 'dunbar-low';
+  src: url('https://use.typekit.net/af/0ab997/00000000000000003b9aed39/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/0ab997/00000000000000003b9aed39/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/0ab997/00000000000000003b9aed39/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+      format('opentype');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'espiritu';
+  src: url('https://use.typekit.net/af/cb2cbd/00000000000000007736dd40/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/cb2cbd/00000000000000007736dd40/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/cb2cbd/00000000000000007736dd40/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('opentype');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'espiritu-expanded';
+  src: url('https://use.typekit.net/af/7a0b40/00000000000000007736dd3f/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/7a0b40/00000000000000007736dd3f/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/7a0b40/00000000000000007736dd3f/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('opentype');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'espiritu-condensed';
+  src: url('https://use.typekit.net/af/8a1169/00000000000000007736dd43/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/8a1169/00000000000000007736dd43/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/8a1169/00000000000000007736dd43/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('opentype');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'espiritu-dingbats';
+  src: url('https://use.typekit.net/af/d3cde1/00000000000000007736dd42/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/d3cde1/00000000000000007736dd42/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/d3cde1/00000000000000007736dd42/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('opentype');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'espiritu-script';
+  src: url('https://use.typekit.net/af/59bfdf/00000000000000007736dd41/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/59bfdf/00000000000000007736dd41/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/59bfdf/00000000000000007736dd41/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('opentype');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
+.tk-dunbar-low {
+  font-family: 'dunbar-low', sans-serif;
+}
+.tk-espiritu {
+  font-family: 'espiritu', sans-serif;
+}
+.tk-espiritu-expanded {
+  font-family: 'espiritu-expanded', sans-serif;
+}
+.tk-espiritu-condensed {
+  font-family: 'espiritu-condensed', sans-serif;
+}
+.tk-espiritu-dingbats {
+  font-family: 'espiritu-dingbats', sans-serif;
+}
+.tk-espiritu-script {
+  font-family: 'espiritu-script', sans-serif;
+}
+
 .mainheader .flex.orderBton span {
   font-size: 19.125px;
 }
@@ -366,11 +470,6 @@ section.bg-\[url\(\'https\:\/\/cdn\.shopify\.com\/s\/files\/1\/0555\/1751\/1961\
 
 .banner {
   background-image: url('../assets/images/Banner.png');
-}
-
-.bg-brown-pattern {
-  background-image: url('../assets/images/Rectangle-brown-pattern.png');
-  background-size: cover;
 }
 
 span.free-text-label {
@@ -530,7 +629,20 @@ button.free-gift-label {
 }
 
 .bg-yellow-pattern {
-  background-image: url('../assets/images/7e0c002b6aef76e3311b714b92b70294.jpg');
+  background-image: url('../assets/images/black-horizontal-lines-wallpaper1.png');
+  background-repeat: no-repeat;
+  background-color: #f4e8d0;
+  background-size: cover;
+  background-position-y: 0;
+}
+
+.bg-brown-pattern {
+  background-image: url('../assets/images/s2d1f5h4u8u6u2g1j2o2j2gd6de.png');
+  background-repeat: no-repeat;
+  background-color: #6b1626;
+  background-size: cover;
+  background-position-y: 0;
+  background-blend-mode: overlay;
 }
 
 .bg-JustMeatsPartnershipsWithRichFroningImage {
@@ -550,8 +662,38 @@ button.free-gift-label {
 }
 
 .bg-rec-96 {
-  background-image: url('../assets/images/Rectangle96.png');
+  @apply sm:[background:url('../assets/images/black-horizontal-lines-wallpaper-desktop.png')_#fbf3e8_-8px_10px_/_111%_100%_no-repeat] [background:url('../assets/images/black-horizontal-lines-wallpaper-mobile.png')_#fbf3e8_0px_0px_/_108%_100%_no-repeat];
+  mix-blend-mode: multiply;
+}
+
+.bg-justmeats-banner {
+  background-image: url('../assets/images/589d28c48bb6157821efa22596d9c0d9.jpg');
   background-size: cover;
+  background-position: center;
+}
+
+.bg-pattern1 {
+  background-image: url('../assets/images/3as5d1f3a5sdf63asdf.png');
+  background-position-y: -1px;
+}
+
+.bg-pattern2 {
+  /* background-image: url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1.png'); */
+  @apply sm:bg-[url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1.png')] bg-[url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1-mobile.png')];
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-color: #6b1626;
+  background-size: cover;
+  background-position-y: 0;
+}
+
+.bg-pattern3 {
+  background-image: url('../assets/images/5d5g5j54uj52t2d1s1d5rf7f56g3h2j.png');
+  background-position-y: -1px;
+}
+
+.bg-img-1 {
+  background-image: url('../assets/images/7e71e7e2ec1626d4804f1c249d678982.jpg');
 }
 
 .howjustmeatSlider .slick-track {
@@ -590,6 +732,40 @@ button.free-gift-label {
 }
 .featuredSlider .slick-dots li.slick-active button:before {
   color: #7a392d !important;
+}
+.homeFeaturedSlider .slick-slide > div {
+  margin: 0 10px;
+}
+.homeFeaturedSlider .slick-list {
+  margin: 0 -10px;
+}
+.homeFeaturedSlider .slick-dots li {
+  width: 10px;
+  height: 10px;
+}
+.homeFeaturedSlider .slick-dots li button {
+  width: 10px;
+  height: 10px;
+  font-size: 0;
+  background-color: #151515 !important;
+  border: 0px solid #222222 !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  margin-top: 4px !important;
+}
+.homeFeaturedSlider .slick-dots li button:before {
+  width: 10px;
+  height: 10px;
+  padding: 0 !important;
+}
+.homeFeaturedSlider .slick-dots {
+  bottom: 0px !important;
+}
+.homeFeaturedSlider .slick-dots li.slick-active button:before {
+  width: 10px;
+  height: 10px;
+  color: #7a392d !important;
+  padding: 0 !important;
 }
 .productsSlider .slick-track {
   display: flex !important;
@@ -775,6 +951,6 @@ section.product-list-slider button.slick-arrow.slick-next {
   @apply !px-0;
 }
 
-#reamaze-widget {
+.page-custom-bundle ~ #reamazejs-container {
   @apply sm:!visible !invisible;
 }
