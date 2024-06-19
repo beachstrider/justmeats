@@ -6,7 +6,7 @@ import { getSeparatedNumberString } from '~/lib/utils'
 export const Banner = () => {
   const { customerCount, deliveryCount } = useLoaderData()
 
-  const customerCountString = getSeparatedNumberString(customerCount)
+  // const customerCountString = getSeparatedNumberString(customerCount)
 
   return (
     <section className="relative">
@@ -48,7 +48,7 @@ export const Banner = () => {
                       Meats delivered
                     </div>
                     <div className="font-espiritu text-[75px] tracking-[2.25px] leading-none">
-                      1,006,928
+                      1,642,941
                     </div>
                   </div>
                 </div>
@@ -61,7 +61,7 @@ export const Banner = () => {
                       Pounds Cooked
                     </div>
                     <div className="font-espiritu text-[75px] tracking-[2.25px] leading-none">
-                      345,431 <span className="text-[48px]">LBS.</span>
+                      2,217,970 <span className="text-[48px]">LBS.</span>
                     </div>
                   </div>
                 </div>
@@ -74,7 +74,7 @@ export const Banner = () => {
                       Happy Customers
                     </div>
                     <div className="font-espiritu text-[75px] tracking-[2.25px] leading-none">
-                      {customerCountString}
+                      88,688
                     </div>
                   </div>
                 </div>
