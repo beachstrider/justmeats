@@ -13,19 +13,19 @@ export const ProgressBar = () => {
   const bonusPercentage = bonusP > 0 ? bonusP : 0
 
   return (
-    <div className="sm:pl-[40px] pl-[20px] sm:pr-[58px] pr-[36px] sm:pt-[14px] sm:pb-[30px] pb-[24px] sm:border-none border-b border-[#efeeed]">
+    <div className="lg:pl-[40px] pl-[20px] lg:pr-[58px] pr-[36px] lg:pt-[14px] lg:pb-[30px] pb-[24px] lg:border-none border-b border-[#efeeed]">
       <div className="py-[12px]">
-        <div className="relative h-[22px] font-bold font-barlow sm:text-[14px] text-[12px]">
+        <div className="relative h-[22px] font-bold font-barlow lg:text-[14px] text-[12px]">
           <div className="absolute left-0">
-            <div className="block sm:hidden">Add $75 to Unlock</div>
-            <div className="hidden sm:block">$75 Minimum Order Required</div>
+            <div className="block lg:hidden">Add $75 to Unlock</div>
+            <div className="hidden lg:block">$75 Minimum Order Required</div>
           </div>
           <div className="absolute translate-x-[-50%] left-[60%]">Min</div>
           <div className="absolute translate-x-[-50%] left-[100%]">Bonus</div>
         </div>
       </div>
       <div className="relative">
-        <div className="flex sm:h-[16px] h-[14px]">
+        <div className="flex lg:h-[16px] h-[14px]">
           <div className="border-l-2 border-y-2 border-[#6B1626] w-3/5 overflow-x-hidden">
             <div
               className={cn('bg-[#6B1626] w-[20%] h-full')}
@@ -66,7 +66,7 @@ export const ProgressBar = () => {
 const Milestone = ({ className, children }) => (
   <div
     className={cn(
-      'absolute rounded-full flex justify-center items-center sm:w-[36px] w-[32px] sm:h-[36px] h-[32px] translate-x-[-50%] translate-y-[-50%] top-[50%] border-2 font-barlow sm:text-[12px] text-[10px] font-extrabold sm:tracking-normal tracking-[-0.5px]',
+      'absolute rounded-full flex justify-center items-center lg:w-[36px] w-[32px] lg:h-[36px] h-[32px] translate-x-[-50%] translate-y-[-50%] top-[50%] border-2 font-barlow lg:text-[12px] text-[10px] font-extrabold lg:tracking-normal tracking-[-0.5px]',
       className,
     )}
   >

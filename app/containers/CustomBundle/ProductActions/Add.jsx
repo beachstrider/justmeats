@@ -26,10 +26,10 @@ export const Add = ({ product, type }) => {
     <button
       onClick={addToSelectedProducts}
       className={cn(
-        'btn-add-to-cart mx-auto flex justify-center items-center py-[8px] gap-[5px] px-[20px] leading-none font-medium sm:text-[20px] text-[18px]',
+        'btn-add-to-cart mx-auto flex justify-center items-center py-[8px] gap-[5px] px-[20px] leading-none font-medium lg:text-[20px] text-[18px]',
         type === 'normal' ? '' : '',
         type === 'modal'
-          ? 'bg-[#BF4745] hover:bg-[#6B1626] text-white sm:px-[38px] px-[26px] sm:py-[10px] py-[12px]'
+          ? 'bg-[#BF4745] hover:bg-[#6B1626] text-white lg:px-[38px] px-[26px] lg:py-[10px] py-[12px]'
           : '',
       )}
     >
@@ -37,7 +37,7 @@ export const Add = ({ product, type }) => {
       {type === 'normal' && (
         <span
           className={cn(
-            'font-bold text-[26px] sm:pb-[2px] pb-[3px]',
+            'font-bold text-[26px] lg:pb-[2px] pb-[3px]',
             type === 'normal' ? 'text-[#6B1626]' : '',
           )}
         >
@@ -46,10 +46,10 @@ export const Add = ({ product, type }) => {
       )}
       {type === 'modal' && (
         <>
-          <span className="font-bold text-[26px] hidden sm:inline-block leading-none sm:pb-[2px] pb-[3px]">
+          <span className="font-bold text-[26px] hidden lg:inline-block leading-none lg:pb-[2px] pb-[3px]">
             &nbsp;+
           </span>
-          <span className="inline-block sm:hidden">&nbsp;TO CART</span>
+          <span className="inline-block lg:hidden">&nbsp;TO CART</span>
         </>
       )}
     </button>

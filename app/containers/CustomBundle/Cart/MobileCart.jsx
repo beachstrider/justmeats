@@ -44,7 +44,7 @@ export const MobileCart = () => {
 
   return (
     <div className="relative z-20 mobile-cart">
-      <div className="fixed flex sm:gap-0 gap-[10px] w-full sm:hidden bottom-0 bg-white left-0 px-[20px] py-[16px] font-barlow font-bold text-[16px] [box-shadow:0px_0px_10px_0px_rgba(0,0,0,0.20)]">
+      <div className="fixed flex lg:gap-0 gap-[10px] w-full lg:hidden bottom-0 bg-white left-0 px-[20px] py-[16px] font-barlow font-bold text-[16px] [box-shadow:0px_0px_10px_0px_rgba(0,0,0,0.20)]">
         <Button
           className="flex justify-center shrink-0 items-center w-[48px] h-[48px] border-2 border-[#6B1626] rounded-[8px]"
           onClick={onMobileReamazeChatClick}
@@ -88,9 +88,9 @@ export const MobileCart = () => {
           </div>
         )}
         <div className="fixed bottom-0 left-0 w-full bg-white">
-          <div className="sm:pt-0 pt-[10px] sm:px-0 px-[20px] sm:pb-0 pb-[16px] flex flex-col shrink-0 [box-shadow:0_-3px_15px_-5px_#333]">
+          <div className="lg:pt-0 pt-[10px] lg:px-0 px-[20px] lg:pb-0 pb-[16px] flex flex-col shrink-0 [box-shadow:0_-3px_15px_-5px_#333]">
             {isCartPage && <PlanPicker type="mobileCart" />}
-            <div className="flex sm:gap-0 gap-[10px] mt-[16px]">
+            <div className="flex lg:gap-0 gap-[10px] mt-[16px]">
               <Button
                 className="flex justify-center shrink-0 items-center w-[48px] h-[48px] border-2 border-[#6B1626] rounded-[8px]"
                 onClick={onMobileReamazeChatClick}

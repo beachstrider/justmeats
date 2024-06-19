@@ -121,7 +121,7 @@ export const Filter = ({ filters, filter, onChange }) => {
 
   return (
     <>
-      <div className="sm:flex hidden shrink-0 sm:gap-[18px]">
+      <div className="lg:flex hidden shrink-0 lg:gap-[18px]">
         {/* <Dropdown
           placeholder={filter.servingType || 'All Meats'}
           placeholderClassName="uppercase"
@@ -137,10 +137,10 @@ export const Filter = ({ filters, filter, onChange }) => {
           {specialTypesSelect}
         </Dropdown>
       </div>
-      <div className="block sm:hidden">
+      <div className="block lg:hidden">
         <Dialog.Root>
           <Dialog.Trigger asChild>
-            <button className="flex justify-between items-center font-barlow font-medium sm:text-[14px] py-[2px] pl-[8px] pr-[4px] border-2 border-[#6B1626] text-[#6B1626]">
+            <button className="flex justify-between items-center font-barlow font-medium lg:text-[14px] py-[2px] pl-[8px] pr-[4px] border-2 border-[#6B1626] text-[#6B1626]">
               <div>FILTERS</div>
               <FilterIcon />
             </button>

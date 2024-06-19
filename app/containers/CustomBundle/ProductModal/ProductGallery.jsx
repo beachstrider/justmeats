@@ -22,13 +22,13 @@ export function ProductGallary({ media }) {
       >
         <Slider
           classNameTray="tray"
-          className="sm:w-[74%] w-[61%] overflow-hidden"
+          className="lg:w-[74%] w-[61%] overflow-hidden"
         >
           {media.map((slide, index) => (
             <Slide className="slide" index={index} key={index}>
               <div className="w-[100%]">
                 <img
-                  className="mx-auto sm:max-h-[344px] max-h-[240px]"
+                  className="mx-auto lg:max-h-[344px] max-h-[240px]"
                   draggable="false"
                   src={slide.url}
                 />
@@ -49,7 +49,7 @@ export function ProductGallary({ media }) {
 
 function Thumbs({ media, currentSlide, onClick }) {
   return (
-    <div className="flex flex-col sm:gap-[16px] gap-[8px] thumbnail-container sm:w-[22%] w-[26%]">
+    <div className="flex flex-col lg:gap-[16px] gap-[8px] thumbnail-container lg:w-[22%] w-[26%]">
       {media.map((slide, index) => (
         <button
           key={index}

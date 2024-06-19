@@ -4,7 +4,7 @@ export const configChatJS = () => {
   window._support['ui']['contactMode'] = 'mixed'
   window._support['ui']['enableKb'] = 'true'
   window._support['ui']['styles'] = {
-    widgetColor: 'rgb(66, 91, 52)',
+    widgetColor: 'rgb(178, 40, 58)',
     gradient: true,
   }
   window._support['ui']['shoutboxFacesMode'] = 'default'
@@ -23,7 +23,7 @@ export const configChatJS = () => {
       secondary: 'No, thanks',
       sound: true,
     },
-    position: 'bottom-right',
+    position: 'bottom-left',
     mobilePosition: 'bottom-right',
   }
   window._support['apps'] = {

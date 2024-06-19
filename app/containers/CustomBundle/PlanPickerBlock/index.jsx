@@ -88,29 +88,29 @@ export const PlanPickerBlock = () => {
   )
 
   return (
-    <div className="w-[100%] pb-[0px] sm:pb-[25px] border-b border-[#EFEEED]">
+    <div className="w-[100%] pb-[0px] lg:pb-[25px] border-b border-[#EFEEED]">
       <div className="flex flex-col">
-        <div className="block sm:hidden">
+        <div className="block lg:hidden">
           <h2 className="font-bold text-[28px] hidden lg:block">
             GET YOUR MEATS NOW
           </h2>
-          <p className="italic text-center text-black text-[14px] sm:text-[20px] font-bold">
+          <p className="italic text-center text-black text-[14px] lg:text-[20px] font-bold">
             We guarantee you&apos;ll love it or your money back !
           </p>
-          <div className="flex pt-2 min-h-[30px] sm:min-h-[auto] font-semibold">
+          <div className="flex pt-2 min-h-[30px] lg:min-h-[auto] font-semibold">
             {review}
           </div>
         </div>
 
-        <div className="sm:px-[40px] px-[20px] font-hudson sm:mb-[15px] mb-[20px]">
-          <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px]">
+        <div className="lg:px-[40px] px-[20px] font-hudson lg:mb-[15px] mb-[20px]">
+          <div className="lg:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white rounded-[4px]">
             1
           </div>
-          <h3 className="font-bold leading-7 text-[20px] sm:uppercase sm:tracking-[1px] tracking-[1px]">
+          <h3 className="font-bold leading-7 text-[20px] lg:uppercase lg:tracking-[1px] tracking-[1px]">
             SELECT YOUR FREQUENCY
           </h3>
         </div>
-        <div className="sm:px-[40px] px-[20px]">
+        <div className="lg:px-[40px] px-[20px]">
           <PlanPicker />
         </div>
       </div>
