@@ -205,13 +205,14 @@ export const CustomBundle = () => {
               <section className="sm:mb-[80px] mb-[36px]">
                 {isCartPage && (
                   <>
-                    <div className="relative sm:px-[27px] px-[20px] py-[22px] rounded-[8px] bg-rec-96 sm:mb-[40px] mb-[34px] [box-shadow:_0px_20px_40px_-10px_rgba(0,0,0,0.20)]">
-                      <div className="2xl:text-[26px] sm:text-[20px] text-[18px] text-center font-semibold font-hudson mb-[12px]">
+                    <div className="relative sm:px-[27px] px-[20px] py-[22px] rounded-[8px] bg-rec-96 sm:mb-[40px] mb-[34px] [box-shadow:_0px_20px_40px_-10px_rgba(0,0,0,0.20)] overflow-hidden">
+                      {/* <div className="bg-[#FBF3E8] absolute left-0 top-0 w-full h-full" /> */}
+                      <div className="relative 2xl:text-[26px] sm:text-[20px] text-[18px] text-center font-semibold font-hudson mb-[12px]">
                         WE GUARANTEE YOU&apos;LL LOVE IT&nbsp;
                         <br className="block sm:hidden" />
                         OR YOUR MONEY BACK!
                       </div>
-                      <div className="flex justify-center">
+                      <div className="relative flex justify-center">
                         <div className="relative w-[230px] h-[20px] overflow-hidden">
                           <div
                             id="looxReviews"

@@ -662,9 +662,8 @@ button.free-gift-label {
 }
 
 .bg-rec-96 {
-  background-image: url('../assets/images/Rectangle96.png');
-  background-size: cover;
-  background-position: center;
+  @apply sm:[background:url('../assets/images/black-horizontal-lines-wallpaper-desktop.png')_#fbf3e8_-8px_10px_/_111%_100%_no-repeat] [background:url('../assets/images/black-horizontal-lines-wallpaper-mobile.png')_#fbf3e8_0px_0px_/_108%_100%_no-repeat];
+  mix-blend-mode: multiply;
 }
 
 .bg-justmeats-banner {
