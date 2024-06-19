@@ -199,16 +199,16 @@ export const CustomBundle = () => {
       }}
     >
       <div className="max-w-ful custom-collection-wrap">
-        <div className="flex flex-col flex-1 gap-2 border-gray-400 border-solid main-section sm:border">
+        <div className="flex flex-col flex-1 gap-2 border-gray-400 border-solid main-section lg:border">
           <div className="relative flex product-and-cart mb-[62px] md:mb-0">
-            <div className="container-small sm:pt-[30px] pt-[16px]">
-              <section className="sm:mb-[80px] mb-[36px]">
+            <div className="container-small lg:pt-[30px] pt-[16px]">
+              <section className="lg:mb-[80px] mb-[36px]">
                 {isCartPage && (
                   <>
-                    <div className="relative sm:px-[27px] px-[20px] py-[22px] rounded-[8px] bg-rec-96 sm:mb-[40px] mb-[34px] [box-shadow:_0px_20px_40px_-10px_rgba(0,0,0,0.20)] overflow-hidden">
-                      <div className="relative 2xl:text-[26px] sm:text-[20px] text-[18px] text-center font-semibold font-hudson mb-[12px]">
+                    <div className="relative lg:px-[27px] px-[20px] py-[22px] rounded-[8px] bg-rec-96 lg:mb-[40px] mb-[34px] [box-shadow:_0px_20px_40px_-10px_rgba(0,0,0,0.20)] overflow-hidden">
+                      <div className="relative 2xl:text-[26px] lg:text-[20px] text-[18px] text-center font-semibold font-hudson mb-[12px]">
                         WE GUARANTEE YOU&apos;LL LOVE IT&nbsp;
-                        <br className="block sm:hidden" />
+                        <br className="block lg:hidden" />
                         OR YOUR MONEY BACK!
                       </div>
                       <div className="relative flex justify-center">
@@ -221,18 +221,18 @@ export const CustomBundle = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="sm:hidden block sm:uppercase mb-[24px] font-hudson">
-                      <div className="flex items-center w-full gap-[8px] sm:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:tracking-[1.2px] tracking-[0.6px]">
-                        <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white">
+                    <div className="lg:hidden block lg:uppercase mb-[24px] font-hudson">
+                      <div className="flex items-center w-full gap-[8px] lg:mb-[56px] mb-[20px] font-semibold leading-7 text-[20px] lg:text-[24px] lg:tracking-[1.2px] tracking-[0.6px]">
+                        <div className="lg:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white">
                           1
                         </div>
                         <h2 className="font-bold">SELECT YOUR FREQUENCY</h2>
                       </div>
                       <PlanPicker type="mobile" />
                     </div>
-                    <div className="flex justify-between sm:mb-[36px] mb-[12px] font-hudson">
-                      <div className="flex items-center w-full gap-[8px] font-semibold leading-7 text-[20px] sm:text-[24px] sm:uppercase sm:tracking-[1.2px] tracking-[0.6px]">
-                        <div className="sm:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white">
+                    <div className="flex justify-between lg:mb-[36px] mb-[12px] font-hudson">
+                      <div className="flex items-center w-full gap-[8px] font-semibold leading-7 text-[20px] lg:text-[24px] lg:uppercase lg:tracking-[1.2px] tracking-[0.6px]">
+                        <div className="lg:hidden w-[32px] h-[32px] flex justify-center items-center bg-[#231B19] text-white">
                           2
                         </div>
                         <h2 className="font-bold">SELECT YOUR MEATS</h2>
@@ -245,7 +245,7 @@ export const CustomBundle = () => {
                     </div>
                   </>
                 )}
-                <div className="relative grid grid-cols-2 product-grid xl:grid-cols-3 2xl:grid-cols-4 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] xl:mb-[0px] mb-[50px]">
+                <div className="relative grid grid-cols-2 product-grid xl:grid-cols-3 2xl:grid-cols-4 gap-x-[20px] lg:gap-y-[62px] gap-y-[20px] xl:mb-[0px] mb-[50px]">
                   {filteredProducts.map((product, index) => (
                     <ProductCard
                       key={index}
@@ -255,17 +255,17 @@ export const CustomBundle = () => {
                   ))}
                 </div>
               </section>
-              <section className="relative z-10 max-w-[740px] w-full mx-auto pb-4 sm:pb-20">
-                <div className="text-center font-hudson font-bold sm:text-[36px] sm:tracking-[1.6px] text-[24px] tracking-[1.2px] sm:mb-[40px] mb-[32px]">
+              <section className="relative z-10 max-w-[740px] w-full mx-auto pb-4 lg:pb-20">
+                <div className="text-center font-hudson font-bold lg:text-[36px] lg:tracking-[1.6px] text-[24px] tracking-[1.2px] lg:mb-[40px] mb-[32px]">
                   YOU ASK. WE ANSWER.
                 </div>
                 <FaqAccordion />
               </section>
             </div>
-            <aside className="cart-wrapper hidden lg:block sm:max-w-[480px] w-full bg-white 2xl:pt-[54px] sm:pt-[30px] pt-[16px]">
+            <aside className="cart-wrapper hidden lg:block lg:max-w-[480px] w-full bg-white 2xl:pt-[54px] lg:pt-[30px] pt-[16px]">
               {isCartPage && <PlanPickerBlock />}
-              <div className="h-full sm:h-auto">
-                <div className="sm:hidden sm:px-[40px] px-[20px] py-[30px] text-center top-section border-y border-[#EFEEED]">
+              <div className="h-full lg:h-auto">
+                <div className="lg:hidden lg:px-[40px] px-[20px] py-[30px] text-center top-section border-y border-[#EFEEED]">
                   <div className="text-wrapper">
                     {isCartPage ? (
                       <>

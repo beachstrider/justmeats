@@ -41,7 +41,7 @@ export const Quantity = ({ line, type }) => {
       className={cn(
         'flex flex-col items-center justify-center w-full cart-line-quantity',
         type === 'modal'
-          ? 'sm:w-[139px] sm:h-[50px] w-[166px] h-[51px] bg-[#BF4745]'
+          ? 'lg:w-[139px] lg:h-[50px] w-[166px] h-[51px] bg-[#BF4745]'
           : '',
         type === 'mobileCart' ? 'px-[6px]' : '',
       )}
@@ -54,11 +54,11 @@ export const Quantity = ({ line, type }) => {
             type === 'modal' ? 'text-white' : 'text-[#862e1b]',
           )}
         >
-          <span className="sm:pb-[2px] pb-[3px]">&#8722; </span>
+          <span className="lg:pb-[2px] pb-[3px]">&#8722; </span>
         </button>
         <small
           className={cn(
-            `flex-1 font-medium font-barlow sm:text-[20px] text-[18px] text-center flex justify-center items-center w-[32px] p-[3px]`,
+            `flex-1 font-medium font-barlow lg:text-[20px] text-[18px] text-center flex justify-center items-center w-[32px] p-[3px]`,
             type === 'modal' ? 'text-white' : '',
             type === 'mobileCart' ? '!text-[14px]' : '',
             type === 'side-cart' ? '!text-[16px]' : '',
@@ -75,7 +75,7 @@ export const Quantity = ({ line, type }) => {
           // PATCH: temporily
           disabled={isUnavailable}
         >
-          <span className="sm:pb-[2px] pb-[3px]">&#43;</span>
+          <span className="lg:pb-[2px] pb-[3px]">&#43;</span>
         </button>
       </div>
     </div>

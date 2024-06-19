@@ -45,7 +45,7 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
   const desktop = (
     <div
       className={cn(
-        'flex sm:flex-row flex-col gap-[18px] relative',
+        'flex lg:flex-row flex-col gap-[18px] relative',
         lineType === 'free' ? 'border-[#1b7084]' : 'border-[#425b34]',
       )}
     >
@@ -54,18 +54,18 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
           src={image}
           height={100}
           loading="lazy"
-          className={cn('w-full sm:w-[40px]', toggleInactive())}
+          className={cn('w-full lg:w-[40px]', toggleInactive())}
           onClick={() =>
             lineType === 'gift' ? setIsGiftModalOpen(true) : false
           }
         />
       </div>
       <div className="flex flex-col flex-1">
-        <div className="flex flex-col sm:flex-row pr-[0px] justify-between items-center font-barlow">
+        <div className="flex flex-col lg:flex-row pr-[0px] justify-between items-center font-barlow">
           {lineType === 'bonus' && <LockedItem />}
           {lineType !== 'bonus' && (
             <div className="flex-1">
-              <p className="font-bold text-[14px] sm:text-[16px]">{title}</p>
+              <p className="font-bold text-[14px] lg:text-[16px]">{title}</p>
             </div>
           )}
         </div>
@@ -76,7 +76,7 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
               <div className="flex justify-start">
                 <Quantity line={line} type="side-cart" />
               </div>
-              <div className="font-barlow sm:text-[18px] text-[16px] font-semibold">
+              <div className="font-barlow lg:text-[18px] text-[16px] font-semibold">
                 ${priceRange.maxVariantPrice.amount}
               </div>
             </div>
@@ -86,7 +86,7 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
           <div className="flex items-end justify-between flex-1 font-barlow">
             <div className="flex items-center gap-[8px]">
               <div className="line-through text-[#666] text-[14px] font-semibold leading-none">{`$ ${originalPriceOfFreeProduct}`}</div>
-              <div className="font-bold text-[18px] text-[#CF2A2A] leading-none sm:mb-[4px]">
+              <div className="font-bold text-[18px] text-[#CF2A2A] leading-none lg:mb-[4px]">
                 FREE
               </div>
             </div>
@@ -168,8 +168,8 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
 
   return (
     <>
-      <div className="hidden sm:block">{desktop}</div>
-      <div className="flex flex-col sm:hidden">{mobile}</div>
+      <div className="hidden lg:block">{desktop}</div>
+      <div className="flex flex-col lg:hidden">{mobile}</div>
     </>
   )
 }

@@ -44,7 +44,7 @@ export const ProductCard = ({ product, onClick, className, type }) => {
             {specialType && (
               <div
                 className={cn(
-                  'absolute sm:left-[2px] left-[2px] top-[34px] px-[8px] py-[4px] text-white sm:text-[14px] text-[12px] font-semibold sm:tracking-[0.7px] tracking-[0.6px] leading-none uppercase',
+                  'absolute lg:left-[2px] left-[2px] top-[34px] px-[8px] py-[4px] text-white lg:text-[14px] text-[12px] font-semibold lg:tracking-[0.7px] tracking-[0.6px] leading-none uppercase',
                 )}
                 style={{
                   backgroundColor:
@@ -59,8 +59,8 @@ export const ProductCard = ({ product, onClick, className, type }) => {
             className={cn(
               'xl:mb-[2%] text-center',
               type === 'home'
-                ? 'sm:text-[16px] text-[20px]'
-                : 'sm:text-[16px] text-[12px]',
+                ? 'lg:text-[16px] text-[20px]'
+                : 'lg:text-[16px] text-[12px]',
             )}
           >
             <div>{servingType}</div>
@@ -71,13 +71,13 @@ export const ProductCard = ({ product, onClick, className, type }) => {
         </div>
       </div>
       <div className="flex-1 flex flex-col justify-between bg-white [box-shadow:0px_8px_14px_-5px_rgba(0,0,0,0.15)]">
-        <div className="flex-1 flex flex-col justify-between px-[20px] pt-[30px] sm:pb-[10px] pb-[4px] text-center">
+        <div className="flex-1 flex flex-col justify-between px-[20px] pt-[30px] lg:pb-[10px] pb-[4px] text-center">
           <div
             className={cn(
-              'font-hudson font-bold leading-none sm:mb-[20px] mb-[18px]',
+              'font-hudson font-bold leading-none lg:mb-[20px] mb-[18px]',
               type === 'home'
-                ? 'sm:text-[24px] text-[25px]'
-                : '2xl:text-[24px] xl:text-[22px] lg:text-[20px] md:text-[19px] sm:text-[18px] text-[15px]',
+                ? 'lg:text-[24px] text-[25px]'
+                : '2xl:text-[24px] xl:text-[22px] lg:text-[20px] md:text-[19px] lg:text-[18px] text-[15px]',
             )}
           >
             {product.title}
@@ -86,8 +86,8 @@ export const ProductCard = ({ product, onClick, className, type }) => {
             className={cn(
               'font-medium',
               type === 'home'
-                ? 'sm:text-[18px] text-[21px]'
-                : 'sm:text-[18px] text-[14px',
+                ? 'lg:text-[18px] text-[21px]'
+                : 'lg:text-[18px] text-[14px',
             )}
           >
             ${product.priceRange.minVariantPrice.amount}

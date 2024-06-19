@@ -36,7 +36,7 @@ export function LockedItem() {
     <div className="relative flex-1">
       <select
         className={cn(
-          'custom-select font-barlow font-bold text-[10px] sm:text-[14px] sm:py-[3px] py-[3px] sm:pl-[16px] pl-[8px] sm:pr-[40px] pr-[26px] w-full sm:rounded-[4px] outline-none focus:outline-none bg-auto shadow-none focus:shadow-none border sm:!border-[#1d1d1d49] !border-transparent !rounded-none',
+          'custom-select font-barlow font-bold text-[10px] lg:text-[14px] lg:py-[3px] py-[3px] lg:pl-[16px] pl-[8px] lg:pr-[40px] pr-[26px] w-full lg:rounded-[4px] outline-none focus:outline-none bg-auto shadow-none focus:shadow-none border lg:!border-[#1d1d1d49] !border-transparent !rounded-none',
           disabled ? 'bg-[#EFEEED] border-[#EFEEED]' : 'border-[#1d1d1d49]',
         )}
         onChange={onBonusChange}
@@ -50,7 +50,7 @@ export function LockedItem() {
         ))}
       </select>
       <div className="absolute top-0 right-[5px] flex items-center h-full">
-        <div className="sm:w-[32px] w-[24px]">
+        <div className="lg:w-[32px] w-[24px]">
           <ArrowDown />
         </div>
       </div>

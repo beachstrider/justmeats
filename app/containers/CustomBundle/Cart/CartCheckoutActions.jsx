@@ -27,7 +27,7 @@ export function CartCheckoutActions() {
   }
 
   return (
-    <div className="sm:px-[40px] px-[20px] sm:pb-[26px] pb-[20px] text-center font-barlow sm:text-[20px] text-[18px] font-bold">
+    <div className="lg:px-[40px] px-[20px] lg:pb-[26px] pb-[20px] text-center font-barlow lg:text-[20px] text-[18px] font-bold">
       <Button
         loading={submitting}
         onClick={onSubmit}
