@@ -7,6 +7,7 @@ import { PlanPickerBlock } from '~/containers/CustomBundle/PlanPickerBlock'
 import { CustomBundleContext, RootContext } from '~/contexts'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
 import { QualitySeal } from '~/icons/QualitySeal'
+import { cn } from '~/lib/utils'
 
 import { PROMO_CODES } from '../../promo-codes'
 import { Cart } from './Cart'
@@ -262,7 +263,14 @@ export const CustomBundle = () => {
                 <FaqAccordion />
               </section>
             </div>
-            <aside className="cart-wrapper sticky 2xl:top-[-324px] lg:top-[-300px] h-[calc(100vh+300px)] hidden lg:block lg:max-w-[480px] w-full bg-white 2xl:pt-[54px] lg:pt-[30px] pt-[16px]">
+            <aside
+              className={cn(
+                'cart-wrapper sticky h-[calc(100vh+300px)] hidden lg:block lg:max-w-[480px] w-full bg-white 2xl:pt-[54px] lg:pt-[30px] pt-[16px]',
+                isCartPage
+                  ? '2xl:top-[-324px] lg:top-[-300px]'
+                  : '2xl:top-[-56px] lg:top-[-32px]',
+              )}
+            >
               {isCartPage && <PlanPickerBlock />}
               <div className="h-full lg:h-auto">
                 <div className="lg:hidden lg:px-[40px] px-[20px] py-[30px] text-center top-section border-y border-[#EFEEED]">
