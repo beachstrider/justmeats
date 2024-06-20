@@ -36,9 +36,9 @@ export default function Layout() {
   const { customer } = useLoaderData()
 
   return (
-    <div className="account">
+    <main className="page-account">
       <Menu />
       <Outlet context={{ customer }} />
-    </div>
+    </main>
   )
 }

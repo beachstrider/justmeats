@@ -100,8 +100,8 @@ export const SubscriptionEditLayout = ({ children }) => {
 
   return (
     <div className="w-full flex flex-col justify-center items-center bg-[#eeeeee]">
-      <div className="container mb-10 custom-collection-wrap">
-        <div className="relative flex sm:flex-row flex-col lg:gap-x-2 gap-y-2 sm:justify-start sm:items-center items-start mt-[36px] mb-[30px] flex-wrap gap-x-[35px]">
+      <div className="mb-10 custom-collection-wrap">
+        <div className="container relative flex sm:flex-row flex-col lg:gap-x-2 gap-y-2 sm:justify-start sm:items-center items-start mt-[36px] mb-[30px] flex-wrap gap-x-[35px]">
           <NavLink
             end
             prefetch="intent"
@@ -116,7 +116,7 @@ export const SubscriptionEditLayout = ({ children }) => {
         </div>
         <hr className="border border-[#707070] border-solid" />
 
-        <div className="flex gap-2 mt-6 mb-3 sm:mt-10 sm:mb-5">
+        <div className="container flex gap-2 mt-6 mb-3 sm:mt-10 sm:mb-5">
           <Button
             onClick={() => setDialogOpen(true)}
             className="py-[5px] px-[15px] sm:px-[30px] border-2 border-[#425B34] border-solid bg-white sm:w-auto w-full"
@@ -132,7 +132,7 @@ export const SubscriptionEditLayout = ({ children }) => {
           </Button>
         </div>
         {children}
-        <div className="my-5">
+        <div className="container my-5">
           {subscription.status === 'active' && (
             <div className="mb-10">
               <Button

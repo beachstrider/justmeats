@@ -951,6 +951,7 @@ section.product-list-slider button.slick-arrow.slick-next {
   @apply !px-0;
 }
 
-.page-custom-bundle ~ #reamazejs-container #reamaze-widget {
+.page-custom-bundle ~ #reamazejs-container #reamaze-widget,
+.page-account ~ #reamazejs-container #reamaze-widget {
   @apply sm:!visible !invisible;
 }
