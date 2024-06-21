@@ -5,6 +5,7 @@ import { unstable_useAnalytics as useAnalytics } from '@shopify/hydrogen'
 
 export function CustomAnalytics() {
   const { subscribe } = useAnalytics()
+  const { ready } = register('Third Party Analytics Integration')
 
   useEffect(() => {
     // Standard events
@@ -29,6 +30,8 @@ export function CustomAnalytics() {
     // subscribe('custom_sidecart_viewed', (data) => {
     //   console.log('CustomAnalytics - Custom sidecart opened:', data)
     // })
+
+    ready()
   }, [])
 
   return null
