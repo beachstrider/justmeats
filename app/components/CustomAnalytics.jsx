@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { unstable_useAnalytics as useAnalytics } from '@shopify/hydrogen'
 
 export function CustomAnalytics() {
-  const { subscribe } = useAnalytics()
+  const { subscribe, register } = useAnalytics()
   const { ready } = register('Third Party Analytics Integration')
 
   useEffect(() => {
