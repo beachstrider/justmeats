@@ -113,23 +113,18 @@ export const loader = async ({ request, context, params }) => {
 
     for (const el of allProducts) {
       if (idsSubscriptions.includes(el.id)) {
-        if (
-          el.handle !== context.env.PUBLIC_FREE_PRODUCT_HANDLE &&
-          el.handle !== context.env.PUBLIC_BONUS_PRODUCT_HANDLE
-        ) {
-          const quantity = subscriptionData[el.id]
+        const quantity = subscriptionData[el.id]
 
-          const amount = el.priceRange?.maxVariantPrice?.amount
-          const totalAmount = (amount * quantity).toFixed(2)
+        const amount = el.priceRange?.maxVariantPrice?.amount
+        const totalAmount = (amount * quantity).toFixed(2)
 
-          const bindQuantityObject = {
-            ...el,
-            quantity,
-            amount,
-            totalAmount,
-          }
-          subscriptionProducts.push(bindQuantityObject)
+        const bindQuantityObject = {
+          ...el,
+          quantity,
+          amount,
+          totalAmount,
         }
+        subscriptionProducts.push(bindQuantityObject)
       }
     }
 
@@ -144,7 +139,12 @@ export const loader = async ({ request, context, params }) => {
       ? bonusProduct.variants.nodes.find((el) => el.id === bonusItemVariantId)
       : null
 
-    // Exclude free & shipping product
+    // NOTE: this free product should appear only for users who already purchased this as it's now only for one-time purchase
+    const isFreeProductSubscribed = subscriptionProducts.some(
+      (el) => el.id === freeProduct.id,
+    )
+
+    // Exclude free & bonus & shipping product
     subscriptionProducts = subscriptionProducts.filter(
       (product) => Number(product.priceRange.minVariantPrice.amount) !== 0,
     )
@@ -167,6 +167,7 @@ export const loader = async ({ request, context, params }) => {
         upcomingChargeId,
         shopCurrency: 'USD',
         discountCodes,
+        isFreeProductSubscribed,
       },
       {
         headers: {
@@ -189,16 +190,22 @@ export const action = async ({ request, context, params }) =>
       case 'update-bundle':
         const bundleId = data.bundleId
         const purchase_item_id = data.purchase_item_id
+        const isFreeProductSubscribed = data.isFreeProductSubscribed
 
-        const { collection, shippingInsuranceProduct } = await getBundle({
-          request,
-          context,
-        })
+        const { collection, freeProduct, shippingInsuranceProduct } =
+          await getBundle({
+            request,
+            context,
+          })
 
         const products = [
           ...data.products,
           { ...shippingInsuranceProduct, quantity: 1 },
         ]
+
+        if (isFreeProductSubscribed) {
+          products.push({ ...freeProduct, quantity: 1 })
+        }
 
         const bundleCollectionId = getPureId(collection.id, 'Collection')
 

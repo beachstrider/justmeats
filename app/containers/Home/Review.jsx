@@ -7,11 +7,7 @@ export const Review = () => {
           COOKING UP
         </div>
       </div>
-      <div
-        id="looxReviews"
-        data-loox-aggregate
-        className="xl:w-[99%] lg:w-[98%] sm:w-[98%] w-full"
-      />
+      <div id="looxReviews" data-loox-aggregate />
     </section>
   )
 }
