@@ -21,7 +21,6 @@ export function CartLineItem({ line, type, lineType = 'paid' }) {
     background_color,
   } = line
   const { costForOneTime } = useContext(CustomBundleContext)
-
   const [isGiftModalOpen, setIsGiftModalOpen] = useState(false)
 
   const freeTag = tags.find((el) => el.includes('free-'))

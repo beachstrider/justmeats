@@ -1,3 +1,5 @@
+import { UNSTABLE_Analytics as Analytics } from '@shopify/hydrogen'
+
 import { DialogClose } from '~/icons/DialogClose'
 
 import { ProductActions } from '../ProductActions'
@@ -16,6 +18,21 @@ export const DialogContent = ({ product, onClose }) => {
 
   return (
     <>
+      <Analytics.ProductView
+        data={{
+          products: [
+            {
+              id: product.id,
+              title: product.title,
+              price: product.priceRange?.maxVariantPrice?.amount || '0',
+              vendor: product.vendor,
+              variantId: product.variants.nodes[0]?.id || '',
+              variantTitle: product.variants.nodes[0]?.title || '',
+              quantity: 1,
+            },
+          ],
+        }}
+      />
       <div className="relative lg:px-[46px] px-[18px] lg:pt-[30px] pt-[19px] lg:pb-[26px] pb-[10px] border-b border-solid border-[#EFEEED]">
         <button
           onClick={() => onClose()}

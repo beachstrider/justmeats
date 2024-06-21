@@ -1,14 +1,17 @@
+/* eslint-disable no-undef */
 import { useEffect } from 'react'
 
 import { unstable_useAnalytics as useAnalytics } from '@shopify/hydrogen'
 
 export function CustomAnalytics() {
-  const { subscribe } = useAnalytics()
+  const { subscribe, register } = useAnalytics()
+  const { ready } = register('Third Party Analytics Integration')
 
   useEffect(() => {
     // Standard events
     subscribe('page_viewed', (data) => {
-      console.log('CustomAnalytics - Page viewed:', data)
+      fbq('track', 'PageView')
+      window.dataLayer.push({ event: 'page_view' })
     })
     // subscribe('product_viewed', (data) => {
     //   console.log('CustomAnalytics - Product viewed:', data)
@@ -27,7 +30,10 @@ export function CustomAnalytics() {
     // subscribe('custom_sidecart_viewed', (data) => {
     //   console.log('CustomAnalytics - Custom sidecart opened:', data)
     // })
+
+    ready()
   }, [])
 
   return null
 }
+/* eslint-enable no-undef */
