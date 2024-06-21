@@ -23,7 +23,6 @@ export const configMetaPixel = () => {
     'https://connect.facebook.net/en_US/fbevents.js',
   )
   fbq('init', '339994655121583')
-  fbq('track', 'PageView')
 }
 /* eslint-enable no-undef */
 /* eslint-enable no-unused-expressions */

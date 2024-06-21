@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useEffect } from 'react'
 
 import { unstable_useAnalytics as useAnalytics } from '@shopify/hydrogen'
@@ -8,7 +9,8 @@ export function CustomAnalytics() {
   useEffect(() => {
     // Standard events
     subscribe('page_viewed', (data) => {
-      console.log('CustomAnalytics - Page viewed:', data)
+      fbq('track', 'PageView')
+      window.dataLayer.push({ event: 'page_view' })
     })
     // subscribe('product_viewed', (data) => {
     //   console.log('CustomAnalytics - Product viewed:', data)
@@ -31,3 +33,4 @@ export function CustomAnalytics() {
 
   return null
 }
+/* eslint-enable no-undef */
