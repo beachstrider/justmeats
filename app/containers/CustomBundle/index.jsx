@@ -24,11 +24,12 @@ export const CustomBundle = () => {
   const {
     id,
     bundleId,
-    purchase_item_id,
     products,
-    bonusProduct,
     freeProduct,
+    bonusProduct,
     discountCodes,
+    purchase_item_id,
+    isFreeProductSubscribed,
   } = useLoaderData()
 
   const {
@@ -157,8 +158,9 @@ export const CustomBundle = () => {
           body: JSON.stringify({
             api: 'update-bundle',
             bundleId,
-            purchase_item_id,
             products,
+            purchase_item_id,
+            isFreeProductSubscribed,
           }),
         },
         {

@@ -23,7 +23,7 @@ export function CartCheckoutActions() {
       setBtnUpdateText(SAVING_FAILD)
     }
 
-    setTimeout(() => setBtnUpdateText(UPDATE_CHANGES), 2000)
+    setTimeout(() => setBtnUpdateText(UPDATE_CHANGES), 4000)
   }
 
   return (

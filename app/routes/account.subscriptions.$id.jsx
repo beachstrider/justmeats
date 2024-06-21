@@ -190,16 +190,22 @@ export const action = async ({ request, context, params }) =>
       case 'update-bundle':
         const bundleId = data.bundleId
         const purchase_item_id = data.purchase_item_id
+        const isFreeProductSubscribed = data.isFreeProductSubscribed
 
-        const { collection, shippingInsuranceProduct } = await getBundle({
-          request,
-          context,
-        })
+        const { collection, freeProduct, shippingInsuranceProduct } =
+          await getBundle({
+            request,
+            context,
+          })
 
         const products = [
           ...data.products,
           { ...shippingInsuranceProduct, quantity: 1 },
         ]
+
+        if (isFreeProductSubscribed) {
+          products.push({ ...freeProduct, quantity: 1 })
+        }
 
         const bundleCollectionId = getPureId(collection.id, 'Collection')
 
