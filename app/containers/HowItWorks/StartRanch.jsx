@@ -3,7 +3,7 @@ import Baileyalexander from '~/assets/images/bailey-alexander.png'
 export const StartRanch = () => {
   return (
     <section>
-      <div className="sm:w-[35%] flex py-[40px] pl-[40px]">
+      <div className="sm:w-[700px] flex p-[50px]">
         <div className="pr-[10px]">
           <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center">
             1
