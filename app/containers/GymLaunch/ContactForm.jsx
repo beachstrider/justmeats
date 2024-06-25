@@ -167,6 +167,11 @@ export const ContactForm = ({ formName }) => {
           </p>
         )}
       </div>
+      <div className="tracking-normal">
+        By submitting this form, you agree to the terms stated herein and
+        consent to Just Meats contacting you via text, email, and phone for
+        purposes related to the subject matter of this form.
+      </div>
       <div className="flex gap-2">
         <Button
           type="submit"
