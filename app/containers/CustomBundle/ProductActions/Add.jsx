@@ -1,9 +1,13 @@
 import { useContext } from 'react'
 
+import { useNavigate } from '@remix-run/react'
+
 import { CustomBundleContext } from '~/contexts'
 import { cn } from '~/lib/utils'
 
-export const Add = ({ product, type }) => {
+export const Add = ({ product, line, type, isLandingPage = false }) => {
+  const navigate = useNavigate()
+
   const { selectedProducts, setSelectedProducts } =
     useContext(CustomBundleContext)
 
@@ -22,9 +26,30 @@ export const Add = ({ product, type }) => {
     setSelectedProducts(newSelectedProducts)
   }
 
+  function goAddToCart() {
+    if (line) {
+      const { id, quantity } = line
+      const updatedProducts = selectedProducts.map((product) => {
+        if (product.id === id) {
+          return {
+            ...product,
+            quantity: quantity + 1,
+            totalAmount: ((quantity + 1) * productPrice).toFixed(2),
+          }
+        }
+        return product
+      })
+      setSelectedProducts(updatedProducts)
+    } else {
+      addToSelectedProducts()
+    }
+
+    return navigate('/products/custom-bundle', { replace: true })
+  }
+
   return (
     <button
-      onClick={addToSelectedProducts}
+      onClick={isLandingPage ? goAddToCart : addToSelectedProducts}
       className={cn(
         'btn-add-to-cart mx-auto flex justify-center items-center py-[8px] gap-[5px] px-[20px] leading-none font-medium lg:text-[20px] text-[18px]',
         type === 'normal' ? '' : '',

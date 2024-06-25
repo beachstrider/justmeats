@@ -5,7 +5,7 @@ import { CustomBundleContext } from '~/contexts'
 import { Add } from './Add'
 import { Quantity } from './Quantity'
 
-export const ProductActions = ({ product, type = 'normal' }) => {
+export const ProductActions = ({ product, type = 'normal', isLandingPage }) => {
   const { selectedProducts } = useContext(CustomBundleContext)
   const line = selectedProducts.find(
     (selectedProduct) => selectedProduct.id === product.id,
@@ -13,10 +13,15 @@ export const ProductActions = ({ product, type = 'normal' }) => {
 
   return (
     <div className="font-barlow">
-      {line ? (
+      {!isLandingPage && line ? (
         <Quantity line={line} type={type} />
       ) : (
-        <Add product={product} type={type} />
+        <Add
+          product={product}
+          line={line}
+          type={type}
+          isLandingPage={isLandingPage}
+        />
       )}
     </div>
   )
