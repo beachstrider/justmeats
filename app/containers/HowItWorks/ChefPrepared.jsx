@@ -4,7 +4,7 @@ export const ChefPrepared = () => {
   return (
     <section>
       <div className="flex justify-between p-[50px]">
-        <div className="sm:w-[700px] w-[100%] flex max-w-[50%]">
+        <div className="sm:w-[700px] w-[100%] flex max-w-[100%] sm:max-w-[50%]">
           <div className="pr-[10px]">
             <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center">
               2
@@ -46,7 +46,7 @@ export const ChefPrepared = () => {
             </div>
           </div>
         </div>
-        <div className="max-w-[50%] w-[100%] flex justify-center">
+        <div className="max-w-[50%] w-[100%] flex justify-center sm:block hidden">
           <img src={MeatFork} alt="" />
         </div>
       </div>

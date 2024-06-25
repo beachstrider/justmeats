@@ -8,18 +8,18 @@ import galleryImage5 from '~/assets/images/shutterstock_2267026131.png'
 export const OrderContentAndGallery = () => {
   return (
     <section className="relative">
-        <div className="flex justify-evenly p-[50px]">
-          <div className="flex flex-col justify-center text-[#000] sm:text-[18px] text-[16px] w-[20%]">
+        <div className="flex justify-evenly p-[50px] sm:flex-row flex-col">
+          <div className="flex flex-col justify-center text-[#000] sm:text-[18px] text-[16px] sm:w-[20%] w-[100%]">
             There are two ways to place your order on <div className="font-hudson">JUSTMEATS.COM</div>
           </div>
           <div className="w-[2px] bg-[#000]"></div>
-          <div className="flex flex-col justify-center sm:text-[18px] text-[16px]  w-[20%]">
+          <div className="flex flex-col justify-center sm:text-[18px] text-[16px] sm:w-[20%] w-[100%]">
             <div>1- Select <strong>1 -TIME</strong> order, or <strong>SUBSCRIPTION</strong> order. </div>
             <div>2-Choose from our <strong>15+</strong> meat options. </div>
             <div>3- Apply any promo codes or discounts .</div>
           </div>
           <div className="w-[2px] bg-[#000]"></div>
-          <div className="flex flex-col justify-center w-[20%] text-center">
+          <div className="flex flex-col justify-center sm:w-[20%] w-[100%] text-center">
             <div className="flex items-center	justify-center text-[#000] ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
