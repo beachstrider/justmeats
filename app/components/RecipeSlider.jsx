@@ -2,20 +2,20 @@ import { Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import Recipeimg1 from '~/assets/images/Recipeimg1.png'
-import Recipeimg2 from '~/assets/images/Recipe2.png'
+// import Recipeimg2 from '~/assets/images/Recipe2.png'
 
 const Recipeimgs = [
     {
         image: Recipeimg1,
     },
     {
-        image: Recipeimg2,
+        image: Recipeimg1,
     },
     {
         image: Recipeimg1,
     },
     {
-        image: Recipeimg2,
+        image: Recipeimg1,
     },
 ]
 

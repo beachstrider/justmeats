@@ -1,6 +1,8 @@
+import { useState } from 'react'
+import { Link } from '@remix-run/react'
 import { RecipeSlider } from '~/components/RecipeSlider'
 import Recipeimg1 from '~/assets/images/Recipeimg1.png'
-export const Recipe = () => {
+export const Recipe = ({data}) => {
     return (
         <section className="relative  font-barlow tracking-[.16px]">
             <div className="container py-[50px]">
@@ -10,76 +12,139 @@ export const Recipe = () => {
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <div className="flex font-bold">
-                            Recipes
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                                <path d="M10.4167 17.7084L15.625 12.5L10.4167 7.29171" stroke="#7A392D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            Ground Beef
+                        <Link to={'/all-recipes'}>Recipes</Link>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="25"
+                            height="25"
+                            viewBox="0 0 25 25"
+                            fill="none"
+                        >
+                            <path
+                            d="M10.4167 17.7084L15.625 12.5L10.4167 7.29171"
+                            stroke="#7A392D"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            />
+                        </svg>
+                        {data?.header}
                         </div>
                         <div className="flex justify-between">
-                            <div className="font-hudson font-bold sm:text-[36px] text-[24px]">JALAPENO SPICY TACOS</div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none">
-                                    <path d="M50.4583 13.5417V55.3585L32.8939 47.8309L32.5 47.662L32.1061 47.8309L14.5417 55.3585V13.5417C14.5417 12.3197 14.9654 11.299 15.8407 10.4252C16.7168 9.55061 17.7384 9.12661 18.959 9.125H46.0417C47.2637 9.125 48.2856 9.5488 49.1614 10.4246C50.0372 11.3004 50.4598 12.321 50.4583 13.5405V13.5417Z" fill="white" stroke="#BF4745" stroke-width="2" />
-                                    <path d="M32.5 34.8798L36.8508 37.5113C37.6476 37.9936 38.6226 37.2807 38.4129 36.379L37.2597 31.4306L41.1073 28.0968C41.8097 27.4887 41.4323 26.3355 40.5097 26.2621L35.446 25.8323L33.4645 21.1565C33.1081 20.3073 31.8919 20.3073 31.5355 21.1565L29.554 25.8218L24.4903 26.2516C23.5677 26.325 23.1903 27.4782 23.8927 28.0863L27.7403 31.4202L26.5871 36.3686C26.3774 37.2702 27.3524 37.9831 28.1492 37.5008L32.5 34.8798Z" fill="#BF4745" />
-                                </svg>
+                        <div className="font-hudson font-bold sm:text-[36px] text-[24px]">
+                            {data?.header}
+                        </div>
+                        <div>
+                            <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="65"
+                            height="65"
+                            viewBox="0 0 65 65"
+                            fill="none"
+                            >
+                            <path
+                                d="M50.4583 13.5417V55.3585L32.8939 47.8309L32.5 47.662L32.1061 47.8309L14.5417 55.3585V13.5417C14.5417 12.3197 14.9654 11.299 15.8407 10.4252C16.7168 9.55061 17.7384 9.12661 18.959 9.125H46.0417C47.2637 9.125 48.2856 9.5488 49.1614 10.4246C50.0372 11.3004 50.4598 12.321 50.4583 13.5405V13.5417Z"
+                                fill="white"
+                                stroke="#BF4745"
+                                strokeWidth="2"
+                            />
+                            <path
+                                d="M32.5 34.8798L36.8508 37.5113C37.6476 37.9936 38.6226 37.2807 38.4129 36.379L37.2597 31.4306L41.1073 28.0968C41.8097 27.4887 41.4323 26.3355 40.5097 26.2621L35.446 25.8323L33.4645 21.1565C33.1081 20.3073 31.8919 20.3073 31.5355 21.1565L29.554 25.8218L24.4903 26.2516C23.5677 26.325 23.1903 27.4782 23.8927 28.0863L27.7403 31.4202L26.5871 36.3686C26.3774 37.2702 27.3524 37.9831 28.1492 37.5008L32.5 34.8798Z"
+                                fill="#BF4745"
+                            />
+                            </svg>
+                        </div>
+                        </div>
+                        <div className="text-[#999]">Updated:{data?.Updated}</div>
+                        <div className="text-[18px]">{data?.text}</div>
+                        <div
+                        className="relative bg-[#6B1626] text-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-[32%_0.7%_32%_0.7%_32%] text-[14px] rounded-[8px]"
+                        style={{ boxShadow: '0px 40px 50px -15px rgba(0, 0, 0, 0.15)' }}
+                        >
+                        <div className="flex flex-col items-center relative">
+                            <div className="text-center">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="28"
+                                height="28"
+                                viewBox="0 0 28 28"
+                                fill="none"
+                            >
+                                <g clipPath="url(#clip0_5095_4211)">
+                                <path
+                                    d="M14 2.33331C20.4435 2.33331 25.6667 7.55648 25.6667 14C25.6667 20.4435 20.4435 25.6666 14 25.6666C7.55654 25.6666 2.33337 20.4435 2.33337 14C2.33337 7.55648 7.55654 2.33331 14 2.33331ZM14 4.66665C11.5247 4.66665 9.15072 5.64998 7.40038 7.40032C5.65004 9.15066 4.66671 11.5246 4.66671 14C4.66671 16.4753 5.65004 18.8493 7.40038 20.5996C9.15072 22.35 11.5247 23.3333 14 23.3333C16.4754 23.3333 18.8494 22.35 20.5997 20.5996C22.35 18.8493 23.3334 16.4753 23.3334 14C23.3334 11.5246 22.35 9.15066 20.5997 7.40032C18.8494 5.64998 16.4754 4.66665 14 4.66665ZM14 6.99998C14.2858 7.00002 14.5616 7.10493 14.7751 7.29481C14.9887 7.4847 15.1251 7.74635 15.1585 8.03015L15.1667 8.16665V13.517L18.3249 16.6751C18.5341 16.8851 18.6556 17.1668 18.6646 17.4631C18.6737 17.7594 18.5696 18.048 18.3736 18.2703C18.1775 18.4926 17.9042 18.632 17.6092 18.6601C17.3141 18.6882 17.0194 18.603 16.7849 18.4216L16.6752 18.3248L13.1752 14.8248C12.9939 14.6433 12.8774 14.4071 12.8439 14.1528L12.8334 14V8.16665C12.8334 7.85723 12.9563 7.56048 13.1751 7.34169C13.3939 7.1229 13.6906 6.99998 14 6.99998Z"
+                                    fill="white"
+                                />
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_5095_4211">
+                                    <rect width="28" height="28" fill="white" />
+                                </clipPath>
+                                </defs>
+                            </svg>
+                            </div>
+                            <div className="text-center">{data?.recipepreptime_text}</div>
+                            <div className="font-bold  text-center">
+                            {data?.recipepreptime_value}
                             </div>
                         </div>
-                        <div className="text-[#999]">Updated: May 30, 2024</div>
-                        <div className="text-[18px]">
-                            Short description - Donec dui enim, accumsan quis nisi sit amet, bibendum rhoncus
-                            mi. Donec non euismod augue. Mauris at neque ac nibh tincidunt lobortis non et
-                            felis. Cras placerat ultrices tortor eu congue. Duis dui ex, venenatis in urna sed,
-                            porttitor tempus mi. Sed sit amet risus augue.
+                        <div className="text-[50px] overflow-hidden">|</div>
+                        <div className="flex flex-col items-center relative">
+                            <div className="text-center">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="28"
+                                height="28"
+                                viewBox="0 0 28 28"
+                                fill="none"
+                            >
+                                <g clipPath="url(#clip0_5095_4211)">
+                                <path
+                                    d="M14 2.33331C20.4435 2.33331 25.6667 7.55648 25.6667 14C25.6667 20.4435 20.4435 25.6666 14 25.6666C7.55654 25.6666 2.33337 20.4435 2.33337 14C2.33337 7.55648 7.55654 2.33331 14 2.33331ZM14 4.66665C11.5247 4.66665 9.15072 5.64998 7.40038 7.40032C5.65004 9.15066 4.66671 11.5246 4.66671 14C4.66671 16.4753 5.65004 18.8493 7.40038 20.5996C9.15072 22.35 11.5247 23.3333 14 23.3333C16.4754 23.3333 18.8494 22.35 20.5997 20.5996C22.35 18.8493 23.3334 16.4753 23.3334 14C23.3334 11.5246 22.35 9.15066 20.5997 7.40032C18.8494 5.64998 16.4754 4.66665 14 4.66665ZM14 6.99998C14.2858 7.00002 14.5616 7.10493 14.7751 7.29481C14.9887 7.4847 15.1251 7.74635 15.1585 8.03015L15.1667 8.16665V13.517L18.3249 16.6751C18.5341 16.8851 18.6556 17.1668 18.6646 17.4631C18.6737 17.7594 18.5696 18.048 18.3736 18.2703C18.1775 18.4926 17.9042 18.632 17.6092 18.6601C17.3141 18.6882 17.0194 18.603 16.7849 18.4216L16.6752 18.3248L13.1752 14.8248C12.9939 14.6433 12.8774 14.4071 12.8439 14.1528L12.8334 14V8.16665C12.8334 7.85723 12.9563 7.56048 13.1751 7.34169C13.3939 7.1229 13.6906 6.99998 14 6.99998Z"
+                                    fill="white"
+                                />
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_5095_4211">
+                                    <rect width="28" height="28" fill="white" />
+                                </clipPath>
+                                </defs>
+                            </svg>
+                            </div>
+                            <div className="text-center">{data?.recipetotaltime_text}</div>
+                            <div className="font-bold  text-center">
+                            {data?.recipetotaltime_value}
+                            </div>
                         </div>
-                        <div className="relative bg-[#6B1626] text-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-3 text-[14px] rounded-[8px]" style={{ boxShadow: '0px 40px 50px -15px rgba(0, 0, 0, 0.15)' }}>
-                            <div className="flex flex-col items-center">
-                                <div className="text-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                                        <g clip-path="url(#clip0_5095_4211)">
-                                            <path d="M14 2.33331C20.4435 2.33331 25.6667 7.55648 25.6667 14C25.6667 20.4435 20.4435 25.6666 14 25.6666C7.55654 25.6666 2.33337 20.4435 2.33337 14C2.33337 7.55648 7.55654 2.33331 14 2.33331ZM14 4.66665C11.5247 4.66665 9.15072 5.64998 7.40038 7.40032C5.65004 9.15066 4.66671 11.5246 4.66671 14C4.66671 16.4753 5.65004 18.8493 7.40038 20.5996C9.15072 22.35 11.5247 23.3333 14 23.3333C16.4754 23.3333 18.8494 22.35 20.5997 20.5996C22.35 18.8493 23.3334 16.4753 23.3334 14C23.3334 11.5246 22.35 9.15066 20.5997 7.40032C18.8494 5.64998 16.4754 4.66665 14 4.66665ZM14 6.99998C14.2858 7.00002 14.5616 7.10493 14.7751 7.29481C14.9887 7.4847 15.1251 7.74635 15.1585 8.03015L15.1667 8.16665V13.517L18.3249 16.6751C18.5341 16.8851 18.6556 17.1668 18.6646 17.4631C18.6737 17.7594 18.5696 18.048 18.3736 18.2703C18.1775 18.4926 17.9042 18.632 17.6092 18.6601C17.3141 18.6882 17.0194 18.603 16.7849 18.4216L16.6752 18.3248L13.1752 14.8248C12.9939 14.6433 12.8774 14.4071 12.8439 14.1528L12.8334 14V8.16665C12.8334 7.85723 12.9563 7.56048 13.1751 7.34169C13.3939 7.1229 13.6906 6.99998 14 6.99998Z" fill="white" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5095_4211">
-                                                <rect width="28" height="28" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                                <div className="text-center">Prep time</div>
-                                <div className="font-bold  text-center">5 min</div>
+                        <div className="text-[50px] overflow-hidden">|</div>
+                        <div className="flex flex-col items-center relative">
+                            <div className="text-center">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="29"
+                                height="29"
+                                viewBox="0 0 29 29"
+                                fill="none"
+                            >
+                                <path
+                                d="M14.9108 6.6429C17.8803 6.6429 20.7281 7.81688 22.8279 9.90657C24.9276 11.9963 26.1072 14.8305 26.1072 17.7858C26.1072 18.2404 25.9257 18.6764 25.6027 18.9979C25.2797 19.3194 24.8415 19.5 24.3847 19.5H5.43688C4.98004 19.5 4.54191 19.3194 4.21887 18.9979C3.89584 18.6764 3.71436 18.2404 3.71436 17.7858C3.71436 14.8305 4.89398 11.9963 6.99371 9.90657C9.09345 7.81688 11.9413 6.6429 14.9108 6.6429ZM14.9108 6.6429V4.07147M3.71436 24.0002H26.1072"
+                                stroke="white"
+                                strokeWidth="2.1"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                />
+                            </svg>
                             </div>
-                            <div className="flex flex-col items-center">
-                                <div className="text-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                                        <g clip-path="url(#clip0_5095_4211)">
-                                            <path d="M14 2.33331C20.4435 2.33331 25.6667 7.55648 25.6667 14C25.6667 20.4435 20.4435 25.6666 14 25.6666C7.55654 25.6666 2.33337 20.4435 2.33337 14C2.33337 7.55648 7.55654 2.33331 14 2.33331ZM14 4.66665C11.5247 4.66665 9.15072 5.64998 7.40038 7.40032C5.65004 9.15066 4.66671 11.5246 4.66671 14C4.66671 16.4753 5.65004 18.8493 7.40038 20.5996C9.15072 22.35 11.5247 23.3333 14 23.3333C16.4754 23.3333 18.8494 22.35 20.5997 20.5996C22.35 18.8493 23.3334 16.4753 23.3334 14C23.3334 11.5246 22.35 9.15066 20.5997 7.40032C18.8494 5.64998 16.4754 4.66665 14 4.66665ZM14 6.99998C14.2858 7.00002 14.5616 7.10493 14.7751 7.29481C14.9887 7.4847 15.1251 7.74635 15.1585 8.03015L15.1667 8.16665V13.517L18.3249 16.6751C18.5341 16.8851 18.6556 17.1668 18.6646 17.4631C18.6737 17.7594 18.5696 18.048 18.3736 18.2703C18.1775 18.4926 17.9042 18.632 17.6092 18.6601C17.3141 18.6882 17.0194 18.603 16.7849 18.4216L16.6752 18.3248L13.1752 14.8248C12.9939 14.6433 12.8774 14.4071 12.8439 14.1528L12.8334 14V8.16665C12.8334 7.85723 12.9563 7.56048 13.1751 7.34169C13.3939 7.1229 13.6906 6.99998 14 6.99998Z" fill="white" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5095_4211">
-                                                <rect width="28" height="28" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                                <div className="text-center">Total time</div>
-                                <div className="font-bold  text-center">45 min</div>
+                            <div className="text-center">{data?.recipeserving_text}</div>
+                            <div className="font-bold  text-center">
+                            {data?.recipeserving_value}
                             </div>
-                            <div className="flex flex-col items-center">
-                                <div className="text-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
-                                        <path d="M14.9108 6.6429C17.8803 6.6429 20.7281 7.81688 22.8279 9.90657C24.9276 11.9963 26.1072 14.8305 26.1072 17.7858C26.1072 18.2404 25.9257 18.6764 25.6027 18.9979C25.2797 19.3194 24.8415 19.5 24.3847 19.5H5.43688C4.98004 19.5 4.54191 19.3194 4.21887 18.9979C3.89584 18.6764 3.71436 18.2404 3.71436 17.7858C3.71436 14.8305 4.89398 11.9963 6.99371 9.90657C9.09345 7.81688 11.9413 6.6429 14.9108 6.6429ZM14.9108 6.6429V4.07147M3.71436 24.0002H26.1072" stroke="white" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className="text-center">Servings</div>
-                                <div className="font-bold  text-center">6</div>
-                            </div>
+                        </div>
                         </div>
                     </div>
                 </div >
             </div >
             <div className="container">
-                <div className="sm:text-[18px] text-[16px]">Ut maximus felis vitae lacus bibendum, quis viverra metus lobortis. Praesent vitae scelerisque arcu. Vestibulum vestibulum velit nibh, eu egestas magna vulputate id. Nullam semper nunc non diam fringilla, quis posuere risus lacinia. Donec turpis arcu, dignissim at ex id, ultrices tempor metus. In hac habitasse platea dictumst. Curabitur malesuada lacus at risus rutrum vulputate. Fusce volutpat sit amet massa non finibus. Pellentesque ac faucibus justo. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
+                <div className="sm:text-[18px] text-[16px]">{data?.paragraph}</div>
             </div>
             <div className="container py-[50px]">
                 <div className="grid md:grid-cols-2 grid-cols-1 sm:gap-[55px] gap-[70px] items-center justify-center">
@@ -87,7 +152,7 @@ export const Recipe = () => {
                         <div className="flex gap-4">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="34" height="42" viewBox="0 0 34 42" fill="none">
-                                    <g id="4053442_bowl_food_health_healthy_salad_icon 1" clip-path="url(#clip0_5095_4226)">
+                                    <g id="4053442_bowl_food_health_healthy_salad_icon 1" clipPath="url(#clip0_5095_4226)">
                                         <g id="Capa 2">
                                             <g id="Outline">
                                                 <g id="SaladBowl">
@@ -116,39 +181,50 @@ export const Recipe = () => {
                             <div className="sm:text-[24px] text-[22px] font-barlow font-bold">INGREDIENTS</div>
                         </div>
                         <div className="flex gap-2">
-                            <div className="font-bold">1</div>
-                            <div>Steak roll</div>
+              <div className="font-bold">{data?.ingredients1}</div>
+              <div>{data?.ingredients1_value}</div>
                         </div>
                         <div className="flex gap-2">
-                            <div className="font-bold">1/4</div>
-                            <div>Tray of <span className="text-[#6B1626] font-bold ">Just Meats Smoked Texas Brisket and marinade</span></div>
+                        <div className="font-bold">{data?.ingredients2}</div>
+                        <div>
+                            Tray of{' '}
+                            <span className="text-[#6B1626] font-bold ">
+                            Just Meats Smoked Texas Brisket and marinade
+                            </span>
+                        </div>
                         </div>
                         <div className="flex gap-2">
-                            <div className="font-bold">1/2</div>
-                            <div>Slices of pepper jack cheese</div>
+                        <div className="font-bold">{data?.ingredients3}</div>
+                        <div>{data?.ingredients3_value}</div>
                         </div>
                         <div className="flex gap-2">
-                            <div className="font-bold">1/2</div>
-                            <div>Yellow onion</div>
+                        <div className="font-bold">{data?.ingredients4}</div>
+                        <div>{data?.ingredients4_value}</div>
                         </div>
                         <div className="flex gap-2">
-                            <div className="font-bold">1</div>
-                            <div>Cup try colored bell peppers</div>
+                        <div className="font-bold">{data?.ingredients5}</div>
+                        <div>{data?.ingredients5_value}</div>
                         </div>
                     </div>
                     <div className="flex flex-col items-start gap-[16px]">
                         <div className="sm:text-[36px] text-[24px] font-hudson font-bold">DIRECTIONS</div>
                         <div>
-                            <div className="text-[20px] font-bold">STEP 1</div>
-                            <div className="sm:text-[18px] text-[16px]">Combine <span className="text-[#6B1626] font-bold ">brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).</div>
+                        <div className="text-[20px] font-bold">STEP 1</div>
+                        <div className="sm:text-[18px] text-[16px]">
+                            {data?.direction_step1}
+                        </div>
                         </div>
                         <div>
-                            <div className="text-[20px] font-bold">STEP 2</div>
-                            <div className="sm:text-[18px] text-[16px]">On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.</div>
+                        <div className="text-[20px] font-bold">STEP 2</div>
+                        <div className="sm:text-[18px] text-[16px]">
+                            {data?.direction_step2}
+                        </div>
                         </div>
                         <div>
-                            <div className="text-[20px] font-bold">STEP 3</div>
-                            <div className="sm:text-[18px] text-[16px]">Fill a toasted steak roll with the mixture and enjoy.</div>
+                        <div className="text-[20px] font-bold">STEP 3 </div>
+                        <div className="sm:text-[18px] text-[16px]">
+                            {data?.direction_step3}
+                        </div>
                         </div>
                     </div>
                 </div>
