@@ -3,23 +3,23 @@ import MeatFork from '~/assets/images/Meat-Fork.png'
 export const ChefPrepared = () => {
   return (
     <section>
-      <div className="flex justify-between p-[50px]">
-        <div className="sm:w-[700px] w-[100%] flex max-w-[100%] sm:max-w-[50%]">
-          <div className="pr-[10px]">
-            <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center">
+      <div className="flex justify-between sm:p-[50px] px-[20px] py-[50px]">
+        <div className="sm:w-[700px] w-[100%] sm:flex max-w-[100%] sm:max-w-[50%]">
+          <div className="pr-[10px] pb-[20px]">
+            <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center m-auto">
               2
             </div>
           </div>
-          <div>
+          <div className="sm:text-left text-center">
             <div className="font-hudson sm:text-[28px] text-[24px] text-[#7D0E21]">
               CHEF PREPARED, PITMASTER SMOKED
             </div>
-            <div className="sm:text-[18px] text-[16px] text-[#7D0E21]">
+            <div className="sm:text-[18px] text-[16px] text-[#7D0E21] font-medium">
               This is one of the times you want to know “how the sausage gets
               made”. Our meat is prepared with plenty of high-quality TLC
               everyday. It’s your food, but it’s our passion.
             </div>
-            <div className="sm:text-[18px] text-[16px]  mt-[50px] mb-[30px] text-[#000]">
+            <div className="sm:text-[18px] text-[16px]  mt-[50px] mb-[30px] text-[#000] font-medium">
               Once the meat has entered our kitchen, it’s:
             </div>
             <ul className="px-4">
@@ -40,7 +40,7 @@ export const ChefPrepared = () => {
                 Frozen and packaged.
               </li>
             </ul>
-            <div className="mt-[30px] sm:text-[18px] text-[16px] text-[#000]">
+            <div className="mt-[30px] sm:text-[18px] text-[16px] text-[#000] font-medium">
               You get a world of flavor from recipes created and prepared by
               classically-trained chefs and award winning pitmasters.
             </div>

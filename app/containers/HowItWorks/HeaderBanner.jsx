@@ -1,7 +1,7 @@
 export const HeaderBanner = () => {
   return (
     <section>
-      <div className="py-[40px] sm:py-[60px] bg-[#6B1626] bg-pattern2">
+      <div className="px-[20px] py-[40px] sm:py-[60px] bg-[#6B1626] bg-pattern2">
         <div className="text-center sm:text-[50px] text-[40px] font-hudson text-[#FFF]">
           HOW IT WORKS
         </div>

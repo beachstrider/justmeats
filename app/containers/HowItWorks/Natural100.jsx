@@ -1,7 +1,7 @@
 export const Natural100 = () => {
   return (
     <section>
-      <div className="w-full sm:w-[700px] mx-auto py-[40px] sm:py-[60px] text-center flex flex-col items-center">
+      <div className="w-full sm:w-[700px] mx-auto py-[40px] sm:py-[60px] px-[20px] text-center flex flex-col items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="94"
@@ -54,7 +54,7 @@ export const Natural100 = () => {
           Our beef is grass-fed and grass-finished. All our meats are clean
           raised.
         </div>
-        <div className="sm:text-[18px] text-[16px] text-[#7D0E21]">
+        <div className="sm:text-[18px] text-[16px] text-[#7D0E21] font-medium">
           NO Steroids - NO Additives - NO MSG - NO GMOs NO Added Sugars, Colors,
           or Flavors
         </div>
