@@ -40,7 +40,7 @@ export const recipedata = [
     ingredients1_value: 'Steak roll',
     ingredients2: '1/4',
     ingredients2_value:
-      'Tray of<span className="text-[#6B1626] font-bold "> Just Meats Smoked Texas Brisket and marinade</span>',
+      "Tray of<span class='text-[#6B1626] font-bold'> Just Meats Smoked Texas Brisket and marinade</span>",
     ingredients3: '1/2',
     ingredients3_value: 'Slices of pepper jack cheese',
     ingredients4: '1/2',
@@ -48,7 +48,7 @@ export const recipedata = [
     ingredients5: '1',
     ingredients5_value: 'Cup try colored bell peppers',
     direction_step1:
-      'Combine <span className="text-[#6B1626] font-bold ">brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).',
+      "<div> Combine <span class='text-[#6B1626] font-bold'>brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).</div>",
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
@@ -93,7 +93,7 @@ export const recipedata = [
     ingredients1_value: 'Steak roll',
     ingredients2: '1/4',
     ingredients2_value:
-      'Tray of<span className="text-[#6B1626] font-bold "> Just Meats Smoked Texas Brisket and marinade</span>',
+      "Tray of<span class='text-[#6B1626] font-bold'> Just Meats Smoked Texas Brisket and marinade</span>",
     ingredients3: '1/2',
     ingredients3_value: 'Slices of pepper jack cheese',
     ingredients4: '1/2',
@@ -101,7 +101,7 @@ export const recipedata = [
     ingredients5: '1',
     ingredients5_value: 'Cup try colored bell peppers',
     direction_step1:
-      'Combine <span className="text-[#6B1626] font-bold ">brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).',
+      "<div> Combine <span class='text-[#6B1626] font-bold'>brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).</div>",
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
@@ -146,7 +146,7 @@ export const recipedata = [
     ingredients1_value: 'Steak roll',
     ingredients2: '1/4',
     ingredients2_value:
-      'Tray of<span className="text-[#6B1626] font-bold "> Just Meats Smoked Texas Brisket and marinade</span>',
+      "Tray of<span class='text-[#6B1626] font-bold'> Just Meats Smoked Texas Brisket and marinade</span>",
     ingredients3: '1/2',
     ingredients3_value: 'Slices of pepper jack cheese',
     ingredients4: '1/2',
@@ -154,7 +154,7 @@ export const recipedata = [
     ingredients5: '1',
     ingredients5_value: 'Cup try colored bell peppers',
     direction_step1:
-      'Combine <span className="text-[#6B1626] font-bold ">brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).',
+      "<div> Combine <span class='text-[#6B1626] font-bold'>brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).</div>",
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
@@ -199,7 +199,7 @@ export const recipedata = [
     ingredients1_value: 'Steak roll',
     ingredients2: '1/4',
     ingredients2_value:
-      'Tray of<span className="text-[#6B1626] font-bold "> Just Meats Smoked Texas Brisket and marinade</span>',
+      "Tray of<span class='text-[#6B1626] font-bold'> Just Meats Smoked Texas Brisket and marinade</span>",
     ingredients3: '1/2',
     ingredients3_value: 'Slices of pepper jack cheese',
     ingredients4: '1/2',
@@ -207,7 +207,7 @@ export const recipedata = [
     ingredients5: '1',
     ingredients5_value: 'Cup try colored bell peppers',
     direction_step1:
-      'Combine <span className="text-[#6B1626] font-bold ">brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).',
+      "<div> Combine <span class='text-[#6B1626] font-bold'>brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).</div>",
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
@@ -252,7 +252,7 @@ export const recipedata = [
     ingredients1_value: 'Steak roll',
     ingredients2: '1/4',
     ingredients2_value:
-      'Tray of<span className="text-[#6B1626] font-bold "> Just Meats Smoked Texas Brisket and marinade</span>',
+      "Tray of<span class='text-[#6B1626] font-bold'> Just Meats Smoked Texas Brisket and marinade</span>",
     ingredients3: '1/2',
     ingredients3_value: 'Slices of pepper jack cheese',
     ingredients4: '1/2',
@@ -260,7 +260,7 @@ export const recipedata = [
     ingredients5: '1',
     ingredients5_value: 'Cup try colored bell peppers',
     direction_step1:
-      'Combine <span className="text-[#6B1626] font-bold ">brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).',
+      "<div> Combine <span class='text-[#6B1626] font-bold'>brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).</div>",
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
@@ -305,7 +305,7 @@ export const recipedata = [
     ingredients1_value: 'Steak roll',
     ingredients2: '1/4',
     ingredients2_value:
-      'Tray of<span className="text-[#6B1626] font-bold "> Just Meats Smoked Texas Brisket and marinade</span>',
+      "Tray of<span class='text-[#6B1626] font-bold'> Just Meats Smoked Texas Brisket and marinade</span>",
     ingredients3: '1/2',
     ingredients3_value: 'Slices of pepper jack cheese',
     ingredients4: '1/2',
@@ -313,7 +313,7 @@ export const recipedata = [
     ingredients5: '1',
     ingredients5_value: 'Cup try colored bell peppers',
     direction_step1:
-      'Combine <span className="text-[#6B1626] font-bold ">brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).',
+      "<div> Combine <span class='text-[#6B1626] font-bold'>brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).</div>",
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
@@ -358,7 +358,7 @@ export const recipedata = [
     ingredients1_value: 'Steak roll',
     ingredients2: '1/4',
     ingredients2_value:
-      'Tray of<span className="text-[#6B1626] font-bold "> Just Meats Smoked Texas Brisket and marinade</span>',
+      "Tray of<span class='text-[#6B1626] font-bold'> Just Meats Smoked Texas Brisket and marinade</span>",
     ingredients3: '1/2',
     ingredients3_value: 'Slices of pepper jack cheese',
     ingredients4: '1/2',
@@ -366,7 +366,7 @@ export const recipedata = [
     ingredients5: '1',
     ingredients5_value: 'Cup try colored bell peppers',
     direction_step1:
-      'Combine <span className="text-[#6B1626] font-bold ">brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).',
+      "<div> Combine <span class='text-[#6B1626] font-bold'>brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).</div>",
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
@@ -411,7 +411,7 @@ export const recipedata = [
     ingredients1_value: 'Steak roll',
     ingredients2: '1/4',
     ingredients2_value:
-      'Tray of<span className="text-[#6B1626] font-bold "> Just Meats Smoked Texas Brisket and marinade</span>',
+      "Tray of<span class='text-[#6B1626] font-bold'> Just Meats Smoked Texas Brisket and marinade</span>",
     ingredients3: '1/2',
     ingredients3_value: 'Slices of pepper jack cheese',
     ingredients4: '1/2',
@@ -419,7 +419,7 @@ export const recipedata = [
     ingredients5: '1',
     ingredients5_value: 'Cup try colored bell peppers',
     direction_step1:
-      'Combine <span className="text-[#6B1626] font-bold ">brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).',
+      "<div> Combine <span class='text-[#6B1626] font-bold'>brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).</div>",
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
@@ -464,7 +464,7 @@ export const recipedata = [
     ingredients1_value: 'Steak roll',
     ingredients2: '1/4',
     ingredients2_value:
-      'Tray of<span className="text-[#6B1626] font-bold "> Just Meats Smoked Texas Brisket and marinade</span>',
+      "Tray of<span class='text-[#6B1626] font-bold'> Just Meats Smoked Texas Brisket and marinade</span>",
     ingredients3: '1/2',
     ingredients3_value: 'Slices of pepper jack cheese',
     ingredients4: '1/2',
@@ -472,7 +472,7 @@ export const recipedata = [
     ingredients5: '1',
     ingredients5_value: 'Cup try colored bell peppers',
     direction_step1:
-      'Combine <span className="text-[#6B1626] font-bold ">brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).',
+      "<div> Combine <span class='text-[#6B1626] font-bold'>brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).</div>",
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
@@ -517,7 +517,7 @@ export const recipedata = [
     ingredients1_value: 'Steak roll',
     ingredients2: '1/4',
     ingredients2_value:
-      'Tray of<span className="text-[#6B1626] font-bold "> Just Meats Smoked Texas Brisket and marinade</span>',
+      "Tray of<span class='text-[#6B1626] font-bold'> Just Meats Smoked Texas Brisket and marinade</span>",
     ingredients3: '1/2',
     ingredients3_value: 'Slices of pepper jack cheese',
     ingredients4: '1/2',
@@ -525,7 +525,7 @@ export const recipedata = [
     ingredients5: '1',
     ingredients5_value: 'Cup try colored bell peppers',
     direction_step1:
-      'Combine <span className="text-[#6B1626] font-bold ">brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).',
+      "<div> Combine <span class='text-[#6B1626] font-bold'>brisket</span>, onion, bell peppers and marinade in a pan over high heat. Cook until the bell peppers are bright and the brisket is tender (about 3 minutes).</div>",
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',

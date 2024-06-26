@@ -13,7 +13,7 @@ export const meta = () => {
 export default function RecipeItem() {
   const { id } = useParams()
   const finalData = recipedata?.find((ele) => ele.url === id)
-
+  console.log('finalData::: ', finalData);
   return (
     <main className="relative font-dunbar tracking-[1px] leading-1 text-[#231B19] your-gym">
       <Recipe data={finalData} />

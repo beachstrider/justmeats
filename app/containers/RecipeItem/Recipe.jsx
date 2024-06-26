@@ -181,17 +181,16 @@ export const Recipe = ({data}) => {
                             <div className="sm:text-[24px] text-[22px] font-barlow font-bold">INGREDIENTS</div>
                         </div>
                         <div className="flex gap-2">
-              <div className="font-bold">{data?.ingredients1}</div>
-              <div>{data?.ingredients1_value}</div>
+                        <div className="font-bold">{data?.ingredients1}</div>
+                        <div>{data?.ingredients1_value}</div>
                         </div>
                         <div className="flex gap-2">
                         <div className="font-bold">{data?.ingredients2}</div>
-                        <div>
-                            Tray of{' '}
-                            <span className="text-[#6B1626] font-bold ">
-                            Just Meats Smoked Texas Brisket and marinade
-                            </span>
-                        </div>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: data?.ingredients2_value,
+                          }}
+                        /> 
                         </div>
                         <div className="flex gap-2">
                         <div className="font-bold">{data?.ingredients3}</div>
@@ -210,9 +209,11 @@ export const Recipe = ({data}) => {
                         <div className="sm:text-[36px] text-[24px] font-hudson font-bold">DIRECTIONS</div>
                         <div>
                         <div className="text-[20px] font-bold">STEP 1</div>
-                        <div className="sm:text-[18px] text-[16px]">
-                            {data?.direction_step1}
-                        </div>
+                        <div className="sm:text-[18px] text-[16px]"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.direction_step1,
+                          }}
+                        />                      
                         </div>
                         <div>
                         <div className="text-[20px] font-bold">STEP 2</div>
