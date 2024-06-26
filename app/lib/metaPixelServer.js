@@ -23,7 +23,7 @@ export const sendPageView = async () => {
             '6f4fcb9deaeadc8f9746ae76d97ce1239e98b404efe5da3ee0b7149740f89ad6',
           ],
         },
-        action_source: 'physical_store',
+        action_source: 'website',
       },
     ]),
   )
