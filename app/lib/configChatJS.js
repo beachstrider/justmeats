@@ -5,7 +5,6 @@ export const configChatJS = () => {
   window._support['ui']['enableKb'] = 'true'
   window._support['ui']['styles'] = {
     widgetColor: 'rgb(178, 40, 58)',
-    gradient: true,
   }
   window._support['ui']['shoutboxFacesMode'] = 'default'
   window._support['ui']['shoutboxHeaderLogo'] = true
@@ -14,14 +13,12 @@ export const configChatJS = () => {
     displayOn: 'all',
     fontSize: 'default',
     allowBotProcessing: true,
+    slug: 'just-meats-chat-slash-contact-form-shoutbox-8e3b2a708f0e830c',
     label: {
       text: 'Let us know if you have any questions! &#128522;',
-      mode: 'notification',
+      mode: 'none',
       delay: 3,
       duration: 30,
-      primary: 'I have a question',
-      secondary: 'No, thanks',
-      sound: true,
     },
     position: 'bottom-left',
     mobilePosition: 'bottom-right',
