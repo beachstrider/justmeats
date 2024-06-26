@@ -92,7 +92,7 @@ export const RecipeItems = () => {
 
   return (
     <section className="bg-[#F5F5F5] text-[#231B19] pt-[62px] sm:pt-[103px] relative overflow-x-hidden pb-[50px]">
-      <div className="container flex flex-col items-center sm:mb-[56px] relative">
+      <div className="container-small flex flex-col items-center sm:mb-[56px] relative">
         <div className="text-center sm:text-[36px] text-[24px] font-hudson font-bold leading-tight sm:tracking-[1.8px] tracking-[1.2px] sm:mb-[20px] mb-[17px] font-mobile">
           RECIPES
         </div>
@@ -103,7 +103,7 @@ export const RecipeItems = () => {
           imperdiet.
         </div>
       </div>
-      <div className="container flex flex-wrap justify-between items-center sm:mb-[56px] mb-[41px] relative gap-[15px]">
+      <div className="container-small flex flex-wrap justify-between items-center sm:mb-[56px] mb-[41px] relative gap-[15px]">
         <div className="md:w-96 ">
           <div className="relative flex w-full items-stretch">
             <input
@@ -234,8 +234,8 @@ export const RecipeItems = () => {
           </DropdownMenu.Root>
         </div>
       </div>
-      <div className="container">
-        <div className="relative grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] sm:p-3 xl:pr-5 xl:mb-[0px] mb-[50px]">
+      <div className="container-small">
+        <div className="relative grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] xl:mb-[0px] mb-[50px]">
           {filteredData?.slice(startPage, endPage)?.map((item, i) => {
             return (
               <Link to={`/recipe/${item?.url}`} key={i}>

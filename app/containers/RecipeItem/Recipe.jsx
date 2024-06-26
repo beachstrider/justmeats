@@ -5,7 +5,7 @@ import Recipeimg1 from '~/assets/images/Recipeimg1.png'
 export const Recipe = ({data}) => {
     return (
         <section className="relative  font-barlow tracking-[.16px]">
-            <div className="container py-[50px]">
+            <div className="container-small py-[50px]">
                 <div className="grid md:grid-cols-2 grid-cols-1 gap-[40px] justify-center">
                     <div>
                         <RecipeSlider />
@@ -143,10 +143,10 @@ export const Recipe = ({data}) => {
                     </div>
                 </div >
             </div >
-            <div className="container">
+            <div className="container-small">
                 <div className="sm:text-[18px] text-[16px]">{data?.paragraph}</div>
             </div>
-            <div className="container py-[50px]">
+            <div className="container-small py-[50px]">
                 <div className="grid md:grid-cols-2 grid-cols-1 sm:gap-[55px] gap-[70px] items-center justify-center">
                     <div className="relative xl:pt-[46px] xl:pb-[36px] xl:px-[50px] pt-[30px] pb-[30px] px-[33px] rounded-[8px] bg-white flex flex-col items-start gap-[16px] shadow-lg text-[18px]">
                         <div className="flex gap-4">
