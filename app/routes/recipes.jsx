@@ -1,19 +1,18 @@
-import React from 'react'
+import { getPaginationVariables } from '@shopify/hydrogen'
+import { json } from '@shopify/remix-oxygen'
 
-import Easydelicious from '~/containers/Recipes/Easydelicious'
-import QuickSimpleRecipes from '~/containers/Recipes/QuickSimpleRecipes'
+import { FanFavorite } from '~/containers/Recipes/FanFavorite'
+import { RecipeItems } from '~/containers/Recipes/RecipeItems'
 
 export const meta = () => {
-  return [{ title: 'Recipes - Just Meats' }]
+  return [{ title: 'All Recipes - Just Meats' }]
 }
 
-const Recipes = () => {
+export default function Recipes() {
   return (
-    <>
-      <Easydelicious />
-      <QuickSimpleRecipes />
-    </>
+    <main className="relative font-dunbar tracking-[1px] leading-1 text-[#231B19] your-gym">
+      <RecipeItems />
+      <FanFavorite />
+    </main>
   )
 }
-
-export default Recipes

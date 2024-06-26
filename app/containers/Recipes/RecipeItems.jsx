@@ -238,7 +238,7 @@ export const RecipeItems = () => {
         <div className="relative grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] xl:mb-[0px] mb-[50px]">
           {filteredData?.slice(startPage, endPage)?.map((item, i) => {
             return (
-              <Link to={`/recipe/${item?.url}`} key={i}>
+              <Link to={`/recipes/${item?.url}`} key={i}>
                 <div
                   className="relative rounded-[8px] sm:mb-0 mb-[50px] w-full"
                   style={{

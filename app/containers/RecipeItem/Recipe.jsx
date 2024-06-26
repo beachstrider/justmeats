@@ -12,7 +12,7 @@ export const Recipe = ({data}) => {
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <div className="flex font-bold">
-                        <Link to={'/all-recipes'}>Recipes</Link>
+                        <Link to={'/recipes'}>Recipes</Link>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="25"
