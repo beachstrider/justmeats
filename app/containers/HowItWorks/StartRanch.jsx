@@ -4,7 +4,7 @@ export const StartRanch = () => {
   return (
     <section>
       <div className="sm:w-[700px] sm:flex sm:p-[50px] px-[20px] py-[50px] sm:text-left text-center">
-        <div className="pr-[10px] pb-[20px]">
+        <div className="sm:pr-[10px] pb-[20px]">
           <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center m-auto">
             1
           </div>

@@ -5,7 +5,7 @@ export const DeliverToDoor = () => {
     <section>
      <div className="sm:flex justify-between sm:p-[50px] px-[20px] py-[50px]">
         <div className="sm:w-[700px] sm:flex sm:text-left text-center sm:pb-[0] pb-[40px]">
-            <div className="pr-[10px] pb-[20px]">
+            <div className="sm:pr-[10px] pb-[20px]">
                  <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center m-auto">4</div>
             </div>
             <div>
