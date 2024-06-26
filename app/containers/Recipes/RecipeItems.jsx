@@ -5,6 +5,7 @@ import { Link } from '@remix-run/react'
 
 import { recipedata } from '~/data/recipe-data'
 import { cn } from '~/lib/utils'
+import { Check } from '~/components/Check'
 
 export const RecipeItems = () => {
   const [filterd, setFilterd] = useState('')
@@ -149,21 +150,23 @@ export const RecipeItems = () => {
                 <DownIcon />
               </div>
             </DropdownMenu.Trigger>
-            <DropdownMenu.Content>
+            <DropdownMenu.Content style={{ zIndex: '9' }}>
               <DropdownMenu.Item
                 className={cn(
-                  'flex flex-col gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
+                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
                 )}
                 onSelect={() => setSelectedOption('latest')}
               >
+                <Check />
                 Latest
               </DropdownMenu.Item>
               <DropdownMenu.Item
                 className={cn(
-                  'flex flex-col gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
+                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
                 )}
                 onSelect={() => setSelectedOption('older')}
               >
+                <Check />
                 Older
               </DropdownMenu.Item>
             </DropdownMenu.Content>
@@ -184,50 +187,50 @@ export const RecipeItems = () => {
             <DropdownMenu.Content style={{ zIndex: '9999' }}>
               <DropdownMenu.Item
                 className={cn(
-                  'flex flex-col gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
+                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
                 )}
                 onSelect={() => setSelectedOption('')}
-              >
+              ><Check />
                 All
               </DropdownMenu.Item>
               <DropdownMenu.Item
                 className={cn(
-                  'flex flex-col gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
+                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
                 )}
                 onSelect={() => setSelectedOption('beef')}
-              >
+              ><Check />
                 Beef
               </DropdownMenu.Item>
               <DropdownMenu.Item
                 className={cn(
-                  'flex flex-col gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
+                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
                 )}
                 onSelect={() => setSelectedOption('chicken')}
-              >
+              ><Check />
                 Chicken
               </DropdownMenu.Item>
               <DropdownMenu.Item
                 className={cn(
-                  'flex flex-col gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
+                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
                 )}
                 onSelect={() => setSelectedOption('pork')}
-              >
+              ><Check />
                 Pork
               </DropdownMenu.Item>
               <DropdownMenu.Item
                 className={cn(
-                  'flex flex-col gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
+                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
                 )}
                 onSelect={() => setSelectedOption('turkey')}
-              >
+              ><Check />
                 Turkey
               </DropdownMenu.Item>
               <DropdownMenu.Item
                 className={cn(
-                  'flex flex-col gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
+                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
                 )}
                 onSelect={() => setSelectedOption('bison')}
-              >
+              ><Check />
                 Bison
               </DropdownMenu.Item>
             </DropdownMenu.Content>
