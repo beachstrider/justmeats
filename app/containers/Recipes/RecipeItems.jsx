@@ -151,7 +151,7 @@ export const RecipeItems = () => {
                     cursor: 'pointer',
                   }}
                 >
-                  <div className="absolute top-[-15px] right-[15px]">
+                  {/* <div className="absolute top-[-15px] right-[15px]">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="65"
@@ -170,7 +170,7 @@ export const RecipeItems = () => {
                         fill="#BF4745"
                       />
                     </svg>
-                  </div>
+                  </div> */}
                   {item.imgs && item.imgs.length > 0 && (
                     <img className="w-full" src={item.imgs[0]} alt="" />
                   )}
