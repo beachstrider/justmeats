@@ -33,7 +33,8 @@ export const RecipeItems = () => {
       )
     })
     .sort(
-      (a, b) => (new Date(a.updated) - new Date(b.updated)) * sortingDirection,
+      (a, b) =>
+        (new Date(a.updated_at) - new Date(b.updated)) * sortingDirection,
     )
     .filter((el) => (filtering ? el.type === filtering : true))
 
@@ -203,11 +204,9 @@ export const RecipeItems = () => {
                           </defs>
                         </svg>
                       </div>
-                      <div className="text-center">
-                        {item?.recipepreptime_text}
-                      </div>
+                      <div className="text-center">Prep time</div>
                       <div className="font-bold text-center">
-                        {item?.recipepreptime_value}
+                        {item?.prep_time}
                       </div>
                     </div>
                     <div className="flex flex-col items-center">
@@ -232,11 +231,9 @@ export const RecipeItems = () => {
                           </defs>
                         </svg>
                       </div>
-                      <div className="text-center">
-                        {item?.recipetotaltime_text}
-                      </div>
+                      <div className="text-center">Total time</div>
                       <div className="font-bold text-center">
-                        {item?.recipetotaltime_value}
+                        {item?.total_time}
                       </div>
                     </div>
                     <div className="flex flex-col items-center">
@@ -257,11 +254,9 @@ export const RecipeItems = () => {
                           />
                         </svg>
                       </div>
-                      <div className="text-center">
-                        {item?.recipeserving_text}
-                      </div>
+                      <div className="text-center">Servings</div>
                       <div className="font-bold text-center">
-                        {item?.recipeserving_value}
+                        {item?.serving}
                       </div>
                     </div>
                   </div>
