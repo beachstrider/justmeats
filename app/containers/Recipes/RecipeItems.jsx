@@ -3,93 +3,87 @@ import { useEffect, useState } from 'react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { Link } from '@remix-run/react'
 
-import { recipedata } from '~/data/recipe-data'
-import { cn } from '~/lib/utils'
 import { Check } from '~/components/Check'
+import { Dropdown } from '~/components/Dropdown'
+import { Label } from '~/components/Label'
+import { recipes } from '~/data/recipes'
+import { cn } from '~/lib/utils'
+
+const sortingOptions = ['latest', 'oldest']
+const meatTypes = ['', 'beef', 'chicken', 'pork', 'turkey', 'bison']
 
 export const RecipeItems = () => {
-  const [filterd, setFilterd] = useState('')
-  const [totalPage, setTotalPage] = useState(1)
-  const [currentPage, setCurrentPage] = useState(0)
-  const [startPage, setStartPage] = useState(0)
-  const [endPage, setEndPage] = useState(9)
-  const [isOpenedMenu, setIsOpenedMenu] = useState(false)
-  const [isOpenedMeat, setIsOpenedMeat] = useState(false)
-  const [selectedOption, setSelectedOption] = useState('')
-  const [filteredData, setFilteredData] = useState([])
+  const [search, setSearch] = useState('')
+  const [sorting, setSorting] = useState('latest')
+  const [filtering, setFiltering] = useState('')
 
-  // const filteredData = recipedata?.filter((item) =>
-  //   item?.header?.toLowerCase()?.includes(filterd?.toLowerCase()),
-  // )
+  const [pageIndex, setPageIndex] = useState(0)
 
-  useEffect(() => {
-    setTotalPage(Math.ceil(filteredData.length / 9))
-  }, [filterd])
+  const pageSize = 9
+  const indexOfLast = (pageIndex + 1) * pageSize
+  const indexOfFirst = indexOfLast - pageSize
 
-  const goPage = (no) => {
-    const end = no * 9
-    setEndPage(end)
-    setStartPage(end - 9)
-    setCurrentPage(no - 1)
+  const sortingDirection = sorting === 'oldest' ? 1 : -1
+
+  const data = recipes
+    .filter((el) => {
+      return (
+        el.header.toLowerCase().includes(search.toLowerCase()) ||
+        el.paragraph.toLowerCase().includes(search.toLowerCase())
+      )
+    })
+    .sort(
+      (a, b) => (new Date(a.updated) - new Date(b.updated)) * sortingDirection,
+    )
+    .filter((el) => (filtering ? el.type === filtering : true))
+
+  const paginatedData = data.slice(indexOfFirst, indexOfLast)
+
+  const pageNumbers = []
+
+  for (let i = 1; i <= Math.ceil(data.length / pageSize); i++) {
+    pageNumbers.push(i)
   }
 
-  const DownIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-      <path
-        d="M9.3335 13.3333L16.0002 20L22.6668 13.3333"
-        stroke={isOpenedMenu || isOpenedMeat ? 'white' : '#6B1626'}
-        strokeWidth={3}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+  useEffect(() => {
+    setPageIndex(0)
+  }, [search, filtering])
+
+  const sortingDropdown = (
+    <Dropdown
+      placeholder={sorting || 'Menu'}
+      menuMinWidth={94}
+      buttonClassName="capitalize"
+    >
+      {sortingOptions.map((option, index) => (
+        <DropdownMenu.Item
+          key={index}
+          className="capitalize font-bold text-[16px] cursor-pointer"
+          onClick={() => setSorting(option)}
+        >
+          {option}
+        </DropdownMenu.Item>
+      ))}
+    </Dropdown>
   )
 
-  useEffect(() => {
-    switch (selectedOption) {
-      case 'older':
-        setFilteredData(
-          recipedata.sort((a, b) => new Date(a.Updated) - new Date(b.Updated)),
-        )
-        break
-      case 'latest':
-        setFilteredData(
-          recipedata.sort((a, b) => new Date(b.Updated) - new Date(a.Updated)),
-        )
-        break
-      case 'beef':
-        setFilteredData(
-          recipedata.filter((item) => item.type === selectedOption),
-        )
-        break
-      case 'chicken':
-        setFilteredData(
-          recipedata.filter((item) => item.type === selectedOption),
-        )
-        break
-      case 'pork':
-        setFilteredData(
-          recipedata.filter((item) => item.type === selectedOption),
-        )
-        break
-      case 'turkey':
-        setFilteredData(
-          recipedata.filter((item) => item.type === selectedOption),
-        )
-        break
-      case 'bison':
-        setFilteredData(
-          recipedata.filter((item) => item.type === selectedOption),
-        )
-        break
-      default:
-        setFilteredData(
-          recipedata?.filter((item) =>
-            item?.header?.toLowerCase()?.includes(filterd?.toLowerCase()),
-          ),
-        )
-    }
-  }, [selectedOption])
+  const filteringDropdown = (
+    <Dropdown
+      placeholder={filtering || 'All Meats'}
+      menuMinWidth={112}
+      buttonClassName="capitalize"
+    >
+      {meatTypes.map((type, index) => (
+        <DropdownMenu.Item
+          key={index}
+          className="capitalize font-bold text-[16px] cursor-pointer"
+          onClick={() => setFiltering(type)}
+        >
+          {type ? type : 'All Meats'}
+        </DropdownMenu.Item>
+      ))}
+    </Dropdown>
+  )
 
   return (
     <section className="bg-[#F5F5F5] text-[#231B19] pt-[62px] sm:pt-[103px] relative overflow-x-hidden pb-[50px]">
@@ -97,7 +91,7 @@ export const RecipeItems = () => {
         <div className="text-center sm:text-[36px] text-[24px] font-hudson font-bold leading-tight sm:tracking-[1.8px] tracking-[1.2px] sm:mb-[20px] mb-[17px] font-mobile">
           RECIPES
         </div>
-        <div className="max-w-[935px] text-[#231b19] font-barlow sm:text-center text-justify [word-spacing:-1px] sm:[word-spacing:0] sm:text-[18px] text-[16px] font-normal sm:leading-[26px] leading-[25px] tracking-[0.16px] font-nunito sm:mb-[51px] mb-[63px]">
+        <div className="max-w-[935px] text-[#231b19] sm:text-center text-justify [word-spacing:-1px] sm:[word-spacing:0] sm:text-[18px] text-[16px] font-normal sm:leading-[26px] leading-[25px] tracking-[0.16px] sm:mb-[51px] mb-[63px]">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
           finibus sapien non lobortis tincidunt. Aliquam nisl erat, laoreet ut
           enim vitae, egestas fermentum dui. Integer cursus venenatis risus vel
@@ -106,14 +100,15 @@ export const RecipeItems = () => {
       </div>
       <div className="container-small flex flex-wrap justify-between items-center sm:mb-[56px] mb-[41px] relative gap-[15px]">
         <div className="md:w-96 ">
-          <div className="relative flex w-full items-stretch">
+          <div className="relative flex items-stretch w-full">
             <input
               type="search"
               className="relative min-w-72 m-0 -mr-0.5 block flex-auto rounded-l border-neutral-300 bg-[#FFF] shadow-xl bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Search"
               aria-label="Search"
               aria-describedby="button-addon1"
-              onChange={(e) => setFilterd(e.target.value)}
             />
             <div color="light">
               <button
@@ -125,7 +120,7 @@ export const RecipeItems = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="h-5 w-5"
+                  className="w-5 h-5"
                 >
                   <path
                     fillRule="evenodd"
@@ -138,108 +133,13 @@ export const RecipeItems = () => {
           </div>
         </div>
         <div className="flex shrink-0 gap-[18px]">
-          <DropdownMenu.Root onOpenChange={(v) => setIsOpenedMenu(v)}>
-            <DropdownMenu.Trigger
-              className={cn(
-                'flex justify-between items-center font-barlow font-medium sm:text-[14px] py-[4px] pl-[14px] pr-[10px] border-2 border-[#6B1626] tracking-[0.7px]',
-                isOpenedMenu ? 'bg-[#6B1626] text-white' : 'text-[#6B1626]',
-              )}
-            >
-              Menu
-              <div className={'w-[22px]'}>
-                <DownIcon />
-              </div>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content style={{ zIndex: '9' }}>
-              <DropdownMenu.Item
-                className={cn(
-                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
-                )}
-                onSelect={() => setSelectedOption('latest')}
-              >
-                <Check />
-                Latest
-              </DropdownMenu.Item>
-              <DropdownMenu.Item
-                className={cn(
-                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
-                )}
-                onSelect={() => setSelectedOption('older')}
-              >
-                <Check />
-                Older
-              </DropdownMenu.Item>
-            </DropdownMenu.Content>
-          </DropdownMenu.Root>
-
-          <DropdownMenu.Root onOpenChange={(v) => setIsOpenedMeat(v)}>
-            <DropdownMenu.Trigger
-              className={cn(
-                'flex justify-between items-center font-barlow font-medium sm:text-[14px] py-[4px] pl-[14px] pr-[10px] border-2 border-[#6B1626] tracking-[0.7px]',
-                isOpenedMeat ? 'bg-[#6B1626] text-white' : 'text-[#6B1626]',
-              )}
-            >
-              All Meats
-              <div className={'w-[22px]'}>
-                <DownIcon />
-              </div>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content style={{ zIndex: '9999' }}>
-              <DropdownMenu.Item
-                className={cn(
-                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
-                )}
-                onSelect={() => setSelectedOption('')}
-              ><Check />
-                All
-              </DropdownMenu.Item>
-              <DropdownMenu.Item
-                className={cn(
-                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
-                )}
-                onSelect={() => setSelectedOption('beef')}
-              ><Check />
-                Beef
-              </DropdownMenu.Item>
-              <DropdownMenu.Item
-                className={cn(
-                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
-                )}
-                onSelect={() => setSelectedOption('chicken')}
-              ><Check />
-                Chicken
-              </DropdownMenu.Item>
-              <DropdownMenu.Item
-                className={cn(
-                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
-                )}
-                onSelect={() => setSelectedOption('pork')}
-              ><Check />
-                Pork
-              </DropdownMenu.Item>
-              <DropdownMenu.Item
-                className={cn(
-                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
-                )}
-                onSelect={() => setSelectedOption('turkey')}
-              ><Check />
-                Turkey
-              </DropdownMenu.Item>
-              <DropdownMenu.Item
-                className={cn(
-                  'flex items-center gap-[8px] cursor-pointer bg-white border-2 border-[#6B1626] px-[20px] py-[2px] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade',
-                )}
-                onSelect={() => setSelectedOption('bison')}
-              ><Check />
-                Bison
-              </DropdownMenu.Item>
-            </DropdownMenu.Content>
-          </DropdownMenu.Root>
+          {sortingDropdown}
+          {filteringDropdown}
         </div>
       </div>
       <div className="container-small">
         <div className="relative grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] xl:mb-[0px] mb-[50px]">
-          {filteredData?.slice(startPage, endPage)?.map((item, i) => {
+          {paginatedData.map((item, i) => {
             return (
               <Link to={`/recipes/${item?.url}`} key={i}>
                 <div
@@ -375,19 +275,22 @@ export const RecipeItems = () => {
             <div className="sm:flex sm:flex-1 sm:items-center sm:justify-center">
               <div>
                 <nav
-                  className="isolate inline-flex -space-x-px"
+                  className="inline-flex gap-1 -space-x-px isolate"
                   aria-label="Pagination"
                 >
-                  {Array.from({ length: totalPage }).map((_, i) => (
-                    <p
-                      key={i}
-                      onClick={() => goPage(i + 1)}
-                      className={`${
-                        i == currentPage && 'bg-gray-50'
-                      } cursor-pointer relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex`}
+                  {pageNumbers.map((number) => (
+                    <div
+                      key={number}
+                      onClick={() => setPageIndex(number - 1)}
+                      className={cn(
+                        `cursor-pointer relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex`,
+                        pageIndex === number - 1
+                          ? 'border border-gray-400'
+                          : '',
+                      )}
                     >
-                      {i + 1}
-                    </p>
+                      {number}
+                    </div>
                   ))}
                 </nav>
               </div>

@@ -1,7 +1,7 @@
 import Recipe1 from '~/assets/images/Recipe1.png'
 import Recipe2 from '~/assets/images/Recipe2.png'
 
-export const recipedata = [
+export const recipes = [
   {
     url: 'recipe1',
     svg: (
@@ -52,7 +52,7 @@ export const recipedata = [
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
-    Updated: 'May 30, 2024',
+    updated: 'May 30, 2024',
     type: 'beef',
   },
   {
@@ -105,7 +105,7 @@ export const recipedata = [
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
-    Updated: 'May 30, 2024',
+    updated: 'May 30, 2024',
     type: 'beef',
   },
   {
@@ -158,7 +158,7 @@ export const recipedata = [
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
-    Updated: 'May 05, 2024',
+    updated: 'May 05, 2024',
     type: 'chicken',
   },
   {
@@ -211,7 +211,7 @@ export const recipedata = [
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
-    Updated: 'May 03, 2024',
+    updated: 'May 03, 2024',
     type: 'pork',
   },
   {
@@ -264,7 +264,7 @@ export const recipedata = [
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
-    Updated: 'May 15, 2024',
+    updated: 'May 15, 2024',
     type: 'pork',
   },
   {
@@ -317,7 +317,7 @@ export const recipedata = [
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
-    Updated: 'May 20, 2024',
+    updated: 'May 20, 2024',
     type: 'turkey',
   },
   {
@@ -370,7 +370,7 @@ export const recipedata = [
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
-    Updated: 'May 30, 2024',
+    updated: 'May 30, 2024',
     type: 'turkey',
   },
   {
@@ -423,7 +423,7 @@ export const recipedata = [
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
-    Updated: 'May 20, 2024',
+    updated: 'May 20, 2024',
     type: 'turkey',
   },
   {
@@ -476,7 +476,7 @@ export const recipedata = [
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
-    Updated: 'May 9, 2024',
+    updated: 'May 9, 2024',
     type: 'bison',
   },
   {
@@ -529,7 +529,7 @@ export const recipedata = [
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
-    Updated: 'May 13, 2024',
+    updated: 'May 13, 2024',
     type: 'bison',
   },
 ]

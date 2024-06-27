@@ -4,7 +4,7 @@ import { useParams } from '@remix-run/react'
 
 import { Recipe } from '~/containers/RecipeItem/Recipe'
 import { YoumayalsoLike } from '~/containers/RecipeItem/YoumayalsoLike'
-import { recipedata } from '~/data/recipe-data'
+import { recipes } from '~/data/recipes'
 
 export const meta = () => {
   return [{ title: 'Recipe - Just Meats' }]
@@ -12,10 +12,10 @@ export const meta = () => {
 
 export default function RecipeItem() {
   const { id } = useParams()
-  const finalData = recipedata?.find((ele) => ele.url === id)
-  console.log('finalData::: ', finalData);
+  const finalData = recipes?.find((ele) => ele.url === id)
+
   return (
-    <main className="relative font-dunbar tracking-[1px] leading-1 text-[#231B19] your-gym">
+    <main className="relative tracking-[1px] leading-1 text-[#231B19] your-gym">
       <Recipe data={finalData} />
       <YoumayalsoLike />
     </main>

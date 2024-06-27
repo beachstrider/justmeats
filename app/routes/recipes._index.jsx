@@ -10,7 +10,7 @@ export const meta = () => {
 
 export default function Recipes() {
   return (
-    <main className="relative font-dunbar tracking-[1px] leading-1 text-[#231B19] your-gym">
+    <main className="relative tracking-[1px] leading-1 text-[#231B19] your-gym">
       <RecipeItems />
       <FanFavorite />
     </main>
