@@ -19,6 +19,7 @@ import { Card } from '~/containers/Account/Subscriptions/Card'
 import { Close } from '~/icons/Close'
 import { CreditIcon } from '~/icons/CreditIcon'
 import { CreditInfo } from '~/icons/CreditInfo'
+import { sendPageView } from '~/lib/metaPixel.server'
 import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 import { getBundle } from '~/lib/storefront'
 import { getPureId } from '~/lib/utils'
@@ -33,6 +34,8 @@ export const meta = () => {
 
 export const loader = async ({ request, context }) =>
   await rechargeQueryWrapper(async (rechargeSession) => {
+    sendPageView(request)
+
     const bundleProductData = getBundle({
       request,
       context,

@@ -10,6 +10,7 @@ import { json } from '@shopify/remix-oxygen'
 
 import { RequestForm } from '~/containers/Account/Login/Request'
 import { ValidateForm } from '~/containers/Account/Login/Validate'
+import { sendPageView } from '~/lib/metaPixel.server'
 import { getCustomerByEmail, updateCustomer } from '~/lib/rechargeAdmin'
 import { RECHARGE_SESSION_KEY } from '~/lib/rechargeUtils'
 
@@ -21,6 +22,8 @@ export function shouldRevalidate() {
  * @param {LoaderFunctionArgs}
  */
 export async function loader({ request, context }) {
+  sendPageView(request)
+
   return json(null, {
     headers: {
       'Set-Cookie': await context.rechargeSession.destroy(),

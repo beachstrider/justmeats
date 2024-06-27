@@ -1,10 +1,14 @@
 import { Link, useLoaderData } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
+import { sendPageView } from '~/lib/metaPixel.server'
+
 /**
  * @param {LoaderFunctionArgs}
  */
-export async function loader({ context }) {
+export async function loader({ request, context }) {
+  sendPageView(request)
+
   const data = await context.storefront.query(POLICIES_QUERY)
   const policies = Object.values(data.shop || {})
 

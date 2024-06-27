@@ -7,6 +7,7 @@ import { json, redirect } from '@shopify/remix-oxygen'
 import { Button } from '~/components/Button'
 import { PRODUCT_BY_HANDLE_QUERY } from '~/graphql/Product'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
+import { sendPageView } from '~/lib/metaPixel.server'
 import { cn } from '~/lib/utils'
 
 export const meta = () => {
@@ -14,6 +15,8 @@ export const meta = () => {
 }
 
 export async function loader({ request, context, params }) {
+  sendPageView(request)
+
   const { storefront } = context
 
   const variables = getPaginationVariables(request, { pageBy: 50 })
