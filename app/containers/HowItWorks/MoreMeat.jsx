@@ -1,4 +1,5 @@
 import moremeat from '~/assets/images/moremeat.png'
+import Thats from '~/assets/images/Thats.png'
 
 export const MoreMeat = () => {
   return (
@@ -8,8 +9,8 @@ export const MoreMeat = () => {
         <div className="sm:text-[28px] text-[16px] text-[#FFF] text-center font-hudson">
           THE RESULT?
         </div>
-        <div className="sm:text-[62px] text-[36px] text-[#FFF] text-center">
-          MEAT <span>Thats</span> MORE:
+        <div className="sm:text-[62px] text-[36px] text-[#FFF] font-espiritu font-bold flex justify-center items-center">
+          MEAT <img src={Thats} /> MORE:
         </div>
         <div className="sm:text-[28px] text-[16px] text-[#FFF] text-center font-hudson">
           TENDER and FULL OF FLAVOR

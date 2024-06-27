@@ -1,4 +1,6 @@
 import Baileyalexander from '~/assets/images/bailey-alexander.png'
+import BaileyalexanderMob from '~/assets/images/bailey-alexander-mob.png'
+import States from '~/assets/images/States.png'
 
 export const StartRanch = () => {
   return (
@@ -20,8 +22,10 @@ export const StartRanch = () => {
           </div>
         </div>
       </div>
-      <div>
-        <img className="w-full" src={Baileyalexander} alt="" />
+      <div className="relative">
+        <img className="w-full sm:block hidden" src={Baileyalexander} alt="" />
+        <img className="w-full sm:hidden block" src={BaileyalexanderMob} alt="" />
+        <img className="absolute right-[10%] sm:top-[-25%] top-[-10%] sm:w-auto w-[50%]" src={States} alt="" />
       </div>
     </section>
   )

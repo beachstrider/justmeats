@@ -5,7 +5,7 @@ export const ChefPrepared = () => {
     <section>
       <div className="flex justify-between sm:p-[50px] px-[20px] py-[50px]">
         <div className="sm:w-[700px] w-[100%] sm:flex max-w-[100%] sm:max-w-[50%]">
-          <div className="pr-[10px] pb-[20px]">
+          <div className="sm:pr-[10px] pb-[20px]">
             <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center m-auto">
               2
             </div>
