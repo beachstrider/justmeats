@@ -18,6 +18,7 @@ import { json, redirect } from '@shopify/remix-oxygen'
 import { SubscriptionEditLayout } from '~/containers/Account/Subscriptions/EditLayout'
 import { CustomBundle } from '~/containers/CustomBundle'
 import { RootContext } from '~/contexts'
+import { sendPageView } from '~/lib/metaPixel.server'
 import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 import { getBundle } from '~/lib/storefront'
 import { getFullId, getPureId } from '~/lib/utils'
@@ -36,6 +37,8 @@ export const meta = ({ data }) => {
 
 export const loader = async ({ request, context, params }) => {
   return await rechargeQueryWrapper(async (rechargeSession) => {
+    sendPageView(request)
+
     const discountCode = context.session.get('discountCode')
     const discountCodes = discountCode ? [discountCode] : []
 

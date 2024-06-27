@@ -5,13 +5,16 @@ import { NavLink, useLoaderData } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
 import { Order } from '~/containers/Account/Orders/Order'
+import { sendPageView } from '~/lib/metaPixel.server'
 import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 
 export const meta = () => {
   return [{ title: 'Orders – Just Meats' }]
 }
 
-export async function loader({ context }) {
+export async function loader({ request, context }) {
+  sendPageView(request)
+
   const listOrdersResponse = await rechargeQueryWrapper((session) => {
     if (session.customerId) {
       return listOrders(session, {

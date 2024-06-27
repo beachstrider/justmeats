@@ -10,12 +10,15 @@ import { Featured } from '~/containers/RichFroning/Featured'
 import { HowItWorks } from '~/containers/RichFroning/HowItWorks'
 import { LearnMore } from '~/containers/RichFroning/LearnMore'
 import { COLLECTIONS_QUERY } from '~/graphql/Collection'
+import { sendPageView } from '~/lib/metaPixel.server'
 
 export const meta = () => {
   return [{ title: 'Rich Froning - Just Meats' }]
 }
 
 export async function loader({ request, context }) {
+  sendPageView(request)
+
   const { storefront } = context
 
   const variables = getPaginationVariables(request, { pageBy: 50 })
