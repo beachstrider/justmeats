@@ -36,7 +36,7 @@ export const Recipe = ({ data }) => {
               <div className="font-hudson font-bold sm:text-[36px] text-[24px]">
                 {data?.header}
               </div>
-              <div>
+              {/* <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="65"
@@ -55,7 +55,7 @@ export const Recipe = ({ data }) => {
                     fill="#BF4745"
                   />
                 </svg>
-              </div>
+              </div> */}
             </div>
             <div className="text-[#999]">Updated:{data?.updated_at}</div>
             <div className="text-[18px]">{data?.text}</div>
