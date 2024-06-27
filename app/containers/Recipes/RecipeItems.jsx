@@ -32,10 +32,12 @@ export const RecipeItems = () => {
         el.paragraph.toLowerCase().includes(search.toLowerCase())
       )
     })
-    .sort(
-      (a, b) => (new Date(a.updated) - new Date(b.updated)) * sortingDirection,
-    )
     .filter((el) => (filtering ? el.type === filtering : true))
+
+  data.sort(
+    (a, b) =>
+      (new Date(a.updated_at) - new Date(b.updated_at)) * sortingDirection,
+  )
 
   const paginatedData = data.slice(indexOfFirst, indexOfLast)
 
@@ -143,13 +145,13 @@ export const RecipeItems = () => {
             return (
               <Link to={`/recipes/${item?.url}`} key={i}>
                 <div
-                  className="relative rounded-[8px] sm:mb-0 mb-[50px] w-full"
+                  className="relative rounded-[8px] sm:mb-0 mb-[50px] w-full overflow-hidden"
                   style={{
                     boxShadow: '0px 30px 30px -9px rgba(0, 0, 0, 0.14)',
                     cursor: 'pointer',
                   }}
                 >
-                  <div className="absolute top-[-15px] right-[15px]">
+                  {/* <div className="absolute top-[-15px] right-[15px]">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="65"
@@ -168,7 +170,7 @@ export const RecipeItems = () => {
                         fill="#BF4745"
                       />
                     </svg>
-                  </div>
+                  </div> */}
                   {item.imgs && item.imgs.length > 0 && (
                     <img className="w-full" src={item.imgs[0]} alt="" />
                   )}
@@ -180,7 +182,7 @@ export const RecipeItems = () => {
                       {item?.text}
                     </div>
                   </div>
-                  <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px] grid grid-cols-3 text-[14px] rounded-b-[8px]">
+                  <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px] grid grid-cols-3 text-[14px]">
                     <div className="flex flex-col items-center">
                       <div className="text-center">
                         <svg
@@ -193,7 +195,7 @@ export const RecipeItems = () => {
                           <g clipPath="url(#clip0_5095_3714)">
                             <path
                               d="M14 2.33331C20.4435 2.33331 25.6667 7.55648 25.6667 14C25.6667 20.4435 20.4435 25.6666 14 25.6666C7.55651 25.6666 2.33334 20.4435 2.33334 14C2.33334 7.55648 7.55651 2.33331 14 2.33331ZM14 4.66665C11.5247 4.66665 9.15069 5.64998 7.40035 7.40032C5.65001 9.15066 4.66668 11.5246 4.66668 14C4.66668 16.4753 5.65001 18.8493 7.40035 20.5996C9.15069 22.35 11.5247 23.3333 14 23.3333C16.4754 23.3333 18.8493 22.35 20.5997 20.5996C22.35 18.8493 23.3333 16.4753 23.3333 14C23.3333 11.5246 22.35 9.15066 20.5997 7.40032C18.8493 5.64998 16.4754 4.66665 14 4.66665ZM14 6.99998C14.2858 7.00002 14.5616 7.10493 14.7751 7.29481C14.9887 7.4847 15.1251 7.74635 15.1585 8.03015L15.1667 8.16665V13.517L18.3248 16.6751C18.5341 16.8851 18.6556 17.1668 18.6646 17.4631C18.6737 17.7594 18.5696 18.048 18.3736 18.2703C18.1775 18.4926 17.9042 18.632 17.6091 18.6601C17.314 18.6882 17.0193 18.603 16.7848 18.4216L16.6752 18.3248L13.1752 14.8248C12.9939 14.6433 12.8774 14.4071 12.8438 14.1528L12.8333 14V8.16665C12.8333 7.85723 12.9563 7.56048 13.1751 7.34169C13.3938 7.1229 13.6906 6.99998 14 6.99998Z"
-                              fill="#BF4745"
+                              fill="#6B1626"
                             />
                           </g>
                           <defs>
@@ -203,11 +205,9 @@ export const RecipeItems = () => {
                           </defs>
                         </svg>
                       </div>
-                      <div className="text-center">
-                        {item?.recipepreptime_text}
-                      </div>
+                      <div className="text-center">Prep time</div>
                       <div className="font-bold text-center">
-                        {item?.recipepreptime_value}
+                        {item?.prep_time}
                       </div>
                     </div>
                     <div className="flex flex-col items-center">
@@ -222,7 +222,7 @@ export const RecipeItems = () => {
                           <g clipPath="url(#clip0_5095_3714)">
                             <path
                               d="M14 2.33331C20.4435 2.33331 25.6667 7.55648 25.6667 14C25.6667 20.4435 20.4435 25.6666 14 25.6666C7.55651 25.6666 2.33334 20.4435 2.33334 14C2.33334 7.55648 7.55651 2.33331 14 2.33331ZM14 4.66665C11.5247 4.66665 9.15069 5.64998 7.40035 7.40032C5.65001 9.15066 4.66668 11.5246 4.66668 14C4.66668 16.4753 5.65001 18.8493 7.40035 20.5996C9.15069 22.35 11.5247 23.3333 14 23.3333C16.4754 23.3333 18.8493 22.35 20.5997 20.5996C22.35 18.8493 23.3333 16.4753 23.3333 14C23.3333 11.5246 22.35 9.15066 20.5997 7.40032C18.8493 5.64998 16.4754 4.66665 14 4.66665ZM14 6.99998C14.2858 7.00002 14.5616 7.10493 14.7751 7.29481C14.9887 7.4847 15.1251 7.74635 15.1585 8.03015L15.1667 8.16665V13.517L18.3248 16.6751C18.5341 16.8851 18.6556 17.1668 18.6646 17.4631C18.6737 17.7594 18.5696 18.048 18.3736 18.2703C18.1775 18.4926 17.9042 18.632 17.6091 18.6601C17.314 18.6882 17.0193 18.603 16.7848 18.4216L16.6752 18.3248L13.1752 14.8248C12.9939 14.6433 12.8774 14.4071 12.8438 14.1528L12.8333 14V8.16665C12.8333 7.85723 12.9563 7.56048 13.1751 7.34169C13.3938 7.1229 13.6906 6.99998 14 6.99998Z"
-                              fill="#BF4745"
+                              fill="#6B1626"
                             />
                           </g>
                           <defs>
@@ -232,11 +232,9 @@ export const RecipeItems = () => {
                           </defs>
                         </svg>
                       </div>
-                      <div className="text-center">
-                        {item?.recipetotaltime_text}
-                      </div>
+                      <div className="text-center">Total time</div>
                       <div className="font-bold text-center">
-                        {item?.recipetotaltime_value}
+                        {item?.total_time}
                       </div>
                     </div>
                     <div className="flex flex-col items-center">
@@ -250,18 +248,16 @@ export const RecipeItems = () => {
                         >
                           <path
                             d="M14.9107 6.6429C17.8802 6.6429 20.7281 7.81688 22.8278 9.90657C24.9275 11.9963 26.1071 14.8305 26.1071 17.7858C26.1071 18.2404 25.9257 18.6764 25.6026 18.9979C25.2796 19.3194 24.8415 19.5 24.3846 19.5H5.43682C4.97998 19.5 4.54185 19.3194 4.21881 18.9979C3.89577 18.6764 3.71429 18.2404 3.71429 17.7858C3.71429 14.8305 4.89391 11.9963 6.99365 9.90657C9.09339 7.81688 11.9412 6.6429 14.9107 6.6429ZM14.9107 6.6429V4.07147M3.71429 24.0002H26.1071"
-                            stroke="#7A392D"
+                            stroke="#6B1626"
                             strokeWidth="2.1"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                           />
                         </svg>
                       </div>
-                      <div className="text-center">
-                        {item?.recipeserving_text}
-                      </div>
+                      <div className="text-center">Servings</div>
                       <div className="font-bold text-center">
-                        {item?.recipeserving_value}
+                        {item?.serving}
                       </div>
                     </div>
                   </div>

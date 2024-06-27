@@ -57,7 +57,7 @@ export const Recipe = ({ data }) => {
                 </svg>
               </div>
             </div>
-            <div className="text-[#999]">Updated:{data?.updated}</div>
+            <div className="text-[#999]">Updated:{data?.updated_at}</div>
             <div className="text-[18px]">{data?.text}</div>
             <div
               className="relative bg-[#6B1626] text-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-[32%_0.7%_32%_0.7%_32%] text-[14px] rounded-[8px]"
@@ -85,10 +85,8 @@ export const Recipe = ({ data }) => {
                     </defs>
                   </svg>
                 </div>
-                <div className="text-center">{data?.recipepreptime_text}</div>
-                <div className="font-bold text-center">
-                  {data?.recipepreptime_value}
-                </div>
+                <div className="text-center">Prep time</div>
+                <div className="font-bold text-center">{data?.prep_time}</div>
               </div>
               <div className="text-[50px] overflow-hidden">|</div>
               <div className="relative flex flex-col items-center">
@@ -113,10 +111,8 @@ export const Recipe = ({ data }) => {
                     </defs>
                   </svg>
                 </div>
-                <div className="text-center">{data?.recipetotaltime_text}</div>
-                <div className="font-bold text-center">
-                  {data?.recipetotaltime_value}
-                </div>
+                <div className="text-center">Total time</div>
+                <div className="font-bold text-center">{data?.total_time}</div>
               </div>
               <div className="text-[50px] overflow-hidden">|</div>
               <div className="relative flex flex-col items-center">
@@ -137,10 +133,8 @@ export const Recipe = ({ data }) => {
                     />
                   </svg>
                 </div>
-                <div className="text-center">{data?.recipeserving_text}</div>
-                <div className="font-bold text-center">
-                  {data?.recipeserving_value}
-                </div>
+                <div className="text-center">Servings</div>
+                <div className="font-bold text-center">{data?.serving}</div>
               </div>
             </div>
           </div>
@@ -244,11 +238,7 @@ export const Recipe = ({ data }) => {
             </div>
             <div className="flex gap-2">
               <div className="font-bold">{data?.ingredients2}</div>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: data?.ingredients2_value,
-                }}
-              />
+              <div>{data?.ingredients2_value}</div>
             </div>
             <div className="flex gap-2">
               <div className="font-bold">{data?.ingredients3}</div>
@@ -269,12 +259,9 @@ export const Recipe = ({ data }) => {
             </div>
             <div>
               <div className="text-[20px] font-bold">STEP 1</div>
-              <div
-                className="sm:text-[18px] text-[16px]"
-                dangerouslySetInnerHTML={{
-                  __html: data?.direction_step1,
-                }}
-              />
+              <div className="sm:text-[18px] text-[16px]">
+                {data?.direction_step1}
+              </div>
             </div>
             <div>
               <div className="text-[20px] font-bold">STEP 2</div>
