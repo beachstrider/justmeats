@@ -238,11 +238,7 @@ export const Recipe = ({ data }) => {
             </div>
             <div className="flex gap-2">
               <div className="font-bold">{data?.ingredients2}</div>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: data?.ingredients2_value,
-                }}
-              />
+              <div>{data?.ingredients2_value}</div>
             </div>
             <div className="flex gap-2">
               <div className="font-bold">{data?.ingredients3}</div>
@@ -263,12 +259,9 @@ export const Recipe = ({ data }) => {
             </div>
             <div>
               <div className="text-[20px] font-bold">STEP 1</div>
-              <div
-                className="sm:text-[18px] text-[16px]"
-                dangerouslySetInnerHTML={{
-                  __html: data?.direction_step1,
-                }}
-              />
+              <div className="sm:text-[18px] text-[16px]">
+                {data?.direction_step1}
+              </div>
             </div>
             <div>
               <div className="text-[20px] font-bold">STEP 2</div>
