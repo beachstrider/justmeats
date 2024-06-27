@@ -145,7 +145,7 @@ export const RecipeItems = () => {
             return (
               <Link to={`/recipes/${item?.url}`} key={i}>
                 <div
-                  className="relative rounded-[8px] sm:mb-0 mb-[50px] w-full"
+                  className="relative rounded-[8px] sm:mb-0 mb-[50px] w-full overflow-hidden"
                   style={{
                     boxShadow: '0px 30px 30px -9px rgba(0, 0, 0, 0.14)',
                     cursor: 'pointer',
@@ -182,7 +182,7 @@ export const RecipeItems = () => {
                       {item?.text}
                     </div>
                   </div>
-                  <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px] grid grid-cols-3 text-[14px] rounded-b-[8px]">
+                  <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px] grid grid-cols-3 text-[14px]">
                     <div className="flex flex-col items-center">
                       <div className="text-center">
                         <svg
