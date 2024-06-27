@@ -32,11 +32,12 @@ export const RecipeItems = () => {
         el.paragraph.toLowerCase().includes(search.toLowerCase())
       )
     })
-    .sort(
-      (a, b) =>
-        (new Date(a.updated_at) - new Date(b.updated)) * sortingDirection,
-    )
     .filter((el) => (filtering ? el.type === filtering : true))
+
+  data.sort(
+    (a, b) =>
+      (new Date(a.updated_at) - new Date(b.updated_at)) * sortingDirection,
+  )
 
   const paginatedData = data.slice(indexOfFirst, indexOfLast)
 

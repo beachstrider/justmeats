@@ -32,7 +32,7 @@ export const recipes = [
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
-    updated_at: 'May 30, 2024',
+    updated_at: 'May 29, 2024',
     type: 'beef',
   },
   {
@@ -320,7 +320,7 @@ export const recipes = [
     direction_step2:
       'On a cutting board, add the brisket, onion, bell peppers, marinade and pepper jack cheese. Chop until everything is finely diced.',
     direction_step3: 'Fill a toasted steak roll with the mixture and enjoy.',
-    updated_at: 'May 9, 2024',
+    updated_at: 'May 09, 2024',
     type: 'bison',
   },
   {
@@ -390,7 +390,7 @@ export const recipes = [
     direction_step2:
       'Cut the croissant in half and butter both sides. Add the sliced avocado on one side, then top with the Chimichurri Steak, egg and bacon.',
     direction_step3: 'Add the top of the croissant, cut in half and enjoy!',
-    updated_at: 'June 13, 2024',
+    updated_at: 'Jun 13, 2024',
     type: 'beef',
   },
 ]
