@@ -2,13 +2,62 @@ import { useState } from 'react'
 import { Link } from '@remix-run/react'
 import { RecipeSlider } from '~/components/RecipeSlider'
 import Recipeimg1 from '~/assets/images/Recipeimg1.png'
+import Recipeimg2 from '~/assets/images/Recipeimg2.png'
 export const Recipe = ({data}) => {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const slides = [
+    {
+      image: Recipeimg1,
+    },
+    {
+      image: Recipeimg2,
+    },
+    {
+      image: Recipeimg1,
+    },
+    {
+      image: Recipeimg2,
+    },
+    {
+      image: Recipeimg1,
+    },
+  ]
+
+  // Function to handle thumbnail click and update currentSlide
+  const handleThumbnailClick = (index) => {
+    setCurrentSlide(index)
+  }
     return (
         <section className="relative  font-barlow tracking-[.16px]">
             <div className="container-small py-[50px]">
                 <div className="grid md:grid-cols-2 grid-cols-1 gap-[40px] justify-center">
                     <div>
-                        <RecipeSlider />
+                        {/* <RecipeSlider /> */}
+                        <div className="flex">
+                          <div className="overflow-hidden border rounded-lg shadow-lg w-[80%] flex-grow">
+                            <img
+                              src={slides[currentSlide].image}
+                              alt={`Slide ${currentSlide + 1}`}
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
+                          <div className="flex flex-col items-center ml-1 overflow-y-auto w-[20%]">
+                            {slides.map((slide, index) => (
+                              <img
+                                key={index}
+                                src={slide.image}
+                                alt={`Thumbnail ${index + 1}`}
+                                className={`h-20 w-auto cursor-pointer mb-2 ${
+                                  index === currentSlide
+                                    ? 'border-blue-500 border-2'
+                                    : 'border-gray-300'
+                                }`}
+                                onClick={() => handleThumbnailClick(index)}
+                              />
+                            ))}
+                          </div>
+                        </div>
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <div className="flex font-bold">
