@@ -33,6 +33,7 @@ import { Review } from '~/containers/Home/Review'
 import { CustomBundleContext, RootContext } from '~/contexts'
 import { COLLECTIONS_QUERY } from '~/graphql/Collection'
 import { RECOMMENDED_PRODUCTS_QUERY } from '~/graphql/Product'
+import { sendPageView } from '~/lib/metaPixel.server'
 import { getShopSuccessInfo } from '~/lib/restAdmin'
 
 export const meta = () => {
@@ -40,6 +41,8 @@ export const meta = () => {
 }
 
 export async function loader({ request, context }) {
+  sendPageView(request)
+
   const { storefront } = context
 
   const variables = getPaginationVariables(request, { pageBy: 50 })
@@ -58,8 +61,6 @@ export async function loader({ request, context }) {
       language: storefront.i18n.language,
     },
   })
-
-  getShopSuccessInfo()
 
   return defer(
     { collections, customerCount, deliveryCount },
