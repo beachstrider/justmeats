@@ -46,7 +46,7 @@ export const ChefPrepared = () => {
             </div>
           </div>
         </div>
-        <div className="max-w-[50%] w-[100%] flex justify-center bg-[url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge.png')] bg-no-repeat bg-opacity-50 sm:block hidden ">
+        <div className="max-w-[50%] w-[100%] flex justify-center bg-[url('../assets/images/Mask-group-BG.png')] bg-no-repeat bg-opacity-50 sm:block hidden ">
           <img src={MeatFork} alt="" />
         </div>
       </div>
