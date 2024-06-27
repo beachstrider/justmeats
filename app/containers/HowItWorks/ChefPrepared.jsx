@@ -22,7 +22,7 @@ export const ChefPrepared = () => {
             <div className="sm:text-[18px] text-[16px]  mt-[50px] mb-[30px] text-[#000] font-medium">
               Once the meat has entered our kitchen, it’s:
             </div>
-            <ul className="px-4">
+            <ul className="sm:px-4">
               <li className="flex items-center justify-start gap-2 mb-1 text-black text-[24px] font-bold uppercase">
                 <span className=" w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] rounded-[100%] bg-black"></span>
                 Hand-trimmed.

@@ -27,10 +27,10 @@ export const HeatEatRepeat = () => {
                     </svg>
                     </div>
                     <div className="sm:text-[18px] text-[16px] text-[#000] sm:font-normal font-medium">To thaw your meat, place it in the fridge overnight, and then reheat it using one of these three methods: </div>
-                    <ul className="sm:text-[18px] text-[16px] text-[#000] py-[20px] list-decimal pl-[30px] sm:font-normal font-medium">
-                        <li>Skillet or sauté pan on medium-high heat for two minutes. </li>
-                        <li>Air fryer at 350 degrees for six minutes. </li>
-                        <li>Oven at 300 degrees for 30-40 minutes (make sure to stir after 20 minutes). </li>
+                    <ul className="sm:text-[18px] text-[16px] text-[#000] py-[20px] sm:pl-[30px] sm:font-normal font-medium">
+                        <li className="mb-[10px]">1. Skillet or sauté pan on medium-high heat for two minutes. </li>
+                        <li className="mb-[10px]">2. Air fryer at 350 degrees for six minutes. </li>
+                        <li className="mb-[10px]">3. Oven at 300 degrees for 30-40 minutes (make sure to stir after 20 minutes). </li>
                     </ul>
                     <div className="sm:text-[18px] text-[16px] text-[#000] sm:font-normal font-medium">
                         Serve with some sides or a salad and voilá! 
