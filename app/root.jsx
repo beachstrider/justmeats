@@ -135,7 +135,7 @@ const newLayoutRoutes = [
   'rich-froning',
   'gym-launch',
   'gym',
-  'all-recipes',
+  'recipes',
   'recipe',
 ]
 
