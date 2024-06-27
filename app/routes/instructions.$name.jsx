@@ -1,10 +1,14 @@
 import { useLoaderData } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
+import { sendPageView } from '~/lib/metaPixel.server'
+
 /**
  * @param {LoaderFunctionArgs}
  */
-export async function loader({ params }) {
+export async function loader({ request, params }) {
+  sendPageView(request)
+
   const { name } = params
 
   const source = `/videos/${name}.mp4`

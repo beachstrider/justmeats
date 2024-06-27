@@ -10,17 +10,20 @@ import { json } from '@shopify/remix-oxygen'
 
 import { Details } from '~/containers/Account/Details'
 import { Payment } from '~/containers/Account/Details/Payment'
+import { sendPageView } from '~/lib/metaPixel.server'
 import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 
 export const meta = () => {
   return [{ title: 'Account – Just Meats' }]
 }
 
-export const loader = async ({ context }) =>
+export const loader = async ({ request, context }) =>
   await rechargeQueryWrapper(async (session) => {
     const { payment_methods } = await listPaymentMethods(session, {
       limit: 25,
     })
+
+    sendPageView(request)
 
     return json(
       { payment_methods },

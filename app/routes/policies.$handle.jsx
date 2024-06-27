@@ -1,6 +1,8 @@
 import { Link, useLoaderData } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
+import { sendPageView } from '~/lib/metaPixel.server'
+
 /**
  * @type {MetaFunction<typeof loader>}
  */
@@ -11,7 +13,9 @@ export const meta = ({ data }) => {
 /**
  * @param {LoaderFunctionArgs}
  */
-export async function loader({ params, context }) {
+export async function loader({ request, params, context }) {
+  sendPageView(request)
+
   if (!params.handle) {
     throw new Response('No handle was passed in', { status: 404 })
   }
