@@ -1,7 +1,7 @@
 export const Natural100 = () => {
   return (
     <section>
-      <div className="w-full sm:w-[700px] mx-auto py-[40px] sm:py-[60px] px-[20px] text-center flex flex-col items-center">
+      <div className="w-full md:w-[700px] mx-auto py-[40px] sm:py-[60px] px-[20px] text-center flex flex-col items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="94"

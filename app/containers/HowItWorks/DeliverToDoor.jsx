@@ -3,8 +3,8 @@ import justmeatBbox from '~/assets/images/justmeat-box.png'
 export const DeliverToDoor = () => {
   return (
     <section>
-     <div className="sm:flex justify-between sm:p-[50px] px-[20px] py-[50px]">
-        <div className="sm:w-[700px] sm:flex sm:text-left text-center">
+     <div className="sm:flex justify-between sm:p-[50px] px-[20px] py-[50px] gap-[20px]">
+        <div className="md:w-[700px] sm:flex sm:text-left text-center">
             <div className="sm:pr-[10px] pb-[20px]">
                  <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center m-auto">4</div>
             </div>
@@ -26,7 +26,7 @@ export const DeliverToDoor = () => {
                 </ul>
             </div>
         </div>
-        <div className="sm:w-[700px] sm:text-left text-center">
+        <div className="md:w-[700px] sm:text-left text-center">
             <img className="sm:block hidden" src={justmeatBbox} alt="" />
             <div className="sm:text-[18px] text-[16px] font-bold pt-[40px] pb-[20px]">In-Transit</div>
             <ul className="sm:text-[18px] text-[16px] list-disc pl-[30px] text-[#000]">

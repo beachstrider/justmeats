@@ -69,7 +69,7 @@ export const OrderContentAndGallery = () => {
             <div> Your meat is on the way.</div>
           </div>
         </div>
-        <div className="grid sm:grid-cols-3 grid-cols-[20%_45%_20%] gap-3 sm:pb-[50px] px-[20px] justify-center">
+        <div className="grid lg:grid-cols-3 grid-cols-[20%_45%_20%] gap-3 sm:pb-[50px] px-[20px] justify-center">
             <div className="grid gap-4">
                 <div>
                     <img className="h-auto max-w-full float-right	h-full" src={galleryImage1} alt="" />

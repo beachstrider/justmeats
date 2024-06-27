@@ -3,8 +3,8 @@ import MeatFork from '~/assets/images/Meat-Fork.png'
 export const ChefPrepared = () => {
   return (
     <section>
-      <div className="flex justify-between sm:p-[50px] px-[20px] py-[50px]">
-        <div className="sm:w-[700px] w-[100%] sm:flex max-w-[100%] sm:max-w-[50%]">
+      <div className="flex justify-between sm:p-[50px] px-[20px] py-[50px] gap-[20px]">
+        <div className="md:w-[700px] w-[100%] sm:flex max-w-[100%] sm:max-w-[50%]">
           <div className="sm:pr-[10px] pb-[20px]">
             <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center m-auto">
               2
@@ -46,7 +46,7 @@ export const ChefPrepared = () => {
             </div>
           </div>
         </div>
-        <div className="max-w-[50%] w-[100%] flex justify-center sm:block hidden">
+        <div className="max-w-[50%] w-[100%] flex justify-center bg-[url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge.png')] bg-no-repeat bg-opacity-50 sm:block hidden ">
           <img src={MeatFork} alt="" />
         </div>
       </div>

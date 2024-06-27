@@ -5,7 +5,7 @@ import States from '~/assets/images/States.png'
 export const StartRanch = () => {
   return (
     <section>
-      <div className="sm:w-[700px] sm:flex sm:p-[50px] px-[20px] py-[50px] sm:text-left text-center">
+      <div className="md:w-[700px] sm:flex sm:p-[50px] px-[20px] py-[50px] sm:text-left text-center">
         <div className="sm:pr-[10px] pb-[20px]">
           <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center m-auto">
             1
@@ -23,9 +23,9 @@ export const StartRanch = () => {
         </div>
       </div>
       <div className="relative">
-        <img className="w-full sm:block hidden" src={Baileyalexander} alt="" />
-        <img className="w-full sm:hidden block" src={BaileyalexanderMob} alt="" />
-        <img className="absolute sm:right-[10%] right-[0] sm:top-[-25%] top-[-10%] sm:w-auto w-[50%]" src={States} alt="" />
+        <img className="w-full md:block hidden" src={Baileyalexander} alt="" />
+        <img className="w-full md:hidden block" src={BaileyalexanderMob} alt="" />
+        <img className="absolute sm:right-[10%] right-[0] md:top-[-25%] top-[-10%] sm:w-auto w-[50%]" src={States} alt="" />
       </div>
     </section>
   )

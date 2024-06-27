@@ -31,7 +31,7 @@ export const SubscribeAndSave = () => {
         <div className="text-[#FFF] text-center sm:text-[20px] text-[14px]">
           *Both options require a $75 order minimum
         </div>
-        <div className="sm:order-last order-first sm:w-[700px] w-[100%] sm:flex sm:max-w-[50%] max-w-[100%] sm:p-[50px] px-[20px] py-[50px] sm:text-left text-center">
+        <div className="sm:order-last order-first md:w-[700px] w-[100%] sm:flex sm:max-w-[50%] max-w-[100%] sm:p-[50px] px-[20px] py-[50px] sm:text-left text-center">
           <div className="sm:pr-[10px] pb-[20px]">
             <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center m-auto">
               3
