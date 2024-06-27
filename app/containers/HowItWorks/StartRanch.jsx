@@ -25,7 +25,7 @@ export const StartRanch = () => {
       <div className="relative">
         <img className="w-full sm:block hidden" src={Baileyalexander} alt="" />
         <img className="w-full sm:hidden block" src={BaileyalexanderMob} alt="" />
-        <img className="absolute right-[10%] sm:top-[-25%] top-[-10%] sm:w-auto w-[50%]" src={States} alt="" />
+        <img className="absolute sm:right-[10%] right-[0] sm:top-[-25%] top-[-10%] sm:w-auto w-[50%]" src={States} alt="" />
       </div>
     </section>
   )
