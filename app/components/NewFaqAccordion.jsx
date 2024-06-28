@@ -51,7 +51,7 @@ export function FaqAccordion() {
           What kind of meat can I buy?
         </AccordionHeader>
         <AccordionBody className="pt-0 font-barlow text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
-          Each week, you can choose from chicken, pork, or beef options cooked
+          Each week, you can choose from poultry, pork, or beef options cooked
           in a variety of ways with unique spices and sauces.
         </AccordionBody>
       </Accordion>

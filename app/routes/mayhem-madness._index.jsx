@@ -12,12 +12,15 @@ import { Reviews } from '~/containers/MayhemMadness/Reviews'
 import { SecondContact } from '~/containers/MayhemMadness/SecondContact'
 import { SecondInfo } from '~/containers/MayhemMadness/SecondInfo'
 import { COLLECTIONS_QUERY } from '~/graphql/Collection'
+import { sendPageView } from '~/lib/metaPixel.server'
 
 export const meta = () => {
   return [{ title: 'Mayhem Madness - Just Meats' }]
 }
 
 export async function loader({ request, context }) {
+  sendPageView(request)
+
   const { storefront } = context
 
   const variables = getPaginationVariables(request, { pageBy: 50 })

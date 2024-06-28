@@ -23,8 +23,8 @@ export function CartLines({ type }) {
           <CartLineItem line={freeProduct} type={type} lineType="free" />
         )}
         <CartLineItem line={bonusLine} type={type} lineType="bonus" />
-        {selectedProducts.map((product) => (
-          <CartLineItem key={product.id} type={type} line={product} />
+        {selectedProducts.map((product, index) => (
+          <CartLineItem key={index} type={type} line={product} />
         ))}
       </div>
     </div>

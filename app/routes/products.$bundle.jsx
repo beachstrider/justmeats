@@ -3,6 +3,7 @@ import { json, redirect } from '@shopify/remix-oxygen'
 
 import { Notification } from '~/components/Notification'
 import { CustomBundle } from '~/containers/CustomBundle'
+import { sendPageView } from '~/lib/metaPixel.server'
 import { getBundle } from '~/lib/storefront'
 import { getFullId, getPureId } from '~/lib/utils'
 
@@ -11,6 +12,8 @@ export const meta = () => {
 }
 
 export async function loader({ request, context, params }) {
+  sendPageView(request)
+
   if (params.bundle !== context.env.PUBLIC_BUNDLE_PRODUCT_HANDLE) {
     return redirect(`/products/${context.env.PUBLIC_BUNDLE_PRODUCT_HANDLE}`)
   }

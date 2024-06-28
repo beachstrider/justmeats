@@ -11,6 +11,7 @@ import {
   DELETE_ADDRESS_MUTATION,
   UPDATE_ADDRESS_MUTATION,
 } from '~/graphql/customer-account/CustomerAddressMutations'
+import { sendPageView } from '~/lib/metaPixel.server'
 
 /**
  * @type {MetaFunction}
@@ -22,7 +23,9 @@ export const meta = () => {
 /**
  * @param {LoaderFunctionArgs}
  */
-export async function loader({ context }) {
+export async function loader({ request, context }) {
+  sendPageView(request)
+
   await context.customerAccount.handleAuthStatus()
 
   return json(
