@@ -1,5 +1,9 @@
+import { useRef } from 'react'
+
 import { Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
+
+import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons'
 
 import stepImage1 from '~/assets/images/Recipe1.png'
 import stepImage2 from '~/assets/images/Recipe2.png'
@@ -23,7 +27,7 @@ const swiperBreakpoints = {
     spaceBetween: 40,
   },
   1440: {
-    slidesPerView: 4.5,
+    slidesPerView: 4,
     spaceBetween: 40,
   },
 }
@@ -62,6 +66,7 @@ const steps = [
 ]
 
 export const FanFavoriteSlider = () => {
+  const ref = useRef()
   const { lg } = useResponsive()
 
   return (
@@ -69,12 +74,13 @@ export const FanFavoriteSlider = () => {
       <Swiper
         loop
         autoplay
-        pagination={{ clickable: true }}
+        ref={ref}
+        initialSlide={1}
         slidesPerView="auto"
         modules={[Pagination]}
         breakpoints={swiperBreakpoints}
+        pagination={{ clickable: true }}
         centeredSlides={lg ? false : true}
-        initialSlide={1}
         className="fav-favorite-slider"
       >
         {steps.map((step, index) => (
@@ -97,6 +103,18 @@ export const FanFavoriteSlider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <button
+        className="absolute lg:left-0 left-[2px] z-10 top-[38%]"
+        onClick={() => ref.current.swiper.slidePrev()}
+      >
+        <ChevronLeftIcon width={20} height={20} />
+      </button>
+      <button
+        className="absolute lg:right-0 right-[2px] z-10 top-[38%]"
+        onClick={() => ref.current.swiper.slideNext()}
+      >
+        <ChevronRightIcon width={20} height={20} />
+      </button>
     </div>
   )
 }
