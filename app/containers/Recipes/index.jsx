@@ -12,7 +12,7 @@ import { cn } from '~/lib/utils'
 const sortingOptions = ['latest', 'oldest']
 const meatTypes = ['', 'beef', 'chicken', 'pork', 'turkey', 'bison']
 
-export const RecipeItems = () => {
+export const List = () => {
   const [search, setSearch] = useState('')
   const [sorting, setSorting] = useState('latest')
   const [filtering, setFiltering] = useState('')

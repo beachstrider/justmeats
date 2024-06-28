@@ -2,8 +2,8 @@ import React from 'react'
 
 import { useParams } from '@remix-run/react'
 
-import { Recipe } from '~/containers/RecipeItem/Recipe'
-import { YouMayAlsoLike } from '~/containers/RecipeItem/YouMayAlsoLike'
+import { Recipe } from '~/containers/Recipes/Recipe/Recipe'
+import { YouMayAlsoLike } from '~/containers/Recipes/Recipe/YouMayAlsoLike'
 import { recipes } from '~/data/recipes'
 
 export const meta = () => {
