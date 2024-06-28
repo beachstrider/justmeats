@@ -6,13 +6,13 @@ export const MoreMeat = () => {
     <section>
       {/* <img className="w-full" src={moremeat} alt="" /> */}
       <div className="bg-[url('../assets/images/moremeat.png')] bg-no-repeat bg-cover py-[60px] px-[20px]">
-        <div className="sm:text-[28px] text-[16px] text-[#FFF] text-center font-hudson">
+        <div className="sm:text-[28px] text-[16px] text-[#FFF] text-center font-hudson sm:leading-[76px] leading-[30px]">
           THE RESULT?
         </div>
-        <div className="sm:text-[62px] text-[36px] text-[#FFF] font-espiritu font-bold flex justify-center items-center">
+        <div className="sm:text-[62px] text-[36px] text-[#FFF] font-espiritu font-bold flex justify-center items-center sm:leading-[76px] leading-[30px]">
           MEAT <img src={Thats} /> MORE:
         </div>
-        <div className="sm:text-[28px] text-[16px] text-[#FFF] text-center font-hudson">
+        <div className="sm:text-[28px] text-[16px] text-[#FFF] text-center font-hudson sm:leading-[76px] leading-[30px]">
           TENDER and FULL OF FLAVOR
         </div>
       </div>
