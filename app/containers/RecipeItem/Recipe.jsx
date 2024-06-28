@@ -1,18 +1,13 @@
-import { useState } from 'react'
-
 import { Link } from '@remix-run/react'
 
-import Recipeimg1 from '~/assets/images/Recipeimg1.png'
-import { RecipeSlider } from '~/components/RecipeSlider'
+import { Gallery } from './Gallery'
 
 export const Recipe = ({ data }) => {
   return (
     <section className="relative  font-barlow tracking-[.16px]">
       <div className="container-small py-[50px]">
         <div className="grid md:grid-cols-2 grid-cols-1 gap-[40px] justify-center">
-          <div>
-            <RecipeSlider />
-          </div>
+          <Gallery imgs={data.imgs} />
           <div className="flex flex-col gap-[10px]">
             <div className="flex font-bold">
               <Link to={'/recipes'}>Recipes</Link>

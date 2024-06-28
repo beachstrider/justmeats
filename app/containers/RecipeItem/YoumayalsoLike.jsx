@@ -1,6 +1,6 @@
 import { FanFavoriteSlider } from '~/components/FanFavoriteSlider'
 
-export const YoumayalsoLike = () => {
+export const YouMayAlsoLike = () => {
   return (
     <section className="relative">
       <div className="bg-[url('../assets/images/recipe-bottom-img.png')] bg-repeat  px-[13px] py-[13px]"></div>
