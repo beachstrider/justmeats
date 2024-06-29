@@ -1,4 +1,5 @@
 import StayFresh from '~/assets/images/StaysFresh.png'
+import { DotsLine } from '~/icons/DotsLine'
 export const HeatEatRepeat = () => {
   return (
     <section>        
@@ -22,9 +23,7 @@ export const HeatEatRepeat = () => {
                     <div className="sm:text-[62px] text-[54px] text-[#000] font-espiritu font-bold">90-120 DAYS</div>
                     <div className="sm:text-[24px] text-[21px] text-[#7D0F21] font-bold	mt-[-20px] mb-[20px]">Frozen</div>
                     <div className="py-[20px]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="6" viewBox="0 0 609 6" fill="none">
-                        <path d="M3 3H606" stroke="black" strokeWidth="5" strokeLinecap="round" strokeDasharray="0.5 12"/>
-                    </svg>
+                        <DotsLine />
                     </div>
                     <div className="sm:text-[18px] text-[16px] text-[#000] sm:font-normal font-medium">To thaw your meat, place it in the fridge overnight, and then reheat it using one of these three methods: </div>
                     <ul className="sm:text-[18px] text-[16px] text-[#000] py-[20px] sm:pl-[30px] sm:font-normal font-medium">
