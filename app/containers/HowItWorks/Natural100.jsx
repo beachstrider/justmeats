@@ -6,11 +6,11 @@ export const Natural100 = () => {
       <div className="w-full md:w-[700px] mx-auto py-[40px] sm:py-[60px] px-[20px] text-center flex flex-col items-center">
         <HundredPercent />
         <Natural />
-        <div className="sm:text-[18px] text-[16px] text-[#7D0E21] font-bold">
+        <div className="sm:text-[18px] text-[16px] text-[#7D0E21] font-bold sm:leading-[160%] leading-[144%]">
           Our beef is grass-fed and grass-finished. All our meats are clean
           raised.
         </div>
-        <div className="sm:text-[18px] text-[16px] text-[#7D0E21] font-medium">
+        <div className="sm:text-[18px] text-[16px] text-[#7D0E21] font-medium sm:font-normal sm:leading-[160%] leading-[144%]">
           NO Steroids - NO Additives - NO MSG - NO GMOs NO Added Sugars, Colors,
           or Flavors
         </div>
