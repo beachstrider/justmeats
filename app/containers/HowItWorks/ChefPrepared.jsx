@@ -3,17 +3,18 @@ import MeatFork from '~/assets/images/Meat-Fork.png'
 export const ChefPrepared = () => {
   return (
     <section>
-      <div className="relative max-w-[1210px] w-full mx-auto lg:py-[66px] px-[20px] py-[40px]">
+      <div className="relative max-w-[1210px] w-full mx-auto lg:pt-[66px] px-[20px] pt-[40px] lg:pb-0 pb-[50px]">
         <div className="flex justify-between gap-[20px]">
           <div className="md:w-[700px] w-[100%] sm:flex max-w-[100%] sm:max-w-[50%]">
-            <div className="sm:pr-[10px] pb-[20px]">
+            <div className="lg:absolute lg:left-[-50px] relative lg:mb-0 mb-[22px]">
               <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center m-auto">
                 2
               </div>
             </div>
             <div className="text-center sm:text-left">
-              <div className="font-hudson sm:text-[28px] text-[24px] text-[#7D0E21] font-[420] leading-[120%]">
-                CHEF PREPARED, PITMASTER SMOKED
+              <div className="font-hudson sm:text-[28px] text-[24px] text-[#7D0E21] font-[420] leading-[120%] mb-[6px]">
+                CHEF PREPARED, <br className="block lg:hidden" />
+                PITMASTER SMOKED
               </div>
               <div className="sm:text-[18px] text-[16px] text-[#7D0E21] font-medium sm:font-normal leading-[120%]">
                 This is one of the times you want to know “how the sausage gets
@@ -24,20 +25,20 @@ export const ChefPrepared = () => {
                 Once the meat has entered our kitchen, it’s:
               </div>
               <ul className="sm:px-4 font-hudson">
-                <li className="flex items-center justify-start gap-2 mb-1 text-black text-[24px] font-normal leading-[120%] uppercase">
-                  <span className=" w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] rounded-[100%] bg-black"></span>
+                <li className="flex items-center justify-start gap-[15px] mb-[16px] text-black text-[24px] font-normal leading-[120%] uppercase">
+                  <span className="w-[22px] h-[22px] shrink-0 rounded-[100%] bg-black"></span>
                   Hand-trimmed.
                 </li>
-                <li className="flex items-center justify-start gap-2 mb-1 text-black text-[24px] font-normal leading-[120%] uppercase">
-                  <span className=" w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] rounded-[100%] bg-black"></span>
+                <li className="flex items-center justify-start gap-[15px] mb-[16px] text-black text-[24px] font-normal leading-[120%] uppercase">
+                  <span className="w-[22px] h-[22px] shrink-0 rounded-[100%] bg-black"></span>
                   Hand-seasoned.
                 </li>
-                <li className="flex items-center justify-start gap-2 mb-1 text-black text-[24px] font-normal leading-[120%] uppercase">
-                  <span className=" w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] rounded-[100%] bg-black"></span>
+                <li className="flex items-center justify-start gap-[15px] mb-[16px] text-black text-[24px] font-normal leading-[120%] uppercase">
+                  <span className="w-[22px] h-[22px] shrink-0 rounded-[100%] bg-black"></span>
                   Cooked to perfection.
                 </li>
-                <li className="flex items-center justify-start gap-2 mb-1 text-black text-[24px] font-normal leading-[120%] uppercase">
-                  <span className=" w-[15px] sm:w-[18px] h-[15px] sm:h-[18px] rounded-[100%] bg-black"></span>
+                <li className="flex items-center justify-start gap-[15px] mb-[16px] text-black text-[24px] font-normal leading-[120%] uppercase">
+                  <span className="w-[22px] h-[22px] shrink-0 rounded-[100%] bg-black"></span>
                   Frozen and packaged.
                 </li>
               </ul>

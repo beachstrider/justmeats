@@ -5,7 +5,7 @@ export const HeaderBanner = () => {
         <div className="text-center sm:text-[50px] text-[40px] font-hudson text-[#FFF] font-[520] sm:font-[420] leading-[120%]">
           HOW IT WORKS
         </div>
-        <div className="text-center sm:text-[28px] text-[18px] text-[#FFF] font-medium sm:font-normal leading-[120%]">
+        <div className="font-barlow-condensed text-center sm:text-[28px] text-[18px] text-[#FFF] font-medium sm:font-normal leading-[120%]">
           FROM ORDERING, TO DELICIOUS DELIVERY.
         </div>
       </div>

@@ -17,6 +17,7 @@ export default withMT({
       dunbar: 'Dunbar',
       nunito: 'Nunito Sans',
       barlow: 'Barlow',
+      'barlow-condensed': 'Barlow-Condensed',
       hudson: 'Hudson',
       espiritu: 'espiritu-condensed',
     },

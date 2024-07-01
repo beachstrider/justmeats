@@ -1,5 +1,6 @@
 import { HundredPercent } from '~/icons/HundredPercent'
 import { Natural } from '~/icons/Natural'
+
 export const Natural100 = () => {
   return (
     <section>
@@ -11,8 +12,9 @@ export const Natural100 = () => {
           raised.
         </div>
         <div className="sm:text-[18px] text-[16px] text-[#7D0E21] font-medium sm:font-normal sm:leading-[160%] leading-[144%]">
-          NO Steroids - NO Additives - NO MSG - NO GMOs NO Added Sugars, Colors,
-          or Flavors
+          NO Hormones - NO Steroids - NO Additives - NO MSG - NO GMOs
+          <br className="" />
+          NO Added Sugars, Colors, or Flavors
         </div>
       </div>
     </section>
