@@ -2,8 +2,8 @@ import React from 'react'
 
 import { useParams } from '@remix-run/react'
 
-import { Recipe } from '~/containers/RecipeItem/Recipe'
-import { YoumayalsoLike } from '~/containers/RecipeItem/YoumayalsoLike'
+import { Recipe } from '~/containers/Recipes/Recipe/Recipe'
+import { YouMayAlsoLike } from '~/containers/Recipes/Recipe/YouMayAlsoLike'
 import { recipes } from '~/data/recipes'
 
 export const meta = () => {
@@ -17,7 +17,7 @@ export default function RecipeItem() {
   return (
     <main className="relative tracking-[1px] leading-1 text-[#231B19] your-gym">
       <Recipe data={finalData} />
-      <YoumayalsoLike />
+      <YouMayAlsoLike />
     </main>
   )
 }
