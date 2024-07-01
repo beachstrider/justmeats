@@ -1,127 +1,3 @@
-.swiper .swiper-button-prev {
-  height: 40px;
-  width: 40px;
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #00000066;
-  transition: 0.3s ease;
-}
-.swiper .swiper-button-prev:hover {
-  background-color: #000;
-}
-.swiper .swiper-button-prev::after {
-  content: ' ';
-  background-image: url('https://cdn.shopify.com/s/files/1/0672/4776/7778/files/arrow-left.svg');
-  width: 40px;
-  height: 40px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.swiper .swiper-button-next::after {
-  content: ' ';
-  background-image: url('https://cdn.shopify.com/s/files/1/0672/4776/7778/files/arrow-right.svg');
-  width: 40px;
-  height: 40px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.swiper .swiper-button-next {
-  /* content: ">"; */
-  height: 40px;
-  width: 40px;
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #00000066;
-  transition: 0.3s ease;
-}
-.swiper .swiper-button-next:hover {
-  background-color: #000;
-}
-
-.announcement-bar {
-  text-align: center;
-  background-color: rgb(28, 112, 132);
-  color: #ffffff;
-}
-
-.announcement-bar p {
-  padding: 10px 0;
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 600;
-  line-height: 19.8px;
-  font-size: 18px;
-}
-
-.subscriptionlabel {
-  cursor: pointer;
-}
-
-.carousel__slider {
-  max-height: 400px;
-}
-
-.product-grid .img-wrapper {
-  cursor: pointer;
-}
-
-.dialog-content {
-  max-width: 1080px;
-  height: 80vh;
-  padding: 1em;
-  background: white;
-  overflow-y: scroll;
-  position: relative;
-}
-
-.dialog-content .close-panel {
-  text-align: right;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-::backdrop {
-  background-color: rgba(0, 0, 0, 0.75);
-}
-
-.ball-circle {
-  width: 30px;
-  height: 30px;
-  background-color: #425b34;
-  display: inline-block;
-  border-radius: 20px;
-}
-
-.webkit-box-shadow-none {
-  -webkit-box-shadow: none !important;
-}
-
-.mobile-cart .cart-line-quantity {
-}
-.mobile-cart .cart-line-quantity > div {
-  width: 100%;
-}
-.social-icon {
-  fill: white;
-}
-
-.social-icon:hover {
-  fill: #862e1b;
-}
-
-.shadow-none {
-  -webkit-box-shadow: none;
-}
-
-.focus\:outline-none:focus {
-  -webkit-box-shadow: none !important;
-}
-
 @font-face {
   font-family: 'ROCK';
   src: url('../assets/fonts/ROCK.woff2') format('woff2');
@@ -219,6 +95,54 @@
 @font-face {
   font-family: 'Barlow';
   src: url('../assets/fonts/barlow - google/Barlow/Barlow-Bold.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-Condensed';
+  src: url('../assets/fonts/barlow - google/Barlow_Condensed/BarlowCondensed-ExtraLight.ttf')
+    format('truetype');
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-Condensed';
+  src: url('../assets/fonts/barlow - google/Barlow_Condensed/BarlowCondensed-Light.ttf')
+    format('truetype');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-Condensed';
+  src: url('../assets/fonts/barlow - google/Barlow_Condensed/BarlowCondensed-Regular.ttf')
+    format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-Condensed';
+  src: url('../assets/fonts/barlow - google/Barlow_Condensed/BarlowCondensed-Medium.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-Condensed';
+  src: url('../assets/fonts/barlow - google/Barlow_Condensed/BarlowCondensed-SemiBold.ttf')
+    format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-Condensed';
+  src: url('../assets/fonts/barlow - google/Barlow_Condensed/BarlowCondensed-Bold.ttf')
     format('truetype');
   font-weight: 700;
   font-display: swap;
@@ -356,6 +280,130 @@
   font-style: normal;
   font-weight: 400;
   font-stretch: normal;
+}
+
+.swiper .swiper-button-prev {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000066;
+  transition: 0.3s ease;
+}
+.swiper .swiper-button-prev:hover {
+  background-color: #000;
+}
+.swiper .swiper-button-prev::after {
+  content: ' ';
+  background-image: url('https://cdn.shopify.com/s/files/1/0672/4776/7778/files/arrow-left.svg');
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.swiper .swiper-button-next::after {
+  content: ' ';
+  background-image: url('https://cdn.shopify.com/s/files/1/0672/4776/7778/files/arrow-right.svg');
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.swiper .swiper-button-next {
+  /* content: ">"; */
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000066;
+  transition: 0.3s ease;
+}
+.swiper .swiper-button-next:hover {
+  background-color: #000;
+}
+
+.announcement-bar {
+  text-align: center;
+  background-color: rgb(28, 112, 132);
+  color: #ffffff;
+}
+
+.announcement-bar p {
+  padding: 10px 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  line-height: 19.8px;
+  font-size: 18px;
+}
+
+.subscriptionlabel {
+  cursor: pointer;
+}
+
+.carousel__slider {
+  max-height: 400px;
+}
+
+.product-grid .img-wrapper {
+  cursor: pointer;
+}
+
+.dialog-content {
+  max-width: 1080px;
+  height: 80vh;
+  padding: 1em;
+  background: white;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.dialog-content .close-panel {
+  text-align: right;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.ball-circle {
+  width: 30px;
+  height: 30px;
+  background-color: #425b34;
+  display: inline-block;
+  border-radius: 20px;
+}
+
+.webkit-box-shadow-none {
+  -webkit-box-shadow: none !important;
+}
+
+.mobile-cart .cart-line-quantity {
+}
+.mobile-cart .cart-line-quantity > div {
+  width: 100%;
+}
+.social-icon {
+  fill: white;
+}
+
+.social-icon:hover {
+  fill: #862e1b;
+}
+
+.shadow-none {
+  -webkit-box-shadow: none;
+}
+
+.focus\:outline-none:focus {
+  -webkit-box-shadow: none !important;
 }
 
 .tk-dunbar-low {

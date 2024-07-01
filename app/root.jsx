@@ -137,6 +137,7 @@ const newLayoutRoutes = [
   'gym',
   'recipes',
   'recipe',
+  'about',
 ]
 
 export default function App() {
