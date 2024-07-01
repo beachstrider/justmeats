@@ -3,7 +3,7 @@ import MeatFork from '~/assets/images/Meat-Fork.png'
 export const ChefPrepared = () => {
   return (
     <section>
-      <div className="container sm:p-[50px] sm:pb-[0] px-[20px] py-[50px]">
+      <div className="relative max-w-[1210px] w-full mx-auto lg:py-[66px] px-[20px] py-[40px]">
         <div className="flex justify-between gap-[20px]">
           <div className="md:w-[700px] w-[100%] sm:flex max-w-[100%] sm:max-w-[50%]">
             <div className="sm:pr-[10px] pb-[20px]">
@@ -11,7 +11,7 @@ export const ChefPrepared = () => {
                 2
               </div>
             </div>
-            <div className="sm:text-left text-center">
+            <div className="text-center sm:text-left">
               <div className="font-hudson sm:text-[28px] text-[24px] text-[#7D0E21] font-[420] leading-[120%]">
                 CHEF PREPARED, PITMASTER SMOKED
               </div>
