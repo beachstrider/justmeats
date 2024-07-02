@@ -2,9 +2,9 @@ import justmeatBbox from '~/assets/images/justmeat-box.png'
 
 export const DeliverToDoor = () => {
   return (
-    <section>
+    <section className="overflow-hidden">
       <div className="relative max-w-[1210px] w-full mx-auto lg:py-[66px] px-[20px] py-[40px]">
-        <div className="lg:flex justify-between gap-[20px]">
+        <div className="lg:flex justify-between gap-[20px] tracking-tight">
           <div className="md:w-[700px] lg:flex lg:text-left text-center">
             <div className="lg:absolute lg:left-[-50px] relative lg:mb-0 mb-[22px]">
               <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center m-auto">

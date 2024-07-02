@@ -1,5 +1,5 @@
-import moremeat from '~/assets/images/moremeat.png'
 import Thats from '~/assets/images/Thats.png'
+import moremeat from '~/assets/images/moremeat.png'
 
 export const MoreMeat = () => {
   return (
@@ -9,7 +9,7 @@ export const MoreMeat = () => {
         <div className="sm:text-[28px] text-[16px] text-[#FFF] text-center font-hudson font-[420] leading-[120%]">
           THE RESULT?
         </div>
-        <div className="sm:text-[62px] text-[36px] text-[#FFF] font-espiritu font-bold flex justify-center items-center font-normal leading-[120%]">
+        <div className="sm:text-[62px] text-[36px] text-[#FFF] font-espiritu flex justify-center items-center font-normal leading-[120%]">
           MEAT <img src={Thats} /> MORE:
         </div>
         <div className="sm:text-[28px] text-[16px] text-[#FFF] text-center font-hudson font-[420] leading-[120%]">

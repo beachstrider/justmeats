@@ -4,9 +4,11 @@ import { Natural } from '~/icons/Natural'
 export const Natural100 = () => {
   return (
     <section>
-      <div className="w-full md:w-[700px] mx-auto py-[40px] sm:py-[60px] px-[20px] text-center flex flex-col items-center">
+      <div className="relative max-w-[1210px] w-full mx-auto py-[40px] sm:py-[60px] px-[20px] text-center flex flex-col items-center">
         <HundredPercent />
-        <Natural />
+        <div className="mb-[25px]">
+          <Natural />
+        </div>
         <div className="sm:text-[18px] text-[16px] text-[#7D0E21] font-bold sm:leading-[160%] leading-[144%]">
           Our beef is grass-fed and grass-finished. All our meats are clean
           raised.
