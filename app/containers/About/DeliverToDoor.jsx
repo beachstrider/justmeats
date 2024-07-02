@@ -22,7 +22,9 @@ export const DeliverToDoor = () => {
                 (your Just Meats order)
               </div>
               <div className="lg:hidden block pb-[210px] mt-[32px]">
-                <img className="absolute left-0" src={justmeatBbox} alt="" />
+                <div className="absolute left-[-20px] w-screen">
+                  <img src={justmeatBbox} alt="" />
+                </div>
               </div>
 
               <div className="lg:text-[18px] text-[16px] pt-[40px]  font-medium lg:font-normal leading-[120%]">
