@@ -51,16 +51,16 @@ export const DeliverToDoor = () => {
             <ul className="lg:text-[18px] text-[16px] list-disc pl-[30px] text-[#000] font-medium lg:font-normal leading-[120%]">
               <li>
                 We ship out orders Monday through Thursday to ensure freshness
-                and frozen delivery
+                and frozen delivery.
               </li>
               <li>
-                Any orders placed on a weekend will be shipped out on the
-                following Monday.
+                Any orders placed on a weekend will be shipped out the following
+                Week.
               </li>
               <li>
-                If your shipment arrives on a Saturday or Sunday, contact
-                customer support asap at{' '}
-                <span className="font-bold lg:font-normal">888-343-1242</span>
+                If you need your order to be shipped at a later date, contact
+                customer support at{' '}
+                <span className="font-bold lg:font-normal">888-343-1242</span>.
               </li>
             </ul>
           </div>
@@ -71,13 +71,13 @@ export const DeliverToDoor = () => {
               </div>
               <ul className="lg:text-[18px] text-[16px] list-disc pl-[30px] text-[#000] font-medium lg:font-normal leading-[120%]">
                 <li>
-                  We ship our meat via UPS from our three production facilities
-                  (UT, TX, and OH.)
+                  We ship our meat via UPS from our three distribution centers
+                  (UT, TX, and KY.)
                 </li>
                 <li>Your order should arrive within two days.</li>
                 <li>
-                  If your order takes longer than two days, call customer
-                  support at 888-343-1242.
+                  If your order is in transit longer than two days, call
+                  customer support at 888-343-1242.
                 </li>
                 <li>
                   If your meat arrives warm, please send pictures and/or video
