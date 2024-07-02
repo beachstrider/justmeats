@@ -48,8 +48,9 @@ export const ChefPrepared = () => {
               </div>
             </div>
           </div>
-          <div className="absolute right-0 bottom-0 max-w-[50%] w-[100%] justify-center bg-[url('../assets/images/Mask-group-BG.png')] bg-no-repeat bg-opacity-50 sm:block hidden ">
-            <img src={MeatFork} alt="" />
+          <div className="absolute right-0 bottom-0 max-w-[50%] w-[100%] justify-center sm:block hidden">
+            <div className="absolute w-full h-full top-[80px] left-[-20px] bg-[url('../assets/images/Mask-group-BG.png')] [background-size:80%] bg-no-repeat opacity-[0.8]"></div>
+            <img className="relative" src={MeatFork} alt="" />
           </div>
         </div>
       </div>
