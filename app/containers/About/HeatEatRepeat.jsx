@@ -22,14 +22,14 @@ export const HeatEatRepeat = () => {
                 frozen after we cook it.
               </div>
               <img src={StayFresh} alt="" className="m-auto lg:m-0" />
-              {/* <div className="lg:text-[62px] text-[54px] text-[#F21E36] font-espiritu ">Stays Fresh</div> */}
-              <div className="lg:text-[62px] text-[54px] text-[#000] font-espiritu font-normal leading-[120%]">
+              {/* <div className="lg:text-[62px] text-[54px] text-[#F21E36] font-espiritu-condensed ">Stays Fresh</div> */}
+              <div className="lg:text-[62px] text-[54px] text-[#000] font-espiritu-condensed font-normal leading-[120%]">
                 10 DAYS
               </div>
               <div className="lg:text-[24px] text-[21px] text-[#7D0F21] font-bold leading-[120%] mt-[-20px] mb-[20px]">
                 Stored in Fridge
               </div>
-              <div className="lg:text-[62px] text-[54px] text-[#000] font-espiritu font-normal leading-[120%]">
+              <div className="lg:text-[62px] text-[54px] text-[#000] font-espiritu-condensed font-normal leading-[120%]">
                 90-120 DAYS
               </div>
               <div className="lg:text-[24px] text-[21px] text-[#7D0F21] font-bold	leading-[120%] mt-[-20px] mb-[20px]">

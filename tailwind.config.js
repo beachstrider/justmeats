@@ -19,7 +19,11 @@ export default withMT({
       barlow: 'Barlow',
       'barlow-condensed': 'Barlow-Condensed',
       hudson: 'Hudson',
-      espiritu: 'espiritu-condensed',
+      espiritu: 'espiritu',
+      'espiritu-condensed': 'espiritu-condensed',
+      'espiritu-expanded': 'espiritu-condensed',
+      'espiritu-dingbats': 'espiritu-dingbats',
+      'espiritu-script': 'espiritu-script',
     },
     extend: {
       colors: {
