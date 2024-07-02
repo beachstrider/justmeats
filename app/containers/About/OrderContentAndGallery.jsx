@@ -9,7 +9,7 @@ import { ElectricRight } from '~/icons/ElectricRight'
 export const OrderContentAndGallery = () => {
   return (
     <section className="relative max-w-[1210px] w-full mx-auto lg:py-[66px] px-[20px] py-[40px]">
-      <div className="relative flex lg:flex-row flex-col lg:gap-[0] gap-[15px] lg:text-left text-center">
+      <div className="relative flex lg:flex-row flex-col lg:gap-[0] gap-[15px] lg:text-left text-center tracking-tight lg:min-h-[112px]">
         <div className="flex flex-col shrink-0 justify-center text-[#000] lg:text-[18px] text-[16px] lg:w-[28%] w-full font-medium lg:font-normal lg:leading-[120%] leading-[157%] ">
           <div className="lg:max-w-[242px]">
             There are two ways to place your order on{' '}
@@ -17,7 +17,7 @@ export const OrderContentAndGallery = () => {
           </div>
         </div>
         <div className="lg:w-[2px] w-[50%] shrink-0 rounded-full bg-[#000] lg:h-[auto] h-[2px] lg:m-[0] m-auto"></div>
-        <div className="flex justify-center lg:text-[18px] text-[16px] w-full font-normal leading-[139%]">
+        <div className="flex justify-center items-center lg:text-[18px] text-[16px] w-full font-normal leading-[139%]">
           <div className="lg:max-w-[378px]">
             <div className="lg:mb-[0] mb-[10px]">
               1- Select <strong>1 -TIME</strong> order, or{' '}
@@ -32,7 +32,7 @@ export const OrderContentAndGallery = () => {
           </div>
         </div>
         <div className="lg:w-[2px] w-[50%] shrink-0 rounded-full bg-[#000] lg:h-[auto] h-[2px] lg:m-[0] m-auto"></div>
-        <div className="flex justify-center lg:justify-end lg:w-[24%] w-full shrink-0">
+        <div className="flex justify-center items-center lg:justify-end lg:w-[24%] w-full shrink-0">
           <div className="lg:max-w-[210px]">
             <div className="flex items-center	justify-center text-[#000]">
               <ElectricLeft />
@@ -46,34 +46,28 @@ export const OrderContentAndGallery = () => {
           </div>
         </div>
       </div>
-      <div className="grid  grid-cols-[20%_45%_20%] gap-3 pt-[50px] justify-center">
-        <div className="grid gap-4">
-          <div>
-            <img
-              className="float-right h-full max-w-full"
-              src={galleryImage1}
-              alt=""
-            />
+      <div className="relative justify-center hidden lg:flex">
+        <div className="flex justify-between max-w-[1030px] w-full lg:pt-[74px] pt-[50px]">
+          <div className="w-[26%]">
+            <div className="mb-[10px]">
+              <img className="h-[269px]" src={galleryImage1} alt="" />
+            </div>
+            <div className="flex justify-end">
+              <img className="" src={galleryImage4} alt="" />
+            </div>
           </div>
-          <div>
-            <img
-              className="float-right h-full max-w-full"
-              src={galleryImage4}
-              alt=""
-            />
+          <div className="w-[46.5%]">
+            <div>
+              <img className="w-full max-w-full" src={galleryImage2} alt="" />
+            </div>
           </div>
-        </div>
-        <div className="grid gap-4">
-          <div>
-            <img className="w-full max-w-full" src={galleryImage2} alt="" />
-          </div>
-        </div>
-        <div className="grid gap-4">
-          <div>
-            <img className="h-full max-w-full" src={galleryImage3} alt="" />
-          </div>
-          <div>
-            <img className="h-full max-w-full" src={galleryImage5} alt="" />
+          <div className="w-[26%]">
+            <div className="mb-[10px]">
+              <img className="" src={galleryImage3} alt="" />
+            </div>
+            <div className="">
+              <img className="" src={galleryImage5} alt="" />
+            </div>
           </div>
         </div>
       </div>

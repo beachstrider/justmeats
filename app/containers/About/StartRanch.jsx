@@ -13,7 +13,7 @@ export const StartRanch = () => {
             </div>
           </div>
           <div>
-            <div className="font-hudson lg:text-[28px] text-[24px] text-[#7D0E21] font-[420] leading-[120%] mb-[6px]">
+            <div className="font-hudson lg:text-[28px] text-[24px] text-[#7D0E21] font-[420] leading-[120%] mb-[6px] tracking-tight">
               It starts on the ranch
             </div>
             <div className="lg:text-[18px] text-[16px] text-[#7D0E21] font-medium lg:font-normal leading-[120%]">

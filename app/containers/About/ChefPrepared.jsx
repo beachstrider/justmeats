@@ -2,8 +2,8 @@ import MeatFork from '~/assets/images/Meat-Fork.png'
 
 export const ChefPrepared = () => {
   return (
-    <section>
-      <div className="relative max-w-[1210px] w-full mx-auto lg:pt-[66px] px-[20px] pt-[40px] lg:pb-0 pb-[50px]">
+    <section className="overflow-hidden">
+      <div className="relative max-w-[1210px] w-full mx-auto lg:pt-[70px] px-[20px] pt-[50px] lg:pb-[117px] pb-[50px] tracking-tight">
         <div className="flex justify-between gap-[20px]">
           <div className="md:w-[700px] w-[100%] sm:flex max-w-[100%] sm:max-w-[50%]">
             <div className="lg:absolute lg:left-[-50px] relative lg:mb-0 mb-[22px]">
@@ -21,7 +21,7 @@ export const ChefPrepared = () => {
                 made”. Our meat is prepared with plenty of high-quality TLC
                 everyday. It’s your food, but it’s our passion.
               </div>
-              <div className="sm:text-[18px] text-[16px]  mt-[50px] mb-[30px] text-[#000] font-medium sm:font-normal leading-[120%]">
+              <div className="sm:text-[18px] text-[16px] lg:mt-[60px] lg:mb-[40px] mt-[50px] mb-[30px] text-[#000] font-medium sm:font-normal leading-[120%]">
                 Once the meat has entered our kitchen, it’s:
               </div>
               <ul className="sm:px-4 font-hudson">
@@ -48,7 +48,7 @@ export const ChefPrepared = () => {
               </div>
             </div>
           </div>
-          <div className="max-w-[50%] w-[100%] flex justify-center bg-[url('../assets/images/Mask-group-BG.png')] bg-no-repeat bg-opacity-50 sm:block hidden ">
+          <div className="absolute right-0 bottom-0 max-w-[50%] w-[100%] justify-center bg-[url('../assets/images/Mask-group-BG.png')] bg-no-repeat bg-opacity-50 sm:block hidden ">
             <img src={MeatFork} alt="" />
           </div>
         </div>
