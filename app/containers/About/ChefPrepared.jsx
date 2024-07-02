@@ -5,8 +5,8 @@ export const ChefPrepared = () => {
     <section className="overflow-hidden">
       <div className="relative max-w-[1210px] w-full mx-auto lg:pt-[70px] px-[20px] pt-[50px] lg:pb-[117px] pb-[50px] tracking-tight">
         <div className="flex justify-between gap-[20px]">
-          <div className="md:w-[700px] w-[100%] sm:flex max-w-[100%] sm:max-w-[50%]">
-            <div className="lg:absolute lg:left-[-50px] relative lg:mb-0 mb-[22px]">
+          <div className="relative md:w-[700px] w-[100%] sm:flex max-w-[100%] sm:max-w-[50%]">
+            <div className="lg:absolute lg:left-[-70px] lg:top-[-12px] relative lg:mb-0 mb-[22px]">
               <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center m-auto">
                 2
               </div>
@@ -48,8 +48,9 @@ export const ChefPrepared = () => {
               </div>
             </div>
           </div>
-          <div className="absolute right-0 bottom-0 max-w-[50%] w-[100%] justify-center bg-[url('../assets/images/Mask-group-BG.png')] bg-no-repeat bg-opacity-50 sm:block hidden ">
-            <img src={MeatFork} alt="" />
+          <div className="absolute right-0 bottom-0 max-w-[50%] w-[100%] justify-center sm:block hidden">
+            <div className="absolute w-full h-full top-[80px] left-[-20px] bg-[url('../assets/images/Mask-group-BG.png')] [background-size:80%] bg-no-repeat opacity-[0.8]"></div>
+            <img className="relative" src={MeatFork} alt="" />
           </div>
         </div>
       </div>

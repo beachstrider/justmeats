@@ -32,8 +32,8 @@ export const SubscribeAndSave = () => {
               *Both options require a $75 order minimum
             </div>
           </div>
-          <div className="lg:order-3 order-1 md:w-[700px] w-[100%] lg:flex max-w-[100%] lg:pt-[50px] lg:pb-0 pb-[40px] lg:text-left text-center">
-            <div className="lg:absolute lg:left-[-50px] relative lg:mb-0 mb-[22px]">
+          <div className="relative lg:order-3 order-1 md:w-[700px] w-[100%] lg:flex max-w-[100%] lg:mt-[50px] lg:pb-0 pb-[40px] lg:text-left text-center">
+            <div className="lg:absolute lg:left-[-70px] lg:top-[-12px] relative lg:mb-0 mb-[22px]">
               <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center m-auto">
                 3
               </div>

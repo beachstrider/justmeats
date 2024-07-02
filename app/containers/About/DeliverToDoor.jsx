@@ -5,8 +5,8 @@ export const DeliverToDoor = () => {
     <section className="">
       <div className="relative max-w-[1210px] w-full mx-auto lg:pt-[74px] lg:pb-[74px] px-[20px] pt-[40px] pb-[60px] tracking-tight">
         <div className="lg:grid grid-cols-2 lg:mb-[28px] mb-[38px] w-full">
-          <div className="text-center lg:flex lg:text-left max-w-[487px] w-full">
-            <div className="lg:absolute lg:left-[-50px] relative lg:mb-0 mb-[22px]">
+          <div className="relative text-center lg:flex lg:text-left max-w-[487px] w-full">
+            <div className="lg:absolute lg:left-[-70px] lg:top-[-12px] relative lg:mb-0 mb-[22px]">
               <div className="w-[56px] h-[56px] bg-[#FF655D] rounded-[40px] font-hudson text-[#FFF] text-[36px] flex justify-center m-auto">
                 4
               </div>
@@ -22,7 +22,9 @@ export const DeliverToDoor = () => {
                 (your Just Meats order)
               </div>
               <div className="lg:hidden block pb-[210px] mt-[32px]">
-                <img className="absolute left-0" src={justmeatBbox} alt="" />
+                <div className="absolute left-[-20px] w-screen">
+                  <img src={justmeatBbox} alt="" />
+                </div>
               </div>
 
               <div className="lg:text-[18px] text-[16px] pt-[40px]  font-medium lg:font-normal leading-[120%]">

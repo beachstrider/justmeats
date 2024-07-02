@@ -1,6 +1,3 @@
-import Thats from '~/assets/images/Thats.png'
-import moremeat from '~/assets/images/moremeat.png'
-
 export const MoreMeat = () => {
   return (
     <section>
@@ -9,8 +6,12 @@ export const MoreMeat = () => {
         <div className="sm:text-[28px] text-[16px] text-[#FFF] text-center font-hudson font-[420] leading-[120%]">
           THE RESULT?
         </div>
-        <div className="sm:text-[62px] text-[36px] text-[#FFF] font-espiritu flex justify-center items-center font-normal leading-[120%]">
-          MEAT <img src={Thats} /> MORE:
+        <div className="sm:text-[62px] text-[36px] text-[#FFF] flex justify-center items-center font-normal lg:gap-[16px] gap-[8px]">
+          <div className="font-espiritu">MEAT</div>
+          <div className="font-espiritu-script lg:text-[98px] text-[58px] rotate-[-17deg] font-extralight">
+            That&apos;s
+          </div>
+          <div className="font-espiritu">MORE:</div>
         </div>
         <div className="sm:text-[28px] text-[16px] text-[#FFF] text-center font-hudson font-[420] leading-[120%]">
           TENDER and FULL OF FLAVOR
