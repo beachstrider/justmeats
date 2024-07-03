@@ -138,6 +138,7 @@ const newLayoutRoutes = [
   'recipes',
   'recipe',
   'about',
+  'ambassador',
 ]
 
 export default function App() {

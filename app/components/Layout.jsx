@@ -16,12 +16,11 @@ export function Layout({ children = null }) {
   const { isNewLayout } = useContext(RootContext)
   const [menuToggle, setMenuToggle] = useState(false)
   const isProductPage = matches[1].params.bundle === 'custom-bundle'
-
+  const isAmbassadorPage = matches[1].pathname != '/ambassador'
   if (isNewLayout)
     return (
       <LayoutContext.Provider value={{ menuToggle, setMenuToggle }}>
         <NewHeader />
-
         <MobileMenuAside />
         {children}
         <NewFooter />
