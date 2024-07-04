@@ -738,7 +738,7 @@ button.free-gift-label {
   @apply sm:bg-[url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1.png')] bg-[url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1-mobile.png')];
   background-blend-mode: overlay;
   background-repeat: no-repeat;
-  background-color: #6b1626;
+  background-color: #380b14;
   background-size: cover;
   background-position-y: 0;
 }
