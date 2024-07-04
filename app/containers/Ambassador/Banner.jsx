@@ -3,7 +3,7 @@ import ambassadorLogo from '~/assets/images/ambassadorLogo.png'
 export const Banner = () => {
     return (
         <section>
-            <div className="bg-[url('../assets/images/ambassadorBanner.png')] bg-pattern2 py-[160px]">
+            <div className="bg-[url('../assets/images/ambassadorBanner.png')] bg-pattern-marron py-[160px]">
                 <div className="container">
                     <NavLink
                         prefetch="intent"

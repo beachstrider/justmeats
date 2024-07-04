@@ -63,22 +63,22 @@ export const JoinusForm = () => {
           <label className="block mb-2  text-gray-600">* What is your PayPal  email?</label>
           <input type="email" id="paypalemail" name="paypalemail" className="border border-gray-300 shadow p-2 w-full rounded-lg" />
         </div>
-        <div className="flex items-start">
-              <div className="flex items-center h-5">
-                <input id="terms" aria-describedby="terms" type="checkbox" className="w-5 h-5 border rounded focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="" />
-              </div>
-              <div className="ml-3">
-                  <label className="block mb-5 text-gray-600">
-                      Our program is managed by Aspire. By applying to our program, you accept the Aspire
-                      <Link to={`/term-services`} className="text-[#167cf5]">Terms of Service  &nbsp;</Link>
-                      and 
-                      <Link to={`/privacy-policy`} className="text-[#167cf5]">&nbsp; Privacy Policy  </Link>
-                  </label>
-              </div>
-          </div>
+        <div className="flex items-start mb-5">
+          <label className="relative flex items-start p-[8px] pl-0 rounded-full cursor-pointer" htmlFor="check">
+            <input type="checkbox"
+              className="w-5 h-5 border rounded focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+              id="check" />
+          </label>
+          <label className="mt-px font-light text-gray-700 cursor-pointer select-none" htmlFor="check">
+              Our program is managed by Aspire. By applying to our program, you accept the Aspire
+              <Link to={`/term-services`} className="text-[#167cf5]">Terms of Service  &nbsp;</Link>
+              and 
+              <Link to={`/privacy-policy`} className="text-[#167cf5]">&nbsp; Privacy Policy  </Link>
+          </label>
+        </div> 
 
-        <button className="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg mb-5">Apply</button>
-
+        <button className="block w-full bg-blue-500 text-white font-bold p-2 rounded-lg mb-5">Apply</button>
+       
         <div className="mb-8">
           <label className="block mb-2  text-gray-600">
             Questions? Reach us at <a href="mailto:chrisclark@justmeats.com" target="_blank" rel="noreferrer" className="text-[#167cf5]">chrisclark@justmeats.com</a>

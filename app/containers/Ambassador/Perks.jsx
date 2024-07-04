@@ -23,7 +23,7 @@ export const Perks = () => {
                 </div>
               </div>
             </div>
-            <div className="font-nunito sm:text-[18px] text-[14px] font-normal leading-[26px] pt-[20px] text-center">
+            <div className="font-nunito sm:text-[18px] text-[14px] font-normal leading-[26px] pt-[20px] sm:pt-[30px] text-center">
               Get your first box free! That's 6lbs of meats...looks like meat's back on the menu baby!
             </div>
           </div>
@@ -36,7 +36,7 @@ export const Perks = () => {
                 </div>
               </div>
             </div>
-            <div className="font-nunito sm:text-[18px] text-[14px] font-normal leading-[26px] pt-[20px] text-center">
+            <div className="font-nunito sm:text-[18px] text-[14px] font-normal leading-[26px] pt-[20px] sm:pt-[30px] text-center">
             You'll get a shareable customer discount promo code to share with your community! Get a 15% Commission on any orders you generate with your discount code.
             </div>
           </div>
@@ -49,7 +49,7 @@ export const Perks = () => {
                 </div>
               </div>
             </div>
-            <div className="font-nunito sm:text-[18px] text-[14px] font-normal leading-[26px] pt-[20px] text-center">
+            <div className="font-nunito sm:text-[18px] text-[14px] font-normal leading-[26px] pt-[20px] sm:pt-[30px] text-center">
               Get a free box of product every time your code generates 5 orders.
             </div>
           </div>
