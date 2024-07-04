@@ -10,8 +10,8 @@ export const WhoYouAre = () => {
       </div>
       <div className="flex-1 bg-pattern2 flex justify-center items-center">
         <div className="lg:w-[540px] lg:pt-[100px] lg:pb-0 pt-[46px] pb-[45px] lg:px-0 px-[20px] xl:pr-0 lg:pr-[20px] md:pr-[20px]">
-          <div className="flex justify-center lg:justify-start">
-            <div className="relative lg:text-left font-hudson font-bold lg:text-[36px] text-[24px] lg:mb-[40px] mb-[52px] lg:tracking-[1.8px] tracking-[1.2px]">
+          <div className="flex justify-center">
+            <div className="relative font-hudson font-bold lg:text-[36px] text-[24px] lg:mb-[40px] mb-[52px] lg:tracking-[1.8px] tracking-[1.2px]">
               <div className="relative z-[2] text-[#EFEEED]">Who you are</div>
             </div>
           </div>
