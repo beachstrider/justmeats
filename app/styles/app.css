@@ -734,6 +734,14 @@ button.free-gift-label {
   background-size: cover;
   background-position-y: 0;
 }
+.bg-pattern-marron{
+  @apply sm:bg-[url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1.png')] bg-[url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1-mobile.png')];
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-color: #380b14;
+  background-size: cover;
+  background-position-y: 0;
+}
 
 .bg-pattern3 {
   background-image: url('../assets/images/5d5g5j54uj52t2d1s1d5rf7f56g3h2j.png');
