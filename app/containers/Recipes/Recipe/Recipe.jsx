@@ -1,3 +1,7 @@
+import Markdown from 'react-markdown'
+
+import rehypeRaw from 'rehype-raw'
+
 import { Link } from '@remix-run/react'
 
 import { Gallery } from './Gallery'
@@ -25,35 +29,15 @@ export const Recipe = ({ data }) => {
                   strokeLinejoin="round"
                 />
               </svg>
-              {data?.header}
+              {data?.title}
             </div>
             <div className="flex justify-between">
               <div className="font-hudson font-bold sm:text-[36px] text-[24px]">
-                {data?.header}
+                {data?.title}
               </div>
-              {/* <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="65"
-                  height="65"
-                  viewBox="0 0 65 65"
-                  fill="none"
-                >
-                  <path
-                    d="M50.4583 13.5417V55.3585L32.8939 47.8309L32.5 47.662L32.1061 47.8309L14.5417 55.3585V13.5417C14.5417 12.3197 14.9654 11.299 15.8407 10.4252C16.7168 9.55061 17.7384 9.12661 18.959 9.125H46.0417C47.2637 9.125 48.2856 9.5488 49.1614 10.4246C50.0372 11.3004 50.4598 12.321 50.4583 13.5405V13.5417Z"
-                    fill="white"
-                    stroke="#BF4745"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M32.5 34.8798L36.8508 37.5113C37.6476 37.9936 38.6226 37.2807 38.4129 36.379L37.2597 31.4306L41.1073 28.0968C41.8097 27.4887 41.4323 26.3355 40.5097 26.2621L35.446 25.8323L33.4645 21.1565C33.1081 20.3073 31.8919 20.3073 31.5355 21.1565L29.554 25.8218L24.4903 26.2516C23.5677 26.325 23.1903 27.4782 23.8927 28.0863L27.7403 31.4202L26.5871 36.3686C26.3774 37.2702 27.3524 37.9831 28.1492 37.5008L32.5 34.8798Z"
-                    fill="#BF4745"
-                  />
-                </svg>
-              </div> */}
             </div>
             <div className="text-[#999]">Updated:{data?.updated_at}</div>
-            <div className="text-[18px]">{data?.text}</div>
+            <div className="text-[18px]">{data?.description}</div>
             <div
               className="relative bg-[#6B1626] text-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px]  grid grid-cols-[32%_0.7%_32%_0.7%_32%] text-[14px] rounded-[8px]"
               style={{ boxShadow: '0px 40px 50px -15px rgba(0, 0, 0, 0.15)' }}
@@ -136,7 +120,7 @@ export const Recipe = ({ data }) => {
         </div>
       </div>
       <div className="container-small">
-        <div className="sm:text-[18px] text-[16px]">{data?.paragraph}</div>
+        <div className="sm:text-[18px] text-[16px]">{data?.content}</div>
       </div>
       <div className="container-small py-[50px]">
         <div className="grid md:grid-cols-2 grid-cols-1 sm:gap-[55px] gap-[70px] items-center justify-center">
@@ -227,49 +211,24 @@ export const Recipe = ({ data }) => {
                 INGREDIENTS
               </div>
             </div>
-            <div className="flex gap-2">
-              <div className="font-bold">{data?.ingredients1}</div>
-              <div>{data?.ingredients1_value}</div>
-            </div>
-            <div className="flex gap-2">
-              <div className="font-bold">{data?.ingredients2}</div>
-              <div>{data?.ingredients2_value}</div>
-            </div>
-            <div className="flex gap-2">
-              <div className="font-bold">{data?.ingredients3}</div>
-              <div>{data?.ingredients3_value}</div>
-            </div>
-            <div className="flex gap-2">
-              <div className="font-bold">{data?.ingredients4}</div>
-              <div>{data?.ingredients4_value}</div>
-            </div>
-            <div className="flex gap-2">
-              <div className="font-bold">{data?.ingredients5}</div>
-              <div>{data?.ingredients5_value}</div>
-            </div>
+            {data.ingredients.map((el, index) => (
+              <div key={index} className="">
+                <Markdown rehypePlugins={[[rehypeRaw]]}>{el}</Markdown>
+              </div>
+            ))}
           </div>
           <div className="flex flex-col items-start gap-[16px]">
             <div className="sm:text-[36px] text-[24px] font-hudson font-bold">
               DIRECTIONS
             </div>
-            <div>
-              <div className="text-[20px] font-bold">STEP 1</div>
-              <div className="sm:text-[18px] text-[16px]">
-                {data?.direction_step1}
+            {data.steps.map((el, index) => (
+              <div key={index}>
+                <div className="text-[20px] font-bold">STEP {index + 1}</div>
+                <div className="sm:text-[18px] text-[16px]">
+                  <Markdown rehypePlugins={[[rehypeRaw]]}>{el}</Markdown>
+                </div>
               </div>
-            </div>
-            <div>
-              <div className="text-[20px] font-bold">STEP 2</div>
-              <div className="sm:text-[18px] text-[16px]">
-                {data?.direction_step2}
-              </div>
-            </div>
-            <div>
-              <div className="text-[20px] font-bold">STEP 3 </div>
-              <div className="sm:text-[18px] text-[16px]">
-                {data?.direction_step3}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

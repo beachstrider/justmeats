@@ -28,8 +28,9 @@ export const List = () => {
   const data = recipes
     .filter((el) => {
       return (
-        el.header.toLowerCase().includes(search.toLowerCase()) ||
-        el.paragraph.toLowerCase().includes(search.toLowerCase())
+        el.title.toLowerCase().includes(search.toLowerCase()) ||
+        el.description.toLowerCase().includes(search.toLowerCase()) ||
+        el.content.toLowerCase().includes(search.toLowerCase())
       )
     })
     .filter((el) => (filtering ? el.type === filtering : true))
@@ -143,43 +144,30 @@ export const List = () => {
         <div className="relative grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-x-[20px] sm:gap-y-[62px] gap-y-[20px] xl:mb-[0px] mb-[50px]">
           {paginatedData.map((item, i) => {
             return (
-              <Link to={`/recipes/${item?.url}`} key={i}>
+              <Link
+                to={`/recipes/${item?.url}`}
+                key={i}
+                className="relative block"
+              >
                 <div
-                  className="relative rounded-[8px] sm:mb-0 mb-[50px] w-full overflow-hidden"
+                  className="flex flex-col relative rounded-[8px] sm:mb-0 mb-[50px] w-full overflow-hidden h-full"
                   style={{
                     boxShadow: '0px 30px 30px -9px rgba(0, 0, 0, 0.14)',
                     cursor: 'pointer',
                   }}
                 >
-                  {/* <div className="absolute top-[-15px] right-[15px]">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="65"
-                      height="65"
-                      viewBox="0 0 65 65"
-                      fill="none"
-                    >
-                      <path
-                        d="M50.4583 13.5417V55.3585L32.8939 47.8309L32.5 47.662L32.1061 47.8309L14.5417 55.3585V13.5417C14.5417 12.3197 14.9654 11.299 15.8407 10.4252C16.7168 9.55061 17.7384 9.12661 18.959 9.125H46.0417C47.2637 9.125 48.2856 9.5488 49.1614 10.4246C50.0372 11.3004 50.4598 12.321 50.4583 13.5405V13.5417Z"
-                        fill="white"
-                        stroke="#BF4745"
-                        strokeWidth="2"
-                      />
-                      <path
-                        d="M32.5 34.8798L36.8508 37.5113C37.6476 37.9936 38.6226 37.2807 38.4129 36.379L37.2597 31.4306L41.1073 28.0968C41.8097 27.4887 41.4323 26.3355 40.5097 26.2621L35.446 25.8323L33.4645 21.1565C33.1081 20.3073 31.8919 20.3073 31.5355 21.1565L29.554 25.8218L24.4903 26.2516C23.5677 26.325 23.1903 27.4782 23.8927 28.0863L27.7403 31.4202L26.5871 36.3686C26.3774 37.2702 27.3524 37.9831 28.1492 37.5008L32.5 34.8798Z"
-                        fill="#BF4745"
-                      />
-                    </svg>
-                  </div> */}
                   {item.imgs && item.imgs.length > 0 && (
-                    <img className="w-full" src={item.imgs[0]} alt="" />
+                    <div
+                      className="aspect-[4/3] bg-cover bg-center"
+                      style={{ backgroundImage: `url("${item.imgs[0]}")` }}
+                    ></div>
                   )}
-                  <div className="relative bg-white sm:px-[26px] sm:py-[30px] px-[22px] py-[20px] min-h-[132px]">
+                  <div className="relative grow bg-white sm:px-[26px] sm:py-[30px] px-[22px] py-[20px] min-h-[132px]">
                     <div className="text-[#231B19] text-center tracking-[1px] leading-[20px] font-bold font-hudson sm:mb-[20px] mb-[18px]">
-                      {item?.header}
+                      {item?.title}
                     </div>
                     <div className="text-[#231B19] text-center font-barlow text-[14px]">
-                      {item?.text}
+                      {item?.description}
                     </div>
                   </div>
                   <div className="relative bg-white font-barlow border-t border-[#efeeed] sm:px-[26px] sm:py-[30px] px-[22px] py-[20px] grid grid-cols-3 text-[14px]">
