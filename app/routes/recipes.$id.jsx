@@ -17,7 +17,7 @@ export default function RecipeItem() {
   return (
     <main className="relative tracking-[1px] leading-1 text-[#231B19] your-gym">
       <Recipe data={finalData} />
-      <YouMayAlsoLike />
+      {/* <YouMayAlsoLike /> */}
     </main>
   )
 }
