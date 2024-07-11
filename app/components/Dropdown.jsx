@@ -35,9 +35,10 @@ export const Dropdown = ({
             isOpened ? 'bg-[#6B1626] text-white' : 'text-[#6B1626]',
             buttonClassName,
           )}
+          style={{ minWidth: menuMinWidth }}
         >
           <div className={placeholderClassName}>{placeholder}</div>
-          <div className={'w-[22px]'}>
+          <div className={'w-[22px] shrink-0'}>
             <DownIcon />
           </div>
         </button>

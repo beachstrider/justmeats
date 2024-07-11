@@ -19,6 +19,7 @@ export const Footer = () => {
 
   return (
     <footer className={`${isSpecialsPage ? 'bg-[#6B1626]' : 'bg-[#231b19]'}`}>
+      {page != '/how-it-works' && (
       <div className="container-small relative h-[88px] sm:h-[128px] flex items-center justify-between py-4">
         <div className="absolute-center">
           <NavLink to="/" end prefetch="intent">
@@ -28,6 +29,7 @@ export const Footer = () => {
           </NavLink>
         </div>
       </div>
+      )}
       {page === '/rich-froning' && (
         <div className="bg-lower-footer bg-cover text-center sm:[background-position-x:0] [background-position-x:-750px]">
           <div className="container-small relative text-[#EFEEED] sm:pt-[80px] sm:pb-[92px] pt-[113px] pb-[137px] lg:pl-0 lg:pr-0">

@@ -11,7 +11,8 @@ import { useLocation } from 'react-router-dom';
 export function MobileMenuAside() {
   const { menuToggle, setMenuToggle } = useContext(LayoutContext)
   const location = useLocation();
-  const isSpecialsPage = location.pathname === '/rich-froning' || location.pathname === '/gym' || location.pathname === '/all-recipes' || location.pathname === '/recipe';
+
+  const isSpecialsPage = location.pathname === '/rich-froning' || location.pathname === '/gym' || location.pathname === '/recipes' || location.pathname === '/recipe' || location.pathname === '/how-it-works';
 
 
   return (

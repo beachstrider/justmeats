@@ -135,8 +135,10 @@ const newLayoutRoutes = [
   'rich-froning',
   'gym-launch',
   'gym',
-  'all-recipes',
+  'recipes',
   'recipe',
+  'about',
+  'ambassador',
 ]
 
 export default function App() {

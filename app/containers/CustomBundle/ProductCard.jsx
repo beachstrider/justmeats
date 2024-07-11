@@ -3,7 +3,7 @@ import { cn, getPureId } from '~/lib/utils'
 import { ProductActions } from './ProductActions'
 
 export const ProductCard = ({ product, onClick, className, type }) => {
-  const image = product.product_icon_1.reference.image.url
+  const image = product?.product_icon_1?.reference?.image?.url || '';
   const backgroundColor = product.background_color?.value ?? '#FFF'
   const servings = product.servings?.value ?? ''
   const servingType = product.serving_type?.value ?? ''

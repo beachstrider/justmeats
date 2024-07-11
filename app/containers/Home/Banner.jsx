@@ -47,7 +47,7 @@ export const Banner = () => {
                     <div className="font-bold leading-none mb-[20px]">
                       Meats delivered
                     </div>
-                    <div className="font-espiritu text-[75px] tracking-[2.25px] leading-none">
+                    <div className="font-espiritu-condensed text-[75px] tracking-[2.25px] leading-none">
                       1,642,941
                     </div>
                   </div>
@@ -60,7 +60,7 @@ export const Banner = () => {
                     <div className="font-bold leading-none mb-[20px]">
                       Pounds Cooked
                     </div>
-                    <div className="font-espiritu text-[75px] tracking-[2.25px] leading-none">
+                    <div className="font-espiritu-condensed text-[75px] tracking-[2.25px] leading-none">
                       2,217,970 <span className="text-[48px]">LBS.</span>
                     </div>
                   </div>
@@ -73,7 +73,7 @@ export const Banner = () => {
                     <div className="font-bold leading-none mb-[20px]">
                       Happy Customers
                     </div>
-                    <div className="font-espiritu text-[75px] tracking-[2.25px] leading-none">
+                    <div className="font-espiritu-condensed text-[75px] tracking-[2.25px] leading-none">
                       88,688
                     </div>
                   </div>
