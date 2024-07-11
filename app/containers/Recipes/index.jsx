@@ -95,10 +95,8 @@ export const List = () => {
           RECIPES
         </div>
         <div className="max-w-[935px] text-[#231b19] sm:text-center text-justify [word-spacing:-1px] sm:[word-spacing:0] sm:text-[18px] text-[16px] font-normal sm:leading-[26px] leading-[25px] tracking-[0.16px] sm:mb-[51px] mb-[63px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-          finibus sapien non lobortis tincidunt. Aliquam nisl erat, laoreet ut
-          enim vitae, egestas fermentum dui. Integer cursus venenatis risus vel
-          imperdiet.
+          Take your culinary skills to the next level with these Just Meats
+          recipes for beef, chicken, pork, and more.
         </div>
       </div>
       <div className="container-small flex flex-wrap justify-between items-center sm:mb-[56px] mb-[41px] relative gap-[15px]">
