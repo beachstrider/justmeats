@@ -1,11 +1,11 @@
 import { useContext, useEffect, useRef, useState } from 'react'
-import {Image} from '@shopify/hydrogen-react';
+
 import { NavLink, useMatches } from '@remix-run/react'
 
 import logo from '~/assets/logo.png'
 import { LayoutContext } from '~/contexts'
+import { useRootLoaderData } from '~/hooks/useRootLoaderData'
 import { HamburgerOpen } from '~/icons/HamburgerOpen'
-import { useRootLoaderData } from '~/root'
 
 import { Button } from './Button'
 import { CartButton } from './CartButton'
@@ -91,13 +91,13 @@ export function Header() {
     return (
       <div className="container flex items-center justify-between py-4 mainheader">
         <NavLink end prefetch="intent" to="/">
-        <Image
-          src={logo}
-          className="object-cover w-30 h-auto max-w-[80%] sm:max-w-full"
-          sizes="(min-width: 45em) 50vw, 100vw"
-          width={120}
-          height={100}
-        />
+          <img
+            src={logo}
+            className="object-cover w-30 h-auto max-w-[80%] sm:max-w-full"
+            sizes="(min-width: 45em) 50vw, 100vw"
+            width={120}
+            height={100}
+          />
         </NavLink>
         <div className="flex items-center justify-between gap-10 navBar">
           <ul className="hidden navLinks lg:flex">

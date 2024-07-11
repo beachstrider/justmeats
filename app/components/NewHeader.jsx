@@ -7,7 +7,6 @@ import { LayoutContext } from '~/contexts'
 import { HamburgerOpen } from '~/icons/HamburgerOpen'
 import { Logo } from '~/icons/Logo'
 import { cn } from '~/lib/utils'
-import { useRootLoaderData } from '~/root'
 
 import { Button } from './Button'
 import { CartButton } from './NewCartButton'

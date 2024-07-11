@@ -20,15 +20,15 @@ export const Footer = () => {
   return (
     <footer className={`${isSpecialsPage ? 'bg-[#6B1626]' : 'bg-[#231b19]'}`}>
       {page != '/how-it-works' && (
-      <div className="container-small relative h-[88px] sm:h-[128px] flex items-center justify-between py-4">
-        <div className="absolute-center">
-          <NavLink to="/" end prefetch="intent">
-            <div className="w-[160px] sm:w-[196px]">
-              <LogoWhite />
-            </div>
-          </NavLink>
+        <div className="container-small relative h-[88px] sm:h-[128px] flex items-center justify-between py-4">
+          <div className="absolute-center">
+            <NavLink to="/" end prefetch="intent">
+              <div className="w-[160px] sm:w-[196px]">
+                <LogoWhite />
+              </div>
+            </NavLink>
+          </div>
         </div>
-      </div>
       )}
       {page === '/rich-froning' && (
         <div className="bg-lower-footer bg-cover text-center sm:[background-position-x:0] [background-position-x:-750px]">

@@ -1,27 +1,29 @@
 import { renderToReadableStream } from 'react-dom/server'
 
-import { Buffer } from 'buffer-polyfill'
 import isbot from 'isbot'
 
 import { RemixServer } from '@remix-run/react'
 import { createContentSecurityPolicy } from '@shopify/hydrogen'
-
-globalThis.Buffer = Buffer
 
 /**
  * @param {Request} request
  * @param {number} responseStatusCode
  * @param {Headers} responseHeaders
  * @param {EntryContext} remixContext
+ * @param {AppLoadContext} context
  */
 export default async function handleRequest(
   request,
   responseStatusCode,
   responseHeaders,
   remixContext,
+  context,
 ) {
   const { nonce, header, NonceProvider } = createContentSecurityPolicy({
-    // For DEV phase
+    shop: {
+      checkoutDomain: context.env.PUBLIC_CHECKOUT_DOMAIN,
+      storeDomain: context.env.PUBLIC_STORE_DOMAIN,
+    },
     baseUri: ['*'],
     defaultSrc: ['*', 'data:'],
     connectSrc: ['*', 'data:'],
@@ -39,7 +41,6 @@ export default async function handleRequest(
       nonce,
       signal: request.signal,
       onError(error) {
-        // eslint-disable-next-line no-console
         console.error(error)
         responseStatusCode = 500
       },
@@ -60,3 +61,4 @@ export default async function handleRequest(
 }
 
 /** @typedef {import('@shopify/remix-oxygen').EntryContext} EntryContext */
+/** @typedef {import('@shopify/remix-oxygen').AppLoadContext} AppLoadContext */

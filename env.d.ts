@@ -1,4 +1,4 @@
-/// <reference types="@remix-run/dev" />
+/// <reference types="vite/client" />
 /// <reference types="@shopify/remix-oxygen" />
 /// <reference types="@shopify/oxygen-workers-types" />
 
@@ -9,7 +9,12 @@ import type {
   Storefront,
   CustomerAccount,
   HydrogenCart,
+  HydrogenSessionData,
 } from '@shopify/hydrogen';
+import type {
+  LanguageCode,
+  CountryCode,
+} from '@shopify/hydrogen/storefront-api-types';
 import type {AppSession} from '~/lib/session';
 
 declare global {
@@ -29,20 +34,30 @@ declare global {
     PUBLIC_STOREFRONT_ID: string;
     PUBLIC_CUSTOMER_ACCOUNT_API_CLIENT_ID: string;
     PUBLIC_CUSTOMER_ACCOUNT_API_URL: string;
-    PUBLIC_RECHARGE_STOREFRONT_ACCESS_TOKEN:string;
+    PUBLIC_CHECKOUT_DOMAIN: string;
   }
+
+  /**
+   * The I18nLocale used for Storefront API query context.
+   */
+  type I18nLocale = {language: LanguageCode; country: CountryCode};
 }
 
 declare module '@shopify/remix-oxygen' {
   /**
    * Declare local additions to the Remix loader context.
    */
-  export interface AppLoadContext {
+  interface AppLoadContext {
     env: Env;
     cart: HydrogenCart;
-    storefront: Storefront;
+    storefront: Storefront<I18nLocale>;
     customerAccount: CustomerAccount;
     session: AppSession;
     waitUntil: ExecutionContext['waitUntil'];
   }
+
+  /**
+   * Declare local additions to the Remix session data.
+   */
+  interface SessionData extends HydrogenSessionData {}
 }

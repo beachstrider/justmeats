@@ -5,9 +5,16 @@ import { Banner } from '~/containers/Ambassador/Banner'
 import { Joinus } from '~/containers/Ambassador/Joinus'
 import { Perks } from '~/containers/Ambassador/Perks'
 import { WhoYouAre } from '~/containers/Ambassador/WhoYouAre'
+import { sendPageView } from '~/lib/metaPixel.server'
 
 export const meta = () => {
   return [{ title: 'Ambassador Program - Just Meats' }]
+}
+
+export async function loader({ request, context }) {
+  sendPageView(request)
+
+  return null
 }
 
 export default function Ambassador() {

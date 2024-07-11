@@ -1,4 +1,4 @@
-import { UNSTABLE_Analytics as Analytics } from '@shopify/hydrogen'
+import { Analytics } from '@shopify/hydrogen'
 
 import { DialogClose } from '~/icons/DialogClose'
 

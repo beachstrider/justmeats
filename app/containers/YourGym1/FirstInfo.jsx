@@ -1,13 +1,15 @@
+import Marquee from 'react-fast-marquee'
+
 import skillet from '~/assets/images/Skillet.png'
 import justmeatsBlack from '~/assets/images/justmeats-black.png'
-import yourGym from '~/assets/images/your-gym.png'
-import yourCommunity from '~/assets/images/your-community.png'
 import traningCommunityNutrition from '~/assets/images/traning-community-nutrition.png'
+import yourCommunity from '~/assets/images/your-community.png'
+import yourGym from '~/assets/images/your-gym.png'
 import { Cooking } from '~/icons/Cooking'
 import { MeatRecycle } from '~/icons/MeatRecycle'
 import { SmilingSun } from '~/icons/SmilingSun'
 import { Weighter } from '~/icons/Weighter'
-import Marquee from "react-fast-marquee";
+
 export const FirstInfo = () => {
   return (
     <section className="bg-[#efeeed] overflow-x-hidden">
@@ -116,7 +118,8 @@ export const FirstInfo = () => {
               </div>
               <div className="text-[14px] leading-[24px] tracking-[2px] font-normal text-center max-w-[304px]">
                 <div className="opacity-0">EMPTY STRING TO MATCH HEIGHT</div>
-                TAKES CARE OF PROVIDING THE TOOLS, BUSINESS SAVVY AND STRATEGIES TO DELIVER FINANCIAL SUCCESS{' '}
+                TAKES CARE OF PROVIDING THE TOOLS, BUSINESS SAVVY AND STRATEGIES
+                TO DELIVER FINANCIAL SUCCESS{' '}
               </div>
             </div>
             <div className="sm:h-[225px] h-[260px] flex flex-col justify-end items-center">
@@ -126,10 +129,8 @@ export const FirstInfo = () => {
                 </div>
               </div>
               <div className="text-[14px] leading-[24px] tracking-[2px] font-normal text-center max-w-[300px] sm:mb-[15px] lg:mb-0">
-                YOUR COACHING,
-                YOUR PERSONALITY, YOUR GROUP
-                OF MEMBERS BUILD THE COMMUNITY
-                YOUR MEMBERS NEED
+                YOUR COACHING, YOUR PERSONALITY, YOUR GROUP OF MEMBERS BUILD THE
+                COMMUNITY YOUR MEMBERS NEED
               </div>
             </div>
             <div className="sm:h-[225px] h-[260px] flex flex-col justify-end items-center">
@@ -139,11 +140,9 @@ export const FirstInfo = () => {
                 </div>
               </div>
               <div className="text-[14px] leading-[24px] tracking-[2px] font-normal text-center max-w-[336px]">
-                THE ONLY NUTRITION SOLUTION YOU
-                NEED IN ORDER TO FUEL YOUR MEMBERS
-                WORKOUTS, ENABLE THEM TO RECOVER,
-                AND SUPPORT ALL THEIR GOALS
-                GOALS
+                THE ONLY NUTRITION SOLUTION YOU NEED IN ORDER TO FUEL YOUR
+                MEMBERS WORKOUTS, ENABLE THEM TO RECOVER, AND SUPPORT ALL THEIR
+                GOALS GOALS
               </div>
             </div>
           </div>
