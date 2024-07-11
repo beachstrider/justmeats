@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://p.typekit.net/p.css?s=1&k=txs4qth&ht=tk&f=29953.50479.50480.50481.50482.50483&a=4612518&app=typekit&e=css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: 'ROCK';
   src: url('../assets/fonts/ROCK.woff2') format('woff2');
@@ -196,8 +204,6 @@
   font-display: swap;
 }
 
-@import url('https://p.typekit.net/p.css?s=1&k=txs4qth&ht=tk&f=29953.50479.50480.50481.50482.50483&a=4612518&app=typekit&e=css');
-
 @font-face {
   font-family: 'dunbar-low';
   src: url('https://use.typekit.net/af/0ab997/00000000000000003b9aed39/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
@@ -280,6 +286,32 @@
   font-style: normal;
   font-weight: 400;
   font-stretch: normal;
+}
+
+@layer base {
+  html {
+    @apply font-body text-[#231B19];
+  }
+
+  body {
+    @apply overflow-x-hidden;
+  }
+
+  * {
+    outline: none;
+  }
+
+  a {
+    @apply inline-block;
+  }
+
+  .absolute-center {
+    @apply absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
+  }
+
+  .sm.absolute-center {
+    @apply sm:absolute sm:-translate-x-1/2 sm:-translate-y-1/2 sm:top-1/2 sm:left-1/2;
+  }
 }
 
 .swiper .swiper-button-prev {
@@ -585,7 +617,7 @@ button.free-gift-label {
 }
 
 .container-small {
-  @apply w-full max-w-[1120px] mx-auto my-0 px-[20px] py-0;
+  @apply w-full max-w-[1120px] mx-auto px-[20px];
 }
 
 span.free-text-label {
@@ -734,7 +766,7 @@ button.free-gift-label {
   background-size: cover;
   background-position-y: 0;
 }
-.bg-pattern-marron{
+.bg-pattern-marron {
   @apply sm:bg-[url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1.png')] bg-[url('../assets/images/print-texture-paper-scan-grainy-noisy-grunge1-mobile.png')];
   background-blend-mode: overlay;
   background-repeat: no-repeat;
@@ -1010,4 +1042,13 @@ section.product-list-slider button.slick-arrow.slick-next {
 .page-custom-bundle ~ #reamazejs-container #reamaze-widget,
 .page-account ~ #reamazejs-container #reamaze-widget {
   @apply sm:!visible !invisible;
+}
+
+.bg-ambassador {
+  @apply bg-[url('../assets/images/ambassadorBanner.png')];
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-color: #380b14;
+  background-size: cover;
+  background-position-y: 0;
 }

@@ -1,7 +1,5 @@
 import { redirect } from '@shopify/remix-oxygen'
 
-import { getFullId } from '~/lib/utils'
-
 /**
  * Automatically creates a new cart based on the URL and redirects straight to checkout.
  * Expected URL structure:
@@ -31,7 +29,7 @@ export async function loader({ request, context, params }) {
     const quantity = parseInt(lineDetails[1], 10)
 
     return {
-      merchandiseId: getFullId(variantId, 'ProductVariant'),
+      merchandiseId: `gid://shopify/ProductVariant/${variantId}`,
       quantity,
     }
   })

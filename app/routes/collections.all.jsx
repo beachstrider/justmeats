@@ -1,20 +1,19 @@
 import { Link, useLoaderData } from '@remix-run/react'
 import {
-  Analytics,
   Image,
   Money,
   Pagination,
   getPaginationVariables,
 } from '@shopify/hydrogen'
-import { defer, redirect } from '@shopify/remix-oxygen'
+import { defer } from '@shopify/remix-oxygen'
 
 import { useVariantUrl } from '~/lib/variants'
 
 /**
  * @type {MetaFunction<typeof loader>}
  */
-export const meta = ({ data }) => {
-  return [{ title: `Hydrogen | ${data?.collection.title ?? ''} Collection` }]
+export const meta = () => {
+  return [{ title: `Hydrogen | Products` }]
 }
 
 /**
@@ -35,33 +34,19 @@ export async function loader(args) {
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
  * @param {LoaderFunctionArgs}
  */
-async function loadCriticalData({ context, params, request }) {
-  const { handle } = params
+async function loadCriticalData({ context, request }) {
   const { storefront } = context
   const paginationVariables = getPaginationVariables(request, {
     pageBy: 8,
   })
 
-  if (!handle) {
-    throw redirect('/collections')
-  }
-
-  const [{ collection }] = await Promise.all([
-    storefront.query(COLLECTION_QUERY, {
-      variables: { handle, ...paginationVariables },
-      // Add other queries here, so that they are loaded in parallel
+  const [{ products }] = await Promise.all([
+    storefront.query(CATALOG_QUERY, {
+      variables: { ...paginationVariables },
     }),
+    // Add other queries here, so that they are loaded in parallel
   ])
-
-  if (!collection) {
-    throw new Response(`Collection ${handle} not found`, {
-      status: 404,
-    })
-  }
-
-  return {
-    collection,
-  }
+  return { products }
 }
 
 /**
@@ -76,13 +61,12 @@ function loadDeferredData({ context }) {
 
 export default function Collection() {
   /** @type {LoaderReturnData} */
-  const { collection } = useLoaderData()
+  const { products } = useLoaderData()
 
   return (
     <div className="collection">
-      <h1>{collection.title}</h1>
-      <p className="collection-description">{collection.description}</p>
-      <Pagination connection={collection.products}>
+      <h1>Products</h1>
+      <Pagination connection={products}>
         {({ nodes, isLoading, PreviousLink, NextLink }) => (
           <>
             <PreviousLink>
@@ -96,14 +80,6 @@ export default function Collection() {
           </>
         )}
       </Pagination>
-      <Analytics.CollectionView
-        data={{
-          collection: {
-            id: collection.id,
-            handle: collection.handle,
-          },
-        }}
-      />
     </div>
   )
 }
@@ -195,11 +171,9 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
   }
 `
 
-// NOTE: https://shopify.dev/docs/api/storefront/2022-04/objects/collection
-const COLLECTION_QUERY = `#graphql
-  ${PRODUCT_ITEM_FRAGMENT}
-  query Collection(
-    $handle: String!
+// NOTE: https://shopify.dev/docs/api/storefront/2024-01/objects/product
+const CATALOG_QUERY = `#graphql
+  query Catalog(
     $country: CountryCode
     $language: LanguageCode
     $first: Int
@@ -207,29 +181,19 @@ const COLLECTION_QUERY = `#graphql
     $startCursor: String
     $endCursor: String
   ) @inContext(country: $country, language: $language) {
-    collection(handle: $handle) {
-      id
-      handle
-      title
-      description
-      products(
-        first: $first,
-        last: $last,
-        before: $startCursor,
-        after: $endCursor
-      ) {
-        nodes {
-          ...ProductItem
-        }
-        pageInfo {
-          hasPreviousPage
-          hasNextPage
-          endCursor
-          startCursor
-        }
+    products(first: $first, last: $last, before: $startCursor, after: $endCursor) {
+      nodes {
+        ...ProductItem
+      }
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
       }
     }
   }
+  ${PRODUCT_ITEM_FRAGMENT}
 `
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */

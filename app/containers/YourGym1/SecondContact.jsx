@@ -8,7 +8,7 @@ export const SecondContact = () => {
   return (
     <section className="bg-[#efeeed] sm:pt-[110px] sm:pb-[80px] pt-[70px] pb-[32px] relative">
       <div className="w-[96%] rounded-corner sm:w-[90%] bg-brown-pattern">
-        <div className='w-full  mx-auto'>
+        <div className="w-full  mx-auto">
           <div
             className="flex flex-col  text-white sm:py-[45px] py-[22px] sm:rounded-[8px] rounded-[6px]"
             style={{ boxShadow: '0px 32px 43px -8px rgba(0, 0, 0, 0.20)' }}
@@ -21,7 +21,6 @@ export const SecondContact = () => {
             </h2>
           </div>
         </div>
-
       </div>
       <img
         src={justmeatsBoxPart}

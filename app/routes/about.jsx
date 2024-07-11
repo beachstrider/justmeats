@@ -17,13 +17,13 @@ export const meta = () => {
   return [{ title: 'How It Works - Just Meats' }]
 }
 
-export async function loader({ request }) {
+export async function loader({ request, context }) {
   sendPageView(request)
 
   return null
 }
 
-export default function About() {
+export default function HowItWorks() {
   return (
     <main className="relative font-barlow tracking-[1px] leading-1 text-[#231B19]">
       <HeaderBanner />
