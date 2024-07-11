@@ -18,6 +18,7 @@ import {
   useLoaderData,
   useMatches,
   useRouteError,
+  useRouteLoaderData,
 } from '@remix-run/react'
 import { Analytics, getShopAnalytics, useNonce } from '@shopify/hydrogen'
 import { defer } from '@shopify/remix-oxygen'
@@ -25,7 +26,7 @@ import { defer } from '@shopify/remix-oxygen'
 import favicon from '~/assets/favicon.svg'
 import { CustomAnalytics } from '~/components/CustomAnalytics'
 import { GTMNoScript } from '~/components/GTMNoScript'
-import { Layout } from '~/components/Layout'
+import { Layout as PageLayout } from '~/components/Layout'
 import { MetaNoScript } from '~/components/MetaNoScript'
 import { DELIVERY_EVERY_15_DAYS } from '~/consts'
 import { RootContext } from '~/contexts'
@@ -108,30 +109,23 @@ export async function loader(args) {
     }
   }
 
-  return defer(
-    {
-      ...deferredData,
-      ...criticalData,
+  return defer({
+    ...deferredData,
+    ...criticalData,
 
-      customer,
-      publicStoreDomain,
+    customer,
+    publicStoreDomain,
 
-      shop: getShopAnalytics({
-        storefront,
-        publicStorefrontId: env.PUBLIC_STOREFRONT_ID,
-      }),
+    shop: getShopAnalytics({
+      storefront,
+      publicStorefrontId: env.PUBLIC_STOREFRONT_ID,
+    }),
 
-      consent: {
-        checkoutDomain: env.PUBLIC_CHECKOUT_DOMAIN,
-        storefrontAccessToken: env.PUBLIC_STOREFRONT_API_TOKEN,
-      },
+    consent: {
+      checkoutDomain: env.PUBLIC_CHECKOUT_DOMAIN,
+      storefrontAccessToken: env.PUBLIC_STOREFRONT_API_TOKEN,
     },
-    {
-      headers: {
-        'Set-Cookie': await args.context.session.commit(),
-      },
-    },
-  )
+  })
 }
 
 const newLayoutRoutes = [
@@ -198,9 +192,9 @@ function loadDeferredData({ context }) {
   }
 }
 
-export default function App() {
+export function Layout({ children }) {
   const nonce = useNonce()
-  const data = useLoaderData()
+  const data = useRouteLoaderData('root')
 
   // Quick PATCH
   const matches = useMatches()
@@ -407,9 +401,7 @@ export default function App() {
               isNewLayout,
             }}
           >
-            <Layout {...data}>
-              <Outlet />
-            </Layout>
+            {data ? <PageLayout {...data}>{children}</PageLayout> : children}
             <CustomAnalytics />
           </RootContext.Provider>
         </Analytics.Provider>
@@ -422,9 +414,12 @@ export default function App() {
   )
 }
 
+export default function App() {
+  return <Outlet />
+}
+
 export function ErrorBoundary() {
   const error = useRouteError()
-  const nonce = useNonce()
   let errorMessage = 'Unknown error'
   let errorStatus = 500
 
@@ -436,26 +431,14 @@ export function ErrorBoundary() {
   }
 
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <div className="flex flex-col items-center justify-center h-screen route-error">
-          <h1>Oops</h1>
-          <h2>{errorStatus}</h2>
-          {errorMessage && (
-            <fieldset>
-              <pre>{errorMessage}</pre>
-            </fieldset>
-          )}
-        </div>
-        <ScrollRestoration nonce={nonce} />
-        <Scripts nonce={nonce} />
-      </body>
-    </html>
+    <div className="flex flex-col items-center justify-center h-screen route-error">
+      <h1>Oops</h1>
+      <h2>{errorStatus}</h2>
+      {errorMessage && (
+        <fieldset>
+          <pre>{errorMessage}</pre>
+        </fieldset>
+      )}
+    </div>
   )
 }

@@ -28,14 +28,7 @@ export async function loader({ request, context }) {
 
   await context.customerAccount.handleAuthStatus()
 
-  return json(
-    {},
-    {
-      headers: {
-        'Set-Cookie': await context.session.commit(),
-      },
-    },
-  )
+  return json({})
 }
 
 /**
@@ -61,9 +54,6 @@ export async function action({ request, context }) {
         { error: { [addressId]: 'Unauthorized' } },
         {
           status: 401,
-          headers: {
-            'Set-Cookie': await context.session.commit(),
-          },
         },
       )
     }
@@ -115,27 +105,17 @@ export async function action({ request, context }) {
             throw new Error('Customer address create failed.')
           }
 
-          return json(
-            {
-              error: null,
-              createdAddress: data?.customerAddressCreate?.customerAddress,
-              defaultAddress,
-            },
-            {
-              headers: {
-                'Set-Cookie': await context.session.commit(),
-              },
-            },
-          )
+          return json({
+            error: null,
+            createdAddress: data?.customerAddressCreate?.customerAddress,
+            defaultAddress,
+          })
         } catch (error) {
           if (error instanceof Error) {
             return json(
               { error: { [addressId]: error.message } },
               {
                 status: 400,
-                headers: {
-                  'Set-Cookie': await context.session.commit(),
-                },
               },
             )
           }
@@ -143,9 +123,6 @@ export async function action({ request, context }) {
             { error: { [addressId]: error } },
             {
               status: 400,
-              headers: {
-                'Set-Cookie': await context.session.commit(),
-              },
             },
           )
         }
@@ -177,27 +154,17 @@ export async function action({ request, context }) {
             throw new Error('Customer address update failed.')
           }
 
-          return json(
-            {
-              error: null,
-              updatedAddress: address,
-              defaultAddress,
-            },
-            {
-              headers: {
-                'Set-Cookie': await context.session.commit(),
-              },
-            },
-          )
+          return json({
+            error: null,
+            updatedAddress: address,
+            defaultAddress,
+          })
         } catch (error) {
           if (error instanceof Error) {
             return json(
               { error: { [addressId]: error.message } },
               {
                 status: 400,
-                headers: {
-                  'Set-Cookie': await context.session.commit(),
-                },
               },
             )
           }
@@ -205,9 +172,6 @@ export async function action({ request, context }) {
             { error: { [addressId]: error } },
             {
               status: 400,
-              headers: {
-                'Set-Cookie': await context.session.commit(),
-              },
             },
           )
         }
@@ -235,23 +199,13 @@ export async function action({ request, context }) {
             throw new Error('Customer address delete failed.')
           }
 
-          return json(
-            { error: null, deletedAddress: addressId },
-            {
-              headers: {
-                'Set-Cookie': await context.session.commit(),
-              },
-            },
-          )
+          return json({ error: null, deletedAddress: addressId })
         } catch (error) {
           if (error instanceof Error) {
             return json(
               { error: { [addressId]: error.message } },
               {
                 status: 400,
-                headers: {
-                  'Set-Cookie': await context.session.commit(),
-                },
               },
             )
           }
@@ -259,9 +213,6 @@ export async function action({ request, context }) {
             { error: { [addressId]: error } },
             {
               status: 400,
-              headers: {
-                'Set-Cookie': await context.session.commit(),
-              },
             },
           )
         }
@@ -272,9 +223,6 @@ export async function action({ request, context }) {
           { error: { [addressId]: 'Method not allowed' } },
           {
             status: 405,
-            headers: {
-              'Set-Cookie': await context.session.commit(),
-            },
           },
         )
       }
@@ -285,9 +233,6 @@ export async function action({ request, context }) {
         { error: error.message },
         {
           status: 400,
-          headers: {
-            'Set-Cookie': await context.session.commit(),
-          },
         },
       )
     }
@@ -295,9 +240,6 @@ export async function action({ request, context }) {
       { error },
       {
         status: 400,
-        headers: {
-          'Set-Cookie': await context.session.commit(),
-        },
       },
     )
   }

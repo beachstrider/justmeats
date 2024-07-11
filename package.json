@@ -2,7 +2,7 @@
   "name": "justmeats-hydrogen-v2",
   "private": true,
   "sideEffects": false,
-  "version": "2024.4.7",
+  "version": "2024.7.1",
   "type": "module",
   "scripts": {
     "build": "shopify hydrogen build --codegen",
@@ -27,10 +27,10 @@
     "@rechargeapps/storefront-client": "^1.19.0",
     "@remix-run/react": "^2.10.1",
     "@remix-run/server-runtime": "^2.10.1",
-    "@shopify/cli": "3.60.0",
+    "@shopify/cli": "^3.63.2",
     "@shopify/cli-hydrogen": "^8.1.1",
-    "@shopify/hydrogen": "2024.4.5",
-    "@shopify/remix-oxygen": "^2.0.4",
+    "@shopify/hydrogen": "^2024.7.1",
+    "@shopify/remix-oxygen": "^2.0.5",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.13",
     "class-variance-authority": "^0.7.0",
@@ -46,15 +46,15 @@
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.5",
     "react-hook-form": "^7.52.1",
+    "react-markdown": "^9.0.1",
     "react-otp-input": "^3.1.1",
     "react-responsive": "^10.0.0",
     "react-slick": "^0.30.2",
+    "rehype-raw": "^7.0.0",
     "remix-utils": "^7.6.0",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.1.4",
-    "tailwind-merge": "^2.3.0",
-    "react-markdown": "^9.0.1",
-    "rehype-raw": "^7.0.0"
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "5.0.2",
@@ -62,8 +62,8 @@
     "@remix-run/eslint-config": "^2.10.1",
     "@shopify/hydrogen-codegen": "^0.3.1",
     "@shopify/mini-oxygen": "^3.0.3",
+    "@shopify/oxygen-workers-types": "^4.1.2",
     "@shopify/prettier-config": "^1.1.2",
-    "@shopify/oxygen-workers-types": "^4.0.0",
     "@total-typescript/ts-reset": "^0.4.2",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/eslint": "^8.4.10",
@@ -80,5 +80,8 @@
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }

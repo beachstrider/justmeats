@@ -42,14 +42,7 @@ export async function loader({ request, context }) {
     },
   })
 
-  return defer(
-    { collections, customerCount, deliveryCount },
-    {
-      headers: {
-        'Set-Cookie': await context.session.commit(),
-      },
-    },
-  )
+  return defer({ collections, customerCount, deliveryCount })
 }
 
 export default function Homepage() {

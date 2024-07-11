@@ -617,7 +617,7 @@ button.free-gift-label {
 }
 
 .container-small {
-  @apply w-full max-w-[1120px] mx-auto my-0 px-[20px] py-0;
+  @apply w-full max-w-[1120px] mx-auto px-[20px];
 }
 
 span.free-text-label {
