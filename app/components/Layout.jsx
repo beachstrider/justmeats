@@ -17,22 +17,17 @@ export function Layout({ children = null }) {
   const [menuToggle, setMenuToggle] = useState(false)
   const isProductPage = matches[1].params.bundle === 'custom-bundle'
   const isAmbassadorPage = matches[1].pathname == '/ambassador'
-  if (isNewLayout)
-    if(isAmbassadorPage)
-      return (
-        <LayoutContext.Provider value={{ menuToggle, setMenuToggle }}>
-          {children}
-          <NewFooter />
-        </LayoutContext.Provider>
-      ) 
+
+  if (isNewLayout) {
     return (
       <LayoutContext.Provider value={{ menuToggle, setMenuToggle }}>
-        <NewHeader /> 
+        {!isAmbassadorPage && <NewHeader />}
         <MobileMenuAside />
         {children}
         <NewFooter />
       </LayoutContext.Provider>
     )
+  }
 
   return (
     <LayoutContext.Provider value={{ menuToggle, setMenuToggle }}>
