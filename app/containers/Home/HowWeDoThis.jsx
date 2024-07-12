@@ -145,8 +145,8 @@ export const HowWeDoThis = () => {
             style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
           >
             <div className="flex items-center flex-1">
-              <div className="sm:w-[112px] sm:h-[112px] w-[95px] h-[95px] flex justify-center items-center">
-                <div className="sm:w-[67px] w-[67px]">
+              <div className="sm:w-[112px] sm:h-[112px] w-[92px] h-[92px] flex justify-center items-center">
+                <div className="sm:w-[60px] w-[60px]">
                   <Pig />
                 </div>
               </div>
@@ -156,7 +156,6 @@ export const HowWeDoThis = () => {
             </div>
             <div className="sm:text-[14px] text-[14px] leading-[15px] sm:px-[40px] px-[20px] text-center">
               Restaurant quality taste at a fraction of the price{' '}
-              <span className="block opacity-0 sm:hidden">--------</span>
             </div>
           </div>
         </div>
