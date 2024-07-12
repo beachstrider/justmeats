@@ -1,5 +1,4 @@
 import FormData from 'form-data'
-import fetch from 'node-fetch'
 
 const datasetId = '339994655121583'
 const accessToken =

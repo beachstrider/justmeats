@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { useEffect } from 'react'
 
-import { unstable_useAnalytics as useAnalytics } from '@shopify/hydrogen'
+import { useAnalytics } from '@shopify/hydrogen'
 
 export function CustomAnalytics() {
   const { subscribe, register } = useAnalytics()

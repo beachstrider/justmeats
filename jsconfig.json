@@ -9,6 +9,10 @@
       "~/*": ["app/*"]
     }
   },
-  "include": ["./**/*.d.ts", "./**/*.js", "./**/*.jsx"],
-  "exclude": ["./node_modules/**/*.*", "./dist/**/*.*"]
+  "include": [
+    "./**/*.d.ts",
+    "./**/*.js",
+    "./**/*.jsx",
+    "app/hooks/useRootLoaderData.ts"
+  ]
 }

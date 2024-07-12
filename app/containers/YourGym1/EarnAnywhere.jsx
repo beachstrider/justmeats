@@ -3,7 +3,7 @@ import React from 'react'
 export const EarnAnywhere = () => {
   return (
     <>
-      <section className='bg-[#EFEEED] absolute w-full  h-[50px]'>
+      <section className="bg-[#EFEEED] absolute w-full  h-[50px]">
         <div
           className="flex flex-col items-center bg-brown-pattern w-[90%] md:w-[80%] mx-auto text-white left-0
                 pt-[21px] pb-[18px] rounded-[6px] -mt-[27px] md:-mt-[88px]"
@@ -11,9 +11,7 @@ export const EarnAnywhere = () => {
         >
           <div className="text-center text-[23px] lg:text-[36px]  xl:text-[40px] 2xl:text-[48px] font-bold mb-[3px] leading-tight px-4 sm:mb-[4px]">
             EARN ANYWHERE FROM
-            <span className="text-yellow ml-[6px] sm:ml-[8px]">
-              $5K - $10K
-            </span>
+            <span className="text-yellow ml-[6px] sm:ml-[8px]">$5K - $10K</span>
           </div>
           <div className="text-center  text-[14px] lg:text-[18px] xl:text-[24px] 2xl:text-[28px] font-bold px-4 lg:px-0 tracking-[3px] sm:mb-[16px] mb-[12px] leading-tight">
             IN ADDITIONAL REVENUE <br className="block sm:hidden" />
@@ -25,7 +23,7 @@ export const EarnAnywhere = () => {
           </div>
         </div>
       </section>
-      <div className='bg-[#EFEEED] h-[150px] sm:h-[125px]'></div>
+      <div className="bg-[#EFEEED] h-[150px] sm:h-[125px]"></div>
     </>
   )
 }

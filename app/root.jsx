@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react'
 
-import slickCarouselTheme from 'slick-carousel/slick/slick-theme.css'
-import slickCarousel from 'slick-carousel/slick/slick.css'
-import sliderStyles from 'swiper/css'
-import sliderAutoplay from 'swiper/css/autoplay'
-import sliderNavigation from 'swiper/css/navigation'
-import sliderPagination from 'swiper/css/pagination'
+import slickCarouselTheme from 'slick-carousel/slick/slick-theme.css?url'
+import slickCarousel from 'slick-carousel/slick/slick.css?url'
+import sliderAutoplay from 'swiper/css/autoplay?url'
+import sliderNavigation from 'swiper/css/navigation?url'
+import sliderPagination from 'swiper/css/pagination?url'
+import sliderStyles from 'swiper/css?url'
 
 import { getCustomer } from '@rechargeapps/storefront-client'
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
@@ -19,24 +18,21 @@ import {
   useLoaderData,
   useMatches,
   useRouteError,
+  useRouteLoaderData,
 } from '@remix-run/react'
-import {
-  UNSTABLE_Analytics as Analytics,
-  getShopAnalytics,
-  useNonce,
-} from '@shopify/hydrogen'
+import { Analytics, getShopAnalytics, useNonce } from '@shopify/hydrogen'
 import { defer } from '@shopify/remix-oxygen'
 
 import favicon from '~/assets/favicon.svg'
 import { CustomAnalytics } from '~/components/CustomAnalytics'
 import { GTMNoScript } from '~/components/GTMNoScript'
-import { Layout } from '~/components/Layout'
+import { Layout as PageLayout } from '~/components/Layout'
 import { MetaNoScript } from '~/components/MetaNoScript'
 import { DELIVERY_EVERY_15_DAYS } from '~/consts'
 import { RootContext } from '~/contexts'
+import { FOOTER_QUERY, HEADER_QUERY } from '~/lib/fragments'
 import { addScriptToHead } from '~/lib/utils'
-import appStyles from '~/styles/app.css'
-import tailwindStyles from '~/styles/tailwind.css'
+import appStyles from '~/styles/app.css?url'
 
 import { configAspireIQ } from './lib/configAspireIQ'
 import { configChatJS } from './lib/configChatJS'
@@ -46,6 +42,10 @@ import { configMetaPixel } from './lib/configMetaPixel'
 import { configTwitterPixel } from './lib/configTwitterPixel'
 import { RECHARGE_SESSION_KEY } from './lib/rechargeUtils'
 
+/**
+ * This is important to avoid re-fetching root queries on sub-navigations
+ * @type {ShouldRevalidateFunction}
+ */
 export const shouldRevalidate = ({ formMethod, currentUrl, nextUrl }) => {
   // revalidate when a mutation is performed e.g add to cart, login...
   if (formMethod && formMethod !== 'GET') {
@@ -62,7 +62,6 @@ export const shouldRevalidate = ({ formMethod, currentUrl, nextUrl }) => {
 
 export function links() {
   return [
-    // {rel: 'stylesheet', href: resetStyles},
     { rel: 'stylesheet', href: appStyles },
     { rel: 'stylesheet', href: sliderStyles },
     { rel: 'stylesheet', href: slickCarousel },
@@ -70,7 +69,6 @@ export function links() {
     { rel: 'stylesheet', href: sliderNavigation },
     { rel: 'stylesheet', href: sliderPagination },
     { rel: 'stylesheet', href: sliderAutoplay },
-    { rel: 'stylesheet', href: tailwindStyles },
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -83,19 +81,23 @@ export function links() {
   ]
 }
 
-export const useRootLoaderData = () => {
-  const [root] = useMatches()
-  return root?.data
-}
+/**
+ * @param {LoaderFunctionArgs} args
+ */
+export async function loader(args) {
+  // Start fetching non-critical data without blocking time to first byte
+  const deferredData = loadDeferredData(args)
 
-export async function loader({ context }) {
-  const { storefront, env } = context
+  // Await the critical data required to render initial state of the page
+  const criticalData = await loadCriticalData(args)
+
+  const { storefront, env } = args.context
 
   const publicStoreDomain = env.PUBLIC_STORE_DOMAIN
 
   let customer = null
 
-  const rechargeSession = context.rechargeSession.get(RECHARGE_SESSION_KEY)
+  const rechargeSession = args.context.rechargeSession.get(RECHARGE_SESSION_KEY)
 
   if (rechargeSession) {
     try {
@@ -107,26 +109,23 @@ export async function loader({ context }) {
     }
   }
 
-  return defer(
-    {
-      customer,
-      publicStoreDomain,
+  return defer({
+    ...deferredData,
+    ...criticalData,
 
-      shop: getShopAnalytics({
-        storefront,
-        publicStorefrontId: env.PUBLIC_STOREFRONT_ID,
-      }),
-      consent: {
-        checkoutDomain: env.PUBLIC_CHECKOUT_DOMAIN,
-        storefrontAccessToken: env.PUBLIC_STOREFRONT_API_TOKEN,
-      },
+    customer,
+    publicStoreDomain,
+
+    shop: getShopAnalytics({
+      storefront,
+      publicStorefrontId: env.PUBLIC_STOREFRONT_ID,
+    }),
+
+    consent: {
+      checkoutDomain: env.PUBLIC_CHECKOUT_DOMAIN,
+      storefrontAccessToken: env.PUBLIC_STOREFRONT_API_TOKEN,
     },
-    {
-      headers: {
-        'Set-Cookie': await context.session.commit(),
-      },
-    },
-  )
+  })
 }
 
 const newLayoutRoutes = [
@@ -141,9 +140,61 @@ const newLayoutRoutes = [
   'ambassador',
 ]
 
-export default function App() {
+/**
+ * Load data necessary for rendering content above the fold. This is the critical data
+ * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
+ * @param {LoaderFunctionArgs}
+ */
+async function loadCriticalData({ context }) {
+  const { storefront } = context
+
+  const [header] = await Promise.all([
+    storefront.query(HEADER_QUERY, {
+      cache: storefront.CacheLong(),
+      variables: {
+        headerMenuHandle: 'main-menu', // Adjust to your header menu handle
+      },
+    }),
+    // Add other queries here, so that they are loaded in parallel
+  ])
+
+  return {
+    header,
+  }
+}
+
+/**
+ * Load data for rendering content below the fold. This data is deferred and will be
+ * fetched after the initial page load. If it's unavailable, the page should still 200.
+ * Make sure to not throw any errors here, as it will cause the page to 500.
+ * @param {LoaderFunctionArgs}
+ */
+function loadDeferredData({ context }) {
+  const { storefront, customerAccount, cart } = context
+
+  // defer the footer query (below the fold)
+  const footer = storefront
+    .query(FOOTER_QUERY, {
+      cache: storefront.CacheLong(),
+      variables: {
+        footerMenuHandle: 'footer', // Adjust to your footer menu handle
+      },
+    })
+    .catch((error) => {
+      // Log query errors, but don't throw them so the page can still render
+      console.error(error)
+      return null
+    })
+  return {
+    cart: cart.get(),
+    isLoggedIn: customerAccount.isLoggedIn(),
+    footer,
+  }
+}
+
+export function Layout({ children }) {
   const nonce = useNonce()
-  const data = useLoaderData()
+  const data = useRouteLoaderData('root')
 
   // Quick PATCH
   const matches = useMatches()
@@ -324,7 +375,7 @@ export default function App() {
           cart={data.cart}
           shop={data.shop}
           consent={data.consent}
-          customData={{ foo: 'bar' }}
+          cookieDomain="justmeats.com"
         >
           <RootContext.Provider
             value={{
@@ -350,9 +401,7 @@ export default function App() {
               isNewLayout,
             }}
           >
-            <Layout {...data}>
-              <Outlet />
-            </Layout>
+            {data ? <PageLayout {...data}>{children}</PageLayout> : children}
             <CustomAnalytics />
           </RootContext.Provider>
         </Analytics.Provider>
@@ -360,15 +409,17 @@ export default function App() {
         {/* CAUTION: Please don't inject script tags here, instead use addScriptToHead util in useEffect like above */}
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
-        <LiveReload nonce={nonce} />
       </body>
     </html>
   )
 }
 
+export default function App() {
+  return <Outlet />
+}
+
 export function ErrorBoundary() {
   const error = useRouteError()
-  const nonce = useNonce()
   let errorMessage = 'Unknown error'
   let errorStatus = 500
 
@@ -380,27 +431,14 @@ export function ErrorBoundary() {
   }
 
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <div className="flex flex-col items-center justify-center h-screen route-error">
-          <h1>Oops</h1>
-          <h2>{errorStatus}</h2>
-          {errorMessage && (
-            <fieldset>
-              <pre>{errorMessage}</pre>
-            </fieldset>
-          )}
-        </div>
-        <ScrollRestoration nonce={nonce} />
-        <Scripts nonce={nonce} />
-        <LiveReload nonce={nonce} />
-      </body>
-    </html>
+    <div className="flex flex-col items-center justify-center h-screen route-error">
+      <h1>Oops</h1>
+      <h2>{errorStatus}</h2>
+      {errorMessage && (
+        <fieldset>
+          <pre>{errorMessage}</pre>
+        </fieldset>
+      )}
+    </div>
   )
 }

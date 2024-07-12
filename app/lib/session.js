@@ -6,6 +6,12 @@ import { createCookieSessionStorage } from '@shopify/remix-oxygen'
  * swap out the cookie-based implementation with something else!
  */
 export class AppSession {
+  /**
+   * @public
+   * @default false
+   */
+  isPending = false
+
   #sessionStorage
   #session
 
@@ -54,10 +60,12 @@ export class AppSession {
   }
 
   get unset() {
+    this.isPending = true
     return this.#session.unset
   }
 
   get set() {
+    this.isPending = true
     return this.#session.set
   }
 
@@ -66,6 +74,7 @@ export class AppSession {
   }
 
   commit() {
+    this.isPending = false
     return this.#sessionStorage.commitSession(this.#session)
   }
 }

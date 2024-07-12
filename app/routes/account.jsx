@@ -25,7 +25,6 @@ export async function loader({ context }) {
       {
         headers: {
           'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Set-Cookie': await context.session.commit(),
         },
       },
     )

@@ -11,9 +11,5 @@ export async function loader({ request, context, params }) {
   const urlParams = new URLSearchParams(request.url.split('?')[1])
   const redirectPath = urlParams.get('redirect') ?? '/'
 
-  return redirect(redirectPath, {
-    headers: {
-      'Set-Cookie': await context.session.commit(),
-    },
-  })
+  return redirect(redirectPath)
 }

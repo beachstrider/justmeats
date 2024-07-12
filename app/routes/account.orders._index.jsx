@@ -26,11 +26,10 @@ export async function loader({ request, context }) {
   }, context)
 
   return json({
+    listOrdersResponse,
     headers: {
       'Cache-Control': 'no-cache, no-store, must-revalidate',
-      'Set-Cookie': await context.session.commit(),
     },
-    listOrdersResponse,
   })
 }
 

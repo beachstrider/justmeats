@@ -16,18 +16,16 @@ const DEFAULT_SEARCH_TYPES = [
  * requested by the SearchForm component
  * @param {LoaderFunctionArgs}
  */
-export async function action({ request, params, context }) {
-  if (request.method !== 'POST') {
-    throw new Error('Invalid request method')
-  }
-
+export async function loader({ request, params, context }) {
   const search = await fetchPredictiveSearchResults({
     params,
     request,
     context,
   })
 
-  return json(search)
+  return json(search, {
+    headers: { 'Cache-Control': `max-age=${search.searchTerm ? 60 : 3600}` },
+  })
 }
 
 /**
@@ -36,15 +34,10 @@ export async function action({ request, params, context }) {
 async function fetchPredictiveSearchResults({ params, request, context }) {
   const url = new URL(request.url)
   const searchParams = new URLSearchParams(url.search)
-  let body
-  try {
-    body = await request.formData()
-  } catch (error) {}
-  const searchTerm = String(body?.get('q') || searchParams.get('q') || '')
-  const limit = Number(body?.get('limit') || searchParams.get('limit') || 10)
-  const rawTypes = String(
-    body?.get('type') || searchParams.get('type') || 'ANY',
-  )
+  const searchTerm = searchParams.get('q') || ''
+  const limit = Number(searchParams.get('limit') || 10)
+  const rawTypes = String(searchParams.get('type') || 'ANY')
+
   const searchTypes =
     rawTypes === 'ANY'
       ? DEFAULT_SEARCH_TYPES
@@ -189,7 +182,7 @@ export function normalizePredictiveSearchResults(predictiveSearch, locale) {
           id: article.id,
           image: article.image,
           title: article.title,
-          url: `${localePrefix}/blog/${article.handle}${trackingParams}`,
+          url: `${localePrefix}/blogs/${article.blog.handle}/${article.handle}/${trackingParams}`,
         }
       }),
     })
@@ -204,6 +197,9 @@ const PREDICTIVE_SEARCH_QUERY = `#graphql
     id
     title
     handle
+    blog {
+      handle
+    }
     image {
       url
       altText
@@ -300,6 +296,7 @@ const PREDICTIVE_SEARCH_QUERY = `#graphql
  *   | 'PRODUCT'
  *   | 'QUERY'} PredictiveSearchTypes
  */
+/** @typedef {Class<loader>} PredictiveSearchAPILoader */
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
 /** @typedef {import('~/components/Search').NormalizedPredictiveSearch} NormalizedPredictiveSearch */
@@ -310,4 +307,4 @@ const PREDICTIVE_SEARCH_QUERY = `#graphql
 /** @typedef {import('storefrontapi.generated').PredictiveProductFragment} PredictiveProductFragment */
 /** @typedef {import('storefrontapi.generated').PredictiveQueryFragment} PredictiveQueryFragment */
 /** @typedef {import('storefrontapi.generated').PredictiveSearchQuery} PredictiveSearchQuery */
-/** @typedef {import('@shopify/remix-oxygen').SerializeFrom<typeof action>} ActionReturnData */
+/** @typedef {import('@shopify/remix-oxygen').SerializeFrom<typeof loader>} LoaderReturnData */

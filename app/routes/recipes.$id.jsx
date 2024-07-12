@@ -5,9 +5,16 @@ import { useParams } from '@remix-run/react'
 import { Recipe } from '~/containers/Recipes/Recipe/Recipe'
 import { YouMayAlsoLike } from '~/containers/Recipes/Recipe/YouMayAlsoLike'
 import { recipes } from '~/data/recipes'
+import { sendPageView } from '~/lib/metaPixel.server'
 
 export const meta = () => {
   return [{ title: 'Recipe - Just Meats' }]
+}
+
+export async function loader({ request, context }) {
+  sendPageView(request)
+
+  return null
 }
 
 export default function RecipeItem() {
