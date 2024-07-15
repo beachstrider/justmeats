@@ -18,7 +18,7 @@ export const ChefPrepared = () => {
               </div>
               <div className="sm:text-[18px] text-[16px] text-[#7D0E21] font-medium sm:font-normal leading-[120%]">
                 This is one of the times you want to know “how the sausage gets
-                made”. Our meat is prepared with plenty of high-quality TLC
+                made.” Our meat is prepared with plenty of high-quality TLC
                 everyday. It’s your food, but it’s our passion.
               </div>
               <div className="sm:text-[18px] text-[16px] lg:mt-[60px] lg:mb-[40px] mt-[50px] mb-[30px] text-[#000] font-medium sm:font-normal leading-[120%]">

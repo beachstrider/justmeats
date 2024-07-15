@@ -55,7 +55,7 @@ export const DeliverToDoor = () => {
               </li>
               <li>
                 Any orders placed on a weekend will be shipped out the following
-                Week.
+                week.
               </li>
               <li>
                 If you need your order to be shipped at a later date, contact
@@ -72,7 +72,7 @@ export const DeliverToDoor = () => {
               <ul className="lg:text-[18px] text-[16px] list-disc pl-[30px] text-[#000] font-medium lg:font-normal leading-[120%]">
                 <li>
                   We ship our meat via UPS from our three distribution centers
-                  (UT, TX, and KY.)
+                  (UT, TX, and KY).
                 </li>
                 <li>Your order should arrive within two days.</li>
                 <li>
