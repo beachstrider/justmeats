@@ -1,8 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 
-import { useLoaderData, useMatches } from '@remix-run/react'
+import { useLoaderData, useMatches, useSearchParams } from '@remix-run/react'
 
 import { FaqAccordion } from '~/components/NewFaqAccordion'
+import { DELIVERY_EVERY_15_DAYS, DELIVERY_EVERY_30_DAYS } from '~/consts'
 import { PlanPickerBlock } from '~/containers/CustomBundle/PlanPickerBlock'
 import { CustomBundleContext, RootContext } from '~/contexts'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
@@ -18,9 +25,6 @@ import { ProductCard } from './ProductCard'
 import { ProductModal } from './ProductModal'
 
 export const CustomBundle = () => {
-  const submit = useSubmitPromise()
-  const matches = useMatches()
-
   const {
     id,
     bundleId,
@@ -53,14 +57,18 @@ export const CustomBundle = () => {
     setSubscriptionBonusVariant,
   } = useContext(RootContext)
 
-  const [clickedProduct, setClickedProduct] = useState(null)
-  const [submitting, setSubmitting] = useState(false)
-
   const [filter, setFilter] = useState({
     servingType: '',
     meatTypes: [],
     specialTypes: [],
   })
+
+  const matches = useMatches()
+  const submit = useSubmitPromise()
+
+  const [submitting, setSubmitting] = useState(false)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [clickedProduct, setClickedProduct] = useState(null)
 
   const isCartPage = matches.at(-1).pathname.includes('/products/custom-bundle')
 
@@ -177,6 +185,75 @@ export const CustomBundle = () => {
   const onFilterChange = (newFilter) => {
     setFilter(newFilter)
   }
+
+  const initializeCart = ({ cartItemsInUrl, sellingPlanInUrl }) => {
+    const newCartProducts = []
+    const correctedSellingPlanInUrl = sellingPlanInUrl.replaceAll('-', ' ')
+
+    for (const cartItem of cartItemsInUrl) {
+      const product = products.find((el) => el.handle === cartItem.handle)
+      const productQuantity = Number(cartItem.quantity)
+      const productPrice = product?.priceRange?.maxVariantPrice?.amount
+
+      if (typeof product !== 'undefined' && productPrice && productQuantity) {
+        newCartProducts.push({
+          ...product,
+          quantity: productQuantity,
+          amount: String(productPrice),
+          totalAmount: String(productPrice * productQuantity),
+        })
+      }
+    }
+
+    if (
+      [DELIVERY_EVERY_15_DAYS, DELIVERY_EVERY_30_DAYS, ''].includes(
+        correctedSellingPlanInUrl,
+      )
+    ) {
+      setSellingPlan(correctedSellingPlanInUrl)
+      setSellingPlanFrequency(correctedSellingPlanInUrl)
+      setSelectedProducts(newCartProducts)
+    } else {
+      setSelectedProducts(newCartProducts)
+    }
+  }
+
+  const setParams = useCallback(
+    (newParams = {}) => {
+      const urlSearchParams = new URLSearchParams()
+
+      for (const _key in newParams) {
+        const _value = String(newParams[_key])
+
+        if (_value) {
+          urlSearchParams.set(_key, _value)
+        }
+      }
+
+      setSearchParams(urlSearchParams, {
+        preventScrollReset: true,
+      })
+    },
+    [setSearchParams],
+  )
+
+  useEffect(() => {
+    if (isCartPage) {
+      const cartItemsParamInUrl = searchParams.get('cart_items')
+      const sellingPlanInUrl = searchParams.get('selling_plan') ?? ''
+
+      if (cartItemsParamInUrl) {
+        try {
+          const cartItemsInUrl = JSON.parse(cartItemsParamInUrl)
+          initializeCart({ cartItemsInUrl, sellingPlanInUrl })
+        } catch (_) {
+          console.error('Cart param corrupted')
+        } finally {
+          setParams()
+        }
+      }
+    }
+  }, [])
 
   return (
     <CustomBundleContext.Provider
