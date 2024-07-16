@@ -9,6 +9,7 @@ import React, {
 import { useLoaderData, useMatches, useSearchParams } from '@remix-run/react'
 
 import { FaqAccordion } from '~/components/NewFaqAccordion'
+import { DELIVERY_EVERY_15_DAYS, DELIVERY_EVERY_30_DAYS } from '~/consts'
 import { PlanPickerBlock } from '~/containers/CustomBundle/PlanPickerBlock'
 import { CustomBundleContext, RootContext } from '~/contexts'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
@@ -64,6 +65,7 @@ export const CustomBundle = () => {
 
   const matches = useMatches()
   const submit = useSubmitPromise()
+
   const [submitting, setSubmitting] = useState(false)
   const [searchParams, setSearchParams] = useSearchParams()
   const [clickedProduct, setClickedProduct] = useState(null)
@@ -184,25 +186,36 @@ export const CustomBundle = () => {
     setFilter(newFilter)
   }
 
-  const initializeCart = (cart) => {
+  const initializeCart = ({ cartItemsInUrl, sellingPlanInUrl }) => {
     const newCartProducts = []
+    const correctedSellingPlanInUrl = sellingPlanInUrl.replaceAll('-', ' ')
 
-    for (const cartItem of cart) {
+    for (const cartItem of cartItemsInUrl) {
       const product = products.find((el) => el.handle === cartItem.handle)
-      const productPrice = product?.priceRange?.maxVariantPrice?.amount
       const productQuantity = Number(cartItem.quantity)
+      const productPrice = product?.priceRange?.maxVariantPrice?.amount
 
       if (typeof product !== 'undefined' && productPrice && productQuantity) {
         newCartProducts.push({
           ...product,
-          amount: productPrice,
-          totalAmount: productPrice,
-          quantity: cartItem.quantity,
+          quantity: productQuantity,
+          amount: String(productPrice),
+          totalAmount: String(productPrice * productQuantity),
         })
       }
     }
 
-    setSelectedProducts(newCartProducts)
+    if (
+      [DELIVERY_EVERY_15_DAYS, DELIVERY_EVERY_30_DAYS, ''].includes(
+        correctedSellingPlanInUrl,
+      )
+    ) {
+      setSellingPlan(correctedSellingPlanInUrl)
+      setSellingPlanFrequency(correctedSellingPlanInUrl)
+      setSelectedProducts(newCartProducts)
+    } else {
+      setSelectedProducts(newCartProducts)
+    }
   }
 
   const setParams = useCallback(
@@ -225,19 +238,22 @@ export const CustomBundle = () => {
   )
 
   useEffect(() => {
-    const cartParam = searchParams.get('cart')
+    if (isCartPage) {
+      const cartItemsParamInUrl = searchParams.get('cart_items')
+      const sellingPlanInUrl = searchParams.get('selling_plan') ?? ''
 
-    if (cartParam) {
-      try {
-        const cart = JSON.parse(cartParam)
-        initializeCart(cart)
-      } catch (_) {
-        console.error('Cart param corrupted')
-      } finally {
-        setParams()
+      if (cartItemsParamInUrl) {
+        try {
+          const cartItemsInUrl = JSON.parse(cartItemsParamInUrl)
+          initializeCart({ cartItemsInUrl, sellingPlanInUrl })
+        } catch (_) {
+          console.error('Cart param corrupted')
+        } finally {
+          setParams()
+        }
       }
     }
-  }, [searchParams])
+  }, [])
 
   return (
     <CustomBundleContext.Provider
