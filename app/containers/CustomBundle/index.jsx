@@ -1,6 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 
-import { useLoaderData, useMatches } from '@remix-run/react'
+import { useLoaderData, useMatches, useSearchParams } from '@remix-run/react'
 
 import { FaqAccordion } from '~/components/NewFaqAccordion'
 import { PlanPickerBlock } from '~/containers/CustomBundle/PlanPickerBlock'
@@ -18,9 +24,6 @@ import { ProductCard } from './ProductCard'
 import { ProductModal } from './ProductModal'
 
 export const CustomBundle = () => {
-  const submit = useSubmitPromise()
-  const matches = useMatches()
-
   const {
     id,
     bundleId,
@@ -53,14 +56,17 @@ export const CustomBundle = () => {
     setSubscriptionBonusVariant,
   } = useContext(RootContext)
 
-  const [clickedProduct, setClickedProduct] = useState(null)
-  const [submitting, setSubmitting] = useState(false)
-
   const [filter, setFilter] = useState({
     servingType: '',
     meatTypes: [],
     specialTypes: [],
   })
+
+  const matches = useMatches()
+  const submit = useSubmitPromise()
+  const [submitting, setSubmitting] = useState(false)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [clickedProduct, setClickedProduct] = useState(null)
 
   const isCartPage = matches.at(-1).pathname.includes('/products/custom-bundle')
 
@@ -177,6 +183,61 @@ export const CustomBundle = () => {
   const onFilterChange = (newFilter) => {
     setFilter(newFilter)
   }
+
+  const initializeCart = (cart) => {
+    const newCartProducts = []
+
+    for (const cartItem of cart) {
+      const product = products.find((el) => el.handle === cartItem.handle)
+      const productPrice = product?.priceRange?.maxVariantPrice?.amount
+      const productQuantity = Number(cartItem.quantity)
+
+      if (typeof product !== 'undefined' && productPrice && productQuantity) {
+        newCartProducts.push({
+          ...product,
+          amount: productPrice,
+          totalAmount: productPrice,
+          quantity: cartItem.quantity,
+        })
+      }
+    }
+
+    setSelectedProducts(newCartProducts)
+  }
+
+  const setParams = useCallback(
+    (newParams = {}) => {
+      const urlSearchParams = new URLSearchParams()
+
+      for (const _key in newParams) {
+        const _value = String(newParams[_key])
+
+        if (_value) {
+          urlSearchParams.set(_key, _value)
+        }
+      }
+
+      setSearchParams(urlSearchParams, {
+        preventScrollReset: true,
+      })
+    },
+    [setSearchParams],
+  )
+
+  useEffect(() => {
+    const cartParam = searchParams.get('cart')
+
+    if (cartParam) {
+      try {
+        const cart = JSON.parse(cartParam)
+        initializeCart(cart)
+      } catch (_) {
+        console.error('Cart param corrupted')
+      } finally {
+        setParams()
+      }
+    }
+  }, [searchParams])
 
   return (
     <CustomBundleContext.Provider
