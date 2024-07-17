@@ -15,7 +15,6 @@ import {
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
-  useLoaderData,
   useMatches,
   useRouteError,
   useRouteLoaderData,
