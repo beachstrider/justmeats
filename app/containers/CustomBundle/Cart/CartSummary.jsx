@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { CustomBundleContext } from '~/contexts'
+import { CustomBundleContext } from '~/providers/CustomBundleProvider'
 
 export function CartSummary({ layout }) {
   const { cost, originalCost } = useContext(CustomBundleContext)

@@ -2,8 +2,8 @@ import { useContext } from 'react'
 
 import { useNavigate } from '@remix-run/react'
 
-import { CustomBundleContext } from '~/contexts'
 import { cn } from '~/lib/utils'
+import { CustomBundleContext } from '~/providers/CustomBundleProvider'
 
 export const Add = ({ product, line, type, isLandingPage = false }) => {
   const navigate = useNavigate()

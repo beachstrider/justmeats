@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
-import { CustomBundleContext } from '~/contexts'
 import { cn } from '~/lib/utils'
+import { CustomBundleContext } from '~/providers/CustomBundleProvider'
 
 export const ProgressBar = () => {
   const { costForOneTime } = useContext(CustomBundleContext)

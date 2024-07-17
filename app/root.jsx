@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import slickCarouselTheme from 'slick-carousel/slick/slick-theme.css?url'
 import slickCarousel from 'slick-carousel/slick/slick.css?url'
@@ -15,8 +15,6 @@ import {
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
-  useLoaderData,
-  useMatches,
   useRouteError,
   useRouteLoaderData,
 } from '@remix-run/react'
@@ -28,8 +26,6 @@ import { CustomAnalytics } from '~/components/CustomAnalytics'
 import { GTMNoScript } from '~/components/GTMNoScript'
 import { Layout as PageLayout } from '~/components/Layout'
 import { MetaNoScript } from '~/components/MetaNoScript'
-import { DELIVERY_EVERY_15_DAYS } from '~/consts'
-import { RootContext } from '~/contexts'
 import { FOOTER_QUERY, HEADER_QUERY } from '~/lib/fragments'
 import { addScriptToHead } from '~/lib/utils'
 import appStyles from '~/styles/app.css?url'
@@ -41,6 +37,7 @@ import { configLuckyOrange } from './lib/configLuckyOrange'
 import { configMetaPixel } from './lib/configMetaPixel'
 import { configTwitterPixel } from './lib/configTwitterPixel'
 import { RECHARGE_SESSION_KEY } from './lib/rechargeUtils'
+import { RootProvider } from './providers/RootProvider'
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -128,18 +125,6 @@ export async function loader(args) {
   })
 }
 
-const newLayoutRoutes = [
-  '',
-  'mayhem-madness',
-  'rich-froning',
-  'gym-launch',
-  'gym',
-  'recipes',
-  'recipe',
-  'about',
-  'ambassador',
-]
-
 /**
  * Load data necessary for rendering content above the fold. This is the critical data
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
@@ -196,80 +181,9 @@ export function Layout({ children }) {
   const nonce = useNonce()
   const data = useRouteLoaderData('root')
 
-  // Quick PATCH
-  const matches = useMatches()
-  const { pathname } = matches.at(-1)
-  const route = pathname.split('/')[1]
-  const isNewLayout = newLayoutRoutes.includes(route)
-
-  const [cartSellingPlan, _setCartSellingPlan] = useState(
-    DELIVERY_EVERY_15_DAYS,
-  )
-  const [cartProducts, _setCartProducts] = useState([])
-  const [cartBonusVariant, _setCartBonusVariant] = useState(null)
-  const [cartSellingPlanFrequency, _setCartSellingPlanFrequency] = useState(
-    DELIVERY_EVERY_15_DAYS,
-  )
-
-  const [subscriptionSellingPlan, setSubscriptionSellingPlan] = useState(
-    DELIVERY_EVERY_15_DAYS,
-  )
-  const [subscriptionProducts, setSubscriptionProducts] = useState([])
-  const [subscriptionBonusVariant, setSubscriptionBonusVariant] = useState(null)
-  const [
-    subscriptionSellingPlanFrequency,
-    setSubscriptionSellingPlanFrequency,
-  ] = useState('')
-
-  const cartCount = cartProducts.reduce((prev, item) => prev + item.quantity, 0)
-  const cartCost = cartProducts.reduce(
-    (acc, curr) => acc + parseFloat(curr.totalAmount),
-    0,
-  )
-  const subscriptionCost = subscriptionProducts.reduce(
-    (acc, curr) => acc + parseFloat(curr.totalAmount),
-    0,
-  )
-
   useEffect(() => {
-    loadCart()
     loadScripts()
   }, [])
-
-  const loadCart = () => {
-    // HACK: in order to avoid using old local storage data and errors
-    const _new_local_storage_enabled = window.localStorage.getItem(
-      '_new_local_storage_enabled',
-    )
-    if (!_new_local_storage_enabled) {
-      document.cookie = 'cart=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
-      window.localStorage.clear()
-      window.localStorage.setItem(
-        '_new_local_storage_enabled',
-        JSON.stringify(true),
-      )
-    }
-
-    const _cartSellingPlan = window.localStorage.getItem('_cartSellingPlan')
-    const _cartProducts = window.localStorage.getItem('_cartProducts')
-    const _cartBonusVariant = window.localStorage.getItem('_cartBonusVariant')
-    const _cartSellingPlanFrequency = window.localStorage.getItem(
-      '_cartSellingPlanFrequency',
-    )
-
-    if (_cartSellingPlan) {
-      _setCartSellingPlan(JSON.parse(_cartSellingPlan))
-    }
-    if (_cartSellingPlanFrequency) {
-      _setCartSellingPlanFrequency(JSON.parse(_cartSellingPlanFrequency))
-    }
-    if (_cartProducts) {
-      _setCartProducts(JSON.parse(_cartProducts))
-    }
-    if (_cartBonusVariant) {
-      setCartBonusVariant(JSON.parse(_cartBonusVariant))
-    }
-  }
 
   const loadScripts = async () => {
     // HACK: for react hydration error due to direct external script tag imports in head
@@ -303,60 +217,6 @@ export function Layout({ children }) {
     configAspireIQ()
   }
 
-  const setCartSellingPlan = (value) => {
-    _setCartSellingPlan(value)
-    window.localStorage.setItem('_cartSellingPlan', JSON.stringify(value))
-
-    // Adjust cart products according to sellingPlan
-    const newCartProducts = value
-      ? cartProducts
-      : cartProducts.filter((product) => !product.requiresSellingPlan)
-
-    setCartProducts(newCartProducts)
-  }
-
-  const setCartSellingPlanFrequency = (value) => {
-    _setCartSellingPlanFrequency(value)
-    window.localStorage.setItem(
-      '_cartSellingPlanFrequency',
-      JSON.stringify(value),
-    )
-
-    setCartSellingPlan(value)
-  }
-
-  const setCartProducts = (value) => {
-    _setCartProducts(value)
-    window.localStorage.setItem('_cartProducts', JSON.stringify(value))
-
-    triggerKlaviyo({ products: value })
-  }
-
-  const setCartBonusVariant = (value) => {
-    _setCartBonusVariant(value)
-    window.localStorage.setItem('_cartBonusVariant', JSON.stringify(value))
-  }
-
-  const triggerKlaviyo = ({ products }) => {
-    const _learnq = window._learnq || []
-
-    const cartItems = products.map((product) => ({
-      quantity: product.quantity,
-      merchandiseId: product.variants.nodes[0].id,
-    }))
-
-    const cart = {
-      total_price: cartCost,
-      value: cartCount,
-      original_total_price: cartCost,
-      items: cartItems,
-    }
-
-    if (products.length) {
-      _learnq.push(['track', 'Cart items changed', cart])
-    }
-  }
-
   return (
     <html lang="EN">
       <head>
@@ -377,33 +237,10 @@ export function Layout({ children }) {
           consent={data.consent}
           cookieDomain="justmeats.com"
         >
-          <RootContext.Provider
-            value={{
-              cartCost,
-              cartCount,
-              cartProducts,
-              cartSellingPlan,
-              cartSellingPlanFrequency,
-              cartBonusVariant,
-              subscriptionCost,
-              subscriptionSellingPlan,
-              subscriptionProducts,
-              subscriptionSellingPlanFrequency,
-              subscriptionBonusVariant,
-              setCartProducts,
-              setCartSellingPlan,
-              setCartSellingPlanFrequency,
-              setCartBonusVariant,
-              setSubscriptionSellingPlan,
-              setSubscriptionProducts,
-              setSubscriptionSellingPlanFrequency,
-              setSubscriptionBonusVariant,
-              isNewLayout,
-            }}
-          >
+          <RootProvider>
             {data ? <PageLayout {...data}>{children}</PageLayout> : children}
             <CustomAnalytics />
-          </RootContext.Provider>
+          </RootProvider>
         </Analytics.Provider>
 
         {/* CAUTION: Please don't inject script tags here, instead use addScriptToHead util in useEffect like above */}

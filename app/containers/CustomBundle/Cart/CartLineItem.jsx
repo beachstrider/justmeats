@@ -2,10 +2,9 @@ import { Fragment, useContext, useState } from 'react'
 
 import { Dialog, Transition } from '@headlessui/react'
 
-import memorialDay from '~/assets/images/image_2024-05-23_154607820.jpg'
-import { CustomBundleContext } from '~/contexts'
 import { Close } from '~/icons/Close'
 import { cn } from '~/lib/utils'
+import { CustomBundleContext } from '~/providers/CustomBundleProvider'
 
 import { Quantity } from '../ProductActions/Quantity'
 import { LockedItem } from './LockedItem'
