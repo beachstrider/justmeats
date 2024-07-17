@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useOutletContext } from '@remix-run/react'
+import { useRouteLoaderData } from '@remix-run/react'
 
 import { Button } from '~/components/Button'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
@@ -9,7 +9,7 @@ import { cn } from '~/lib/utils'
 
 export const Details = () => {
   const submit = useSubmitPromise()
-  const { customer } = useOutletContext()
+  const { customer } = useRouteLoaderData('root')
 
   const [submitting, setSubmitting] = useState(false)
 

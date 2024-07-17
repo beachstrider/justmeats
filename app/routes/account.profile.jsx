@@ -2,7 +2,7 @@ import {
   Form,
   useActionData,
   useNavigation,
-  useOutletContext,
+  useRouteLoaderData,
 } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
@@ -76,11 +76,11 @@ export async function action({ request, context }) {
 }
 
 export default function AccountProfile() {
-  const account = useOutletContext()
+  const { customer: _customer } = useRouteLoaderData('root')
   const { state } = useNavigation()
   /** @type {ActionReturnData} */
   const action = useActionData()
-  const customer = action?.customer ?? account?.customer
+  const customer = action?.customer ?? _customer
 
   return (
     <div className="account-profile">

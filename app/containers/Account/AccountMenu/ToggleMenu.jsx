@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { Form, NavLink } from '@remix-run/react'
 
-const ToggleMenu = () => {
+export const ToggleMenu = () => {
   const [showMenu, setShowMenu] = useState(false)
 
   const toggleMenu = () => {
@@ -79,6 +79,7 @@ const ToggleMenu = () => {
     </div>
   )
 }
+
 function Logout() {
   return (
     <Form className="account-logout" method="POST" action="/account/logout">
@@ -86,4 +87,3 @@ function Logout() {
     </Form>
   )
 }
-export default ToggleMenu

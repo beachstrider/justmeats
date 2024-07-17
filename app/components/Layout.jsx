@@ -19,6 +19,7 @@ const newLayoutRoutes = [
   'recipe',
   'about',
   'ambassador',
+  'account',
 ]
 
 export function Layout({ children = null }) {

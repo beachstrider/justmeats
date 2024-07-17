@@ -50,7 +50,7 @@ export function Header() {
     return (
       <li
         className={cn(
-          'navLink py-4 px-[16px] hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-barlow text-[14px] font-medium tracking-[0.7px]',
+          'navLink py-4 hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-barlow text-[14px] font-medium tracking-[0.7px]',
         )}
       >
         <NavLink
@@ -106,13 +106,12 @@ export function Header() {
         <div className="relative flex items-center justify-between w-full navBar">
           <ul
             className={cn(
-              'hidden navLinks lg:flex w-full max-w-[40%] custom-padding-header font-dunbar text-[14px]',
+              'hidden navLinks lg:flex w-full max-w-[40%] custom-padding-header font-dunbar text-[14px] lg:gap-[32px]',
             )}
           >
             {HoverUnderNavLink('/products/custom-bundle', 'Menu')}
             {HoverUnderNavLink('/about', 'About Us')}
             {HoverUnderNavLink('/recipes', 'Recipes')}
-            {/* {HoverUnderNavLink('/', 'Specials')} */}
           </ul>
           <NavLink
             end
