@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { useNavigate } from '@remix-run/react'
 
 import { Button } from '~/components/Button'
-import { LayoutContext } from '~/contexts'
+import { LayoutContext } from '~/providers/LayoutProvider'
 
 export const MenuNavLink = ({ to, children }) => {
   const navigate = useNavigate()

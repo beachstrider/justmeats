@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
-import { CustomBundleContext } from '~/contexts'
 import { cn, getPureId } from '~/lib/utils'
+import { CustomBundleContext } from '~/providers/CustomBundleProvider'
 
 export const Quantity = ({ line, type }) => {
   const { selectedProducts, setSelectedProducts } =

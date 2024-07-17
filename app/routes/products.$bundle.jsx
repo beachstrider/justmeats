@@ -6,6 +6,7 @@ import { CustomBundle } from '~/containers/CustomBundle'
 import { sendPageView } from '~/lib/metaPixel.server'
 import { getBundle } from '~/lib/storefront'
 import { getFullId, getPureId } from '~/lib/utils'
+import { CustomBundleProvider } from '~/providers/CustomBundleProvider'
 
 export const meta = () => {
   return [{ title: 'Custom Bundle - Just Meats' }]
@@ -138,7 +139,9 @@ export default function Product() {
   return (
     <main className="bg-[#EFEEED] page-custom-bundle">
       <Notification />
-      <CustomBundle />
+      <CustomBundleProvider>
+        <CustomBundle />
+      </CustomBundleProvider>
     </main>
   )
 }

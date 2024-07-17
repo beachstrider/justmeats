@@ -2,9 +2,9 @@ import { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import { Button } from '~/components/Button'
-import { LayoutContext } from '~/contexts'
 import { Account as AccountIcon } from '~/icons/Account'
 import { HamburgerClose } from '~/icons/HamburgerClose'
+import { LayoutContext } from '~/providers/LayoutProvider'
 
 import { MenuNavLink } from './MenuNavLink'
 

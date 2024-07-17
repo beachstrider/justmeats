@@ -3,10 +3,10 @@ import { useContext, useEffect, useRef, useState } from 'react'
 import { NavLink, useMatches } from '@remix-run/react'
 
 import logo from '~/assets/logo.png'
-import { LayoutContext } from '~/contexts'
 import { HamburgerOpen } from '~/icons/HamburgerOpen'
 import { Logo } from '~/icons/Logo'
 import { cn } from '~/lib/utils'
+import { LayoutContext } from '~/providers/LayoutProvider'
 
 import { Button } from './Button'
 import { CartButton } from './NewCartButton'
@@ -14,19 +14,17 @@ import { OrderButton } from './NewOrderButton'
 
 export function Header() {
   const matches = useMatches()
-  // const { setMenuToggle } = useContext(LayoutContext)
-  const { menuOpen, setMenuToggle } = useContext(LayoutContext)
+  const { setMenuToggle } = useContext(LayoutContext)
   const isRoute = matches[1].params.bundle === 'custom-bundle'
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    // Function to update our state
     const handleResize = () => {
       setIsMobile(window.innerWidth < 960)
     }
     handleResize()
     window.addEventListener('resize', handleResize)
-    // Clean up event listener
+
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 

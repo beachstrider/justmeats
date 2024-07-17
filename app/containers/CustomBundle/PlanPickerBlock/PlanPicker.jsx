@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react'
 
 import { DELIVERY_EVERY_15_DAYS, DELIVERY_EVERY_30_DAYS } from '~/consts'
-import { CustomBundleContext } from '~/contexts'
 import { Calendar } from '~/icons/Calendar'
 import { GreenCheck } from '~/icons/GreenCheck'
 import { cn } from '~/lib/utils'
+import { CustomBundleContext } from '~/providers/CustomBundleProvider'
 
 import { ConfirmDialog } from './ConfirmDialog'
 

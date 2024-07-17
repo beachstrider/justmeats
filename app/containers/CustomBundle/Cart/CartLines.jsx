@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 
-import { useLoaderData, useMatch } from '@remix-run/react'
+import { useLoaderData } from '@remix-run/react'
 
-import { CustomBundleContext } from '~/contexts'
+import { CustomBundleContext } from '~/providers/CustomBundleProvider'
 
 import { CartLineItem } from './CartLineItem'
 

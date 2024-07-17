@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react'
 
 import { Button } from '~/components/Button'
-import { CustomBundleContext } from '~/contexts'
 import { cn } from '~/lib/utils'
+import { CustomBundleContext } from '~/providers/CustomBundleProvider'
 
 const UPDATE_CHANGES = 'Update Changes'
 const CHANGES_SAVED = 'Changes Saved!'

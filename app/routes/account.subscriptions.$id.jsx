@@ -13,15 +13,16 @@ import {
   updateSubscriptionChargeDate,
 } from '@rechargeapps/storefront-client'
 import { useLoaderData } from '@remix-run/react'
-import { json, redirect } from '@shopify/remix-oxygen'
+import { json } from '@shopify/remix-oxygen'
 
 import { SubscriptionEditLayout } from '~/containers/Account/Subscriptions/EditLayout'
 import { CustomBundle } from '~/containers/CustomBundle'
-import { RootContext } from '~/contexts'
 import { sendPageView } from '~/lib/metaPixel.server'
 import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 import { getBundle } from '~/lib/storefront'
 import { getFullId, getPureId } from '~/lib/utils'
+import { CustomBundleProvider } from '~/providers/CustomBundleProvider'
+import { RootContext } from '~/providers/RootProvider'
 
 export const meta = ({ data }) => {
   return [
@@ -311,7 +312,9 @@ export default function SubscriptionRoute() {
 
   return (
     <SubscriptionEditLayout>
-      <CustomBundle />
+      <CustomBundleProvider>
+        <CustomBundle />
+      </CustomBundleProvider>
     </SubscriptionEditLayout>
   )
 }

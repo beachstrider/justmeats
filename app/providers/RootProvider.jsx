@@ -16,7 +16,7 @@ const newLayoutRoutes = [
   'ambassador',
 ]
 
-const RootContext = createContext()
+export const RootContext = createContext()
 
 export const RootProvider = ({ children }) => {
   const matches = useMatches()
