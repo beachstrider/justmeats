@@ -11,10 +11,11 @@ import { HowItWorks } from '~/containers/Home/HowItWorks'
 import { HowWeDoThis } from '~/containers/Home/HowWeDoThis'
 import { OrderNow } from '~/containers/Home/OrderNow'
 import { Review } from '~/containers/Home/Review'
-import { CustomBundleContext, RootContext } from '~/contexts'
 import { COLLECTIONS_QUERY } from '~/graphql/Collection'
 import { sendPageView } from '~/lib/metaPixel.server'
 import { getShopSuccessInfo } from '~/lib/restAdmin'
+import { CustomBundleContext } from '~/providers/CustomBundleProvider'
+import { RootContext } from '~/providers/RootProvider'
 
 export const meta = () => {
   return [{ title: 'Just Meats | No Fuss, All Flavor – Ready & Delivered!' }]

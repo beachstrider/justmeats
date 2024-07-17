@@ -1,11 +1,11 @@
 import { useContext, useState } from 'react'
 
 import { Button } from '~/components/Button'
-import { CustomBundleContext } from '~/contexts'
 import { CanvasLogo } from '~/icons/CanvasLogo'
 import { MobileChat } from '~/icons/MobileChat'
 import { NewClose } from '~/icons/NewClose'
 import { cn } from '~/lib/utils'
+import { CustomBundleContext } from '~/providers/CustomBundleProvider'
 
 import { PlanPicker } from '../PlanPickerBlock/PlanPicker'
 import { CartLines } from './CartLines'

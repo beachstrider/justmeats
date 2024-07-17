@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { CustomBundleContext } from '~/contexts'
+import { CustomBundleContext } from '~/providers/CustomBundleProvider'
 
 import { Add } from './Add'
 import { Quantity } from './Quantity'

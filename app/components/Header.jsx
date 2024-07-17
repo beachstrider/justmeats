@@ -3,9 +3,9 @@ import { useContext, useEffect, useRef, useState } from 'react'
 import { NavLink, useMatches } from '@remix-run/react'
 
 import logo from '~/assets/logo.png'
-import { LayoutContext } from '~/contexts'
 import { useRootLoaderData } from '~/hooks/useRootLoaderData'
 import { HamburgerOpen } from '~/icons/HamburgerOpen'
+import { LayoutContext } from '~/providers/LayoutProvider'
 
 import { Button } from './Button'
 import { CartButton } from './CartButton'
