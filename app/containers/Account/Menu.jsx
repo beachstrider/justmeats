@@ -130,14 +130,6 @@ export function Menu() {
       <div className={cn('lg:hidden', showMenu ? 'block' : 'hidden')}>
         <div className="container-small">{navLinks}</div>
       </div>
-
-      {/* <Form
-        className="account-logout"
-        method="POST"
-        action="/account/logout"
-      >
-        &nbsp;<button type="submit">LOGOUT</button>
-      </Form> */}
     </div>
   )
 }

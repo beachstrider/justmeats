@@ -1,16 +1,19 @@
 import { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 
+import { Form, useRouteLoaderData } from '@remix-run/react'
+
 import { Button } from '~/components/Button'
-import { Account as AccountIcon } from '~/icons/Account'
 import { HamburgerClose } from '~/icons/HamburgerClose'
 import { LayoutContext } from '~/providers/LayoutProvider'
 
 import { MenuNavLink } from './MenuNavLink'
 
 export function MobileMenuAside() {
-  const { menuToggle, setMenuToggle } = useContext(LayoutContext)
   const location = useLocation()
+
+  const { customer } = useRouteLoaderData('root')
+  const { menuToggle, setMenuToggle } = useContext(LayoutContext)
 
   const isSpecialsPage =
     location.pathname === '/rich-froning' ||
@@ -39,35 +42,41 @@ export function MobileMenuAside() {
         </div>
         <div className="h-[20px] bg-[#1d1d1d0a]"></div>
         <ul className=" border-t  border-[#1d1d1d26]">
-          <li className="text-[16px] px-10 py-4 text-black border-b border-[#1d1d1d26] uppercase">
+          <li className="text-[16px] px-10 py-4 text-black border-b border-[#1d1d1d26]">
             {' '}
             <MenuNavLink to="/products/custom-bundle">Menu</MenuNavLink>{' '}
           </li>
-          <li className="text-[16px] px-10 py-4 text-black border-b border-[#1d1d1d26] uppercase">
+          <li className="text-[16px] px-10 py-4 text-black border-b border-[#1d1d1d26]">
             {' '}
             <MenuNavLink to="/about">About Us</MenuNavLink>{' '}
           </li>
-          <li className="text-[16px] px-10 py-4 text-black border-b border-[#1d1d1d26] uppercase">
+          <li className="text-[16px] px-10 py-4 text-black border-b border-[#1d1d1d26]">
             {' '}
             <MenuNavLink to="/recipes">Recipes</MenuNavLink>{' '}
           </li>
           {isSpecialsPage && (
-            <li className="text-[16px] px-10 py-4 text-black border-b border-[#1d1d1d26] uppercase">
+            <li className="text-[16px] px-10 py-4 text-black border-b border-[#1d1d1d26]">
               <MenuNavLink to="/">Specials</MenuNavLink>
             </li>
           )}
-          <li className=" text-[16px] px-10 py-4 text-black border-b border-[#1d1d1d26] uppercase">
-            <MenuNavLink to="/account">
-              <div className="flex items-center gap-[5px]">
-                <span className="loginIcon flex  w-[15px] cursor-pointer">
-                  <AccountIcon />
-                </span>
-                Account
-              </div>
-            </MenuNavLink>{' '}
+          <li className="text-[16px] px-10 py-4 text-black border-b border-[#1d1d1d26]">
+            <MenuNavLink to="/account">Account</MenuNavLink>{' '}
           </li>
+          {customer !== null && (
+            <Form
+              method="POST"
+              action="/account/logout"
+              onSubmit={() => setMenuToggle(false)}
+            >
+              <button
+                className="text-[16px] px-10 py-4 text-black border-b border-[#1d1d1d26] w-full text-left"
+                type="submit"
+              >
+                Logout
+              </button>
+            </Form>
+          )}
         </ul>
-        {/* <FaFacebookF /> */}
       </div>
     </>
   )
