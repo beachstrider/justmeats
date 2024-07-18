@@ -4,6 +4,9 @@ import { getPaginationVariables } from '@shopify/hydrogen'
 import { json } from '@shopify/remix-oxygen'
 
 import { Banner } from '~/containers/RichFroning/Banner'
+import { NewBanner } from '~/containers/RichFroning/NewBanner'
+import { MasterMealTime } from '~/containers/RichFroning/MasterMealTime'
+import { FarmToTable } from '~/containers/RichFroning/FarmToTable'
 import { CustomerReviews } from '~/containers/RichFroning/CustomerReviews'
 import { DoMeatRight } from '~/containers/RichFroning/DoMeatRight'
 import { Featured } from '~/containers/RichFroning/Featured'
@@ -46,12 +49,14 @@ export default function RichFroning() {
 
   return (
     <main className="relative font-dunbar tracking-[1px] leading-1 text-[#231B19]">
-      <Banner />
-      <Featured />
+      <NewBanner />
+      <MasterMealTime />
+      <FarmToTable />
+      {/* <Featured />
       <HowItWorks />
       <LearnMore />
       <CustomerReviews />
-      <DoMeatRight />
+      <DoMeatRight /> */}
     </main>
   )
 }

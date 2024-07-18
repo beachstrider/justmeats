@@ -31,7 +31,7 @@ export const Footer = () => {
         </div>
       )}
       {page === '/rich-froning' && (
-        <div className="bg-lower-footer bg-cover text-center sm:[background-position-x:0] [background-position-x:-750px]">
+        <div className="hidden bg-lower-footer bg-cover text-center sm:[background-position-x:0] [background-position-x:-750px]">
           <div className="container-small relative text-[#EFEEED] sm:pt-[80px] sm:pb-[92px] pt-[113px] pb-[137px] lg:pl-0 lg:pr-0">
             <div className="sm:text-[18px] sm:leading-[26px] sm:tracking-[0.36px] sm:text-center text-justify [word-spacing:-1px] sm:[word-spacing:0] text-[16px] leading-[150%] tracking-[0.48px] font-nunito sm:mb-[16px] mb-[18px]">
               “Nutrition is the foundation of Fitness, and the success of any
@@ -71,7 +71,7 @@ export const Footer = () => {
                     NEED HELP?
                   </div>
                   <div className="flex flex-col sm:text-[14px] text-[16px] font-bold sm:leading-[170%] leading-[190%]">
-                    {/* <NavLink to="#">FAQs</NavLink> */}
+                    {page === '/rich-froning' && <NavLink to="#">FAQs</NavLink>}
                     <NavLink end prefetch="intent" to="/term-services">
                       Terms of Service
                     </NavLink>

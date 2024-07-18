@@ -16,6 +16,7 @@ export function Header() {
   const matches = useMatches()
   const { setMenuToggle } = useContext(LayoutContext)
   const isRoute = matches[1].params.bundle === 'custom-bundle'
+  const isRichFroning = matches[1].pathname === '/rich-froning'
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -112,7 +113,7 @@ export function Header() {
             {HoverUnderNavLink('/products/custom-bundle', 'Menu')}
             {HoverUnderNavLink('/about', 'About Us')}
             {HoverUnderNavLink('/recipes', 'Recipes')}
-            {/* {HoverUnderNavLink('/', 'Specials')} */}
+            {isRichFroning ? HoverUnderNavLink('/', 'Specials') : ''}
           </ul>
           <NavLink
             end
