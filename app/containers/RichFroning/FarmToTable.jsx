@@ -22,7 +22,13 @@ export const FarmToTable = () => {
       <div className="flex-1">
         <div className="lg:w-[540px] lg:pt-[80px] lg:pb-0 pt-[45px] pb-[45px] lg:px-0 px-[20px] xl:pr-0 lg:pr-[20px] md:pr-[20px]">
           <div className="flex flex-wrap justify-center items-center lg:justify-start lg:text-left font-hudson font-[620] lg:text-[36px] text-[24px] mb-[40px] lg:tracking-[1.8px] tracking-[1.2px] leading-normal">
-              FARM-TO-TABLE <img src={fresh} />
+              {/* FARM-TO-TABLE <img src={fresh} /> */}
+              <div className="relative lg:text-left font-hudson">
+              <div className="relative z-[2]">FARM-TO-TABLE</div>
+              <div className="absolute z-[1] lg:w-auto w-full lg:right-[-150px] lg:top-[-24px] top-[10px] flex lg:justify-start justify-center">
+                <img src={fresh} />
+              </div>
+            </div>
           </div>
           <div className="sm:block hidden font-barlow lg:text-left text-center lg:text-[18px] text-[14px] sm:font-medium font-normal mb-[30px] sm:leading-[26px] leading-[25px] tracking-[0px]">
             Just Meats is committed to the ethical sourcing of meats from local farms where animals are raised in humane, stress-free environments. This allows us to provide healthier choices and support sustainable farming practices.
