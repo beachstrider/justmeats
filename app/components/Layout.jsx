@@ -11,30 +11,33 @@ import { OrderHeader } from './OrderHeader'
 
 const newLayoutRoutes = [
   '',
-  'mayhem-madness',
-  'rich-froning',
-  'gym-launch',
   'gym',
-  'recipes',
-  'recipe',
   'about',
-  'ambassador',
+  'recipe',
+  'recipes',
   'account',
+  'products',
+  'ambassador',
+  'gym-launch',
+  'rich-froning',
+  'mayhem-madness',
 ]
+
+const noHeaderRoutes = ['ambassador']
 
 export function Layout({ children = null }) {
   const matches = useMatches()
   const { pathname } = matches.at(-1)
   const route = pathname.split('/')[1]
   const isNewLayout = newLayoutRoutes.includes(route)
+  const hasHeader = !noHeaderRoutes.includes(route)
 
-  const isProductPage = matches[1].params.bundle === 'custom-bundle'
-  const isAmbassadorPage = matches[1].pathname == '/ambassador'
+  const isProductPage = route === 'products'
 
   if (isNewLayout) {
     return (
       <LayoutProvider>
-        {!isAmbassadorPage && <NewHeader />}
+        {isProductPage ? <OrderHeader /> : hasHeader ? <NewHeader /> : null}
         <MobileMenuAside />
         {children}
         <NewFooter />
