@@ -1,10 +1,7 @@
 import { Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
-import { NavLink } from '@remix-run/react'
-
 import sliderImage1 from '~/assets/images/rich-froning-banner.png'
-import richfroningbannerimglogo from '~/assets/images/richfroning-bannerimglogo.png'
+import crossfitbannerimglogo from '~/assets/images/crossfit-bannerimglogo.png'
 
 const sliderImages = [
   { image: sliderImage1 },
@@ -26,11 +23,11 @@ export const NewBanner = () => {
             {sliderImages.map((slider, index) => (
               <SwiperSlide key={index}>
                 <div
-                  className="sm:bg-[url('../assets/images/richfroning-banner.png')] bg-[url('../assets/images/richfroning-bannermob.png')] h-full bg-cover sm:bg-top"
+                  className="sm:bg-[url('../assets/images/crossfit-bannerimg.png')] bg-[url('../assets/images/crossfit-bannerimgmob.png')] h-full bg-cover sm:bg-top"
                 >
-                  <div className="flex h-full items-center">
+                  <div className="flex h-full items-center crossfit-banneroverlay">
                     <div className="relative container-small sm:text-center text-white tracking-[2px] sm:pb-0 pb-[250px] leading-normal sm:pt-0 pt-[50px]">
-                        <img src={richfroningbannerimglogo} className="xl:w[530px] lg:w-[450px] md:w-[380px] w-[264px] sm:m-0  m-auto"/>
+                        <img src={crossfitbannerimglogo} className="xl:w[530px] lg:w-[450px] md:w-[380px] w-[210px] sm:m-0  m-auto"/>
                     </div>
                   </div>
                 </div>
@@ -40,8 +37,8 @@ export const NewBanner = () => {
         </div>
       </div>
       <div className="relative mt-[-7%] z-[99]">
-          <div className="px-[10px] container-small w-full grid md:grid-cols-3 grid-cols-1 gap-[30px] font-barlow text-[#231B19] pb-[50px]">
-              <div className="hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] p-[30px] md:my-[50px] md:mx-0 mx-[10px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
+          <div className="px-[10px] container-small w-full grid md:grid-cols-3 grid-cols-1 sm:gap-[30px] gap-[50px] font-barlow text-[#231B19] pb-[50px]">
+              <div className="relative hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] sm:p-[30px] p-[30px] pt-[50px] md:my-[50px] md:mx-0 mx-[10px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
                   <div className="text-center font-hudson text-[#BF4745] sm:text-[24px] text-[20px] font-[620] sm:tracking-[1.2px] tracking-[1px] uppercase">enter giveaway</div>
                   <div className="text-center text-[15px] font-bold leading-[21px] tracking-[1.5px]">(const Us only)</div>
                   <ul className="list-disc pl-[20px] sm:text-[18px] text-[16px] font-medium sm:leading-[20px] leading-[23px] sm:tracking-[1.8px] tracking-[1.6px] my-[20px]">
@@ -55,8 +52,14 @@ export const NewBanner = () => {
                       enter
                       </button>
                   </div>
+                  
+                  <div className="absolute top-[-6%] left-[15%]  right-[15%] flex justify-center">
+                      <button className="sm:px-[30px] px-[25px] py-[12px] bg-[#E0FD53] text-[#231B19] tracking-[.9px] uppercase font-bold">
+                      $1,000+ in Prizes
+                      </button>
+                  </div>
               </div>
-              <div className="border-4 border-[#BF4745] hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] md:p-[40px] p-[30px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
+              <div className="relative border-4 border-[#BF4745] hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] md:p-[40px] sm:p-[30px] p-[30px] pt-[50px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
                   <div className="text-center font-hudson text-[#BF4745] sm:text-[24px] text-[20px]  font-[620] sm:tracking-[1.2px] tracking-[1px] uppercase">the ulti-meat win</div>
                   <div className="text-center text-[15px] font-bold leading-[21px] tracking-[1.5px]">(const Us only)</div>
                   <ul className="list-disc pl-[20px] sm:text-[18px] text-[16px] font-medium sm:leading-[20px] leading-[23px] sm:tracking-[1.8px] tracking-[1.6px] my-[20px]">
@@ -71,8 +74,14 @@ export const NewBanner = () => {
                       shop just meats
                       </button>
                   </div>
+                  
+                  <div className="absolute top-[-6%] left-[15%]  right-[15%] flex justify-center">
+                      <button className="sm:px-[30px] px-[25px] py-[12px] bg-[#E0FD53] text-[#231B19] tracking-[.9px] uppercase font-bold">
+                      Save $$$ and WIN!
+                      </button>
+                  </div>
               </div>
-              <div className="hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] p-[30px] md:my-[50px] md:mx-0 mx-[10px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
+              <div className="relative hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] sm:p-[30px] p-[30px] pt-[50px] md:my-[50px] md:mx-0 mx-[10px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
                   <div className="text-center font-hudson text-[#BF4745] sm:text-[24px] text-[20px] font-[620] sm:tracking-[1.2px] tracking-[1px] uppercase">BBQ Entry only</div>
                   <ul className="list-disc pl-[20px] sm:text-[18px] text-[16px] font-medium sm:leading-[20px] leading-[23px] sm:tracking-[1.8px] tracking-[1.6px] my-[20px]">
                       <li className="md:pb-[12px]">$40 value for  <span className="font-bold">ONLY $19</span></li>
@@ -82,6 +91,12 @@ export const NewBanner = () => {
                   <div className="flex justify-center">
                       <button className="px-[40px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] text-[#EFEEED] tracking-[.9px] uppercase font-bold">
                       Purchase
+                      </button>
+                  </div>
+                  
+                  <div className="absolute top-[-6%] left-[15%]  right-[15%] flex justify-center">
+                      <button className="sm:px-[30px] px-[25px] py-[12px] bg-[#E0FD53] text-[#231B19] tracking-[.9px] uppercase font-bold">
+                      BBQ of the Summer
                       </button>
                   </div>
               </div>

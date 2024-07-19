@@ -16,7 +16,7 @@ export function Header() {
   const matches = useMatches()
   const { setMenuToggle } = useContext(LayoutContext)
   const isRoute = matches[1].params.bundle === 'custom-bundle'
-  const isRichFroning = matches[1].pathname === '/rich-froning'
+  const isRichFroning = matches[1].pathname === '/rich-froning' || matches[1].pathname === '/buttery-bros'  || matches[1].pathname === '/crossfit' 
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {

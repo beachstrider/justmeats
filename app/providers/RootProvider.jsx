@@ -8,6 +8,8 @@ const newLayoutRoutes = [
   '',
   'mayhem-madness',
   'rich-froning',
+  'buttery-bros',
+  'crossfit',
   'gym-launch',
   'gym',
   'recipes',

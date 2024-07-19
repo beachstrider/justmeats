@@ -15,6 +15,7 @@ export const Footer = () => {
   const isSpecialsPage =
     location.pathname === '/gym-launch' || location.pathname === '/gym'
   const page = matches.at(-1).pathname
+  console.log(page);
   const currentYear = new Date().getFullYear()
 
   return (
@@ -72,6 +73,8 @@ export const Footer = () => {
                   </div>
                   <div className="flex flex-col sm:text-[14px] text-[16px] font-bold sm:leading-[170%] leading-[190%]">
                     {page === '/rich-froning' && <NavLink to="#">FAQs</NavLink>}
+                    {page === '/buttery-bros'&& <NavLink to="#">FAQs</NavLink>}
+                    {page === '/crossfit' && <NavLink to="#">FAQs</NavLink>}
                     <NavLink end prefetch="intent" to="/term-services">
                       Terms of Service
                     </NavLink>

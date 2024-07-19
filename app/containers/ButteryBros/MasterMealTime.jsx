@@ -22,7 +22,7 @@ export const MasterMealTime = () => {
             meal — by delivering the meat for all your nutritional needs.
         </div>
         <div className="w-full grid md:grid-cols-4 grid-cols-1 gap-[20px] md:p-0 p-[30px]">
-              <div className="relative overflow-hidden md:mb-0 mb-[30px] w-full" style={{ boxShadow: '0px 30px 30px -9px rgba(0, 0, 0, 0.14)' }}>
+              <div className="relative overflow-hidden sm:mb-0 mb-[30px] w-full" style={{ boxShadow: '0px 30px 30px -9px rgba(0, 0, 0, 0.14)' }}>
                 <div className="bg-pattern2 flex items-center justify-center relative bg-white px-[22px] tracking-[2px] min-h-[125px]">
                   <div className="font-barlow sm:text-[20px] text-[18px] font-bold leading-[23px] sm:tracking-[2px] tracking-[1.8px] text-[#EFEEED] text-center">
                   Ready in minutes

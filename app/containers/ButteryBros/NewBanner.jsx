@@ -1,10 +1,7 @@
 import { Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
-import { NavLink } from '@remix-run/react'
-
 import sliderImage1 from '~/assets/images/rich-froning-banner.png'
-import richfroningbannerimglogo from '~/assets/images/richfroning-bannerimglogo.png'
+import butterybrosbannerimglogo from '~/assets/images/butterybros-bannerimglogo.png'
 
 const sliderImages = [
   { image: sliderImage1 },
@@ -26,11 +23,11 @@ export const NewBanner = () => {
             {sliderImages.map((slider, index) => (
               <SwiperSlide key={index}>
                 <div
-                  className="sm:bg-[url('../assets/images/richfroning-banner.png')] bg-[url('../assets/images/richfroning-bannermob.png')] h-full bg-cover sm:bg-top"
+                  className="sm:bg-[url('../assets/images/butterybros-banner.png')] bg-[url('../assets/images/butterybros-bannermob.png')] h-full bg-cover sm:bg-top"
                 >
                   <div className="flex h-full items-center">
                     <div className="relative container-small sm:text-center text-white tracking-[2px] sm:pb-0 pb-[250px] leading-normal sm:pt-0 pt-[50px]">
-                        <img src={richfroningbannerimglogo} className="xl:w[530px] lg:w-[450px] md:w-[380px] w-[264px] sm:m-0  m-auto"/>
+                        <img src={butterybrosbannerimglogo} className="xl:w[530px] lg:w-[450px] md:w-[380px] w-[264px] sm:m-0 m-auto"/>
                     </div>
                   </div>
                 </div>
