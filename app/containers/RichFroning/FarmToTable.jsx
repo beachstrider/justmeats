@@ -44,7 +44,7 @@ export const FarmToTable = () => {
             <div className="font-barlow lg:text-left text-center text-[14px] font-bold tracking-[0px]">NEVER ANY: <span className="text-[#BF4745]">ARTIFICIAL COLORS, ARTIFICIAL FLAVORS, ANTIBIOTICS, HORMONES, OR SEED OILS.</span></div>
           </div>
           
-          <div className="sm:hidden block font-barlow lg:text-left text-center lg:text-[18px] text-[14px] sm:font-medium font-normal mb-[30px] sm:leading-[26px] leading-[25px] tracking-[0px]">
+          <div className="sm:hidden block font-barlow lg:text-left text-center lg:text-[18px] text-[14px] sm:font-medium font-normal pt-[30px] sm:leading-[26px] leading-[25px] tracking-[0px]">
             Just Meats is committed to the ethical sourcing of meats from local farms where animals are raised in humane, stress-free environments. This allows us to provide healthier choices and support sustainable farming practices.
             <br />
             <br />

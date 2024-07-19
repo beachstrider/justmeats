@@ -11,7 +11,7 @@ export const MasterMealTime = () => {
  
   return (
     <section className="bg-[#FFF] text-[#231B19] pt-[62px] sm:pt-[103px] relative overflow-x-hidden">
-      <div className="container flex flex-col items-center sm:mb-[56px] mb-0 relative">
+      <div className="container-small flex flex-col items-center sm:mb-[56px] mb-0 relative">
         <div className="font-hudson sm:text-[36px] font-[620] leading-normal sm:tracking-[1.8px] text-[24px] tracking-[1.2px] text-center sm:mb-[20px] mb-[17px] uppercase">
             the masters of mealtime
         </div>
@@ -63,7 +63,7 @@ export const MasterMealTime = () => {
             training diet in a few short minutes.
         </div>
         <div className="flex justify-center sm:gap-[20px] gap-[8px]">
-            <button className="px-[32px] py-[12px] bg-[#BF4745] tracking-[.9px] uppercase font-bold">
+            <button className="px-[32px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] tracking-[.9px] uppercase font-bold">
             learn more
             </button>
         </div>
