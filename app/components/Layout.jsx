@@ -1,5 +1,3 @@
-import { useContext } from 'react'
-
 import { useMatches } from '@remix-run/react'
 
 import { Footer } from '~/components/Footer'
@@ -7,22 +5,40 @@ import { Header } from '~/components/Header'
 import { Footer as NewFooter } from '~/components/NewFooter'
 import { Header as NewHeader } from '~/components/NewHeader'
 import { LayoutProvider } from '~/providers/LayoutProvider'
-import { RootContext } from '~/providers/RootProvider'
 
 import { MobileMenuAside } from './MobileMenuAside'
 import { OrderHeader } from './OrderHeader'
 
+const newLayoutRoutes = [
+  '',
+  'gym',
+  'about',
+  'recipe',
+  'recipes',
+  'account',
+  'products',
+  'ambassador',
+  'gym-launch',
+  'rich-froning',
+  'summer-preview',
+  'mayhem-madness',
+]
+
+const noHeaderRoutes = ['ambassador']
+
 export function Layout({ children = null }) {
   const matches = useMatches()
-  const { isNewLayout } = useContext(RootContext)
+  const { pathname } = matches.at(-1)
+  const route = pathname.split('/')[1]
+  const isNewLayout = newLayoutRoutes.includes(route)
+  const hasHeader = !noHeaderRoutes.includes(route)
 
-  const isProductPage = matches[1].params.bundle === 'custom-bundle'
-  const isAmbassadorPage = matches[1].pathname == '/ambassador'
+  const isProductPage = route === 'products'
 
   if (isNewLayout) {
     return (
       <LayoutProvider>
-        {!isAmbassadorPage && <NewHeader />}
+        {isProductPage ? <OrderHeader /> : hasHeader ? <NewHeader /> : null}
         <MobileMenuAside />
         {children}
         <NewFooter />

@@ -2,7 +2,7 @@ import {
   Form,
   useActionData,
   useNavigation,
-  useOutletContext,
+  useRouteLoaderData,
 } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
@@ -246,7 +246,7 @@ export async function action({ request, context }) {
 }
 
 export default function Addresses() {
-  const { customer } = useOutletContext()
+  const { customer } = useRouteLoaderData('root')
   const { defaultAddress, addresses } = customer
 
   return (

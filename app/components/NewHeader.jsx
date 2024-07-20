@@ -1,10 +1,11 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 
-import { NavLink, useMatches } from '@remix-run/react'
+import { Form, NavLink, useMatches, useRouteLoaderData } from '@remix-run/react'
 
-import logo from '~/assets/logo.png'
+import { Account } from '~/icons/Account'
 import { HamburgerOpen } from '~/icons/HamburgerOpen'
 import { Logo } from '~/icons/Logo'
+import { Logout } from '~/icons/Logout'
 import { cn } from '~/lib/utils'
 import { LayoutContext } from '~/providers/LayoutProvider'
 
@@ -14,9 +15,14 @@ import { OrderButton } from './NewOrderButton'
 
 export function Header() {
   const matches = useMatches()
+
+  const { pathname } = matches.at(-1)
   const { setMenuToggle } = useContext(LayoutContext)
-  const isRoute = matches[1].params.bundle === 'custom-bundle'
+  const { customer } = useRouteLoaderData('root')
+
   const [isMobile, setIsMobile] = useState(false)
+
+  const isAccount = pathname.split('/')[1] === 'account'
 
   useEffect(() => {
     const handleResize = () => {
@@ -50,7 +56,7 @@ export function Header() {
     return (
       <li
         className={cn(
-          'navLink py-4 px-[16px] hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-barlow text-[14px] font-medium tracking-[0.7px]',
+          'navLink py-4 hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-barlow text-[14px] font-medium tracking-[0.7px]',
         )}
       >
         <NavLink
@@ -100,164 +106,76 @@ export function Header() {
 
   const headerClass = isHeaderVisible ? '' : 'sticky-header w-[100vw]'
 
-  const Mainheader = () => {
-    return !isMobile ? (
-      <div className="container-small relative h-[88px] sm:h-[120px] flex items-center justify-between py-4">
+  return (
+    <header className="relative z-10 [box-shadow:0px_0px_15px_0px_rgba(0,0,0,0.15)]">
+      <div
+        className={cn(
+          'container-small relative h-[88px] sm:h-[120px] flex items-center justify-between py-4 mainheader sm:pl-[20px] sm:pr-[20px] pl-[10px] pr-[20px]',
+          isMobile ? headerClass : '',
+        )}
+      >
         <div className="relative flex items-center justify-between w-full navBar">
-          <ul
-            className={cn(
-              'hidden navLinks lg:flex w-full max-w-[40%] custom-padding-header font-dunbar text-[14px]',
-            )}
-          >
-            {HoverUnderNavLink('/products/custom-bundle', 'Menu')}
-            {HoverUnderNavLink('/about', 'About Us')}
-            {HoverUnderNavLink('/recipes', 'Recipes')}
-            {/* {HoverUnderNavLink('/', 'Specials')} */}
-          </ul>
+          <div className="w-full max-w-[40%]">
+            <ul
+              className={cn(
+                'hidden navLinks lg:flex custom-padding-header font-dunbar text-[14px] lg:gap-[32px]',
+              )}
+            >
+              {HoverUnderNavLink('/products/custom-bundle', 'Menu')}
+              {HoverUnderNavLink('/about', 'About Us')}
+              {HoverUnderNavLink('/recipes', 'Recipes')}
+            </ul>
+            <div className="flex items-center justify-between gap-10 lg:hidden navBar">
+              <div className="flex items-center justify-between headerIcons sm:gap-10">
+                <Button
+                  className="block lg:hidden"
+                  onClick={() => setMenuToggle(true)}
+                >
+                  <HamburgerOpen />
+                </Button>
+              </div>
+            </div>
+          </div>
           <NavLink
             end
             prefetch="intent"
             to="/"
-            className="w-full max-w-[20%] flex justify-center absolute -translate-x-1/2 left-1/2"
+            className="w-full max-w-[20%] flex justify-center absolute-center"
           >
-            <div className="w-[120px] sm:w-[178px]">
+            <div className="w-full sm:w-[178px] min-w-[120px] -ml-[20px] sm:ml-[0]">
               <Logo />
             </div>
           </NavLink>
           <div className={cn('w-full max-w-[40%] flex justify-end')}>
             <div className="flex items-center justify-between gap-[10px] headerIcons sm:gap-[18px] w-[fit-content]">
-              <NavLink end prefetch="intent" to="/account">
-                <span className="hidden w-[32px] cursor-pointer loginIcon lg:flex">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="28"
-                    viewBox="0 0 28 28"
-                    fill="none"
-                  >
-                    <path
-                      d="M23.3333 24.5V22.1667C23.3333 20.929 22.8416 19.742 21.9665 18.8668C21.0913 17.9917 19.9043 17.5 18.6666 17.5H9.33329C8.09562 17.5 6.90863 17.9917 6.03346 18.8668C5.15829 19.742 4.66663 20.929 4.66663 22.1667V24.5"
-                      stroke="#231B19"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M14 12.8333C16.5774 12.8333 18.6667 10.744 18.6667 8.16667C18.6667 5.58934 16.5774 3.5 14 3.5C11.4227 3.5 9.33337 5.58934 9.33337 8.16667C9.33337 10.744 11.4227 12.8333 14 12.8333Z"
-                      stroke="#231B19"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-              </NavLink>
-              <Button
-                className="block lg:hidden"
-                onClick={() => setMenuToggle(true)}
-              >
-                <HamburgerOpen />
-              </Button>
+              {!isAccount && (
+                <NavLink end prefetch="intent" to="/account">
+                  <span className="lg:w-[32px] w-5 cursor-pointer loginIcon">
+                    <Account />
+                  </span>
+                </NavLink>
+              )}
               <CartButton />
-              <div className="hidden lg:block pl-[20px]">
-                <OrderButton />
-              </div>
+              {!isAccount && (
+                <div className="hidden lg:block pl-[20px]">
+                  <OrderButton />
+                </div>
+              )}
+              {isAccount && customer !== null && (
+                <Form
+                  className="items-center hidden lg:flex account-logout"
+                  method="POST"
+                  action="/account/logout"
+                >
+                  <button type="submit">
+                    <Logout />
+                  </button>
+                </Form>
+              )}
             </div>
           </div>
         </div>
       </div>
-    ) : (
-      <div
-        className={cn(
-          'container-small relative h-[88px] sm:h-[120px] flex items-center justify-between py-4 mainheader sm:pl-[20px] sm:pr-[20px] pl-[10px] pr-[20px]',
-          headerClass,
-        )}
-      >
-        <div className="flex items-center justify-between gap-10 navBar">
-          <div className="flex items-center justify-between headerIcons sm:gap-10">
-            <Button
-              className="block lg:hidden"
-              onClick={() => setMenuToggle(true)}
-            >
-              <HamburgerOpen />
-            </Button>
-          </div>
-        </div>
-
-        <div className="absolute-center">
-          <a href="/" target="_blank">
-            <div className="w-full sm:w-[214px] min-w-[120px] -ml-[20px] sm:ml-[0]">
-              <Logo />
-            </div>
-          </a>
-        </div>
-        <div className="flex items-center justify-between gap-[5px] headerIcons sm:gap-10">
-          <NavLink end prefetch="intent" to="/account">
-            <span className="w-5 cursor-pointer loginIcon lg:flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="28"
-                height="28"
-                viewBox="0 0 28 28"
-                fill="none"
-              >
-                <path
-                  d="M23.3333 24.5V22.1667C23.3333 20.929 22.8416 19.742 21.9665 18.8668C21.0913 17.9917 19.9043 17.5 18.6666 17.5H9.33329C8.09562 17.5 6.90863 17.9917 6.03346 18.8668C5.15829 19.742 4.66663 20.929 4.66663 22.1667V24.5"
-                  stroke="#231B19"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M14 12.8333C16.5774 12.8333 18.6667 10.744 18.6667 8.16667C18.6667 5.58934 16.5774 3.5 14 3.5C11.4227 3.5 9.33337 5.58934 9.33337 8.16667C9.33337 10.744 11.4227 12.8333 14 12.8333Z"
-                  stroke="#231B19"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </span>
-          </NavLink>
-          <CartButton />
-        </div>
-      </div>
-    )
-  }
-
-  const Landingheader = () => {
-    return (
-      <div className="container-small flex justify-center items-center py-[3px] mx-auto relative landingheader">
-        <NavLink end prefetch="intent" to="/">
-          <img
-            src={logo}
-            className="object-contain sm:w-[156px] h-[40px] sm:h-[90px]"
-            alt="Logo"
-          />
-        </NavLink>
-        <NavLink end prefetch="intent" to="/" className="absolute left-0">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-8 h-8 m-4 "
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M15 19l-7-7 7-7"
-              aria-label="Back Home"
-            ></path>
-          </svg>
-        </NavLink>
-      </div>
-    )
-  }
-
-  return (
-    <header className="relative [box-shadow:0px_0px_15px_0px_rgba(0,0,0,0.15)]">
-      {isRoute ? <Landingheader /> : <Mainheader />}
     </header>
   )
 }
