@@ -36,7 +36,12 @@ export const Banner = ({ sample, product, checkout, submitting }) => {
               </div>
             </div>
           </div>
-          <div className="flex-1 bg-preview-banner-right lg:h-auto h-[430px] lg:pt-[70px]">
+          <div
+            className="flex-1 bg-preview-banner-right lg:h-auto h-[430px] lg:pt-[70px]"
+            style={{
+              backgroundImage: `url("${sample.preview_image}")`,
+            }}
+          >
             <div className="lg:pt-0 pt-[20px]">
               <div className="font-hudson lg:text-[32px] lg:leading-[36px] lg:tracking-[4.48px] leading-[20px] tracking-[2.8px] font-bold text-center mb-[10px]">
                 {sample.headline}

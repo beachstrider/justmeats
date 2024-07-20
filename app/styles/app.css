@@ -1054,7 +1054,6 @@ section.product-list-slider button.slick-arrow.slick-next {
 }
 
 .bg-preview-banner-right {
-  @apply bg-[url('../assets/images/7bf73beb65f25511658ca6044942943e.jpg')];
   @apply lg:bg-cover bg-contain;
   background-position: bottom;
   background-repeat: no-repeat;

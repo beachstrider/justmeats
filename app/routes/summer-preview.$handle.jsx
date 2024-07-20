@@ -3,6 +3,9 @@ import { useState } from 'react'
 import { useLoaderData } from '@remix-run/react'
 import { defer, json } from '@shopify/remix-oxygen'
 
+import previewImage1 from '~/assets/images/sample-preview-1.jpg'
+import previewImage2 from '~/assets/images/sample-preview-2.jpg'
+import previewImage3 from '~/assets/images/sample-preview-3.jpg'
 import { Banner } from '~/containers/SummerPreview/Banner'
 import { FarmToTable } from '~/containers/SummerPreview/FarmToTable'
 import { HowItWorks } from '~/containers/SummerPreview/HowItWorks'
@@ -38,6 +41,7 @@ const sampleList = {
     cost: '100',
     serves: '40',
     per_serving: '4.88',
+    preview_image: previewImage1,
   },
   'bbq-sampler-2': {
     headline: 'four 3lb trays just $176',
@@ -65,6 +69,7 @@ const sampleList = {
     cost: '80',
     serves: '40',
     per_serving: '4.40',
+    preview_image: previewImage2,
   },
   'bbq-sampler-3': {
     headline: 'three 3lb trays just $146',
@@ -88,6 +93,7 @@ const sampleList = {
     cost: '50',
     serves: '30',
     per_serving: '4.87',
+    preview_image: previewImage3,
   },
 }
 
