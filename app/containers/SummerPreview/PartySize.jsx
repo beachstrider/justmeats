@@ -1,6 +1,6 @@
-import { NavLink } from '@remix-run/react'
+import { Button } from '~/components/Button'
 
-export const PartySize = () => {
+export const PartySize = ({ product, submitting, checkout }) => {
   return (
     <div className="lg:pt-[150px] lg:pb-[132px] pt-[290px] pb-[82px] bg-[#F8F2E8] bg-party-size">
       <div className="text-center container-small lg:text-left">
@@ -19,14 +19,13 @@ export const PartySize = () => {
           plates while you get out and mingle.
         </div>
         <div className="flex justify-center lg:justify-start">
-          <NavLink
-            end
-            prefetch="intent"
-            to="/products/custom-bundle"
+          <Button
+            loading={submitting}
+            onClick={() => checkout(product.variants.nodes[0])}
             className="px-[28px] py-[14px] leading-none hover:bg-[#BF4745] bg-[#6B1626] text-white font-bold tracking-[0.9px] text-[18px]"
           >
             ORDER YOURS
-          </NavLink>
+          </Button>
         </div>
       </div>
     </div>

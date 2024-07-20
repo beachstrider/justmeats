@@ -57,8 +57,8 @@ export const Banner = ({ sample, product, checkout, submitting }) => {
               </div>
               <div className="flex justify-center">
                 <Button
-                  onClick={() => checkout(product.variants.nodes[0])}
                   loading={submitting}
+                  onClick={() => checkout(product.variants.nodes[0])}
                   className="px-[28px] py-[14px] leading-none hover:bg-[#BF4745] bg-[#6B1626] text-white font-bold tracking-[0.9px] text-[18px]"
                 >
                   BUY YOURS NOW
