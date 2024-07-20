@@ -113,7 +113,7 @@ export function Header() {
             {HoverUnderNavLink('/products/custom-bundle', 'Menu')}
             {HoverUnderNavLink('/about', 'About Us')}
             {HoverUnderNavLink('/recipes', 'Recipes')}
-            {isRichFroning ? HoverUnderNavLink('/', 'Specials') : ''}
+            {/* {isRichFroning ? HoverUnderNavLink('/', 'Specials') : ''} */}
           </ul>
           <NavLink
             end
