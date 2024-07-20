@@ -20,6 +20,7 @@ const newLayoutRoutes = [
   'ambassador',
   'gym-launch',
   'rich-froning',
+  'summer-preview',
   'mayhem-madness',
 ]
 

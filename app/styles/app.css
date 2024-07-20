@@ -1052,3 +1052,20 @@ section.product-list-slider button.slick-arrow.slick-next {
   background-size: cover;
   background-position-y: 0;
 }
+
+.bg-preview-banner-right {
+  @apply bg-[url('../assets/images/7bf73beb65f25511658ca6044942943e.jpg')];
+  @apply lg:bg-cover bg-contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+.bg-preview-banner-left {
+  @apply bg-[url('../assets/images/kwkleflsjkdsjkdfhwkewef.png')];
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-party-size {
+  @apply lg:bg-[url('../assets/images/6aw5e4r6r5ht465erf6awe6awef.png')] bg-[url('../assets/images/16fdj6fguy16h1drthdrth654f4y5tjft.png')] lg:[background-size:50%] [background-size:90%] lg:[background-position-x:right] [background-position-x:center] lg:[background-position-y:center] [background-position-y:top] [background-repeat:no-repeat];
+}
