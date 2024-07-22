@@ -1,4 +1,4 @@
-import OrderButton from 'app/components/OrderButton'
+import { NavLink } from '@remix-run/react'
 
 import trayDesktop from '~/assets/images/tray-desktop.png'
 import trayMobile from '~/assets/images/tray-mobile.png'
@@ -23,7 +23,14 @@ export const OrderNow = () => {
             your table in minutes without frustration or breaking the bank.
           </div>
           <div className="mt-8">
-            <OrderButton className="text-base leading-normal tracking-[0.8px] uppercase bg-[#EFEEED] hover:bg-[#f5f3f1] text-[#6B1626] hover:text-[#8d3a2b] font-bold" />
+            <NavLink
+              end
+              prefetch="intent"
+              to="/products/custom-bundle"
+              className="text-base leading-normal tracking-[0.8px] uppercase bg-[#EFEEED] hover:bg-[#f5f3f1] text-[#6B1626] hover:text-[#8d3a2b] font-bold"
+            >
+              Order Now
+            </NavLink>
           </div>
         </div>
       </div>

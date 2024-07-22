@@ -1,44 +1,38 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 
-import { NavLink, useMatches } from '@remix-run/react'
+import { Form, NavLink, useMatches, useRouteLoaderData } from '@remix-run/react'
 
-import logo from '~/assets/logo.png'
-import { useRootLoaderData } from '~/hooks/useRootLoaderData'
+import { Account } from '~/icons/Account'
 import { HamburgerOpen } from '~/icons/HamburgerOpen'
+import { Logo } from '~/icons/Logo'
+import { Logout } from '~/icons/Logout'
+import { cn } from '~/lib/utils'
 import { LayoutContext } from '~/providers/LayoutProvider'
 
 import { Button } from './Button'
 import { CartButton } from './CartButton'
-import OrderButton from './OrderButton'
+import { OrderButton } from './OrderButton'
 
 export function Header() {
   const matches = useMatches()
+
+  const { pathname } = matches.at(-1)
   const { setMenuToggle } = useContext(LayoutContext)
+  const { customer } = useRouteLoaderData('root')
 
-  const isCartPage = matches[1].params.bundle === 'custom-bundle'
+  const [isMobile, setIsMobile] = useState(false)
 
-  // -------> Functionality to make the header sticky in landing pages <-------
-  const [prevScrollPos, setPrevScrollPos] = useState(0)
-  const [isSticky, setIsSticky] = useState(false)
-
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset
-
-    // Becomes sticky (true) if scrolling up, and not sticky (false) if scrolling down
-    if (prevScrollPos > currentScrollPos && window.screen.width < 900) {
-      setIsSticky(true)
-    } else {
-      setIsSticky(false)
-    }
-
-    setPrevScrollPos(currentScrollPos)
-  }
+  const isAccount = pathname.split('/')[1] === 'account'
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 960)
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
 
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [prevScrollPos, isSticky])
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const HoverUnderNavLink = (to, text) => {
     const spanRef = useRef(null)
@@ -60,7 +54,11 @@ export function Header() {
     }
 
     return (
-      <li className="navLink py-4 px-5 hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-medium	text-base ">
+      <li
+        className={cn(
+          'navLink py-4 hover:text-[#862E1B] cursor-pointer transition text-[#1d1d1d] uppercase font-barlow text-[14px] font-medium tracking-[0.7px]',
+        )}
+      >
         <NavLink
           end
           prefetch="intent"
@@ -87,196 +85,99 @@ export function Header() {
     )
   }
 
-  const Mainheader = () => {
-    return (
-      <div className="container flex items-center justify-between py-4 mainheader">
-        <NavLink end prefetch="intent" to="/">
-          <img
-            src={logo}
-            className="object-cover w-30 h-auto max-w-[80%] sm:max-w-full"
-            sizes="(min-width: 45em) 50vw, 100vw"
-            width={120}
-            height={100}
-          />
-        </NavLink>
-        <div className="flex items-center justify-between gap-10 navBar">
-          <ul className="hidden navLinks lg:flex">
-            {HoverUnderNavLink('/products/custom-bundle', 'Menu')}
-            {HoverUnderNavLink('/about', 'About Us')}
-            {HoverUnderNavLink('/recipes', 'Recipes')}
-          </ul>
-          <div className="hidden lg:block">
-            <OrderButton />
-          </div>
-          <div className="flex items-center justify-between gap-4 headerIcons sm:gap-10">
-            <NavLink end prefetch="intent" to="/account">
-              <span className="hidden w-5 cursor-pointer loginIcon lg:flex">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  id="Group_4154"
-                  data-name="Group 4154"
-                  width="27.473"
-                  height="33.937"
-                  viewBox="0 0 27.473 33.937"
-                  className="icon-account"
-                >
-                  <path
-                    id="Path_1"
-                    data-name="Path 1"
-                    d="M259.545,42.272A7.272,7.272,0,1,1,252.272,35a7.272,7.272,0,0,1,7.272,7.272"
-                    transform="translate(-238.536 -35)"
-                    fill="#030303"
-                    fillRule="evenodd"
-                  ></path>
-                  <path
-                    id="Path_2"
-                    data-name="Path 2"
-                    d="M177.528,286.105a1.616,1.616,0,0,0,1.616-1.616v-2.424a13.736,13.736,0,1,0-27.473,0v2.424a1.616,1.616,0,0,0,1.616,1.616h24.241Z"
-                    transform="translate(-151.672 -252.168)"
-                    fill="#030303"
-                    fillRule="evenodd"
-                  ></path>
-                </svg>
-              </span>
-            </NavLink>
-            <Button
-              className="block lg:hidden"
-              onClick={() => setMenuToggle(true)}
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true)
+  const [prevScrollPos, setPrevScrollPos] = useState(0)
+
+  const handleScroll = () => {
+    const currentScrollPos =
+      window.pageYOffset || document.documentElement.scrollTop
+    const scrolledPastHeader =
+      prevScrollPos > currentScrollPos && currentScrollPos > 0
+    setIsHeaderVisible(!scrolledPastHeader)
+    setPrevScrollPos(currentScrollPos)
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [prevScrollPos])
+
+  const headerClass = isHeaderVisible ? '' : 'sticky-header w-[100vw]'
+
+  return (
+    <header className="relative z-10 [box-shadow:0px_0px_15px_0px_rgba(0,0,0,0.15)]">
+      <div
+        className={cn(
+          'container-small relative h-[88px] sm:h-[120px] flex items-center justify-between py-4 mainheader sm:pl-[20px] sm:pr-[20px] pl-[10px] pr-[20px]',
+          isMobile ? headerClass : '',
+        )}
+      >
+        <div className="relative flex items-center justify-between w-full navBar">
+          <div className="w-full max-w-[40%]">
+            <ul
+              className={cn(
+                'hidden navLinks lg:flex custom-padding-header font-dunbar text-[14px] lg:gap-[32px]',
+              )}
             >
-              <HamburgerOpen />
-            </Button>
-            <CartButton />
+              {HoverUnderNavLink('/products/custom-bundle', 'Menu')}
+              {HoverUnderNavLink('/about', 'About Us')}
+              {HoverUnderNavLink('/recipes', 'Recipes')}
+            </ul>
+            <div className="flex items-center justify-between gap-10 lg:hidden navBar">
+              <div className="flex items-center justify-between headerIcons sm:gap-10">
+                <Button
+                  className="block lg:hidden"
+                  onClick={() => setMenuToggle(true)}
+                >
+                  <HamburgerOpen />
+                </Button>
+              </div>
+            </div>
+          </div>
+          <NavLink
+            end
+            prefetch="intent"
+            to="/"
+            className="w-full max-w-[20%] flex justify-center absolute-center"
+          >
+            <div className="w-full sm:w-[178px] min-w-[120px] -ml-[20px] sm:ml-[0]">
+              <Logo />
+            </div>
+          </NavLink>
+          <div className={cn('w-full max-w-[40%] flex justify-end')}>
+            <div className="flex items-center justify-between gap-[10px] headerIcons sm:gap-[18px] w-[fit-content]">
+              {!isAccount && (
+                <NavLink end prefetch="intent" to="/account">
+                  <span className="lg:w-[32px] w-5 cursor-pointer loginIcon">
+                    <Account />
+                  </span>
+                </NavLink>
+              )}
+              <CartButton />
+              {!isAccount && (
+                <div className="hidden lg:block pl-[20px]">
+                  <OrderButton />
+                </div>
+              )}
+              {isAccount && customer !== null && (
+                <Form
+                  className="items-center hidden lg:flex account-logout"
+                  method="POST"
+                  action="/account/logout"
+                >
+                  <button type="submit">
+                    <Logout />
+                  </button>
+                </Form>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    )
-  }
-
-  const Landingheader = () => {
-    return (
-      <div className="container flex justify-center items-center py-[3px] mx-auto relative landingheader">
-        <NavLink end prefetch="intent" to="/">
-          <img
-            src={logo}
-            className="object-contain sm:w-[156px] h-[40px] sm:h-[90px]"
-            alt="Logo"
-          />
-        </NavLink>
-        <NavLink end prefetch="intent" to="/" className="absolute left-0">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-8 h-8 m-4 "
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M15 19l-7-7 7-7"
-              aria-label="Back Home"
-            ></path>
-          </svg>
-        </NavLink>
-      </div>
-    )
-  }
-
-  return (
-    <header
-      className={`header ${
-        isSticky && !isCartPage ? 'header--sticky' : 'header--hidden'
-      } bg-[#fff] border-b border-solid border-[#1D1D1D10]`}
-    >
-      {isCartPage ? <Landingheader /> : <Mainheader />}
     </header>
   )
-}
-
-export function HeaderMenu({ menu, primaryDomainUrl, viewport }) {
-  const { publicStoreDomain } = useRootLoaderData()
-  const className = `header-menu-${viewport}`
-
-  function closeAside(event) {
-    if (viewport === 'mobile') {
-      event.preventDefault()
-      window.location.href = event.currentTarget.href
-    }
-  }
-
-  return (
-    <nav className={className} role="navigation">
-      {viewport === 'mobile' && (
-        <NavLink
-          end
-          onClick={closeAside}
-          prefetch="intent"
-          style={activeLinkStyle}
-          to="/"
-        >
-          Home
-        </NavLink>
-      )}
-      {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
-        if (!item.url) return null
-
-        // if the url is internal, we strip the domain
-        const url =
-          item.url.includes('myshopify.com') ||
-          item.url.includes(publicStoreDomain) ||
-          item.url.includes(primaryDomainUrl)
-            ? new URL(item.url).pathname
-            : item.url
-        return (
-          <NavLink
-            className="header-menu-item"
-            end
-            key={item.id}
-            onClick={closeAside}
-            prefetch="intent"
-            style={activeLinkStyle}
-            to={url}
-          >
-            {item.title}
-          </NavLink>
-        )
-      })}
-    </nav>
-  )
-}
-
-const FALLBACK_HEADER_MENU = {
-  id: 'gid://shopify/Menu/199655587896',
-  items: [
-    {
-      id: 'gid://shopify/MenuItem/461609500728',
-      resourceId: null,
-      tags: [],
-      title: 'Collections',
-      type: 'HTTP',
-      url: '/collections',
-      items: [],
-    },
-    {
-      id: 'gid://shopify/MenuItem/461609566264',
-      resourceId: null,
-      tags: [],
-      title: 'Policies',
-      type: 'HTTP',
-      url: '/policies',
-      items: [],
-    },
-    {
-      id: 'gid://shopify/MenuItem/461609599032',
-      resourceId: 'gid://shopify/Page/92591030328',
-      tags: [],
-      title: 'About',
-      type: 'PAGE',
-      url: '/pages/about',
-      items: [],
-    },
-  ],
 }
 
 /**

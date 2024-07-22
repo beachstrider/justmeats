@@ -10,7 +10,7 @@ export function shouldRevalidate() {
 
 export default function Layout() {
   return (
-    <main className="page-account">
+    <main className="relative z-10 page-account">
       <Menu />
       <Outlet />
     </main>
