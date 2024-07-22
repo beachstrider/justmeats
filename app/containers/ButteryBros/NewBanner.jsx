@@ -40,7 +40,7 @@ export const NewBanner = () => {
           <div className="px-[10px] container-small w-full grid md:grid-cols-3 grid-cols-1 gap-[30px] font-barlow text-[#231B19] pb-[50px]">
               <div className="relative hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] p-[30px] md:my-[50px] md:mx-0 mx-[10px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
                   <div className="text-center font-hudson text-[#BF4745] sm:text-[24px] text-[20px] font-[620] sm:tracking-[1.2px] tracking-[1px] uppercase">enter giveaway</div>
-                  <div className="text-center text-[15px] font-bold leading-[21px] tracking-[1.5px]">(const Us only)</div>
+                  <div className="text-center text-[15px] font-bold leading-[21px] tracking-[1.5px]">(cont Us only)</div>
                   <ul className="list-disc pl-[20px] sm:text-[18px] text-[16px] font-medium sm:leading-[20px] leading-[23px] sm:tracking-[1.8px] tracking-[1.6px] my-[20px]">
                       <li className="md:pb-[12px]">1 Month Supply of Just Meats <span className="font-bold">(Value $150)</span></li>
                       <li className="md:pb-[12px]">Pit Boss Sportsman 820 Smoker <span className="font-bold">(Value $ 649.99)</span></li>
@@ -61,7 +61,7 @@ export const NewBanner = () => {
               </div>
               <div className="relative border-4 border-[#BF4745] hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] md:p-[30px] p-[30px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
                   <div className="text-center font-hudson text-[#BF4745] sm:text-[24px] text-[20px]  font-[620] sm:tracking-[1.2px] tracking-[1px] uppercase">the ulti-meat win</div>
-                  <div className="text-center text-[15px] font-bold leading-[21px] tracking-[1.5px]">(const Us only)</div>
+                  <div className="text-center text-[15px] font-bold leading-[21px] tracking-[1.5px]">(cont Us only)</div>
                   <ul className="list-disc pl-[20px] sm:text-[18px] text-[16px] font-medium sm:leading-[20px] leading-[23px] sm:tracking-[1.8px] tracking-[1.6px] my-[20px]">
                       <li className="md:pb-[12px]">Automatic Giveaway Entry</li>
                       <li className="md:pb-[12px]"> <span className="font-bold">FREE</span> Cookout Entry/Meal</li>
