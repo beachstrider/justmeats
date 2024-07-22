@@ -89,7 +89,7 @@ export function Menu() {
   )
 
   return (
-    <div className="relative bg-white border-t border-t-[#EFEEED] [box-shadow:0px_4px_4px_0px_rgba(0,0,0,0.03)]">
+    <div className="relative bg-white border-t z-20 border-t-[#EFEEED] [box-shadow:0px_4px_4px_0px_rgba(0,0,0,0.03)]">
       <div className="lg:py-[22px] py-[15px] border-b border-b-[#EFEEED]">
         <div className="container-small">
           <div className="flex justify-between gap-[20px]">
