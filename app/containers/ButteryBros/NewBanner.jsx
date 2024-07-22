@@ -38,13 +38,13 @@ export const NewBanner = () => {
       </div>
       <div className="relative mt-[-7%] z-[99]">
           <div className="px-[10px] container-small w-full grid md:grid-cols-3 grid-cols-1 gap-[30px] font-barlow text-[#231B19] pb-[50px]">
-              <div className="hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] p-[30px] md:my-[50px] md:mx-0 mx-[10px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
+              <div className="relative hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] p-[30px] md:my-[50px] md:mx-0 mx-[10px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
                   <div className="text-center font-hudson text-[#BF4745] sm:text-[24px] text-[20px] font-[620] sm:tracking-[1.2px] tracking-[1px] uppercase">enter giveaway</div>
                   <div className="text-center text-[15px] font-bold leading-[21px] tracking-[1.5px]">(const Us only)</div>
                   <ul className="list-disc pl-[20px] sm:text-[18px] text-[16px] font-medium sm:leading-[20px] leading-[23px] sm:tracking-[1.8px] tracking-[1.6px] my-[20px]">
-                      <li className="md:pb-[12px]">1 Month Supply of Just Meats</li>
-                      <li className="md:pb-[12px]">Pit Boss Sportsman 820 Smoker</li>
-                      <li className="md:pb-[12px]">Grizzly Cooler</li>
+                      <li className="md:pb-[12px]">1 Month Supply of Just Meats <span className="font-bold">(Value $150)</span></li>
+                      <li className="md:pb-[12px]">Pit Boss Sportsman 820 Smoker <span className="font-bold">(Value $ 649.99)</span></li>
+                      <li className="md:pb-[12px]">Grizzly Cooler <span className="font-bold">(Value TBD)</span></li>
                       <li className="md:pb-[12px]">Others Coming</li>
                   </ul>
                   <div className="flex justify-center">
@@ -52,8 +52,14 @@ export const NewBanner = () => {
                       enter
                       </button>
                   </div>
+
+                  <div className="absolute top-[-6%] left-[15%]  right-[15%] flex justify-center">
+                      <button className="sm:px-[30px] px-[8px] py-[12px] bg-[#E0FD53] text-[#231B19] tracking-[.9px] uppercase font-bold">
+                      $1,000+ in Prizes
+                      </button>
+                  </div>
               </div>
-              <div className="border-4 border-[#BF4745] hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] md:p-[40px] p-[30px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
+              <div className="relative border-4 border-[#BF4745] hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] md:p-[30px] p-[30px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
                   <div className="text-center font-hudson text-[#BF4745] sm:text-[24px] text-[20px]  font-[620] sm:tracking-[1.2px] tracking-[1px] uppercase">the ulti-meat win</div>
                   <div className="text-center text-[15px] font-bold leading-[21px] tracking-[1.5px]">(const Us only)</div>
                   <ul className="list-disc pl-[20px] sm:text-[18px] text-[16px] font-medium sm:leading-[20px] leading-[23px] sm:tracking-[1.8px] tracking-[1.6px] my-[20px]">
@@ -68,9 +74,14 @@ export const NewBanner = () => {
                       shop just meats
                       </button>
                   </div>
+                  <div className="absolute top-[-6%] left-[15%]  right-[15%] flex justify-center">
+                      <button className="sm:px-[30px] px-[8px] py-[12px] bg-[#E0FD53] text-[#231B19] tracking-[.9px] uppercase font-bold">
+                      Save $$$ and WIN!
+                      </button>
+                  </div>
               </div>
-              <div className="hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] p-[30px] md:my-[50px] md:mx-0 mx-[10px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
-                  <div className="text-center font-hudson text-[#BF4745] sm:text-[24px] text-[20px] font-[620] sm:tracking-[1.2px] tracking-[1px] uppercase">BBQ Entry only</div>
+              <div className="relative hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] p-[30px] md:my-[50px] md:mx-0 mx-[10px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
+                  <div className="text-center font-hudson text-[#BF4745] sm:text-[24px] text-[20px] font-[620] sm:tracking-[1.2px] tracking-[1px] uppercase">BBQ COOKOUT ENTRY</div>
                   <ul className="list-disc pl-[20px] sm:text-[18px] text-[16px] font-medium sm:leading-[20px] leading-[23px] sm:tracking-[1.8px] tracking-[1.6px] my-[20px]">
                       <li className="md:pb-[12px]">$40 value for  <span className="font-bold">ONLY $19</span></li>
                       <li className="md:pb-[12px]">Food, games, giveaways, and FUN</li>
@@ -79,6 +90,11 @@ export const NewBanner = () => {
                   <div className="flex justify-center">
                       <button className="px-[40px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] text-[#EFEEED] tracking-[.9px] uppercase font-bold">
                       Purchase
+                      </button>
+                  </div>
+                  <div className="absolute top-[-6%] left-[15%]  right-[15%] flex justify-center">
+                      <button className="sm:px-[30px] px-[8px] py-[12px] bg-[#E0FD53] text-[#231B19] tracking-[.9px] uppercase font-bold">
+                      Experience TX BBQ! 
                       </button>
                   </div>
               </div>

@@ -82,7 +82,7 @@ export const NewBanner = () => {
                   </div>
               </div>
               <div className="relative hover:cursor-pointer flex flex-col justify-between text-[#231B19] bg-[#FFF] sm:p-[30px] p-[30px] pt-[50px] md:my-[50px] md:mx-0 mx-[10px]" style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}>
-                  <div className="text-center font-hudson text-[#BF4745] sm:text-[24px] text-[20px] font-[620] sm:tracking-[1.2px] tracking-[1px] uppercase">BBQ Entry only</div>
+                  <div className="text-center font-hudson text-[#BF4745] sm:text-[24px] text-[20px] font-[620] sm:tracking-[1.2px] tracking-[1px] uppercase">BBQ COOKOUT ENTRY</div>
                   <ul className="list-disc pl-[20px] sm:text-[18px] text-[16px] font-medium sm:leading-[20px] leading-[23px] sm:tracking-[1.8px] tracking-[1.6px] my-[20px]">
                       <li className="md:pb-[12px]">$40 value for  <span className="font-bold">ONLY $19</span></li>
                       <li className="md:pb-[12px]">Food, games, giveaways, and FUN</li>
@@ -96,7 +96,7 @@ export const NewBanner = () => {
                   
                   <div className="absolute top-[-6%] left-[15%]  right-[15%] flex justify-center">
                       <button className="sm:px-[30px] px-[25px] py-[12px] bg-[#E0FD53] text-[#231B19] tracking-[.9px] uppercase font-bold">
-                      BBQ of the Summer
+                      Experience TX BBQ! 
                       </button>
                   </div>
               </div>
