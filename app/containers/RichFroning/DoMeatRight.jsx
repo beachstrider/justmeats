@@ -1,11 +1,11 @@
-import OrderButton from 'app/components/OrderButton'
+import { OrderButton } from 'app/components/OrderButton'
 
 import BuffaloIllustration from '~/assets/images/BuffaloIllustration.png'
 import RichsPhoto1 from '~/assets/images/RichsPhoto1.png'
 import RichsPhoto from '~/assets/images/RichsPhoto.png'
 import trayDesktop from '~/assets/images/tray-desktop.png'
 import trayMobile from '~/assets/images/tray-mobile.png'
-import { FaqAccordion } from '~/components/NewFaqAccordion'
+import { FaqAccordion } from '~/components/FaqAccordion'
 
 export const DoMeatRight = () => {
   return (

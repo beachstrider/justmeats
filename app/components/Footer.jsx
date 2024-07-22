@@ -1,138 +1,151 @@
+import { useLocation } from 'react-router-dom'
+
 import { NavLink, useMatches } from '@remix-run/react'
 
-import logo from '~/assets/footer_logo.webp'
+import { Facebook } from '~/icons/Facebook'
+import { Instagram } from '~/icons/Instagram'
+import { LogoWhite } from '~/icons/LogoWhite'
+import { Mail } from '~/icons/Mail'
+import { Phone } from '~/icons/Phone'
+import { Tiktok } from '~/icons/Tiktok'
 
-export function Footer() {
+export const Footer = () => {
   const matches = useMatches()
+  const location = useLocation()
+  const isSpecialsPage =
+    location.pathname === '/gym-launch' || location.pathname === '/gym'
+  const page = matches.at(-1).pathname
+  const currentYear = new Date().getFullYear()
 
-  const isRoute = matches[1].params.bundle === 'custom-bundle'
-
-  const Footer = () => {
-    const currentYear = new Date().getFullYear()
-
-    return (
-      <footer className="footer max-w-[100%] bg-black ">
-        <div className="container">
-          <div className="flex flex-wrap items-start justify-between gap-10 py-10 lg:flex-nowrap lg:gap-10 sm:py-20 ">
-            <div className="flex items-center justify-center footerLogo sm:w-5/12 lg:w-1/4 ">
-              <NavLink end prefetch="intent" to="/">
-                <img
-                  src={logo}
-                  className="object-contain pt-3"
-                  sizes="(min-width: 45em) 50vw, 100vw"
-                  width={280}
-                  height={210}
-                />
-              </NavLink>
+  return (
+    <footer className={`${isSpecialsPage ? 'bg-[#6B1626]' : 'bg-[#231b19]'}`}>
+      {page != '/how-it-works' && (
+        <div className="container-small relative h-[88px] sm:h-[128px] flex items-center justify-between py-4">
+          <div className="absolute-center">
+            <NavLink to="/" end prefetch="intent">
+              <div className="w-[160px] sm:w-[196px]">
+                <LogoWhite />
+              </div>
+            </NavLink>
+          </div>
+        </div>
+      )}
+      {page === '/rich-froning' && (
+        <div className="bg-lower-footer bg-cover text-center sm:[background-position-x:0] [background-position-x:-750px]">
+          <div className="container-small relative text-[#EFEEED] sm:pt-[80px] sm:pb-[92px] pt-[113px] pb-[137px] lg:pl-0 lg:pr-0">
+            <div className="sm:text-[18px] sm:leading-[26px] sm:tracking-[0.36px] sm:text-center text-justify [word-spacing:-1px] sm:[word-spacing:0] text-[16px] leading-[150%] tracking-[0.48px] font-nunito sm:mb-[16px] mb-[18px]">
+              “Nutrition is the foundation of Fitness, and the success of any
+              training program starts in your kitchen. It takes time, and
+              attention. But I love food, and I believe it&rsquo;s meant to be
+              enjoyed. <span className="font-bold">JUST MEATS</span> has allowed
+              me to eat delicious, high-quality protein at every meal, without
+              compromising my responsibilities as a father, husband, business
+              owner, and professional athlete.”
             </div>
-            <div className="flex items-start justify-between w-full gap-10 navLinks sm:w-5/12 lg:w-1/4">
-              <ul className="">
-                <li className="mb-4 text-xl font-medium text-white ">
-                  About Us
-                </li>
-                <li className="text-white font-normal text-base my-2 transition hover:text-[#862E1B] cursor-pointer ">
-                  <NavLink end prefetch="intent" to="/products/custom-bundle">
-                    Menu
-                  </NavLink>
-                </li>
-                <li className="text-white font-normal text-base my-2 transition hover:text-[#862E1B] cursor-pointer ">
-                  <NavLink end prefetch="intent" to="/about">
-                    How It Works
-                  </NavLink>
-                </li>
-              </ul>
+            <div className="text-[16px] font-bold font-dunbar tracking-[0.8px]">
+              RICH FRONING
             </div>
-            <div className="flex items-start justify-between w-full gap-10 navLinks sm:w-5/12 lg:w-1/4">
-              <ul className="">
-                <li className="mb-4 text-xl font-medium text-white ">
-                  Need Help?
-                </li>
-                <li className="text-white font-normal text-base my-2 transition hover:text-[#862E1B] cursor-pointer ">
-                  <NavLink end prefetch="intent" to="/term-services">
-                    Terms of Service
-                  </NavLink>
-                </li>
-                <li className="text-white font-normal text-base my-2 transition hover:text-[#862E1B] cursor-pointer ">
-                  <NavLink end prefetch="intent" to="/refund-policy">
-                    Cancellation Policy
-                  </NavLink>
-                </li>
-                <li className="text-white font-normal text-base my-2 transition hover:text-[#862E1B] cursor-pointer ">
-                  <NavLink end prefetch="intent" to="/privacy-policy">
-                    Privacy Policy
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
-            <div className="w-full contactInfo sm:w-5/12 lg:w-1/4">
-              <ul>
-                <li className="mb-4 text-3xl font-medium text-white ">
-                  Contact Us
-                </li>
-                <li className="my-2 text-base font-normal text-white ">
-                  Phone: 888-343-1242
-                </li>
-                <li className="my-2 text-base font-normal text-white ">
-                  Email: support@justmeats.com
-                </li>
-                <li className="my-2 text-base font-normal text-white "></li>
-              </ul>
-              <div className="flex mt-5 social-icons" style={{ gap: '15px' }}>
-                <a
-                  href="https://www.facebook.com/profile.php?id=61550191665305"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 320 512"
-                    height="18"
-                    className="social-icon"
-                  >
-                    <path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
-                  </svg>
-                </a>
-                <a
-                  href="https://www.instagram.com/justmeats.co/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 448 512"
-                    height="18"
-                    className="social-icon"
-                  >
-                    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
-                  </svg>
-                </a>
-                <a
-                  href="https://www.tiktok.com/@justmeats.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 448 512"
-                    height="18"
-                    className="social-icon"
-                  >
-                    <path d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.4A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z" />
-                  </svg>
-                </a>
+          </div>
+        </div>
+      )}
+      <div className="bg-[#6B1626] text-[#EFEEED] sm:pt-[55px] sm:pb-[25px] pt-[48px] pb-[22px]">
+        <div className="container-small">
+          <div className="max-w-[740px] w-full mx-auto flex justify-center">
+            <div className="flex flex-col sm:gap-[53px] gap-[30px]">
+              <div className="flex sm:flex-row flex-col sm:gap-[128px] gap-[35px]">
+                <div>
+                  <div className="font-bold tracking-[0.8px] sm:mb-[22px] mb-[18px]">
+                    ABOUT US
+                  </div>
+                  <div className="flex flex-col sm:text-[14px] text-[16px] font-bold sm:leading-[170%] leading-[190%]">
+                    <NavLink end prefetch="intent" to="/products/custom-bundle">
+                      Menu
+                    </NavLink>
+                    <NavLink end prefetch="intent" to="/about">
+                      How It Works
+                    </NavLink>
+                  </div>
+                </div>
+                <div>
+                  <div className="font-bold tracking-[0.8px] sm:mb-[22px] mb-[18px]">
+                    NEED HELP?
+                  </div>
+                  <div className="flex flex-col sm:text-[14px] text-[16px] font-bold sm:leading-[170%] leading-[190%]">
+                    {/* <NavLink to="#">FAQs</NavLink> */}
+                    <NavLink end prefetch="intent" to="/term-services">
+                      Terms of Service
+                    </NavLink>
+                    <NavLink end prefetch="intent" to="/refund-policy">
+                      Refund & Cancellation Policy
+                    </NavLink>
+                    <NavLink end prefetch="intent" to="/privacy-policy">
+                      Privacy Policy
+                    </NavLink>
+                  </div>
+                </div>
+                <div>
+                  <div className="font-bold tracking-[0.8px] sm:mb-[22px] mb-[18px]">
+                    CONTACT US
+                  </div>
+                  <div className="flex flex-col sm:text-[14px] text-[16px] font-bold sm:leading-[170%] leading-[190%]">
+                    <a
+                      href="tel:+18883431242"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-[8px]"
+                    >
+                      <div className="w-[22px]">
+                        <Phone />
+                      </div>
+                      <div>888-343-1242</div>
+                    </a>
+                    <a
+                      href="mailto:support@justmeats.com"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-[8px]"
+                    >
+                      <div className="w-[22px] flex justify-center items-center">
+                        <div className="w-[18px]">
+                          <Mail />
+                        </div>
+                      </div>
+                      <div>support@justmeats.com</div>
+                    </a>
+                    <div className="flex items-center gap-[4px] mt-[16px] ml-[-6px]">
+                      <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://www.facebook.com/profile.php?id=61550191665305"
+                      >
+                        <Facebook />
+                      </a>
+                      <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://www.instagram.com/justmeats.co/"
+                      >
+                        <Instagram />
+                      </a>
+                      <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://www.tiktok.com/@justmeats.com"
+                        className="ml-[8px]"
+                      >
+                        <Tiktok />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="text-center">
+                ©2023 JUST MEATS, All Rights Reserved
               </div>
             </div>
           </div>
         </div>
-        <div className="copyRight">
-          <div className="container py-6 mx-auto">
-            <p className="text-lg font-normal text-white">
-              &copy; {currentYear} JUST MEATS, All Rights Reserved
-            </p>
-          </div>
-        </div>
-      </footer>
-    )
-  }
-  return <>{!isRoute ? <Footer /> : null}</>
+      </div>
+    </footer>
+  )
 }

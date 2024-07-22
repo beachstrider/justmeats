@@ -2,56 +2,36 @@ import { useMatches } from '@remix-run/react'
 
 import { Footer } from '~/components/Footer'
 import { Header } from '~/components/Header'
-import { Footer as NewFooter } from '~/components/NewFooter'
-import { Header as NewHeader } from '~/components/NewHeader'
 import { LayoutProvider } from '~/providers/LayoutProvider'
 
 import { MobileMenuAside } from './MobileMenuAside'
 import { OrderHeader } from './OrderHeader'
 
-const newLayoutRoutes = [
-  '',
-  'gym',
-  'about',
-  'recipe',
-  'recipes',
-  'account',
-  'products',
-  'ambassador',
-  'gym-launch',
-  'rich-froning',
-  'summer-preview',
-  'mayhem-madness',
+const withoutHeader = ['routes/ambassador']
+const withoutFooter = [
+  'routes/products.$bundle',
+  'routes/account.subscriptions.$id',
 ]
-
-const noHeaderRoutes = ['ambassador']
 
 export function Layout({ children = null }) {
   const matches = useMatches()
-  const { pathname } = matches.at(-1)
-  const route = pathname.split('/')[1]
-  const isNewLayout = newLayoutRoutes.includes(route)
-  const hasHeader = !noHeaderRoutes.includes(route)
+  const { id: routeId } = matches.at(-1)
 
-  const isProductPage = route === 'products'
-
-  if (isNewLayout) {
-    return (
-      <LayoutProvider>
-        {isProductPage ? <OrderHeader /> : hasHeader ? <NewHeader /> : null}
-        <MobileMenuAside />
-        {children}
-        <NewFooter />
-      </LayoutProvider>
-    )
-  }
+  const hasHeader = !withoutHeader.includes(routeId)
+  const hasFooter = !withoutFooter.includes(routeId)
 
   return (
     <LayoutProvider>
-      {isProductPage ? <OrderHeader /> : <Header />}
+      {hasHeader ? (
+        routeId === 'routes/products.$bundle' ? (
+          <OrderHeader />
+        ) : (
+          <Header />
+        )
+      ) : null}
       <MobileMenuAside />
       {children}
-      <Footer />
+      {hasFooter && <Footer />}
     </LayoutProvider>
   )
 }

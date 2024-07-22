@@ -1,4 +1,4 @@
-import { FaqAccordion } from '~/components/NewFaqAccordion'
+import { FaqAccordion } from '~/components/FaqAccordion'
 
 export const FaqSection = () => {
   return (
