@@ -1,10 +1,30 @@
 import { createContext, useEffect, useState } from 'react'
 
+import { useMatches } from '@remix-run/react'
+
 import { DELIVERY_EVERY_15_DAYS } from '~/consts'
+
+const newLayoutRoutes = [
+  '',
+  'mayhem-madness',
+  'rich-froning',
+  'gym-launch',
+  'gym',
+  'recipes',
+  'recipe',
+  'about',
+  'ambassador',
+  'summer-preview',
+]
 
 export const RootContext = createContext()
 
 export const RootProvider = ({ children }) => {
+  const matches = useMatches()
+  const { pathname } = matches.at(-1)
+  const route = pathname.split('/')[1]
+  const isNewLayout = newLayoutRoutes.includes(route)
+
   const [cartSellingPlan, _setCartSellingPlan] = useState(
     DELIVERY_EVERY_15_DAYS,
   )
@@ -149,6 +169,7 @@ export const RootProvider = ({ children }) => {
         setSubscriptionProducts,
         setSubscriptionSellingPlanFrequency,
         setSubscriptionBonusVariant,
+        isNewLayout,
       }}
     >
       {children}
