@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 
 import { useLoaderData } from '@remix-run/react'
 
-import { FaqAccordion } from '~/components/NewFaqAccordion'
+import { FaqAccordion } from '~/components/FaqAccordion'
 import { PlanPickerBlock } from '~/containers/CustomBundle/PlanPickerBlock'
 import { cn } from '~/lib/utils'
 import { CustomBundleContext } from '~/providers/CustomBundleProvider'

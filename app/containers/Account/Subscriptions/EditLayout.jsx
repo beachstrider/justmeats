@@ -154,8 +154,8 @@ export const SubscriptionEditLayout = ({ children }) => {
 
       <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/30" />
-          <Dialog.Content className="fixed p-8 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
+          <Dialog.Overlay className="fixed inset-0 z-20 bg-black/30" />
+          <Dialog.Content className="fixed z-30 p-8 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
             <Dialog.Title className="text-lg font-bold">WAIT!</Dialog.Title>
             <Dialog.Description className="mt-2">
               So you know, if you click the Process Now button, your order will
@@ -196,8 +196,8 @@ export const SubscriptionEditLayout = ({ children }) => {
         onOpenChange={setProcessDialogOpen}
       >
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/30" />
-          <Dialog.Content className="fixed p-8 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
+          <Dialog.Overlay className="fixed inset-0 z-20 bg-black/30" />
+          <Dialog.Content className="fixed z-30 p-8 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
             <Dialog.Title className="text-lg font-bold">
               {dialogContent.title}
             </Dialog.Title>
@@ -219,8 +219,8 @@ export const SubscriptionEditLayout = ({ children }) => {
 
       <Dialog.Root open={delayDialogOpen} onOpenChange={setDelayDialogOpen}>
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/30" />
-          <Dialog.Content className="fixed p-8 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
+          <Dialog.Overlay className="fixed inset-0 z-20 bg-black/30" />
+          <Dialog.Content className="fixed z-30 p-8 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
             <Dialog.Title className="text-lg font-bold">
               Are you Sure?
             </Dialog.Title>
@@ -264,8 +264,8 @@ export const SubscriptionEditLayout = ({ children }) => {
         onOpenChange={setDelayResultDialogOpen}
       >
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/30" />
-          <Dialog.Content className="fixed p-8 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
+          <Dialog.Overlay className="fixed inset-0 z-20 bg-black/30" />
+          <Dialog.Content className="fixed z-30 p-8 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg top-1/2 left-1/2">
             <Dialog.Title className="text-lg font-bold">
               {delayDialogContent.title}
             </Dialog.Title>

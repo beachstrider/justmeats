@@ -152,11 +152,17 @@ export const CustomBundleProvider = ({ children }) => {
     }
   }
 
-  const initializeCart = ({ cartItemsInUrl, sellingPlanInUrl }) => {
+  const initializeCart = (precart) => {
+    const precartItems = precart.items
     const newCartProducts = []
-    const correctedSellingPlanInUrl = sellingPlanInUrl.replaceAll('-', ' ')
+    const precartSellingPlan = precart.selling_plan
+      ? precart.selling_plan.replaceAll('-', ' ')
+      : ''
+    const precartSellingPlanFrequency = precartSellingPlan
+      ? precartSellingPlan
+      : DELIVERY_EVERY_15_DAYS
 
-    for (const cartItem of cartItemsInUrl) {
+    for (const cartItem of precartItems) {
       const product = products.find((el) => el.handle === cartItem.handle)
       const productQuantity = Number(cartItem.quantity)
       const productPrice = product?.priceRange?.maxVariantPrice?.amount
@@ -173,11 +179,11 @@ export const CustomBundleProvider = ({ children }) => {
 
     if (
       [DELIVERY_EVERY_15_DAYS, DELIVERY_EVERY_30_DAYS, ''].includes(
-        correctedSellingPlanInUrl,
+        precartSellingPlan,
       )
     ) {
-      setSellingPlan(correctedSellingPlanInUrl)
-      setSellingPlanFrequency(correctedSellingPlanInUrl)
+      setSellingPlanFrequency(precartSellingPlanFrequency)
+      setSellingPlan(precartSellingPlan)
       setSelectedProducts(newCartProducts)
     } else {
       setSelectedProducts(newCartProducts)
@@ -205,15 +211,14 @@ export const CustomBundleProvider = ({ children }) => {
 
   useEffect(() => {
     if (isCartPage) {
-      const cartItemsParamInUrl = searchParams.get('cart_items')
-      const sellingPlanInUrl = searchParams.get('selling_plan') ?? ''
+      const stringPrecart = searchParams.get('cart')
 
-      if (cartItemsParamInUrl) {
+      if (stringPrecart) {
         try {
-          const cartItemsInUrl = JSON.parse(cartItemsParamInUrl)
-          initializeCart({ cartItemsInUrl, sellingPlanInUrl })
-        } catch (_) {
-          console.error('Cart param corrupted')
+          const precart = JSON.parse(stringPrecart)
+          initializeCart(precart)
+        } catch (err) {
+          console.error('Cart param corrupted', err)
         } finally {
           setParams()
         }

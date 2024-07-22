@@ -27,9 +27,9 @@ export const OrderNow = () => {
               end
               prefetch="intent"
               to="/products/custom-bundle"
-              className="btn-order inline-block cursor-pointer transition py-3 px-9 text-base leading-normal tracking-[0.8px] uppercase bg-[#EFEEED] hover:bg-[#f5f3f1] text-[#6B1626] hover:text-[#8d3a2b] font-bold"
+              className="text-base leading-normal tracking-[0.8px] uppercase bg-[#EFEEED] hover:bg-[#f5f3f1] text-[#6B1626] hover:text-[#8d3a2b] font-bold"
             >
-              ORDER NOW
+              Order Now
             </NavLink>
           </div>
         </div>
