@@ -530,7 +530,9 @@ section.bg-\[url\(\'https\:\/\/cdn\.shopify\.com\/s\/files\/1\/0555\/1751\/1961\
   h3.text-\[50px\] {
   font-family: 'Rockwell Bold' !important;
 }
-
+.crossfit-banneroverlay{
+  background: linear-gradient(0deg, rgb(255 255 255 / 0%) 0%, #22222280 95%);
+}
 @media screen and (min-width: 1024px) {
   .bg-cover .lg\:flex-row .flex.flex-col {
     max-width: 35%;
@@ -547,7 +549,11 @@ section.bg-\[url\(\'https\:\/\/cdn\.shopify\.com\/s\/files\/1\/0555\/1751\/1961\
     max-width: 165px;
   }
 }
-
+@media screen and (min-width: 640px) {
+  .crossfit-banneroverlay{
+      background: linear-gradient(270deg, rgb(255 255 255 / 0%) 0%, #222222b8 70%);
+  }
+}
 .banner {
   background-image: url('../assets/images/Banner.png');
 }
