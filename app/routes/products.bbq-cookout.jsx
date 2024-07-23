@@ -1,8 +1,116 @@
+import { useState } from 'react'
+
+import { useLoaderData } from '@remix-run/react'
+import { getPaginationVariables } from '@shopify/hydrogen'
+import { json } from '@shopify/remix-oxygen'
+
 import pattern1 from '~/assets/images/16dr5416f4j6fty54h6aw5e1f6se51g6s5er1g.png'
 import pattern2 from '~/assets/images/s56er4g6ser5g146ef213a2we1fda.png'
+import { Button } from '~/components/Button'
+import { PRODUCT_BY_HANDLE_QUERY } from '~/graphql/Product'
+import { useSubmitPromise } from '~/hooks/useSubmitPromise'
 import { Spot } from '~/icons/Spot'
+import { sendPageView } from '~/lib/metaPixel.server'
+
+export const meta = () => {
+  return [{ title: 'BBQ Cookout - Just Meats' }]
+}
+
+export async function loader({ request, context, params }) {
+  sendPageView(request)
+
+  const { storefront } = context
+
+  const variables = getPaginationVariables(request, { pageBy: 50 })
+
+  const { product } = await storefront.query(PRODUCT_BY_HANDLE_QUERY, {
+    variables: {
+      ...variables,
+      handle: 'gift-card',
+      country: storefront.i18n.country,
+      language: storefront.i18n.language,
+    },
+  })
+
+  return json({
+    product,
+  })
+}
+
+export async function action({ request, context }) {
+  const cart = context.cart
+  const discountCode = context.session.get('discountCode')
+
+  const form = await request.formData()
+  const data = JSON.parse(form.get('body'))
+  const variant = data.variant
+  const quantity = data.quantity
+
+  const cartData = [
+    {
+      quantity,
+      merchandiseId: variant.id,
+    },
+  ]
+
+  let cartResult
+  let checkoutUrl
+
+  cartResult = await cart.addLines(cartData)
+  cart.setCartId(cartResult.cart.id)
+
+  checkoutUrl = cartResult.cart.checkoutUrl ?? checkoutUrl
+
+  if (discountCode) {
+    cartResult = await cart.updateDiscountCodes([discountCode])
+    cart.setCartId(cartResult.cart.id)
+    checkoutUrl = cartResult.cart.checkoutUrl ?? checkoutUrl
+  }
+
+  return json({ checkoutUrl, success: true })
+}
 
 export default function BbqCookout() {
+  const submit = useSubmitPromise()
+
+  const { product } = useLoaderData()
+  const [submitting, setSubmitting] = useState(false)
+  const [quantity, setQuantity] = useState(1)
+
+  const variant = product.variants.nodes[0]
+
+  const updateQuantity = (v) => {
+    const newQuantity = quantity + v
+
+    if (newQuantity < 11 && newQuantity > 0) {
+      setQuantity(newQuantity)
+    }
+  }
+
+  const checkout = async () => {
+    setSubmitting(true)
+
+    const res = await submit(
+      {
+        body: JSON.stringify({
+          variant,
+          quantity,
+        }),
+      },
+      {
+        method: 'post',
+        action: `/products/bbq-cookout`,
+      },
+    )
+
+    if (res.success) {
+      location.href = res.checkoutUrl
+    } else {
+      console.error(res.message)
+      setSubmitting(false)
+    }
+  }
+
   return (
     <main className="bg-[#F8F2E8] lg:pt-[72px] lg:pb-[90px] pt-[36px] pb-[50px]">
       <div className="container-small">
@@ -54,21 +162,31 @@ export default function BbqCookout() {
                       ONLY $19
                     </div>
                   </div>
-                  <div className="flex">
+                  <div className="flex grow">
                     <div className="flex gap-[14px] items-center justify-between bg-white px-[24px] py-[9px]">
-                      <button className="flex justify-center items-center font-bold text-[26px] text-[#BF4745]">
+                      <Button
+                        onClick={() => updateQuantity(-1)}
+                        className="flex justify-center items-center font-bold text-[26px] text-[#BF4745]"
+                      >
                         <span className="leading-[12px]">− </span>
-                      </button>
+                      </Button>
                       <small className="font-medium lg:text-[20px] text-[18px] text-center flex justify-center items-center text-black">
-                        1
+                        {quantity}
                       </small>
-                      <button className="flex justify-center items-center font-bold text-[26px] text-[#BF4745]">
+                      <Button
+                        onClick={() => updateQuantity(1)}
+                        className="flex justify-center items-center font-bold text-[26px] text-[#BF4745]"
+                      >
                         <span className="leading-[12px]">+</span>
-                      </button>
+                      </Button>
                     </div>
-                    <button className="flex justify-center px-[30px] items-center bg-[#BF4745] border-2 border-transparent hover:border-white text-white font-bold text-[18px]">
+                    <Button
+                      onClick={checkout}
+                      loading={submitting}
+                      className="flex justify-center grow items-center bg-[#BF4745] border-2 border-transparent hover:border-white text-white font-bold text-[18px]"
+                    >
                       Add To Cart
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
