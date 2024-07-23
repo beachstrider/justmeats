@@ -17,6 +17,8 @@ export function MobileMenuAside() {
 
   const isSpecialsPage =
     location.pathname === '/rich-froning' ||
+    location.pathname === '/buttery-bros' ||
+    location.pathname === '/crossfit' ||
     location.pathname === '/gym' ||
     location.pathname === '/recipes' ||
     location.pathname === '/recipe' ||
