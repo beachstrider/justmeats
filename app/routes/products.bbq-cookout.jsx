@@ -1,3 +1,7 @@
+import pattern1 from '~/assets/images/16dr5416f4j6fty54h6aw5e1f6se51g6s5er1g.png'
+import pattern2 from '~/assets/images/s56er4g6ser5g146ef213a2we1fda.png'
+import { Spot } from '~/icons/Spot'
+
 export default function BbqCookout() {
   return (
     <main className="bg-[#F8F2E8] lg:pt-[72px] lg:pb-[90px] pt-[36px] pb-[50px]">
@@ -27,8 +31,48 @@ export default function BbqCookout() {
                 atmosphere the Buttery Bros and Podium Nutrition will provide.
               </div>
             </div>
-            <div className="pt-[24px] lg:pb-[26px] pb-[40px] bg-[#6b1626] text-white lg:px-[30px] px-[42px]">
-              ...
+            <div className="relative">
+              <img src={pattern1} className="w-full" />
+              <div className="bg-[#6b1626] pt-[20px] lg:pb-[22px] pb-[20px] text-white lg:px-[30px] px-[42px] lg:mt-0 mt-[-1px]">
+                <div className="flex justify-center">
+                  <div className="flex items-center gap-1">
+                    <Spot />
+                    <div className="font-bold underline leading-normal text-[18px]">
+                      FORGED FITNESS
+                    </div>
+                  </div>
+                </div>
+                <div className="text-center text-[16px] mb-[20px]">
+                  3000 Shotts St. Fort Worth TX 76107
+                </div>
+                <div className="flex flex-col items-center lg:flex-row lg:items-start gap-[10px] lg:gap-[24px]">
+                  <div className="flex flex-row items-center gap-4 lg:flex-col lg:items-start lg:gap-0">
+                    <div className="text-[#BF4745] text-[16px] line-through">
+                      $40 Per Person
+                    </div>
+                    <div className="font-bold leading-none text-[26px]">
+                      ONLY $19
+                    </div>
+                  </div>
+                  <div className="flex">
+                    <div className="flex gap-[14px] items-center justify-between bg-white px-[24px] py-[9px]">
+                      <button className="flex justify-center items-center font-bold text-[26px] text-[#BF4745]">
+                        <span className="leading-[12px]">− </span>
+                      </button>
+                      <small className="font-medium lg:text-[20px] text-[18px] text-center flex justify-center items-center text-black">
+                        1
+                      </small>
+                      <button className="flex justify-center items-center font-bold text-[26px] text-[#BF4745]">
+                        <span className="leading-[12px]">+</span>
+                      </button>
+                    </div>
+                    <button className="flex justify-center px-[30px] items-center bg-[#BF4745] border-2 border-transparent hover:border-white text-white font-bold text-[18px]">
+                      Add To Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <img src={pattern2} className="w-full lg:mt-0 mt-[-1px]" />
             </div>
           </div>
         </div>
