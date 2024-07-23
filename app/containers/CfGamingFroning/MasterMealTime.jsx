@@ -17,7 +17,7 @@ export const MasterMealTime = () => {
         </div>
       
         <div className="max-w-[780px] font-barlow sm:text-[18px] text-[16px] font-normal leading-normal sm:tracking-[1.8px]  tracking-[1.6px] text-center text-[#231B19] m-auto sm:mb-[50px] mb-[20px]">
-            Every great training program needs high quality, clean protein. That's 
+            Every great training program needs high quality, clean protein. That&apos;s 
             where Just Meats comes in. We make the meat, so you can make the 
             meal — by delivering the meat for all your nutritional needs.
         </div>
