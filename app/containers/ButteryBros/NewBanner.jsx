@@ -48,7 +48,7 @@ export const NewBanner = () => {
               enter giveaway
             </div>
             <div className="text-center text-[15px] font-bold leading-[21px] tracking-[1.5px]">
-              (cont Us only)
+              (Cont US only)
             </div>
             <ul className="list-disc pl-[20px] sm:text-[18px] text-[16px] font-medium sm:leading-[20px] leading-[23px] sm:tracking-[1.8px] tracking-[1.6px] my-[20px]">
               <li className="md:pb-[12px]">
@@ -90,7 +90,7 @@ export const NewBanner = () => {
               the ulti-meat win
             </div>
             <div className="text-center text-[15px] font-bold leading-[21px] tracking-[1.5px]">
-              (cont Us only)
+              (Cont US only)
             </div>
             <ul className="list-disc pl-[20px] sm:text-[18px] text-[16px] font-medium sm:leading-[20px] leading-[23px] sm:tracking-[1.8px] tracking-[1.6px] my-[20px]">
               <li className="md:pb-[12px]">Automatic Giveaway Entry</li>
