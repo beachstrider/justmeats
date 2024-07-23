@@ -2,6 +2,7 @@ import { Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import sliderImage1 from '~/assets/images/rich-froning-banner.png'
 import crossfitbannerimglogo from '~/assets/images/crossfit-bannerimglogo.png'
+import { NavLink } from '@remix-run/react'
 
 const sliderImages = [
   { image: sliderImage1 },
@@ -48,9 +49,11 @@ export const NewBanner = () => {
                       <li className="md:pb-[12px]">Others Coming</li>
                   </ul>
                   <div className="flex justify-center">
-                      <button className="px-[40px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] text-[#EFEEED] tracking-[.9px] uppercase font-bold">
-                      enter
-                      </button>
+                    <NavLink end prefetch="intent" to="https://forms.gle/4TvveWS2FeX9uf9z7">
+                        <button className="px-[40px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] text-[#EFEEED] tracking-[.9px] uppercase font-bold">
+                        enter
+                        </button>
+                    </NavLink>
                   </div>
                   
                   <div className="absolute top-[-6%] left-[15%]  right-[15%] flex justify-center">
@@ -70,9 +73,11 @@ export const NewBanner = () => {
                       <li className="md:pb-[12px]">Save an additional  <span className="font-bold">$15</span> with code <span className="font-bold">FRONING</span></li>
                   </ul>
                   <div className="flex justify-center">
-                      <button className="px-[40px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] text-[#EFEEED] tracking-[.9px] uppercase font-bold">
-                      shop just meats
-                      </button>
+                      <NavLink end prefetch="intent" to="https://justmeats.com/discount/CFGAMES?redirect=/products/custom-bundle?cart_items=[%7B%22handle%22:%22smoked-texas-brisket%22,%22quantity%22:%221%22%7D,%7B%22handle%22:%22pollo-asado%22,%22quantity%22:%221%22%7D,%7B%22handle%22:%22hawaiian-teriyaki-chicken%22,%22quantity%22:%221%22%7D,%7B%22handle%22:%22herb-roasted-chicken-breast%22,%22quantity%22:%221%22%7D,%7B%22handle%22:%22braised-pork-kalua%22,%22quantity%22:%221%22%7D,%7B%22handle%22:%22slow-cooked-pulled-pork%22,%22quantity%22:%221%22%7D]&selling_plan=Delivery-every-15-Days">
+                          <button className="px-[40px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] text-[#EFEEED] tracking-[.9px] uppercase font-bold">
+                          shop just meats
+                          </button>
+                      </NavLink>
                   </div>
                   
                   <div className="absolute top-[-6%] left-[15%]  right-[15%] flex justify-center">

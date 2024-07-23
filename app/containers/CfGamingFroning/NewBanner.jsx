@@ -12,7 +12,7 @@ const sliderImages = [
 
 export const NewBanner = () => {
   return (
-    <section className="relative text-[#EFEEED] bg-[#F8F2E8] z-10">cf-games-froning
+    <section className="relative text-[#EFEEED] bg-[#F8F2E8] z-10">
       <div className="sm:h-[calc(100vh-120px)] flex flex-col">
         <div className="relative flex-1">
           <Swiper
