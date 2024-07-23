@@ -9,7 +9,7 @@ import { OrderHeader } from './OrderHeader'
 
 const withoutHeader = ['routes/ambassador']
 const withoutFooter = [
-  'routes/products.$bundle',
+  'routes/products.custom-bundle',
   'routes/account.subscriptions.$id',
 ]
 
@@ -23,7 +23,7 @@ export function Layout({ children = null }) {
   return (
     <LayoutProvider>
       {hasHeader ? (
-        routeId === 'routes/products.$bundle' ? (
+        routeId === 'routes/products.custom-bundle' ? (
           <OrderHeader />
         ) : (
           <Header />
