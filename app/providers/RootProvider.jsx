@@ -2,20 +2,6 @@ import { createContext, useEffect, useState } from 'react'
 
 import { DELIVERY_EVERY_15_DAYS } from '~/consts'
 
-const newLayoutRoutes = [
-  '',
-  'mayhem-madness',
-  'rich-froning',
-  'buttery-bros',
-  'crossfit',
-  'gym-launch',
-  'gym',
-  'recipes',
-  'recipe',
-  'about',
-  'ambassador',
-]
-
 export const RootContext = createContext()
 
 export const RootProvider = ({ children }) => {
