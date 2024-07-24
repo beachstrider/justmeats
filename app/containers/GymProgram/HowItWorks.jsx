@@ -15,7 +15,7 @@ export const HowItWorks = () => {
             THE ULTI-MEAT EXPERIENCE
           </div>
         </div>
-        <div className="flex justify-center sm:mb-[43px] mb-[35px] sm:px-0 px-[12px]">
+        <div className="flex justify-center sm:mb-[43px] mb-[35px] sm:px-0 px-[15px]">
           <div className="max-w-[645px] text-[#231b19] sm:text-center text-justify [word-spacing:-1px] sm:[word-spacing:0] sm:text-[18px] text-[16px] font-normal sm:leading-[26px] leading-[25px] tracking-[0.16px]">
               Here’s how having Just Meats delivered to your door changes the game: our meats marinate on the way to your door, while our innovative cooking sauce preserves the moisture and fills the meat with an infusion of flavor. 
 
@@ -35,7 +35,6 @@ export const HowItWorks = () => {
           </NavLink>
         </div>
       </div>
-      <div className="h-[21px] bg-pattern3 w-full" />
     </section>
   )
 }

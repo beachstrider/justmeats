@@ -5,11 +5,12 @@ import { ContactForm } from './ContactForm'
 
 export const RampUp = () => {
   return (
-    <section className="relative bg-[#EFEEED] sm:py-[80px] py-[60px] bg-pattern2">
-      <div className="relative container-small">
-        <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-[55px] gap-[52px] items-end">
-          <div className="flex flex-col justify-between aspect-square bg-[#F8F2E8]">
-              <div className="mt-[30px]">
+    <section>
+      <div className="relative bg-[#EFEEED] sm:py-[80px] py-[60px] bg-pattern2">
+        <div className="relative container-small">
+          <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-[55px] gap-[2px] items-end">
+            <div className="flex flex-col justify-between aspect-square bg-[#F8F2E8]">
+              <div className="mt-[30px] xl:px-[50px] px-[33px]">
                 <div className="font-hudson text-[24px] font-[620] text-center tracking-[1.2px] leading-[29px] uppercase">
                   ramp up your results
                 </div>
@@ -28,8 +29,10 @@ export const RampUp = () => {
                 title="contact video 1"
               />
             </div>
+          </div>
         </div>
       </div>
+      <div className="bg-[url('../assets/images/recipe-bottom-img.png')] bg-repeat px-[13px] py-[13px] mb-[5%]"></div>
     </section>
   )
 }
