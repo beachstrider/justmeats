@@ -14,8 +14,8 @@ export const Rewards = () => {
             <div>Positive Results</div>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3">
-            <div className="sm:h-[225px] h-[260px] flex flex-col justify-end items-center">
-              <div className="flex-1 sm:mb-[15px] mb-[0px] flex justify-center items-center">
+            <div className="lg:h-[225px] h-[150px] flex flex-col lg:justify-end justify-center items-center">
+              <div className="lg:flex-1 lg:mb-[0px] mb-[20px] flex justify-center items-center">
                 <div className="w-[260px]">
                   <img src={yourGym} className="m-auto" />
                 </div>
@@ -26,8 +26,8 @@ export const Rewards = () => {
                 results.
               </div>
             </div>
-            <div className="sm:h-[225px] h-[260px] flex flex-col justify-end items-center">
-              <div className="flex-1 sm:mb-[15px] mb-[0px] flex justify-center items-center">
+            <div className="lg:h-[225px] h-[150px] flex flex-col lg:justify-end justify-center items-center">
+              <div className="lg:flex-1 lg:mb-[0px] mb-[20px] flex justify-center items-center">
                 <div className="w-[260px]">
                   <img src={yourCommunity} className="m-auto" />
                 </div>
@@ -37,8 +37,8 @@ export const Rewards = () => {
                 results.
               </div>
             </div>
-            <div className="sm:h-[225px] h-[260px] flex flex-col justify-end items-center">
-              <div className="flex-1 sm:mb-[15px] mb-[0px] flex justify-center items-center">
+            <div className="lg:h-[225px] h-[200px] flex flex-col lg:justify-end justify-center items-center">
+              <div className="lg:flex-1 lg:mb-[0px] mb-[20px] flex justify-center items-center">
                 <div className="w-[260px]">
                   <img src={justmeatsBlack} className="m-auto" />
                 </div>
@@ -50,7 +50,7 @@ export const Rewards = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center sm:gap-[20px] gap-[8px] text-[#EFEEED] px-[25px] pt-[50px] text-center">
+        <div className="flex justify-center sm:gap-[20px] gap-[8px] text-[#EFEEED] px-[25px] lg:pb-0 pb-[50px] lg:pt-[50px] pt-[20px] text-center">
           <NavLink
             end
             to="/about"

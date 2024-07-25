@@ -29,7 +29,10 @@ export const Comparigen = () => {
             </ul>
           </div>
         </div>
-        <div className="border-[5px] border-[#FFF] sm:p-[30px] p-[15px] bg-[#fff]">
+        <div
+          className="border-[5px] border-[#FFF] sm:p-[30px] p-[15px] bg-[#fff]"
+          style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
+        >
           <div className="text-center font-hudson text-[#BF4745] text-[24px] font-[620] tracking-[1.2px] leading-normal uppercase mb-[20px]">
             <img src={compareimagelogo} className="m-auto" />
           </div>

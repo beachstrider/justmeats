@@ -8,20 +8,20 @@ import { StartQuate } from '~/icons/StartQuate'
 export const MarqueeImage = () => {
   return (
     <section>
-      <div className="bg-rec-96 relative">
+      <div className="black-horizontal relative">
         <div className="container-small">
           <div className="flex items-center gap-[30px]">
-            <div className="md:w-[320px] absolute top-[-8%] md:left-0 left-[25%] md:right-0 right-[25%]">
+            <div className="absolute top-[-8%] md:left-[10%] left-[25%] md:right-[0] right-[25%]">
               <img src={marqueeimagetext} />
             </div>
-            <div class="text-[#231B19] sm:text-[18px] text-[16px] font-medium tracking-[1.8px] leading-[24px] py-[30px] md:ml-[320px] sm:pt-[30px] pt-[50%] text-center">
+            <div className="text-[#231B19] sm:text-[18px] text-[16px] font-medium tracking-[1.8px] leading-[24px] py-[30px] md:px-0 px-[20px] md:ml-[320px] md:pt-[30px] pt-[45%] text-center">
               <StartQuate />
               <span>
                 I’ve trained hundreds of clients and they always want the best
                 meal delivery service. I’ve suggested so many but I never found
-                one that I truly loved. Until{' '}
+                one that I truly loved. Until
                 <span className="font-bold">Just Meats</span>! The best, hands
-                down!{' '}
+                down!
               </span>
               <EndQuate />
               <span className="font-bold">
