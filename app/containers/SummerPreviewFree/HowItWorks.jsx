@@ -13,10 +13,10 @@ export const HowItWorks = () => {
         className="absolute top-[-46px] right-0 hidden lg:block"
       />
       <div className="md:pt-[62px] pt-[54px] lg:pb-[60px] pb-[60px] w-full">
-        <div className="lg:text-[14px] font-bold leading-[23px] lg:tracking-[2.8px] text-[12px] tracking-[2.8px] text-[#231B19] text-center">
-          HOW OUR NEW PARTY SIZED PREMIUM BBQ MEAT TRAYS WORK
-        </div>
         <div className="container-small">
+          <div className="text-[14px] font-bold leading-[23px] lg:tracking-[2.8px] tracking-[2.8px] text-[#231B19] text-center lg:mb-[6px] mb-[12px]">
+            HOW OUR NEW PARTY SIZED PREMIUM BBQ MEAT TRAYS WORK
+          </div>
           <div className="text-center text-[#6B1626] lg:text-[36px] text-[24px] font-bold leading-tight lg:tracking-[1.8px] tracking-[1.2px] lg:mb-[20px] mb-[17px] font-hudson">
             A LEGENDARY BBQ EXPERIENCE
           </div>
