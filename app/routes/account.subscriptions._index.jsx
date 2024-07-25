@@ -35,7 +35,7 @@ export const loader = async ({ request, context }) =>
     const subscriptionsData = rechargeSession.customerId
       ? listSubscriptions(rechargeSession, {
           limit: 25,
-          include: 'address',
+          include: ['address', 'customer'],
           status: 'active',
         })
       : { subscriptions: [] }
@@ -89,27 +89,37 @@ export default function SubscriptionsPage() {
   const [address, setAddress] = useState(null)
 
   return (
-    <div className="bg-[#efeeed]">
-      <div className="container">
-        <div className="flex sm:flex-row flex-col gap-[20px] justify-between items-center sm:pt-[30px] pt-[20px] sm:pb-[10px] pb-[8px]">
-          <h2 className="font-bold text-lead text-[28px] text-center md:text-left">
-            Your Subscriptions
-          </h2>
+    <div className="bg-[#efeeed] lg:pt-[57px] lg:pb-[88px] pt-[38px] pb-[38px]">
+      <div className="max-w-[1340px] w-full px-[20px] mx-auto">
+        <div className="font-hudson font-bold lg:text-[36px] lg:tracking-[1.8px] text-[24px] tracking-[1.2px] text-center lg:mb-[40px] mb-[27px]">
+          Your Subscriptions
         </div>
-        <hr className="border-t-2 border-gray-500"></hr>
         {subscriptions.length > 0 ? (
-          <div className="flex flex-col sm:gap-[30px] gap-[20px] sm:py-[40px] py-[30px]">
-            {subscriptions.map((subscription) => (
-              <Card
-                setAddress={setAddress}
-                subscription={subscription}
-                key={subscription.id}
-              />
-            ))}
+          <>
+            {subscriptions.length === 1 ? (
+              <div className="flex justify-center">
+                <div className="max-w-[637px] w-full">
+                  <Card
+                    setAddress={setAddress}
+                    subscription={subscriptions[0]}
+                  />
+                </div>
+              </div>
+            ) : (
+              <div className="grid lg:grid-cols-2 grid-cols-1 [gap:40px_20px]">
+                {subscriptions.map((subscription) => (
+                  <Card
+                    setAddress={setAddress}
+                    subscription={subscription}
+                    key={subscription.id}
+                  />
+                ))}
+              </div>
+            )}
             {address !== null && (
               <div
                 className={
-                  'w-full md:w-[30%] xl:w-[22%] border-[#B2B2B2] border-l fixed overflow-y-auto md:overflow-y-hidden h-screen top-0 right-0 bg-white z-10 flex flex-col'
+                  'w-full md:w-[30%] xl:w-[22%] border-[#B2B2B2] border-l fixed overflow-y-auto md:overflow-y-hidden h-screen top-0 right-0 bg-white z-40 flex flex-col'
                 }
               >
                 <div className="w-full border-[#B2B2B2] border-b px-4 pt-4 pb-2 sticky ">
@@ -130,7 +140,7 @@ export default function SubscriptionsPage() {
                 </div>
               </div>
             )}
-          </div>
+          </>
         ) : (
           <div className="flex justify-center py-40 text-lg">
             You don&apos;t have any active bundle subscriptions
