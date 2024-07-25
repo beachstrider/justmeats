@@ -12,6 +12,8 @@ import { useSubmitPromise } from '~/hooks/useSubmitPromise'
 import { Spot } from '~/icons/Spot'
 import { sendPageView } from '~/lib/metaPixel.server'
 
+const product_handle = 'bbq-cookout-ticket'
+
 export const meta = () => {
   return [{ title: 'BBQ Cookout - Just Meats' }]
 }
@@ -26,7 +28,7 @@ export async function loader({ request, context, params }) {
   const { product } = await storefront.query(PRODUCT_BY_HANDLE_QUERY, {
     variables: {
       ...variables,
-      handle: 'gift-card',
+      handle: product_handle,
       country: storefront.i18n.country,
       language: storefront.i18n.language,
     },
