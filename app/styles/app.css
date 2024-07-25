@@ -1092,3 +1092,9 @@ section.product-list-slider button.slick-arrow.slick-next {
   background-position-y: bottom;
   background-repeat: no-repeat;
 }
+
+.bg-free-preview-banner-left {
+  @apply bg-[url('../assets/images/ds4f6g4a6ef46awef163as1g3rsdfg.jpg')];
+  background-size: cover;
+  background-position: center;
+}
