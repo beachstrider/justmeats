@@ -530,7 +530,7 @@ section.bg-\[url\(\'https\:\/\/cdn\.shopify\.com\/s\/files\/1\/0555\/1751\/1961\
   h3.text-\[50px\] {
   font-family: 'Rockwell Bold' !important;
 }
-.crossfit-banneroverlay{
+.crossfit-banneroverlay {
   background: linear-gradient(0deg, rgb(255 255 255 / 0%) 0%, #22222280 95%);
 }
 @media screen and (min-width: 1024px) {
@@ -550,8 +550,12 @@ section.bg-\[url\(\'https\:\/\/cdn\.shopify\.com\/s\/files\/1\/0555\/1751\/1961\
   }
 }
 @media screen and (min-width: 640px) {
-  .crossfit-banneroverlay{
-      background: linear-gradient(270deg, rgb(255 255 255 / 0%) 0%, #222222b8 70%);
+  .crossfit-banneroverlay {
+    background: linear-gradient(
+      270deg,
+      rgb(255 255 255 / 0%) 0%,
+      #222222b8 70%
+    );
   }
 }
 .banner {
@@ -1073,4 +1077,10 @@ section.product-list-slider button.slick-arrow.slick-next {
 
 .bg-party-size {
   @apply lg:bg-[url('../assets/images/6aw5e4r6r5ht465erf6awe6awef.png')] bg-[url('../assets/images/16fdj6fguy16h1drthdrth654f4y5tjft.png')] lg:[background-size:50%] [background-size:90%] lg:[background-position-x:right] [background-position-x:center] lg:[background-position-y:center] [background-position-y:top] [background-repeat:no-repeat];
+}
+
+.bg-free-preview-banner-left {
+  @apply bg-[url('../assets/images/ds4f6g4a6ef46awef163as1g3rsdfg.jpg')];
+  background-size: cover;
+  background-position: center;
 }
