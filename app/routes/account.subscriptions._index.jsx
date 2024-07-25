@@ -9,6 +9,7 @@ import { json } from '@shopify/remix-oxygen'
 
 import { AddressForm } from '~/containers/Account/Subscriptions/AddressForm'
 import { Card } from '~/containers/Account/Subscriptions/Card'
+import { NoSubscriptionCard } from '~/containers/Account/Subscriptions/NoSubscriptionCard'
 import { Close } from '~/icons/Close'
 import { sendPageView } from '~/lib/metaPixel.server'
 import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
@@ -89,13 +90,13 @@ export default function SubscriptionsPage() {
   const [address, setAddress] = useState(null)
 
   return (
-    <div className="bg-[#efeeed] lg:pt-[57px] lg:pb-[88px] pt-[38px] pb-[38px]">
-      <div className="max-w-[1340px] w-full px-[20px] mx-auto">
-        <div className="font-hudson font-bold lg:text-[36px] lg:tracking-[1.8px] text-[24px] tracking-[1.2px] text-center lg:mb-[40px] mb-[27px]">
-          Your Subscriptions
-        </div>
-        {subscriptions.length > 0 ? (
-          <>
+    <div className="bg-[#efeeed]">
+      {subscriptions.length > 0 ? (
+        <div className="max-w-[1340px] w-full px-[20px] mx-auto">
+          <div className="lg:pt-[57px] lg:pb-[88px] pt-[38px] pb-[38px]">
+            <div className="font-hudson font-bold lg:text-[36px] lg:tracking-[1.8px] text-[24px] tracking-[1.2px] text-center lg:mb-[40px] mb-[27px]">
+              YOUR SUBSCRIPTIONS
+            </div>
             {subscriptions.length === 1 ? (
               <div className="flex justify-center">
                 <div className="max-w-[637px] w-full">
@@ -140,13 +141,11 @@ export default function SubscriptionsPage() {
                 </div>
               </div>
             )}
-          </>
-        ) : (
-          <div className="flex justify-center py-40 text-lg">
-            You don&apos;t have any active bundle subscriptions
           </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <NoSubscriptionCard />
+      )}
     </div>
   )
 }
