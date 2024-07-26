@@ -105,7 +105,7 @@ export function FaqAccordion() {
           When does my meat arrive?
         </AccordionHeader>
         <AccordionBody className="pt-0 font-barlow text-lg font-normal leading-[27px] text-[#231B19] pr-0 xl:pr-9 pb-10">
-          Depending on the shipping option you choose, within 1-5 business days.
+          Depending on the shipping option you choose, within 5-7 business days.
         </AccordionBody>
       </Accordion>
       <Accordion
