@@ -14,7 +14,7 @@ export const MarqueeImage = () => {
             <div>
               <img
                 src={marqueeimagetext}
-                className="absolute md:top-[-26%] top-[-15%] md:left-[10%] md:-translate-x-1 left-1/2 -translate-x-1/2 "
+                className="absolute top-[-15%] md:left-[10%] md:-translate-x-1 left-1/2 -translate-x-1/2 "
               />
             </div>
             <div className="text-[#231B19] sm:text-[18px] text-[16px] font-medium tracking-[1.8px] leading-[24px] py-[30px] md:px-0 px-[20px] md:ml-[320px] md:pt-[30px] pt-[45%] text-center">

@@ -5,7 +5,7 @@ import gymprogrambannerlogo from '~/assets/images/gymprogram-bannerlogo.png'
 export const Banner = () => {
   return (
     <section className="bg-[url('../assets/images/NewBannerYourgym1.png')] sm:[background-size:100%] [background-size:190%] bg-right-top bg-no-repeat">
-      <div className="bg-[url('../assets/images/blackgradient.png')] 2xl:bg-[url('')] bg-no-repeat bg-transparent bg-bottom [background-size:100%_95%]">
+      <div className="bg-[url('../assets/images/blackgradient.png')] 2xl:bg-[url('')] bg-no-repeat bg-transparent bg-bottom [background-size:100%_95%] mb-[-3px]">
         <div className="w-[80%] mx-auto">
           <div className="flex flex-col md:flex-row pt-[100px] text-center sm:text-left">
             <div className="basis-2/2">
@@ -25,7 +25,7 @@ export const Banner = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[url('../assets/images/recipe-bottom-img.png')] bg-repeat px-[13px] py-[13px]"></div>
+      <div className="bg-[url('../assets/images/Hatbandnew.png')] bg-repeat px-[13px] py-[13px]"></div>
     </section>
   )
 }
