@@ -29,7 +29,7 @@ export const DeliverToDoor = () => {
 
               <div className="lg:text-[18px] text-[16px] pt-[40px]  font-medium lg:font-normal leading-[120%]">
                 Once your order has been placed, and you’ve received your
-                confirmation email, it will take 1-2 days to process your order.
+                confirmation email, it will take 5-7 days to process your order.
               </div>
               <div className="lg:text-[18px] text-[16px] font-bold lg:font-medium leading-[120%] mt-[16px]">
                 *This is the point of no return. It’s super difficult to cancel
