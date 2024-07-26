@@ -61,8 +61,8 @@ export const ContactForm = ({ formName }) => {
           placeholder="Enter your full name"
           className={
             formName === 'first'
-              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
-              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
+              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
+              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
           }
         />
         {errors.name && (
@@ -84,8 +84,8 @@ export const ContactForm = ({ formName }) => {
           type="email"
           className={
             formName === 'first'
-              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
-              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
+              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
+              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
           }
         />
         {errors.email && (
@@ -107,8 +107,8 @@ export const ContactForm = ({ formName }) => {
           type="text"
           className={
             formName === 'first'
-              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
-              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
+              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
+              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
           }
         />
         {errors.gym_name && (
@@ -130,8 +130,8 @@ export const ContactForm = ({ formName }) => {
           type="tel"
           className={
             formName === 'first'
-              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
-              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
+              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
+              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
           }
         />
         {errors.phone && (
@@ -152,8 +152,8 @@ export const ContactForm = ({ formName }) => {
           placeholder="Enter your Gym address"
           className={
             formName === 'first'
-              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
-              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
+              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
+              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
           }
         />
         {errors.gym_address && (

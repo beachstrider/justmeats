@@ -20,7 +20,7 @@ export const Rewards = () => {
                   <img src={yourGym} className="m-auto" />
                 </div>
               </div>
-              <div className="text-[#000] sm:text-[18px] text-[16px] leading-[21px] sm:tracking-[1.8px] tracking-[1.6px] font-medium text-center max-w-[304px]">
+              <div className="h-[84px] text-[#000] sm:text-[18px] text-[16px] leading-[21px] sm:tracking-[1.8px] tracking-[1.6px] font-medium text-center max-w-[304px]">
                 {/* <div className="opacity-0">EMPTY STRING TO MATCH HEIGHT</div> */}
                 Provides the facility, training, and expertise that lead to
                 results.
@@ -32,7 +32,7 @@ export const Rewards = () => {
                   <img src={yourCommunity} className="m-auto" />
                 </div>
               </div>
-              <div className="text-[#000] sm:text-[18px] text-[16px]  leading-[21px] sm:tracking-[1.8px] tracking-[1.6px] font-medium text-center max-w-[304px]">
+              <div className="h-[84px] text-[#000] sm:text-[18px] text-[16px]  leading-[21px] sm:tracking-[1.8px] tracking-[1.6px] font-medium text-center max-w-[304px]">
                 Provides the support, environment, and coaching that lead to
                 results.
               </div>
@@ -43,7 +43,7 @@ export const Rewards = () => {
                   <img src={justmeatsBlack} className="m-auto" />
                 </div>
               </div>
-              <div className="text-[#000] sm:text-[18px] text-[16px] leading-[21px] sm:tracking-[1.8px] tracking-[1.6px] font-medium text-center max-w-[304px]">
+              <div className="h-[84px] text-[#000] sm:text-[18px] text-[16px] leading-[21px] sm:tracking-[1.8px] tracking-[1.6px] font-medium text-center max-w-[304px]">
                 Provides a universal nutrition solution highlighting proper
                 protein intake that leads to results.
               </div>
