@@ -29,7 +29,7 @@ export function MobileMenuAside() {
       <div
         className={`${
           menuToggle ? 'block' : 'hidden'
-        } fixed top-0 bg-[#0000005c] z-20 w-[100vw] h-[100vh] transition-all duration-300 `}
+        } fixed top-0 bg-[#0000005c] z-[25] w-[100vw] h-[100vh] transition-all duration-300 `}
       ></div>
       <div
         className={`${
