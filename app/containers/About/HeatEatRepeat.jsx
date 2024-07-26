@@ -5,7 +5,7 @@ export const HeatEatRepeat = () => {
   return (
     <section className="relative">
       <div className="absolute hidden w-1/2 h-full [background:linear-gradient(270deg,rgba(255,255,255,0.00)0%,rgba(255,255,255,0.79)75.17%)] lg:block"></div>
-      <div className="lg:bg-[url('../assets/images/JustMeats_StyledProduct_Stills_Full.png')] bg-[url('../assets/images/JustMeats_StyledProduct_Stills_FullRes_Vertical.png')] bg-no-repeat bg-cover lg:pb-[0] pb-[280px] lg:bg-center bg-bottom">
+      <div className="bg-heat-eat">
         <div className="relative bg-[url('../assets/images/recipe-bottom-img.png')] bg-repeat  px-[13px] py-[13px]"></div>
         <div className="relative max-w-[1210px] w-full mx-auto lg:pt-[60px] pt-[40px] lg:pb-[132px] pb-[40px] px-[20px] tracking-tight">
           <div className="relative md:w-[700px] lg:flex lg:text-left text-center">

@@ -1,5 +1,5 @@
 import { getDynamicBundleItems } from '@rechargeapps/storefront-client'
-import { json, redirect } from '@shopify/remix-oxygen'
+import { json } from '@shopify/remix-oxygen'
 
 import { Notification } from '~/components/Notification'
 import { CustomBundle } from '~/containers/CustomBundle'
@@ -14,10 +14,6 @@ export const meta = () => {
 
 export async function loader({ request, context, params }) {
   sendPageView(request)
-
-  if (params.bundle !== context.env.PUBLIC_BUNDLE_PRODUCT_HANDLE) {
-    return redirect(`/products/${context.env.PUBLIC_BUNDLE_PRODUCT_HANDLE}`)
-  }
 
   const discountCode = context.session.get('discountCode')
   const discountCodes = discountCode ? [discountCode] : []
