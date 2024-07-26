@@ -45,7 +45,7 @@ export const MarqueeImage = () => {
             loop={100}
           >
             <div className="font-espiritu text-[128px] font-normal text-[#6B1626]">
-              TRAINING COMMUNITY NUTRITION
+              TRAINING COMMUNITY NUTRITION &nbsp;
             </div>
             {/* <img src={traningCommunityNutrition} /> */}
           </Marquee>
