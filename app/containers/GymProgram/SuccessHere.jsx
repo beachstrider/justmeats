@@ -2,14 +2,14 @@ import { ContactForm } from './ContactForm'
 
 export const SuccessHere = () => {
   return (
-    <section className="relative bg-[#EFEEED] sm:py-[80px] py-[60px] bg-pattern2">
+    <section className="relative bg-[#EFEEED] sm:py-[80px] pt-[60px] bg-pattern2">
       <div className="relative container-small">
         <div className="grid md:grid-cols-2 grid-cols-1 sm:gap-[55px] gap-[52px] items-center">
           <div className="text-white sm:text-left text-center">
             <div className="font-hudson sm:text-[40px] text-[29px] font-[620] tracking-[0.87px] leading-[40px] uppercase">
               increase results. increase retention. increase referrals.
             </div>
-            <div className="sm:text-[24px] text-[18px] font-bold sm:tracking-[2.4px] tracking-[1.8px] leading-normal uppercase my-[10px]">
+            <div className="sm:text-[24px] text-[18px] font-bold sm:tracking-[2.4px] tracking-[1.8px] leading-normal uppercase md:my-[10px] my-[20px]">
               benefits for you, your members, and your business
             </div>
             <div className="sm:text-[18px] text-[16px] font-normal sm:tracking-[1.8px] tracking-[1.6px] leading-normal flex flex-col gap-[10px]">
@@ -39,12 +39,12 @@ export const SuccessHere = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col justify-between aspect-square bg-[#F8F2E8]">
-            <div className="mt-[30px] xl:px-[50px] px-[33px]">
+          <div className="flex flex-col justify-between aspect-square bg-[#F8F2E8] md:mx-0 mx-[-20px]">
+            <div className="xl:px-[50px] px-[33px] md:w-[80%] m-auto mt-[40px]">
               <div className="font-hudson text-[24px] font-[620] text-center tracking-[1.2px] leading-[29px] uppercase">
                 your journey to success starts here
               </div>
-              <div className="text-[16px] text-[#BF4745] font-semibold text-center my-[6px] tracking-[0.8px] leading-normal uppercase">
+              <div className="text-[16px] text-[#BF4745] font-bold text-center my-[10px] tracking-[0.8px] leading-normal uppercase">
                 Take the first step towards a Just Meats Gym Partnership today
               </div>
             </div>

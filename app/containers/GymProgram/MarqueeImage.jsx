@@ -11,8 +11,11 @@ export const MarqueeImage = () => {
       <div className="black-horizontal relative">
         <div className="container-small">
           <div className="flex items-center gap-[30px]">
-            <div className="absolute top-[-8%] md:left-[10%] left-[25%] md:right-[0] right-[25%]">
-              <img src={marqueeimagetext} />
+            <div>
+              <img
+                src={marqueeimagetext}
+                className="absolute md:top-[-26%] top-[-15%] md:left-[10%] md:-translate-x-1 left-1/2 -translate-x-1/2 "
+              />
             </div>
             <div className="text-[#231B19] sm:text-[18px] text-[16px] font-medium tracking-[1.8px] leading-[24px] py-[30px] md:px-0 px-[20px] md:ml-[320px] md:pt-[30px] pt-[45%] text-center">
               <StartQuate />
@@ -20,8 +23,8 @@ export const MarqueeImage = () => {
                 I’ve trained hundreds of clients and they always want the best
                 meal delivery service. I’ve suggested so many but I never found
                 one that I truly loved. Until
-                <span className="font-bold">Just Meats</span>! The best, hands
-                down!
+                <span className="sm:font-medium font-bold">Just Meats</span>!
+                The best, hands down!
               </span>
               <EndQuate />
               <span className="font-bold">
@@ -31,7 +34,7 @@ export const MarqueeImage = () => {
           </div>
         </div>
       </div>
-      <div className="sm:py-[104px] py-[64px] overflow-x-hidden relative">
+      <div className="sm:pt-[104px] pt-[64px] overflow-x-hidden relative">
         <div className="w-full ">
           <Marquee
             pauseOnHover={false}
@@ -41,7 +44,10 @@ export const MarqueeImage = () => {
             pauseOnClick={true}
             loop={100}
           >
-            <img src={traningCommunityNutrition} />
+            <div className="font-espiritu text-[128px] font-normal text-[#6B1626]">
+              TRAINING COMMUNITY NUTRITION
+            </div>
+            {/* <img src={traningCommunityNutrition} /> */}
           </Marquee>
         </div>
       </div>

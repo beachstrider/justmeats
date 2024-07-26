@@ -55,9 +55,9 @@ export const Rewards = () => {
             end
             to="/about"
             prefetch="intent"
-            className="font-bold px-[18px] md:px-[24px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] tracking-[1px]"
+            className="font-bold px-[18px] md:px-[24px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] tracking-[1px] uppercase"
           >
-            HOW IT WORKS
+            Get started
           </NavLink>
         </div>
       </div>

@@ -42,8 +42,8 @@ export const ContactForm = ({ formName }) => {
       onSubmit={handleSubmit(onSubmit)}
       className={
         formName === 'first'
-          ? 'relative xl:pt-[46px] xl:pb-[36px] xl:px-[50px] pt-[30px] pb-[30px] px-[33px] flex flex-col items-start gap-[16px]'
-          : 'relative xl:pt-[46px] xl:pb-[36px] xl:px-[50px] pt-[30px] pb-[30px] px-[33px] flex flex-col items-start gap-[16px]'
+          ? 'relative pt-[20px] pb-[40px] xl:px-[50px] px-[33px] flex flex-col items-start gap-[16px]'
+          : 'relative pt-[20px] pb-[40px] xl:px-[50px] px-[33px] flex flex-col items-start gap-[16px]'
       }
     >
       {isSubmitted && (

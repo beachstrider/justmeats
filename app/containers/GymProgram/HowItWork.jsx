@@ -17,20 +17,20 @@ export const HowItWork = () => {
       </div>
       <div className="relative py-[40px]">
         <div className="relative container-small">
-          <div className="w-full grid lg:grid-cols-3 grid-cols-1 sm:gap-[20px] gap-[12px]">
+          <div className="w-full grid lg:grid-cols-3 grid-cols-1 sm:gap-[20px] gap-[30px]">
             <div
               className="bg-pattern2 flex flex-col justify-end items-center text-center sm:p-[55px] p-[30px] sm:pt-[20px] pt-[15px]"
               style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
             >
-              <div className="flex items-center flex-1 ">
+              <div className=" flex items-center flex-1 ">
                 <div className="sm:w-[112px] w-[72px] text-[#FFF] font-hudson sm:text-[40px] text-[35px] font-[420] leading-[120%]">
                   1
                 </div>
               </div>
-              <div className="text-[24px] text-[#fff] font-[620] tracking-[1.2px] leading-normal sm:mb-[22px] mb-[14px] uppercase">
+              <div className=" text-[24px] text-[#fff] font-[620] tracking-[1.2px] leading-normal sm:mb-[22px] mb-[14px] uppercase">
                 fill out the form
               </div>
-              <div className="sm:text-[18px] text-[16px] text-[#fff] font-semibold sm:tracking-[1.8px] tracking-[1.6px] leading-[21px]">
+              <div className="lg:max-h-[80px] sm:text-[18px] text-[16px] text-[#fff] font-semibold sm:tracking-[1.8px] tracking-[1.6px] leading-[21px]">
                 We’ll send you some JUST MEATS products to try out.
               </div>
             </div>
@@ -38,15 +38,15 @@ export const HowItWork = () => {
               className="bg-pattern2 flex flex-col justify-end items-center text-center sm:p-[51px] p-[30px] sm:pt-[20px] pt-[15px]"
               style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
             >
-              <div className="flex items-center flex-1 ">
+              <div className=" flex items-center flex-1 ">
                 <div className="sm:w-[112px] w-[72px] text-[#FFF] font-hudson sm:text-[40px] text-[35px] font-[420] leading-[120%]">
                   2
                 </div>
               </div>
-              <div className="text-[24px] text-[#fff] font-[620] tracking-[1.2px] leading-normal sm:mb-[22px] mb-[14px] uppercase">
+              <div className="  text-[24px] text-[#fff] font-[620] tracking-[1.2px] leading-normal sm:mb-[22px] mb-[14px] uppercase">
                 commit
               </div>
-              <div className="sm:text-[18px] text-[16px] text-[#fff] font-semibold sm:tracking-[1.8px] tracking-[1.6px] leading-[21px]">
+              <div className="lg:max-h-[80px]  sm:text-[18px] text-[16px] text-[#fff] font-semibold sm:tracking-[1.8px] tracking-[1.6px] leading-[21px]">
                 We generate codes, supply training and promotional assets for
                 social, email, etc.
               </div>
@@ -56,14 +56,14 @@ export const HowItWork = () => {
               style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
             >
               <div className="flex items-center flex-1 ">
-                <div className="sm:w-[112px] w-[72px] text-[#FFF] font-hudson sm:text-[40px] text-[35px] font-[420] leading-[120%]">
+                <div className="  sm:w-[112px] w-[72px] text-[#FFF] font-hudson sm:text-[40px] text-[35px] font-[420] leading-[120%]">
                   3
                 </div>
               </div>
-              <div className="text-[24px] text-[#fff] font-[620] tracking-[1.2px] leading-normal sm:mb-[22px] mb-[14px] uppercase">
+              <div className="  text-[24px] text-[#fff] font-[620] tracking-[1.2px] leading-normal sm:mb-[22px] mb-[14px] uppercase">
                 start earning
               </div>
-              <div className="sm:text-[18px] text-[16px] text-[#fff] font-semibold  sm:tracking-[1.8px] tracking-[1.6px] leading-[21px]">
+              <div className="xl:max-h-[80px]  sm:text-[18px] text-[16px] text-[#fff] font-semibold  sm:tracking-[1.8px] tracking-[1.6px] leading-[21px]">
                 We assign a designated account manager to work
                 shoulder-to-shoulder with you to help your members reach their
                 fitness goals.

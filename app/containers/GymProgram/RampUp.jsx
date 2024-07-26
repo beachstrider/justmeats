@@ -9,7 +9,7 @@ export const RampUp = () => {
       <div className="relative bg-[#EFEEED] sm:py-[80px] py-[60px] bg-pattern2">
         <div className="relative container-small">
           <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-[55px] gap-[2px] items-end">
-            <div className="flex flex-col justify-between aspect-square bg-[#F8F2E8]">
+            <div className="flex flex-col justify-between aspect-square bg-[#F8F2E8] md:mx-0 mx-[-20px]">
               <div className="mt-[30px] xl:px-[50px] px-[33px]">
                 <div className="font-hudson text-[24px] font-[620] text-center tracking-[1.2px] leading-[29px] uppercase">
                   ramp up your results
