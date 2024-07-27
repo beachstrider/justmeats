@@ -22,7 +22,7 @@ export const FarmToTable = () => {
   )
   const linkName = readMore ? 'Read Less' : 'Read All'
   return (
-    <section className="relative lg:h-[678px] flex flex-col-reverse lg:flex-row bg-[#F8F2E8] text-[#231B19]">
+    <section className="relative lg:h-[678px] flex flex-col-reverse lg:flex-row bg-[#fff] text-[#231B19]">
       <div className="lg:w-[50%]">
         <div className="bg-[url('../assets/images/46d7bfd1d15cd6fcf26b387428b1a213.png')]  bg-cover bg-center lg:w-[88%] lg:h-full h-[350px]"></div>
       </div>
@@ -66,22 +66,23 @@ export const FarmToTable = () => {
           </div>
 
           <div
-            className="lg:hidden block text-center text-[#BF4745] text-[16px] font-bold leading-normal tracking-[0.8px] uppercase"
+            className="lg:hidden block text-center text-[#637160] text-[16px] font-bold leading-normal tracking-[0.8px] uppercase"
             onClick={() => {
               setReadMore(!readMore)
             }}
           >
             {linkName}
           </div>
-
-          <NavLink
-            end
-            to="/about"
-            prefetch="intent"
-            className="text-white font-bold px-[18px] md:px-[24px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] tracking-[1px] uppercase"
-          >
-            Learn more
-          </NavLink>
+          <div className="flex sm:pt-0 pt-[20px]">
+            <NavLink
+              end
+              to="/about"
+              prefetch="intent"
+              className="sm:m-0 m-auto text-center text-white font-bold px-[18px] md:px-[24px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] tracking-[1px] uppercase"
+            >
+              Learn more
+            </NavLink>
+          </div>
         </div>
       </div>
     </section>

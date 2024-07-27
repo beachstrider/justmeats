@@ -100,8 +100,8 @@ export const Banner = () => {
         </div>
       </div>
       <div className="sm:px-0 px-[20px] bg-[#F8F2E8]">
-        <div className="relative z-[2] bg-pattern2 sm:pt-0 sm:pb-0 pt-[28px] pb-[22px] sm:mt-0 mt-[-90px]">
-          <div className="container-small sm:text-left text-center sm:py-[24px] flex sm:flex-row flex-col sm:justify-evenly justify-start sm:items-start items-center">
+        <div className="relative z-[2] bg-pattern2 sm:pt-0 sm:pb-0 pt-[28px] pb-[22px] sm:mt-0 mt-[-50%]">
+          <div className="sm:text-[16px] text-[14px] container-small sm:text-left text-center sm:py-[24px] flex md:flex-row flex-col sm:justify-evenly justify-start md:items-start items-center">
             <div className="relative flex flex-col items-center sm:flex-row">
               <div className="flex flex-col justify-center flex-1 sm:flex-row">
                 <div className="text-[#EFEEED]">
@@ -114,7 +114,7 @@ export const Banner = () => {
                 </div>
               </div>
             </div>
-            <div className="shrink-0 sm:w-[3px] w-[110px] sm:h-[110px] h-[3px] rounded-full bg-white sm:mt-0 sm:mb-0 mt-[10px] mb-[20px]" />
+            <div className="shrink-0 md:w-[3px] w-[110px] md:h-[110px] h-[3px] rounded-full bg-white md:mt-0 md:mb-0 mt-[10px] mb-[20px]" />
             <div className="relative flex flex-col items-center sm:flex-row">
               <div className="flex flex-col justify-center flex-1 sm:flex-row">
                 <div className="text-[#EFEEED]">
@@ -127,7 +127,7 @@ export const Banner = () => {
                 </div>
               </div>
             </div>
-            <div className="shrink-0 sm:w-[3px] w-[110px] sm:h-[110px] h-[3px] rounded-full bg-white sm:mt-0 sm:mb-0 mt-[10px] mb-[20px]" />
+            <div className="shrink-0 md:w-[3px] w-[110px] md:h-[110px] h-[3px] rounded-full bg-white md:mt-0 md:mb-0 mt-[10px] mb-[20px]" />
             <div className="relative flex flex-col sm:flex-row">
               <div className="flex flex-col justify-center flex-1 sm:flex-row">
                 <div className="text-[#EFEEED]">

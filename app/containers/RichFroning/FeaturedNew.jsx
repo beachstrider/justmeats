@@ -82,6 +82,17 @@ export const FeaturedNew = () => {
         <div className="text-center font-hudson sm:text-[36px] text-[24px] font-bold sm:tracking-[1.8px] tracking-[1.2px]">
           NOW SERVING
         </div>
+        <div className="text-[#BF4745] text-[14px] sm:font-bold font-medium tracking-[0.7px] leading-normal uppercase flex justify-center py-[25px]">
+          <div className="py-[10px] sm:px-[20px] px-[13px] border-2 border-[#BF4745] text-[#fff] bg-[#BF4745]">
+            Featured
+          </div>
+          <div className="py-[10px] sm:px-[20px] px-[13px] border-2 border-[#BF4745] border-x-0">
+            Most Popular
+          </div>
+          <div className="py-[10px] sm:px-[20px] px-[13px] border-2 border-[#BF4745]">
+            Trending
+          </div>
+        </div>
         <div className="w-[360px] sm:w-auto pt-6">
           <div className="slider-container homeFeaturedSlider">
             <Slider {...settings}>{slides[collection.id]}</Slider>
