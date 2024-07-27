@@ -70,7 +70,7 @@ export const HowWeDoThis = () => {
         className="absolute md:block hidden left-0 xl:top-[120px] top-[14%]"
       />
       <div className="container-small flex flex-col items-center  sm:mb-[56px] mb-[41px] relative">
-        <div className="sm:text-[14px] font-bold leading-[23px] sm:tracking-[2.8px] text-[12px] tracking-[2.8px] text-[#6B1626] text-center sm:mb-[6px] mb-[4px]">
+        <div className="text-[14px] font-bold leading-[23px] sm:tracking-[2.8px] tracking-[2.8px] sm:text-[#6B1626] text-[#7D0E21] text-center sm:mb-[6px] mb-[4px]">
           STAY LEAN, EAT CLEAN, SAVE GREEN
         </div>
         <div className="text-center sm:text-[36px] text-[24px] font-bold font-hudson leading-tight sm:tracking-[1.8px] tracking-[1.2px] sm:mb-[20px] mb-[17px] font-mobile">
@@ -78,7 +78,7 @@ export const HowWeDoThis = () => {
           <br />
           FOR PROTEIN PERFECTION
         </div>
-        <div className="max-w-[730px] text-[#231b19] sm:text-center text-justify [word-spacing:-1px] sm:[word-spacing:0] sm:text-[18px] text-[16px] font-normal sm:leading-[26px] leading-[25px] tracking-[0.16px] sm:mb-[51px] mb-[63px]">
+        <div className="max-w-[730px] text-[#231b19] sm:text-center text-center [word-spacing:-1px] sm:[word-spacing:0] sm:text-[18px] text-[16px] font-normal sm:leading-[26px] leading-[25px] tracking-[0.16px] sm:mb-[51px] mb-[63px]">
           Prepping protein every week can be challenging, expensive, and
           time-consuming - even if you know what you&rsquo;re doing. So, we
           tackled the protein problem head on. We deliver delicious beef, pork,
@@ -87,7 +87,7 @@ export const HowWeDoThis = () => {
 
         <div className="w-full grid md:grid-cols-4 grid-cols-2 sm:gap-[20px] gap-[12px]">
           <div
-            className="md:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
+            className="md:rounded-0 rounded-[8px] md:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
             style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
           >
             <div className="flex items-center flex-1">
@@ -105,7 +105,7 @@ export const HowWeDoThis = () => {
             </div>
           </div>
           <div
-            className="xl:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
+            className="md:rounded-0 rounded-[8px] xl:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
             style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
           >
             <div className="flex items-center flex-1">
@@ -123,7 +123,7 @@ export const HowWeDoThis = () => {
             </div>
           </div>
           <div
-            className="xl:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
+            className="md:rounded-0 rounded-[8px] xl:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
             style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
           >
             <div className="flex items-center flex-1">
@@ -141,7 +141,7 @@ export const HowWeDoThis = () => {
             </div>
           </div>
           <div
-            className="xl:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
+            className="md:rounded-0 rounded-[8px] xl:aspect-[23/25] aspect-[172/208] bg-white flex flex-col justify-end items-center sm:pt-[30px] pt-[16px] sm:pb-[50px] pb-[28px]"
             style={{ boxShadow: '0px 40px 45px -14px rgba(0, 0, 0, 0.15)' }}
           >
             <div className="flex items-center flex-1">

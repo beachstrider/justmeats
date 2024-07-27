@@ -4,7 +4,7 @@ import { FaqAccordion } from '~/components/FaqAccordion'
 export const FaqSection = () => {
   return (
     <section className="bg-[#f5f5f5]">
-      <div className="relative z-50 pt-12">
+      <div className="relative z-50 pt-[5px]">
         <div className="font-hudson uppercase sm:mt-8 mt-2 pb-8 text-[24px] sm:text-[36px] text-center  font-bold sm:mb-[4px] mb-[3px] leading-normal tracking-[1.8px]">
           YOU ASK. WE ANSWER.
         </div>
@@ -13,7 +13,7 @@ export const FaqSection = () => {
         </div>
         <img
           src={RichsPhoto1}
-          className="sm:block absolute z-10 sm:w-[auto] w-[100px] h-[85%] bottom-[0px] right-0 "
+          className="sm:block sm:absolute relative w-full z-10 sm:w-[auto] w-[100px] h-[85%] bottom-[0px] right-0 "
         />
       </div>
     </section>
