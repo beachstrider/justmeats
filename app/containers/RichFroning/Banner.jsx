@@ -27,7 +27,7 @@ const sliderImages = [
 
 export const Banner = () => {
   return (
-    <section className="relative font-nunito text-[#EFEEED]">
+    <section className="relative font-barlow text-[#EFEEED]">
       <div className="sm:h-[calc(100vh-120px)] flex flex-col">
         <div className="relative flex-1">
           <Swiper
@@ -45,18 +45,16 @@ export const Banner = () => {
                   style={{ backgroundImage: `url(${slider.image})` }}
                 >
                   <div className="flex items-center h-full">
-                    <div className="relative container-small pt-[100px] sm:text-center text-white tracking-[2px] sm:pb-0 pb-[156px] leading-normal">
-                      <div className="font-bold sm:text-[36px] text-[30px] cursor-default">
-                        ELITE FITNESS + <br className="block sm:hidden" />
-                        ELITE NUTRITION
+                    <div className="relative container-small pt-[100px] text-center text-white sm:pb-0 pb-[156px] uppercase">
+                      <div className="font-bold sm:text-[36px] text-[18px] cursor-default sm:tracking-[1.8px] tracking-[0.9px] leading-normal">
+                        ELITE FITNESS + ELITE NUTRITION
                       </div>
-                      <div className="font-bold sm:text-[62px] text-[38px] sm:mb-[49px] mb-[45px] cursor-default">
-                        <span className="text-[#E47A0F]">25% </span>
-                        OFF <br className="block sm:hidden" />
-                        FIRST ORDER
-                        <span className="text-[#E47A0F]"> +$15</span>
+                      <div className="font-hudson font-[620] sm:text-[62px] text-[37px] sm:mb-[49px] mb-[45px] cursor-default  sm:tracking-[3.72px] tracking-[2.22px] leading-normal">
+                        <span className="text-[#BF4745]">25% </span>
+                        OFF FIRST ORDER
+                        <span className="text-[#BF4745]"> +$15</span>
                       </div>
-                      <NavLink
+                      {/* <NavLink
                         end
                         prefetch="intent"
                         to="/products/custom-bundle"
@@ -64,7 +62,7 @@ export const Banner = () => {
                         <button className="text-[18px] font-dunbar tracking-[1px] px-[28px] py-[14px] rounded-[4px] bg-[#637160]">
                           GET MEAT
                         </button>
-                      </NavLink>
+                      </NavLink> */}
                     </div>
                   </div>
                 </div>
@@ -72,7 +70,7 @@ export const Banner = () => {
             ))}
           </Swiper>
         </div>
-        <div className="bg-[#231b19] py-[10px] text-[15px] leading-[33px] tracking-[3px] font-normal overflow-x-hidden">
+        <div className="bg-[#231b19] py-[10px] text-[15px] leading-[33px] tracking-[3.45px] font-bold overflow-x-hidden">
           <div className="sm:flex hidden container-small justify-between sm:gap-0 gap-[67px]">
             <div>FAMILY</div>
             <div>FITNESS</div>
@@ -101,7 +99,52 @@ export const Banner = () => {
           </div>
         </div>
       </div>
-      <div
+      <div className="sm:px-0 px-[20px] bg-[#F8F2E8]">
+        <div className="relative z-[2] bg-pattern2 sm:pt-0 sm:pb-0 pt-[28px] pb-[22px] sm:mt-0 mt-[-90px]">
+          <div className="container-small sm:text-left text-center sm:py-[24px] flex sm:flex-row flex-col sm:justify-evenly justify-start sm:items-start items-center">
+            <div className="relative flex flex-col items-center sm:flex-row">
+              <div className="flex flex-col justify-center flex-1 sm:flex-row">
+                <div className="text-[#EFEEED]">
+                  <div className="font-bold leading-none mb-[20px]">
+                    Meats delivered
+                  </div>
+                  <div className="font-espiritu-condensed sm:text-[75px] text-[65px] tracking-[2.25px] leading-none">
+                    1,006,928
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="shrink-0 sm:w-[3px] w-[110px] sm:h-[110px] h-[3px] rounded-full bg-white sm:mt-0 sm:mb-0 mt-[10px] mb-[20px]" />
+            <div className="relative flex flex-col items-center sm:flex-row">
+              <div className="flex flex-col justify-center flex-1 sm:flex-row">
+                <div className="text-[#EFEEED]">
+                  <div className="font-bold leading-none mb-[20px]">
+                    Pounds Cooked
+                  </div>
+                  <div className="font-espiritu-condensed sm:text-[75px] text-[65px] tracking-[2.25px] leading-none">
+                    345,431 <span className="text-[48px]">LBS.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="shrink-0 sm:w-[3px] w-[110px] sm:h-[110px] h-[3px] rounded-full bg-white sm:mt-0 sm:mb-0 mt-[10px] mb-[20px]" />
+            <div className="relative flex flex-col sm:flex-row">
+              <div className="flex flex-col justify-center flex-1 sm:flex-row">
+                <div className="text-[#EFEEED]">
+                  <div className="font-bold leading-none mb-[20px]">
+                    Happy Customers
+                  </div>
+                  <div className="font-espiritu-condensed sm:text-[75px] text-[65px] tracking-[2.25px] leading-none">
+                    84,097
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="sm:block hidden h-[25px] bg-multicolor" />
+      </div>
+      {/* <div
         className="bg-[#6B1626] relative z-10"
         style={{ boxShadow: '0px 30px 50px -10px rgba(0, 0, 0, 0.20)' }}
       >
@@ -146,7 +189,7 @@ export const Banner = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   )
 }
