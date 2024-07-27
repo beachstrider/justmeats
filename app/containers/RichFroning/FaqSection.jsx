@@ -13,7 +13,7 @@ export const FaqSection = () => {
         </div>
         <img
           src={RichsPhoto1}
-          className="sm:block sm:absolute relative w-full z-10 sm:w-[auto] w-[100px] h-[85%] bottom-[0px] right-0 "
+          className="sm:block sm:absolute relative w-full z-10 sm:w-[auto] w-[100px] h-[85%] bottom-[0px] right-0 sm:m-0 mt[-100px]"
         />
       </div>
     </section>

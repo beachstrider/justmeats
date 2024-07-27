@@ -41,11 +41,11 @@ export const Banner = () => {
             {sliderImages.map((slider, index) => (
               <SwiperSlide key={index}>
                 <div
-                  className="h-full bg-cover sm:bg-top [background-position-x:920px]"
+                  className="h-full sm:bg-cover sm:bg-top [background-position-x:920px]"
                   style={{ backgroundImage: `url(${slider.image})` }}
                 >
                   <div className="flex items-center h-full">
-                    <div className="relative container-small pt-[100px] text-center text-white sm:pb-0 pb-[156px] uppercase">
+                    <div className="relative container-small sm:pt-[100px] pt-[170px] text-center text-white sm:pb-0 pb-[156px] uppercase">
                       <div className="font-bold sm:text-[36px] text-[18px] cursor-default sm:tracking-[1.8px] tracking-[0.9px] leading-normal">
                         ELITE FITNESS + ELITE NUTRITION
                       </div>

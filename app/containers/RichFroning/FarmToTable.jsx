@@ -24,7 +24,7 @@ export const FarmToTable = () => {
   return (
     <section className="relative lg:h-[678px] flex flex-col-reverse lg:flex-row bg-[#fff] text-[#231B19]">
       <div className="lg:w-[50%]">
-        <div className="bg-[url('../assets/images/46d7bfd1d15cd6fcf26b387428b1a213.png')]  bg-cover bg-center lg:w-[88%] lg:h-full h-[350px]"></div>
+        <div className="lg:bg-[url('../assets/images/farmtotable.png')] bg-[url('../assets/images/farmtotable-mob.png')] bg-cover bg-center lg:w-[88%] lg:h-full h-[350px]"></div>
       </div>
       <div className="flex-1">
         <div className="lg:w-[540px] lg:pt-[80px] lg:pb-0 pt-[45px] pb-[45px] lg:px-0 px-[20px] xl:pr-0 lg:pr-[20px] md:pr-[20px]">
@@ -73,12 +73,12 @@ export const FarmToTable = () => {
           >
             {linkName}
           </div>
-          <div className="flex sm:pt-0 pt-[20px]">
+          <div className="flex  lg:pt-0 pt-[20px]">
             <NavLink
               end
               to="/about"
               prefetch="intent"
-              className="sm:m-0 m-auto text-center text-white font-bold px-[18px] md:px-[24px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] tracking-[1px] uppercase"
+              className=" lg:m-0 m-auto text-center text-white font-bold px-[18px] md:px-[24px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] tracking-[1px] uppercase"
             >
               Learn more
             </NavLink>
