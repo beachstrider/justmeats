@@ -12,11 +12,11 @@ import { DownSmall } from '~/icons/DownSmall'
 import { cn } from '~/lib/utils'
 
 const accountPages = [
-  // {
-  //   route: 'dashboard',
-  //   name: 'DASHBOARD',
-  //   path: '/account/dashboard',
-  // },
+  {
+    route: 'dashboard',
+    name: 'DASHBOARD',
+    path: '/account/dashboard',
+  },
   {
     route: 'subscriptions',
     name: 'SUBSCRIPTIONS',
