@@ -1,12 +1,7 @@
 import { Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import { NavLink } from '@remix-run/react'
-
 import sliderImage1 from '~/assets/images/rich-froning-banner.png'
-import { DeliveryTruck } from '~/icons/DeliveryTruck'
-import { SmileEmoji } from '~/icons/SmileEmoji'
-import { WeighterLight } from '~/icons/WeighterLight'
 
 const swiper1_items = [
   'FAMILY',
@@ -19,11 +14,7 @@ const swiper1_items = [
   'PRICE',
 ]
 
-const sliderImages = [
-  { image: sliderImage1 },
-  // { image: sliderImage1 },
-  // { image: sliderImage1 },
-]
+const sliderImages = [{ image: sliderImage1 }]
 
 export const Banner = () => {
   return (
@@ -54,15 +45,6 @@ export const Banner = () => {
                         OFF FIRST ORDER
                         <span className="text-[#BF4745]"> +$15</span>
                       </div>
-                      {/* <NavLink
-                        end
-                        prefetch="intent"
-                        to="/products/custom-bundle"
-                      >
-                        <button className="text-[18px] font-dunbar tracking-[1px] px-[28px] py-[14px] rounded-[4px] bg-[#637160]">
-                          GET MEAT
-                        </button>
-                      </NavLink> */}
                     </div>
                   </div>
                 </div>
@@ -144,52 +126,6 @@ export const Banner = () => {
         </div>
         <div className="sm:block hidden h-[25px] bg-multicolor" />
       </div>
-      {/* <div
-        className="bg-[#6B1626] relative z-10"
-        style={{ boxShadow: '0px 30px 50px -10px rgba(0, 0, 0, 0.20)' }}
-      >
-        <div className="container-small sm:pt-[50px] sm:pb-[50px] pt-[44px] pb-[55px] grid md:grid-cols-3 grid-cols-1  md:gap-0 gap-[38px]">
-          <div className="flex justify-center">
-            <div className="flex items-center sm:gap-[26px] gap-[17px]">
-              <div className="sm:w-[54px] w-[52px]">
-                <DeliveryTruck />
-              </div>
-              <div>
-                <div className="text-[16px]">Meats delivered</div>
-                <div className="sm:text-[29px] text-[28px] font-bold font-dunbar">
-                  1,006,928
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <div className="flex items-center sm:gap-[26px] gap-[17px]">
-              <div className="sm:w-[48px] w-[48px]">
-                <WeighterLight />
-              </div>
-              <div>
-                <div className="text-[16px]">Pounds cooked</div>
-                <div className="sm:text-[29px] text-[28px] font-bold font-dunbar">
-                  345,431 LBS
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <div className="flex items-center sm:gap-[26px] gap-[17px]">
-              <div className="sm:w-[43px] w-[39px]">
-                <SmileEmoji />
-              </div>
-              <div>
-                <div className="text-[16px]">Happy customers</div>
-                <div className="sm:text-[29px] text-[28px] font-bold font-dunbar">
-                  84,097
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </section>
   )
 }
