@@ -25,7 +25,7 @@ export const HowItWorksNew = () => {
             Here’s how having Just Meats delivered to your door changes the
             game: our meats marinate on the way to your door, while our
             innovative cooking sauce preserves the moisture and fills the meat
-            with an infusion of flavor. 
+            with an infusion of flavor.
           </div>
         </div>
         <div className="text-[#EFEEED]">

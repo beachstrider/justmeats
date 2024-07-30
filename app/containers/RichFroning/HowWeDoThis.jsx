@@ -1,37 +1,12 @@
-import { Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { SwiperSlide } from 'swiper/react'
 
 import { NavLink, useLoaderData } from '@remix-run/react'
 
-import RichPhoto from '~/assets/images/RichPhoto.png'
 import JustMeatsBoxPart from '~/assets/images/justmeats-box-part2.png'
 import { Boutique } from '~/icons/Boutique'
 import { Cooking } from '~/icons/Cooking'
 import { Pig } from '~/icons/Pig'
 import { RunningTruck } from '~/icons/RunningTruck'
-
-const swiperBreakpoints = {
-  200: {
-    slidesPerView: 1.5,
-    spaceBetween: 20,
-  },
-  540: {
-    slidesPerView: 2,
-    spaceBetween: 20,
-  },
-  789: {
-    slidesPerView: 3,
-    spaceBetween: 20,
-  },
-  1024: {
-    slidesPerView: 3,
-    spaceBetween: 20,
-  },
-  1440: {
-    slidesPerView: 4,
-    spaceBetween: 20,
-  },
-}
 
 const sliderItemColors = ['#572d2d', '#7b4931', '#323e47', '#9d6938']
 
