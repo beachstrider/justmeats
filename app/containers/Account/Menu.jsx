@@ -32,11 +32,11 @@ const accountPages = [
     name: 'ACCOUNT DETAILS',
     path: '/account/details',
   },
-  // {
-  //   route: 'payment-methods',
-  //   name: 'PAYMENT METHODS',
-  //   path: '/account/payment-methods',
-  // },
+  {
+    route: 'payment-methods',
+    name: 'PAYMENT METHODS',
+    path: '/account/payment-methods',
+  },
 ]
 
 export function Menu() {

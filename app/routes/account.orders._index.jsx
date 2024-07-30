@@ -4,7 +4,7 @@ import { listOrders } from '@rechargeapps/storefront-client'
 import { useLoaderData } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
-import { Order } from '~/containers/Account/Orders/Order'
+import { Card } from '~/containers/Account/Orders/Card'
 import { sendPageView } from '~/lib/metaPixel.server'
 import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 
@@ -50,7 +50,7 @@ export default function Orders() {
           {orders?.length ? (
             <div className="flex flex-col gap-[16px]">
               {orders.map((order) => (
-                <Order
+                <Card
                   order={order}
                   key={order.id}
                   isExpanded={expandedOrderId === order.id}

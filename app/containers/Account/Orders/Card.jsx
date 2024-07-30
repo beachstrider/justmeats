@@ -2,7 +2,7 @@ import React from 'react'
 
 import customBundleImage from '~/assets/images/3g2yuk1drt1h63se54r6gs5erg61ser2g.png'
 
-export const Order = ({ order, isExpanded, setIsExpanded }) => {
+export const Card = ({ order, isExpanded, setIsExpanded }) => {
   const {
     shipping_address,
     line_items,
