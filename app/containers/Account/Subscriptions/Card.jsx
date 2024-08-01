@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { format } from 'date-fns'
+
 import { NavLink } from '@remix-run/react'
 
 import customBundleImage from '~/assets/images/3g2yuk1drt1h63se54r6gs5erg61ser2g.png'
@@ -10,7 +12,7 @@ export function Card({ setAddress, subscription }) {
       <div className="lg:px-[32px] px-[20px] lg:py-[23px] py-[18px] bg-[#6B1626] text-white lg:text-[18px] text-[14px]">
         Next order processing on{' '}
         <span className="font-bold">
-          {subscription.next_charge_scheduled_at}
+          {format(subscription.next_charge_scheduled_at, 'LLLL dd, yyyy')}
         </span>
       </div>
       <div className="lg:px-[42px] px-[26px] lg:py-[40px] py-[30px] border-b border-[#EFEEED] flex lg:gap-[32px] gap-[20px]">
