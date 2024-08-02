@@ -71,18 +71,22 @@ export const Slider = ({ recipes, removeFavoriteRecipe }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <button
-        className="absolute lg:left-0 left-[2px] z-10 top-[38%]"
-        onClick={() => ref.current.swiper.slidePrev()}
-      >
-        <ChevronLeftIcon width={20} height={20} />
-      </button>
-      <button
-        className="absolute lg:right-0 right-[2px] z-10 top-[38%]"
-        onClick={() => ref.current.swiper.slideNext()}
-      >
-        <ChevronRightIcon width={20} height={20} />
-      </button>
+      {((lg && recipes.length > 4) || !lg) && (
+        <>
+          <button
+            className="absolute lg:left-0 left-[2px] z-10 top-[38%]"
+            onClick={() => ref.current.swiper.slidePrev()}
+          >
+            <ChevronLeftIcon width={20} height={20} />
+          </button>
+          <button
+            className="absolute lg:right-0 right-[2px] z-10 top-[38%]"
+            onClick={() => ref.current.swiper.slideNext()}
+          >
+            <ChevronRightIcon width={20} height={20} />
+          </button>
+        </>
+      )}
     </div>
   )
 }
