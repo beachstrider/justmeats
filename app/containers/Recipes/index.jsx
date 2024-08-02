@@ -167,7 +167,7 @@ export const List = () => {
           {paginatedData.map((item, i) => {
             return (
               <Link
-                to={`/recipes/${item?.url}`}
+                to={`/recipes/${item?.id}`}
                 key={i}
                 className="relative block"
               >

@@ -1,6 +1,3 @@
-import { getPaginationVariables } from '@shopify/hydrogen'
-import { json } from '@shopify/remix-oxygen'
-
 import { List } from '~/containers/Recipes'
 import { FanFavorite } from '~/containers/Recipes/FanFavorite'
 import { sendPageView } from '~/lib/metaPixel.server'

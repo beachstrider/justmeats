@@ -1,7 +1,6 @@
 export const recipes = [
   {
-    id: 1,
-    url: 'recipe1',
+    id: '1',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551655/JustMEATS_Recipes_SlowCookedPulledPorkMashPotatoesandCornConfetti_2.jpg',
       'https://res.cloudinary.com/meals/image/upload/v1720551660/JustMeatsRecipe_TexasPulledPorkMashedPotatoesandCornConfetti_TopDownStill.jpg',
@@ -31,8 +30,7 @@ export const recipes = [
     type: 'pork',
   },
   {
-    id: 2,
-    url: 'recipe2',
+    id: '2',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551660/JustMeatsRecipe_TexasRubChickenThighwithSaladandAuGratinPotatoes_TopDownStill.jpg',
     ],
@@ -61,8 +59,7 @@ export const recipes = [
     type: 'chicken',
   },
   {
-    id: 3,
-    url: 'recipe3',
+    id: '3',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551660/JustMeatsRecipe_TeriyakiChickenwithPineappleRiceandBroccoli_TopDownStill.jpg',
     ],
@@ -92,8 +89,7 @@ export const recipes = [
     type: 'chicken',
   },
   {
-    id: 4,
-    url: 'recipe4',
+    id: '4',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551653/JustMeats_HerbRoastedChickenCiabattaSandwich_FullRes.jpg',
     ],
@@ -123,8 +119,7 @@ export const recipes = [
     type: 'chicken',
   },
   {
-    id: 5,
-    url: 'recipe5',
+    id: '5',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551656/JustMEATS_Recipes_BraisedPorkSoyRiceandColeslaw_1.jpg',
       'https://res.cloudinary.com/meals/image/upload/v1720551656/JustMeatsRecipe_HawaiianShreddedPorkSoyRiceColeslaw_TopDownStill.jpg',
@@ -155,8 +150,7 @@ export const recipes = [
     type: 'pork',
   },
   {
-    id: 6,
-    url: 'recipe6',
+    id: '6',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551660/JustMEATS_Recipes_BuffaloChickenThighMashPotatoesandAsparagus_2.jpg',
       'https://res.cloudinary.com/meals/image/upload/v1720551652/JustMatsRecipe_BuffaloChickenThighMashedPotatoandAsparagus_TopDownStill.jpg',
@@ -184,8 +178,7 @@ export const recipes = [
     type: 'chicken',
   },
   {
-    id: 7,
-    url: 'recipe7',
+    id: '7',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551660/JustMEATS_Recipes_CarneAsadaFajitaPeppersandChipotleRice_1.jpg',
       'https://res.cloudinary.com/meals/image/upload/v1720551656/JustMeatsRecipe_CarneAsadaFajitaPeppersandChipotleRice_TopDownStill.jpg',
@@ -214,8 +207,7 @@ export const recipes = [
     type: 'beef',
   },
   {
-    id: 8,
-    url: 'recipe8',
+    id: '8',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551661/JustMeatsRecipe_SweetandSpicyPorkBroccoliSlaw.jpg',
       'https://res.cloudinary.com/meals/image/upload/v1720551658/JustMeatsRecipe_SweetandSpicyPorkBroccoliSlaw_TopDownStill.jpg',
@@ -245,8 +237,7 @@ export const recipes = [
     type: 'pork',
   },
   {
-    id: 9,
-    url: 'recipe9',
+    id: '9',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720552485/JustMEATS_Recipes_SmokedTexasBrisketCowboyBeansandCorn_4.jpg',
       'https://res.cloudinary.com/meals/image/upload/v1720551658/JustMeatsRecipe_SmokedTexasBrisketCowboyBeansCorn_TopDownStill.jpg',
@@ -273,8 +264,7 @@ export const recipes = [
     type: 'beef',
   },
   {
-    id: 10,
-    url: 'recipe10',
+    id: '10',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1719513859/Web_Regular-JustMeats_ChimichuriSteakBreakfastCroissant_Stills_FullRes_202024APR09_SethH-3_1.jpg',
       'https://res.cloudinary.com/meals/image/upload/v1719513852/Web_Regular-JustMeats_ChimichuriSteakBreakfastCroissant_Stills_FullRes_202024APR09_SethH-2_2.jpg',
