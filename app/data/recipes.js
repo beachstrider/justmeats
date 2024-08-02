@@ -1,5 +1,6 @@
 export const recipes = [
   {
+    id: 1,
     url: 'recipe1',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551655/JustMEATS_Recipes_SlowCookedPulledPorkMashPotatoesandCornConfetti_2.jpg',
@@ -30,6 +31,7 @@ export const recipes = [
     type: 'pork',
   },
   {
+    id: 2,
     url: 'recipe2',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551660/JustMeatsRecipe_TexasRubChickenThighwithSaladandAuGratinPotatoes_TopDownStill.jpg',
@@ -59,6 +61,7 @@ export const recipes = [
     type: 'chicken',
   },
   {
+    id: 3,
     url: 'recipe3',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551660/JustMeatsRecipe_TeriyakiChickenwithPineappleRiceandBroccoli_TopDownStill.jpg',
@@ -89,6 +92,7 @@ export const recipes = [
     type: 'chicken',
   },
   {
+    id: 4,
     url: 'recipe4',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551653/JustMeats_HerbRoastedChickenCiabattaSandwich_FullRes.jpg',
@@ -119,6 +123,7 @@ export const recipes = [
     type: 'chicken',
   },
   {
+    id: 5,
     url: 'recipe5',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551656/JustMEATS_Recipes_BraisedPorkSoyRiceandColeslaw_1.jpg',
@@ -150,6 +155,7 @@ export const recipes = [
     type: 'pork',
   },
   {
+    id: 6,
     url: 'recipe6',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551660/JustMEATS_Recipes_BuffaloChickenThighMashPotatoesandAsparagus_2.jpg',
@@ -178,6 +184,7 @@ export const recipes = [
     type: 'chicken',
   },
   {
+    id: 7,
     url: 'recipe7',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551660/JustMEATS_Recipes_CarneAsadaFajitaPeppersandChipotleRice_1.jpg',
@@ -207,6 +214,7 @@ export const recipes = [
     type: 'beef',
   },
   {
+    id: 8,
     url: 'recipe8',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720551661/JustMeatsRecipe_SweetandSpicyPorkBroccoliSlaw.jpg',
@@ -237,6 +245,7 @@ export const recipes = [
     type: 'pork',
   },
   {
+    id: 9,
     url: 'recipe9',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1720552485/JustMEATS_Recipes_SmokedTexasBrisketCowboyBeansandCorn_4.jpg',
@@ -264,6 +273,7 @@ export const recipes = [
     type: 'beef',
   },
   {
+    id: 10,
     url: 'recipe10',
     imgs: [
       'https://res.cloudinary.com/meals/image/upload/v1719513859/Web_Regular-JustMeats_ChimichuriSteakBreakfastCroissant_Stills_FullRes_202024APR09_SethH-3_1.jpg',
