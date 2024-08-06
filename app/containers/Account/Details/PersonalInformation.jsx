@@ -109,7 +109,7 @@ export const PersonalInformation = () => {
         <Button
           type="submit"
           loading={submitting}
-          className="px-[24px] py-[12px] font-bold text-[14px] tracking-[0.7px] bg-[#BF4745] text-white"
+          className="px-[24px] py-[12px] font-bold text-[14px] tracking-[0.7px] bg-[#BF4745] hover:bg-[#6B1626] text-white"
         >
           SAVE
         </Button>

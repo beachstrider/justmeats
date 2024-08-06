@@ -42,7 +42,7 @@ export const UpcomingOrder = () => {
           end
           prefetch="intent"
           to={`/account/subscriptions/${subscription.id}`}
-          className="w-[143px] px-[24px] py-[12px] bg-[#BF4745] text-center text-white font-bold text-[14px] tracking-[0.7px]"
+          className="w-[143px] px-[24px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] text-center text-white font-bold text-[14px] tracking-[0.7px]"
         >
           EDIT ORDER
         </NavLink>

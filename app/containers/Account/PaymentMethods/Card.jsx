@@ -68,7 +68,7 @@ export const Card = ({ paymentMethod }) => {
           <Button
             loading={sendingEmail}
             onClick={handleSendUpdateEmail}
-            className="font-bold text-[14px] py-[12px] tracking-[0.7px] bg-[#BF4745] text-white px-[24px]"
+            className="font-bold text-[14px] py-[12px] tracking-[0.7px] bg-[#BF4745] hover:bg-[#6B1626] text-white px-[24px]"
           >
             SEND UPDATE EMAIL
           </Button>
