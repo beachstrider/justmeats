@@ -45,7 +45,7 @@ export default function RichFroning() {
   }, [])
 
   return (
-    <main className="relative font-dunbar tracking-[1px] leading-1 text-[#231B19]">
+    <main className="relative font-dunbar tracking-[1px] leading-1 text-[#231B19] my-[30px]">
       <div class="klaviyo-form-VnsCzP"></div>
     </main>
   )
