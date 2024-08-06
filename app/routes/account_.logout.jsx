@@ -4,6 +4,8 @@ import { redirect } from '@shopify/remix-oxygen'
  * @param {ActionFunctionArgs}
  */
 export async function action({ context }) {
+  context.customerAccount.logout()
+
   return redirect('/', {
     headers: {
       'Set-Cookie': await context.rechargeSession.destroy(),

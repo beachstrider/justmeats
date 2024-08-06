@@ -5,7 +5,7 @@ import { useNavigate } from '@remix-run/react'
 
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
 
-export const ValidateForm = ({ email, sessionToken }) => {
+export const ValidateForm = ({ email, sessionToken, setRequestResponse }) => {
   const submit = useSubmitPromise()
   const navigate = useNavigate()
 
@@ -78,6 +78,12 @@ export const ValidateForm = ({ email, sessionToken }) => {
         {submitting && <div className="mt-1">Validating...</div>}
         {isError && <div className="mt-1 text-red-500">Invalid code</div>}
       </div>
+      <button
+        className="mt-1 text-left underline"
+        onClick={() => setRequestResponse(null)}
+      >
+        Back
+      </button>
     </div>
   )
 }
