@@ -78,16 +78,18 @@ export const Card = ({ order, isExpanded, setIsExpanded }) => {
           </div>
           <div className="flex flex-col lg:justify-center lg:items-center shrink-0 lg:mb-0 mb-[8px]">
             <div className="flex lg:flex-row flex-col lg:gap-[35px] gap-[26px]">
-              <div className="flex flex-row items-center justify-between lg:flex-col lg:items-end">
+              <div className="flex flex-row items-center justify-between lg:flex-col lg:justify-center lg:items-end lg:min-h-fit min-h-[26.08px]">
                 <div className="lg:text-[16px] text-[12px] leading-[163%]">
                   <span className="hidden lg:inline-block">Order&nbsp;</span>
                   <span className="font-bold">
                     #{external_order_id.ecommerce}
                   </span>
                 </div>
-                <div className="font-bold text-[#6B1626] lg:text-[20px] text-[16px] leading-[163%]">
-                  ${total_price}
-                </div>
+                {!isExpanded && (
+                  <div className="font-bold text-[#6B1626] lg:text-[20px] text-[16px] leading-[163%]">
+                    ${total_price}
+                  </div>
+                )}
               </div>
               <button
                 className="hidden lg:block"
