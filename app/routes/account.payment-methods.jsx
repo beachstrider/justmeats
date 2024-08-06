@@ -13,8 +13,8 @@ export const meta = () => {
   return [{ title: 'Account – Just Meats' }]
 }
 
-export const loader = async ({ request, context }) =>
-  await rechargeQueryWrapper(async (session) => {
+export const loader = async ({ request, context }) => {
+  return await rechargeQueryWrapper(async (session) => {
     const { payment_methods } = await listPaymentMethods(session, {
       limit: 25,
     })
@@ -30,9 +30,10 @@ export const loader = async ({ request, context }) =>
       },
     )
   }, context)
+}
 
-export const action = async ({ request, context }) =>
-  await rechargeQueryWrapper(async (rechargeSession) => {
+export const action = async ({ request, context }) => {
+  return await rechargeQueryWrapper(async (rechargeSession) => {
     const form = await request.formData()
     const data = JSON.parse(form.get('body'))
 
@@ -50,6 +51,7 @@ export const action = async ({ request, context }) =>
       return json({ success: false, message: err.message ?? err })
     }
   }, context)
+}
 
 export default function AccountDetails() {
   const { payment_methods } = useLoaderData()

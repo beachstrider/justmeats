@@ -182,8 +182,8 @@ export const loader = async ({ request, context, params }) => {
   }, context)
 }
 
-export const action = async ({ request, context, params }) =>
-  await rechargeQueryWrapper(async (rechargeSession) => {
+export const action = async ({ request, context, params }) => {
+  return await rechargeQueryWrapper(async (rechargeSession) => {
     const form = await request.formData()
     const body = JSON.parse(form.get('body'))
 
@@ -299,6 +299,7 @@ export const action = async ({ request, context, params }) =>
         break
     }
   }, context)
+}
 
 export default function SubscriptionRoute() {
   const { setSubscriptionProducts, setSubscriptionBonusVariant } =

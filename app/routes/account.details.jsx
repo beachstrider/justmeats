@@ -1,7 +1,4 @@
-import {
-  listPaymentMethods,
-  updateCustomer,
-} from '@rechargeapps/storefront-client'
+import { getCustomer, updateCustomer } from '@rechargeapps/storefront-client'
 import { json } from '@shopify/remix-oxygen'
 
 import { PersonalInformation } from '~/containers/Account/Details/PersonalInformation'
@@ -12,16 +9,14 @@ export const meta = () => {
   return [{ title: 'Account – Just Meats' }]
 }
 
-export const loader = async ({ request, context }) =>
-  await rechargeQueryWrapper(async (session) => {
-    const { payment_methods } = await listPaymentMethods(session, {
-      limit: 25,
-    })
+export const loader = async ({ request, context }) => {
+  return await rechargeQueryWrapper(async (session) => {
+    const customer = await getCustomer(session)
 
     sendPageView(request)
 
     return json(
-      { payment_methods },
+      { customer },
       {
         headers: {
           'Cache-Control': 'no-cache, no-store, must-revalidate',
@@ -29,20 +24,22 @@ export const loader = async ({ request, context }) =>
       },
     )
   }, context)
+}
 
-export const action = async ({ request, context }) =>
-  await rechargeQueryWrapper(async (rechargeSession) => {
+export const action = async ({ request, context }) => {
+  return await rechargeQueryWrapper(async (session) => {
     const form = await request.formData()
     const data = JSON.parse(form.get('body'))
 
     try {
-      await updateCustomer(rechargeSession, data)
+      await updateCustomer(session, data)
 
       return json({ success: true })
     } catch (err) {
       return json({ success: false, message: err.message ?? err })
     }
   }, context)
+}
 
 export default function AccountDetails() {
   return (

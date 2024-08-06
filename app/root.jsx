@@ -7,7 +7,7 @@ import sliderNavigation from 'swiper/css/navigation?url'
 import sliderPagination from 'swiper/css/pagination?url'
 import sliderStyles from 'swiper/css?url'
 
-import { getCreditSummary, getCustomer } from '@rechargeapps/storefront-client'
+import { getCustomer } from '@rechargeapps/storefront-client'
 import {
   Links,
   Meta,
@@ -100,9 +100,6 @@ export async function loader(args) {
   if (rechargeSession) {
     try {
       customer = await getCustomer(rechargeSession)
-      credit = await getCreditSummary(rechargeSession, {
-        include: ['credit_details'],
-      })
     } catch (e) {
       if (e?.status === 401) {
         console.debug('session expired')

@@ -12,8 +12,8 @@ export const meta = () => {
   return [{ title: 'Dashboard - Just Meats' }]
 }
 
-export const loader = async ({ request, context }) =>
-  await rechargeQueryWrapper(async (session) => {
+export const loader = async ({ request, context }) => {
+  return await rechargeQueryWrapper(async (session) => {
     sendPageView(request)
 
     const bundleProductData = getBundle({
@@ -50,6 +50,7 @@ export const loader = async ({ request, context }) =>
       },
     )
   }, context)
+}
 
 export default function AccountDashboard() {
   return (

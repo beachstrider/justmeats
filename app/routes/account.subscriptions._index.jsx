@@ -24,8 +24,8 @@ export const meta = () => {
   return [{ title: 'Subscriptions - Just Meats' }]
 }
 
-export const loader = async ({ request, context }) =>
-  await rechargeQueryWrapper(async (rechargeSession) => {
+export const loader = async ({ request, context }) => {
+  return await rechargeQueryWrapper(async (rechargeSession) => {
     sendPageView(request)
 
     const bundleProductData = getBundle({
@@ -64,9 +64,10 @@ export const loader = async ({ request, context }) =>
       },
     )
   }, context)
+}
 
-export const action = async ({ request, context }) =>
-  await rechargeQueryWrapper(async (rechargeSession) => {
+export const action = async ({ request, context }) => {
+  return await rechargeQueryWrapper(async (rechargeSession) => {
     const form = await request.formData()
     const body = JSON.parse(form.get('body'))
 
@@ -83,6 +84,7 @@ export const action = async ({ request, context }) =>
         }
     }
   }, context)
+}
 
 export default function SubscriptionsPage() {
   const { subscriptions } = useLoaderData()

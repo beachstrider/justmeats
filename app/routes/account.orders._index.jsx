@@ -13,30 +13,25 @@ export const meta = () => {
 }
 
 export async function loader({ request, context }) {
-  sendPageView(request)
+  return await rechargeQueryWrapper(async (session) => {
+    sendPageView(request)
 
-  const listOrdersResponse = await rechargeQueryWrapper((session) => {
-    if (session.customerId) {
-      return listOrders(session, {
-        limit: 25,
-        sort_by: 'id-asc',
-      })
-    }
-    return { orders: [] }
+    const { orders } = await listOrders(session, {
+      limit: 25,
+      sort_by: 'id-asc',
+    })
+
+    return json({
+      orders,
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+      },
+    })
   }, context)
-
-  return json({
-    listOrdersResponse,
-    headers: {
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-    },
-  })
 }
 
 export default function Orders() {
-  const {
-    listOrdersResponse: { orders },
-  } = useLoaderData()
+  const { orders } = useLoaderData()
 
   const [expandedOrderId, setExpandedOrderId] = useState(orders[0]?.id)
 

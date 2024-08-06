@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { NavLink, useMatches, useRouteLoaderData } from '@remix-run/react'
+import { NavLink, useLoaderData, useMatches } from '@remix-run/react'
 
 import {
   Tooltip,
@@ -41,7 +41,7 @@ const accountPages = [
 
 export function Menu() {
   const matches = useMatches()
-  const { credit } = useRouteLoaderData('root')
+  const { credit } = useLoaderData()
 
   const [showMenu, setShowMenu] = useState(false)
 
