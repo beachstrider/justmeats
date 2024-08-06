@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { listOrders } from '@rechargeapps/storefront-client'
-import { NavLink, useLoaderData } from '@remix-run/react'
+import { useLoaderData } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
-import { Order } from '~/containers/Account/Orders/Order'
+import { Card } from '~/containers/Account/Orders/Card'
 import { sendPageView } from '~/lib/metaPixel.server'
 import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 
@@ -38,29 +38,30 @@ export default function Orders() {
     listOrdersResponse: { orders },
   } = useLoaderData()
 
+  const [expandedOrderId, setExpandedOrderId] = useState(orders[0]?.id)
+
   return (
-    <div className="py-0 bg-sublistbgGray md:py-8">
-      <div className="container">
-        <div className="flex flex-col items-center py-4 my-4 border-b-2 border-gray-500 md:flex-row">
-          <NavLink
-            to="/account/subscriptions"
-            className="capitalize bg-[#fff] border-solid border-2 border-gray-500 px-8 text-[22px] py-1"
-          >
-            Back to Account
-          </NavLink>
-          <h3 className="text-[28px] md:text-[36px] font-bold ml-0 md:ml-[30%]">
-            Your Order History
-          </h3>
-        </div>
-        <div className="bg-[#fff] rounded-md py-8 px-6 mb-8">
+    <div className="bg-[#efeeed]">
+      <div className="container-small">
+        <div className="lg:pt-[57px] lg:pb-[88px] pt-[38px] pb-[38px]">
+          <div className="font-hudson font-bold lg:text-[36px] lg:tracking-[1.8px] text-[24px] tracking-[1.2px] text-center lg:mb-[40px] mb-[27px]">
+            ORDER HISTORY
+          </div>
           {orders?.length ? (
-            <>
+            <div className="flex flex-col gap-[16px]">
               {orders.map((order) => (
-                <Order order={order} key={order.id} />
+                <Card
+                  order={order}
+                  key={order.id}
+                  isExpanded={expandedOrderId === order.id}
+                  setIsExpanded={(expanded) =>
+                    setExpandedOrderId(expanded ? order.id : null)
+                  }
+                />
               ))}
-            </>
+            </div>
           ) : (
-            <h3>No order found.</h3>
+            <div className="py-[40px] text-lg text-center">No order found.</div>
           )}
         </div>
       </div>
