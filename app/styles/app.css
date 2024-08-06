@@ -1104,3 +1104,7 @@ section.product-list-slider button.slick-arrow.slick-next {
   background-size: cover;
   background-position: center;
 }
+
+.bg-heat-eat {
+  @apply lg:bg-[url('../assets/images/_JustMeats_StyledProduct_Stills_Full.jpg')] bg-[url('../assets/images/JustMeats_StyledProduct_Stills_FullRes_Vertical.png')] bg-no-repeat bg-cover lg:pb-[0] pb-[280px] lg:bg-center bg-bottom;
+}
