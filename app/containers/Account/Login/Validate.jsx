@@ -33,7 +33,7 @@ export const ValidateForm = ({ email, sessionToken }) => {
       )
 
       if (res.success) {
-        navigate('/account/subscriptions', { replace: true })
+        navigate('/account/dashboard', { replace: true })
       } else {
         setIsError(true)
       }

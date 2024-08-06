@@ -12,11 +12,11 @@ import { DownSmall } from '~/icons/DownSmall'
 import { cn } from '~/lib/utils'
 
 const accountPages = [
-  // {
-  //   route: 'dashboard',
-  //   name: 'DASHBOARD',
-  //   path: '/account/dashboard',
-  // },
+  {
+    route: 'dashboard',
+    name: 'DASHBOARD',
+    path: '/account/dashboard',
+  },
   {
     route: 'subscriptions',
     name: 'SUBSCRIPTIONS',
@@ -32,11 +32,11 @@ const accountPages = [
     name: 'ACCOUNT DETAILS',
     path: '/account/details',
   },
-  // {
-  //   route: 'payment-methods',
-  //   name: 'PAYMENT METHODS',
-  //   path: '/account/payment-methods',
-  // },
+  {
+    route: 'payment-methods',
+    name: 'PAYMENT METHODS',
+    path: '/account/payment-methods',
+  },
 ]
 
 export function Menu() {
