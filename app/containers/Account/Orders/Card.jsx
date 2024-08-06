@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { format } from 'date-fns'
+
 import customBundleImage from '~/assets/images/3g2yuk1drt1h63se54r6gs5erg61ser2g.png'
 
 export const Card = ({ order, isExpanded, setIsExpanded }) => {
@@ -11,6 +13,7 @@ export const Card = ({ order, isExpanded, setIsExpanded }) => {
     subtotal_price,
     shipping_lines,
     external_order_id,
+    processed_at,
   } = order
 
   return (
@@ -27,8 +30,11 @@ export const Card = ({ order, isExpanded, setIsExpanded }) => {
             </div>
             <div className="flex items-center justify-between grow">
               <div>
-                <div className="font-bold lg:text-[24px] text-[16px] lg:mb-[13px] mb-[9px] leading-none">
+                <div className="font-bold lg:text-[24px] text-[16px] leading-none">
                   Bundle Subscription
+                </div>
+                <div className="lg:mb-[6px] mb-[4px] lg:text-[14px] text-[12px]">
+                  {format(processed_at, 'LLLL dd, yyyy')}
                 </div>
                 {!isExpanded && (
                   <div className="lg:text-[18px] text-[14px] leading-none">
