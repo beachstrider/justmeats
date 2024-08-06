@@ -1,4 +1,4 @@
-import { useLoaderData } from '@remix-run/react'
+import { NavLink, useLoaderData } from '@remix-run/react'
 
 import { UpcomingOrder } from './UpcomingOrder'
 
@@ -23,9 +23,13 @@ export const Subscription = () => {
                 </div>
               </div>
               <div className="flex justify-center lg:justify-start shrink-0">
-                <button className="w-[226px] text-center px-[24px] py-[12px] bg-[#BF4745] text-white font-bold text-[14px] tracking-[0.7px]">
+                <NavLink
+                  prefetch="intent"
+                  to="/account/subscriptions"
+                  className="w-[226px] text-center px-[24px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] text-white font-bold text-[14px] tracking-[0.7px]"
+                >
                   MANAGE SUBSCRIPTION
-                </button>
+                </NavLink>
               </div>
             </div>
             <div className="bg-img4 lg:h-[548px] h-[176px]"></div>
