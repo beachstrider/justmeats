@@ -68,6 +68,9 @@ export const Footer = () => {
                     <NavLink end prefetch="intent" to="/about">
                       How It Works
                     </NavLink>
+                    <NavLink end prefetch="intent" to="/faq">
+                      FAQ
+                    </NavLink>
                   </div>
                 </div>
                 <div>
