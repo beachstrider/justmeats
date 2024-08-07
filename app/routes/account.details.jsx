@@ -15,14 +15,7 @@ export const loader = withAuth(
 
     sendPageView(request)
 
-    return json(
-      { customer },
-      {
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-        },
-      },
-    )
+    return json({ customer })
   },
 )
 

@@ -21,14 +21,7 @@ export const loader = withAuth(
 
     sendPageView(request)
 
-    return json(
-      { payment_methods },
-      {
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-        },
-      },
-    )
+    return json({ payment_methods })
   },
 )
 

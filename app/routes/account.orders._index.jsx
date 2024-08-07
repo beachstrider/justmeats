@@ -21,12 +21,7 @@ export const loader = withAuth(
       sort_by: 'id-asc',
     })
 
-    return json({
-      orders,
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-      },
-    })
+    return json({ orders })
   },
 )
 

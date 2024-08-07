@@ -41,14 +41,7 @@ export const loader = withAuth(
         el.external_product_id.ecommerce === '8619519803673',
     )
 
-    return json(
-      { subscription: subscriptions[0] },
-      {
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-        },
-      },
-    )
+    return json({ subscription: subscriptions[0] })
   },
 )
 

@@ -156,29 +156,22 @@ export const loader = withAuth(
       (product) => product.id !== shippingInsuranceProduct.id,
     )
 
-    return json(
-      {
-        id: params.id,
-        bundleId,
-        purchase_item_id,
-        products,
-        subscription,
-        charges,
-        freeProduct,
-        bonusProduct,
-        subscriptionProducts,
-        subscriptionBonusVariant,
-        upcomingChargeId,
-        shopCurrency: 'USD',
-        discountCodes,
-        isFreeProductSubscribed,
-      },
-      {
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-        },
-      },
-    )
+    return json({
+      id: params.id,
+      bundleId,
+      purchase_item_id,
+      products,
+      subscription,
+      charges,
+      freeProduct,
+      bonusProduct,
+      subscriptionProducts,
+      subscriptionBonusVariant,
+      upcomingChargeId,
+      shopCurrency: 'USD',
+      discountCodes,
+      isFreeProductSubscribed,
+    })
   },
 )
 
