@@ -19,7 +19,7 @@ export async function loader({ request, context }) {
 
 export default function RecipeItem() {
   const { id } = useParams()
-  const finalData = recipes?.find((ele) => ele.url === id)
+  const finalData = recipes?.find((ele) => ele.id === id)
 
   return (
     <main className="relative tracking-[1px] leading-1 text-[#231B19] your-gym">

@@ -107,7 +107,7 @@ export function Header() {
   const headerClass = isHeaderVisible ? '' : 'sticky-header w-[100vw]'
 
   return (
-    <header className="relative z-10 [box-shadow:0px_0px_15px_0px_rgba(0,0,0,0.15)]">
+    <header className="relative [box-shadow:0px_0px_15px_0px_rgba(0,0,0,0.15)]">
       <div
         className={cn(
           'container-small relative h-[88px] sm:h-[120px] flex items-center justify-between py-4 mainheader sm:pl-[20px] sm:pr-[20px] pl-[10px] pr-[20px]',

@@ -1,64 +1,94 @@
 import React from 'react'
 
-import { Link } from '@remix-run/react'
+import { format } from 'date-fns'
+
+import { NavLink } from '@remix-run/react'
+
+import customBundleImage from '~/assets/images/3g2yuk1drt1h63se54r6gs5erg61ser2g.png'
 
 export function Card({ setAddress, subscription }) {
   return (
-    <div>
-      <div className="bg-custombgGreen w-auto md:w-[300px] p-6 block text-white text-xl text-center md:text-left sm:mb-[20px] mb-[16px]">
-        <div>Next Order Processing On</div>
-        <div>{subscription.next_charge_scheduled_at}</div>
+    <div className="bg-white">
+      <div className="lg:px-[32px] px-[20px] lg:py-[23px] py-[18px] bg-[#6B1626] text-white lg:text-[18px] text-[14px]">
+        Next order processing on{' '}
+        <span className="font-bold">
+          {format(subscription.next_charge_scheduled_at, 'LLLL dd, yyyy')}
+        </span>
       </div>
-      <div className="grid bg-white border-2 border-custombgGreen">
-        <div className="grid text-center border rounded">
-          <div className="grid items-center gap-4 p-4 md:gap-6 md:p-6 md:grid-cols-3">
-            <div className="flex-col justify-center text-center md:text-left">
-              <h1 className="text-[22px] font-bold">Personal Information</h1>
+      <div className="lg:px-[42px] px-[26px] lg:py-[40px] py-[30px] border-b border-[#EFEEED] flex lg:gap-[32px] gap-[20px]">
+        <div>
+          <img
+            className="mx-auto md:ml-0"
+            src={customBundleImage}
+            alt="Custom Bundle"
+          />
+        </div>
+        <div className="flex items-center">
+          <div>
+            <div className="font-bold lg:text-[24px] text-[20px] lg:mb-[10px] mb-[12px] leading-none">
+              {subscription.product_title}
             </div>
-            <div className="">
-              <h2>
-                {subscription.include.address.first_name}{' '}
-                {subscription.include.address.last_name}
-              </h2>
-              <h2>{subscription.include.address.address1}</h2>
-            </div>
-            <div className="text-center md:text-right">
-              <a
-                onClick={() => setAddress(subscription.include.address)}
-                className="px-4 py-3 text-white rounded cursor-pointer bg-custombgGreen"
+            <div className="flex items-center gap-[7px]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
               >
-                EDIT
-              </a>
-            </div>
-          </div>
-          <div className="self-end border-t-2 border-custombgGreen">
-            <div className="block md:flex">
-              <div className="p-[25px] ">
-                <img
-                  className="mx-auto md:ml-0"
-                  src="https://cdn.shopify.com/s/files/1/0555/1751/1961/products/custom-bundle-623742_100x100.png?v=1697650046"
-                  alt="Custom Bundle"
+                <path
+                  d="M19 19H5V8H19M16 1V3H8V1H6V3H5C3.89 3 3 3.89 3 5V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V5C21 4.46957 20.7893 3.96086 20.4142 3.58579C20.0391 3.21071 19.5304 3 19 3H18V1M17 12H12V17H17V12Z"
+                  fill="#6B1626"
                 />
-              </div>
-              <div className="p-[25px]">
-                <h2 className="font-bold text-lead text-[22px]">
-                  {subscription.product_title}
-                </h2>
-                <h2 className="text-lead text-[16px] mb-5 text-custombgGreen">
-                  Ships every {subscription.charge_interval_frequency}{' '}
-                  {subscription.order_interval_unit}
-                </h2>
-                <Link
-                  to={`/account/subscriptions/${subscription.id}`}
-                  className="border-2 font-bold text-lead text-[20px] border-custombgGreen px-4 py-2 text-lg block text-center"
-                  prefetch="intent"
-                >
-                  Edit Selection
-                </Link>
+              </svg>
+              <div className="lg:text-[18px] text-[16px]">
+                Ships every {subscription.charge_interval_frequency}{' '}
+                {subscription.order_interval_unit}
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div className="lg:px-[42px] px-[26px] lg:pt-[26px] lg:pb-[30px] pt-[20px] pb-[30px] grid grid-cols-2 border-b border-[#EFEEED]">
+        <div>
+          <div className="font-bold leading-[175%] lg:text-[18px] text-[16px]">
+            Recipent
+          </div>
+          <div className="leading-[175%] lg:text-[16px] text-[14px]">
+            <div>
+              {subscription.include.address.first_name}{' '}
+              {subscription.include.address.last_name}
+            </div>
+            <div>{subscription.include.address.phone}</div>
+            <div>{subscription.include.customer.email}</div>
+          </div>
+        </div>
+        <div className="lg:pl-[30px] pl-[10px]">
+          <div
+            className="font-bold leading-[175%] lg:text-[18px] text-[16px] cursor-pointer"
+            onClick={() => setAddress(subscription.include.address)}
+          >
+            Delivery address
+          </div>
+          <div className="leading-[175%] lg:text-[16px] text-[14px] max-w-[132px]">
+            <div>{subscription.include.address.address1}</div>
+            <div>{subscription.include.address.city}</div>
+            <div className="uppercase">
+              {subscription.include.address.province}{' '}
+              {subscription.include.address.zip}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="lg:px-[42px] px-[20px] lg:py-[23px] py-[22px] flex lg:justify-start justify-center">
+        <NavLink
+          to={`/account/subscriptions/${subscription.id}`}
+          end
+          prefetch="intent"
+          className="px-[24px] py-[12px] font-bold text-[14px] tracking-[0.7px] leading-[130%] bg-[#BF4745] hover:bg-[#6B1626] text-white"
+        >
+          EDIT SUBSCRIPTION
+        </NavLink>
       </div>
     </div>
   )
