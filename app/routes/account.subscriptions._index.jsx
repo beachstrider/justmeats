@@ -11,8 +11,8 @@ import { AddressForm } from '~/containers/Account/Subscriptions/AddressForm'
 import { Card } from '~/containers/Account/Subscriptions/Card'
 import { NoSubscriptionCard } from '~/containers/Account/Subscriptions/NoSubscriptionCard'
 import { Close } from '~/icons/Close'
+import { withAuth } from '~/lib/auth'
 import { sendPageView } from '~/lib/metaPixel.server'
-import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 import { getBundle } from '~/lib/storefront'
 import { getPureId } from '~/lib/utils'
 
@@ -24,8 +24,8 @@ export const meta = () => {
   return [{ title: 'Subscriptions - Just Meats' }]
 }
 
-export const loader = async ({ request, context }) => {
-  return await rechargeQueryWrapper(async (rechargeSession) => {
+export const loader = withAuth(
+  async ({ request, context, rechargeSession }) => {
     sendPageView(request)
 
     const bundleProductData = getBundle({
@@ -63,11 +63,11 @@ export const loader = async ({ request, context }) => {
         },
       },
     )
-  }, context)
-}
+  },
+)
 
-export const action = async ({ request, context }) => {
-  return await rechargeQueryWrapper(async (rechargeSession) => {
+export const action = withAuth(
+  async ({ request, context, rechargeSession }) => {
     const form = await request.formData()
     const body = JSON.parse(form.get('body'))
 
@@ -83,8 +83,8 @@ export const action = async ({ request, context }) => {
           return json({ success: false, message: err.message ?? err })
         }
     }
-  }, context)
-}
+  },
+)
 
 export default function SubscriptionsPage() {
   const { subscriptions } = useLoaderData()

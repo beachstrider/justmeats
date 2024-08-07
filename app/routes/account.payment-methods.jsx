@@ -6,16 +6,16 @@ import { useLoaderData } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
 import { Card } from '~/containers/Account/PaymentMethods/Card'
+import { withAuth } from '~/lib/auth'
 import { sendPageView } from '~/lib/metaPixel.server'
-import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 
 export const meta = () => {
   return [{ title: 'Account – Just Meats' }]
 }
 
-export const loader = async ({ request, context }) => {
-  return await rechargeQueryWrapper(async (session) => {
-    const { payment_methods } = await listPaymentMethods(session, {
+export const loader = withAuth(
+  async ({ request, context, rechargeSession }) => {
+    const { payment_methods } = await listPaymentMethods(rechargeSession, {
       limit: 25,
     })
 
@@ -29,11 +29,11 @@ export const loader = async ({ request, context }) => {
         },
       },
     )
-  }, context)
-}
+  },
+)
 
-export const action = async ({ request, context }) => {
-  return await rechargeQueryWrapper(async (rechargeSession) => {
+export const action = withAuth(
+  async ({ request, context, rechargeSession }) => {
     const form = await request.formData()
     const data = JSON.parse(form.get('body'))
 
@@ -50,8 +50,8 @@ export const action = async ({ request, context }) => {
     } catch (err) {
       return json({ success: false, message: err.message ?? err })
     }
-  }, context)
-}
+  },
+)
 
 export default function AccountDetails() {
   const { payment_methods } = useLoaderData()

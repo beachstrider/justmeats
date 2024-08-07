@@ -3,8 +3,8 @@ import { json } from '@shopify/remix-oxygen'
 
 import { Recipes } from '~/containers/Account/Dashboard/Recipes'
 import { Subscription } from '~/containers/Account/Dashboard/Subscription'
+import { withAuth } from '~/lib/auth'
 import { sendPageView } from '~/lib/metaPixel.server'
-import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 import { getBundle } from '~/lib/storefront'
 import { getPureId } from '~/lib/utils'
 
@@ -12,8 +12,8 @@ export const meta = () => {
   return [{ title: 'Dashboard - Just Meats' }]
 }
 
-export const loader = async ({ request, context }) => {
-  return await rechargeQueryWrapper(async (session) => {
+export const loader = withAuth(
+  async ({ request, context, rechargeSession }) => {
     sendPageView(request)
 
     const bundleProductData = getBundle({
@@ -21,8 +21,8 @@ export const loader = async ({ request, context }) => {
       context,
     })
 
-    const subscriptionsData = session.customerId
-      ? listSubscriptions(session, {
+    const subscriptionsData = rechargeSession.customerId
+      ? listSubscriptions(rechargeSession, {
           limit: 25,
           include: ['address', 'customer'],
           status: 'active',
@@ -49,8 +49,8 @@ export const loader = async ({ request, context }) => {
         },
       },
     )
-  }, context)
-}
+  },
+)
 
 export default function AccountDashboard() {
   return (

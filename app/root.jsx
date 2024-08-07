@@ -30,13 +30,13 @@ import { FOOTER_QUERY, HEADER_QUERY } from '~/lib/fragments'
 import { addScriptToHead } from '~/lib/utils'
 import appStyles from '~/styles/app.css?url'
 
+import { RECHARGE_SESSION_KEY } from './lib/auth'
 import { configAspireIQ } from './lib/configAspireIQ'
 import { configChatJS } from './lib/configChatJS'
 import { configGTM } from './lib/configGTM'
 import { configLuckyOrange } from './lib/configLuckyOrange'
 import { configMetaPixel } from './lib/configMetaPixel'
 import { configTwitterPixel } from './lib/configTwitterPixel'
-import { RECHARGE_SESSION_KEY } from './lib/rechargeUtils'
 import { RootProvider } from './providers/RootProvider'
 
 /**

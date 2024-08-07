@@ -17,8 +17,8 @@ import { json } from '@shopify/remix-oxygen'
 
 import { SubscriptionEditLayout } from '~/containers/Account/Subscriptions/EditLayout'
 import { CustomBundle } from '~/containers/CustomBundle'
+import { withAuth } from '~/lib/auth'
 import { sendPageView } from '~/lib/metaPixel.server'
-import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 import { getBundle } from '~/lib/storefront'
 import { getFullId, getPureId } from '~/lib/utils'
 import { CustomBundleProvider } from '~/providers/CustomBundleProvider'
@@ -36,8 +36,8 @@ export const meta = ({ data }) => {
   ]
 }
 
-export const loader = async ({ request, context, params }) => {
-  return await rechargeQueryWrapper(async (rechargeSession) => {
+export const loader = withAuth(
+  async ({ request, context, params, rechargeSession }) => {
     sendPageView(request)
 
     const discountCode = context.session.get('discountCode')
@@ -179,11 +179,11 @@ export const loader = async ({ request, context, params }) => {
         },
       },
     )
-  }, context)
-}
+  },
+)
 
-export const action = async ({ request, context, params }) => {
-  return await rechargeQueryWrapper(async (rechargeSession) => {
+export const action = withAuth(
+  async ({ request, context, params, rechargeSession }) => {
     const form = await request.formData()
     const body = JSON.parse(form.get('body'))
 
@@ -298,8 +298,8 @@ export const action = async ({ request, context, params }) => {
       default:
         break
     }
-  }, context)
-}
+  },
+)
 
 export default function SubscriptionRoute() {
   const { setSubscriptionProducts, setSubscriptionBonusVariant } =

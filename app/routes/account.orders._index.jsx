@@ -5,18 +5,18 @@ import { useLoaderData } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
 import { Card } from '~/containers/Account/Orders/Card'
+import { withAuth } from '~/lib/auth'
 import { sendPageView } from '~/lib/metaPixel.server'
-import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 
 export const meta = () => {
   return [{ title: 'Orders – Just Meats' }]
 }
 
-export async function loader({ request, context }) {
-  return await rechargeQueryWrapper(async (session) => {
+export const loader = withAuth(
+  async ({ request, context, rechargeSession }) => {
     sendPageView(request)
 
-    const { orders } = await listOrders(session, {
+    const { orders } = await listOrders(rechargeSession, {
       limit: 25,
       sort_by: 'id-asc',
     })
@@ -27,8 +27,8 @@ export async function loader({ request, context }) {
         'Cache-Control': 'no-cache, no-store, must-revalidate',
       },
     })
-  }, context)
-}
+  },
+)
 
 export default function Orders() {
   const { orders } = useLoaderData()

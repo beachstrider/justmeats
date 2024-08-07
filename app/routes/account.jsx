@@ -4,16 +4,16 @@ import { getCreditSummary } from '@rechargeapps/storefront-client'
 import { Outlet, json } from '@remix-run/react'
 
 import { Menu } from '~/containers/Account/Menu'
+import { withAuth } from '~/lib/auth'
 import { sendPageView } from '~/lib/metaPixel.server'
-import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 
 export function shouldRevalidate() {
   return true
 }
 
-export const loader = async ({ request, context }) => {
-  return await rechargeQueryWrapper(async (session) => {
-    const credit = await getCreditSummary(session, {
+export const loader = withAuth(
+  async ({ request, context, rechargeSession }) => {
+    const credit = await getCreditSummary(rechargeSession, {
       include: ['credit_details'],
     })
 
@@ -27,8 +27,8 @@ export const loader = async ({ request, context }) => {
         },
       },
     )
-  }, context)
-}
+  },
+)
 
 export default function Layout() {
   return (

@@ -10,12 +10,9 @@ import { json, redirect } from '@shopify/remix-oxygen'
 
 import { RequestForm } from '~/containers/Account/Login/Request'
 import { ValidateForm } from '~/containers/Account/Login/Validate'
+import { RECHARGE_SESSION_KEY, checkRechargeLoggedIn } from '~/lib/auth'
 import { sendPageView } from '~/lib/metaPixel.server'
 import { getCustomerByEmail, updateCustomer } from '~/lib/rechargeAdmin'
-import {
-  RECHARGE_SESSION_KEY,
-  checkRechargeLoggedIn,
-} from '~/lib/rechargeUtils'
 
 export function shouldRevalidate() {
   return false
