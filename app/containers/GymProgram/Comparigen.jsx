@@ -25,7 +25,7 @@ export const Comparigen = () => {
                 More of a novelty built on convenience than a sustainable
                 nutrition solution.
               </li>
-              <li>Microwaveable meals = bland, rubbery taste. </li>
+              <li>Microwaveable meals = bland, rubbery taste.</li>
             </ul>
           </div>
         </div>
