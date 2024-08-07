@@ -22,12 +22,13 @@ export async function loginRecharge(context) {
 // helper function for data fetching
 export async function rechargeQueryWrapper(rechargeFn, context) {
   let rechargeSession = context.rechargeSession.get(RECHARGE_SESSION_KEY)
+  console.debug('in recharge util::::::::', rechargeSession)
 
   if (!rechargeSession) {
     const isShopifyLoggedIn = await context.customerAccount.isLoggedIn()
 
     if (!isShopifyLoggedIn) {
-      return redirect('/account/login')
+      return redirect('/account/signin')
     }
 
     rechargeSession = await loginRecharge(context)
@@ -37,7 +38,7 @@ export async function rechargeQueryWrapper(rechargeFn, context) {
     return await rechargeFn(rechargeSession)
   } catch (e) {
     if (e?.status === 401) {
-      return redirect('/account/login')
+      return redirect('/account/signin')
     }
     // this should match your catch boundary
     throw new Error(`Recharge Error - ${e.message}`)

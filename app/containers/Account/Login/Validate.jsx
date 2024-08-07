@@ -28,7 +28,7 @@ export const ValidateForm = ({ email, sessionToken, setRequestResponse }) => {
         },
         {
           method: 'post',
-          action: '/account/login',
+          action: '/account/signin',
         },
       )
 

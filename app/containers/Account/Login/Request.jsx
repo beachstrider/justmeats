@@ -30,7 +30,7 @@ export const RequestForm = ({ onSubmit }) => {
         },
         {
           method: 'post',
-          action: '/account/login',
+          action: '/account/signin',
         },
       )
 
