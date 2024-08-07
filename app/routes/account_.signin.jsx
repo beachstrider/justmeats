@@ -7,13 +7,16 @@ import {
   validatePasswordlessCode,
 } from '@rechargeapps/storefront-client'
 import { NavLink } from '@remix-run/react'
-import { json } from '@shopify/remix-oxygen'
+import { json, redirect } from '@shopify/remix-oxygen'
 
 import { RequestForm } from '~/containers/Account/Login/Request'
 import { ValidateForm } from '~/containers/Account/Login/Validate'
 import { sendPageView } from '~/lib/metaPixel.server'
 import { getCustomerByEmail, updateCustomer } from '~/lib/rechargeAdmin'
-import { RECHARGE_SESSION_KEY } from '~/lib/rechargeUtils'
+import {
+  RECHARGE_SESSION_KEY,
+  checkRechargeLoggedIn,
+} from '~/lib/rechargeUtils'
 
 export function shouldRevalidate() {
   return false
@@ -24,6 +27,17 @@ export function shouldRevalidate() {
  */
 export async function loader({ request, context }) {
   sendPageView(request)
+
+  const isShopifyLoggedin = await context.customerAccount.isLoggedIn()
+  const isRechargeLoggedin = await checkRechargeLoggedIn(context)
+
+  if (isShopifyLoggedin) {
+    return redirect('/account/dashboard')
+  }
+
+  if (isRechargeLoggedin) {
+    return redirect('/account/dashboard')
+  }
 
   return json(null)
 }

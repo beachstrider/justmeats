@@ -1,4 +1,7 @@
-import { loginWithShopifyCustomerAccount } from '@rechargeapps/storefront-client'
+import {
+  getCustomer,
+  loginWithShopifyCustomerAccount,
+} from '@rechargeapps/storefront-client'
 import { redirect } from '@shopify/remix-oxygen'
 
 export const RECHARGE_SESSION_KEY = 'rechargeSession'
@@ -22,7 +25,6 @@ export async function loginRecharge(context) {
 // helper function for data fetching
 export async function rechargeQueryWrapper(rechargeFn, context) {
   let rechargeSession = context.rechargeSession.get(RECHARGE_SESSION_KEY)
-  console.debug('in recharge util::::::::', rechargeSession)
 
   if (!rechargeSession) {
     const isShopifyLoggedIn = await context.customerAccount.isLoggedIn()
@@ -42,5 +44,21 @@ export async function rechargeQueryWrapper(rechargeFn, context) {
     }
     // this should match your catch boundary
     throw new Error(`Recharge Error - ${e.message}`)
+  }
+}
+
+export async function checkRechargeLoggedIn(context) {
+  const session = context.rechargeSession.get(RECHARGE_SESSION_KEY)
+
+  if (!session) {
+    return false
+  }
+
+  try {
+    await getCustomer(session)
+
+    return true
+  } catch (e) {
+    return false
   }
 }

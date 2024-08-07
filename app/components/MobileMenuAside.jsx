@@ -1,7 +1,6 @@
 import { useContext } from 'react'
-import { useLocation } from 'react-router-dom'
 
-import { Form, useRouteLoaderData } from '@remix-run/react'
+import { Form, useMatches } from '@remix-run/react'
 
 import { Button } from '~/components/Button'
 import { HamburgerClose } from '~/icons/HamburgerClose'
@@ -10,19 +9,14 @@ import { LayoutContext } from '~/providers/LayoutProvider'
 import { MenuNavLink } from './MenuNavLink'
 
 export function MobileMenuAside() {
-  const location = useLocation()
+  const matches = useMatches()
 
-  const { customer } = useRouteLoaderData('root')
+  const { pathname } = matches.at(-1)
+
+  const isAccount = pathname.split('/')[1] === 'account'
+  const isSignin = pathname === '/account/signin'
+
   const { menuToggle, setMenuToggle } = useContext(LayoutContext)
-
-  const isSpecialsPage =
-    location.pathname === '/rich-froning' ||
-    location.pathname === '/buttery-bros' ||
-    location.pathname === '/crossfit' ||
-    location.pathname === '/gym' ||
-    location.pathname === '/recipes' ||
-    location.pathname === '/recipe' ||
-    location.pathname === '/how-it-works'
 
   return (
     <>
@@ -56,15 +50,10 @@ export function MobileMenuAside() {
             {' '}
             <MenuNavLink to="/recipes">Recipes</MenuNavLink>{' '}
           </li>
-          {isSpecialsPage && (
-            <li className="text-[16px] px-10 py-4 text-black border-b border-[#1d1d1d26]">
-              <MenuNavLink to="/">Specials</MenuNavLink>
-            </li>
-          )}
           <li className="text-[16px] px-10 py-4 text-black border-b border-[#1d1d1d26]">
             <MenuNavLink to="/account">Account</MenuNavLink>{' '}
           </li>
-          {customer !== null && (
+          {isAccount && !isSignin && (
             <Form
               method="POST"
               action="/account/logout"

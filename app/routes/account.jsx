@@ -12,7 +12,6 @@ export function shouldRevalidate() {
 }
 
 export const loader = async ({ request, context }) => {
-  console.debug('in account===')
   return await rechargeQueryWrapper(async (session) => {
     const credit = await getCreditSummary(session, {
       include: ['credit_details'],
