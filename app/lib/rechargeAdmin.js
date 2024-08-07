@@ -28,3 +28,28 @@ export const updateCustomer = async (id, data, context) => {
 
   return true
 }
+
+export const createCustomer = async (data, context) => {
+  const response = await fetch(
+    `${context.env.PUBLIC_RECHARGE_ADMIN_API_URL}/customers`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Recharge-Version': '2021-11',
+        'X-Recharge-Access-Token':
+          context.env.PUBLIC_RECHARGE_ADMIN_ACCESS_TOKEN,
+      },
+      method: 'POST',
+      body: JSON.stringify(data),
+    },
+  )
+
+  const { errors } = await response.json()
+
+  if (errors) {
+    console.error(JSON.stringify(errors))
+    throw new Error(JSON.stringify(errors))
+  }
+
+  return true
+}

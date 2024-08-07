@@ -4,6 +4,11 @@ import {
 } from '@rechargeapps/storefront-client'
 import { redirect } from '@shopify/remix-oxygen'
 
+import { CUSTOMER_DETAILS_QUERY } from '~/graphql/customer-account/CustomerDetailsQuery'
+
+import { createCustomer } from './rechargeAdmin'
+import { getPureId } from './utils'
+
 export const RECHARGE_SESSION_KEY = 'rechargeSession'
 
 // loginHelper function
@@ -36,14 +41,39 @@ export async function rechargeQueryWrapper(rechargeFn, context) {
     rechargeSession = await loginRecharge(context)
   }
 
+  if (!rechargeSession.customerId) {
+    const { data, errors } = await context.customerAccount.query(
+      CUSTOMER_DETAILS_QUERY,
+    )
+
+    if (errors?.length || !data?.customer) {
+      throw new Error('Customer not found')
+    }
+
+    const newCustomer = {
+      first_name: data.customer.firstName,
+      last_name: data.customer.lastName,
+      email: data.customer.emailAddress.emailAddress,
+      phone: data.customer.phoneNumber.phoneNumber,
+      external_customer_id: {
+        ecommerce: getPureId(data.customer.id, 'Customer'),
+      },
+    }
+
+    try {
+      await createCustomer(newCustomer, context)
+    } catch (err) {
+      throw new Error(`Creating Recharge customer faild - ${err.message}`)
+    }
+  }
+
   try {
     return await rechargeFn(rechargeSession)
-  } catch (e) {
-    if (e?.status === 401) {
+  } catch (err) {
+    if (err?.status === 401) {
       return redirect('/account/signin')
     }
-    // this should match your catch boundary
-    throw new Error(`Recharge Error - ${e.message}`)
+    throw new Error(`Recharge Error - ${err.message}`)
   }
 }
 
