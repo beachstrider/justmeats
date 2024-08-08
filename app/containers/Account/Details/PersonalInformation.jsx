@@ -9,7 +9,7 @@ import { cn } from '~/lib/utils'
 
 export const PersonalInformation = () => {
   const submit = useSubmitPromise()
-  const { customer } = useLoaderData()
+  const { customer, api } = useLoaderData()
 
   const [submitting, setSubmitting] = useState(false)
 
@@ -30,7 +30,7 @@ export const PersonalInformation = () => {
 
     const res = await submit(
       {
-        body: JSON.stringify(data),
+        body: JSON.stringify({ api, ...data }),
       },
       {
         method: 'post',

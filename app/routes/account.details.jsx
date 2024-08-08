@@ -2,6 +2,8 @@ import { getCustomer, updateCustomer } from '@rechargeapps/storefront-client'
 import { json } from '@shopify/remix-oxygen'
 
 import { PersonalInformation } from '~/containers/Account/Details/PersonalInformation'
+import { CUSTOMER_DETAILS_QUERY } from '~/graphql/customer-account/CustomerDetailsQuery'
+import { CUSTOMER_UPDATE_MUTATION } from '~/graphql/customer-account/CustomerUpdateMutation'
 import { withAuth } from '~/lib/auth'
 import { sendPageView } from '~/lib/metaPixel.server'
 
@@ -14,26 +16,67 @@ export const loader = withAuth(
     sendPageView(request)
 
     if (!rechargeSession.customerId) {
-      return json({ customer: null })
+      const { data, errors } = await context.customerAccount.query(
+        CUSTOMER_DETAILS_QUERY,
+      )
+
+      if (errors?.length || !data?.customer) {
+        // Do logout
+      }
+
+      const customer = {
+        first_name: data.customer.firstName,
+        last_name: data.customer.lastName,
+      }
+
+      return json({ customer, api: 'shopify' })
     }
 
     const customer = await getCustomer(rechargeSession)
 
-    return json({ customer })
+    return json({ customer, api: 'recharge' })
   },
 )
 
 export const action = withAuth(
   async ({ request, context, rechargeSession }) => {
     const form = await request.formData()
-    const data = JSON.parse(form.get('body'))
+    const body = JSON.parse(form.get('body'))
+    const { api, ...payload } = body
 
-    try {
-      await updateCustomer(rechargeSession, data)
+    switch (api) {
+      case 'recharge':
+        try {
+          await updateCustomer(rechargeSession, payload)
 
-      return json({ success: true })
-    } catch (err) {
-      return json({ success: false, message: err.message ?? err })
+          return json({ success: true })
+        } catch (err) {
+          return json({ success: false, message: err.message ?? err })
+        }
+
+      case 'shopify':
+        const customer = {
+          firstName: payload.first_name,
+          lastName: payload.last_name,
+        }
+
+        const { errors } = await context.customerAccount.mutate(
+          CUSTOMER_UPDATE_MUTATION,
+          {
+            variables: {
+              customer,
+            },
+          },
+        )
+
+        if (errors) {
+          return json({ success: false, message: JSON.stringify(errors) })
+        }
+
+        return json({ success: true })
+
+      default:
+        break
     }
   },
 )
