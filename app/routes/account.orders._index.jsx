@@ -5,8 +5,11 @@ import { useLoaderData } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
 import { Card } from '~/containers/Account/Orders/Card'
+import { CUSTOMER_DETAILS_QUERY } from '~/graphql/customer-account/CustomerDetailsQuery'
 import { withAuth } from '~/lib/auth'
 import { sendPageView } from '~/lib/metaPixel.server'
+import { getUserOrders } from '~/lib/restAdmin'
+import { getPureId } from '~/lib/utils'
 
 export const meta = () => {
   return [{ title: 'Orders – Just Meats' }]
@@ -17,7 +20,30 @@ export const loader = withAuth(
     sendPageView(request)
 
     if (!rechargeSession.customerId) {
-      return json({ orders: [] })
+      const { data, errors } = await context.customerAccount.query(
+        CUSTOMER_DETAILS_QUERY,
+      )
+
+      if (errors?.length || !data?.customer) {
+        // Do logout
+      }
+
+      const customerId = getPureId(data.customer.id, 'Customer')
+      const ordersData = await getUserOrders(context, customerId)
+
+      const orders = ordersData.orders.map((element) => ({
+        id: element.id,
+        shipping_address: element.shippingAddress,
+        line_items: element.lineItems,
+        total_price: element.totalPrice.amount,
+        total_discounts: 0,
+        subtotal_price: element.subtotalPrice.amount,
+        shipping_lines: [{ price: element.totalShippingPrice.amount }],
+        external_order_id: getPureId(element.id, 'Order'),
+        processed_at: element.processedAt,
+      }))
+
+      return json({ orders })
     }
 
     const { orders } = await listOrders(rechargeSession, {

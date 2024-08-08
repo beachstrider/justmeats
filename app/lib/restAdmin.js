@@ -19,3 +19,23 @@ export const getShopSuccessInfo = async (context) => {
 
   return { customerCount }
 }
+
+export const getUserOrders = async (context, customerId) => {
+  const storeDomain = context.env.PUBLIC_STORE_DOMAIN
+  const accessToken = context.env.PRIVATE_ADMIN_API_ACCESS_TOKEN
+
+  const response = await fetch(
+    `https://${storeDomain}/admin/api/2024-07/orders.json?customer_id=${customerId}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Access-Token': accessToken,
+      },
+    },
+  )
+
+  const { orders } = await response.json()
+
+  return { orders }
+}
