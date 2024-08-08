@@ -15,11 +15,15 @@ export const meta = () => {
 
 export const loader = withAuth(
   async ({ request, context, rechargeSession }) => {
+    sendPageView(request)
+
+    if (!rechargeSession.customerId) {
+      return json({ payment_methods: [] })
+    }
+
     const { payment_methods } = await listPaymentMethods(rechargeSession, {
       limit: 25,
     })
-
-    sendPageView(request)
 
     return json({ payment_methods })
   },
@@ -56,11 +60,18 @@ export default function AccountDetails() {
           <div className="font-hudson font-bold lg:text-[36px] lg:tracking-[1.8px] text-[24px] tracking-[1.2px] text-center lg:mb-[40px] mb-[27px]">
             PAYMENT METHODS
           </div>
-          <div className="flex flex-col gap-[16px] max-w-[740px] w-full mx-auto">
-            {payment_methods.map((paymentMethod) => (
-              <Card paymentMethod={paymentMethod} key={paymentMethod.id} />
-            ))}
-          </div>
+
+          {payment_methods.length ? (
+            <div className="flex flex-col gap-[16px] max-w-[740px] w-full mx-auto">
+              {payment_methods.map((paymentMethod) => (
+                <Card paymentMethod={paymentMethod} key={paymentMethod.id} />
+              ))}
+            </div>
+          ) : (
+            <div className="py-[40px] text-lg text-center">
+              No Payment Method found.
+            </div>
+          )}
         </div>
       </div>
     </div>

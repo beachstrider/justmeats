@@ -11,9 +11,13 @@ export const meta = () => {
 
 export const loader = withAuth(
   async ({ request, context, rechargeSession }) => {
-    const customer = await getCustomer(rechargeSession)
-
     sendPageView(request)
+
+    if (!rechargeSession.customerId) {
+      return json({ customer: null })
+    }
+
+    const customer = await getCustomer(rechargeSession)
 
     return json({ customer })
   },

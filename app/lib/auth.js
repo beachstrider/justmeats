@@ -55,10 +55,6 @@ export const withAuth = (loader) => {
         rechargeSession = await loginRecharge(context)
       }
 
-      if (!rechargeSession.customerId) {
-        rechargeSession = null
-      }
-
       return await loader({ ...args, rechargeSession })
     } catch (err) {
       if (err?.status === 401) {

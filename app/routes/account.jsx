@@ -13,11 +13,15 @@ export function shouldRevalidate() {
 
 export const loader = withAuth(
   async ({ request, context, rechargeSession }) => {
+    sendPageView(request)
+
+    if (!rechargeSession.customerId) {
+      return json({ credit: null })
+    }
+
     const credit = await getCreditSummary(rechargeSession, {
       include: ['credit_details'],
     })
-
-    sendPageView(request)
 
     return json({ credit })
   },

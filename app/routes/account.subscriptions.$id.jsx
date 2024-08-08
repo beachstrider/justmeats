@@ -40,6 +40,12 @@ export const loader = withAuth(
   async ({ request, context, params, rechargeSession }) => {
     sendPageView(request)
 
+    if (!rechargeSession.customerId) {
+      throw new Response(`${new URL(request.url).pathname} not found`, {
+        status: 404,
+      })
+    }
+
     const discountCode = context.session.get('discountCode')
     const discountCodes = discountCode ? [discountCode] : []
 

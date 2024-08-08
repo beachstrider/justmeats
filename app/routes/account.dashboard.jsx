@@ -16,18 +16,20 @@ export const loader = withAuth(
   async ({ request, context, rechargeSession }) => {
     sendPageView(request)
 
+    if (!rechargeSession.customerId) {
+      return json({ subscription: null })
+    }
+
     const bundleProductData = getBundle({
       request,
       context,
     })
 
-    const subscriptionsData = rechargeSession.customerId
-      ? listSubscriptions(rechargeSession, {
-          limit: 25,
-          include: ['address', 'customer'],
-          status: 'active',
-        })
-      : { subscriptions: [] }
+    const subscriptionsData = listSubscriptions(rechargeSession, {
+      limit: 25,
+      include: ['address', 'customer'],
+      status: 'active',
+    })
 
     const [{ bundleProduct }, { subscriptions: allSubscriptions }] =
       await Promise.all([bundleProductData, subscriptionsData])

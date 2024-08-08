@@ -16,6 +16,10 @@ export const loader = withAuth(
   async ({ request, context, rechargeSession }) => {
     sendPageView(request)
 
+    if (!rechargeSession.customerId) {
+      return json({ orders: [] })
+    }
+
     const { orders } = await listOrders(rechargeSession, {
       limit: 25,
       sort_by: 'id-asc',
@@ -51,7 +55,7 @@ export default function Orders() {
               ))}
             </div>
           ) : (
-            <div className="py-[40px] text-lg text-center">No order found.</div>
+            <div className="py-[40px] text-lg text-center">No Order found.</div>
           )}
         </div>
       </div>
