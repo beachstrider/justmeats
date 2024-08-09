@@ -70,7 +70,7 @@ export type CustomerAddressCreateMutation = {
 
 export type CustomerFragment = Pick<
   CustomerAccountAPI.Customer,
-  'firstName' | 'lastName'
+  'id' | 'firstName' | 'lastName'
 > & {
   emailAddress?: CustomerAccountAPI.Maybe<
     Pick<CustomerAccountAPI.CustomerEmailAddress, 'emailAddress'>
@@ -111,6 +111,9 @@ export type CustomerFragment = Pick<
       >
     >;
   };
+  phoneNumber?: CustomerAccountAPI.Maybe<
+    Pick<CustomerAccountAPI.CustomerPhoneNumber, 'phoneNumber'>
+  >;
 };
 
 export type AddressFragment = Pick<
@@ -134,7 +137,10 @@ export type CustomerDetailsQueryVariables = CustomerAccountAPI.Exact<{
 }>;
 
 export type CustomerDetailsQuery = {
-  customer: Pick<CustomerAccountAPI.Customer, 'firstName' | 'lastName'> & {
+  customer: Pick<
+    CustomerAccountAPI.Customer,
+    'id' | 'firstName' | 'lastName'
+  > & {
     emailAddress?: CustomerAccountAPI.Maybe<
       Pick<CustomerAccountAPI.CustomerEmailAddress, 'emailAddress'>
     >;
@@ -174,6 +180,9 @@ export type CustomerDetailsQuery = {
         >
       >;
     };
+    phoneNumber?: CustomerAccountAPI.Maybe<
+      Pick<CustomerAccountAPI.CustomerPhoneNumber, 'phoneNumber'>
+    >;
   };
 };
 
@@ -468,7 +477,7 @@ export type CustomerUpdateMutation = {
 };
 
 interface GeneratedQueryTypes {
-  '#graphql\n  query CustomerDetails {\n    customer {\n      ...Customer\n    }\n  }\n  #graphql\n  fragment Customer on Customer {\n    firstName\n    lastName\n    emailAddress {\n      emailAddress\n    }\n    defaultAddress {\n      ...Address\n    }\n    addresses(first: 6) {\n      nodes {\n        ...Address\n      }\n    }\n  }\n  fragment Address on CustomerAddress {\n    id\n    formatted\n    firstName\n    lastName\n    company\n    address1\n    address2\n    territoryCode\n    zoneCode\n    city\n    zip\n    phoneNumber\n  }\n\n': {
+  '#graphql\n  query CustomerDetails {\n    customer {\n      ...Customer\n    }\n  }\n  #graphql\n  fragment Customer on Customer {\n    id\n    firstName\n    lastName\n    emailAddress {\n      emailAddress\n    }\n    defaultAddress {\n      ...Address\n    }\n    addresses(first: 6) {\n      nodes {\n        ...Address\n      }\n    }\n    phoneNumber {\n      phoneNumber\n    }\n  }\n  fragment Address on CustomerAddress {\n    id\n    formatted\n    firstName\n    lastName\n    company\n    address1\n    address2\n    territoryCode\n    zoneCode\n    city\n    zip\n    phoneNumber\n  }\n\n': {
     return: CustomerDetailsQuery;
     variables: CustomerDetailsQueryVariables;
   };

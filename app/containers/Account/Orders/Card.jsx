@@ -4,7 +4,7 @@ import { format } from 'date-fns'
 
 import customBundleImage from '~/assets/images/3g2yuk1drt1h63se54r6gs5erg61ser2g.png'
 
-export const Card = ({ order, isExpanded, setIsExpanded }) => {
+export const Card = ({ order, api, isExpanded, setIsExpanded }) => {
   const {
     shipping_address,
     line_items,
@@ -31,7 +31,9 @@ export const Card = ({ order, isExpanded, setIsExpanded }) => {
             <div className="flex items-center justify-between grow">
               <div>
                 <div className="font-bold lg:text-[24px] text-[16px] leading-none">
-                  Bundle Subscription
+                  {api === 'recharge'
+                    ? 'Bundle Subscription'
+                    : 'Bundle One-time Purchase'}
                 </div>
                 <div className="lg:mb-[6px] mb-[4px] lg:text-[14px] text-[12px]">
                   {format(processed_at, 'LLLL dd, yyyy')}
@@ -162,19 +164,19 @@ export const Card = ({ order, isExpanded, setIsExpanded }) => {
               </div>
               <div>
                 <p className="leading-[175%] lg:text-[16px] text-[14px]">
-                  {shipping_address.first_name} {shipping_address.last_name}
+                  {shipping_address?.first_name} {shipping_address?.last_name}
                 </p>
                 <p className="leading-[175%] lg:text-[16px] text-[14px]">
-                  {shipping_address.address1}
+                  {shipping_address?.address1}
                 </p>
                 <p className="leading-[175%] lg:text-[16px] text-[14px]">
-                  {shipping_address.address2}
+                  {shipping_address?.address2}
                 </p>
                 <p className="leading-[175%] lg:text-[16px] text-[14px]">
-                  {shipping_address.city}
+                  {shipping_address?.city}
                 </p>
                 <p className="leading-[175%] lg:text-[16px] text-[14px]">
-                  {shipping_address.province} {shipping_address.zip}
+                  {shipping_address?.province} {shipping_address?.zip}
                 </p>
               </div>
             </div>

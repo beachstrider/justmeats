@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { NavLink } from '@remix-run/react'
+
 import { Button } from '~/components/Button'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
 import { cn } from '~/lib/utils'
@@ -30,7 +32,7 @@ export const RequestForm = ({ onSubmit }) => {
         },
         {
           method: 'post',
-          action: '/account/login',
+          action: '/account/signin',
         },
       )
 
@@ -48,7 +50,7 @@ export const RequestForm = ({ onSubmit }) => {
 
   return (
     <form
-      className="flex flex-col gap-[30px]"
+      className="flex flex-col gap-[20px]"
       onSubmit={handleSubmit(onFormSubmit)}
     >
       <div className="text-[28px] font-bold">Login</div>
@@ -75,6 +77,13 @@ export const RequestForm = ({ onSubmit }) => {
       >
         Send login code (sends SMS and email)
       </Button>
+      <NavLink
+        prefetch="intent"
+        to="/account/login"
+        className="block text-center underline"
+      >
+        Login with Shopify
+      </NavLink>
     </form>
   )
 }
