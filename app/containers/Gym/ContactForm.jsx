@@ -42,8 +42,8 @@ export const ContactForm = ({ formName }) => {
       onSubmit={handleSubmit(onSubmit)}
       className={
         formName === 'first'
-          ? 'relative xl:pt-[46px] xl:pb-[36px] xl:px-[50px] pt-[30px] pb-[30px] px-[33px] rounded-[8px] bg-[#D8CAC7] flex flex-col items-start gap-[16px] font-nunito'
-          : 'relative xl:pt-[46px] xl:pb-[36px] xl:px-[50px] pt-[30px] pb-[30px] px-[33px] rounded-[8px] bg-[#D8CAC7] flex flex-col items-start gap-[16px] font-nunito'
+          ? 'relative pt-[20px] pb-[40px] xl:px-[50px] px-[33px] flex flex-col items-start gap-[16px]'
+          : 'relative pt-[20px] pb-[40px] xl:px-[50px] px-[33px] flex flex-col items-start gap-[16px]'
       }
     >
       {isSubmitted && (
@@ -61,16 +61,16 @@ export const ContactForm = ({ formName }) => {
           placeholder="Enter your full name"
           className={
             formName === 'first'
-              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
-              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
+              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
+              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
           }
         />
         {errors.name && (
           <p
             className={
               formName === 'first'
-                ? 'text-white uppercase text-[12px]'
-                : 'text-black uppercase text-[12px]'
+                ? 'text-[#6b1626] uppercase text-[12px]'
+                : 'text-[#6b1626] uppercase text-[12px]'
             }
           >
             {errors.name.message}
@@ -84,16 +84,16 @@ export const ContactForm = ({ formName }) => {
           type="email"
           className={
             formName === 'first'
-              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
-              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
+              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
+              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
           }
         />
         {errors.email && (
           <p
             className={
               formName === 'first'
-                ? 'text-white uppercase text-[12px]'
-                : 'text-black uppercase text-[12px]'
+                ? 'text-[#6b1626] uppercase text-[12px]'
+                : 'text-[#6b1626] uppercase text-[12px]'
             }
           >
             {errors.email.message}
@@ -107,16 +107,16 @@ export const ContactForm = ({ formName }) => {
           type="text"
           className={
             formName === 'first'
-              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
-              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
+              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
+              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
           }
         />
         {errors.gym_name && (
           <p
             className={
               formName === 'first'
-                ? 'text-white uppercase text-[12px]'
-                : 'text-black uppercase text-[12px]'
+                ? 'text-[#6b1626] uppercase text-[12px]'
+                : 'text-[#6b1626] uppercase text-[12px]'
             }
           >
             {errors.gym_name.message}
@@ -130,16 +130,16 @@ export const ContactForm = ({ formName }) => {
           type="tel"
           className={
             formName === 'first'
-              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
-              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
+              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
+              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
           }
         />
         {errors.phone && (
           <p
             className={
               formName === 'first'
-                ? 'text-white uppercase text-[12px]'
-                : 'text-black uppercase text-[12px]'
+                ? 'text-[#6b1626] uppercase text-[12px]'
+                : 'text-[#6b1626] uppercase text-[12px]'
             }
           >
             {errors.phone.message}
@@ -152,38 +152,33 @@ export const ContactForm = ({ formName }) => {
           placeholder="Enter your Gym address"
           className={
             formName === 'first'
-              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
-              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-bold lg:px-[17px] lg:py-[10px] px-[10px] py-[3px] border-none w-full'
+              ? 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
+              : 'bg-[#FFFFFF] rounded-[4px] text-[17px] font-semibold lg:px-[17px] py-[10px] px-[10px] border-none w-full'
           }
         />
         {errors.gym_address && (
           <p
             className={
               formName === 'first'
-                ? 'text-white uppercase text-[12px]'
-                : 'text-black uppercase text-[12px]'
+                ? 'text-[#6b1626] uppercase text-[12px]'
+                : 'text-[#6b1626] uppercase text-[12px]'
             }
           >
             {errors.gym_address.message}
           </p>
         )}
       </div>
-      <div className="tracking-normal">
-        By submitting this form, you agree to the terms stated herein and
-        consent to Just Meats contacting you via text, email, and phone for
-        purposes related to the subject matter of this form.
-      </div>
-      <div className="flex gap-2">
+      <div className="flex gap-2 m-auto">
         <Button
           type="submit"
           loading={submitting}
           className={
             formName === 'first'
-              ? 'text-[16px] font-normal px-[24px] py-[12px] rounded-[4px] text-white bg-[#7A392D]'
-              : 'text-[16px] font-normal px-[24px] py-[12px] rounded-[4px] text-white bg-[#7A392D]'
+              ? 'text-white font-semibold px-[18px] md:px-[24px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] tracking-[1px] uppercase'
+              : 'text-white font-semibold px-[18px] md:px-[24px] py-[12px] bg-[#BF4745] hover:bg-[#6B1626] tracking-[1px] uppercase'
           }
         >
-          SUBMIT
+          Get started
         </Button>
         <div className=""></div>
       </div>

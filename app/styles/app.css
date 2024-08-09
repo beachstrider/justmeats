@@ -726,6 +726,14 @@ button.free-gift-label {
   background-position-y: 0;
 }
 
+.black-horizontal{
+  background-image: url('../assets/images/blackhorizontallines-wallpaper-.png');
+  background-repeat: no-repeat;
+  background-color: #EFEEED;
+  background-size: cover;
+  background-position-y: 0;
+}
+
 .bg-brown-pattern {
   background-image: url('../assets/images/s2d1f5h4u8u6u2g1j2o2j2gd6de.png');
   background-repeat: no-repeat;
