@@ -25,7 +25,7 @@ export const getUserOrders = async (context, customerId) => {
   const accessToken = context.env.PRIVATE_ADMIN_API_ACCESS_TOKEN
 
   const response = await fetch(
-    `https://${storeDomain}/admin/api/2024-07/orders.json?customer_id=${customerId}`,
+    `https://${storeDomain}/admin/api/2024-07/orders.json?customer_id=${customerId}&financial_status=paid`,
     {
       method: 'GET',
       headers: {

@@ -19,7 +19,14 @@ export const loader = withAuth(
   async ({ request, context, rechargeSession }) => {
     sendPageView(request)
 
-    if (!rechargeSession.customerId) {
+    if (rechargeSession.customerId) {
+      const { orders } = await listOrders(rechargeSession, {
+        limit: 25,
+        sort_by: 'id-asc',
+      })
+
+      return json({ orders, api: 'recharge' })
+    } else {
       const { data, errors } = await context.customerAccount.query(
         CUSTOMER_DETAILS_QUERY,
       )
@@ -29,34 +36,27 @@ export const loader = withAuth(
       }
 
       const customerId = getPureId(data.customer.id, 'Customer')
-      const ordersData = await getUserOrders(context, customerId)
+      const ordersResponse = await getUserOrders(context, customerId)
 
-      const orders = ordersData.orders.map((element) => ({
+      const orders = ordersResponse.orders.map((element) => ({
         id: element.id,
-        shipping_address: element.shippingAddress,
-        line_items: element.lineItems,
-        total_price: element.totalPrice.amount,
-        total_discounts: 0,
-        subtotal_price: element.subtotalPrice.amount,
-        shipping_lines: [{ price: element.totalShippingPrice.amount }],
-        external_order_id: getPureId(element.id, 'Order'),
-        processed_at: element.processedAt,
+        line_items: element.line_items,
+        total_price: element.total_price,
+        processed_at: element.processed_at,
+        subtotal_price: element.subtotal_price,
+        shipping_lines: element.shipping_lines,
+        total_discounts: element.total_discounts,
+        shipping_address: element.shipping_address,
+        external_order_id: { ecommerce: element.id },
       }))
 
-      return json({ orders })
+      return json({ orders, api: 'shopify' })
     }
-
-    const { orders } = await listOrders(rechargeSession, {
-      limit: 25,
-      sort_by: 'id-asc',
-    })
-
-    return json({ orders })
   },
 )
 
 export default function Orders() {
-  const { orders } = useLoaderData()
+  const { orders, api } = useLoaderData()
 
   const [expandedOrderId, setExpandedOrderId] = useState(orders[0]?.id)
 
@@ -73,6 +73,7 @@ export default function Orders() {
                 <Card
                   order={order}
                   key={order.id}
+                  api={api}
                   isExpanded={expandedOrderId === order.id}
                   setIsExpanded={(expanded) =>
                     setExpandedOrderId(expanded ? order.id : null)
