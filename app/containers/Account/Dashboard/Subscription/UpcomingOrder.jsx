@@ -54,10 +54,10 @@ export const UpcomingOrder = () => {
     <div className="shrink-0 bg-white [box-shadow:0px_18px_25px_-15px_rgba(0,0,0,0.15)] lg:w-[360px] w-full lg:px-[25px] px-[17px] lg:pt-[26px] pt-[15px] lg:pb-[36px] pb-[24px]">
       <div className="lg:mb-[31px] mb-[17px]">
         <div className="font-hudson text-center font-bold text-[24px] tracking-[1.2px] lg:mb-[9px] mb-0">
-          UPCOMING ORDER
+          UPCOMING SUBSCRIPTION RENEWAL
         </div>
         <div className="text-center text-[#6B1626] lg:text-[18px] text-[16px]">
-          Processing on{' '}
+          You will be charged on{' '}
           <span className="font-bold">
             {format(subscription.next_charge_scheduled_at, 'LLLL dd, yyyy')}
           </span>
