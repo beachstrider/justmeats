@@ -13,7 +13,6 @@ import { OrderNow } from '~/containers/Home/OrderNow'
 import { Review } from '~/containers/Home/Review'
 import { COLLECTIONS_QUERY } from '~/graphql/Collection'
 import { sendPageView } from '~/lib/metaPixel.server'
-import { getShopSuccessInfo } from '~/lib/restAdmin'
 import { CustomBundleContext } from '~/providers/CustomBundleProvider'
 import { RootContext } from '~/providers/RootProvider'
 
@@ -30,8 +29,6 @@ export async function loader({ request, context }) {
   const collectionHandles = ['featured', 'most-popular', 'trending']
   const query = collectionHandles.join(' OR ')
 
-  const { customerCount, deliveryCount } = await getShopSuccessInfo(context)
-
   const {
     collections: { nodes: collections },
   } = await storefront.query(COLLECTIONS_QUERY, {
@@ -43,7 +40,7 @@ export async function loader({ request, context }) {
     },
   })
 
-  return defer({ collections, customerCount, deliveryCount })
+  return defer({ collections })
 }
 
 export default function Homepage() {
