@@ -38,7 +38,7 @@ export default function Orders() {
     listOrdersResponse: { orders },
   } = useLoaderData()
 
-  const [expandedOrderId, setExpandedOrderId] = useState(orders[0]?.id)
+  const [expandedOrderId, setExpandedOrderId] = useState(orders?.[0]?.id)
 
   return (
     <div className="bg-[#efeeed]">
