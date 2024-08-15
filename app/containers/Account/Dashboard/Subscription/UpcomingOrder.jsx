@@ -59,7 +59,9 @@ export const UpcomingOrder = () => {
         <div className="text-center text-[#6B1626] lg:text-[18px] text-[16px]">
           You will be charged on{' '}
           <span className="font-bold">
-            {format(subscription.next_charge_scheduled_at, 'LLLL dd, yyyy')}
+            {subscription.next_charge_scheduled_at
+              ? format(subscription.next_charge_scheduled_at, 'LLLL dd, yyyy')
+              : null}
           </span>
         </div>
       </div>
