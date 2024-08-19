@@ -101,10 +101,11 @@ const Faq = () => {
             <b>Peanut Allergies</b>
           </p>
           <p className="my-3">
-            We don't currently use peanuts, but we have had and may use peanuts
-            in the future. There is the possibility for cross contamination in
-            our facility, so if you are severely allergic, please use your own
-            discretion or contact your doctor before ordering.
+            We don&apos;t currently use peanuts, but we have had and may use
+            peanuts in the future. There is the possibility for cross
+            contamination in our facility, so if you are severely allergic,
+            please use your own discretion or contact your doctor before
+            ordering.
           </p>
 
           <p className="my-3">
