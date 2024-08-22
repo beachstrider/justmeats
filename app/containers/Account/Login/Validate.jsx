@@ -53,9 +53,9 @@ export const ValidateForm = ({ email, sessionToken, setRequestResponse }) => {
   }, [code])
 
   return (
-    <div className="flex flex-col gap-[30px]">
-      <div className="text-[28px] font-bold">We sent you a code!</div>
-      <div>
+    <div className="flex flex-col">
+      <div className="font-hudson text-[28px] font-bold mb-[23px]">LOGIN</div>
+      <div className="mb-[27px]">
         <div className="mb-1">Enter verification code</div>
         <OtpInput
           shouldAutoFocus
@@ -71,7 +71,7 @@ export const ValidateForm = ({ email, sessionToken, setRequestResponse }) => {
             paddingTop: 22,
             paddingBottom: 22,
             borderWidth: 2,
-            borderRadius: 6,
+            borderRadius: 0,
             borderColor: isError ? 'rgb(244,67,54)' : '',
           }}
         />

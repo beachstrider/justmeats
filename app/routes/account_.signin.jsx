@@ -6,6 +6,7 @@ import {
   sendPasswordlessCode,
   validatePasswordlessCode,
 } from '@rechargeapps/storefront-client'
+import { NavLink } from '@remix-run/react'
 import { json, redirect } from '@shopify/remix-oxygen'
 
 import { RequestForm } from '~/containers/Account/Login/Request'
@@ -135,8 +136,8 @@ export default function Login() {
 
   return (
     <main className="bg-[#EFEEED]">
-      <div className="container flex justify-center sm:py-[120px] py-[40px]">
-        <div className="sm:max-w-[404px] w-full rounded shadow p-[30px] bg-white">
+      <div className="container flex flex-col items-center sm:py-[120px] py-[40px]">
+        <div className="sm:max-w-[404px] w-full lg:px-[33px] px-[30px] lg:py-[37px] py-[32px] bg-white [box-shadow:0px_18px_25px_-15px_rgba(0,0,0,0.15)]">
           {requestResponse === null && (
             <RequestForm onSubmit={(res) => setRequestResponse(res)} />
           )}
@@ -146,6 +147,16 @@ export default function Login() {
               setRequestResponse={setRequestResponse}
             />
           )}
+        </div>
+        <div className="flex gap-1 lg:mt-[18px] mt-[16px] justify-center text-center font-medium">
+          One-time customers login
+          <NavLink
+            prefetch="intent"
+            to="/account/login"
+            className="font-bold underline"
+          >
+            HERE
+          </NavLink>
         </div>
       </div>
     </main>
