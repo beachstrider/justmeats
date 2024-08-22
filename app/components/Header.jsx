@@ -165,7 +165,7 @@ export function Header() {
                 <Form
                   className="items-center hidden lg:flex account-logout"
                   method="POST"
-                  action="/account/logout"
+                  action="/account/signout"
                 >
                   <button type="submit">
                     <Logout />

@@ -56,7 +56,7 @@ export function MobileMenuAside() {
           {isAccount && !isSignin && (
             <Form
               method="POST"
-              action="/account/logout"
+              action="/account/signout"
               onSubmit={() => setMenuToggle(false)}
             >
               <button
