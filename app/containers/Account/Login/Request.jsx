@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { NavLink } from '@remix-run/react'
-
 import { Button } from '~/components/Button'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
 import { cn } from '~/lib/utils'
@@ -49,18 +47,15 @@ export const RequestForm = ({ onSubmit }) => {
   }
 
   return (
-    <form
-      className="flex flex-col gap-[20px]"
-      onSubmit={handleSubmit(onFormSubmit)}
-    >
-      <div className="text-[28px] font-bold">Login</div>
-      <div>
+    <form className="flex flex-col" onSubmit={handleSubmit(onFormSubmit)}>
+      <div className="font-hudson text-[28px] font-bold mb-[23px]">LOGIN</div>
+      <div className="mb-[27px]">
         <input
           type="email"
           placeholder="Email"
           {...register('email', { required: 'Email is required' })}
           className={cn(
-            'block w-full text-sm rounded-md border-0 py-[10px] text-gray-900 shadow-sm ring-1 ring-inset placeholder:text-gray-400 focus:ring-2 focus:ring-inset',
+            'block w-full text-[16px] border-0 py-[10px] text-gray-900 shadow-sm ring-1 ring-inset placeholder:text-[16px] placeholder:text-gray-400 focus:ring-2 focus:ring-inset',
             errors.email
               ? 'ring-red-300 focus:ring-red-500'
               : 'ring-gray-300 focus:ring-gray-500',
@@ -71,19 +66,14 @@ export const RequestForm = ({ onSubmit }) => {
           <div className="mt-1 text-red-500">{errors.email.message}</div>
         )}
       </div>
-      <Button
-        loading={submitting}
-        className="rounded bg-[#163840] hover:bg-[#2d4b53] text-white py-[10px] font-medium"
-      >
-        Send login code (sends SMS and email)
-      </Button>
-      <NavLink
-        prefetch="intent"
-        to="/account/login"
-        className="block text-center underline"
-      >
-        Login with Shopify
-      </NavLink>
+      <div className="flex justify-center">
+        <Button
+          loading={submitting}
+          className="bg-[#BF4745] hover:bg-[#6B1626] py-[12px] w-full max-w-[226px] text-white font-bold tracking-[0.7px] text-[14px]"
+        >
+          SEND LOGIN CODE
+        </Button>
+      </div>
     </form>
   )
 }
