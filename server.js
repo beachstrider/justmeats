@@ -113,6 +113,10 @@ export default {
         response.headers.set('Set-Cookie', await session.commit())
       }
 
+      if (rechargeSession.isPending) {
+        response.headers.set('Set-Cookie', await rechargeSession.commit())
+      }
+
       if (response.status === 404) {
         /**
          * Check for redirects only when there's a 404 from the app.

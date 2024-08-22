@@ -11,8 +11,8 @@ import { AddressForm } from '~/containers/Account/Subscriptions/AddressForm'
 import { Card } from '~/containers/Account/Subscriptions/Card'
 import { NoSubscriptionCard } from '~/containers/Account/Subscriptions/NoSubscriptionCard'
 import { Close } from '~/icons/Close'
+import { withAuth } from '~/lib/auth'
 import { sendPageView } from '~/lib/metaPixel.server'
-import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 import { getBundle } from '~/lib/storefront'
 import { getPureId } from '~/lib/utils'
 
@@ -24,22 +24,24 @@ export const meta = () => {
   return [{ title: 'Subscriptions - Just Meats' }]
 }
 
-export const loader = async ({ request, context }) =>
-  await rechargeQueryWrapper(async (rechargeSession) => {
+export const loader = withAuth(
+  async ({ request, context, rechargeSession }) => {
     sendPageView(request)
+
+    if (!rechargeSession.customerId) {
+      return json({ subscriptions: [] })
+    }
 
     const bundleProductData = getBundle({
       request,
       context,
     })
 
-    const subscriptionsData = rechargeSession.customerId
-      ? listSubscriptions(rechargeSession, {
-          limit: 25,
-          include: ['address', 'customer'],
-          status: 'active',
-        })
-      : { subscriptions: [] }
+    const subscriptionsData = listSubscriptions(rechargeSession, {
+      limit: 25,
+      include: ['address', 'customer'],
+      status: 'active',
+    })
 
     const [{ bundleProduct }, { subscriptions: allSubscriptions }] =
       await Promise.all([bundleProductData, subscriptionsData])
@@ -53,20 +55,12 @@ export const loader = async ({ request, context }) =>
         el.external_product_id.ecommerce === '8619519803673',
     )
 
-    return json(
-      {
-        subscriptions,
-      },
-      {
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-        },
-      },
-    )
-  }, context)
+    return json({ subscriptions })
+  },
+)
 
-export const action = async ({ request, context }) =>
-  await rechargeQueryWrapper(async (rechargeSession) => {
+export const action = withAuth(
+  async ({ request, context, rechargeSession }) => {
     const form = await request.formData()
     const body = JSON.parse(form.get('body'))
 
@@ -82,7 +76,8 @@ export const action = async ({ request, context }) =>
           return json({ success: false, message: err.message ?? err })
         }
     }
-  }, context)
+  },
+)
 
 export default function SubscriptionsPage() {
   const { subscriptions } = useLoaderData()

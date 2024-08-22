@@ -17,8 +17,8 @@ import { json } from '@shopify/remix-oxygen'
 
 import { SubscriptionEditLayout } from '~/containers/Account/Subscriptions/EditLayout'
 import { CustomBundle } from '~/containers/CustomBundle'
+import { withAuth } from '~/lib/auth'
 import { sendPageView } from '~/lib/metaPixel.server'
-import { rechargeQueryWrapper } from '~/lib/rechargeUtils'
 import { getBundle } from '~/lib/storefront'
 import { getFullId, getPureId } from '~/lib/utils'
 import { CustomBundleProvider } from '~/providers/CustomBundleProvider'
@@ -36,9 +36,15 @@ export const meta = ({ data }) => {
   ]
 }
 
-export const loader = async ({ request, context, params }) => {
-  return await rechargeQueryWrapper(async (rechargeSession) => {
+export const loader = withAuth(
+  async ({ request, context, params, rechargeSession }) => {
     sendPageView(request)
+
+    if (!rechargeSession.customerId) {
+      throw new Response(`${new URL(request.url).pathname} not found`, {
+        status: 404,
+      })
+    }
 
     const discountCode = context.session.get('discountCode')
     const discountCodes = discountCode ? [discountCode] : []
@@ -156,34 +162,27 @@ export const loader = async ({ request, context, params }) => {
       (product) => product.id !== shippingInsuranceProduct.id,
     )
 
-    return json(
-      {
-        id: params.id,
-        bundleId,
-        purchase_item_id,
-        products,
-        subscription,
-        charges,
-        freeProduct,
-        bonusProduct,
-        subscriptionProducts,
-        subscriptionBonusVariant,
-        upcomingChargeId,
-        shopCurrency: 'USD',
-        discountCodes,
-        isFreeProductSubscribed,
-      },
-      {
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-        },
-      },
-    )
-  }, context)
-}
+    return json({
+      id: params.id,
+      bundleId,
+      purchase_item_id,
+      products,
+      subscription,
+      charges,
+      freeProduct,
+      bonusProduct,
+      subscriptionProducts,
+      subscriptionBonusVariant,
+      upcomingChargeId,
+      shopCurrency: 'USD',
+      discountCodes,
+      isFreeProductSubscribed,
+    })
+  },
+)
 
-export const action = async ({ request, context, params }) =>
-  await rechargeQueryWrapper(async (rechargeSession) => {
+export const action = withAuth(
+  async ({ request, context, params, rechargeSession }) => {
     const form = await request.formData()
     const body = JSON.parse(form.get('body'))
 
@@ -298,7 +297,8 @@ export const action = async ({ request, context, params }) =>
       default:
         break
     }
-  }, context)
+  },
+)
 
 export default function SubscriptionRoute() {
   const { setSubscriptionProducts, setSubscriptionBonusVariant } =

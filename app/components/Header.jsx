@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 
-import { Form, NavLink, useMatches, useRouteLoaderData } from '@remix-run/react'
+import { Form, NavLink, useMatches } from '@remix-run/react'
 
 import { Account } from '~/icons/Account'
 import { HamburgerOpen } from '~/icons/HamburgerOpen'
@@ -18,11 +18,11 @@ export function Header() {
 
   const { pathname } = matches.at(-1)
   const { setMenuToggle } = useContext(LayoutContext)
-  const { customer } = useRouteLoaderData('root')
 
   const [isMobile, setIsMobile] = useState(false)
 
   const isAccount = pathname.split('/')[1] === 'account'
+  const isSignin = pathname === '/account/signin'
 
   useEffect(() => {
     const handleResize = () => {
@@ -161,11 +161,11 @@ export function Header() {
                   <OrderButton />
                 </div>
               )}
-              {isAccount && customer !== null && (
+              {isAccount && !isSignin && (
                 <Form
                   className="items-center hidden lg:flex account-logout"
                   method="POST"
-                  action="/account/logout"
+                  action="/account/signout"
                 >
                   <button type="submit">
                     <Logout />

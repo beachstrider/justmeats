@@ -1,14 +1,9 @@
-import { redirect } from '@shopify/remix-oxygen'
-
 /**
- * @param {ActionFunctionArgs}
+ * @param {LoaderFunctionArgs}
  */
-export async function action({ context }) {
-  return redirect('/', {
-    headers: {
-      'Set-Cookie': await context.rechargeSession.destroy(),
-    },
-  })
+
+export async function loader({ context }) {
+  return context.customerAccount.logout()
 }
 
 /** @typedef {import('@shopify/remix-oxygen').ActionFunctionArgs} ActionFunctionArgs */

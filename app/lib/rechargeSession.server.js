@@ -1,14 +1,17 @@
 import { createCookieSessionStorage } from '@shopify/remix-oxygen'
 
-// Recharge session is good for 60 minutes so set to 55 minutes to avoid race conditions
+// Recharge session is good for 60 minutes so set to
+// 55 minutes to avoid race conditions
+
 const RECHARGE_SESSION_DURATION = 60 * 55
 
-/**
- * This is a custom session implementation for your Hydrogen shop.
- * Feel free to customize it to your needs, add helper methods, or
- * swap out the cookie-based implementation with something else!
- */
 export class RechargeSession {
+  /**
+   * @public
+   * @default false
+   */
+  isPending = false
+
   #sessionStorage
   #session
 
@@ -58,10 +61,12 @@ export class RechargeSession {
   }
 
   get unset() {
+    this.isPending = true
     return this.#session.unset
   }
 
   get set() {
+    this.isPending = true
     return this.#session.set
   }
 
@@ -70,6 +75,7 @@ export class RechargeSession {
   }
 
   commit() {
+    this.isPending = true
     return this.#sessionStorage.commitSession(this.#session)
   }
 }
