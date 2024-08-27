@@ -7,9 +7,30 @@ import { DialogContent } from './DialogContent'
 export const ProductModal = ({ product, onClose }) => {
   const [open, setOpen] = useState(false)
 
+  const trackViewedProduct = () => {
+    if (typeof window.klaviyo !== 'undefined') {
+      const item = {
+        ProductID: product.id,
+        ProductName: product.title,
+        SKU: product.variants.nodes[0].sku,
+        Categories: product.collections.edges.map(
+          (element) => element.node.title,
+        ),
+        ImageURL: product.featuredImage.url,
+        URL: `${window.location.origin}/custom-bundle?product=${product.handle}`,
+        Brand: product.vendor,
+        Price: product.variants.nodes[0].price.amount,
+        CompareAtPrice: product.variants.nodes[0].compareAtPrice?.amount,
+      }
+
+      window.klaviyo.push(['track', 'Viewed Product', item])
+    }
+  }
+
   useEffect(() => {
     if (product) {
       setOpen(true)
+      trackViewedProduct()
     } else {
       setOpen(false)
     }
