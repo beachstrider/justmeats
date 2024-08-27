@@ -3,7 +3,7 @@ import { cn, getPureId } from '~/lib/utils'
 import { ProductActions } from './ProductActions'
 
 export const ProductCard = ({ product, onClick, className, type }) => {
-  const image = product?.product_icon_1?.reference?.image?.url || ''
+  const image = product.product_icon_1?.reference?.image?.url || ''
   const backgroundColor = product.background_color?.value ?? '#FFF'
   const servings = product.servings?.value ?? ''
   const servingType = product.serving_type?.value ?? ''
@@ -14,6 +14,7 @@ export const ProductCard = ({ product, onClick, className, type }) => {
     Popular: '#E39725',
     Subscriber: '#C73515',
   }
+  const isPremium = product.tags.includes('Premium')
 
   // PATCH: temporily
   const pureId = getPureId(product.id, 'Product')
@@ -71,7 +72,12 @@ export const ProductCard = ({ product, onClick, className, type }) => {
         </div>
       </div>
       <div className="flex-1 flex flex-col justify-between bg-white [box-shadow:0px_8px_14px_-5px_rgba(0,0,0,0.15)]">
-        <div className="flex-1 flex flex-col justify-between px-[20px] pt-[30px] lg:pb-[10px] pb-[4px] text-center">
+        <div className="relative flex-1 flex flex-col justify-between px-[20px] pt-[30px] lg:pb-[10px] pb-[4px] text-center">
+          {isPremium && (
+            <div className="absolute left-0 top-0 flex justify-center items-center w-full h-[24px] bg-[#231b19] text-white">
+              PREMIUM
+            </div>
+          )}
           <div
             className={cn(
               'font-hudson font-bold leading-none lg:mb-[20px] mb-[18px]',
