@@ -10,8 +10,8 @@ export const ProductModal = ({ product, onClose }) => {
   const trackViewedProduct = () => {
     if (typeof window.klaviyo !== 'undefined') {
       const item = {
-        ProductName: product.handle,
         ProductID: product.id,
+        ProductName: product.title,
         SKU: product.variants.nodes[0].sku,
         Categories: product.collections.edges.map(
           (element) => element.node.title,
