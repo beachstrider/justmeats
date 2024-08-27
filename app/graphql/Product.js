@@ -1,15 +1,67 @@
-export const PRODUCT_ITEM_FRAGMENT = `#graphql
+export const PRODUCT_VARIANT_FRAGMENT = `#graphql
+  fragment ProductVariant on ProductVariant {
+    availableForSale
+    compareAtPrice {
+      amount
+      currencyCode
+    }
+    id
+    image {
+      __typename
+      id
+      url
+      altText
+      width
+      height
+    }
+    price {
+      amount
+      currencyCode
+    }
+    product {
+      title
+      handle
+    }
+    selectedOptions {
+      name
+      value
+    }
+    sku
+    title
+    unitPrice {
+      amount
+      currencyCode
+    }
+  }
+`
+
+export const PRODUCT_FRAGMENT = `#graphql
   fragment MoneyProductItem on MoneyV2 {
     amount
     currencyCode
   }
-  fragment ProductItem on Product {
+  fragment Product on Product {
     id
     tags
-    handle
     title
+    vendor
+    handle
     description
+    descriptionHtml
     requiresSellingPlan
+    options {
+      name
+      values
+    }
+    variants(first: 10) {
+      nodes {
+        ...ProductVariant
+      }
+    }
+    seo {
+      description
+      title
+    }
     images(first: 100) {
       nodes {
         altText
@@ -31,19 +83,6 @@ export const PRODUCT_ITEM_FRAGMENT = `#graphql
       }
       maxVariantPrice {
         ...MoneyProductItem
-      }
-    }
-    variants(first: 10) {
-      nodes {
-        id
-        title
-        image {
-          id
-          altText
-          url
-          width
-          height
-        }
       }
     }
     collections(first: 3) {
@@ -135,6 +174,7 @@ export const PRODUCT_ITEM_FRAGMENT = `#graphql
       }
     }
   }
+  ${PRODUCT_VARIANT_FRAGMENT}
 `
 
 export const ALL_PRODUCTS_QUERY = `#graphql
@@ -158,69 +198,7 @@ export const ALL_PRODUCTS_QUERY = `#graphql
       }
     }
   }
-  ${PRODUCT_ITEM_FRAGMENT}
-`
-
-export const PRODUCT_VARIANT_FRAGMENT = `#graphql
-  fragment ProductVariant on ProductVariant {
-    availableForSale
-    compareAtPrice {
-      amount
-      currencyCode
-    }
-    id
-    image {
-      __typename
-      id
-      url
-      altText
-      width
-      height
-    }
-    price {
-      amount
-      currencyCode
-    }
-    product {
-      title
-      handle
-    }
-    selectedOptions {
-      name
-      value
-    }
-    sku
-    title
-    unitPrice {
-      amount
-      currencyCode
-    }
-  }
-`
-
-export const PRODUCT_FRAGMENT = `#graphql
-  fragment Product on Product {
-    id
-    title
-    vendor
-    handle
-    descriptionHtml
-    description
-    options {
-      name
-      values
-    }
-    variants(first: 10) {
-      nodes {
-        ...ProductVariant
-      }
-    }
-    seo {
-      description
-      title
-    }
-  }
-  ${PRODUCT_VARIANT_FRAGMENT}
+  ${PRODUCT_FRAGMENT}
 `
 
 export const PRODUCT_BY_HANDLE_QUERY = `#graphql
