@@ -35,7 +35,7 @@ export const CustomBundle = () => {
   const filters = {
     servingTypes: getProductsMetaValues(products, 'serving_type'),
     meatTypes: getProductsMetaValues(products, 'meat_type'),
-    specialTypes: getProductsMetaValues(products, 'special_type'),
+    specialTypes: ['Premium', 'Popular', 'Subscriber Exclusive'],
   }
 
   const filteredProducts = getFilteredProducts(
@@ -160,14 +160,13 @@ const getProductsMetaValues = (products, key) => {
 }
 
 const getFilteredProducts = (products, filter) => {
-  return products.filter((el) => {
+  return products.filter((product) => {
     let isServingTypeMatch = true
     let isMeatTypeMatch = true
     let isSpecialTypeMatch = true
 
-    const productServingType = el.serving_type?.value ?? ''
-    const productMeatType = el.meat_type?.value ?? ''
-    const productSpecialType = el.special_type?.value ?? ''
+    const productServingType = product.serving_type?.value ?? ''
+    const productMeatType = product.meat_type?.value ?? ''
 
     if (filter.servingType) {
       isServingTypeMatch = filter.servingType === productServingType
@@ -178,7 +177,9 @@ const getFilteredProducts = (products, filter) => {
     }
 
     if (filter.specialTypes.length) {
-      isSpecialTypeMatch = filter.specialTypes.includes(productSpecialType)
+      isSpecialTypeMatch = filter.specialTypes.some((element) =>
+        product.tags.includes(element),
+      )
     }
 
     return isServingTypeMatch && isMeatTypeMatch && isSpecialTypeMatch
