@@ -47,7 +47,7 @@ export const FeedbackAside = ({ open, onClose, subscriptionId }) => {
   return (
     <aside
       className={cn(
-        'w-full sm:w-[360px] border-[#B2B2B2] border-l fixed overflow-y-auto md:overflow-y-hidden h-screen top-0 right-0 bg-white z-10 flex flex-col',
+        'w-full sm:w-[360px] border-[#B2B2B2] border-l fixed overflow-y-auto md:overflow-y-hidden h-screen top-0 right-0 bg-white z-30 flex flex-col',
         open ? 'block' : 'hidden',
       )}
     >
