@@ -15,7 +15,6 @@ import {
 import { useLoaderData } from '@remix-run/react'
 import { json } from '@shopify/remix-oxygen'
 
-import { SubscriptionEditLayout } from '~/containers/Account/Subscriptions/EditLayout'
 import { CustomBundle } from '~/containers/CustomBundle'
 import { withAuth } from '~/lib/auth'
 import { sendPageView } from '~/lib/metaPixel.server'
@@ -311,10 +310,10 @@ export default function SubscriptionRoute() {
   }, [])
 
   return (
-    <SubscriptionEditLayout>
+    <div className="bg-[#eeeeee]">
       <CustomBundleProvider>
         <CustomBundle />
       </CustomBundleProvider>
-    </SubscriptionEditLayout>
+    </div>
   )
 }

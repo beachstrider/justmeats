@@ -88,7 +88,7 @@ export const PlanPickerBlock = () => {
   )
 
   return (
-    <div className="w-[100%] pb-[0px] lg:pb-[25px] border-b border-[#EFEEED]">
+    <div className="w-[100%] 2xl:pt-[54px] lg:pt-[30px] pt-[16px] pb-[0px] lg:pb-[25px] border-b border-[#EFEEED]">
       <div className="flex flex-col">
         <div className="block lg:hidden">
           <h2 className="font-bold text-[28px] hidden lg:block">
