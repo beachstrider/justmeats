@@ -12,7 +12,7 @@ export const Card = ({ order, api, isExpanded, setIsExpanded }) => {
     total_discounts,
     subtotal_price,
     shipping_lines,
-    external_order_id,
+    external_order_name,
     processed_at,
   } = order
 
@@ -90,7 +90,7 @@ export const Card = ({ order, api, isExpanded, setIsExpanded }) => {
                 <div className="lg:text-[16px] text-[12px] leading-[163%]">
                   <span className="hidden lg:inline-block">Order&nbsp;</span>
                   <span className="font-bold">
-                    #{external_order_id.ecommerce}
+                    {external_order_name.ecommerce}
                   </span>
                 </div>
                 {!isExpanded && (
