@@ -43,36 +43,62 @@ export const MobileCart = () => {
   )
 
   return (
-    <div className="relative z-20 mobile-cart">
-      <div className="fixed flex lg:gap-0 gap-[10px] w-full lg:hidden bottom-0 bg-white left-0 px-[20px] py-[16px] font-barlow font-bold text-[16px] [box-shadow:0px_0px_10px_0px_rgba(0,0,0,0.20)]">
-        <Button
-          className="flex justify-center shrink-0 items-center w-[48px] h-[48px] border-2 border-[#6B1626] rounded-[8px]"
-          onClick={onMobileReamazeChatClick}
-        >
-          <MobileChat />
-        </Button>
-        <Button
-          onClick={() => setCartOpen(true)}
-          className={cn(
-            'lg:hidden w-full py-[10px]',
-            isCheckoutable
-              ? 'bg-[#BF4745] text-white'
-              : 'bg-[#EFEEED] text-[#6B1626]',
+    <div className="relative z-[100] mobile-cart">
+      <div className="fixed z-[60] w-full lg:hidden bottom-0 bg-white left-0 px-[20px] py-[16px] font-barlow font-bold text-[16px] [box-shadow:0px_0px_10px_0px_rgba(0,0,0,0.20)]">
+        {isCartPage && cartOpen && (
+          <div className="mb-[20px]">
+            <PlanPicker type="mobileCart" />
+          </div>
+        )}
+        <div className="flex lg:gap-0 gap-[10px]">
+          <Button
+            className="flex justify-center shrink-0 items-center w-[48px] h-[48px] border-2 border-[#6B1626] rounded-[8px]"
+            onClick={onMobileReamazeChatClick}
+          >
+            <MobileChat />
+          </Button>
+          {cartOpen && (
+            <Button
+              loading={submitting}
+              disabled={!isCheckoutable}
+              onClick={handleSubmit}
+              className={cn(
+                'flex-1 text-white font-bold font-barlow text-[18px] text-center py-[10px] z-50',
+                isCartPage && isCheckoutable ? 'btn-checkout' : '',
+                isCheckoutable ? 'bg-[#BF4745]' : 'bg-[#AAAAAA]',
+              )}
+            >
+              {!isCheckoutable && `Spend $75 to `}
+              {isCartPage ? `Checkout` : 'Update Changes'} - ${cost}
+            </Button>
           )}
-        >
-          {isCartPage && (
-            <>
-              {isCheckoutable
-                ? `View Cart - ($${cost})`
-                : `Add $${(75 - costForOneTime).toFixed(
-                    2,
-                  )} to Unlock Cart ($${cost})`}
-            </>
+          {!cartOpen && (
+            <Button
+              onClick={() => setCartOpen(true)}
+              className={cn(
+                'lg:hidden w-full py-[10px]',
+                isCheckoutable
+                  ? 'bg-[#BF4745] text-white'
+                  : 'bg-[#EFEEED] text-[#6B1626]',
+              )}
+            >
+              {isCartPage && (
+                <>
+                  {isCheckoutable
+                    ? `View Cart - ($${cost})`
+                    : `Add $${(75 - costForOneTime).toFixed(
+                        2,
+                      )} to Unlock Cart ($${cost})`}
+                </>
+              )}
+              {!isCartPage && (
+                <>
+                  {isCheckoutable ? `Update Changes` : `Spend $75 to Continue`}
+                </>
+              )}
+            </Button>
           )}
-          {!isCartPage && (
-            <>{isCheckoutable ? `Update Changes` : `Spend $75 to Continue`}</>
-          )}
-        </Button>
+        </div>
       </div>
 
       <div
@@ -87,32 +113,6 @@ export const MobileCart = () => {
             <CartContent />
           </div>
         )}
-        <div className="fixed bottom-0 left-0 w-full bg-white">
-          <div className="lg:pt-0 pt-[10px] lg:px-0 px-[20px] lg:pb-0 pb-[16px] flex flex-col shrink-0 [box-shadow:0_-3px_15px_-5px_#333]">
-            {isCartPage && <PlanPicker type="mobileCart" />}
-            <div className="flex lg:gap-0 gap-[10px] mt-[16px]">
-              <Button
-                className="flex justify-center shrink-0 items-center w-[48px] h-[48px] border-2 border-[#6B1626] rounded-[8px]"
-                onClick={onMobileReamazeChatClick}
-              >
-                <MobileChat />
-              </Button>
-              <Button
-                loading={submitting}
-                disabled={!isCheckoutable}
-                onClick={handleSubmit}
-                className={cn(
-                  'flex-1 text-white font-bold font-barlow text-[18px] text-center py-[10px] z-50',
-                  isCartPage && isCheckoutable ? 'btn-checkout' : '',
-                  isCheckoutable ? 'bg-[#BF4745]' : 'bg-[#AAAAAA]',
-                )}
-              >
-                {!isCheckoutable && `Spend $75 to `}
-                {isCartPage ? `Checkout` : 'Update Changes'} - ${cost}
-              </Button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   )
