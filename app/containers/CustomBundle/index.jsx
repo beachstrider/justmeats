@@ -267,7 +267,7 @@ export const CustomBundle = () => {
               'cart-wrapper sticky hidden lg:block lg:max-w-[480px] w-full bg-white',
               isCartPage
                 ? 'h-[calc(100vh+300px)] 2xl:top-[-324px] lg:top-[-300px]'
-                : 'h-[calc(100vh)] 2xl:top-0 lg:top-[-32px]',
+                : 'h-[calc(100vh)] 2xl:top-0 xl:top-0 lg:top-0 md:top-[-32px]',
             )}
           >
             {isCartPage && <PlanPickerBlock />}
