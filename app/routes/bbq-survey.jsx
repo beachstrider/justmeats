@@ -3,12 +3,6 @@ import { useEffect } from 'react'
 import { getPaginationVariables } from '@shopify/hydrogen'
 import { json } from '@shopify/remix-oxygen'
 
-import { Banner } from '~/containers/RichFroning/Banner'
-import { CustomerReviews } from '~/containers/RichFroning/CustomerReviews'
-import { DoMeatRight } from '~/containers/RichFroning/DoMeatRight'
-import { Featured } from '~/containers/RichFroning/Featured'
-import { HowItWorks } from '~/containers/RichFroning/HowItWorks'
-import { LearnMore } from '~/containers/RichFroning/LearnMore'
 import { COLLECTIONS_QUERY } from '~/graphql/Collection'
 import { sendPageView } from '~/lib/metaPixel.server'
 
@@ -46,7 +40,7 @@ export default function RichFroning() {
 
   return (
     <main className="relative font-dunbar tracking-[1px] leading-1 text-[#231B19] my-[30px]">
-      <div class="klaviyo-form-VnsCzP"></div>
+      <div className="klaviyo-form-VnsCzP"></div>
     </main>
   )
 }
