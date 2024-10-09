@@ -14,10 +14,10 @@ export const Banner = () => {
         </p>
         <div class="sm:hidden block text-center">
           <p class="text-[18px] font-semibold font-[baskerville-poster-pt] uppercase tracking-widest italic">
-            U.S.D.A. Choice Steaks,
+            U.S.D.A. Choice Steaks
           </p>
           <p class="text-[18px] font-semibold font-[baskerville-poster-pt] uppercase tracking-widest italic text-[#000000]">
-            Cut To Order—
+            Cut To Order
           </p>
           <p class="text-[18px] font-semibold font-[baskerville-poster-pt] uppercase tracking-widest italic">
             Shipping October 21-25
