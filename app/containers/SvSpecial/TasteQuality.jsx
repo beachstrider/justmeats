@@ -2,7 +2,7 @@ import bannerimagemobile from '~/assets/images/sage-valley-banner-image-mobile.p
 import bannerimage from '~/assets/images/sage-valley-banner-image.png'
 import ShortDot from '~/assets/images/short-dot.png'
 
-export const TestQuality = () => {
+export const TasteQuality = () => {
   return (
     <section className="relative">
       <div>
