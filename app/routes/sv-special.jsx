@@ -102,7 +102,11 @@ export default function SvSpecial() {
     <>
       <main className="relative font-barlow tracking-[1px] leading-1 text-[#231B19]">
         <Banner />
-        <SageValleyContent checkout={checkout} submitting={submitting} />
+        <SageValleyContent
+          products={products}
+          checkout={checkout}
+          submitting={submitting}
+        />
         <TasteQuality />
         <SelectProductQty products={products} setProducts={setProducts} />
       </main>

@@ -1,7 +1,10 @@
 import ShortDot from '~/assets/images/short-dot.png'
 import { Button } from '~/components/Button'
 
-export const SageValleyContent = ({ checkout, submitting }) => {
+export const SageValleyContent = ({ products, checkout, submitting }) => {
+  const disabled =
+    products.reduce((partialSum, a) => partialSum + a.quantity, 0) === 0
+
   return (
     <section>
       <div className="relative max-w-[1000px] w-full mx-auto py-[40px] sm:py-[60px] px-[20px] text-center flex flex-col items-center">
@@ -18,6 +21,7 @@ export const SageValleyContent = ({ checkout, submitting }) => {
         </div>
         <div className="flex justify-center my-[20px]">
           <Button
+            disabled={disabled}
             loading={submitting}
             onClick={checkout}
             className="hover:bg-[#AD916B] hover:text-[#000000] font-hudson text-[#000] sm:text-[14px] text-[12px] border-2 border-[#AD916B] font-normal leading-[14.566px] sm:tracking-[2.8px] tracking-[2.4px] cursor-pointer transition py-3 px-12 uppercase"

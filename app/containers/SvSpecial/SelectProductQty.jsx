@@ -6,10 +6,8 @@ export const SelectProductQty = ({ products, setProducts }) => {
     const newProducts = [...products]
     const newQuantity = newProducts[index].quantity + v
 
-    if (newQuantity > 0) {
-      newProducts[index].quantity = newQuantity
-      setProducts(newProducts)
-    }
+    newProducts[index].quantity = newQuantity
+    setProducts(newProducts)
   }
 
   return (
@@ -59,21 +57,35 @@ export const SelectProductQty = ({ products, setProducts }) => {
                 </div>
               </div>
               <div className="flex items-center justify-center gap-[20px] p-4 bg-white">
-                <Button
-                  onClick={() => updateQuantity(index, -1)}
-                  className="flex justify-center items-center font-bold text-[32px] text-[#AD916B]"
-                >
-                  −
-                </Button>
-                <div className=" text-[#231B19] font-barlow  text-[20px]  not-italic font-[500] leading-[29px]  tracking-[1px] uppercase">
-                  {product.quantity}
-                </div>
-                <Button
-                  onClick={() => updateQuantity(index, 1)}
-                  className="flex justify-center items-center font-bold text-[32px] text-[#AD916B]"
-                >
-                  +
-                </Button>
+                {product.quantity > 0 && (
+                  <>
+                    <Button
+                      onClick={() => updateQuantity(index, -1)}
+                      className="flex justify-center items-center font-bold text-[32px] text-[#AD916B]"
+                    >
+                      −
+                    </Button>
+                    <div className="text-[#231B19] font-barlow  text-[20px]  not-italic font-[500] leading-[29px]  tracking-[1px] uppercase mt-[4px]">
+                      {product.quantity}
+                    </div>
+                    <Button
+                      onClick={() => updateQuantity(index, 1)}
+                      className="flex justify-center items-center font-bold text-[32px] text-[#AD916B]"
+                    >
+                      +
+                    </Button>
+                  </>
+                )}
+                {product.quantity === 0 && (
+                  <Button onClick={() => updateQuantity(index, 1)}>
+                    <div className="flex justify-center items-center font-bold gap-[4px]">
+                      <span className="text-black text-[18px] mt-[4px]">
+                        ADD
+                      </span>
+                      <span className="text-[32px] text-[#AD916B]">+</span>
+                    </div>
+                  </Button>
+                )}
               </div>
               <div className="h-auto  sm:min-h-[150px] md:min-h-[120px] mt-10 text-center text-[#231B19] font-barlow  text-[18px] not-italic font-[400] leading-[24px] ">
                 {product.description}
