@@ -13,7 +13,7 @@ export const TasteQuality = () => {
           className="block w-full sm:hidden"
         />
         <div className="absolute sm:left-1/4 -translate-x-1/2 left-1/2 sm:top-1/2 top-[75%] -translate-y-1/2  max-w-[350px] w-full mx-auto lg:pt-[60px] pt-[40px] lg:pb-[132px] pb-[40px] px-[20px] tracking-tight">
-          <div className="font-[baskerville-display-pt] text-[25px] font-bold leading-[28.78px] text-left text-[#AD916B] uppercase">
+          <div className="font-baskerville text-[25px] font-bold leading-[28.78px] text-left text-[#AD916B] uppercase">
             TASTE the quality
           </div>
           <div className="max-w-[250px]">

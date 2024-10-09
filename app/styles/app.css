@@ -288,6 +288,53 @@
   font-stretch: normal;
 }
 
+/** Baskerville **/
+
+@font-face {
+  font-family: 'Baskerville';
+  src: url('../assets/fonts/Baskerville/Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Baskerville';
+  src: url('../assets/fonts/Baskerville/Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Baskerville';
+  src: url('../assets/fonts/Baskerville/SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Baskerville';
+  src: url('../assets/fonts/Baskerville/SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Baskerville';
+  src: url('../assets/fonts/Baskerville/Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Baskerville';
+  src: url('../assets/fonts/Baskerville/BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   html {
     @apply font-body text-[#231B19];

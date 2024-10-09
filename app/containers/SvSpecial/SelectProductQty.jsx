@@ -15,10 +15,10 @@ export const SelectProductQty = ({ products, setProducts }) => {
   return (
     <section className="relative  bg-[#EFEEED]">
       <div className="max-w-[1000px] mx-auto quantiti-box pt-20 md:pb-36 pb-20 px-[15px]">
-        <div className="main-heading uppercase text-[#AD916B] text-center leading-[normal] text-[39px] font-[baskerville-display-pt] font-[700]">
+        <div className="main-heading uppercase text-[#AD916B] text-center leading-[normal] text-[39px] font-baskerville font-[700]">
           LIMITED QUANTITIES ONLY
         </div>
-        <div className="main-heading uppercase text-[#AD916B] text-center leading-[normal] text-[39px] font-[baskerville-display-pt] font-[700]">
+        <div className="main-heading uppercase text-[#AD916B] text-center leading-[normal] text-[39px] font-baskerville font-[700]">
           ..........
         </div>
         <div className="my-5 mx-auto text-center font-['Barlow'] text-[18px] font-[400] leading-[24px] text-[#231B19] max-w-[730px] not-italic	">
@@ -39,7 +39,7 @@ export const SelectProductQty = ({ products, setProducts }) => {
                 alt=""
               />
               <div className="p-4 bg-white border-b ">
-                <div className="text-center text-[#231B19] font-[baskerville-display-pt] text-[24px] not-italic font-[600] leading-[100%]">
+                <div className="text-center text-[#231B19] font-baskerville text-[24px] not-italic font-[600] leading-[100%]">
                   {product.product_information.value}
                 </div>
                 <div className="flex items-end justify-between mt-6 ">
@@ -78,7 +78,7 @@ export const SelectProductQty = ({ products, setProducts }) => {
               <div className="h-auto  sm:min-h-[150px] md:min-h-[120px] mt-10 text-center text-[#231B19] font-barlow  text-[18px] not-italic font-[400] leading-[24px] ">
                 {product.description}
               </div>
-              <div className="text-center text-[#AD916B] font-[baskerville-display-pt] uppercase text-[39px] not-italic leading-[normal]">
+              <div className="text-center text-[#AD916B] font-baskerville uppercase text-[39px] not-italic leading-[normal]">
                 ...
               </div>
               <div className=" sm:min-h-[100px] md:min-h-[70px] mt-5 text-center text-[#231B19] font-barlow text-[18px] not-italic font-[400] leading-[24px]">

@@ -5,7 +5,7 @@ export const SageValleyContent = ({ checkout, submitting }) => {
   return (
     <section>
       <div className="relative max-w-[1000px] w-full mx-auto py-[40px] sm:py-[60px] px-[20px] text-center flex flex-col items-center">
-        <div className="font-[baskerville-display-pt]  sm:text-[39px] text-[29px] font-bold sm:leading-[44.9px] leading-[33.39px] text-center text-[#AD916B]">
+        <div className="font-baskerville sm:text-[39px] text-[29px] font-bold sm:leading-[44.9px] leading-[33.39px] text-center text-[#AD916B]">
           U.S.D.A. CHOICE GRADE BEEF
         </div>
         <img src={ShortDot} alt="" className="m-auto mt-[15px]" />
@@ -25,7 +25,7 @@ export const SageValleyContent = ({ checkout, submitting }) => {
             Buy now
           </Button>
         </div>
-        <div className="font-[baskerville-display-pt] text-[25px] font-bold leading-[28.78px] text-center text-[#AD916B] mt-[30px] mb-[15px]">
+        <div className="font-baskerville text-[25px] font-bold leading-[28.78px] text-center text-[#AD916B] mt-[30px] mb-[15px]">
           A HISTORY OF PREMIUM QUALITY
         </div>
         <div className="font-barlow text-[18px] font-normal leading-[24px] text-center text-[#231B19] mb-[15px]">
