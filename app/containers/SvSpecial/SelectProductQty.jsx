@@ -4,9 +4,10 @@ import { Button } from '~/components/Button'
 export const SelectProductQty = ({ products, setProducts }) => {
   const updateQuantity = (index, v) => {
     const newProducts = [...products]
-    newProducts[index].quantity += v
+    const newQuantity = newProducts[index].quantity + v
 
-    if (newProducts[index].quantity > 0) {
+    if (newQuantity > 0) {
+      newProducts[index].quantity = newQuantity
       setProducts(newProducts)
     }
   }
