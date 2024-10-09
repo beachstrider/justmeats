@@ -40,7 +40,11 @@ export async function action({ request, context }) {
   const discountCode = context.session.get('discountCode')
 
   const form = await request.formData()
-  const cartData = JSON.parse(form.get('body'))
+  const products = JSON.parse(form.get('body'))
+  const cartData = products.map(({ merchandiseId, quantity }) => ({
+    merchandiseId,
+    quantity,
+  }))
 
   let cartResult
   let checkoutUrl
@@ -62,17 +66,14 @@ export async function action({ request, context }) {
 export default function SvSpecial() {
   const submit = useSubmitPromise()
 
-  const {
-    collection: {
-      products: { nodes: products },
-    },
-  } = useLoaderData()
+  const { collection } = useLoaderData()
 
   const [submitting, setSubmitting] = useState(false)
-  const [cartData, setCartData] = useState(
-    products.map((product) => ({
+  const [products, setProducts] = useState(
+    collection.products.nodes.map((product) => ({
       merchandiseId: product.variants.nodes[0].id,
       quantity: 1,
+      ...product,
     })),
   )
 
@@ -81,7 +82,7 @@ export default function SvSpecial() {
 
     const res = await submit(
       {
-        body: JSON.stringify(cartData),
+        body: JSON.stringify(products),
       },
       {
         method: 'post',
@@ -103,7 +104,7 @@ export default function SvSpecial() {
         <Banner />
         <SageValleyContent checkout={checkout} submitting={submitting} />
         <TasteQuality />
-        <SelectProductQty cartData={cartData} setCartData={setCartData} />
+        <SelectProductQty products={products} setProducts={setProducts} />
       </main>
       <Footer />
     </>

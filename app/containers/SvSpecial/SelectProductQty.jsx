@@ -1,14 +1,15 @@
-import { useLoaderData } from '@remix-run/react'
-
 import selectproductimg from '~/assets/images/selectproductimg.png'
+import { Button } from '~/components/Button'
 
-export const SelectProductQty = ({ cartData, setCartData }) => {
-  const {
-    collection: {
-      products: { nodes: products },
-    },
-  } = useLoaderData()
-  console.debug('🚀 - products:', products)
+export const SelectProductQty = ({ products, setProducts }) => {
+  const updateQuantity = (index, v) => {
+    const newProducts = [...products]
+    newProducts[index].quantity += v
+
+    if (newProducts[index].quantity > 0) {
+      setProducts(newProducts)
+    }
+  }
 
   return (
     <section className="relative  bg-[#EFEEED]">
@@ -56,43 +57,22 @@ export const SelectProductQty = ({ cartData, setCartData }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-center p-4 bg-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="13"
-                  viewBox="0 0 14 13"
-                  fill="none"
-                  className="mr-8"
+              <div className="flex items-center justify-center gap-[20px] p-4 bg-white">
+                <Button
+                  onClick={() => updateQuantity(index, -1)}
+                  className="flex justify-center items-center font-bold text-[32px] text-[#AD916B]"
                 >
-                  <path
-                    d="M14 4.87512V6.82512C14 7.09595 13.9072 7.32616 13.7216 7.51574C13.536 7.70532 13.3106 7.80012 13.0455 7.80012H0.954545C0.689394 7.80012 0.464015 7.70532 0.278409 7.51574C0.092803 7.32616 0 7.09595 0 6.82512V4.87512C0 4.60428 0.092803 4.37407 0.278409 4.18449C0.464015 3.99491 0.689394 3.90012 0.954545 3.90012H13.0455C13.3106 3.90012 13.536 3.99491 13.7216 4.18449C13.9072 4.37407 14 4.60428 14 4.87512Z"
-                    fill="#AD916B"
-                  />
-                </svg>
+                  −
+                </Button>
                 <div className=" text-[#231B19] font-barlow  text-[20px]  not-italic font-[500] leading-[29px]  tracking-[1px] uppercase">
-                  1
+                  {product.quantity}
                 </div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  className="ml-8"
+                <Button
+                  onClick={() => updateQuantity(index, 1)}
+                  className="flex justify-center items-center font-bold text-[32px] text-[#AD916B]"
                 >
-                  <g clipPath="url(#clip0_4_20114)">
-                    <path
-                      d="M14 6.04558V7.95467C14 8.21982 13.9072 8.4452 13.7216 8.6308C13.536 8.81641 13.3106 8.90921 13.0455 8.90921H8.90909V13.0456C8.90909 13.3107 8.81629 13.5361 8.63068 13.7217C8.44508 13.9073 8.2197 14.0001 7.95455 14.0001H6.04545C5.7803 14.0001 5.55492 13.9073 5.36932 13.7217C5.18371 13.5361 5.09091 13.3107 5.09091 13.0456V8.90921H0.954545C0.689394 8.90921 0.464015 8.81641 0.278409 8.6308C0.092803 8.4452 0 8.21982 0 7.95467V6.04558C0 5.78043 0.092803 5.55505 0.278409 5.36944C0.464015 5.18383 0.689394 5.09103 0.954545 5.09103H5.09091V0.954668C5.09091 0.689516 5.18371 0.464137 5.36932 0.278531C5.55492 0.0929251 5.7803 0.00012207 6.04545 0.00012207H7.95455C8.2197 0.00012207 8.44508 0.0929251 8.63068 0.278531C8.81629 0.464137 8.90909 0.689516 8.90909 0.954668V5.09103H13.0455C13.3106 5.09103 13.536 5.18383 13.7216 5.36944C13.9072 5.55505 14 5.78043 14 6.04558Z"
-                      fill="#AD916B"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_4_20114">
-                      <rect width="14" height="14" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
+                  +
+                </Button>
               </div>
               <div className="h-auto  sm:min-h-[150px] md:min-h-[120px] mt-10 text-center text-[#231B19] font-barlow  text-[18px] not-italic font-[400] leading-[24px] ">
                 {product.description}
