@@ -54,7 +54,15 @@ export const Products = ({ submitting, checkout, products, setProducts }) => {
                   </div>
                   <div>
                     <div className="font-barlow  text-[#CF2A2A] text-[16px] text-right not-italic font-[700] uppercase leading-[29px] tracking-[.8px]">
-                      53% OFF
+                      {Math.round(
+                        (1 -
+                          Number(product.variants.nodes[0].price.amount) /
+                            Number(
+                              product.variants.nodes[0].compareAtPrice.amount,
+                            )) *
+                          100,
+                      )}
+                      % OFF
                     </div>
                   </div>
                 </div>
