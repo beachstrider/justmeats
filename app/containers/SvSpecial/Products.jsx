@@ -113,7 +113,7 @@ export const Products = ({ submitting, checkout, products, setProducts }) => {
             onClick={checkout}
             className="hover:bg-[#AD916B] hover:text-[#000000] font-hudson text-[#000] sm:text-[14px] text-[12px] border-2 border-[#AD916B] font-normal leading-[14.566px] sm:tracking-[2.8px] tracking-[2.4px] cursor-pointer transition py-3 px-12 uppercase"
           >
-            Buy now
+            CHECKOUT
           </Button>
         </div>
         <div className="bg-[url('../assets/images/long-dot.png')] bg-repeat absolute bottom-[20px] left-0 right-0 p-[4px]"></div>
