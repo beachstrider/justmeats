@@ -1,7 +1,10 @@
 import selectproductimg from '~/assets/images/selectproductimg.png'
 import { Button } from '~/components/Button'
 
-export const SelectProductQty = ({ products, setProducts }) => {
+export const Products = ({ submitting, checkout, products, setProducts }) => {
+  const disabled =
+    products.reduce((partialSum, a) => partialSum + a.quantity, 0) === 0
+
   const updateQuantity = (index, v) => {
     const newProducts = [...products]
     const newQuantity = newProducts[index].quantity + v
@@ -56,7 +59,7 @@ export const SelectProductQty = ({ products, setProducts }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-center gap-[20px] p-4 bg-white">
+              <div className="flex items-center justify-center gap-[20px] p-4 bg-white leading-[29px]">
                 {product.quantity > 0 && (
                   <>
                     <Button
@@ -80,12 +83,21 @@ export const SelectProductQty = ({ products, setProducts }) => {
                   <Button onClick={() => updateQuantity(index, 1)}>
                     <div className="flex justify-center items-center font-bold gap-[4px]">
                       <span className="text-black text-[18px] mt-[4px]">
-                        ADD
+                        ADD TO CART
                       </span>
-                      <span className="text-[32px] text-[#AD916B]">+</span>
                     </div>
                   </Button>
                 )}
+              </div>
+              <div className="mt-[44px]">
+                <Button
+                  disabled={disabled}
+                  loading={submitting}
+                  onClick={checkout}
+                  className="hover:bg-[#AD916B] hover:text-[#000000] font-hudson text-[#000] sm:text-[14px] text-[12px] border-2 border-[#AD916B] font-normal leading-[14.566px] sm:tracking-[2.8px] tracking-[2.4px] cursor-pointer transition py-3 px-12 uppercase w-full"
+                >
+                  CHECKOUT
+                </Button>
               </div>
               <div className="h-auto  sm:min-h-[150px] md:min-h-[120px] mt-10 text-center text-[#231B19] font-barlow  text-[18px] not-italic font-[400] leading-[24px] ">
                 {product.description}

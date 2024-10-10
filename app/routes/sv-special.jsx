@@ -6,8 +6,8 @@ import { json } from '@shopify/remix-oxygen'
 
 import { Banner } from '~/containers/SvSpecial/Banner'
 import { Footer } from '~/containers/SvSpecial/Footer'
+import { Products } from '~/containers/SvSpecial/Products'
 import { SageValleyContent } from '~/containers/SvSpecial/SageValleyContent'
-import { SelectProductQty } from '~/containers/SvSpecial/SelectProductQty'
 import { TasteQuality } from '~/containers/SvSpecial/TasteQuality'
 import { COLLECTION_QUERY } from '~/graphql/Collection'
 import { useSubmitPromise } from '~/hooks/useSubmitPromise'
@@ -72,7 +72,7 @@ export default function SvSpecial() {
   const [products, setProducts] = useState(
     collection.products.nodes.map((product) => ({
       merchandiseId: product.variants.nodes[0].id,
-      quantity: 1,
+      quantity: 0,
       ...product,
     })),
   )
@@ -102,13 +102,14 @@ export default function SvSpecial() {
     <>
       <main className="relative font-barlow tracking-[1px] leading-1 text-[#231B19]">
         <Banner />
-        <SageValleyContent
-          products={products}
-          checkout={checkout}
-          submitting={submitting}
-        />
+        <SageValleyContent />
         <TasteQuality />
-        <SelectProductQty products={products} setProducts={setProducts} />
+        <Products
+          submitting={submitting}
+          checkout={checkout}
+          products={products}
+          setProducts={setProducts}
+        />
       </main>
       <Footer />
     </>
