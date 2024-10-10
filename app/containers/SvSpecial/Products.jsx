@@ -89,6 +89,16 @@ export const Products = ({ submitting, checkout, products, setProducts }) => {
                   </Button>
                 )}
               </div>
+              <div className="mt-[44px]">
+                <Button
+                  disabled={disabled}
+                  loading={submitting}
+                  onClick={checkout}
+                  className="hover:bg-[#AD916B] hover:text-[#000000] font-hudson text-[#000] sm:text-[14px] text-[12px] border-2 border-[#AD916B] font-normal leading-[14.566px] sm:tracking-[2.8px] tracking-[2.4px] cursor-pointer transition py-3 px-12 uppercase w-full"
+                >
+                  CHECKOUT
+                </Button>
+              </div>
               <div className="h-auto  sm:min-h-[150px] md:min-h-[120px] mt-10 text-center text-[#231B19] font-barlow  text-[18px] not-italic font-[400] leading-[24px] ">
                 {product.description}
               </div>
@@ -105,16 +115,6 @@ export const Products = ({ submitting, checkout, products, setProducts }) => {
               />
             </div>
           ))}
-        </div>
-        <div className="flex justify-center mt-[80px]">
-          <Button
-            disabled={disabled}
-            loading={submitting}
-            onClick={checkout}
-            className="hover:bg-[#AD916B] hover:text-[#000000] font-hudson text-[#000] sm:text-[14px] text-[12px] border-2 border-[#AD916B] font-normal leading-[14.566px] sm:tracking-[2.8px] tracking-[2.4px] cursor-pointer transition py-3 px-12 uppercase"
-          >
-            CHECKOUT
-          </Button>
         </div>
         <div className="bg-[url('../assets/images/long-dot.png')] bg-repeat absolute bottom-[20px] left-0 right-0 p-[4px]"></div>
       </div>
