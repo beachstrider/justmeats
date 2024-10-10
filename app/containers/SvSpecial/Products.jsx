@@ -15,7 +15,7 @@ export const Products = ({ submitting, checkout, products, setProducts }) => {
 
   return (
     <section className="relative  bg-[#EFEEED]">
-      <div className="max-w-[1000px] mx-auto quantiti-box pt-20 md:pb-36 pb-20 px-[15px]">
+      <div className="max-w-[961px] mx-auto quantiti-box pt-20 md:pb-36 pb-20 px-[15px]">
         <div className="main-heading uppercase text-[#AD916B] text-center leading-[normal] text-[39px] font-baskerville font-[700]">
           LIMITED QUANTITIES ONLY
         </div>
@@ -54,7 +54,15 @@ export const Products = ({ submitting, checkout, products, setProducts }) => {
                   </div>
                   <div>
                     <div className="font-barlow  text-[#CF2A2A] text-[16px] text-right not-italic font-[700] uppercase leading-[29px] tracking-[.8px]">
-                      53% OFF
+                      {Math.round(
+                        (1 -
+                          Number(product.variants.nodes[0].price.amount) /
+                            Number(
+                              product.variants.nodes[0].compareAtPrice.amount,
+                            )) *
+                          100,
+                      )}
+                      % OFF
                     </div>
                   </div>
                 </div>
@@ -99,15 +107,21 @@ export const Products = ({ submitting, checkout, products, setProducts }) => {
                   CHECKOUT
                 </Button>
               </div>
-              <div className="h-auto  sm:min-h-[150px] md:min-h-[120px] mt-10 text-center text-[#231B19] font-barlow  text-[18px] not-italic font-[400] leading-[24px] ">
-                {product.description}
-              </div>
+              <div
+                className="h-auto  sm:min-h-[150px] md:min-h-[120px] mt-10 text-center text-[#231B19] font-barlow  text-[18px] not-italic font-[400] leading-[24px]"
+                dangerouslySetInnerHTML={{
+                  __html: product.description,
+                }}
+              ></div>
               <div className="text-center text-[#AD916B] font-baskerville uppercase text-[39px] not-italic leading-[normal]">
                 ...
               </div>
-              <div className=" sm:min-h-[100px] md:min-h-[70px] mt-5 text-center text-[#231B19] font-barlow text-[18px] not-italic font-[400] leading-[24px]">
-                {product.cardDescription.value}
-              </div>
+              <div
+                className="sm:min-h-[100px] md:min-h-[70px] mt-5 text-center text-[#231B19] font-barlow text-[18px] not-italic font-[400] leading-[24px]"
+                dangerouslySetInnerHTML={{
+                  __html: product.cardDescription.value,
+                }}
+              />
               <img
                 className="mx-auto mt-10 mb-2"
                 src={selectproductimg}
