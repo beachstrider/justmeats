@@ -7,7 +7,7 @@ import { sendPageView } from '~/lib/metaPixel.server'
  * @type {MetaFunction<typeof loader>}
  */
 export const meta = ({ data }) => {
-  return [{ title: `Hydrogen | ${data?.policy.title ?? ''}` }]
+  return [{ title: `${data?.policy.title ?? ''}` }]
 }
 
 /**

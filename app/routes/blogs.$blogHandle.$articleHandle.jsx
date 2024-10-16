@@ -6,7 +6,7 @@ import { defer } from '@shopify/remix-oxygen'
  * @type {MetaFunction<typeof loader>}
  */
 export const meta = ({ data }) => {
-  return [{ title: `Hydrogen | ${data?.article.title ?? ''} article` }]
+  return [{ title: `${data?.article.title ?? ''} article` }]
 }
 
 /**

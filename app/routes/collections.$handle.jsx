@@ -14,7 +14,7 @@ import { useVariantUrl } from '~/lib/variants'
  * @type {MetaFunction<typeof loader>}
  */
 export const meta = ({ data }) => {
-  return [{ title: `Hydrogen | ${data?.collection.title ?? ''} Collection` }]
+  return [{ title: `${data?.collection.title ?? ''} Collection` }]
 }
 
 /**
