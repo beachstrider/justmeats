@@ -13,7 +13,7 @@ import { Button } from './Button'
 import { CartButton } from './CartButton'
 import { OrderButton } from './OrderButton'
 
-export function Header() {
+export function Header({ cartType = 'custom' }) {
   const matches = useMatches()
 
   const { pathname } = matches.at(-1)
@@ -107,7 +107,7 @@ export function Header() {
   const headerClass = isHeaderVisible ? '' : 'sticky-header w-[100vw]'
 
   return (
-    <header className="relative [box-shadow:0px_0px_15px_0px_rgba(0,0,0,0.15)]">
+    <header className="relative fixed [box-shadow:0px_0px_15px_0px_rgba(0,0,0,0.15)]">
       <div
         className={cn(
           'container-small relative h-[88px] sm:h-[120px] flex items-center justify-between py-4 mainheader sm:pl-[20px] sm:pr-[20px] pl-[10px] pr-[20px]',
@@ -155,7 +155,7 @@ export function Header() {
                   </span>
                 </NavLink>
               )}
-              <CartButton />
+              <CartButton cartType={cartType} />
               {!isAccount && (
                 <div className="hidden lg:block pl-[20px]">
                   <OrderButton />

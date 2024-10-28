@@ -1,3 +1,5 @@
+import { Link } from '@remix-run/react'
+
 import ShortDot from '~/assets/images/short-dot.png'
 
 export const SageValleyContent = () => {
@@ -14,6 +16,15 @@ export const SageValleyContent = () => {
           Angus steaks — cuts typically reserved for top-tier restaurants. Sage
           Valley has a surplus of high-quality steaks, and we’re passing this
           deal on directly to you.
+        </div>
+        <div className="flex justify-center w-full pt-[10px] pb-[20px]">
+          <Link
+            prefetch="intent"
+            to={'/products/custom-bundle'}
+            className="block border-2 border-[#AD916B] hover:bg-[#AD916B] py-[10px] max-w-[260px] w-full text-[18px] font-bold leading-[24px]"
+          >
+            SEE THE BUNDLES
+          </Link>
         </div>
         <div className="font-baskerville text-[25px] font-bold leading-[28.78px] text-center text-[#AD916B] mt-[30px] mb-[15px]">
           A HISTORY OF PREMIUM QUALITY

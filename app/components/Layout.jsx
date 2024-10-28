@@ -7,7 +7,7 @@ import { LayoutProvider } from '~/providers/LayoutProvider'
 import { MobileMenuAside } from './MobileMenuAside'
 import { OrderHeader } from './OrderHeader'
 
-const withoutHeader = ['routes/ambassador']
+const withoutHeader = ['routes/ambassador', 'routes/products.sv-special']
 const withoutFooter = [
   'routes/products.custom-bundle',
   'routes/account.subscriptions.$id',
