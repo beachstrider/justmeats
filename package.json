@@ -24,7 +24,7 @@
     "@radix-ui/react-radio-group": "^1.2.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
-    "@rechargeapps/storefront-client": "^1.19.0",
+    "@rechargeapps/storefront-client": "^1.25.0",
     "@remix-run/react": "^2.10.1",
     "@remix-run/server-runtime": "^2.10.1",
     "@shopify/cli": "^3.63.2",
