@@ -11,7 +11,7 @@ const withoutHeader = ['routes/ambassador', 'routes/products.sv-special']
 const withoutFooter = [
   'routes/products.custom-bundle',
   'routes/account.subscriptions.$id',
-  'routes/sv-special',
+  'routes/products.sv-special',
 ]
 
 export function Layout({ children = null }) {
