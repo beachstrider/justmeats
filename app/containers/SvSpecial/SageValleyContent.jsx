@@ -20,7 +20,7 @@ export const SageValleyContent = () => {
         <div className="flex justify-center w-full pt-[10px] pb-[20px]">
           <Link
             prefetch="intent"
-            to={'/products/custom-bundle'}
+            to={'/products/sv-special/#bundles'}
             className="block border-2 border-[#AD916B] hover:bg-[#AD916B] py-[10px] max-w-[260px] w-full text-[18px] font-bold leading-[24px]"
           >
             SEE THE BUNDLES

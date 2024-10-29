@@ -57,7 +57,10 @@ export const Products = () => {
           USDA Choice Angus steaks at a significant discount. Get yours now and
           experience restaurant-quality meats at grocery store prices.
         </div>
-        <div className="flex flex-wrap justify-center w-full mt-20 lg:flex-nowrap lg:gap-16 sm:gap-10 gap-[69px]">
+        <div
+          id="bundles"
+          className="flex flex-wrap justify-center w-full mt-20 lg:flex-nowrap lg:gap-16 sm:gap-10 gap-[69px]"
+        >
           {cartProducts.map((product, index) => (
             <div
               key={index}
