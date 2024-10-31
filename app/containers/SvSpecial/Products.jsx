@@ -30,6 +30,10 @@ export const Products = () => {
   )
 
   const updateQuantity = (index, v) => {
+    if (disabled) {
+      setCartOpen(true)
+    }
+
     const newProducts = [...cartProducts]
     const newQuantity = newProducts[index].quantity + v
 
