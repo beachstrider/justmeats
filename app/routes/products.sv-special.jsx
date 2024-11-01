@@ -1,17 +1,16 @@
-import { useState } from 'react'
-
 import { useLoaderData } from '@remix-run/react'
 import { getPaginationVariables } from '@shopify/hydrogen'
 import { json } from '@shopify/remix-oxygen'
 
+import { Header } from '~/components/Header'
 import { Banner } from '~/containers/SvSpecial/Banner'
 import { Footer } from '~/containers/SvSpecial/Footer'
 import { Products } from '~/containers/SvSpecial/Products'
 import { SageValleyContent } from '~/containers/SvSpecial/SageValleyContent'
 import { TasteQuality } from '~/containers/SvSpecial/TasteQuality'
 import { COLLECTION_QUERY } from '~/graphql/Collection'
-import { useSubmitPromise } from '~/hooks/useSubmitPromise'
 import { sendPageView } from '~/lib/metaPixel.server'
+import { OnetimeBundleProvider } from '~/providers/OnetimeBundleProvider'
 
 const handle = 'sv-special'
 
@@ -64,54 +63,18 @@ export async function action({ request, context }) {
 }
 
 export default function SvSpecial() {
-  const submit = useSubmitPromise()
-
   const { collection } = useLoaderData()
 
-  const [submitting, setSubmitting] = useState(false)
-  const [products, setProducts] = useState(
-    collection.products.nodes.map((product) => ({
-      merchandiseId: product.variants.nodes[0].id,
-      quantity: 0,
-      ...product,
-    })),
-  )
-
-  const checkout = async () => {
-    setSubmitting(true)
-
-    const res = await submit(
-      {
-        body: JSON.stringify(products),
-      },
-      {
-        method: 'post',
-        action: `/sv-special`,
-      },
-    )
-
-    if (res.success) {
-      location.href = res.checkoutUrl
-    } else {
-      console.error(res.message)
-      setSubmitting(false)
-    }
-  }
-
   return (
-    <>
+    <OnetimeBundleProvider products={collection.products.nodes}>
+      <Header cartType="onetime" />
       <main className="relative font-barlow tracking-[1px] leading-1 text-[#231B19]">
         <Banner />
         <SageValleyContent />
         <TasteQuality />
-        <Products
-          submitting={submitting}
-          checkout={checkout}
-          products={products}
-          setProducts={setProducts}
-        />
+        <Products />
       </main>
       <Footer />
-    </>
+    </OnetimeBundleProvider>
   )
 }
