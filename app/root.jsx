@@ -15,6 +15,7 @@ import {
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
+  useLocation,
   useRouteError,
   useRouteLoaderData,
 } from '@remix-run/react'
@@ -181,13 +182,15 @@ function loadDeferredData({ context }) {
 
 export function Layout({ children }) {
   const nonce = useNonce()
+  const loc = useLocation()
   const data = useRouteLoaderData('root')
 
   useEffect(() => {
-    loadScripts()
+    initScripts()
+    initHashActions()
   }, [])
 
-  const loadScripts = async () => {
+  const initScripts = async () => {
     // HACK: for react hydration error due to direct external script tag imports in head
     addScriptToHead(
       'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=UMcvkS',
@@ -217,6 +220,23 @@ export function Layout({ children }) {
     configMetaPixel()
     configGTM()
     configAspireIQ()
+  }
+
+  const initHashActions = () => {
+    switch (loc.hash) {
+      case '#post-checkout':
+        window.localStorage.removeItem('_cartSellingPlan')
+        window.localStorage.removeItem('_cartProducts')
+        window.localStorage.removeItem('_cartBonusVariant')
+        window.localStorage.removeItem('_onetimeCartProducts')
+
+        window.location.href = '/'
+
+        break
+
+      default:
+        break
+    }
   }
 
   return (
