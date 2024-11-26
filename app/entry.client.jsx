@@ -1,16 +1,15 @@
 import { StrictMode, startTransition } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 
-import { ThemeProvider } from '@material-tailwind/react'
 import { RemixBrowser } from '@remix-run/react'
 
-startTransition(() => {
-  hydrateRoot(
-    document,
-    <StrictMode>
-      <ThemeProvider>
+if (!window.location.origin.includes('webcache.googleusercontent.com')) {
+  startTransition(() => {
+    hydrateRoot(
+      document,
+      <StrictMode>
         <RemixBrowser />
-      </ThemeProvider>
-    </StrictMode>,
-  )
-})
+      </StrictMode>,
+    )
+  })
+}

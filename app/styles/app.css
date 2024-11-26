@@ -2,9 +2,111 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 @import url('https://p.typekit.net/p.css?s=1&k=txs4qth&ht=tk&f=29953.50479.50480.50481.50482.50483&a=4612518&app=typekit&e=css');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+@theme {
+  --font-display: Barlow, Roboto, sans-serif;
+  --font-dunbar: Dunbar;
+  --font-nunito: Nunito Sans;
+  --font-barlow: barlow;
+  --font-barlow-condensed: Barlow-Condensed;
+  --font-hudson: Hudson;
+  --font-espiritu: espiritu;
+  --font-espiritu-condensed: espiritu-condensed;
+  --font-espiritu-expanded: espiritu-expanded;
+  --font-espiritu-dingbats: espiritu-dingbats;
+  --font-espiritu-script: espiritu-script;
+  --font-baskerville: Baskerville;
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1920px;
+
+  --color-primary: #6b1626;
+  --color-primary-dark: #231b19;
+  --color-second: #637160;
+  --color-yellow: #e47a0f;
+  --color-custombgGreen: #425b34;
+  --color-sublistbgGray: #eee;
+
+  --breakpoint-xl: 1340px;
+  --breakpoint-2xl: 1340px;
+  --breakpoint-3xl: 1920px;
+
+  --animate-overlayShow: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-contentShow: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes overlayShow {
+    from: {
+      opacity: 0;
+    }
+    to: {
+      opacity: 1;
+    }
+  }
+
+  @keyframes contentShow {
+    from: {
+      opacity: 0;
+      transform: translate(-50%, -48%) scale(0.96);
+    }
+    to: {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+@layer base {
+  html {
+    @apply text-[#231B19];
+  }
+
+  body {
+    @apply overflow-x-hidden;
+  }
+
+  * {
+    outline: none;
+    line-height: 1.5;
+  }
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  button,
+  [role='button'] {
+    cursor: pointer;
+  }
+
+  a {
+    @apply inline-block;
+  }
+
+  .absolute-center {
+    @apply absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
+  }
+
+  .sm.absolute-center {
+    @apply sm:absolute sm:-translate-x-1/2 sm:-translate-y-1/2 sm:top-1/2 sm:left-1/2;
+  }
+}
 
 @font-face {
   font-family: 'ROCK';
@@ -333,32 +435,6 @@
   font-weight: 700;
   font-style: italic;
   font-display: swap;
-}
-
-@layer base {
-  html {
-    @apply font-body text-[#231B19];
-  }
-
-  body {
-    @apply overflow-x-hidden;
-  }
-
-  * {
-    outline: none;
-  }
-
-  a {
-    @apply inline-block;
-  }
-
-  .absolute-center {
-    @apply absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
-  }
-
-  .sm.absolute-center {
-    @apply sm:absolute sm:-translate-x-1/2 sm:-translate-y-1/2 sm:top-1/2 sm:left-1/2;
-  }
 }
 
 .swiper .swiper-button-prev {

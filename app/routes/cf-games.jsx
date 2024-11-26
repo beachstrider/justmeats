@@ -1,6 +1,6 @@
-import { NewBanner } from '~/containers/Crossfit/NewBanner'
-import { MasterMealTime } from '~/containers/Crossfit/MasterMealTime'
 import { FarmToTable } from '~/containers/Crossfit/FarmToTable'
+import { MasterMealTime } from '~/containers/Crossfit/MasterMealTime'
+import { NewBanner } from '~/containers/Crossfit/NewBanner'
 
 export const meta = () => {
   return [{ title: 'Crossfit - Just Meats' }]

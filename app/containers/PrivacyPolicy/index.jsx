@@ -266,21 +266,21 @@ const PrivacyPolicy = () => {
           <table className="border-collapse border border-2 rounded">
             <thead className="">
               <tr className="text-center ">
-                <th className="border-collapse border border-2 rounded pt-3 pb-4 px-4 text-lg">
+                <th className="border-collapse border border-2 rounded-sm pt-3 pb-4 px-4 text-lg">
                   Category
                 </th>
-                <th className="border-collapse border border-2 rounded pt-3 pb-4 px-4 text-lg">
+                <th className="border-collapse border border-2 rounded-sm pt-3 pb-4 px-4 text-lg">
                   Categories of Recipients
                 </th>
               </tr>
             </thead>
             <tbody className="text-lg text-[#555]">
               <tr className="text-start ">
-                <td className="border-collapse border border-2 rounded pl-4">
+                <td className="border-collapse border border-2 rounded-sm pl-4">
                   Identifiers such as basic contact details and certain order
                   and account information
                 </td>
-                <td className="border-collapse border border-2 rounded pl-4">
+                <td className="border-collapse border border-2 rounded-sm pl-4">
                   Vendors and third parties who perform services on our behalf
                   (such as Internet service providers, payment processors,
                   fulfillment partners, customer support partners and data
@@ -288,19 +288,19 @@ const PrivacyPolicy = () => {
                 </td>
               </tr>
               <tr className="text-start">
-                <td className="border-collapse border border-2 rounded pl-4">
+                <td className="border-collapse border border-2 rounded-sm pl-4">
                   Commercial information such as order information, shopping
                   information and customer support information
                 </td>
-                <td className="border-collapse border border-2 rounded pl-4">
+                <td className="border-collapse border border-2 rounded-sm pl-4">
                   Business and marketing partners
                 </td>
               </tr>
               <tr className="text-start">
-                <td className="border-collapse border border-2 rounded pl-4">
+                <td className="border-collapse border border-2 rounded-sm pl-4">
                   Internet or other similar network activity, such as Usage Data
                 </td>
-                <td className="border-collapse border border-2 rounded pl-4">
+                <td className="border-collapse border border-2 rounded-sm pl-4">
                   Affiliates
                 </td>
               </tr>
@@ -319,36 +319,36 @@ const PrivacyPolicy = () => {
           <table className="border-collapse border border-2 rounded">
             <tbody className="text-lg text-[#555]">
               <tr className="text-start ">
-                <td className="border-collapse border border-2 rounded p-4">
+                <td className="border-collapse border border-2 rounded-sm p-4">
                   Category of Personal Information
                 </td>
-                <td className="border-collapse border border-2 rounded p-4">
+                <td className="border-collapse border border-2 rounded-sm p-4">
                   Categories of Recipients
                 </td>
               </tr>
               <tr className="text-start">
-                <td className="border-collapse border border-2 rounded p-4">
+                <td className="border-collapse border border-2 rounded-sm p-4">
                   Identifiers such as basic contact details and certain order
                   and account information
                 </td>
-                <td className="border-collapse border border-2 rounded p-4">
+                <td className="border-collapse border border-2 rounded-sm p-4">
                   Business and marketing partners
                 </td>
               </tr>
               <tr className="text-start">
-                <td className="border-collapse border border-2 rounded p-4">
+                <td className="border-collapse border border-2 rounded-sm p-4">
                   Commercial information such as records of products or services
                   purchased and shopping information
                 </td>
-                <td className="border-collapse border border-2 rounded p-4">
+                <td className="border-collapse border border-2 rounded-sm p-4">
                   Business and marketing partners
                 </td>
               </tr>
               <tr className="text-start">
-                <td className="border-collapse border border-2 rounded p-4">
+                <td className="border-collapse border border-2 rounded-sm p-4">
                   Internet or other similar network activity, such as Usage Data
                 </td>
-                <td className="border-collapse border border-2 rounded p-4">
+                <td className="border-collapse border border-2 rounded-sm p-4">
                   Business and marketing partners
                 </td>
               </tr>

@@ -1,12 +1,13 @@
-import { defineConfig } from 'vite'
-import tsconfigPaths from 'vite-tsconfig-paths'
-
-import { vitePlugin as remix } from '@remix-run/dev'
-import { hydrogen } from '@shopify/hydrogen/vite'
-import { oxygen } from '@shopify/mini-oxygen/vite'
+import {vitePlugin as remix} from '@remix-run/dev';
+import {hydrogen} from '@shopify/hydrogen/vite';
+import {oxygen} from '@shopify/mini-oxygen/vite';
+import tailwindcss from '@tailwindcss/vite';
+import {defineConfig} from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     hydrogen(),
     oxygen(),
     remix({
@@ -23,7 +24,6 @@ export default defineConfig({
     // Allow a strict Content-Security-Policy
     // withtout inlining assets as base64:
     assetsInlineLimit: 0,
-    sourcemap: true,
   },
   ssr: {
     optimizeDeps: {
@@ -51,4 +51,4 @@ export default defineConfig({
       ],
     },
   },
-})
+});

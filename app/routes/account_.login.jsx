@@ -1,7 +1,7 @@
 /**
  * @param {LoaderFunctionArgs}
  */
-export async function loader({ context }) {
+export async function loader({ request, context }) {
   return context.customerAccount.login()
 }
 

@@ -251,7 +251,7 @@ export function AddressForm({ address, onSubmit }) {
         {error && <div className="text-red-500 sm:col-span-6">{error}</div>}
         <div className="mt-[30px] sm:col-span-6">
           <Button
-            className="rounded-sm w-full bg-[#252525] px-6 py-2 mb-4 text-sm font-semibold text-white shadow-sm border-2 border-black"
+            className="rounded-xs w-full bg-[#252525] px-6 py-2 mb-4 text-sm font-semibold text-white shadow-sm border-2 border-black"
             loading={submitting}
             type="submit"
           >

@@ -44,18 +44,19 @@ import { RootProvider } from './providers/RootProvider'
  * This is important to avoid re-fetching root queries on sub-navigations
  * @type {ShouldRevalidateFunction}
  */
-export const shouldRevalidate = ({ formMethod, currentUrl, nextUrl }) => {
+export const shouldRevalidate = ({
+  formMethod,
+  currentUrl,
+  nextUrl,
+  defaultShouldRevalidate,
+}) => {
   // revalidate when a mutation is performed e.g add to cart, login...
-  if (formMethod && formMethod !== 'GET') {
-    return true
-  }
+  if (formMethod && formMethod !== 'GET') return true
 
   // revalidate when manually revalidating via useRevalidator
-  if (currentUrl.toString() === nextUrl.toString()) {
-    return true
-  }
+  if (currentUrl.toString() === nextUrl.toString()) return true
 
-  return false
+  return defaultShouldRevalidate
 }
 
 export function links() {
@@ -120,10 +121,13 @@ export async function loader(args) {
       storefront,
       publicStorefrontId: env.PUBLIC_STOREFRONT_ID,
     }),
-
     consent: {
       checkoutDomain: env.PUBLIC_CHECKOUT_DOMAIN,
       storefrontAccessToken: env.PUBLIC_STOREFRONT_API_TOKEN,
+      withPrivacyBanner: false,
+      // localize the privacy banner
+      country: args.context.storefront.i18n.country,
+      language: args.context.storefront.i18n.language,
     },
   })
 }
@@ -146,9 +150,7 @@ async function loadCriticalData({ context }) {
     // Add other queries here, so that they are loaded in parallel
   ])
 
-  return {
-    header,
-  }
+  return { header }
 }
 
 /**
@@ -180,6 +182,9 @@ function loadDeferredData({ context }) {
   }
 }
 
+/**
+ * @param {{children?: React.ReactNode}}
+ */
 export function Layout({ children }) {
   const nonce = useNonce()
   const loc = useLocation()
@@ -251,7 +256,7 @@ export function Layout({ children }) {
         <Links />
         <MetaNoScript />
       </head>
-      <body>
+      <body className="font-display">
         <GTMNoScript />
         <Analytics.Provider
           cart={data.cart}
@@ -290,7 +295,7 @@ export function ErrorBoundary() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen route-error">
+    <div className="route-error">
       <h1>Oops</h1>
       <h2>{errorStatus}</h2>
       {errorMessage && (
@@ -301,3 +306,9 @@ export function ErrorBoundary() {
     </div>
   )
 }
+
+/** @typedef {LoaderReturnData} RootLoader */
+
+/** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
+/** @typedef {import('@remix-run/react').ShouldRevalidateFunction} ShouldRevalidateFunction */
+/** @typedef {import('@shopify/remix-oxygen').SerializeFrom<typeof loader>} LoaderReturnData */
