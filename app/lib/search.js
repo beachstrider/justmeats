@@ -1,3 +1,13 @@
+export function applyTrackingParams(resource, params) {
+  if (params) {
+    return resource?.trackingParameters
+      ? `?${params}&${resource.trackingParameters}`
+      : `?${params}`
+  } else {
+    return resource?.trackingParameters ? `?${resource.trackingParameters}` : ''
+  }
+}
+
 /**
  * Returns the empty state of a predictive search result to reset the search state.
  */
