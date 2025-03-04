@@ -28,7 +28,7 @@ export default async function handleRequest(
     defaultSrc: ['*', 'data:'],
     connectSrc: ['*', 'data:'],
     styleSrc: ['*', 'data:'],
-    scriptSrc: ['*', "'sha256-SsImNIm56IVCqDixAHT0XOpBWZnoqAi3UiCYQ8QbXM8='"],
+    scriptSrc: ['*', "data:"],
     fontSrc: ['*', 'data:'],
     workerSrc: ['blob:'],
   })
