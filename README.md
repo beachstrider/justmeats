@@ -1,4 +1,6 @@
-# Hydrogen template: Skeleton
+# Justmeats - Headless Shopify - Hydrogen, Tailwind, Recharge SDK
+
+![image](https://github.com/user-attachments/assets/b69319da-fe1b-4ed7-ac8b-5a921327f494)
 
 Hydrogen is Shopify’s stack for headless commerce. Hydrogen is designed to dovetail with [Remix](https://remix.run/), Shopify’s full stack web framework. This template contains a **minimal setup** of components, queries and tooling to get started with Hydrogen.
 
